@@ -1,23 +1,22 @@
 <?php
 include db.php;
+
 $user_id = $_SESSION['user_id'];
 $code = $_POST['code'];
-//
-// $user_id = '7';
-//
-// $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".py", "w");
-// fwrite($user_py_file, $code);
-//
-// echo "File Loaded.</p>";
-//
-// $testing_output = shell_exec("env 2>&1");
-// echo "Python3 Path: " . $testing_output . "</p>";
-//
-// $output = exec("python3 /var/www/public_html/Testing/hello_world.py 2>&1");
-//
-// echo "Output of hello world: " . $output;
-//
-// exit();
+
+$user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".py", "w");
+fwrite($user_py_file, $code);
+
+$output = exec("timeout 1 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id");
+
+if ($output != "1") {  // Code is fine
+    $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . 'json');
+    $dwarf_scores = json_decode($file_contents, true);
+    $_SESSION['Error3'] = $dwarf_scores;
+} else { // Code is not fine: $output is the error provided
+    $_SESSION['Error3'] = $output;
+    exit();
+}
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
