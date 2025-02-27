@@ -16,21 +16,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($output == "1") {  // Code is fine
         $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
-        $_SESSION['Error3'] = $dwarf_scores;
-        var_dump($dwarf_scores);
-        exit();
+
+        $list = "<ol>";
+        foreach ($data as $key => $value) {
+            $list .= "<li>$key: $value</li><br>";
+        }
+        $list .= "</ol>";
+
+        $_SESSION['Error3'] = $list;
+
+        unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
+        unlink('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
+
     } else { // Code is not fine: $output is the error provided
         $_SESSION['Error3'] = $output;
-        echo "Code is not fine: " . $output;
-        // header("Location: /newSubmission.php");
+        unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
+        header("Location: /newSubmission.php");
         exit();
     }
 
     // Input validation
     if (empty($code)) {
         $_SESSION['Error3'] = "All fields are required.";
-        echo "All fields are required";
-        // header("Location: /newSubmission.php");
+        header("Location: /newSubmission.php");
         exit();
     }
     if ($gameid == 2){
@@ -41,8 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Input validation
         if (empty($code2)) {
             $_SESSION['Error3'] = "All fields are required.";
-            echo "All fields are required";
-            // header("Location: /newYahtzeeSubmission.php");
+            header("Location: /newYahtzeeSubmission.php");
             exit();
         }
         
@@ -59,8 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$id){
             // Username not found
             $_SESSION['Error3'] = "Username not found.";
-            echo "Username not found";
-            // header("Location: /newSubmission.php");
+            header("Location: /newSubmission.php");
             exit();
         }
     $stmt = $pdo->prepare("DELETE FROM Submission WHERE UserID= :id AND GameID= :gameid");
@@ -75,13 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $stmt->execute();
-        echo "DEBUG POINT #1"; // TODO: remove
-        $_SESSION['Error3'] = "Code submitted!";
-        // header("Location: /newSubmission.php");
+        header("Location: /newSubmission.php");
         exit();
     } catch (Exception $e) {
         $_SESSION['Error3'] = "Error during submission: " . $e->getMessage();
-        // header("Location: /newSubmission.php");
+        header("Location: /newSubmission.php");
         exit();
     }
 }
