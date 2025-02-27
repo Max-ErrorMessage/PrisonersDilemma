@@ -1,7 +1,6 @@
 import re
 import sys
 import json
-from simulate_user_code import simulate
 
 
 with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json', 'r') as file:
@@ -38,4 +37,3 @@ file_out += "}"
 with open("/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py", "w") as file:
     file.write(file_out)
     
-print("Cree")
