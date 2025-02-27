@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
 
-    $output = exec("timeout 1 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id");
+    $output = exec("timeout 1 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id 2>&1");
 
     if ($output == "1") {  // Code is fine
         $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
