@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
         $_SESSION['Error3'] = $dwarf_scores;
-        vardump($dwarf_scores);
+        var_dump($dwarf_scores);
         exit();
     } else { // Code is not fine: $output is the error provided
         $_SESSION['Error3'] = $output;
