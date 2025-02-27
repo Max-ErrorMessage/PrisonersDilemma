@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $uname = $_SESSION['uname'];
     $user_id = $_SESSION['user_id'];
     $gameid = $_POST['game_id'];
-    $_SESSION['Error3'] = $gameid;
 
     $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
@@ -71,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $stmt->execute();
+        echo "DEBUG POINT #1"; // TODO: remove
         $_SESSION['Error3'] = "Code submitted!";
         header("Location: /newSubmission.php");
         exit();

@@ -3,6 +3,9 @@ import sys
 import random
 import json
 
+print("Test")
+quit()
+
 user_id = sys.argv[1]
 
 with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_{user_id}.txt", 'r') as file:
