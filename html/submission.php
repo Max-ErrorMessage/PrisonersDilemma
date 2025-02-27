@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Retrieve the id for the given username
-        $stmt = $pdo->prepare("SELECT id FROM Accounts WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT User_ID FROM Accounts WHERE Username = :username");
         $stmt->bindParam(':username', $uname);
         $stmt->execute();
 
@@ -69,12 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: /newSubmission.php");
             exit();
         }
-    $stmt = $pdo->prepare("DELETE FROM Submission WHERE UserID= :id AND GameID= :gameid");
+    $stmt = $pdo->prepare("DELETE FROM Submission WHERE User_ID= :id AND Game_ID= :gameid");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':gameid', $gameid);
     $stmt->execute();
     // Insert the user into the database
-    $stmt = $pdo->prepare("INSERT INTO Submission (UserID, GameID, code) VALUES (:id, :gameid, :code)");
+    $stmt = $pdo->prepare("INSERT INTO Submission (User_ID, Game_ID, Code) VALUES (:id, :gameid, :code)");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':code', $code);
     $stmt->bindParam(':gameid', $gameid);
