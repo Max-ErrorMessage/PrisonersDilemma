@@ -106,8 +106,12 @@ for index, player1 in enumerate(players):
         player_1_function, player_2_function = functions[index], functions[jindex]
 
         for _ in range(200):
-            player_1_decision = player_1_function(player_1_decisions, player_2_decisions)
-            player_2_decision = player_2_function(player_2_decisions, player_1_decisions)
+            try:
+                player_1_decision = player_1_function(player_1_decisions, player_2_decisions)
+                player_2_decision = player_2_function(player_2_decisions, player_1_decisions)
+            except Exception as e:
+                print(f"Your code has caused an error: {e}")
+                quit()
 
             if player_1_decision and player_2_decision:  # Both players chose to trust
                 player_1_score += 5
