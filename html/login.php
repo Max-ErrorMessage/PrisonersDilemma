@@ -17,8 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("SELECT password, User_ID FROM Accounts WHERE username = :username");
         $stmt->bindParam(':username', $uname);
         $stmt->execute();
-        $stmt->bind_result($storedHashedPassword, $userid);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($row) {
+            $storedHashedPassword = $row['password'];
+            $userid = $row['Id'];
+        }
 
         if (!$storedHashedPassword) {
             // Username not found
