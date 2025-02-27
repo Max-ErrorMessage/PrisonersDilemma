@@ -76,7 +76,6 @@ body{
     background: #4f8662;
 }
 body {
-    overflow: hidden;
     background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
     color: white;
     font-family: 'Orbitron', sans-serif;
