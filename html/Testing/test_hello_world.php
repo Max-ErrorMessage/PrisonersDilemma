@@ -1,6 +1,6 @@
 <?php
 
-$output = exec("python3 hello_world.py 2>&1");
+$output = exec("python3 hello_world.py");
 
 echo "Output:" . $output . "</p>";
 
