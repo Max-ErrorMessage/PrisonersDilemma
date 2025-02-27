@@ -1,43 +1,24 @@
 <?php
-session_start();
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// $user_id = $_SESSION['user_id'];
+include db.php;
+$user_id = $_SESSION['user_id'];
 $code = $_POST['code'];
+//
+// $user_id = '7';
+//
+// $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".py", "w");
+// fwrite($user_py_file, $code);
+//
+// echo "File Loaded.</p>";
+//
+// $testing_output = shell_exec("env 2>&1");
+// echo "Python3 Path: " . $testing_output . "</p>";
+//
+// $output = exec("python3 /var/www/public_html/Testing/hello_world.py 2>&1");
+//
+// echo "Output of hello world: " . $output;
+//
+// exit();
 
-$user_id = '7';
-
-$user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".py", "w");
-fwrite($user_py_file, $code);
-
-echo "File Loaded.</p>";
-
-$testing_output = shell_exec("env 2>&1");
-echo "Python3 Path: " . $testing_output . "</p>";
-
-$output = exec("python3 /var/www/public_html/Testing/hello_world.py 2>&1");
-
-echo "Output of hello world: " . $output;
-
-exit();
-
-$host = "localhost";
-$dbname = "u753770036_Accounts";
-$username = "u753770036_TwokieBots";
-$password = "TwokieDatabase6";
-
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-    header("Location: /newSubmission.php");
-    exit();
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $code = $_POST['code'];

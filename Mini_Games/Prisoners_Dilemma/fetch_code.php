@@ -1,15 +1,5 @@
 <?php
-session_start();
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Database connection settings
-$host = "localhost";
-$dbname = "u753770036_Accounts";
-$username = "u753770036_TwokieBots";
-$password = "TwokieDatabase6";
+include html/db.php;
 
 
 class TableRows extends RecursiveIteratorIterator {
