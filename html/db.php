@@ -7,9 +7,9 @@ error_reporting(E_ALL);
 
 // Database connection settings
 $host = "localhost";
-$dbname = "u753770036_Accounts";
-$username = "u753770036_TwokieBots";
-$password = "TwokieDatabase6";
+$dbname = "Twokie";
+$username = "TwokieBotSQL";
+$password = "b45ketC453!!";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
