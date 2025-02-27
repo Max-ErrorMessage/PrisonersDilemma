@@ -1,0 +1,77 @@
+
+            #NavBar {
+                position: fixed;
+                background-color: black;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                border-bottom: 1px solid #3f7652;
+            }
+            #navbarLogo {
+                height: 40px;
+            }
+            .nav-link {
+                padding: 10px;
+                background-color: #959391;
+                border-radius: 2px;
+                color: white;
+                text-decoration: none;
+                margin-left: auto;
+                padding-right:30px;
+            }
+            
+            #signinbutton{
+                background-color: #3f7652;
+            }
+            #NavBar a + a {
+                margin-left: 10px;
+            }
+            #NavBar a:last-child {
+                margin-right: 30px;
+            }
+            .nav-link:hover{
+                background-color: #a5a3a1;
+                border-radius: 4px;
+            }
+            
+            #signinbutton:hover{
+                background-color: #4f8662;
+            }
+            .nav-link:active{
+                background-color: #c5c3c1;
+                border-radius: 7px;
+            }
+            
+            #signinbutton:active{
+                background-color: #6fa682;
+            }
+            body{
+                background-color:black;
+                height:200%;
+                overflow-x:hidden;
+                font-family: 'Roboto', sans-serif;  
+            
+            }
+            #main{
+                color:white;
+            }
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+            
+            ::-webkit-scrollbar-track {
+                background: black; 
+                border-left:solid 1px #3f7652;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background: #3f7652;
+                border-radius: 3px;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+                background: #4f8662;
+            }

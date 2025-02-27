@@ -1,0 +1,273 @@
+.square{
+    width:64px;
+    height:64px;
+    position: absolute;
+}
+
+.light{
+    background-image: linear-gradient(to bottom right, rgb(200,205,105), rgb(180,155,85));
+}
+
+.dark{
+    background-image: linear-gradient(to bottom right, rgb(100,105,55), rgb(90,75,45));
+}
+
+
+.highlight{
+    background-image: linear-gradient(to bottom right, rgb(120,235,0), rgb(100,230,0));
+}
+
+.highdark{
+    background-image: linear-gradient(to bottom right, rgb(80,140,0), rgb(70,135,0));
+}
+
+
+.markedlight{
+    background-image: linear-gradient(to bottom right, rgb(235,0,220), rgb(230,0,200));
+}
+.markeddark{
+    background-image: linear-gradient(to bottom right, rgb(140,0,180), rgb(135,0,170));
+}
+
+.row{
+    width:640px;
+}
+
+.row div{
+    float:left;
+}
+
+img {
+    width:64px;
+    height:auto;
+}
+
+img{
+    position:absolute;
+    margin:0px;
+    left:0px;
+    top:0px;
+}
+
+#board{
+    position:absolute;
+    top:10px;
+    left:10px;
+    border: 4px solid #772;
+    border-radius: 10px;
+    width: 640px;
+    height: 640px;
+    overflow:hidden
+}
+
+#board2{
+    position:absolute;
+    top:10px;
+    left:1000px;
+}
+
+#buttons{
+    position: absolute;
+    display:flex;
+    top: 700px;
+    left:10px;
+    width:640px;
+    justify-content: space-between;
+}
+
+#buttons img{
+    width:300px;
+    height: 150px;
+    position:relative;
+    border: solid black 3px;
+    border-radius:18px
+}
+
+#sideboard {
+    position: absolute;
+    top: 10px;
+    left: 700px;
+    width: 300px;
+    height: 640px;
+    background-color: rgb(100,100,0);
+    border-radius: 20px;
+}
+
+#chat {
+    top: 7px;
+    left: 7px;
+    width: 280px;
+    height: 620px;
+    background-color: rgb(155,155,55);
+    position: absolute;
+    border-radius: 20px;
+    border: 3px solid #331;
+    overflow-x: hidden;
+}
+
+#chatbox{
+    top:0vh;
+    left:10px;
+    width:270px;
+    height:580px;
+    overflow-y:scroll;
+    background-color:rgb(155,155,55);
+    position:absolute;
+}
+
+#messageBox{
+    position:absolute;
+    bottom: 10px;
+    margin-left:auto;
+    left: 10px;
+    right: 10px;
+    justify-content: space-between;
+    display: flex;
+}
+
+#turns{
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    position:absolute;
+    top:2vh;
+    left:10px;
+    width:280px;
+    height:46vh;
+    background-color:rgb(155,155,55);
+    overflow-y:scroll
+}
+
+.turns{
+    width:240px;
+    left: 20px;
+    height: 25px;
+    margin-top: 8px;
+    background-color: rgb(140,140,40);
+    text-align:center;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subTurns{
+    background-color: rgb(120,120,30);
+    height: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-left: 1px solid #550;
+    height: 10px;
+    border-top: 1px solid #550;
+}
+  
+::-webkit-scrollbar-track {
+    background: none;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #882;
+    border-radius:3px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #AA2;
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
+b{
+    font-weight: bold;
+    background: #5c5c17;
+    color: #ff7;
+    padding: 2px 4px;
+    font-size: 90%;
+    border-radius: 4px;
+    margin: 0 5px 0 0;
+}
+
+.red{
+    background: #DD242a;
+    color: #fcc;
+}
+
+.blue{
+    background: #07a;
+    color: #003;
+}
+
+
+
+html{
+    height:100%
+}
+
+body{
+    height:100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(to bottom, #ff4 0%,#440 20%);
+}
+#main{
+    position: absolute;
+    width:100%;
+    height:100%;
+    left: 0%;
+    top: 0%;
+    background-image:url('backgroundGif.gif');
+    background-repeat: repeat-x;
+}
+
+#arrow {
+    position: absolute;
+    z-index: 1;
+}
+  
+#loginform{
+    position: absolute;
+    width:80%;
+    left: 10%;
+    height: 80%;
+    top:10%;
+    background-color: rgba(200,200,0,0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 50px 20px 50px 20px;
+    border-bottom: solid 5px #330;
+    border-top: solid 2px #bb0;
+}
+#loginform p {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#loginform form{
+    text-align: center;
+    font-size: 20px;
+}
+
+#loginform input{
+    width: 50%;
+    height: 40px;
+    font-size: 30px;
+    border-radius: 20px;
+    border: none;
+    border-bottom: solid 3px #440;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#messageBox input{
+    background-color: #cc9;
+    border-radius: 7px;
+    border: none;
+    border-bottom: solid 2px #440;
+    padding-left: 10px;
+    padding-right: 10px;
+}

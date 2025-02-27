@@ -1,0 +1,98 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style the body with a background gradient */
+body {
+  overflow: hidden;
+  background-image: linear-gradient(to bottom right, rgb(150, 150, 250), rgb(200, 200, 255));
+  font-family: Arial, sans-serif;
+}
+
+/* Style the circles in the background */
+div[id^="1"] {
+  background-color: white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+
+/* Style the larger circles in the background */
+div[id^="1"]:after {
+  content: "";
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  backdrop-filter: blur(10px);
+}
+
+/* Style the login and signup containers */
+div#login, div#signup {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  border-left: 2px white solid;
+  border-bottom: 5px white solid;
+  padding: 20px;
+}
+
+/* Center the login and signup forms */
+form {
+  text-align: center;
+}
+
+/* Style the form labels and inputs */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the submit button */
+.butt {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.butt:hover {
+  background-color: #45a049;
+}
+
+/* Style the h1 headings */
+h1 {
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Media Query for small screens */
+@media (max-width: 600px) {
+  div#login, div#signup {
+    width: 100%;
+    left: 0;
+  }
+}

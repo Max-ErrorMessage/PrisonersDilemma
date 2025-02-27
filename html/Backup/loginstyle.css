@@ -1,0 +1,58 @@
+input{
+    border: solid 0px #EEEEEE;
+    border-bottom: solid 2px #886688;
+    background-color: #EEEEEE;
+    border-radius: 20px;
+    height: 30px;
+    width: 250px;
+    font-family: sans-serif;
+}
+
+.butt{
+    background-color: #EEEEEE;
+    border-bottom: solid 3px #886688;
+    width:150px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.butt:hover{
+    background-color: #F6F6F6;
+    border-bottom: solid 3px #997799;
+    width:160px;
+}
+
+.butt:active{
+    background-color: #FFFFFF;
+    border-bottom: solid 3px #AA88AA;
+    width:170px;
+}
+
+label{
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top:15px;
+}
+
+h1{   
+    font-family: sans-serif;
+}
+
+#login{
+    width:50%;
+    left:0%;
+    top:auto;
+    position:absolute;
+}
+#signup{
+    width:50%;
+    left:50%;
+    top:auto;
+    position:absolute;
+}
+
+h2{
+    background-color: rgba(225,0,0,0.2);
+    border: 2px solid darkred;
+    padding:10px;
+}

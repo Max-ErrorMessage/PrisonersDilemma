@@ -1,0 +1,76 @@
+input{
+    border: solid 0px #EEEEEE;
+    border-bottom: solid 2px #886688;
+    background-color: #EEEEEE;
+    border-radius: 20px;
+    height: 30px;
+    width: 250px;
+    font-family: sans-serif;
+}
+
+.butt{
+    background-color: rgb(151,149,147);
+    border-bottom: solid 3px #886688;
+    width:150px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.butt:hover{
+    background-color: rgb(171,169,167);
+    border-bottom: solid 3px #997799;
+    width:160px;
+}
+
+.butt:active{
+    background-color: rgb(191,189,187);
+    border-bottom: solid 3px #AA88AA;
+    width:170px;
+}
+
+label{
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top:15px;
+}
+
+h1{   
+    font-family: sans-serif;
+}
+
+#login{
+    width:50%;
+    left:0%;
+    top:auto;
+    position:absolute;
+}
+#signup{
+    width:50%;
+    left:50%;
+    top:auto;
+    position:absolute;
+}
+#bg {
+    padding:10px;
+    width:80%;
+    height:80%;
+    left:10%;
+    top:10%;
+    position:absolute;
+    background-color: rgba(0,51,0,0.8);
+    /*backdrop-filter: blur(3px);
+    */
+    border-radius: 50px 0px 50px 0px;
+    border-right: 4px #004400 solid;
+    border-bottom: 7px #004400 solid;
+}
+
+h2{
+    background-color: rgba(225,0,0,0.2);
+    border: 2px solid darkred;
+    padding:10px;
+}
+
+body{
+    color:white;
+}
