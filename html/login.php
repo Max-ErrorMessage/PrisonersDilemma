@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Retrieve the stored hashed password for the given username
-        $stmt = $pdo->prepare("SELECT password, Id FROM Accounts WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT password, User_ID FROM Accounts WHERE username = :username");
         $stmt->bindParam(':username', $uname);
         $stmt->execute();
         $stmt->bind_result($storedHashedPassword, $userid);

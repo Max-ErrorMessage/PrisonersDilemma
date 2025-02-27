@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Database connection settings
-$host = "127.0.0.1";
+$host = "localhost";
 $dbname = "Twokie";
 $username = "TwokieBotSQL";
 $password = "b45ketC453!!";
