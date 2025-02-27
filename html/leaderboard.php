@@ -1,0 +1,79 @@
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+        body {
+            overflow: hidden;
+            background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        #bg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px; /* Space between login and signup */
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        #login, #signup {
+            width: 300px; /* Ensure both have the same width */
+            background: #003300; /* Dark green background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers everything inside */
+            text-align: center;
+            color: white;
+        }
+
+        form {
+            width: 100%;
+            color: white;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 80%; /* Adjust width to prevent stretching */
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: black;
+            color: white;
+            font-size: 1rem;
+            text-align: center; /* Center text inside the input */
+        }
+
+        .butt {
+            width: 85%;
+            background: #006600; /* Bright green */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .butt:hover {
+            background: #00cc00; /* Lighter green */
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    </style>

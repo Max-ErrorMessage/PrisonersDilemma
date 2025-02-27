@@ -16,7 +16,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <link rel="stylesheet" href="main.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    
     </head>
     <body>
         <div id="NavBar">
