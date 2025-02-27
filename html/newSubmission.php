@@ -18,6 +18,10 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Submission</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="/t.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             background: black;
@@ -32,29 +36,6 @@
             flex-direction: column;
         }
 
-        nav {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #003300; /* Dark green */
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 15px;
-            font-size: 1rem;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        nav a:hover {
-            background: #006600;
-        }
 
         form {
             background: #003300;
