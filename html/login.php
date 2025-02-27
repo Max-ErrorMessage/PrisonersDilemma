@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($row) {
             $storedHashedPassword = $row['password'];
-            $userid = $row['Id'];
+            $userid = $row['user_id'];
         }
 
         if (!$storedHashedPassword) {
