@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dwarf_scores = json_decode($file_contents, true);
 
         $list = "<ol>";
-        foreach ($data as $key => $value) {
+        foreach ($dwarf_scores as $key => $value) {
             $list .= "<li>$key: $value</li><br>";
         }
         $list .= "</ol>";
