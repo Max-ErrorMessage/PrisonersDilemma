@@ -1,5 +1,6 @@
 <?php
-include html/db.php;
+session_start();
+include 'html/db.php';
 
 
 class TableRows extends RecursiveIteratorIterator {

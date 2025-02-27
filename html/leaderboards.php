@@ -16,7 +16,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <link rel="stylesheet" href="main.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    
     </head>
     <body>
         <div id="NavBar">
@@ -31,11 +31,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>Prisoner's Dilemma Leaderboard:</h1>
             <br>
             <?php
-            $sql = "SELECT a.Username, l.Points 
-                FROM Leaderboard l 
-                INNER JOIN Accounts a ON l.UserId = a.Id 
-                WHERE l.GameId = 1 
-                ORDER BY l.Points DESC";
+            $sql = "SELECT a.Username, s.Points
+                FROM Submission s
+                INNER JOIN Accounts a ON s.User_Id = a.User_ID
+                WHERE s.Game_ID = 1
+                ORDER BY s.Points DESC";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,11 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Retrieve the stored hashed password for the given username
-        $stmt = $pdo->prepare("SELECT password, Id FROM Accounts WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT Password, User_ID FROM Accounts WHERE username = :username");
         $stmt->bindParam(':username', $uname);
         $stmt->execute();
-        $stmt->bind_result($storedHashedPassword, $userid);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($row) {
+            $storedHashedPassword = $row['Password'];
+            $userid = $row['User_ID'];
+        }
 
         if (!$storedHashedPassword) {
             // Username not found
