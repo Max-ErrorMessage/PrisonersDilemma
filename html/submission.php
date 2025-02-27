@@ -1,6 +1,6 @@
 <?php
-session_start()
-include db.php;
+session_start();
+include "db.php";
 $user_id = $_SESSION['user_id'];
 $code = $_POST['code'];
 //
@@ -61,12 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: /newSubmission.php");
             exit();
         }
-    $stmt = $pdo->prepare("DELETE FROM Submission WHERE UserID= :id AND GameID= :gameid");
+    $stmt = $pdo->prepare("DELETE FROM Submission WHERE User_ID= :id AND Game_ID= :gameid");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':gameid', $gameid);
     $stmt->execute();
     // Insert the user into the database
-    $stmt = $pdo->prepare("INSERT INTO Submission (UserID, GameID, code) VALUES (:id, :gameid, :code)");
+    $stmt = $pdo->prepare("INSERT INTO Submission (User_ID, Game_ID, code) VALUES (:id, :gameid, :code)");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':code', $code);
     $stmt->bindParam(':gameid', $gameid);
