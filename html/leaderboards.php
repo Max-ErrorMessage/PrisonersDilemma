@@ -54,6 +54,34 @@ $uname = htmlspecialchars($_SESSION['uname']);
 
 
         </div>
+        <div id="Main2">
+            <br><br>
+            <h1>Yahtzee Leaderboard:</h1>
+            <br>
+            <?php
+            $sql = "SELECT a.Username, s.Points
+                FROM Submission s
+                INNER JOIN Accounts a ON s.User_Id = a.User_ID
+                WHERE s.Game_ID = 2
+                ORDER BY s.Points DESC";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($rows) {
+                echo "<ol>";
+                foreach ($rows as $row){
+                    echo "<li><strong>UserId:</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</li>";
+                }
+                echo "</ol>";
+            } else {
+                echo "<p>No user found.</p>";
+            }
+
+            ?>
+
+
+        </div>
 
     </body>
 </html>
