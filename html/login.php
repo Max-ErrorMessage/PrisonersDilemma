@@ -14,14 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Retrieve the stored hashed password for the given username
-        $stmt = $pdo->prepare("SELECT password, User_ID FROM Accounts WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT Password, User_ID FROM Accounts WHERE username = :username");
         $stmt->bindParam(':username', $uname);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            $storedHashedPassword = $row['password'];
-            $userid = $row['user_id'];
+            $storedHashedPassword = $row['Password'];
+            $userid = $row['User_ID'];
         }
 
         if (!$storedHashedPassword) {
