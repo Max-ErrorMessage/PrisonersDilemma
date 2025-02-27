@@ -1,76 +1,77 @@
-input{
-    border: solid 0px #EEEEEE;
-    border-bottom: solid 2px #886688;
-    background-color: #EEEEEE;
-    border-radius: 20px;
-    height: 30px;
-    width: 250px;
-    font-family: sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+    overflow: hidden;
+    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
 }
 
-.butt{
-    background-color: rgb(151,149,147);
-    border-bottom: solid 3px #886688;
-    width:150px;
-    font-weight: bold;
-    font-family: sans-serif;
-}
-
-.butt:hover{
-    background-color: rgb(171,169,167);
-    border-bottom: solid 3px #997799;
-    width:160px;
-}
-
-.butt:active{
-    background-color: rgb(191,189,187);
-    border-bottom: solid 3px #AA88AA;
-    width:170px;
-}
-
-label{
-    font-weight: bold;
-    font-family: sans-serif;
-    margin-top:15px;
-}
-
-h1{   
-    font-family: sans-serif;
-}
-
-#login{
-    width:50%;
-    left:0%;
-    top:auto;
-    position:absolute;
-}
-#signup{
-    width:50%;
-    left:50%;
-    top:auto;
-    position:absolute;
-}
 #bg {
-    padding:10px;
-    width:80%;
-    height:80%;
-    left:10%;
-    top:10%;
-    position:absolute;
-    background-color: rgba(0,51,0,0.8);
-    /*backdrop-filter: blur(3px);
-    */
-    border-radius: 50px 0px 50px 0px;
-    border-right: 4px #004400 solid;
-    border-bottom: 7px #004400 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Space between login and signup */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
-h2{
-    background-color: rgba(225,0,0,0.2);
-    border: 2px solid darkred;
-    padding:10px;
+#login, #signup {
+    width: 300px; /* Ensure both have the same width */
+    background: #003300; /* Dark green background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything inside */
+    text-align: center;
+    color: white;
 }
 
-body{
-    color:white;
+form {
+    width: 100%;
+    color: white;
+}
+
+input[type="text"], input[type="password"] {
+    width: 80%; /* Adjust width to prevent stretching */
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    font-size: 1rem;
+    text-align: center; /* Center text inside the input */
+}
+
+.butt {
+    width: 85%;
+    background: #006600; /* Bright green */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.butt:hover {
+    background: #00cc00; /* Lighter green */
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
