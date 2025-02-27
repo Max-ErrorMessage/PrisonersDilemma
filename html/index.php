@@ -73,11 +73,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>Twokie: Bot Playground</h1>
             <br>
             <p>Twokie: Bot Playground is a website designed for users to compete in various challenges, where the aim is to code Python bots to partake in different games and come up with new and innovative solutions.</p><br><br>
-            <p>Someone add more words please xoxo</p>
+            <p>Each night, at midnight, each simulation will run. Agents will compete against each other, receive a score and the corresponding leaderboards will be updated.</p>
             <div id="PD">
                 <h2>Prisoner's Dilemma</h2>
                 <p>The Prisoner's Dilemma is a problem in Game Theory where two agents have to make a choice between personal cooperation for mutual gain or acting in their own self interest</p>
-                <p>In this version of the Prisoner's Dilemma there will be [Insert Number] rounds where bots will get the chance to attempt to work out what their opponent is doing and try to adapt to either exploit them or get revenge</p> <br>
+                <p>In this version of the Prisoner's Dilemma there will be 200 rounds where bots will get the chance to work out what their opponent's strategies and try to adapt to either exploit them or collaborate</p> <br>
                 <div id="circleContainer">
                     <div class="circle"></div>
                     <div class="circle"></div>
@@ -100,8 +100,17 @@ $uname = htmlspecialchars($_SESSION['uname']);
                     <div class="circle"></div>
                     <div class="circle"></div>
                 </div>
-                <a class="go" href="prisonersDilemma.php">Give it a try!</a>
-                <a class="go" href="newSubmission.php">Add your own code!</a>
+                <a class="go" href="newSubmission.php">Begin</a>
+                <br><br>
+            </div>
+            <div id="Yahtzee">
+                <h2>Yahtzee</h2>
+                <p>The classic dice-based strategy game.</p>
+                <p>In this challenge users will write 2 functions, on that upon being given 5 dice, returns which ones you would like to reroll</p>
+                <p>then after three rolls you have to choose how you are going to score these dice</p>
+                <a class="go" href="newYahtzeeSubmission.php">Begin</a>
+
+
             </div>
             <div id="Chess">
                 <h2>Chess</h2>
@@ -110,6 +119,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <p>In this challenge users are tasked to write chess bots that cannot be over [insert restriction]</p>
                 <img id = "rook" src = "images/redRook.png"></img><br><br><br>
                 <img id = "rook2" src = "images/blueRook.png"></img>
+                <a class="go" href="#">Coming Soon!</a>
             </div>
         </div>
         <script>

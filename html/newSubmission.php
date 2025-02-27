@@ -127,6 +127,19 @@
             echo "<h2>" . $_SESSION['Error3'] . "</h2>";
         } 
     ?>
+    <script>
+        textarea.addEventListener('keydown', event => {
+            if (event.key === 'Tab') {
+                const start = textarea.selectionStart
+                const end = textarea.selectionEnd
+
+                textarea.value = textarea.value.substring(0, start) + '\t' + textarea.value.substring(end)
+                textarea.focus()
+
+                event.preventDefault()
+              }
+            })
+    </script>
 </body>
 </html>
 
