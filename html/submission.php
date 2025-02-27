@@ -1,4 +1,5 @@
 <?php
+session_start()
 include db.php;
 $user_id = $_SESSION['user_id'];
 $code = $_POST['code'];
@@ -48,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Retrieve the id for the given username
-        $stmt = $pdo->prepare("SELECT id FROM Accounts WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT User_ID FROM Accounts WHERE username = :username");
         $stmt->bindParam(':username', $uname);
         $stmt->execute();
 
