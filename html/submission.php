@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $uname = $_SESSION['uname'];
     $user_id = $_SESSION['user_id'];
     $gameid = $_POST['game_id'];
-    $_SESSION['Error3'] = $gameid;
 
     $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
@@ -19,16 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dwarf_scores = json_decode($file_contents, true);
         $_SESSION['Error3'] = $dwarf_scores;
         vardump($dwarf_scores);
+        exit();
     } else { // Code is not fine: $output is the error provided
         $_SESSION['Error3'] = $output;
-        header("Location: /newSubmission.php");
+        echo "Code is not fine: " . $output;
+        // header("Location: /newSubmission.php");
         exit();
     }
 
     // Input validation
     if (empty($code)) {
         $_SESSION['Error3'] = "All fields are required.";
-        header("Location: /newSubmission.php");
+        echo "All fields are required";
+        // header("Location: /newSubmission.php");
         exit();
     }
     if ($gameid == 2){
@@ -39,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Input validation
         if (empty($code2)) {
             $_SESSION['Error3'] = "All fields are required.";
-            header("Location: /newYahtzeeSubmission.php");
+            echo "All fields are required";
+            // header("Location: /newYahtzeeSubmission.php");
             exit();
         }
         
@@ -56,7 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$id){
             // Username not found
             $_SESSION['Error3'] = "Username not found.";
-            header("Location: /newSubmission.php");
+            echo "Username not found";
+            // header("Location: /newSubmission.php");
             exit();
         }
     $stmt = $pdo->prepare("DELETE FROM Submission WHERE UserID= :id AND GameID= :gameid");
@@ -71,12 +75,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $stmt->execute();
+        echo "DEBUG POINT #1"; // TODO: remove
         $_SESSION['Error3'] = "Code submitted!";
-        header("Location: /newSubmission.php");
+        // header("Location: /newSubmission.php");
         exit();
     } catch (Exception $e) {
         $_SESSION['Error3'] = "Error during submission: " . $e->getMessage();
-        header("Location: /newSubmission.php");
+        // header("Location: /newSubmission.php");
         exit();
     }
 }
