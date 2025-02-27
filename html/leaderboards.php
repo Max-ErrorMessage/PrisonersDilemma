@@ -33,7 +33,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <?php
             $sql = "SELECT a.Username, s.Points
                 FROM Submission s
-                INNER JOIN Accounts a ON s.User_Id = a.ID
+                INNER JOIN Accounts a ON s.User_Id = a.User_ID
                 WHERE s.Game_ID = 1
                 ORDER BY s.Points DESC";
             $stmt = $pdo->prepare($sql);
