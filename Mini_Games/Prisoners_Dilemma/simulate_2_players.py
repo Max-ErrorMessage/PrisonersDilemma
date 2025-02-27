@@ -7,7 +7,7 @@ player_2 = sys.argv[2]
 rounds = int(sys.argv[3])
 
 
-module_path = "/home/u753770036/domains/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py"
+module_path = "/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py"
 
 spec = importlib.util.spec_from_file_location("user_codes", module_path)
 user_codes_module = importlib.util.module_from_spec(spec)
@@ -41,10 +41,10 @@ for i in range(rounds):
     player_1_decisions.append(player_1_decision)
     player_2_decisions.append(player_2_decision)
 
-with open('/home/u753770036/domains/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'r') as file:
+with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'r') as file:
     existing_scores = json.load(file)
 
 existing_scores[player_1], existing_scores[player_2] = existing_scores[player_1] + scores[player_1], existing_scores[player_2] + scores[player_2]
 
-with open('/home/u753770036/domains/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'w') as file:
+with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'w') as file:
     json.dump(existing_scores, file, indent=4)

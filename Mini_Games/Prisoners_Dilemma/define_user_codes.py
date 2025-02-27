@@ -4,7 +4,7 @@ import json
 from simulate_user_code import simulate
 
 
-with open('/home/u753770036/domains/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json', 'r') as file:
+with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json', 'r') as file:
     data = json.load(file)
     
 functions = dict({})
@@ -35,7 +35,7 @@ for index, username in enumerate(functions.keys()):
 
 file_out += "}"
 
-with open("/home/u753770036/domains/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py", "w") as file:
+with open("/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py", "w") as file:
     file.write(file_out)
     
 print("Cree")
