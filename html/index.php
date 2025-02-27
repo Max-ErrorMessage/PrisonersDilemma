@@ -101,7 +101,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                     <div class="circle"></div>
                 </div>
                 <a class="go" href="newSubmission.php">Begin</a>
-                <br><br>
+                <br><br><br><br>
             </div>
             <div id="Yahtzee">
                 <h2>Yahtzee</h2>
@@ -110,7 +110,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <p>then after three rolls you have to choose how you are going to score these dice</p>
                 <a class="go" href="newYahtzeeSubmission.php">Begin</a>
 
-
+                <br><br><br><br>
             </div>
             <div id="Chess">
                 <h2>Chess</h2>
