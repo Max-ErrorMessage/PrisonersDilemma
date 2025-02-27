@@ -2,31 +2,28 @@
 session_start();
 include 'db.php';
 
-$user_id = $_SESSION['user_id'];
-$code = $_POST['code'];
-
-$user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".py", "w");
-fwrite($user_py_file, $code);
-
-$output = exec("timeout 1 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id");
-
-if ($output == "1") {  // Code is fine
-    $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
-    $dwarf_scores = json_decode($file_contents, true);
-    $_SESSION['Error3'] = $dwarf_scores;
-    vardump($dwarf_scores);
-} else { // Code is not fine: $output is the error provided
-    $_SESSION['Error3'] = $output;
-    exit();
-}
-
-// MERGE CONFLICT COMMENT
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $code = $_POST['code'];
     $uname = $_SESSION['uname'];
+    $user_id = $_SESSION['user_id'];
     $gameid = $_POST['game_id'];
     $_SESSION['Error3'] = $gameid;
+
+    $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
+    fwrite($user_py_file, $code);
+
+    $output = exec("timeout 1 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id");
+
+    if ($output == "1") {  // Code is fine
+        $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
+        $dwarf_scores = json_decode($file_contents, true);
+        $_SESSION['Error3'] = $dwarf_scores;
+        vardump($dwarf_scores);
+    } else { // Code is not fine: $output is the error provided
+        $_SESSION['Error3'] = $output;
+        header("Location: /newSubmission.php");
+        exit();
+    }
 
     // Input validation
     if (empty($code)) {
@@ -74,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $stmt->execute();
-        #$_SESSION['Error3'] = "Code submitted!";
+        $_SESSION['Error3'] = "Code submitted!";
         header("Location: /newSubmission.php");
         exit();
     } catch (Exception $e) {
