@@ -8,6 +8,10 @@ user_id = sys.argv[1]
 with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_{user_id}.txt", 'r') as file:
     code = file.read()
 
+print(f"Terminating the code. User ID: {user_id}. Code: {code}")
+
+quit()
+
 keywords = ["print", "import", "exec", "eval", "open", "execfile", "compile", "input"]
 pattern = r"\b(" + "|".join(keywords) + r")\s*\("
 
