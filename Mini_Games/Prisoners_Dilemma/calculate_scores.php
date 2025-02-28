@@ -60,8 +60,6 @@ foreach ($user_codes as $user_code_1) {
 
 include '/var/www/html/db.php';
 
-# Comment for the sake of merging
-
 $json_file = '/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {
     die("Error: scores.json file not found.");
@@ -76,18 +74,20 @@ if (!is_array($scores)) {
 
 $updated = 0;
 
+$query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission");
+$totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
+
+if ($totalRecords > 1) {
+    $uniquePairs = ($totalRecords * ($totalRecords - 1)) / 2;
+} else {
+    $uniquePairs = 1;
+}
+
+echo "Unique Pairs: " . $uniquePairs . "\n";
+
 foreach ($scores as $user_id => $score) {
     if (!is_numeric($user_id) || !is_numeric($score)) {
         continue;
-    }
-
-    $query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission");
-    $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
-
-    if ($totalRecords > 1) {
-        $uniquePairs = ($totalRecords * ($totalRecords - 1)) / 2;
-    } else {
-        $uniquePairs = 1;
     }
 
     $adjusted_points = $score / ($uniquePairs * 200);
