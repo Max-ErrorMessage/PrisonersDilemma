@@ -124,7 +124,10 @@
         <input type="hidden" name="game_id" value=2>
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
-    <a href="temporary_run_script.php">Run Script</a>
+
+    <form action="var/www/Mini_Games/Yahtzee/calculate_scores.php">
+        <button type="submit" value ="submit">Run Script</button>
+    </form>
     <?php
         session_start();
         if(isset($_SESSION['Error3'])){
