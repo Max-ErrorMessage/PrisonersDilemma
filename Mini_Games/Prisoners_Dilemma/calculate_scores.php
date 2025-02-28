@@ -77,18 +77,12 @@ $updated = 0;
 $query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission WHERE Game_ID = 1");
 $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
 
-if ($totalRecords > 1) {
-    $uniquePairs = ($totalRecords * ($totalRecords - 1)) / 2;
-} else {
-    $uniquePairs = 1;
-}
-
 foreach ($scores as $user_id => $score) {
     if (!is_numeric($user_id) || !is_numeric($score)) {
         continue;
     }
 
-    $adjusted_points = $score / ($uniquePairs * 100);
+    $adjusted_points = $score / (($totalRecords - 1) * 100);
 
     $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
 
