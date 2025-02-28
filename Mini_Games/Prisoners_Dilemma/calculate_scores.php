@@ -79,16 +79,7 @@ foreach ($scores as $user_id => $score) {
         continue;
     }
 
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM Submission WHERE User_ID = :user_id");
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $exists = $stmt->fetchColumn();
-
-    if ($exists) {
-        $stmt = $pdo->prepare("UPDATE Submission SET Points = :score, Game_ID = 1 WHERE User_ID = :user_id");
-    } else {
-        $stmt = $pdo->prepare("INSERT INTO Submission (User_ID, Points, Game_ID) VALUES (:user_id, :score, 1)");
-    }
+    $stmt = $pdo->prepare("UPDATE Submission SET Points = :score, WHERE User_ID = :user_id AND Game_ID = 1");
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindParam(':score', $score, PDO::PARAM_INT);
