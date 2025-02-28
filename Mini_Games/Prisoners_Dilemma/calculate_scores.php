@@ -1,6 +1,10 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
 $filePath = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
 $_POST['game'] = 1;
@@ -48,11 +52,9 @@ foreach ($user_codes as $user_code_1) {
         $arg2 = escapeshellarg($user_2);
         $arg3 = escapeshellarg(200);
         
-        $command = "timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3";
-        
-        $output = shell_exec($command);
-        echo $output . "</p>";
-        
+        $command = "timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3";        
+    
+        exec($command);
     }
 }
 
@@ -88,5 +90,7 @@ foreach ($scores as $user_id => $score) {
         $updated++;
     }
 }
+
+echo "Scores successfully updated.\n";
 
 ?>

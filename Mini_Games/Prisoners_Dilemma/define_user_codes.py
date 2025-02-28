@@ -9,7 +9,7 @@ with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_c
 functions = dict({})
 
 for item in data:
-    functions[item["UserID"]] = item["Code"]
+    functions[item["User_ID"]] = item["Code"]
     
 file_out = "import random"
 
