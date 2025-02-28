@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gameid = $_POST['game_id'];
 
     $_SESSION['Error3'] = $code;
+    vardump($code)
     exit;
 
 
