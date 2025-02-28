@@ -8,10 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_SESSION['user_id'];
     $gameid = $_POST['game_id'];
 
-    $_SESSION['Error3'] = $code;
-    echo nl2br(htmlspecialchars($code));
-    var_dump($code);
-    exit;
+    $code = nl2br(htmlspecialchars($code));
 
 
     $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
