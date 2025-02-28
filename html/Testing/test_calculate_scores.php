@@ -77,7 +77,7 @@ foreach ($scores as $user_id => $score) {
         continue;
     }
 
-    $stmt = $pdo->prepare("UPDATE Submission SET Points = :score, WHERE User_ID = :user_id AND Game_ID = 1");
+    $stmt = $pdo->prepare("UPDATE Submission SET Points = :score WHERE User_ID = :user_id AND Game_ID = 1");
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindParam(':score', $score, PDO::PARAM_INT);
