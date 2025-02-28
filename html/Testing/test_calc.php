@@ -2,7 +2,7 @@
 
 include 'db.php';
 session_start();
-$filePath = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
+$filePath = '/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
 $_POST['game'] = 1;
 $user_codes = [];
@@ -23,9 +23,9 @@ if (file_exists($filePath)) {
 
 $json_codes = json_encode($user_codes, JSON_PRETTY_PRINT);
 
-file_put_contents("/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json", $json_codes);
+file_put_contents("/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json", $json_codes);
 
-$output = exec("python3 /var/www/Mini_Games/Prisoners_Dilemma/define_user_codes.py");
+$output = exec("python3 /var/www/twokie.com/Mini_Games/Prisoners_Dilemma/define_user_codes.py");
 
 $empty_scores = [];
 
@@ -36,7 +36,7 @@ foreach ($user_codes as $item) {
 
 $json_empty_scores = json_encode($empty_scores, JSON_PRETTY_PRINT);
 
-file_put_contents('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', $json_empty_scores);
+file_put_contents('/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', $json_empty_scores);
 
 foreach ($user_codes as $user_code_1) {
     $user_1 = $user_code_1["UserID"];
@@ -49,7 +49,7 @@ foreach ($user_codes as $user_code_1) {
         $arg2 = escapeshellarg($user_2);
         $arg3 = escapeshellarg(200);
 
-        $command = "timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3";
+        $command = "timeout 1 python3 /var/www/twokie.com/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3";
 
         $output = shell_exec($command);
         echo $output . "</p>";
@@ -58,7 +58,7 @@ foreach ($user_codes as $user_code_1) {
 }
 
 
-$json_file = '/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
+$json_file = '/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {
     die("Error: scores.json file not found.");
 }
