@@ -5,13 +5,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 
-$filePath = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
+$fetch_code_path = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
 $_POST['game'] = 1;
 $user_codes = [];
 
-if (file_exists($filePath)) {
-    $array = include($filePath);
+if (file_exists($fetch_code_path)) {
+    $array = include($fetch_code_path);
     if (isset($_SESSION["user_code"])) {
         $user_codes = $_SESSION["user_code"];
     } else if (isset($_SESSION["Error3"])) {
@@ -90,6 +90,10 @@ foreach ($scores as $user_id => $score) {
         $updated++;
     }
 }
+
+unlink(fetch_code_path);
+unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
+unlink($json_file);
 
 echo "Scores successfully updated.\n";
 
