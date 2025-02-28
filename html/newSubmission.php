@@ -10,6 +10,11 @@ session_start();
 
 // If 'uname' is set, display the welcome message
 $uname = htmlspecialchars($_SESSION['uname']);
+if(!isset($_POST['code'])){
+    $txt = "";
+} else {
+    $txt = $_POST['code'];
+}  
 ?>
 
 <!DOCTYPE html>
@@ -168,7 +173,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
     </div>
     <form action="submission.php" method="POST">
         <label for="name">Enter your code!:</label>
-        <textarea id="name" name="code" required placeholder="return True
+        <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
 
 
 #Also tabs are disabled atm so use 4 spaces instead" onkeydown="return stopTab(event);"></textarea>
