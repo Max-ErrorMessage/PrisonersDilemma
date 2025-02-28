@@ -81,17 +81,28 @@ foreach ($scores as $user_id => $score) {
         continue;
     }
 
-    $stmt = $pdo->prepare("UPDATE Submission SET Points = :score WHERE User_ID = :user_id AND Game_ID = 1");
+    $query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission");
+    $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
+
+    if ($totalRecords > 1) {
+        $uniquePairs = ($totalRecords * ($totalRecords - 1)) / 2;
+    } else {
+        $uniquePairs = 1;
+    }
+
+    $adjusted_points = $score / ($uniquePairs * 200);
+
+    $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->bindParam(':score', $score, PDO::PARAM_INT);
+    $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_INT);
     
     if ($stmt->execute()) {
         $updated++;
     }
 }
 
-unlink(fetch_code_path);
+unlink($fetch_code_path);
 unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
 unlink($json_file);
 
