@@ -1,54 +1,10 @@
 [
     {
-        "UserID": 6,
+        "User_ID": 2,
         "Code": "return True"
     },
     {
-        "UserID": 8,
-        "Code": "return random.choice([True, False])"
-    },
-    {
-        "UserID": 7,
-        "Code": "if len(self_decisions)>0:\n    return(not opponent_decisions[-1])\nelse:\n    return(False)"
-    },
-    {
-        "UserID": 10,
-        "Code": "return False"
-    },
-    {
-        "UserID": 11,
+        "User_ID": 1,
         "Code": "return True"
-    },
-    {
-        "UserID": 12,
-        "Code": "return True"
-    },
-    {
-        "UserID": 13,
-        "Code": "return False"
-    },
-    {
-        "UserID": 14,
-        "Code": "if len(self_decisions) > 0:\r\n    return not opponent_decisions[-1]\r\nelse:\r\n    return False"
-    },
-    {
-        "UserID": 15,
-        "Code": "if len(self_decisions) > 0:\r\n    return opponent_decisions[-1]\r\nelse:\r\n    return True"
-    },
-    {
-        "UserID": 16,
-        "Code": "if random.randint(0,9) == 4:\r\n    return False\r\nelse:\r\n    return True"
-    },
-    {
-        "UserID": 17,
-        "Code": "return random.choice([True,False])"
-    },
-    {
-        "UserID": 18,
-        "Code": "if len(self_decisions) > 1:\r\n    return opponent_decisions[-2]\r\nelse:\r\n    return True"
-    },
-    {
-        "UserID": 19,
-        "Code": "20"
     }
 ]
