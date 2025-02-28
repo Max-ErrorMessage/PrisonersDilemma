@@ -38,9 +38,9 @@ $json_empty_scores = json_encode($empty_scores, JSON_PRETTY_PRINT);
 file_put_contents('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', $json_empty_scores);
 
 foreach ($user_codes as $user_code_1) {
-    $user_1 = $user_code_1["UserID"];
+    $user_1 = $user_code_1["User_ID"];
     foreach ($user_codes as $user_code_2) {
-        $user_2 = $user_code_2["UserID"];
+        $user_2 = $user_code_2["User_ID"];
         if ($user_2 <= $user_1) {
             continue;
         }
