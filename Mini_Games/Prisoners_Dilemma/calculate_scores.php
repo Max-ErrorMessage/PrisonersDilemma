@@ -74,7 +74,7 @@ if (!is_array($scores)) {
 
 $updated = 0;
 
-$query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission");
+$query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission WHERE Game_ID = 1");
 $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
 
 if ($totalRecords > 1) {
@@ -83,19 +83,17 @@ if ($totalRecords > 1) {
     $uniquePairs = 1;
 }
 
-echo "Unique Pairs: " . $uniquePairs . "\n";
-
 foreach ($scores as $user_id => $score) {
     if (!is_numeric($user_id) || !is_numeric($score)) {
         continue;
     }
 
-    $adjusted_points = $score / ($uniquePairs * 200);
+    $adjusted_points = $score / ($uniquePairs * 100);
 
     $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_INT);
+    $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_STR);
     
     if ($stmt->execute()) {
         $updated++;

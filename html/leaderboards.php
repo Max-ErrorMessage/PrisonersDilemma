@@ -43,7 +43,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             if ($rows) {
                 echo "<ol>";
                 foreach ($rows as $row){
-                    echo "<li><strong>User:</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</li>";
+                    echo "<li><strong>User:</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</li>";
                 }
                 echo "</ol>";
             } else {
