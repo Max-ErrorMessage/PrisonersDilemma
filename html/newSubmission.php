@@ -34,8 +34,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
 
     <style>
 
-            <style>
-
         body {
             background: black;
             color: white;
@@ -155,8 +153,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
         }
     </style>
 </head>
-<code>
-<div id="title">Prisoners Dilemna:</div>
 <code>
 <div id="title">Prisoners Dilemna:</div>
 
