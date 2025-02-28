@@ -12,13 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //echo "<pre>" . htmlspecialchars($code) . "</pre>";
 
 
-    $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
+    $user_py_file = fopen("/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
 
-    $output = exec("timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id");
+    $output = exec("timeout 1 python3 /var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id");
 
     if ($output == "1") {  // Code is fine
-        $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
+        $file_contents = file_get_contents('/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
 
         $list = "<ol>";
@@ -29,15 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $_SESSION['Error3'] = $list;
 
-        unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
-        unlink('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
+        unlink("/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
+        unlink('/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
 
     } else { // Code is not fine: $output is the error provided
         if ($output == "") { // No error provided: most likely the cause of a timeout
             $output = "Your code failed to execute in the required time.";
         }
         $_SESSION['Error3'] = $output;
-        unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
+        unlink("/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
         header("Location: /newSubmission.php");
         exit();
     }
