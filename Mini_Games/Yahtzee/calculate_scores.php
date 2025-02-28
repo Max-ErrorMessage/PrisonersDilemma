@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$filePath = '/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/fetch_code.php';
+$filePath = '/var/www/Mini_Games/Yahtzee/fetch_code.php';
 
 $_POST['game'] = 2;
 $user_codes = [];
@@ -22,9 +22,9 @@ if (file_exists($filePath)) {
 
 $json_codes = json_encode($user_codes, JSON_PRETTY_PRINT);
 
-file_put_contents("/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json", $json_codes);
+file_put_contents("/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json", $json_codes);
 
-$output = exec("python3 /home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/define_user_codes.py");
+$output = exec("python3 /var/www/Mini_Games/Yahtzee/define_user_codes.py");
 
 $empty_scores = [];
 
@@ -35,7 +35,7 @@ foreach ($user_codes as $item) {
 
 $json_empty_scores = json_encode($empty_scores, JSON_PRETTY_PRINT);
 
-file_put_contents('/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', $json_empty_scores);
+file_put_contents('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', $json_empty_scores);
 
 foreach ($user_codes as $user_code_1) {
     $user = $user_code_1["UserID"];
@@ -44,7 +44,7 @@ foreach ($user_codes as $user_code_1) {
     $arg1 = escapeshellarg($user_1);
     $arg2 = escapeshellarg(200);
     
-    $command = "timeout 1 python3 /home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/simulate_2_players.py $arg1 $arg2";
+    $command = "timeout 1 python3 /var/www/Mini_Games/Yahtzee/simulate_2_players.py $arg1 $arg2";
     
     $output = shell_exec($command);
     echo $output . "</p>";
@@ -52,17 +52,7 @@ foreach ($user_codes as $user_code_1) {
     }
 }
 
-$host = "localhost";
-$dbname = "u753770036_Accounts";
-$username = "u753770036_TwokieBots";
-$password = "TwokieDatabase6";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
+include '/var/www/html/db.php'
 
 $json_file = '/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {
@@ -76,14 +66,13 @@ if (!is_array($scores)) {
     die("Error: Invalid JSON format.");
 }
 
-// Prepare SQL statement
-$stmt = $pdo->prepare("UPDATE Leaderboard SET Points = :score, GameID = 2 WHERE UserID = :user_id");
 
 $updated = 0;
 foreach ($scores as $user_id => $score) {
     if (!is_numeric($user_id) || !is_numeric($score)) {
         continue; // Skip invalid data
     }
+    $stmt = $pdo->prepare("UPDATE Submissions SET Points = :score WHERE User_ID = :user_id and Game_ID = 2");
 
     // Bind parameters and execute update
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
