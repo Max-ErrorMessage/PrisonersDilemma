@@ -27,6 +27,8 @@ try:
     exec(file_code, namespace)
 except SyntaxError as se:
     print(f"There is a syntax error in your code in line {se.lineno - 3}")
+    with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/test_user_{user_id}.txt", 'w') as file:
+        file.write(file_code)
     quit()
 
 user_function = namespace[f"user_{user_id}"]
