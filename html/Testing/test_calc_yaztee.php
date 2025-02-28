@@ -29,7 +29,7 @@ $output = exec("python3 /var/www/Mini_Games/Yahtzee/define_user_codes.py");
 $empty_scores = [];
 
 foreach ($user_codes as $item) {
-    $user_id = $item['UserID'];
+    $user_id = $item['User_ID'];
     $empty_scores[$user_id] = 0;
 }
 
