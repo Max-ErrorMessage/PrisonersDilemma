@@ -41,7 +41,7 @@ foreach ($user_codes as $user_code_1) {
     $user = $user_code_1["UserID"];
 
 
-    $arg1 = escapeshellarg($user_1);
+    $arg1 = escapeshellarg($user);
     $arg2 = escapeshellarg(200);
 
     $command = "timeout 1 python3 /var/www/Mini_Games/Yahtzee/simulate_2_players.py $arg1 $arg2";
