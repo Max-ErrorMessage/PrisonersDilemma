@@ -1,6 +1,6 @@
 <?php
 
-include 'db.php'
+include 'db.php';
 session_start();
 $filePath = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
