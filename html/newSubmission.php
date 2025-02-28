@@ -31,7 +31,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
         }
 }
     </script>
+
     <style>
+
+            <style>
 
         body {
             background: black;
@@ -128,6 +131,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
         pre{
             font-size: 1rem;
         }
+        #php{
+            position: absolute;
+            top: 930px;
+            left: 100px;
+            padding: 40px;
+        }
 
         button {
             background: #006600; /* Bright green */
@@ -148,6 +157,8 @@ $uname = htmlspecialchars($_SESSION['uname']);
 </head>
 <code>
 <div id="title">Prisoners Dilemna:</div>
+<code>
+<div id="title">Prisoners Dilemna:</div>
 
 <!--Right side includes all elements that want the background, left side is everything without-->
 <!--right side form (includes nav)-->
@@ -155,7 +166,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
     <div id="NavBar">
         <img src="images/twokielogo.png" id="navbarLogo">
         <a href="index.php" class="nav-link">Home</a>
-        <a href="leaderboards" class="nav-link">Leaderboards</a>
+        <a href="leaderboards.php" class="nav-link">Leaderboards</a>
         <a href="profile.php" class="nav-link">My Profile</a>
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
@@ -168,13 +179,47 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <input type="hidden" name="game_id" value="1">
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
-    <?php
+</body>
+<div id="php">
+<?php
         session_start();
         if(isset($_SESSION['Error3'])){
             echo "<h2>" . $_SESSION['Error3'] . "</h2>";
         }
-    ?>
-</body>
+    ?></div>
+<!--left side of window (not including nav)-->
+<div id="info">
+    <h1>Your task:</h1>
+    <pre>
+-Create a function that returns a boolean value
+    -True == trust
+    -False == betray
+
+-You will play multiple games in a row with the same bot
+-Aim for the highest score!
+
+Dont forget to import random if you wish to use that library
+    </pre>
+    <h1>
+        Variables:
+    </h1>
+    <div id="var">self_decisions:</div>
+    <pre>   - an array containing all previous decisions your
+        bot has made</pre>
+    <div id="var">opponent_decisions:</div>
+    <pre>   - an array containing all previous decisions your opponents
+        bot has made</pre>
+    <h1>
+        Example bot:
+    </h1>
+    <pre>if len(self_decisions) > 0:
+        return not opponent_decisions[-1]
+    else:
+        return False
+    </pre>
+</code>
+</html>
+
 
 <!--left side of window (not including nav)-->
 <div id="info">
