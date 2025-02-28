@@ -89,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt->execute();
         header("Location: /newSubmission.php");
-        include '/var/www/Mini_Games/Prisoners_Dilemma/calculate_scores.php';
         exit();
     } catch (Exception $e) {
         $_SESSION['Error3'] = "Error during submission: " . $e->getMessage();
