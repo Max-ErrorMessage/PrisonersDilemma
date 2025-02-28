@@ -5,7 +5,7 @@ import json
 
 user_id = sys.argv[1]
 
-with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_{user_id}.txt", 'r') as file:
+with open(f"/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_{user_id}.txt", 'r') as file:
     code = file.read()
 
 
@@ -135,7 +135,7 @@ for index, player1 in enumerate(players):
 
 scores_dict = {player: score for player, score in zip(players, scores)}
 
-with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
+with open(f"/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
     json.dump(scores_dict, json_file, indent=4)
 
 print("1")
