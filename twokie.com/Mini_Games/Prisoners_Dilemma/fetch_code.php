@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 
-include '/var/www/twokie.com/html/db.php';
+include '/var/www/html/db.php';
 
 
 class TableRows extends RecursiveIteratorIterator {
