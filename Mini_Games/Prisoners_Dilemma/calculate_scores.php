@@ -82,7 +82,7 @@ foreach ($scores as $user_id => $score) {
         continue;
     }
 
-    $adjusted_points = $score / (($totalRecords - 1) * 100);
+    $adjusted_points = $score / (($totalRecords - 1) * 200);
 
     $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
 
