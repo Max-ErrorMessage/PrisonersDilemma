@@ -52,7 +52,7 @@ foreach ($user_codes as $user_code_1) {
     }
 }
 
-include '/var/www/html/db.php'
+include '/var/www/html/db.php';
 
 $json_file = '/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {
