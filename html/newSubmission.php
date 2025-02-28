@@ -31,7 +31,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
         }
 }
     </script>
+
     <style>
+
+            <style>
 
         body {
             background: black;
@@ -127,6 +130,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
         }
         pre{
             font-size: 1rem;
+        }
+        #php{
+            position: absolute;
+            top: 930px;
+            left: 100px;
+            padding: 40px;
         }
 
         button {
