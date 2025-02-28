@@ -29,6 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         unlink('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
 
     } else { // Code is not fine: $output is the error provided
+        if ($output == "") { // No error provided: most likely the cause of a timeout
+            $output = "Your code failed to execute in the required time.";
+        }
         $_SESSION['Error3'] = $output;
         unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
         header("Location: /newSubmission.php");
