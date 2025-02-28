@@ -44,6 +44,9 @@ for i in range(rounds):
 with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'r') as file:
     existing_scores = json.load(file)
 
+with open('/var/www/html/Testing/debug_scores.json', "w") as debug_file:
+    json.dump(existing_scores, debug_file, indent=4)
+
 existing_scores[player_1], existing_scores[player_2] = existing_scores[player_1] + scores[player_1], existing_scores[player_2] + scores[player_2]
 
 with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'w') as file:
