@@ -38,9 +38,9 @@ $json_empty_scores = json_encode($empty_scores, JSON_PRETTY_PRINT);
 file_put_contents('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', $json_empty_scores);
 
 foreach ($user_codes as $user_code_1) {
-    $user_1 = $user_code_1["UserID"];
+    $user_1 = $user_code_1["User_ID"];
     foreach ($user_codes as $user_code_2) {
-        $user_2 = $user_code_2["UserID"];
+        $user_2 = $user_code_2["User_ID"];
         if ($user_2 <= $user_1) {
             continue;
         }
@@ -79,16 +79,7 @@ foreach ($scores as $user_id => $score) {
         continue;
     }
 
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM Leaderboard WHERE UserID = :user_id");
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $exists = $stmt->fetchColumn();
-
-    if ($exists) {
-        $stmt = $pdo->prepare("UPDATE Leaderboard SET Points = :score, GameID = 1 WHERE UserID = :user_id");
-    } else {
-        $stmt = $pdo->prepare("INSERT INTO Leaderboard (UserID, Points, GameID) VALUES (:user_id, :score, 1)");
-    }
+    $stmt = $pdo->prepare("UPDATE Submission SET Points = :score WHERE User_ID = :user_id AND Game_ID = 1");
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindParam(':score', $score, PDO::PARAM_INT);

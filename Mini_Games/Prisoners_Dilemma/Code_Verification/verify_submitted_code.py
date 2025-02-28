@@ -19,7 +19,7 @@ if re.search(pattern, code):
 file_code = f"import random\n\ndef user_{user_id}(self_decisions, opponent_decisions):\n"
 
 for line in code.splitlines():
-    file_code += f"    {line}"
+    file_code += f"    {line}\n"
 
 namespace = {}
 
@@ -27,10 +27,6 @@ try:
     exec(file_code, namespace)
 except SyntaxError as se:
     print(f"There is a syntax error in your code in line {se.lineno - 3}")
-    with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/test_user_{user_id}.txt", 'w') as file:
-        file.write(file_code)
-    with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/test_user_{user_id}_base_code.txt", 'w') as file:
-        file.write(code)
     quit()
 
 user_function = namespace[f"user_{user_id}"]
