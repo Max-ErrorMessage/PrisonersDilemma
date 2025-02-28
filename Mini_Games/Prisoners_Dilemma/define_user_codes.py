@@ -3,7 +3,7 @@ import sys
 import json
 
 
-with open('/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json', 'r') as file:
+with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json', 'r') as file:
     data = json.load(file)
     
 functions = dict({})
@@ -34,6 +34,6 @@ for index, username in enumerate(functions.keys()):
 
 file_out += "}"
 
-with open("/var/www/twokie.com/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py", "w") as file:
+with open("/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py", "w") as file:
     file.write(file_out)
     
