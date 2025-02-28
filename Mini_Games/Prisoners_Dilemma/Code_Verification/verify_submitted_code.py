@@ -19,7 +19,7 @@ if re.search(pattern, code):
 file_code = f"import random\n\ndef user_{user_id}(self_decisions, opponent_decisions):\n"
 
 for line in code.splitlines():
-    file_code += f"    {line}"
+    file_code += f"    {line}\n"
 
 namespace = {}
 
