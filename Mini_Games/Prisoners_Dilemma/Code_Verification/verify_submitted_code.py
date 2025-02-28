@@ -26,7 +26,7 @@ namespace = {}
 try:
     exec(file_code, namespace)
 except SyntaxError as se:
-    print(f"There is a syntax error somewhere in your code")
+    print(f"There is a syntax error in your code: {se}")
     quit()
 
 user_function = namespace[f"user_{user_id}"]
