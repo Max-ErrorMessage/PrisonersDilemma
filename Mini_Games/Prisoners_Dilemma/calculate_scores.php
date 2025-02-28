@@ -56,17 +56,7 @@ foreach ($user_codes as $user_code_1) {
     }
 }
 
-$host = "localhost";
-$dbname = "u753770036_Accounts";
-$username = "u753770036_TwokieBots";
-$password = "TwokieDatabase6";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
+include '/var/www/html/db.php';
 
 $json_file = '/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {

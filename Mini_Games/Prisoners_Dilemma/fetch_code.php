@@ -36,7 +36,7 @@ if (isset($_POST['game'])) {
     $array = [];
     $game = $_POST['game'];
     
-    $stmt = $pdo->prepare("SELECT UserID, Code FROM Submission WHERE GameID = :game");
+    $stmt = $pdo->prepare("SELECT User_ID, Code FROM Submission WHERE Game_ID = :game");
     $stmt->bindParam(':game', $game, PDO::PARAM_INT);
     $stmt->execute();
     
