@@ -37,24 +37,50 @@ $json_empty_scores = json_encode($empty_scores, JSON_PRETTY_PRINT);
 
 file_put_contents('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', $json_empty_scores);
 
-var_dump($user_codes);
+foreach ($user_codes as $user_code_1) {
+    $user = $user_code_1["UserID"];
 
-foreach ($user_codes as $user_code) {
-    
-    $user = $user_code["UserID"];
-    
 
-    $arg1 = escapeshellarg($user);
+    $arg1 = escapeshellarg($user_1);
     $arg2 = escapeshellarg(200);
-    
+
     $command = "timeout 1 python3 /var/www/Mini_Games/Yahtzee/simulate_2_players.py $arg1 $arg2";
-    
+
     $output = shell_exec($command);
     echo $output . "</p>";
-        
+
+    }
 }
 
-echo "<p>ahhhhh</p>"
+include '/var/www/html/db.php'
+
+$json_file = '/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json';
+if (!file_exists($json_file)) {
+    die("Error: scores.json file not found.");
+}
+
+$json_data = file_get_contents($json_file);
+$scores = json_decode($json_data, true);
+
+if (!is_array($scores)) {
+    die("Error: Invalid JSON format.");
+}
+
+
+$updated = 0;
+foreach ($scores as $user_id => $score) {
+    if (!is_numeric($user_id) || !is_numeric($score)) {
+        continue; // Skip invalid data
+    }
+    $stmt = $pdo->prepare("UPDATE Submissions SET Points = :score WHERE User_ID = :user_id and Game_ID = 2");
+
+    // Bind parameters and execute update
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':score', $score, PDO::PARAM_INT);
+
+    if ($stmt->execute()) {
+        $updated++;
+    }
+}
+
 ?>
-
-

@@ -125,9 +125,6 @@
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
 
-    <form action="var/www/Mini_Games/Yahtzee/calculate_scores.php">
-        <button type="submit" value ="submit">Run Script</button>
-    </form>
     <?php
         session_start();
         if(isset($_SESSION['Error3'])){
