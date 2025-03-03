@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 $host = "localhost";
 $dbname = "Twokie";
 $username = "TwokieBotSQL";
-$password = "b45ketC453!!";
+$password = "teferis_4G3L3SS_1N51GHT";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
