@@ -1,13 +1,15 @@
 <?php
 
-session_start();
-$filePath = '/var/www/Mini_Games/Yahtzee/fetch_code.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$fetch_code_path = '/var/www/Mini_Games/Yahtzee/fetch_code.php';
 
 $_POST['game'] = 2;
 $user_codes = [];
 
-if (file_exists($filePath)) {
-    $array = include($filePath);
+if (file_exists($fetch_code_path)) {
+    $array = include($fetch_code_path);
     if (isset($_SESSION["user_code"])) {
         $user_codes = $_SESSION["user_code"];
     } else if (isset($_SESSION["Error3"])) {
