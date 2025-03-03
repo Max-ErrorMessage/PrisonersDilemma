@@ -50,8 +50,7 @@ foreach ($user_codes as $user_code_1) {
     
     $output = shell_exec($command);
     echo $output . "</p>";
-        
-    }
+
 }
 
 include '/var/www/db.php';

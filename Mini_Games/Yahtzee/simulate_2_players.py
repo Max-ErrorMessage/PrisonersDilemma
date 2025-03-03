@@ -7,7 +7,7 @@ player_1 = sys.argv[1]
 rounds = int(sys.argv[2])
 
 
-module_path = "/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.py"
+module_path = "/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.py"
 
 spec = importlib.util.spec_from_file_location("user_codes", module_path)
 user_codes_module = importlib.util.module_from_spec(spec)
