@@ -218,7 +218,7 @@ final_score = score_sum / rounds
 
 scores_dict = {"Your Code": final_score}
 
-with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
+with open(f"/var/www/Mini_Games/Yahtzee/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
     json.dump(scores_dict, json_file, indent=4)
 
 print("1")
