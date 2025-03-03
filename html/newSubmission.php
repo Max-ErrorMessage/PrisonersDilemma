@@ -249,9 +249,9 @@ Dont forget to import random if you wish to use that library
         Example bot:
     </h1>
     <pre>if len(self_decisions) > 0:
-        return not opponent_decisions[-1]
-    else:
-        return False
+    return not opponent_decisions[-1]
+else:
+    return False
     </pre>
 </code>
 </html>
