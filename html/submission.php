@@ -11,15 +11,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //echo "<pre>" . htmlspecialchars($code) . "</pre>";
 
 
-    $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
+
+    if ($gameid == 1){
+        $game = "Prisoners_Dilemma"
+        $location = "Location: /newSubmission.php"
+    } else if ($gameid == 2){
+        $game = "Yahtzee"
+        $location = "Location: /newSubmission.php"
+        $code2 = $_POST['code2'];
+        $code = $code . "$" . $code2;
+    }
+
+    $user_py_file = fopen("/var/www/Mini_Games/" . $game . "/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
 
-    $output = exec("timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id 2>&1");
+    $output = exec("timeout 1 python3 /var/www/Mini_Games/" . $game . "/Code_Verification/verify_submitted_code.py $user_id 2>&1");
 
-    unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
+    unlink("/var/www/Mini_Games/" . $game . "/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
+
+
+
 
     if ($output == "1") {  // Code is fine
-        $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
+        $file_contents = file_get_contents('/var/www/Mini_Games/' . $game .'/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
 
         $list = "<ol>";
@@ -28,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $list .= "</ol>";
 
-        unlink('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
+        unlink('/var/www/Mini_Games/' . $game . '/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
 
         $_SESSION['Error3'] = $list;
 
@@ -37,29 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $output = "Your code failed to execute in the required time.";
         }
         $_SESSION['Error3'] = $output;
-        header("Location: /newSubmission.php");
+            header("$location");
         exit();
     }
 
     // Input validation
     if (empty($code)) {
         $_SESSION['Error3'] = "All fields are required.";
-        header("Location: /newSubmission.php");
+        header($location);
         exit();
-    }
-    if ($gameid == 2){
-        $code2 = $_POST['code2'];
-        $_SESSION['Error3'] = "yippee";
-        
-        header("Location: /newYahtzeeSubmission.php");
-        // Input validation
-        if (empty($code2)) {
-            $_SESSION['Error3'] = "All fields are required.";
-            header("Location: /newYahtzeeSubmission.php");
-            exit();
-        }
-        
-        $code = $code . "$" . $code2;
     }
 
     // Retrieve the id for the given username
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$id){
             // Username not found
             $_SESSION['Error3'] = "Username not found.";
-            header("Location: /newSubmission.php");
+            header($location);
             exit();
         }
     $stmt = $pdo->prepare("DELETE FROM Submission WHERE User_ID= :id AND Game_ID= :gameid");
@@ -89,11 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $stmt->execute();
-        header("Location: /newSubmission.php");
+        header($location);
         exit();
     } catch (Exception $e) {
         $_SESSION['Error3'] = "Error during submission: " . $e->getMessage();
-        header("Location: /newSubmission.php");
+        header($location);
         exit();
     }
 } else {
