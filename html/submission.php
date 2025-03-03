@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $output = exec("timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id 2>&1");
 
+    unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
+
     if ($output == "1") {  // Code is fine
         $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
@@ -25,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $list .= "<li>$key: $value</li><br>";
         }
         $list .= "</ol>";
+
+        unlink('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
 
         $_SESSION['Error3'] = $list;
 
