@@ -13,8 +13,11 @@ for item in data:
     
 file_out = "import random"
 
-keywords = ["print", "import", "exec", "eval", "open", "execfile", "compile", "input"]
-pattern = r"\b(" + "|".join(keywords) + r")\s*\("
+keywords = [
+    "print", "import", "exec", "eval", "open", "execfile", "compile", "input", "__import__", "os.system", "os.popen",
+    "subprocess.call", "subprocess.run", "globals", "locals", "file", "pickle", "pickle.load", "shlex.split",
+    "os.remove", "os.rename", "socket"
+]
 
 for username, code in functions.items():
     if re.search(pattern, code):
