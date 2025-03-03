@@ -41,11 +41,21 @@ if (isset($_POST['game'])) {
     $array = [];
     $game = $_POST['game'];
     
-    $stmt = $pdo->prepare("SELECT User_ID, Code FROM Submission WHERE Game_ID = :game");
-    $stmt->bindParam(':game', $game, PDO::PARAM_INT);
-    $stmt->execute();
-    
-    $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $pdo->prepare("
+    SELECT User_ID, Code
+    FROM Submission AS s1
+    WHERE Game_ID = :game
+    AND Submission_ID = (
+        SELECT MAX(Submission_ID)
+        FROM Submission AS s2
+        WHERE s2.User_ID = s1.User_ID AND s2.Game_ID = s1.Game_ID
+    )
+");
+$stmt->bindParam(':game', $game, PDO::PARAM_INT);
+$stmt->execute();
+
+$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     
     
     
