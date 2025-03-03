@@ -140,6 +140,9 @@ if(!isset($_POST['code'])){
             left: 100px;
             padding: 40px;
         }
+        #example{
+            text-align: left;
+        }
 
         button {
             background: #006600; /* Bright green */
@@ -211,10 +214,10 @@ if(!isset($_POST['code'])){
     <h1>
         Example bot:
     </h1>
-    <pre>if len(self_decisions) > 0:
-        return not opponent_decisions[-1]
-    else:
-        return False
+    <pre id="example">if len(self_decisions) > 0:
+    return not opponent_decisions[-1]
+else:
+    return False
     </pre>
 </code>
 </html>
