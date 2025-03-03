@@ -1,0 +1,33 @@
+test failing code
+User ID: 27
+
+rimble
+User ID: 27
+
+return False
+User ID: 26
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 26
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 14
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 25
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 3
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 24
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 4
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 6
+
+return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
+User ID: 8
+
