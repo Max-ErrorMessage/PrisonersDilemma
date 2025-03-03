@@ -31,3 +31,49 @@ User ID: 6
 return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
 User ID: 8
 
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 8:
+    return c[n]
+
+if t not in o[-5:]:
+    return False
+
+for i in range(5):
+    if o[-i] == s[-(i+1)]:
+        return t
+
+if [t,f,t,f,t] in o[-6:]:
+    return f
+
+return not o[-1]
+
+
+User ID: 1
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 7:
+    return c[n]
+
+if t not in o[-5:]:
+    return False
+
+for i in range(5):
+    if o[-i] == s[-(i+1)]:
+        return t
+
+if [t,f,t,f,t] in o[-6:]:
+    return f
+
+return not o[-1]
+
+
+User ID: 1
+

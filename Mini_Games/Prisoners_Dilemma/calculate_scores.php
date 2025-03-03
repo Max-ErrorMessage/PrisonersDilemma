@@ -59,7 +59,7 @@ foreach ($user_codes as $user_code_1) {
     }
 }
 
-include '/var/www/html/db.php';
+include '/var/www/db.php';
 
 $json_file = '/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {
