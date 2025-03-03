@@ -24,7 +24,7 @@ for username, code in functions.items():
     if re.search(pattern, code):
         code = "return False"
 
-    file_out += f"\n\ndef user_{username}(self_decisions, opponent_decisions):\n"
+    file_out += f"\n\ndef user_{username}(self_decisions, opponent_decisions, s , o, n):\n"
 
     for line in code.splitlines():
         file_out += f"\t{line}\n"
