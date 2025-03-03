@@ -185,7 +185,7 @@ def simulate():
         dice = roll([1,1,1,1,1],[0,1,2,3,4])
         for i in range(2):
             try:
-                dice_to_reroll = user_select_function(choices, availability, available_points, claimed_points, dice)
+                dice_to_reroll = user_select_function(availability, available_points, claimed_points, dice)
             except Exception as e:
                 print(f"Your code has caused an error: {e}")
                 quit()
@@ -200,13 +200,14 @@ def simulate():
         if check_yahtzee_bonus():
             break
         try:
-            choice = user_select_function(choices)
+            choice = user_select_function(availability, available_points, claimed_points, dice, choices)
         except Exception as e:
             print(f"Your code has caused an error: {e}")
             quit()
         claimed_points[choice] = available_points[choice]
         availability[choice] = False
         check_bonus_and_total()
+    return claimed_points["Total"]
 
 rounds = 100
 score_sum = 0
