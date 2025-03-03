@@ -1,6 +1,7 @@
 import sys
 import importlib.util
 import json
+import random
 
 player_1 = sys.argv[1]
 rounds = int(sys.argv[2])
@@ -27,7 +28,7 @@ def calculate_points(): # calculates all available points with the current dice 
     global availability, available_points, claimed_points, dice
     for i in range(1,6): # checks all the ones, twos, threes etc
         calculate_upper_section(i)
-    calculate_kind() # checks 3oaK, 4oaK, yahtzee and full house TODO: worry about bonus yahtzees
+    calculate_kind() # checks 3oaK, 4oaK, yahtzee and full house
     calculate_straights() # checks small/large straights
     calculate_chance() # checks chance
 
@@ -118,7 +119,7 @@ def check_yahtzee_bonus():
 
 
 
-def simulate(user_codes):
+def simulate():
     global availability, available_points, claimed_points, dice, player_1, user_codes
     
     
@@ -168,8 +169,8 @@ def simulate(user_codes):
 
 score_sum = 0
 for i in range(rounds):
-    score_sum += simulate(user_codes)
-final_score = sum / rounds
+    score_sum += simulate()
+final_score = score_sum / rounds
 
 
 with open('/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', 'r') as file:

@@ -1,7 +1,6 @@
 import re
 import sys
 import json
-from simulate_user_code import simulate
 
 
 with open('/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json', 'r') as file:
