@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
-    include 'db.php';
+    include '../db.php';
     $uname = trim($_POST['uname']);
     $pword = $_POST['pword'];
 
