@@ -51,7 +51,7 @@ foreach ($user_codes as $user_code_1) {
         }
         $arg1 = escapeshellarg($user_1);
         $arg2 = escapeshellarg($user_2);
-        $arg3 = escapeshellarg(game_length);
+        $arg3 = escapeshellarg($game_length);
         
         $command = "timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3";        
     
@@ -83,7 +83,7 @@ foreach ($scores as $user_id => $score) {
         continue;
     }
 
-    $adjusted_points = $score / (($totalRecords - 1) * game_length);
+    $adjusted_points = $score / (($totalRecords - 1) * $game_length);
 
     $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
 
@@ -96,9 +96,9 @@ foreach ($scores as $user_id => $score) {
 }
 
 unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
-unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
-// unlink($json_file);
+// unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
+unlink($json_file);
 
-echo "Scores successfully updated.\n";
+echo "Scores successfully updated.\nGame length:" . $game_length ."\n";
 
 ?>

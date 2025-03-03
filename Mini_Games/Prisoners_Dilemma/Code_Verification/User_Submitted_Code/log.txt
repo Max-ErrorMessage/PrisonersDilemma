@@ -77,3 +77,448 @@ return not o[-1]
 
 User ID: 1
 
+__import__
+User ID: 8
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 7:
+    return c[n]
+
+if t not in o[-5:]:
+    return False
+
+copybot = t
+for i in range(5):
+    if o[-i] != s[-(i+1)]:
+        copybot = f
+if copybot:
+    return t
+
+if [t,f,t,f,t] in o[-6:]:
+    return f
+
+return o[-1]
+User ID: 1
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if o[1:8] == c:
+    return False
+
+return True
+User ID: 1
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+elif len(opponent_decisions) > 4 and opponent_decisions[5] == False:
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+
+if n < 8:
+    return c[n]
+c = [t,f,t,t,f,t,t]
+
+if o[1:8] == c:
+    return False
+
+return True
+User ID: 1
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+elif len(opponent_decisions) > 4 and opponent_decisions[4] == False:
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 8:
+    return c[n]
+
+if o[1:8] == c:
+    return False
+
+return True
+User ID: 1
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 7:
+    return c[n]
+
+if o[1:8] == c:
+    return False
+
+return True
+User ID: 1
+
+if n >= 300:
+    return False
+else:
+    probability_of_false = n / 300
+return random.random() > probability_of_false
+User ID: 28
+
+n = len(opponent_decisions)
+if n >= 300:
+    return False  # At n=300, always return False
+else:
+    probability_of_false = n / 300
+return random.random() > probability_of_false
+User ID: 28
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+pat = [True,True,True,False]
+elif len(opponent_decisions) > 4 and pat[:4] == opponent_decisions[:4]:
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+pat = [True,True,True,False]
+elif len(opponent_decisions) > 4 and pat[0:4] == opponent_decisions[0:4]:
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+pat = [True,True,True,False]
+elif (len(opponent_decisions) > 4) and (pat[0:4] == opponent_decisions[0:4]):
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+pat = [True,True,True,False]
+elif ((len(opponent_decisions) > 4) and (pat[0:4] == opponent_decisions[0:4])):
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+pat = [True,True,True,False]
+elif len(opponent_decisions) > 4 and pat[0:4] == opponent_decisions[0:4]:
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+pat = [True,True,True,False]
+elif len(opponent_decisions) > 4 and pat == opponent_decisions[0:4]:
+    return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+pat = [True,True,True,False]
+elif len(opponent_decisions) > 4 and opponent_decisions[1] == True:
+    if opponent_decisions[2] == True and opponent_decisions[4] == False:
+        return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
+    if opponent_decisions[1] == False:
+        return False
+elif len(opponent_decisions) > 4 and opponent_decisions[1] == True:
+    if opponent_decisions[2] == True and opponent_decisions[4] == False:
+        return True
+elif len(opponent_decisions) % 4 == 3:
+    return False
+else:
+    return True
+User ID: 7
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 8:
+    return c[n]
+
+if o[1:8] == c:
+    return False
+
+if o[1:8] == [t,f,f,t,f,f,t]:
+    return f
+
+return True
+User ID: 1
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 7:
+    return c[n]
+
+if o[1:8] == c:
+    return False
+
+if o[1:8] == [t,f,f,t,f,f,t]:
+    return f
+
+return True
+User ID: 1
+
+gree flab blob
+User ID: 2
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+c = [t,f,t,t,f,t,t]
+
+if n < 8:
+    return c[n]
+
+if o[1:8] == c:
+    return False
+
+if t not in o[-6:]:
+    return f
+return True
+User ID: 1
+
+if len(opponent_decisions) == 0:
+    return True
+if len(opponent_decisions) <= 2:
+    return opponent_decisions[-1]
+if True not in opponent_decisions[:-5] or False not in opponent_decisions[:-5]:
+    return False
+return True
+User ID: 2
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+
+if n < 10:
+    return False
+
+if f not in o[:9]:
+    return True
+
+else:
+    return False
+User ID: 1
+
+if len(opponent_decisions) == 0:
+    return True
+if len(opponent_decisions) <= 2:
+    return opponent_decisions[-1]
+if True not in opponent_decisions[:-5] or False not in opponent_decisions[:-5]:
+    return False
+return True
+User ID: 2
+
+if len(opponent_decisions) == 0:
+    return True
+if True not in opponent_decisions[:-5] or False not in opponent_decisions[:-5]:
+    return False
+return True
+User ID: 2
+
+return False if sum([1 if True else 0 for decision in opponent_decisions]) >= 2 else True
+User ID: 2
+
+return False if sum([0 if decision else 1 for decision in opponent_decisions]) >= 2 else True
+User ID: 2
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+
+if n < 3:
+    return False
+
+if f not in o[:9]:
+    return True
+
+else:
+    return False
+User ID: 1
+
+return False if sum([0 if decision else 1 for decision in opponent_decisions]) >= 2 else True
+User ID: 2
+
+if len(opponent_decisions) > 20 and False not in opponent_decisions:
+    return False
+return False if sum([0 if decision else 1 for decision in opponent_decisions]) >= 2 else True
+User ID: 2
+
+if len(opponent_decisions) > 20 and False not in opponent_decisions:
+    return False
+return False if sum([0 if decision else 1 for decision in opponent_decisions]) >= 2 else True
+User ID: 2
+
+return True
+User ID: 1
+
+if len(opponent_decisions) > 1 and not opponent_decision[-1]:
+    return False
+return False if sum([0 if decision else 1 for decision in opponent_decisions]) >= 2 else True
+User ID: 2
+
+return False if sum([0 if decision else 1 for decision in opponent_decisions]) >= 2 else True
+User ID: 2
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+
+if n == 0:
+    return t
+if n < 150:
+    return o[-1]
+
+c = t
+for i in range(n-1):
+    if s[i] == o[i+1]:
+        c = f
+return c
+
+User ID: 1
+
+if n>1:
+    return o[-1]
+return True
+User ID: 2
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+
+if n == 0:
+    return True
+if n < 2:
+    return o[0]
+if n < 3:
+    return o[0] and o[-1]
+if n < 4:
+    return o[-1] and o[-2] and o[-3]
+    
+User ID: 1
+
+return n
+User ID: 2
+
+
+
+s,o = self_decisions, opponent_decisions
+n = len(s)
+t,f = True, False
+
+if n == 0:
+    return True
+if n < 2:
+    return o[0]
+if n < 3:
+    return o[0] and o[-1]
+if n < 4:
+    if false not in o[-3:]:
+        return True
+    
+User ID: 1
+
+if n>1:
+    return o[-1]
+return True
+User ID: 2
+
+s = self_decisions
+o = opponent_decisions
+n = len(s)
+c = [True,False,False,True,False]
+
+if n < 5:
+    return c[n]
+
+copy = True
+for i in range(5):
+    if s[-i-1] != o[-i]:
+        copy = False
+
+if copy == True:
+    return True
+
+if True not in o[-5:]:
+    return False
+
+if o[-5:] == [True,False,True,False,True] or o[-5:] == [False,True,False,True,False]:
+    return False
+
+else:
+    return not o[-1]
+User ID: 1
+
+test
+User ID: 2
+
+return True
+User ID: 1
+

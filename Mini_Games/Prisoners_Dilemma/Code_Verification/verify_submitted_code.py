@@ -25,7 +25,7 @@ if re.search(pattern, code):
     print("Code Error: unsafe functions detected")
     quit()
 
-file_code = f"import random\n\ndef user_{user_id}(self_decisions, opponent_decisions):\n"
+file_code = f"import random\n\ndef user_{user_id}(self_decisions, opponent_decisions, s, o, n):\n"
 
 for line in code.splitlines():
     file_code += f"    {line}\n"
@@ -41,21 +41,21 @@ except SyntaxError as se:
 user_function = namespace[f"user_{user_id}"]
 
 
-def happy(self_decisions, opponent_decisions):
+def happy(self_decisions, opponent_decisions, s, o, n):
     """
     Always trusts (happily)
     """
     return True
 
 
-def grumpy(self_decisions, opponent_decisions):
+def grumpy(self_decisions, opponent_decisions, s, o, n):
     """
     Always betrays (Grumpily)
     """
     return False
 
 
-def bashful(self_decisions, opponent_decisions):
+def bashful(self_decisions, opponent_decisions, s, o, n):
     """
     Does the opposite of what the opponent just did (Bashful is avoiding confrontation)
     """
@@ -65,7 +65,7 @@ def bashful(self_decisions, opponent_decisions):
         return False
 
 
-def doc(self_decisions, opponent_decisions):
+def doc(self_decisions, opponent_decisions, s, o, n):
     """
     Copies what the opponent just did (Doc is sensible and fair)
     """
@@ -75,7 +75,7 @@ def doc(self_decisions, opponent_decisions):
         return True
 
 
-def sneezy(self_decisions, opponent_decisions):
+def sneezy(self_decisions, opponent_decisions, s, o, n):
     """
     Randomly betrays 1/10 times (he had a sneeze)
     """
@@ -85,14 +85,14 @@ def sneezy(self_decisions, opponent_decisions):
         return True
 
 
-def dopey(self_decisions, opponent_decisions):
+def dopey(self_decisions, opponent_decisions, s, o, n):
     """
     Makes a random decision (dopey is a little silly)
     """
     return random.choice([True, False])
 
 
-def sleepy(self_decisions, opponent_decisions):
+def sleepy(self_decisions, opponent_decisions, s, o, n):
     """
     Copies the opponent with a "delay" of one move (sleepy has a slow reaction time)
     """
@@ -117,8 +117,8 @@ for index, player1 in enumerate(players):
 
         for _ in range(200):
             try:
-                player_1_decision = player_1_function(player_1_decisions, player_2_decisions)
-                player_2_decision = player_2_function(player_2_decisions, player_1_decisions)
+                player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
+                player_2_decision = player_2_function(player_2_decisions, player_1_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
             except Exception as e:
                 print(f"Your code has caused an error: {e}")
                 quit()
