@@ -159,7 +159,7 @@ if(!isset($_POST['code'])){
     </style>
 </head>
 <code>
-<div id="title">Prisoners Dilemna:</div>
+<div id="title">Prisoner's Dilemma:</div>
 
 <!--Right side includes all elements that want the background, left side is everything without-->
 <!--right side form (includes nav)-->
@@ -171,7 +171,7 @@ if(!isset($_POST['code'])){
         <a href="profile.php" class="nav-link">My Profile</a>
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
-    <form action="submission.php" method="POST">
+    <form action="../Private_Code/submission.php" method="POST">
         <label for="name">Enter your code!:</label>
         <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
 
@@ -198,8 +198,6 @@ if(!isset($_POST['code'])){
 
 -You will play multiple games in a row with the same bot
 -Aim for the highest score!
-
-Dont forget to import random if you wish to use that library
     </pre>
     <h1>
         Variables:

@@ -1,0 +1,5 @@
+if len(opponent_decisions) < 11:
+    return [True, True, False, False, False, True, True, False, True, True][len(opponent_decisions)]
+if opponent_decisions[:10] == [True, True, False, False, False, True, True, False, True, True]:
+    return True
+return opponent_decisions[-1]

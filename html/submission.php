@@ -1,8 +1,7 @@
 <?php
-session_start();
-include 'db.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    session_start();
+    include '../db.php';
     $code = $_POST['code'];
     $uname = $_SESSION['uname'];
     $user_id = $_SESSION['user_id'];
@@ -15,7 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_py_file = fopen("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
 
-    $output = exec("timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id");
+    $output = exec("timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/verify_submitted_code.py $user_id 2>&1");
+
+    unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
 
     if ($output == "1") {  // Code is fine
         $file_contents = file_get_contents('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
@@ -27,17 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $list .= "</ol>";
 
-        $_SESSION['Error3'] = $list;
-
-        unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
         unlink('/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
+
+        $_SESSION['Error3'] = $list;
 
     } else { // Code is not fine: $output is the error provided
         if ($output == "") { // No error provided: most likely the cause of a timeout
             $output = "Your code failed to execute in the required time.";
         }
         $_SESSION['Error3'] = $output;
-        unlink("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
         header("Location: /newSubmission.php");
         exit();
     }
@@ -76,10 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: /newSubmission.php");
             exit();
         }
-    $stmt = $pdo->prepare("DELETE FROM Submission WHERE User_ID= :id AND Game_ID= :gameid");
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':gameid', $gameid);
-    $stmt->execute();
+//     $stmt = $pdo->prepare("DELETE FROM Submission WHERE User_ID= :id AND Game_ID= :gameid");
+//     $stmt->bindParam(':id', $id);
+//     $stmt->bindParam(':gameid', $gameid);
+//     $stmt->execute();
     // Insert the user into the database
     $stmt = $pdo->prepare("INSERT INTO Submission (User_ID, Game_ID, Code) VALUES (:id, :gameid, :code)");
     $stmt->bindParam(':id', $id);
@@ -95,5 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: /newSubmission.php");
         exit();
     }
+} else {
+    die("Access Denied");
 }
 ?>

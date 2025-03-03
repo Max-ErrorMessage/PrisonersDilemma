@@ -1,0 +1,24 @@
+s = self_decisions
+o = opponent_decisions
+n = len(s)
+c = [True,False,False,True,False]
+
+if n < 5:
+    return c[n]
+
+copy = True
+for i in range(5):
+    if s[-i-1] != o[-i]:
+        copy = False
+
+if copy == True:
+    return True
+
+if True not in o[-5:]:
+    return False
+
+if o[-5:] == [True,False,True,False,True] or o[-5:] == [False,True,False,True,False]:
+    return False
+
+else:
+    return not o[-1]

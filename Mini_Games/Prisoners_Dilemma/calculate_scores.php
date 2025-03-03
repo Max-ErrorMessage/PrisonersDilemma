@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$game_length = rand(200, 400);
 
 $fetch_code_path = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
@@ -50,7 +51,7 @@ foreach ($user_codes as $user_code_1) {
         }
         $arg1 = escapeshellarg($user_1);
         $arg2 = escapeshellarg($user_2);
-        $arg3 = escapeshellarg(200);
+        $arg3 = escapeshellarg(game_length);
         
         $command = "timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3";        
     
@@ -59,8 +60,6 @@ foreach ($user_codes as $user_code_1) {
 }
 
 include '/var/www/html/db.php';
-
-# Comment for the sake of merging
 
 $json_file = '/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {
@@ -76,26 +75,20 @@ if (!is_array($scores)) {
 
 $updated = 0;
 
+$query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission WHERE Game_ID = 1");
+$totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
+
 foreach ($scores as $user_id => $score) {
     if (!is_numeric($user_id) || !is_numeric($score)) {
         continue;
     }
 
-    $query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission");
-    $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
-
-    if ($totalRecords > 1) {
-        $uniquePairs = ($totalRecords * ($totalRecords - 1)) / 2;
-    } else {
-        $uniquePairs = 1;
-    }
-
-    $adjusted_points = $score / ($uniquePairs * 200);
+    $adjusted_points = $score / (($totalRecords - 1) * game_length);
 
     $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_INT);
+    $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_STR);
     
     if ($stmt->execute()) {
         $updated++;
@@ -103,8 +96,8 @@ foreach ($scores as $user_id => $score) {
 }
 
 unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
-unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.python');
-unlink($json_file);
+unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
+// unlink($json_file);
 
 echo "Scores successfully updated.\n";
 

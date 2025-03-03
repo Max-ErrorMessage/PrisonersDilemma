@@ -1,5 +1,5 @@
 <?php
-include 'db.php'; // database connection is in a separate file for security reasons (TODO: db.php file should be moved out of public html)
+include '../db.php'; // database connection is in a separate file for security reasons (TODO: db.php file should be moved out of public html)
 
 // Check if the session variable 'uname' is set
 if (!isset($_SESSION['uname'])) {
@@ -41,9 +41,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             if ($rows) {
+		$i = 0;
                 echo "<ol>";
                 foreach ($rows as $row){
-                    echo "<li><strong>User:</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</li>";
+		    $i++;
+                    echo "<li><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</li>";
                 }
                 echo "</ol>";
             } else {

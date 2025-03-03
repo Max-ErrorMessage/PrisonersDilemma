@@ -1,8 +1,7 @@
 <?php
-session_start();
-include 'db.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    session_start();
+    include 'db.php';
     $uname = trim($_POST['uname']);
     $pword = $_POST['pword'];
 
@@ -52,5 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: /signin.php");
         exit();
     }
+} else {
+    die("Access denied.");
 }
 ?>
