@@ -80,6 +80,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $stmt->bindParam(':gameid', $gameid);
 //     $stmt->execute();
     // Insert the user into the database
+
+    $stmt = $pdo->prepare("UPDATE Submission SET Points = 0 WHERE User_ID = id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
     $stmt = $pdo->prepare("INSERT INTO Submission (User_ID, Game_ID, Code) VALUES (:id, :gameid, :code)");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':code', $code);
