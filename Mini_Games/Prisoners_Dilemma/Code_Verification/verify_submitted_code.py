@@ -13,7 +13,12 @@ with open("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitte
 
 
 
-keywords = ["print", "import", "exec", "eval", "open", "execfile", "compile", "input"]
+keywords = [
+    "print", "import", "exec", "eval", "open", "execfile", "compile", "input", "__import__", "os.system", "os.popen",
+    "subprocess.call", "subprocess.run", "globals", "locals", "file", "pickle", "pickle.load", "shlex.split",
+    "os.remove", "os.rename", "socket"
+]
+
 pattern = r"\b(" + "|".join(keywords) + r")\b(?!\s*\()"
 
 if re.search(pattern, code):
