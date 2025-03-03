@@ -1,0 +1,8 @@
+total_betrayals = sum([1 if not decision else 0 for decision in opponent_decisions])
+if total_betrayals >= 1:
+    if random.choice([True, True, False]):
+        return False
+    return True
+if random.choice([True, True, False]):
+    return True
+return False

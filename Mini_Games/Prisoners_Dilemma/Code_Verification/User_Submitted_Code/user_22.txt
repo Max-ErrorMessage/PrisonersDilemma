@@ -1,0 +1,4 @@
+if len(opponent_decisions) < 10:
+    return True
+else:
+    return opponent_decisions[-1]
