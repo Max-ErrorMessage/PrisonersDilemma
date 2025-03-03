@@ -18,6 +18,7 @@ keywords = [
     "subprocess.call", "subprocess.run", "globals", "locals", "file", "pickle", "pickle.load", "shlex.split",
     "os.remove", "os.rename", "socket"
 ]
+pattern = r"(" + "|".join(keywords) + r")"
 
 for username, code in functions.items():
     if re.search(pattern, code):
