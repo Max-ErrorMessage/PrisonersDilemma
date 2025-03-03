@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $location = "Location: /newSubmission.php"
     } else if ($gameid == 2){
         $game = "Yahtzee"
-        $location = "Location: /newSubmission.php"
+        $location = "Location: /newYahtzeeSubmission.php"
         $code2 = $_POST['code2'];
         $code = $code . "$" . $code2;
     }
