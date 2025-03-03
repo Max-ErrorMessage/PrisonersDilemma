@@ -221,38 +221,3 @@ else:
     </pre>
 </code>
 </html>
-
-
-<!--left side of window (not including nav)-->
-<div id="info">
-    <h1>Your task:</h1>
-    <pre>
--Create a function that returns a boolean value
-    -True == trust
-    -False == betray
-
--You will play multiple games in a row with the same bot
--Aim for the highest score!
-
-Dont forget to import random if you wish to use that library
-    </pre>
-    <h1>
-        Variables:
-    </h1>
-    <div id="var">self_decisions:</div>
-    <pre>   - an array containing all previous decisions your
-        bot has made</pre>
-    <div id="var">opponent_decisions:</div>
-    <pre>   - an array containing all previous decisions your opponents
-        bot has made</pre>
-    <h1>
-        Example bot:
-    </h1>
-    <pre>if len(self_decisions) > 0:
-    return not opponent_decisions[-1]
-else:
-    return False
-    </pre>
-</code>
-</html>
-
