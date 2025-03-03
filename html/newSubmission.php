@@ -166,7 +166,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <a href="profile.php" class="nav-link">My Profile</a>
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
-    <form action="../Private_Code/submission.php" method="POST">
+    <form action="submission.php" method="POST">
         <label for="name">Enter your code!:</label>
         <textarea id="name" name="code" required placeholder="return True
 

@@ -1,9 +1,0 @@
-	x,y,s,o,t=len,range,self_decisions,opponent_decisions,5<<1;z,l,f=[~(228>>i)&1 for i in y(9,-1,-1)],x(s),sum(o),
-	if l<t:return z[l]
-	if o[:t]==z: return 0
-	if s[-4:-1]!=o[-3:]:return not l%3
-	c=e=0;d=l-f/l;t=sum(o[i]==s[i-1]for i in y(1,l))/max(1,l-1)
-	for i in 1,0:
-		a,b=s+[i],o[:]
-		for _ in y(5):j=x(b)==l;r=a[-1]if j and t>.8 else 1if d<.2and j else 0if d>.8and j else q[0]if x(b)>l and x(q:=b[-3:])>2and q[0]==q[2]else b[-1]if b else 1;b+=[r];v=r*4+1-a[-1]*(r+1);c+=v*i;e+=v*(1-i);a+=[b[-1]*(d<=.25)]
-	return c>=e
