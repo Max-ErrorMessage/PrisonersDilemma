@@ -54,7 +54,7 @@ foreach ($user_codes as $user_code_1) {
     }
 }
 
-include '/var/www/html/db.php';
+include '/var/www/db.php';
 
 $json_file = '/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json';
 if (!file_exists($json_file)) {
@@ -70,19 +70,28 @@ if (!is_array($scores)) {
 
 
 $updated = 0;
+
 foreach ($scores as $user_id => $score) {
     if (!is_numeric($user_id) || !is_numeric($score)) {
-        continue; // Skip invalid data
+        continue;
     }
-    $stmt = $pdo->prepare("UPDATE Submissions SET Points = :score WHERE User_ID = :user_id and Game_ID = 2");
 
-    // Bind parameters and execute update
+
+    $stmt = $pdo->prepare("UPDATE Submission SET Points = :score WHERE User_ID = :user_id AND Game_ID = 2");
+
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->bindParam(':score', $score, PDO::PARAM_INT);
-    
+    $stmt->bindParam(':score', $score, PDO::PARAM_STR);
+
     if ($stmt->execute()) {
         $updated++;
     }
 }
+
+unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json');
+// unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
+unlink($json_file);
+
+echo "Scores successfully updated.";
+
 
 ?>

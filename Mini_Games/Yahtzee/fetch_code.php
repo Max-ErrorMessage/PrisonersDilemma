@@ -1,6 +1,9 @@
 <?php
-session_start();
-include 'html/db.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include 'var/www/db.php';
 
 
 class TableRows extends RecursiveIteratorIterator {
