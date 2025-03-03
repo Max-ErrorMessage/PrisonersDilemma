@@ -1,4 +1,0 @@
-if len(self_decisions) == 0:
-    return True
-
-return opponent_decisions[-1]

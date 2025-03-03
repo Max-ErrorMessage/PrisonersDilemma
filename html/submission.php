@@ -75,11 +75,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: /newSubmission.php");
             exit();
         }
-//     $stmt = $pdo->prepare("DELETE FROM Submission WHERE User_ID= :id AND Game_ID= :gameid");
-//     $stmt->bindParam(':id', $id);
-//     $stmt->bindParam(':gameid', $gameid);
-//     $stmt->execute();
+    $stmt = $pdo->prepare("DELETE FROM Submission WHERE User_ID= :id AND Game_ID= :gameid");
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':gameid', $gameid);
+    $stmt->execute();
+
     // Insert the user into the database
+
     $stmt = $pdo->prepare("INSERT INTO Submission (User_ID, Game_ID, Code) VALUES (:id, :gameid, :code)");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':code', $code);

@@ -26,7 +26,7 @@
                     } 
                 ?>
                 <h1 style = "text-align: center;"> Log in </h1>
-                <form style = "text-align: center;" action="/../Private_Code/login.php" method = "post">
+                <form style = "text-align: center;" action="login.php" method = "post">
                     <label for="uname">Username:</label><br>
                     <input type = "text" id = "uname" name="uname"><br>
                     <label for="pword">Password:</label><br>

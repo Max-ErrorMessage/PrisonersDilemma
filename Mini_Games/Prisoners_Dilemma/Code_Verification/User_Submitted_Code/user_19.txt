@@ -1,1 +1,0 @@
-    return len(self_decisions) % 2
