@@ -173,10 +173,10 @@ for i in range(rounds):
 final_score = score_sum / rounds
 
 
-with open('/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', 'r') as file:
+with open('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', 'r') as file:
     existing_scores = json.load(file)
 
 existing_scores[player_1] = final_score
 
-with open('/home/u753770036/domains/twokie.com/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', 'w') as file:
+with open('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', 'w') as file:
     json.dump(existing_scores, file, indent=4)

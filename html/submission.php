@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if ($gameid == 1){
-        $game = "Prisoners_Dilemma"
-        $location = "Location: /newSubmission.php"
+        $game = "Prisoners_Dilemma";
+        $location = "Location: /newSubmission.php";
     } else if ($gameid == 2){
-        $game = "Yahtzee"
-        $location = "Location: /newYahtzeeSubmission.php"
+        $game = "Yahtzee";
+        $location = "Location: /newYahtzeeSubmission.php";
         $code2 = $_POST['code2'];
         $code = $code . "$" . $code2;
     }
