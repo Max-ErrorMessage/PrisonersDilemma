@@ -23,8 +23,8 @@ player_1_decisions, player_2_decisions = [], []
 
 
 for i in range(rounds):
-    player_1_decision = player_1_function(player_1_decisions, player_2_decisions)
-    player_2_decision = player_2_function(player_2_decisions, player_1_decisions)
+    player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
+    player_2_decision = player_2_function(player_2_decisions, player_1_decisions, player_2_decisions, player_1_decisions, len(player_1_decisions))
 
     if player_1_decision and player_2_decision:  # Both players choose to Trust; they both gain 5 points
         scores[player_1] += 5
