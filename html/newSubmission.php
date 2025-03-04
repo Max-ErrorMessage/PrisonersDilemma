@@ -128,6 +128,8 @@ if(!isset($_SESSION['code'])){
         pre{
             font-size: 1rem;
             text-align: left;
+            left: 5%;
+            right: 5%;
         }
         #php{
             position: absolute;
@@ -195,11 +197,9 @@ if(!isset($_SESSION['code'])){
         Variables:
     </h1>
     <div id="var">self_decisions:</div>
-    <pre>   - an array containing all previous decisions your
-        bot has made (also accessible with 's')</pre>
+    <pre>   - an array containing all previous decisions your bot has made (also accessible with 's')</pre>
     <div id="var">opponent_decisions:</div>
-    <pre>   - an array containing all previous decisions your opponent's
-        bot has made (also accessible with 'o')</pre>
+    <pre>   - an array containing all previous decisions your opponent's bot has made (also accessible with 'o')</pre>
     <div id="var">n:</div>
     <pre>   - the number of previous moves made</pre>
     </div>
