@@ -161,7 +161,7 @@ def simulate():
             stop = True
         if check_yahtzee_bonus():
             break
-        choice = user_select_function(choices, availability, available_points, claimed_points, dice)
+        choice = user_select_function(availability, available_points, claimed_points, dice, choices)
         claimed_points[choice] = available_points[choice]
         availability[choice] = False
         check_bonus_and_total()
