@@ -77,19 +77,20 @@ if(!isset($_SESSION['code'])){
         }
 
         form {
-            position: absolute;
-            top: 250px;
-            left: 70px;
-            background: #003300;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            width: 100%;
-            max-width: 1000px;
-        }
+        position: absolute;
+        top: 250px;
+        right: 70px;
+        background: #003300;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 66.66%;
+        max-width: none;
+    }
+
 
         label {
             display: block;
@@ -98,7 +99,7 @@ if(!isset($_SESSION['code'])){
         }
 
         textarea {
-            width: 100%; /* Fill the form's width */
+            width: 90%; /* Fill the form's width */
             max-width: 1000px; /* Wider input box */
             min-height: 500px; /* Increased starting height */
             max-height: 600px; /* Larger maximum height */
