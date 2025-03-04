@@ -114,9 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bindParam(':score', $score, PDO::PARAM_STR);
 
                 $stmt->execute();
-                $_SESSION['Error3'] = $user_id . $score;
-                header($location);
-                exit();
 
 
                 unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json');
@@ -135,37 +132,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    if ($gameid == 2){ //if gameid is 2 (Yahtzee data will be ready to be put into the database after submission)
-
-        $json_file = '/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json';
-        if (!file_exists($json_file)) {
-            die("Error: scores.json file not found.");
-        }
-
-        $json_data = file_get_contents($json_file);
-        $scores = json_decode($json_data, true);
-
-        if (!is_array($scores)) {
-            die("Error: Invalid JSON format.");
-        }
-
-        $score = $scores[$user_id];
-
-        $stmt = $pdo->prepare("UPDATE Submission SET Points = :score WHERE User_ID = :user_id AND Game_ID = 2");
-
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindParam(':score', $score, PDO::PARAM_STR);
-
-        $stmt->execute();
-
-
-        unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json');
-        // unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
-        unlink($json_file);
-
-        echo "Scores successfully updated.\nGame length:" . $game_length ."\n";
-
-    }
 
 
 } else {
