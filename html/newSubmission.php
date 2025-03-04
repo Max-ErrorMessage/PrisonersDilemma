@@ -163,7 +163,7 @@ if(!isset($_SESSION['code'])){
             border-radius: 5px;
             font-size: 1rem;
             cursor: pointer;
-            transition: background 0.3s ease;
+            /* transition: background 0.3s ease; */
             align-self: center; /* Center the button horizontally */
         }
 
@@ -206,9 +206,7 @@ if(!isset($_SESSION['code'])){
     <form action="submission.php" method="POST">
         <label for="name">Enter your code!:</label>
         <div style="display: flex; align-items: flex-start;">
-            <div id="line-numbers" style="text-align: right; padding-right: 10px; font-family: monospace; user-select: none;">
-            </div>
-
+            <div id="line-numbers" style="width: 40px; text-align: right; padding-right: 10px; font-family: monospace; user-select: none; background: #f0f0f0; border: 1px solid #ddd; height: auto;"></div>
             <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True\n\n# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);" style="resize: none; width: 100%; font-family: monospace;" rows="10"></textarea>
         </div>
         <input type="hidden" name="game_id" value="1">
