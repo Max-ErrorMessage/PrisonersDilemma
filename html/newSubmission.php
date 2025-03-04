@@ -46,8 +46,6 @@ if(!isset($_SESSION['code'])){
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
             flex-direction: column;
         }
