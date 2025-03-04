@@ -154,9 +154,9 @@
 
     <form action="submission.php" method="POST">
         <label for="name">Enter your reroll function!:</label>
-        <textarea id="name" name="code" default="return []   #reroll no dice" required></textarea>
+        <textarea id="name" name="code" placeholder="return []   #reroll no dice" required></textarea>
         <label for="name">Enter your select function!:</label>
-        <textarea id="name2" name="code2" default="return choices[0] #returns first available move" required></textarea>
+        <textarea id="name2" name="code2" placeholder="return choices[0]   #returns first available move" required></textarea>
         <input type="hidden" name="game_id" value=2>
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
