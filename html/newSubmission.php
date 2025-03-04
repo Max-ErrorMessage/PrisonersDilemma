@@ -99,7 +99,7 @@ if(!isset($_SESSION['code'])){
 
         textarea {
             width: 100%; /* Fill the form's width */
-            max-width: 680px; /* Wider input box */
+            max-width: 1000px; /* Wider input box */
             min-height: 500px; /* Increased starting height */
             max-height: 600px; /* Larger maximum height */
             padding: 10px;
