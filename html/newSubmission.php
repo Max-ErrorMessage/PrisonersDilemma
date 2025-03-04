@@ -119,6 +119,7 @@ if(!isset($_SESSION['code'])){
         h1{
             color: rgb(91, 169, 107);
             font-size: 3rem;
+            text-align: left;
         }
         pre{
             font-size: 1rem;
