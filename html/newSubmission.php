@@ -142,6 +142,19 @@ if(!isset($_SESSION['code'])){
             padding: 40px;
         }
 
+        #var {
+            text-align:left;
+        }
+
+        #example {
+            border: 2px #003300;
+            padding: 10px;
+            background: #222;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
         button {
             background: #006600; /* Bright green */
             color: white;
@@ -215,7 +228,7 @@ if(!isset($_SESSION['code'])){
     <h1>
         Example bot:
     </h1>
-    <pre>if n > 0:
+    <pre id='example'>if n > 0:
     return opponent_decisions[-1]
 else:
     return False
