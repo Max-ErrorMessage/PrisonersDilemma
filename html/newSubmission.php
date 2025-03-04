@@ -110,9 +110,6 @@ if(!isset($_SESSION['code'])){
         }
 
         #title{
-            position: absolute;
-            top: 100px;
-            left: 100px;
             font-size: 5rem;
         }
         #var{
