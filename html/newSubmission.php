@@ -185,25 +185,8 @@ if(!isset($_SESSION['code'])){
         <a href="profile.php" class="nav-link">My Profile</a>
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
-    <form action="submission.php" method="POST">
-        <label for="name">Enter your code!:</label>
-        <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
 
-
-# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
-        <input type="hidden" name="game_id" value="1">
-        <button type="submit" name="submitCode" value="submit">Submit</button>
-    </form>
-</body>
-<div id="php">
-<?php
-        session_start();
-        if(isset($_SESSION['Error3'])){
-            echo "<h2>" . $_SESSION['Error3'] . "</h2>";
-        }
-    ?></div>
-<!--left side of window (not including nav)-->
-<div id="info">
+    <div id="info">
     <h1>Your task:</h1>
     <pre>
 - Write a function that returns a boolean value
@@ -225,6 +208,27 @@ if(!isset($_SESSION['code'])){
         bot has made (also accessible with 'o')</pre>
     <div id="var">n:</div>
     <pre>   - the number of previous moves made</pre>
+    </div>
+
+    <form action="submission.php" method="POST">
+        <label for="name">Enter your code!:</label>
+        <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
+
+
+# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
+        <input type="hidden" name="game_id" value="1">
+        <button type="submit" name="submitCode" value="submit">Submit</button>
+    </form>
+</body>
+<div id="php">
+<?php
+        session_start();
+        if(isset($_SESSION['Error3'])){
+            echo "<h2>" . $_SESSION['Error3'] . "</h2>";
+        }
+    ?>
+</div>
+
     <h1>
         Example bot:
     </h1>
