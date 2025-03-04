@@ -221,5 +221,15 @@ scores_dict = {"Your Code": final_score}
 with open(f"/var/www/Mini_Games/Yahtzee/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
     json.dump(scores_dict, json_file, indent=4)
 
-print("1")
+
+with open('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', 'r') as file:
+    existing_scores = json.load(file)
+
+existing_scores[user_id] = final_score
+
+with open('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json', 'w') as file:
+    json.dump(existing_scores, file, indent=4)
+
+
+print(1)
 
