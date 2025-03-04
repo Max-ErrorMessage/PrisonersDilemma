@@ -1,5 +1,6 @@
 <html>
     <head>
+	<title>Twokie - Login/Signup</title>
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <style>
             #particleCanvas {

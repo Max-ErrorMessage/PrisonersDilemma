@@ -26,7 +26,7 @@ if(!isset($_SESSION['code'])){
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="/t.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <title>New Submission</title>
+    <title>Twokie - New Submission</title>
     <!--simple script that disables the user from the tab key while they are tabbed into the code box-->
     <script>
         function stopTab( e ) {

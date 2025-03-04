@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$game_length = rand(200, 400);
+$game_length = rand(50, 1000);
 
 $fetch_code_path = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
@@ -40,6 +40,7 @@ foreach ($user_codes as $item) {
 
 $json_empty_scores = json_encode($empty_scores, JSON_PRETTY_PRINT);
 
+fopen('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'w');
 file_put_contents('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', $json_empty_scores);
 
 foreach ($user_codes as $user_code_1) {

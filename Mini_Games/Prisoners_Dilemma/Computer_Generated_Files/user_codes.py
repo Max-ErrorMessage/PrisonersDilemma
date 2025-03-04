@@ -163,7 +163,7 @@ def user_4(self_decisions, opponent_decisions, s, o, n):
 
 
 def user_1(self_decisions, opponent_decisions, s, o, n):
-	if False in o and n < 150:
+	if False in o or n < 150:
 	    return False
 	
 	if n < 150:
