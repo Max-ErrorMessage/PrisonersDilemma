@@ -77,8 +77,6 @@ if(!isset($_SESSION['code'])){
         }
 
         form {
-            position: absolute;
-            top: 250px;
             left: 5%;
             right: 5%;
             background: #003300;
