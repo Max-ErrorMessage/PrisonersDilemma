@@ -148,6 +148,11 @@ if(!isset($_SESSION['code'])){
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
+        .container {
+          display: flex;
+          gap: 10px; /* Optional: Adds space between the divs */
+        }
+
         button {
             background: #006600; /* Bright green */
             color: white;
@@ -167,9 +172,6 @@ if(!isset($_SESSION['code'])){
 </head>
 <code>
 <div id="title">Prisoner's Dilemma:</div>
-
-<!--Right side includes all elements that want the background, left side is everything without-->
-<!--right side form (includes nav)-->
 <body>
     <div id="NavBar">
         <img src="images/twokielogo.png" id="navbarLogo">
@@ -178,7 +180,7 @@ if(!isset($_SESSION['code'])){
         <a href="profile.php" class="nav-link">My Profile</a>
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
-
+    <div class="container">
     <div id="task">
     <h1>Your task:</h1>
     <pre>
@@ -201,6 +203,7 @@ if(!isset($_SESSION['code'])){
     <pre>   - an array containing all previous decisions your opponent's bot has made (also accessible with 'o')</pre>
     <div id="var">n:</div>
     <pre>   - the number of previous moves made</pre>
+    </div>
     </div>
 
     <form action="submission.php" method="POST">
