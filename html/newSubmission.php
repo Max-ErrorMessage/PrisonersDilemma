@@ -163,46 +163,14 @@ if(!isset($_SESSION['code'])){
             border-radius: 5px;
             font-size: 1rem;
             cursor: pointer;
-            /* transition: background 0.3s ease; */
+            transition: background 0.3s ease;
             align-self: center; /* Center the button horizontally */
         }
 
         button:hover {
             background: #00cc00;
         }
-
-        .line-numbers {
-            padding: 10px;
-            background: #222;
-            color: #888;
-            text-align: right;
-            width: 40px;
-            overflow: hidden;
-            line-height: 1.4;
-            font-family: monospace;
-            font-size: 1rem;
-            border-right: 2px solid white;
-        }
-
     </style>
-    <script>
-        const textarea = document.getElementById('name');
-        const lineNumbers = document.getElementById('line-numbers');
-
-        function updateLineNumbers() {
-            const lines = textarea.value.split('\n');
-            let lineNumberHTML = '';
-            for (let i = 1; i <= lines.length; i++) {
-                lineNumberHTML += `${i}<br>`;
-            }
-
-            lineNumbers.innerHTML = lineNumberHTML;
-        }
-
-        textarea.addEventListener('input', updateLineNumbers);
-
-        window.onload = updateLineNumbers;
-    </script>
 </head>
 <code>
 <div id="title">Prisoner's Dilemma:</div>
@@ -219,10 +187,10 @@ if(!isset($_SESSION['code'])){
     </div>
     <form action="submission.php" method="POST">
         <label for="name">Enter your code!:</label>
-        <div style="display: flex; align-items: flex-start;">
-            <div id="line-numbers" style="width: 40px; text-align: right; padding-right: 10px; font-family: monospace; user-select: none; background: #f0f0f0; border: 1px solid #ddd; height: auto;"></div>
-            <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True\n\n# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);" style="resize: none; width: 100%; font-family: monospace;" rows="10"></textarea>
-        </div>
+        <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
+
+
+# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
         <input type="hidden" name="game_id" value="1">
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
