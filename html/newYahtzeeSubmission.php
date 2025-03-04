@@ -95,7 +95,7 @@
         #info {
             position: absolute;
             top: 160px;
-            left: 930px;
+            left: 910px;
         }
         #title{
             position: absolute;
@@ -145,12 +145,13 @@
 <code>
 <div id="title">Yahtzee:</div>
 <body>
-    <nav>
+<div id="NavBar">
+        <img src="images/twokielogo.png" id="navbarLogo">
         <a href="index.php" class="nav-link">Home</a>
         <a href="leaderboards.php" class="nav-link">Leaderboards</a>
         <a href="profile.php" class="nav-link">My Profile</a>
-        <a href="signin.php" id="signinbutton" class="nav-link">Sign Out</a>
-    </nav>
+        <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
+    </div>
 
     <form action="submission.php" method="POST">
         <label for="name">Enter your reroll function!:</label>
