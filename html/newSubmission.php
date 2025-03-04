@@ -112,11 +112,7 @@ if(!isset($_SESSION['code'])){
             resize: none; /* Prevent manual resizing */
             overflow-y: auto; /* Add vertical scroll when needed */
         }
-        #info {
-            position: absolute;
-            top: 160px;
-            left: 930px;
-        }
+
         #title{
             position: absolute;
             top: 100px;
