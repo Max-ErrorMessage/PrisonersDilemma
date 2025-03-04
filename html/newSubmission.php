@@ -77,19 +77,19 @@ if(!isset($_SESSION['code'])){
         }
 
         form {
-        position: absolute;
-        top: 250px;
-        right: 70px;
-        background: #003300;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        width: 66.66%;
-        max-width: none;
-    }
+            position: absolute;
+            top: 250px;
+            left: 5%;
+            background: #003300;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 66.66%;
+            max-width: none;
+        }
 
 
         label {
