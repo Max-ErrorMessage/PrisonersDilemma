@@ -63,32 +63,6 @@ def user_20(self_decisions, opponent_decisions, s, o, n):
 	    return opponent_decisions[-1] and opponent_decisions[-2]
 
 
-def user_24(self_decisions, opponent_decisions, s, o, n):
-	return True if len(opponent_decisions) == 0 else opponent_decisions[-1]
-
-
-def user_28(self_decisions, opponent_decisions, s, o, n):
-	n = len(opponent_decisions)
-	if n >= 300:
-	    return False  # At n=300, always return False
-	else:
-	    probability_of_false = n / 300
-	return random.random() > probability_of_false
-
-
-def user_7(self_decisions, opponent_decisions, s, o, n):
-	if len(opponent_decisions) > 1 and opponent_decisions[0] == False:
-	    if opponent_decisions[1] == False:
-	        return False
-	elif len(opponent_decisions) > 4 and opponent_decisions[1] == True:
-	    if opponent_decisions[2] == True and opponent_decisions[4] == False:
-	        return True
-	elif len(opponent_decisions) % 4 == 3:
-	    return False
-	else:
-	    return True
-
-
 def user_26(self_decisions, opponent_decisions, s, o, n):
 	return sum(o[-8:]) == 0
 
@@ -128,30 +102,6 @@ def user_25(self_decisions, opponent_decisions, s, o, n):
 	return True
 
 
-def user_8(self_decisions, opponent_decisions, s, o, n):
-	if n == 0:
-	    return True
-	
-	if sum(o) > 0:
-	    return False
-	
-	if n == 150:
-	    return False
-	
-	if o[151]:
-	    return False
-	
-	return True
-
-
-def user_2(self_decisions, opponent_decisions, s, o, n):
-	if sum(o) == n:
-	    return False
-	if n > 200:
-	    return random.choice([True, False])
-	return True
-
-
 def user_14(self_decisions, opponent_decisions, s, o, n):
 	return False if n < 10 else True
 
@@ -162,8 +112,12 @@ def user_4(self_decisions, opponent_decisions, s, o, n):
 	return sum(o[-2:]) == 2
 
 
+def user_29(self_decisions, opponent_decisions, s, o, n):
+	return True
+
+
 def user_1(self_decisions, opponent_decisions, s, o, n):
-	if False in o or n < 150:
+	if False in o and n < 150:
 	    return False
 	
 	if n < 150:
@@ -187,8 +141,50 @@ def user_1(self_decisions, opponent_decisions, s, o, n):
 	    return True
 
 
-def user_29(self_decisions, opponent_decisions, s, o, n):
-	return True
+def user_8(self_decisions, opponent_decisions, s, o, n):
+	return False
 
 
-user_code = {"11" : user_11, "9" : user_9, "10" : user_10, "18" : user_18, "21" : user_21, "22" : user_22, "19" : user_19, "17" : user_17, "20" : user_20, "24" : user_24, "28" : user_28, "7" : user_7, "26" : user_26, "6" : user_6, "3" : user_3, "25" : user_25, "8" : user_8, "2" : user_2, "14" : user_14, "4" : user_4, "1" : user_1, "29" : user_29}
+def user_2(self_decisions, opponent_decisions, s, o, n):
+	x = 200
+	if n <= x:
+	    return False
+	if sum(o[1:x]) <= (x / 10):
+	    if n == x + 1:
+	        return True
+	    if o[x + 1]:
+	        return True
+	return False
+
+
+def user_34(self_decisions, opponent_decisions, s, o, n):
+	if n<5:
+	    return False
+	else:
+	    return o[-1]
+
+
+def user_7(self_decisions, opponent_decisions, s, o, n):
+	if n>0:
+	    if random.randint(0,30) != 14 or False in o:
+	        return False
+	    return o[-1]
+	else:
+	    return True
+
+
+def user_35(self_decisions, opponent_decisions, s, o, n):
+	return False
+
+
+def user_28(self_decisions, opponent_decisions, s, o, n):
+	if n == 100:
+	    return False
+	return sum(o) < n - 2
+
+
+def user_24(self_decisions, opponent_decisions, s, o, n):
+	return sum(o) < n - 2
+
+
+user_code = {"11" : user_11, "9" : user_9, "10" : user_10, "18" : user_18, "21" : user_21, "22" : user_22, "19" : user_19, "17" : user_17, "20" : user_20, "26" : user_26, "6" : user_6, "3" : user_3, "25" : user_25, "14" : user_14, "4" : user_4, "29" : user_29, "1" : user_1, "8" : user_8, "2" : user_2, "34" : user_34, "7" : user_7, "35" : user_35, "28" : user_28, "24" : user_24}

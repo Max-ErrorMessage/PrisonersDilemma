@@ -179,7 +179,7 @@ if(!isset($_SESSION['code'])){
         <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
 
 
-#Also tabs are disabled atm so use 4 spaces instead" onkeydown="return stopTab(event);"></textarea>
+# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
         <input type="hidden" name="game_id" value="1">
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
@@ -195,27 +195,30 @@ if(!isset($_SESSION['code'])){
 <div id="info">
     <h1>Your task:</h1>
     <pre>
--Create a function that returns a boolean value
-    -True == trust
-    -False == betray
+- Write a function that returns a boolean value
+    True == trust
+    False == betray
 
--You will play multiple games in a row with the same bot
--Aim for the highest score!
+- You will play multiple games in a row with the same bot
+- Aim for the highest score!
+- Your bot will be pitted against every other bot - try to do as well as possible against the whole field!
     </pre>
     <h1>
         Variables:
     </h1>
     <div id="var">self_decisions:</div>
     <pre>   - an array containing all previous decisions your
-        bot has made</pre>
+        bot has made (also accessible with 's')</pre>
     <div id="var">opponent_decisions:</div>
-    <pre>   - an array containing all previous decisions your opponents
-        bot has made</pre>
+    <pre>   - an array containing all previous decisions your opponent's
+        bot has made (also accessible with 'o')</pre>
+    <div id="var">n:</div>
+    <pre>   - the number of previous moves made</pre>
     <h1>
         Example bot:
     </h1>
-    <pre id="example">if len(self_decisions) > 0:
-    return not opponent_decisions[-1]
+    <pre id="example">if n > 0:
+    return opponent_decisions[-1]
 else:
     return False
     </pre>

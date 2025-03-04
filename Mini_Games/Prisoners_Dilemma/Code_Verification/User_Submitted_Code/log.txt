@@ -522,3 +522,260 @@ User ID: 2
 return True
 User ID: 1
 
+if n < 5:
+    return True
+
+if n > 10 and sum(o[-5:]) == sum(s[-6:-1]):
+    return True
+
+if sum(o) > n * 0.9:
+    return False
+
+if sum(o[-2:]) == 0 and sum(s[-3:-1]) == 2:
+    return False
+
+return True
+User ID: 2
+
+if False in o and n < 150:
+    return False
+
+if n < 150:
+    return True
+
+if n == 150:
+    return False
+
+if n == 151:
+    return True
+
+if o[151]:
+    return False
+
+if not o[151]:
+    if n == 152:
+        return True
+
+    if not o[152]:
+        return False
+    return True
+User ID: 1
+
+return False
+User ID: 8
+
+if n <= 5:
+    return False
+if sum(o[1:5]) == 0:
+    if n == 6:
+        return True
+    if o[6]:
+        return True
+return False
+User ID: 2
+
+if n <= 5:
+    return False
+if sum(o[1:5]) <= 1:
+    if n == 6:
+        return True
+    if o[6]:
+        return True
+return False
+User ID: 2
+
+if n>0 and random.randint(0,100) != 14:
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+if n>0:
+    if random.randint(0,100) != 14:
+        return False
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+x = 50
+if n <= x:
+    return False
+if sum(o[1:x]) <= 0:
+    if n == x + 1:
+        return True
+    if o[x + 1]:
+        return True
+return False
+User ID: 2
+
+x = 50
+if n <= x:
+    return False
+if sum(o[1:x + 1]) <= 0:
+    if n == x + 2:
+        return True
+    if o[x + 2]:
+        return True
+return False
+User ID: 2
+
+x = 50
+if n < x:
+    return False
+if sum(o[1:x]) <= 0:
+    if n == x + 1:
+        return True
+    if o[x + 1]:
+        return True
+return False
+User ID: 2
+
+x = 200
+if n <= x:
+    return False
+if sum(o[1:x]) <= 0:
+    if n == x + 1:
+        return True
+    if o[x + 1]:
+        return True
+return False
+User ID: 2
+
+if n>0:
+    if random.randint(0,30) != 14:
+        return False
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+if n>0:
+    if random.randint(0,100) != 14:
+        return False
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+if n>0:
+    if random.randint(0,20) != 14:
+        return False
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+x = 20
+if n <= x:
+    return False
+if False not in o[1:x]:
+    if n == x + 1:
+        return True
+    if o[x + 1]:
+        return True
+return False
+User ID: 2
+
+return True
+User ID: 34
+
+x = 200
+if n <= x:
+    return False
+if sum(o[1:x]) <= (x / 10):
+    if n == x + 1:
+        return True
+    if o[x + 1]:
+        return True
+return False
+User ID: 2
+
+if n>0:
+    if random.randint(0,100) != 14 or False in o:
+        return False
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+# Exploit the decision-making process based on the weaknesses
+if n < 150:
+    return True  # Return True for values of n less than 150 to build trust
+if n == 150:
+    return False  # Always betray at n == 150 to break the cycle
+if n == 151:
+    return True  # Exploit the code for n == 151 where it returns True
+if n == 152:
+    # Manipulate the environment by making sure o[151] is False
+    if not o.get(151, True):  # If o[151] is False, return True
+        return True
+    return False  # Otherwise, follow the regular logic
+return False  # Default betrayal behavior
+
+User ID: 24
+
+if n>0:
+    if random.randint(0,150) != 14 or False in o:
+        return False
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+if n > 0:
+    return o[-1]
+else:
+    return True
+User ID: 34
+
+# Exploit the decision-making process based on the weaknesses
+if n < 150:
+    return True  # Return True for values of n less than 150 to build trust
+if n == 150:
+    return False  # Always betray at n == 150 to break the cycle
+if n == 151:
+    return True  # Exploit the code for n == 151 where it returns True
+if n == 152:
+    # Manipulate the environment by making sure o[151] is False
+    if not o[151]:  # If o[151] is False, return True
+        return True
+    return False  # Otherwise, follow the regular logic
+return False  # Default betrayal behavior
+
+User ID: 24
+
+if n<5:
+    return False
+else:
+    return o[-1]
+User ID: 34
+
+if n>0:
+    if random.randint(0,30) != 14 or False in o:
+        return False
+    return o[-1]
+else:
+    return True
+User ID: 7
+
+return false
+User ID: 35
+
+return False
+User ID: 35
+
+return sum(o) < n - 1
+User ID: 28
+
+return sum(o) < n - 2
+User ID: 28
+
+if n == 100:
+    return False
+return sum(o) < n - 2
+User ID: 28
+
+return sum(o) < n - 2
+User ID: 24
+

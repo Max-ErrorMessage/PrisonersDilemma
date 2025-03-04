@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$game_length = rand(50, 1000);
+$game_length = rand(200, 400);
 
 $fetch_code_path = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
@@ -80,10 +80,6 @@ $query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission WHERE Gam
 $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
 
 foreach ($scores as $user_id => $score) {
-    if (!is_numeric($user_id) || !is_numeric($score)) {
-        continue;
-    }
-
     $adjusted_points = $score / (($totalRecords - 1) * $game_length);
 
     $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
