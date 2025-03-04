@@ -46,6 +46,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $_SESSION['Error3'] = $list;
 
+
+        if ($gameid == 2){ //if gameid is 2 (Yahtzee data will be ready to be put into the database after submission)
+
+            $json_file = '/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
+            if (!file_exists($json_file)) {
+                die("Error: scores.json file not found.");
+            }
+
+            $json_data = file_get_contents($json_file);
+            $scores = json_decode($json_data, true);
+
+            if (!is_array($scores)) {
+                die("Error: Invalid JSON format.");
+            }
+
+            $updated = 0;
+
+            $query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission WHERE Game_ID = 1");
+            $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
+
+            foreach ($scores as $user_id => $score) {
+                if (!is_numeric($user_id) || !is_numeric($score)) {
+                    continue;
+                }
+
+                $adjusted_points = $score / (($totalRecords - 1) * $game_length);
+
+                $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
+
+                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_STR);
+
+                if ($stmt->execute()) {
+                    $updated++;
+                }
+            }
+
+            unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
+            // unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
+            unlink($json_file);
+
+            echo "Scores successfully updated.\nGame length:" . $game_length ."\n";
+
+            ?>
+        }
+
     } else { // Code is not fine: $output is the error provided
         if ($output == "") { // No error provided: most likely the cause of a timeout
             $output = "Your code failed to execute in the required time.";
