@@ -18,6 +18,16 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twokie - New Submission</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        history.pushState(null, null, "twokie.com/Yahtzee");
+        function stopTab( e ) {
+            var evt = e || window.event
+            if ( evt.keyCode === 9 ) {
+                return false
+            }
+        }
+    </script>
     <style>
         body {
             background: black;
@@ -155,9 +165,9 @@
 
     <form action="submission.php" method="POST">
         <label for="name">Enter your reroll function!:</label>
-        <textarea id="name" name="code" placeholder="return []   #reroll no dice" required></textarea>
+        <textarea id="name" name="code" placeholder="return []   #reroll no dice" onkeydown="return stopTab(event);" required></textarea>
         <label for="name">Enter your select function!:</label>
-        <textarea id="name2" name="code2" placeholder="return choices[0]   #returns first available move" required></textarea>
+        <textarea id="name2" name="code2" placeholder="return choices[0]   #returns first available move" onkeydown="return stopTab(event);" required></textarea>
         <input type="hidden" name="game_id" value=2>
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
