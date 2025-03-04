@@ -170,6 +170,20 @@ if(!isset($_SESSION['code'])){
         button:hover {
             background: #00cc00;
         }
+
+        .line-numbers {
+            padding: 10px;
+            background: #222;
+            color: #888;
+            text-align: right;
+            width: 40px;
+            overflow: hidden;
+            line-height: 1.4;
+            font-family: monospace;
+            font-size: 1rem;
+            border-right: 2px solid white;
+        }
+
     </style>
     <script>
         const textarea = document.getElementById('name');
