@@ -111,7 +111,7 @@ if(!isset($_SESSION['code'])){
 
         #title{
             font-size: 5rem;
-            margin-top: 20px;
+            margin-top: 40px;
         }
         #var{
             color:rgb(192, 97, 49);
