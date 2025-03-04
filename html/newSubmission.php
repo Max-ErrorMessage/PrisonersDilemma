@@ -80,6 +80,7 @@ if(!isset($_SESSION['code'])){
             position: absolute;
             top: 250px;
             left: 5%;
+            right: 5%;
             background: #003300;
             padding: 20px;
             border-radius: 10px;
@@ -87,8 +88,6 @@ if(!isset($_SESSION['code'])){
             display: flex;
             flex-direction: column;
             align-items: stretch;
-            width: 66.66%;
-            max-width: none;
         }
 
 
@@ -100,7 +99,6 @@ if(!isset($_SESSION['code'])){
 
         textarea {
             width: 90%; /* Fill the form's width */
-            max-width: 1000px; /* Wider input box */
             min-height: 500px; /* Increased starting height */
             max-height: 600px; /* Larger maximum height */
             padding: 10px;
