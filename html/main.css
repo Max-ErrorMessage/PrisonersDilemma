@@ -1,142 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-/* General Page Styling */
-body {
-    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-}
-
-/* Navbar */
 #NavBar {
     position: fixed;
-    top: 0;
+    background-color: black;
     left: 0;
+    top: 0;
     width: 100%;
     display: flex;
     align-items: center;
     padding: 10px;
-    background: #003300;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    border-bottom: 1px solid #3f7652;
 }
-
 #navbarLogo {
-    height: 30px;
-    margin-right: 10px;
+    height: 40px;
 }
-
 .nav-link {
+    padding: 10px;
+    background-color: #959391;
+    border-radius: 2px;
     color: white;
     text-decoration: none;
-    margin: 0 10px;
-    font-size: 1rem;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background 0.3s ease, color 0.3s ease;
+    margin-left: auto;
+    padding-right:30px;
 }
 
-.nav-link:hover {
-    background: #00cc00;
-    color: black;
+#signinbutton{
+    background-color: #3f7652;
+}
+#NavBar a + a {
+    margin-left: 10px;
+}
+#NavBar a:last-child {
+    margin-right: 30px;
+}
+.nav-link:hover{
+    background-color: #a5a3a1;
+    border-radius: 4px;
 }
 
-/* Main Content */
-#title {
-    position: absolute;
-    top: 100px;
-    left: 100px;
-    font-size: 5rem;
+#signinbutton:hover{
+    background-color: #4f8662;
+}
+.nav-link:active{
+    background-color: #c5c3c1;
+    border-radius: 7px;
 }
 
-h1 {
-    color: rgb(91, 169, 107);
-    font-size: 3rem;
+#signinbutton:active{
+    background-color: #6fa682;
 }
+body{
+    background-color:black;
+    height:200%;
+    overflow-x:hidden;
+    font-family: 'Roboto', sans-serif;
 
-pre {
-    font-size: 1rem;
 }
-
-/* Info Section */
-#info {
-    position: absolute;
-    top: 160px;
-    left: 930px;
+#main{
+    color:white;
 }
-
-/* Form Styling */
-form {
-    position: absolute;
-    top: 250px;
-    left: 70px;
-    background: #003300;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    max-width: 700px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-textarea {
-    width: 100%;
-    max-width: 680px;
-    min-height: 500px;
-    max-height: 600px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid white;
-    border-radius: 5px;
-    background: black;
-    color: white;
-    font-size: 1rem;
-    resize: none;
-    overflow-y: auto;
-}
-
-/* Buttons */
-button {
-    background: #006600;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    align-self: center;
-}
-
-button:hover {
-    background: #00cc00;
-}
-
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
 }
 
 ::-webkit-scrollbar-track {
     background: black;
-    border-left: solid 1px #3f7652;
+    border-left:solid 1px #3f7652;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -146,4 +74,80 @@ button:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #4f8662;
+}
+body {
+    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+#NavBar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    background: #003300;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#navbarLogo {
+    height: 30px; /* Reduced logo size */
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px; /* Reduced margin */
+    font-size: 1rem; /* Reduced font size */
+    padding: 5px 10px; /* Reduced padding */
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background: #00cc00;
+    color: black;
+}
+
+#Main {
+    margin-top: 70px; /* Adjusted for smaller navbar */
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+ol {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #003300;
+    padding: 10px;
+    margin: 5px auto;
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+}
+
+li:hover {
+    background: #005500;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
