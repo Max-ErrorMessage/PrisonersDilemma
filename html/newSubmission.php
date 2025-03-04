@@ -85,10 +85,10 @@ if(!isset($_SESSION['code'])){
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            align-items: stretch; /* Stretch to the form's width */
+            flex-direction: column;
+            align-items: stretch;
             width: 100%;
-            max-width: 700px; /* Wider form to fit the longer input box */
+            max-width: 1000px;
         }
 
         label {
