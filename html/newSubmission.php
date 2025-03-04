@@ -150,7 +150,11 @@ if(!isset($_SESSION['code'])){
 
         .container {
           display: flex;
-          gap: 10px; /* Optional: Adds space between the divs */
+          gap: 50px;
+        }
+
+        #box {
+            padding: 5px;
         }
 
         button {
@@ -181,7 +185,7 @@ if(!isset($_SESSION['code'])){
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
     <div class="container">
-    <div id="task">
+    <div id="box">
     <h1>Your task:</h1>
     <pre>
 - Write a function that returns a boolean value
@@ -193,7 +197,7 @@ if(!isset($_SESSION['code'])){
 - Your bot will be pitted against every other bot - try to do as well as possible against the whole field!
     </pre>
     </div>
-    <div id="variables">
+    <div id="box">
     <h1>
         Variables:
     </h1>
