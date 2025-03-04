@@ -133,15 +133,13 @@ if(!isset($_SESSION['code'])){
         }
         pre{
             font-size: 1rem;
+            text-align: left;
         }
         #php{
             position: absolute;
             top: 930px;
             left: 100px;
             padding: 40px;
-        }
-        #example{
-            text-align: left;
         }
 
         button {
@@ -217,7 +215,7 @@ if(!isset($_SESSION['code'])){
     <h1>
         Example bot:
     </h1>
-    <pre id="example">if n > 0:
+    <pre>if n > 0:
     return opponent_decisions[-1]
 else:
     return False
