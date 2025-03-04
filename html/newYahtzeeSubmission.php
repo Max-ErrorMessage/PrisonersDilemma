@@ -57,6 +57,9 @@
         }
 
         form {
+            position: absolute;
+            top: 250px;
+            left: 70px;
             background: #003300;
             padding: 20px;
             border-radius: 10px;
@@ -65,7 +68,7 @@
             flex-direction: column; /* Stack elements vertically */
             align-items: stretch; /* Stretch to the form's width */
             width: 100%;
-            max-width: 500px; /* Wider form to fit the longer input box */
+            max-width: 700px; /* Wider form to fit the longer input box */
         }
 
         label {
@@ -76,8 +79,8 @@
 
         textarea {
             width: 100%; /* Fill the form's width */
-            max-width: 480px; /* Wider input box */
-            min-height: 180px; /* Increased starting height */
+            max-width: 680px; /* Wider input box */
+            min-height: 500px; /* Increased starting height */
             max-height: 600px; /* Larger maximum height */
             padding: 10px;
             margin-bottom: 10px;
@@ -88,6 +91,32 @@
             font-size: 1rem;
             resize: none; /* Prevent manual resizing */
             overflow-y: auto; /* Add vertical scroll when needed */
+        }
+        #title{
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            font-size: 5rem;
+        }
+        #var{
+            color:rgb(192, 97, 49);
+            font-size: 1rem;
+        }
+        h1{
+            color: rgb(91, 169, 107);
+            font-size: 3rem;
+        }
+        pre{
+            font-size: 1rem;
+        }
+        #php{
+            position: absolute;
+            top: 1530px;
+            left: 100px;
+            padding: 40px;
+        }
+        #example{
+            text-align: left;
         }
 
         button {
@@ -108,6 +137,8 @@
     </style>
 </head>
 
+<code>
+<div id="title">Yahtzee:</div>
 <body>
     <nav>
         <a href="index.php" class="nav-link">Home</a>
@@ -118,20 +149,71 @@
 
     <form action="submission.php" method="POST">
         <label for="name">Enter your reroll function!:</label>
-        <textarea id="name" name="code" required></textarea>
+        <textarea id="name" name="code" default="return []   #reroll no dice" required></textarea>
         <label for="name">Enter your select function!:</label>
-        <textarea id="name2" name="code2" required></textarea>
+        <textarea id="name2" name="code2" default="return choices[0] #returns first available move" required></textarea>
         <input type="hidden" name="game_id" value=2>
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
 
-    <?php
+    <div id="php"><?php
         session_start();
         if(isset($_SESSION['Error3'])){
             echo "<h2>" . $_SESSION['Error3'] . "</h2>";
         } 
-    ?>
+    ?></div>
 </body>
+<div id="info">
+    <h1>Your task:</h1>
+    <pre>
+First box: reroll function
+    - This function will be called when you need to reroll dice
+    - It should return a list of the dice you want to reroll
+    - The list should contain the indexes of the dice you want to reroll
+
+Second box: select function
+    - This function will be called when you need to select a move after rolling
+    - It should return the move you want to make
+    </pre>
+    <h1>
+        Variables:
+    </h1>
+    <div id="var">dice:</div>
+    <pre>   - an array of your current dice</pre>
+    <div id="var">availability:</div>
+    <pre>   - a dictionary containing the availability of each move
+    (key is the move, value is a boolean)</pre>
+    <div id="var">available_points:</div>
+    <pre>   - a dictionary containing the amount of points each move would score
+    <div id="var">claimed_points:</div>
+    <pre>   - a dictionary containing the amount of points each scored move
+    (key is the move, value is the points)</pre>
+    <pre>
+list of keys:
+    - "Yahtzee", "Large Straight", "Full House", "Small Straight", "4 of a Kind", 
+    "3 of a Kind", "Sixes", "Fives", "Fours", "Threes", "Twos", "Ones", "Chance"
+    </pre>
+    <h1>
+        Example bot:
+    </h1>
+    <pre id="example">counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+
+max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0]
+    </pre>
+</div>
+</code>
 </html>
 
 
