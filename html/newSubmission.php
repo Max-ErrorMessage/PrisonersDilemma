@@ -171,6 +171,24 @@ if(!isset($_SESSION['code'])){
             background: #00cc00;
         }
     </style>
+    <script>
+        const textarea = document.getElementById('name');
+        const lineNumbers = document.getElementById('line-numbers');
+
+        function updateLineNumbers() {
+            const lines = textarea.value.split('\n');
+            let lineNumberHTML = '';
+            for (let i = 1; i <= lines.length; i++) {
+                lineNumberHTML += `${i}<br>`;
+            }
+
+            lineNumbers.innerHTML = lineNumberHTML;
+        }
+
+        textarea.addEventListener('input', updateLineNumbers);
+
+        window.onload = updateLineNumbers;
+    </script>
 </head>
 <code>
 <div id="title">Prisoner's Dilemma:</div>
@@ -187,10 +205,12 @@ if(!isset($_SESSION['code'])){
     </div>
     <form action="submission.php" method="POST">
         <label for="name">Enter your code!:</label>
-        <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
+        <div style="display: flex; align-items: flex-start;">
+            <div id="line-numbers" style="text-align: right; padding-right: 10px; font-family: monospace; user-select: none;">
+            </div>
 
-
-# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
+            <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True\n\n# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);" style="resize: none; width: 100%; font-family: monospace;" rows="10"></textarea>
+        </div>
         <input type="hidden" name="game_id" value="1">
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
@@ -231,7 +251,6 @@ if(!isset($_SESSION['code'])){
     <pre id='example'>if n > 0:
     return opponent_decisions[-1]
 else:
-    return False
-    </pre>
+    return False</pre>
 </code>
 </html>
