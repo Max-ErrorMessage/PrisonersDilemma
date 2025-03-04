@@ -108,7 +108,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <p>The classic dice-based strategy game.</p>
                 <p>In this challenge users will write 2 functions, on that upon being given 5 dice, returns which ones you would like to reroll</p>
                 <p>then after three rolls you have to choose how you are going to score these dice</p>
-                <a class="go" href="#">Coming Soon!</a>
+                <a class="go" href="newYahtzeeSubmission.php">Begin!</a>
 
                 <br><br><br><br>
             </div>
