@@ -18,6 +18,16 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twokie - New Submission</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        history.pushState(null, null, "twokie.com/Yahtzee");
+        function stopTab( e ) {
+            var evt = e || window.event
+            if ( evt.keyCode === 9 ) {
+                return false
+            }
+        }
+    </script>
     <style>
         body {
             background: black;
@@ -95,7 +105,7 @@
         #info {
             position: absolute;
             top: 160px;
-            left: 930px;
+            left: 910px;
         }
         #title{
             position: absolute;
@@ -145,18 +155,19 @@
 <code>
 <div id="title">Yahtzee:</div>
 <body>
-    <nav>
+<div id="NavBar">
+        <img src="images/twokielogo.png" id="navbarLogo">
         <a href="index.php" class="nav-link">Home</a>
         <a href="leaderboards.php" class="nav-link">Leaderboards</a>
         <a href="profile.php" class="nav-link">My Profile</a>
-        <a href="signin.php" id="signinbutton" class="nav-link">Sign Out</a>
-    </nav>
+        <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
+    </div>
 
     <form action="submission.php" method="POST">
         <label for="name">Enter your reroll function!:</label>
-        <textarea id="name" name="code" placeholder="return []   #reroll no dice" required></textarea>
+        <textarea id="name" name="code" placeholder="return []   #reroll no dice" onkeydown="return stopTab(event);" required></textarea>
         <label for="name">Enter your select function!:</label>
-        <textarea id="name2" name="code2" placeholder="return choices[0]   #returns first available move" required></textarea>
+        <textarea id="name2" name="code2" placeholder="return choices[0]   #returns first available move" onkeydown="return stopTab(event);" required></textarea>
         <input type="hidden" name="game_id" value=2>
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
