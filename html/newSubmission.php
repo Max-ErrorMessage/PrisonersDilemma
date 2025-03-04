@@ -111,7 +111,7 @@ if(!isset($_SESSION['code'])){
 
         #title{
             font-size: 5rem;
-            margin-top: 40px;
+            margin-top: 50px;
         }
         #var{
             color:rgb(192, 97, 49);
@@ -179,7 +179,7 @@ if(!isset($_SESSION['code'])){
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
 
-    <div id="info">
+    <div id="task">
     <h1>Your task:</h1>
     <pre>
 - Write a function that returns a boolean value
@@ -190,6 +190,8 @@ if(!isset($_SESSION['code'])){
 - Aim for the highest score!
 - Your bot will be pitted against every other bot - try to do as well as possible against the whole field!
     </pre>
+    </div>
+    <div id="variables">
     <h1>
         Variables:
     </h1>
