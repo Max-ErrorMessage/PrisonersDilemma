@@ -3,6 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
     include '../db.php';
     $code = $_POST['code'];
+    $_SESSION['code'] = $code;
     $uname = $_SESSION['uname'];
     $user_id = $_SESSION['user_id'];
     $gameid = $_POST['game_id'];

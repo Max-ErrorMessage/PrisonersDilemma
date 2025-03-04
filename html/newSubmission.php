@@ -10,10 +10,10 @@ session_start();
 
 // If 'uname' is set, display the welcome message
 $uname = htmlspecialchars($_SESSION['uname']);
-if(!isset($_POST['code'])){
+if(!isset($_SESSION['code'])){
     $txt = "";
 } else {
-    $txt = $_POST['code'];
+    $txt = $_SESSION['code'];
 }  
 ?>
 
