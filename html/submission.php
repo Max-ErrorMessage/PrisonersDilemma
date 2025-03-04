@@ -113,14 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die("Error: Invalid JSON format.");
         }
 
-        $score = $scores[$user_id]
+        $score = $scores[$user_id];
 
         $stmt = $pdo->prepare("UPDATE Submission SET Points = :score WHERE User_ID = :user_id AND Game_ID = 2");
 
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':score', $score, PDO::PARAM_STR);
 
-        $stmt->execute()
+        $stmt->execute();
 
 
         unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json');
