@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($gameid == 2){ //if gameid is 2 (Yahtzee data will be ready to be put into the database after submission)
 
-            $json_file = '/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json';
+            $json_file = '/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/scores.json';
             if (!file_exists($json_file)) {
                 die("Error: scores.json file not found.");
             }
@@ -83,13 +83,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
+            unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json');
             // unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
             unlink($json_file);
 
             echo "Scores successfully updated.\nGame length:" . $game_length ."\n";
 
-            ?>
         }
 
     } else { // Code is not fine: $output is the error provided
