@@ -157,9 +157,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':score', $score, PDO::PARAM_STR);
 
         $stmt->execute();
-        $_SESSION['Error3'] = $user_id . $score;
-        header($location);
-        exit();
 
 
         unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json');
