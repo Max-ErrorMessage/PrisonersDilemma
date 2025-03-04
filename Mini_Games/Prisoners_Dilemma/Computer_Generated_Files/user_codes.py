@@ -89,12 +89,106 @@ def user_7(self_decisions, opponent_decisions, s, o, n):
 	    return True
 
 
-def user_2(self_decisions, opponent_decisions, s, o, n):
-	return False if sum([0 if decision else 1 for decision in opponent_decisions]) >= 2 else True
+def user_26(self_decisions, opponent_decisions, s, o, n):
+	return sum(o[-8:]) == 0
 
 
-def user_1(self_decisions, opponent_decisions, s, o, n):
+def user_6(self_decisions, opponent_decisions, s, o, n):
+	return sum(o[-5:]) == 0
+
+
+def user_3(self_decisions, opponent_decisions, s, o, n):
+	if sum(o[-10:]) == 10:
+	    return False
+	return sum(o[-2:]) == 2
+
+
+def user_25(self_decisions, opponent_decisions, s, o, n):
+	if n < 5:
+	    return True
+	
+	if n > 20 and sum(o[-10:]) == sum(s[-10:]):
+	    return True
+	
+	betrayals = sum(1 for d in o if not d)
+	
+	betrayal_threshold = 0.5
+	betrayal_rate = betrayals / n
+	
+	if betrayal_rate < betrayal_threshold:
+	    return True
+	
+	punishment_threshold = 0.7
+	if betrayal_rate > punishment_threshold:
+	    return False
+	
+	if random.random() < 0.2:
+	    return False
+	
 	return True
 
 
-user_code = {"11" : user_11, "9" : user_9, "10" : user_10, "18" : user_18, "21" : user_21, "22" : user_22, "19" : user_19, "17" : user_17, "20" : user_20, "24" : user_24, "28" : user_28, "7" : user_7, "2" : user_2, "1" : user_1}
+def user_8(self_decisions, opponent_decisions, s, o, n):
+	if n == 0:
+	    return True
+	
+	if sum(o) > 0:
+	    return False
+	
+	if n == 150:
+	    return False
+	
+	if o[151]:
+	    return False
+	
+	return True
+
+
+def user_2(self_decisions, opponent_decisions, s, o, n):
+	if sum(o) == n:
+	    return False
+	if n > 200:
+	    return random.choice([True, False])
+	return True
+
+
+def user_14(self_decisions, opponent_decisions, s, o, n):
+	return False if n < 10 else True
+
+
+def user_4(self_decisions, opponent_decisions, s, o, n):
+	if sum(o[-10:]) == 10:
+	    return False
+	return sum(o[-2:]) == 2
+
+
+def user_1(self_decisions, opponent_decisions, s, o, n):
+	if False in o and n < 150:
+	    return False
+	
+	if n < 150:
+	    return True
+	
+	if n == 150:
+	    return False
+	
+	if n == 151:
+	    return True
+	
+	if o[151]:
+	    return False
+	
+	if not o[151]:
+	    if n == 152:
+	        return True
+	
+	    if not o[152]:
+	        return False
+	    return True
+
+
+def user_29(self_decisions, opponent_decisions, s, o, n):
+	return True
+
+
+user_code = {"11" : user_11, "9" : user_9, "10" : user_10, "18" : user_18, "21" : user_21, "22" : user_22, "19" : user_19, "17" : user_17, "20" : user_20, "24" : user_24, "28" : user_28, "7" : user_7, "26" : user_26, "6" : user_6, "3" : user_3, "25" : user_25, "8" : user_8, "2" : user_2, "14" : user_14, "4" : user_4, "1" : user_1, "29" : user_29}

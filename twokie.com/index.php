@@ -1,3 +1,3 @@
 <?php
-echo "Creamy!";
+echo "TEST";
 ?>
