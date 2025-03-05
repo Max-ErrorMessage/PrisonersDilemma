@@ -1,10 +1,22 @@
-<?php
+<!--
+This file gets run automatically from a cron job. At time of writing, it gets run every 5 minutes.
+The file first fetches user data using a secondary php file to read from the MySQL server.
+It then uploads that to a JSON file and runs define_user_codes.py to write a python file containing all the users and
+their functions.
+It resets the scores.json file and then for each pair of players runs simulate_2_players.py to update the scores for those 2 players
+Finally, it takes the updated scores in the scores.json file and updates the database to refelect the new scores.
+-->
 
+<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 $game_length = rand(200, 400);
+// Randomly generate a game length between 200 and 400.
+// If users can know that a game will be X rounds long then the game starts to become solved as it's always correct to
+// betray on round X and therefore it's always correct to betray on round X-1, etc.
+// The best solution is to simply have a slightly random game length
 
 $fetch_code_path = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
 
@@ -24,12 +36,16 @@ if (file_exists($fetch_code_path)) {
 } else {
     echo 'Error: fetch_code.php file does not exist at the specified path.';
 }
+// Fetches a PHP array containing the user IDs and their equivalent submitted code from fetch_code.php
 
 $json_codes = json_encode($user_codes, JSON_PRETTY_PRINT);
 
 file_put_contents("/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json", $json_codes);
+// Turns the PHP array into a JSON-formatted array and uploads it to the user_codes.json file.
 
 $output = exec("python3 /var/www/Mini_Games/Prisoners_Dilemma/define_user_codes.py");
+// Runs the define_user_codes.py file, which takes the user_codes.json file and creates a new python file for later
+// programs to interact with
 
 $empty_scores = [];
 
@@ -42,6 +58,7 @@ $json_empty_scores = json_encode($empty_scores, JSON_PRETTY_PRINT);
 
 fopen('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'w');
 file_put_contents('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', $json_empty_scores);
+// Resets the scores to be 0 for each player
 
 foreach ($user_codes as $user_code_1) {
     $user_1 = $user_code_1["User_ID"];
@@ -59,6 +76,10 @@ foreach ($user_codes as $user_code_1) {
         exec($command);
     }
 }
+// Iterates through each unique set of players (for example, if User 1 and User 2 have already played a game, User 2
+// will not later player User 1)
+// For each set of users, run simulate_2_players.py to pit the two algorithms against each other and update the scores
+// based on the result
 
 include '/var/www/db.php';
 
@@ -69,33 +90,32 @@ if (!file_exists($json_file)) {
 
 $json_data = file_get_contents($json_file);
 $scores = json_decode($json_data, true);
+// Gets the updated scores
 
 if (!is_array($scores)) {
     die("Error: Invalid JSON format.");
 }
 
-$updated = 0;
-
 $query = $pdo->query("SELECT COUNT(*) AS total_records FROM Submission WHERE Game_ID = 1");
 $totalRecords = $query->fetch(PDO::FETCH_ASSOC)['total_records'];
+// Total record count allows the scores to be adjusted for the average points per round
 
 foreach ($scores as $user_id => $score) {
     $adjusted_points = $score / (($totalRecords - 1) * $game_length);
+    // Scores are adjusted from the total score to the average score per round
+    // This helps obfuscate round length from users and also makes the leaderboard more understandable
 
     $stmt = $pdo->prepare("UPDATE Submission SET Points = :adjusted_points WHERE User_ID = :user_id AND Game_ID = 1");
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_STR);
-    
-    if ($stmt->execute()) {
-        $updated++;
-    }
 }
 
 unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
-// unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
+unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
 unlink($json_file);
+// Deletes all the temporary files that were generated through the length of the program
 
 echo "Scores successfully updated.\nGame length:" . $game_length ."\n";
-
+// Output is not very necessary but is helpful for debugging when manually running the file
 ?>
