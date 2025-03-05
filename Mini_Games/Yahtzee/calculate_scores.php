@@ -87,7 +87,7 @@ foreach ($scores as $user_id => $score) {
 }
 
 unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.json');
-// unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
+// unlink('/var/www/Mini_Games/Yahtzee/Computer_Generated_Files/user_codes.py');
 unlink($json_file);
 
 echo "Scores successfully updated.";

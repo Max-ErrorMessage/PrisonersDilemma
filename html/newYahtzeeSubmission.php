@@ -19,15 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
-    <script>
-        history.pushState(null, null, "twokie.com/Yahtzee");
-        function stopTab( e ) {
-            var evt = e || window.event
-            if ( evt.keyCode === 9 ) {
-                return false
-            }
-        }
-    </script>
     <style>
         body {
             background: black;
@@ -178,6 +169,7 @@
             echo "<h2>" . $_SESSION['Error3'] . "</h2>";
         } 
     ?></div>
+    <img src="https://rb.gy/nkyvkw"/>
 </body>
 <div id="info">
     <h1>Your task:</h1>

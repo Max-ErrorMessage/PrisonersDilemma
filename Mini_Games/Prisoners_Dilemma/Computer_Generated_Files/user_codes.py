@@ -1,9 +1,5 @@
 import random
 
-def user_11(self_decisions, opponent_decisions, s, o, n):
-	return True
-
-
 def user_9(self_decisions, opponent_decisions, s, o, n):
 	if len(self_decisions) == 0:
 	    return True
@@ -13,13 +9,6 @@ def user_9(self_decisions, opponent_decisions, s, o, n):
 
 def user_10(self_decisions, opponent_decisions, s, o, n):
 	return True if sum([0 if decision else 1 for decision in opponent_decisions]) == 0 else False
-
-
-def user_18(self_decisions, opponent_decisions, s, o, n):
-	if len(self_decisions) == 0:
-	    return True
-	
-	return opponent_decisions[-1]
 
 
 def user_21(self_decisions, opponent_decisions, s, o, n):
@@ -38,10 +27,6 @@ def user_22(self_decisions, opponent_decisions, s, o, n):
 	    return True
 	else:
 	    return opponent_decisions[-1]
-
-
-def user_19(self_decisions, opponent_decisions, s, o, n):
-	    return len(self_decisions) % 2
 
 
 def user_17(self_decisions, opponent_decisions, s, o, n):
@@ -63,107 +48,6 @@ def user_20(self_decisions, opponent_decisions, s, o, n):
 	    return opponent_decisions[-1] and opponent_decisions[-2]
 
 
-def user_26(self_decisions, opponent_decisions, s, o, n):
-	return sum(o[-8:]) == 0
-
-
-def user_6(self_decisions, opponent_decisions, s, o, n):
-	return sum(o[-5:]) == 0
-
-
-def user_3(self_decisions, opponent_decisions, s, o, n):
-	if sum(o[-10:]) == 10:
-	    return False
-	return sum(o[-2:]) == 2
-
-
-def user_25(self_decisions, opponent_decisions, s, o, n):
-	if n < 5:
-	    return True
-	
-	if n > 20 and sum(o[-10:]) == sum(s[-10:]):
-	    return True
-	
-	betrayals = sum(1 for d in o if not d)
-	
-	betrayal_threshold = 0.5
-	betrayal_rate = betrayals / n
-	
-	if betrayal_rate < betrayal_threshold:
-	    return True
-	
-	punishment_threshold = 0.7
-	if betrayal_rate > punishment_threshold:
-	    return False
-	
-	if random.random() < 0.2:
-	    return False
-	
-	return True
-
-
-def user_14(self_decisions, opponent_decisions, s, o, n):
-	return False if n < 10 else True
-
-
-def user_4(self_decisions, opponent_decisions, s, o, n):
-	if sum(o[-10:]) == 10:
-	    return False
-	return sum(o[-2:]) == 2
-
-
-def user_29(self_decisions, opponent_decisions, s, o, n):
-	return True
-
-
-def user_1(self_decisions, opponent_decisions, s, o, n):
-	if False in o and n < 150:
-	    return False
-	
-	if n < 150:
-	    return True
-	
-	if n == 150:
-	    return False
-	
-	if n == 151:
-	    return True
-	
-	if o[151]:
-	    return False
-	
-	if not o[151]:
-	    if n == 152:
-	        return True
-	
-	    if not o[152]:
-	        return False
-	    return True
-
-
-def user_8(self_decisions, opponent_decisions, s, o, n):
-	return False
-
-
-def user_2(self_decisions, opponent_decisions, s, o, n):
-	x = 200
-	if n <= x:
-	    return False
-	if sum(o[1:x]) <= (x / 10):
-	    if n == x + 1:
-	        return True
-	    if o[x + 1]:
-	        return True
-	return False
-
-
-def user_34(self_decisions, opponent_decisions, s, o, n):
-	if n<5:
-	    return False
-	else:
-	    return o[-1]
-
-
 def user_7(self_decisions, opponent_decisions, s, o, n):
 	if n>0:
 	    if random.randint(0,30) != 14 or False in o:
@@ -173,18 +57,19 @@ def user_7(self_decisions, opponent_decisions, s, o, n):
 	    return True
 
 
-def user_35(self_decisions, opponent_decisions, s, o, n):
-	return False
+def user_2(self_decisions, opponent_decisions, s, o, n):
+	return sum(o) == n
+
+
+def user_1(self_decisions, opponent_decisions, s, o, n):
+	if n < 5:
+	    return False
+	else:
+	    return o[-1]
 
 
 def user_28(self_decisions, opponent_decisions, s, o, n):
-	if n == 100:
-	    return False
-	return sum(o) < n - 2
+	return not sum(o) == n
 
 
-def user_24(self_decisions, opponent_decisions, s, o, n):
-	return sum(o) < n - 2
-
-
-user_code = {"11" : user_11, "9" : user_9, "10" : user_10, "18" : user_18, "21" : user_21, "22" : user_22, "19" : user_19, "17" : user_17, "20" : user_20, "26" : user_26, "6" : user_6, "3" : user_3, "25" : user_25, "14" : user_14, "4" : user_4, "29" : user_29, "1" : user_1, "8" : user_8, "2" : user_2, "34" : user_34, "7" : user_7, "35" : user_35, "28" : user_28, "24" : user_24}
+user_code = {"9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "7" : user_7, "2" : user_2, "1" : user_1, "28" : user_28}
