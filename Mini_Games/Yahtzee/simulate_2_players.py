@@ -74,13 +74,13 @@ def calculate_straights():
     found = False
     if availability["Small Straight"]:
         for i in small_straights:
-            if i in dice_set and not found:
+            if i <= dice_set and not found:
                 found = True
                 available_points["Small Straight"] = 30
 
     if availability["Large Straight"]:
         for i in large_straights:
-            if i in dice_set and not found:
+            if i <= dice_set and not found:
                 found = True
                 available_points["Small Straight"] = 30
 

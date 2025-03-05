@@ -84,6 +84,7 @@ if(!isset($_SESSION['code'])){
             display: flex;
             flex-direction: column;
             align-items: stretch;
+	    margin: 30px;
         }
 
 

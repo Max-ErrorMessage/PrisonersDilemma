@@ -782,3 +782,247 @@ User ID: 24
 return sum(o) < n
 User ID: 25
 
+return random.choice([True, False])
+User ID: 24
+
+if n < 3
+   return opponent_decisions
+else
+return false
+User ID: 36
+
+if n >4:
+   return opponent_decisions
+else:
+return false
+User ID: 36
+
+if n <4:
+    return opponent_decisions
+else:
+     return False
+User ID: 36
+
+if n >3:
+     return True
+else:
+     return False
+User ID: 37
+
+return True
+User ID: 38
+
+if n = 0:
+    return True
+else:
+    return False
+User ID: 39
+
+if n == 1:
+    return True
+else:
+    return False
+User ID: 39
+
+if n < 3:
+    return True
+else:
+    return False
+User ID: 40
+
+if n < 3:
+    return true
+else: return false
+User ID: 41
+
+if n < 3:
+    return True
+else:
+    return False
+User ID: 41
+
+if n < 3:
+    return False
+else:
+    return True
+User ID: 42
+
+if n < 1:
+    return true
+else:
+    return oppnent_descisions
+User ID: 43
+
+if n < 1:
+    return True
+else:
+    return opponent_descisions
+User ID: 43
+
+if n < 1:
+    return True
+else:
+    return opponent_decisions
+User ID: 43
+
+hi
+User ID: 45
+
+if n == 0:
+    return False
+else:
+    return o[-1]
+User ID: 44
+
+return
+User ID: 45
+
+return null
+User ID: 46
+
+return Null
+User ID: 46
+
+return return return return return
+User ID: 46
+
+if opponent_decisions == true:
+   return true
+else:
+    false
+User ID: 46
+
+if opponent_decisions == True:
+    return True
+else:
+    return False
+User ID: 46
+
+trust_count = opponent_decisions.count(True)
+betray_count = opponent_decisions.count(False)
+
+if trust_count < betray_count:
+    return False
+else:
+    return True
+User ID: 47
+
+if random.random()<0.75:
+    return False
+else:
+    return True
+User ID: 48
+
+if n >1 return True:
+    return True
+elif opponent_decisions[-1] == True:
+    return True
+else return False
+User ID: 49
+
+if n >1:
+    return True
+elif opponent_decisions[-1] == True:
+    return True
+else return False
+User ID: 49
+
+if n >1:
+    return True
+elif opponent_decisions[-1] == True:
+    return True
+else:
+    return False
+User ID: 49
+
+if n < 1 return True:
+    return True
+elif opponent_decisions[-1] == True:
+    return True
+else return False
+User ID: 49
+
+if n<1:
+    return True
+elif opponent_decisions[-1] == True:
+    return True
+else return False
+User ID: 49
+
+if n<1:
+    return True
+elif opponent_decisions[-1] == True:
+    return True
+else:
+    return False
+User ID: 49
+
+if n < 1:
+    return True
+elif opponent_descisions == False:
+    return False
+elif self_decisions == False:
+    return False
+elif n > 158:
+    return False
+else:
+    return True
+User ID: 51
+
+if n < 1:
+    return True
+elif opponent_decisions == False:
+    return False
+elif self_decisions == False:
+    return False
+elif n > 158:
+    return False
+else:
+    return True
+User ID: 51
+
+if n < 1:
+    return True
+elif opponent_decisions[-1] == False:
+    return False
+elif self_decisions-[-1] == False:
+    return False
+elif n > 158:
+    return False
+else:
+    return True
+User ID: 51
+
+if n < 1:
+    return True
+elif opponent_decisions[-1] == False:
+    return False
+elif self_decisions[-1] == False:
+    return False
+elif n > 158:
+    return False
+else:
+    return True
+User ID: 51
+
+return True
+User ID: 2
+
+return sum(o) < n
+User ID: 2
+
+return sum(o) < n
+User ID: 2
+
+return sum(o) == n
+User ID: 2
+
+if n < 5:
+    return False
+else:
+    return o[-1]
+User ID: 1
+
+return not sum(o) == n
+User ID: 28
+

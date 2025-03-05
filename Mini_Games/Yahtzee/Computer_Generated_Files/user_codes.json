@@ -1,6 +1,0 @@
-[
-    {
-        "UserID": 7,
-        "Code": "counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}\ntotal = 0\ndice_to_reroll = []\nfor i in dice:\n    counts[i] += 1\n    total += 1\nmax_key = max(counts, key=counts.get)\nfor i in range(0,5):\n    if dice[i] != max_key:\n        dice_to_reroll.append(i)\nreturn dice_to_reroll$max_key = max(available_points, key=available_points.get)\nif max_key in choices:\n    return max_key\nelse:\n    return choices[0]"
-    }
-]

@@ -16,6 +16,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <link rel="stylesheet" href="main.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<meta name = "description" content = "Twokie Bots, Code bots to play minigames and compete on leaderboards">
 	<title>Twokie - Home</Title>
         <style>
             
@@ -106,21 +107,25 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <div id="Yahtzee">
                 <h2>Yahtzee</h2>
                 <p>The classic dice-based strategy game.</p>
-                <p>In this challenge users will write 2 functions, on that upon being given 5 dice, returns which ones you would like to reroll</p>
-                <p>then after three rolls you have to choose how you are going to score these dice</p>
+                <p>In this challenge users will write 2 functions. One that, upon being given 5 dice, returns which ones you would like to reroll.</p>
+                <p>Then after three rolls you have to choose how you are going to score these dice</p>
                 <a class="go" href="newYahtzeeSubmission.php">Begin!</a>
 
                 <br><br><br><br>
             </div>
             <div id="Chess">
+		<!--
                 <h2>Chess</h2>
                 <p>We all know what chess is.</p>
                 <p>What we wanted to test was how good can a chess bot get when we introduce a limit on the length of the code users can write</p>
                 <p>In this challenge users are tasked to write chess bots that cannot be over [insert restriction]</p>
-                <img id = "rook" src = "images/redRook.png"></img><br><br><br>
+                -->
+		<img id = "rook" src = "images/redRook.png"></img><br><br><br>
                 <img id = "rook2" src = "images/blueRook.png"></img>
+		<!--
                 <a class="go" href="#">Coming Soon!</a>
-            </div>
+           	-->
+	    </div>
         </div>
         <script>
             const circles = document.querySelectorAll('.circle');
