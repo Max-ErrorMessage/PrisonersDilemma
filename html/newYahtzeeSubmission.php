@@ -20,7 +20,7 @@
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
     <script>
-        history.pushState(null, null, "twokie.com/Yahtzee");
+        history.pushState(null, null, "Yahtzee");
         function stopTab( e ) {
             var evt = e || window.event
             if ( evt.keyCode === 9 ) {
