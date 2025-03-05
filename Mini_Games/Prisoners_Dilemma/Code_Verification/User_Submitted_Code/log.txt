@@ -779,3 +779,6 @@ User ID: 28
 return sum(o) < n - 2
 User ID: 24
 
+return sum(o) < n
+User ID: 25
+
