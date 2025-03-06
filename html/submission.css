@@ -134,6 +134,11 @@ p{
     justify-content: center;
 }
 
+#php:li {
+    padding: 0px;
+    margin: 0px;
+}
+
 button {
     background: #006600;
     color: white;
