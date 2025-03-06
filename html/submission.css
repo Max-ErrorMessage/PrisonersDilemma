@@ -130,6 +130,10 @@ p{
     flex-direction: column;
 }
 
+#php {
+    text-align: center;
+}
+
 button {
     background: #006600;
     color: white;

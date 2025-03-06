@@ -74,8 +74,7 @@ if(!isset($_SESSION['code'])){
                 <button type="submit" name="submitCode" value="submit">Submit</button>
             </form>
         </div>
-        <div class="box">
-            <br><br><br><br><br><br><br><br>
+        <div class="box" id="php">
             <?php
                 session_start();
                 if(isset($_SESSION['Error3'])){
