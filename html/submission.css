@@ -86,6 +86,7 @@ p{
 
 #php {
     align-items: center;
+    border-color: red;
 }
 
 #var {
