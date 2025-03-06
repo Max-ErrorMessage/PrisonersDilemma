@@ -1,10 +1,10 @@
-<!--
+<?php
+
+/*
 Help file for accessing the database.
 This file is called by a variety of other files as a shorthand for defining the necessary variables and initialising
 the connection
--->
-
-<?php
+*/
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

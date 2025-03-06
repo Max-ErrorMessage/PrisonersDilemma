@@ -1,13 +1,12 @@
-<!--
-This file gets run automatically from a cron job. At time of writing, it gets run every 5 minutes.
+<?php
+
+/*This file gets run automatically from a cron job. At time of writing, it gets run every 5 minutes.
 The file first fetches user data using a secondary php file to read from the MySQL server.
 It then uploads that to a JSON file and runs define_user_codes.py to write a python file containing all the users and
 their functions.
-It resets the scores.json file and then for each pair of players runs simulate_2_players.py to update the scores for those 2 players
-Finally, it takes the updated scores in the scores.json file and updates the database to refelect the new scores.
--->
+It resets the scores.json file and then for each pair of players runs simulate_2_players.py to update the scores for th>Finally, it takes the updated scores in the scores.json file and updates the database to refelect the new scores.
+*/
 
-<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -43,7 +42,7 @@ $json_codes = json_encode($user_codes, JSON_PRETTY_PRINT);
 file_put_contents("/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json", $json_codes);
 // Turns the PHP array into a JSON-formatted array and uploads it to the user_codes.json file.
 
-$output = exec("python3 /var/www/Mini_Games/Prisoners_Dilemma/define_user_codes.py");
+$output = exec("python3 /var/www/Mini_Games/Prisoners_Dilemma/define_user_codes.py &>/dev/null");
 // Runs the define_user_codes.py file, which takes the user_codes.json file and creates a new python file for later
 // programs to interact with
 
@@ -71,7 +70,7 @@ foreach ($user_codes as $user_code_1) {
         $arg2 = escapeshellarg($user_2);
         $arg3 = escapeshellarg($game_length);
         
-        $command = "timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3";        
+        $command = "timeout 1 python3 /var/www/Mini_Games/Prisoners_Dilemma/simulate_2_players.py $arg1 $arg2 $arg3 &>/dev/null";        
     
         exec($command);
     }
@@ -109,13 +108,17 @@ foreach ($scores as $user_id => $score) {
 
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindParam(':adjusted_points', $adjusted_points, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    echo "Updated the points for the User with ID " . $user_id . " to be " . $adjusted_points . "\n";
 }
 
 unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
 unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
-unlink($json_file);
+// unlink($json_file);
 // Deletes all the temporary files that were generated through the length of the program
 
-echo "Scores successfully updated.\nGame length:" . $game_length ."\n";
+echo "Total Submissions: " . $totalRecords . "\nScores successfully updated.\nGame length:" . $game_length ."\n";
 // Output is not very necessary but is helpful for debugging when manually running the file
 ?>

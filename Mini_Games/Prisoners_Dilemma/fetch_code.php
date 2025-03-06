@@ -1,9 +1,10 @@
-<!--
+<?php
+
+/*
 This file is called by calculate_scores.php and fetches users and their submitted code from the database.
 
 TODO: Ivy, please comment this file as I don't understand it
--->
-<?php
+*/
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

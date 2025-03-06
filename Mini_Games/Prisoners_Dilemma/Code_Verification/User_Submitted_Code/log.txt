@@ -1069,3 +1069,124 @@ else:
     return False
 User ID: 53
 
+return BOGEY
+User ID: 2
+
+return Bogey
+User ID: 2
+
+return Bogey
+User ID: 2
+
+return Bogey
+User ID: 2
+
+return False
+User ID: 2
+
+return bogey
+User ID: 55
+
+return True
+User ID: 55
+
+return False
+User ID: 55
+
+return bogey
+User ID: 55
+
+a a a a a a a a
+User ID: 55
+
+return True
+User ID: 55
+
+bogey
+User ID: 55
+
+bogey
+User ID: 55
+
+return gaga
+ga
+User ID: 55
+
+ a a a a  a a
+User ID: 55
+
+return False
+User ID: 55
+
+return True if sum(o) == n else False
+User ID: 55
+
+return True if s == o else False
+User ID: 55
+
+krill
+User ID: 55
+
+if !n:
+    return n
+if n < 150:
+    return o[-1]
+return 
+User ID: 56
+
+if not n:
+    return n
+if n < 150:
+    return o[-1]
+return 
+User ID: 56
+
+if n < 1:
+    return True
+elif self_decisions[-1] == False:
+    return False
+elif opponent_decisions[-1] == False:
+    return False
+elif n > 158:
+    return False
+else:
+    return True 
+User ID: 52
+
+return True
+User ID: 59
+
+if False in o and n < 150:
+    return False
+if n < 150:
+    return True
+if n == 150:
+    return False
+if False in o[:150]:
+    return False
+if n == 151:
+    return True
+if o[151]:
+    return False
+if n == 152:
+    return True
+return o[-1]
+
+User ID: 1
+
+if False in o and n < 150:
+    return False
+if n < 150:
+    return True
+if n == 150:
+    return False
+if n == 151:
+    return True
+if o[151]:
+    return False
+if n == 152:
+    return True
+return o[-1]
+
+User ID: 1
+
