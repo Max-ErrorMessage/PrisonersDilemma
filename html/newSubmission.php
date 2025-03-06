@@ -31,11 +31,6 @@ if(!isset($_SESSION['code'])){
     <style>
 
         body {
-            background: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
             height: 100vh;
             flex-direction: column;
@@ -97,8 +92,8 @@ if(!isset($_SESSION['code'])){
             background: black;
             color: white;
             font-size: 1rem;
-            resize: none; /* Prevent manual resizing */
-            overflow-y: auto; /* Add vertical scroll when needed */
+            resize: none;
+            overflow-y: auto;
         }
 
         #title{
