@@ -39,27 +39,36 @@ if(!isset($_SESSION['code'])){
         <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
     </div>
     <div class="container">
-    <div class="box">
-    <h1>Your task:</h1>
-    <p>- Write a function that returns a boolean value<br>&emsp; True == trust<br>&emsp; False == betray
-</p>
-<p>- You will play multiple games in a row with the same bot<br>
-&emsp; - Aim for the highest score!<br>
-&emsp; - Your bot will be pitted against every other bot<br>
-&emsp; - Try to do as well as possible against the whole field!<br>
-    </p>
+        <div class="box">
+            <h1>Your task:</h1>
+            <p>- Write a function that returns a boolean value<br>
+            &emsp; True == trust<br>
+            &emsp; False == betray
+            </p>
+            <p>- You will play multiple games in a row with the same bot<br>
+            &emsp; - Aim for the highest score!<br>
+            &emsp; - Your bot will be pitted against every other bot<br>
+            &emsp; - Try to do as well as possible against the whole field!<br>
+            </p>
+        </div>
+        <div class="box">
+            <h1>Variables:</h1>
+            <div id="var">self_decisions:</div>
+            <p> &emsp;  - an array containing all previous decisions your bot has made (also accessible with 's')</p>
+            <div id="var">opponent_decisions:</div>
+            <p> &emsp; - an array containing all previous decisions your opponent's bot has made (also accessible with 'o')</p>
+            <div id="var">n:</div>
+            <p>   - the number of previous moves made</p>
+        </div>
     </div>
-    <div class="box">
-    <h1>
-        Variables:
-    </h1>
-    <div id="var">self_decisions:</div>
-    <p> &emsp;  - an array containing all previous decisions your bot has made (also accessible with 's')</p>
-    <div id="var">opponent_decisions:</div>
-    <p> &emsp; - an array containing all previous decisions your opponent's bot has made (also accessible with 'o')</p>
-    <div id="var">n:</div>
-    <p>   - the number of previous moves made</p>
-    </div>
+
+    <div id="php">
+    <?php
+            session_start();
+            if(isset($_SESSION['Error3'])){
+                echo "<h2>" . $_SESSION['Error3'] . "</h2>";
+            }
+        ?>
     </div>
 
     <form action="submission.php" method="POST">
@@ -72,14 +81,6 @@ if(!isset($_SESSION['code'])){
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
 </body>
-<div id="php">
-<?php
-        session_start();
-        if(isset($_SESSION['Error3'])){
-            echo "<h2>" . $_SESSION['Error3'] . "</h2>";
-        }
-    ?>
-</div>
 
     <h1>
         Example bot:
