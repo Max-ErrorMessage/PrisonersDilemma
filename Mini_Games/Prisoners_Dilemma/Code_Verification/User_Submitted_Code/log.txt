@@ -1026,3 +1026,46 @@ User ID: 1
 return not sum(o) == n
 User ID: 28
 
+hello 
+   bloop
+User ID: 10
+
+trust = opponent_decisions.count(True)
+betray = opponent_decisions.count(False)
+
+if trust > betray:
+    return True
+else:
+    return False
+User ID: 53
+
+return True
+User ID: 53
+
+trust = opponent_decisions.count(True)
+betray = opponent_decisions.count(False)
+
+if trust > betray:
+    return True
+else:
+    return False
+User ID: 53
+
+trust = opponent_decisions.count(True)
+betray = opponent_decisions.count(False)
+
+if trust > betray:
+    return True
+else:
+    return False
+User ID: 53
+
+trust = opponent_decisions.count(True)
+betray = opponent_decisions.count(False)
+
+if trust < betray:
+    return True
+else:
+    return False
+User ID: 53
+
