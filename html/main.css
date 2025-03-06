@@ -9,37 +9,52 @@
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #3f7652;
+    justify-content: flex-end;
+    background: #003300;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
+
 #navbarLogo {
-    height: 40px;
+    height: 30px;
+    margin-right: 10px;
 }
+
 .nav-link {
-    padding: 10px;
     background-color: #959391;
-    border-radius: 2px;
     color: white;
     text-decoration: none;
     margin-left: auto;
     padding-right:30px;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 #signinbutton{
     background-color: #3f7652;
 }
+
 #NavBar a + a {
     margin-left: 10px;
 }
+
 #NavBar a:last-child {
     margin-right: 30px;
 }
+
 .nav-link:hover{
     background-color: #a5a3a1;
     border-radius: 4px;
+    background: #00cc00;
+    color: black;
 }
 
 #signinbutton:hover{
     background-color: #4f8662;
 }
+
 .nav-link:active{
     background-color: #c5c3c1;
     border-radius: 7px;
@@ -48,16 +63,22 @@
 #signinbutton:active{
     background-color: #6fa682;
 }
+
 body{
-    background-color:black;
+    background: black;
     height:200%;
     overflow-x:hidden;
-    font-family: 'Roboto', sans-serif;
-
+    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 0;
 }
+
 #main{
     color:white;
 }
+
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -75,49 +96,9 @@ body{
 ::-webkit-scrollbar-thumb:hover {
     background: #4f8662;
 }
-body {
-    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    margin: 0;
-}
-
-#NavBar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 10px;
-    background: #003300;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-}
-
-#navbarLogo {
-    height: 30px; /* Reduced logo size */
-    margin-right: 10px;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px; /* Reduced margin */
-    font-size: 1rem; /* Reduced font size */
-    padding: 5px 10px; /* Reduced padding */
-    border-radius: 5px;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.nav-link:hover {
-    background: #00cc00;
-    color: black;
-}
 
 #Main {
-    margin-top: 70px; /* Adjusted for smaller navbar */
+    margin-top: 70px;
 }
 
 h1 {

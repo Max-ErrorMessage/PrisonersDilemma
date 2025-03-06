@@ -138,6 +138,10 @@ if(!isset($_SESSION['code'])){
             color: white;
             border-radius: 5px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            font-size: 1rem;
+            text-align: left;
+            left: 5%;
+            right: 5%;
         }
 
         .container {
