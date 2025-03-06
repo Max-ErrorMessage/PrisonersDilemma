@@ -1,0 +1,142 @@
+body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+nav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #003300;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+nav a:hover {
+    background: #006600;
+}
+
+form {
+    left: 5%;
+    right: 5%;
+    background: #003300;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 30px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+textarea {
+    left: 5%;
+    right: 5%;
+    min-height: 500px;
+    max-height: 600px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    font-size: 1rem;
+    resize: none;
+    overflow-y: auto;
+}
+
+#title{
+    font-size: 5rem;
+    margin-top: 50px;
+}
+#var{
+    color:rgb(192, 97, 49);
+    font-size: 1rem;
+}
+h1{
+    color: rgb(91, 169, 107);
+    font-size: 3rem;
+    text-align: left;
+}
+p{
+    font-size: 1rem;
+    text-align: left;
+    left: 5%;
+    right: 5%;
+}
+#php{
+    position: absolute;
+    top: 930px;
+    left: 100px;
+    padding: 40px;
+}
+
+#var {
+    text-align:left;
+}
+
+#example {
+    border: 2px #003300;
+    padding: 10px;
+    background: #222;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+    text-align: left;
+    left: 5%;
+    right: 5%;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    margin: 5%;
+    box-sizing: border-box;
+}
+
+.box {
+    padding: 5px;
+    flex : 1;
+    box-sizing: border-box;
+    min-width: 0;
+    word-wrap: break-word;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background: #006600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: center;
+}
+
+button:hover {
+    background: #00cc00;
+}
