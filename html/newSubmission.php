@@ -75,6 +75,7 @@ if(!isset($_SESSION['code'])){
             </form>
         </div>
         <div class="box">
+            <br><br><br><br><br><br><br><br>
             <?php
                 session_start();
                 if(isset($_SESSION['Error3'])){
