@@ -20,6 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    if (!preg_match('/^[a-zA-Z0-9 ]{3,20}$/', $uname)){
+        $_SESSION['Error2'] = "Username must be between 3 and 20 characters long and contain no special characters.";
+        header("Location: /signin.php");
+        exit();
+    }
+
     // Check if username already exists
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM Accounts WHERE username = :username");
     $stmt->bindParam(':username', $uname);
