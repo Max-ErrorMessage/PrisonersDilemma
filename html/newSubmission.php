@@ -62,24 +62,27 @@ if(!isset($_SESSION['code'])){
         </div>
     </div>
 
-    <div id="php">
-    <?php
-            session_start();
-            if(isset($_SESSION['Error3'])){
-                echo "<h2>" . $_SESSION['Error3'] . "</h2>";
-            }
-        ?>
-    </div>
-
-    <form action="submission.php" method="POST">
-        <label for="name">Enter your code!:</label>
-        <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
+    <div class="container">
+        <div class="box2">
+            <form action="submission.php" method="POST">
+                <label for="name">Enter your code!:</label>
+                <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
 
 
 # The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
-        <input type="hidden" name="game_id" value="1">
-        <button type="submit" name="submitCode" value="submit">Submit</button>
-    </form>
+                <input type="hidden" name="game_id" value="1">
+                <button type="submit" name="submitCode" value="submit">Submit</button>
+            </form>
+        </div>
+        <div class="box">
+            <?php
+                session_start();
+                if(isset($_SESSION['Error3'])){
+                    echo "<h2>" . $_SESSION['Error3'] . "</h2>";
+                }
+            ?>
+        </div>
+    </div>
 </body>
 
     <h1>
