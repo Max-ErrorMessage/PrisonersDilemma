@@ -27,16 +27,7 @@ if(!isset($_SESSION['code'])){
     <link rel="icon" href="/t.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Twokie - New Submission</title>
-    <!--simple script that disables the user from the tab key while they are tabbed into the code box-->
-    <script>
-        function stopTab( e ) {
-        var evt = e || window.event
-        if ( evt.keyCode === 9 ) {
-           return false
-        }
-}
-    </script>
-
+    <link rel="stylesheet" href="main.css">
     <style>
 
         body {
@@ -54,7 +45,7 @@ if(!isset($_SESSION['code'])){
             position: absolute;
             top: 10px;
             right: 10px;
-            background: #003300; /* Dark green */
+            background: #003300;
             padding: 10px 20px;
             border-radius: 5px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -84,7 +75,7 @@ if(!isset($_SESSION['code'])){
             display: flex;
             flex-direction: column;
             align-items: stretch;
-	    margin: 30px;
+	        margin: 30px;
         }
 
 
@@ -97,8 +88,8 @@ if(!isset($_SESSION['code'])){
         textarea {
             left: 5%;
             right: 5%;
-            min-height: 500px; /* Increased starting height */
-            max-height: 600px; /* Larger maximum height */
+            min-height: 500px;
+            max-height: 600px;
             padding: 10px;
             margin-bottom: 10px;
             border: 2px solid white;
@@ -150,25 +141,25 @@ if(!isset($_SESSION['code'])){
         }
 
         .container {
-          display: flex;
-          gap: 50px;
-	  margin: 5%;
-	  box-sizing: border-box;
+            display: flex;
+            gap: 50px;
+	        margin: 5%;
+	        box-sizing: border-box;
         }
 
         .box {
             padding: 5px;
-	    flex : 1;
-	    box-sizing: border-box;
-	    min-width: 0;
-	    word-wrap: break-word;
-    	    white-space: normal;
-	    display: flex; 
+            flex : 1;
+            box-sizing: border-box;
+            min-width: 0;
+            word-wrap: break-word;
+            white-space: normal;
+            display: flex;
     	    flex-direction: column; 
         }
 
         button {
-            background: #006600; /* Bright green */
+            background: #006600;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -176,7 +167,7 @@ if(!isset($_SESSION['code'])){
             font-size: 1rem;
             cursor: pointer;
             transition: background 0.3s ease;
-            align-self: center; /* Center the button horizontally */
+            align-self: center;
         }
 
         button:hover {

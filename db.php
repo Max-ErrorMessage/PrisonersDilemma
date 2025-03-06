@@ -1,3 +1,9 @@
+<!--
+Help file for accessing the database.
+This file is called by a variety of other files as a shorthand for defining the necessary variables and initialising
+the connection
+-->
+
 <?php
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -9,7 +15,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Database connection settings
 $host = "localhost";
 $dbname = "Twokie";
 $username = "TwokieBotSQL";
