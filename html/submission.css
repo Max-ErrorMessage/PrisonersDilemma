@@ -83,12 +83,6 @@ p{
     left: 5%;
     right: 5%;
 }
-#php{
-    position: absolute;
-    top: 930px;
-    left: 100px;
-    padding: 40px;
-}
 
 #var {
     text-align:left;
