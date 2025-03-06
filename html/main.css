@@ -112,7 +112,7 @@ ol {
 
 li {
     background: #003300;
-    width: 10%;
+    width: 80%;
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: background 0.3s ease;
