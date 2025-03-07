@@ -37,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_contents = file_get_contents('/var/www/Mini_Games/' . $game .'/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
 
-        $list = "<ol>";
+        $list = "Code submitted!<br>This is how you did against the 7 dwarves:<ol>";
         foreach ($dwarf_scores as $key => $value) {
             $list .= "<li>$key: $value</li><br>";
         }
-        $list .= "</ol>";
+        $list .= "</ol>Check the leaderboard to see how you did against everyone else!";
 
         unlink('/var/www/Mini_Games/' . $game . '/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
 

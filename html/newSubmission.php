@@ -79,7 +79,7 @@ if(!isset($_SESSION['code'])){
         <div class="box" id="php">
             <?php
                 if(isset($_SESSION['Error3'])){
-                    echo "<h2>BINGLE" . $_SESSION['Error3'] . "</h2>";
+                    echo "<h2>" . $_SESSION['Error3'] . "</h2>";
                 }
             ?>
         </div>

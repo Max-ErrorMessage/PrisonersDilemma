@@ -130,8 +130,9 @@ p{
     flex-direction: column;
 }
 
-#php {
+#php, ol {
     justify-content: center;
+    text-align: center;
 }
 
 #php li {
