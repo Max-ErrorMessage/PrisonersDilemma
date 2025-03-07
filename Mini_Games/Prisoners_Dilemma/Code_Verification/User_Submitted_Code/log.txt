@@ -1446,3 +1446,17 @@ User ID: 55
 return False
 User ID: 55
 
+if n < 5:
+    return True
+return not False in o[4:]
+User ID: 2
+
+if n == 0:
+    return False
+else:
+    o[-1]
+User ID: 7
+
+return True
+User ID: 55
+
