@@ -13,12 +13,10 @@ import re
 import sys
 import random
 import json
-import multiprocessing
 
 user_id = sys.argv[1]
 
-with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_{user_id}.txt",
-          'r') as file:
+with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/user_{user_id}.txt", 'r') as file:
     code = file.read()
     # It's impractical to parse in the code as arguments, especially with new lines and indentation and such.
     # Instead, submission.php (which calls this file) stores the user code in a txt file which this file then reads.
@@ -27,6 +25,7 @@ with open("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitte
     log.write(f'{code}\nUser ID: {user_id}\n\n')
     # This logs every single submission (even ones rejected because they don't work) to a log file so that we can tell
     # if someone is trying to break/exploit the code, even when this file prevents them from actually succeeding.
+
 
 keywords = [
     "print", "import", "exec", "eval", "open", "execfile", "compile", "input", "__import__", "os.system", "os.popen",
@@ -63,31 +62,8 @@ except SyntaxError as se:
 
 user_function = namespace[f"user_{user_id}"]
 
-
 # Executes the code and stores the result of the function as user_function.
 # This felt like a janky solution but it allows a helpful error message to be returned
-
-
-def check_timeout(func, args, timeout=1):
-    def wrapper(queue, func, args):
-        try:
-            result = func(*args)
-            queue.put(result)
-        except Exception as e:
-            queue.put(f"Error: {str(e)}")
-
-    queue = multiprocessing.Queue()
-    process = multiprocessing.Process(target=wrapper, args=(queue, func, args))
-    process.start()
-    process.join(timeout)
-
-    if process.is_alive():
-        process.terminate()
-        process.join()
-        return "Timeout Error"
-
-    return queue.get() if not queue.empty() else "Execution Error"
-
 
 def happy(self_decisions, opponent_decisions, s, o, n):
     """
@@ -149,7 +125,6 @@ def sleepy(self_decisions, opponent_decisions, s, o, n):
     else:
         return True
 
-
 # Defines the "Seven Dwarves" that are the other functions competing in this mini-tournament.
 
 
@@ -169,22 +144,8 @@ for index, player1 in enumerate(players):
 
         for _ in range(200):
             try:
-                player_1_decision = check_timeout(player_1_function,
-                                                  (player_1_decisions, player_2_decisions, player_1_decisions,
-                                                   player_2_decisions,
-                                                   len(player_1_decisions)))
-                player_2_decision = check_timeout(player_2_function,
-                                                  (player_2_decisions, player_1_decisions, player_2_decisions,
-                                                   player_1_decisions,
-                                                   len(player_1_decisions)))
-
-                # Check if timeout or error occurred
-                if player_1_decision == "Timeout Error" or player_2_decision == "Timeout Error":
-                    quit()
-                elif "Error" in str(player_1_decision) or "Error" in str(player_2_decision):
-                    print(f"Your code has caused an error: {player_1_decision if 'Error' in str(player_1_decision) 
-                                                            else player_2_decision}")
-                    quit()
+                player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
+                player_2_decision = player_2_function(player_2_decisions, player_1_decisions, player_2_decisions, player_1_decisions, len(player_1_decisions))
             except Exception as e:
                 print(f"Your code has caused an error: {e}")
                 # This is mostly name errors that are syntactically correct but use variables not in the namespace
@@ -208,13 +169,13 @@ for index, player1 in enumerate(players):
         scores[index] += player_1_score
         scores[jindex] += player_2_score
 
+
 scores_dict = {player: round(score / 1400, 2) for player, score in zip(players, scores)}
 # Divided by 1400 since that creates the average score per round (7 opponents * 200 rounds per game)
 
 scores_dict = dict(sorted(scores_dict.items(), key=lambda item: item[1], reverse=True))
 
-with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json",
-          "w") as json_file:
+with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
     json.dump(scores_dict, json_file, indent=4)
 
 print("1")
