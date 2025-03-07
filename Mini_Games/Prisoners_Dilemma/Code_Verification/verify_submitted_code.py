@@ -174,8 +174,8 @@ for index, player1 in enumerate(players):
                                                    player_2_decisions,
                                                    len(player_1_decisions)))
                 player_2_decision = check_timeout(player_2_function,
-                                                  (player_2_decisions, player_1_decisions, player_1_decisions,
-                                                   player_2_decisions,
+                                                  (player_2_decisions, player_1_decisions, player_2_decisions,
+                                                   player_1_decisions,
                                                    len(player_1_decisions)))
 
                 # Check if timeout or error occurred
