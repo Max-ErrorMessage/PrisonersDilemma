@@ -2,7 +2,7 @@
 This file access the user_codes.py file to access functions that run user code.
 It takes in 2 User IDs and a game length as arguments.
 It reads the current scores from scores.json and updates the scores to reflect the changes that the game played had on the scores of the 2 users
-THis is run from calculate_scores.php and is only ever run with a timeout of 1.
+THis is run from update_scores.php and is only ever run with a timeout of 1.
 If the code fails it will execute prematurely and no scores will be changed.
 """
 
@@ -13,7 +13,7 @@ import json
 player_1 = sys.argv[1]
 player_2 = sys.argv[2]
 rounds = int(sys.argv[3])
-# Gets all the relevant arguments provided from calculate_scores.php
+# Gets all the relevant arguments provided from update_scores.php
 
 
 module_path = "/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py"
@@ -25,7 +25,7 @@ spec.loader.exec_module(user_codes_module)
 user_codes = getattr(user_codes_module, "user_code", None)
 
 # Since the user_codes.py file is in a different directory (and this file is being run indirectly from
-# calculate_scores.php, the dictionary that stores all the user IDs and their equivalent functions has to be accessed
+# update_scores.php, the dictionary that stores all the user IDs and their equivalent functions has to be accessed
 # via the importlib library.
 
 player_1_function, player_2_function = user_codes[player_1], user_codes[player_2]

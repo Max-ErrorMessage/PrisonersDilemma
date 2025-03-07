@@ -3,7 +3,7 @@ This file takes the user codes that have been inputted and writes a python file 
 in a dictionary that other files can access later. By importing the dictionary from that file, other programs can
 directly call the relevant function when needed.
 
-This file is called by calculate_scores.php.
+This file is called by update_scores.php.
 """
 
 import re
