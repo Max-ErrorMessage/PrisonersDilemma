@@ -123,7 +123,7 @@ def calculate_straights():
         for i in large_straights:
             if i <= dice_set and not found:
                 found = True
-                available_points["Small Straight"] = 30
+                available_points["Large Straight"] = 40
 
 def calculate_chance():
     global availability, available_points, claimed_points, dice
@@ -209,7 +209,7 @@ def simulate():
         check_bonus_and_total()
     return claimed_points["Total"]
 
-rounds = 100
+rounds = 1000
 score_sum = 0
 for i in range(rounds):
     score_sum += simulate()
@@ -217,6 +217,7 @@ final_score = score_sum / rounds
 #############
 
 scores_dict = claimed_points
+scores_dict[f"Average over {rounds} games"] = final_score
 
 with open(f"/var/www/Mini_Games/Yahtzee/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
     json.dump(scores_dict, json_file, indent=4)

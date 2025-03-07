@@ -1190,3 +1190,234 @@ return o[-1]
 
 User ID: 1
 
+if False in o and n < 150:
+    return False
+
+if n < 150:
+    return True
+
+if n == 150:
+    return False
+
+if n == 151:
+    return True
+
+if o[151]:
+    return False
+
+if n == 152:
+    return True
+
+if not o[152]:
+    return False
+return True
+User ID: 1
+
+if n < 1:
+    return False
+else:
+    return o[-1]
+User ID: 1
+
+if n < 1:
+   return False
+if n < 4:
+   return True
+else:
+   return o[-1]
+User ID: 56
+
+if n < 15:
+    return True
+else:
+    return o[-1]
+User ID: 1
+
+if n < 9:
+    return True
+else:
+    return o[-1]
+User ID: 1
+
+if len(opponent_decisions) < 10:
+    return True
+else:
+    return opponent_decisions[-1] 
+User ID: 1
+
+if len(opponent_decisions) < 9:
+    return True
+else:
+    return opponent_decisions[-1] 
+User ID: 1
+
+if n < 1:
+    return False
+if n < 4:
+    return True
+return o[-1]
+User ID: 1
+
+if n < 1:
+    return False
+return o[-1]
+User ID: 1
+
+num_rounds = len(self_decisions)
+opponent_coop_count = sum(opponent_decisions)
+if num_rounds < 1 or num_rounds > 198 or (num_rounds == 6 and opponent_coop_count > 4):
+    return num_rounds < 1 or num_rounds == 6
+if num_rounds > 4 and 0 in self_decisions:
+    first_defect_index = self_decisions.index(0) + 1
+    opponent_responses = opponent_decisions[first_defect_index:num_rounds]
+    if opponent_responses and opponent_responses.count(0) / len(opponent_responses) > 0.8:
+        return 0  # Defect if opponent frequently defects after our cooperation
+
+cooperation_score = 0
+defection_score = 0
+    
+if True:
+    opponent_coop_ratio = num_rounds - opponent_coop_count / num_rounds
+    opponent_repetition_rate = sum(
+        opponent_decisions[i] == self_decisions[i - 1] for i in range(1, num_rounds)
+    ) / max(1, num_rounds - 1)
+    
+    # Evaluate scenarios for cooperation (1) and defection (0)
+    for decision in (1, 0):
+        simulated_self = self_decisions + [decision]
+        simulated_opponent = opponent_decisions[:]
+        
+        for _ in range(5):
+            opponent_last_move = simulated_opponent[-1] if simulated_opponent else 1
+            
+            if len(simulated_opponent) == num_rounds and opponent_repetition_rate > 0.8:
+                opponent_next_move = opponent_last_move
+            elif len(simulated_opponent) == num_rounds and opponent_coop_ratio < 0.2:
+                opponent_next_move = 1
+            elif len(simulated_opponent) == num_rounds and opponent_coop_ratio > 0.8:
+                opponent_next_move = 0
+            elif len(simulated_opponent) > num_rounds and len(simulated_opponent[-3:]) > 2 and simulated_opponent[-3] == simulated_opponent[-1]:
+                opponent_next_move = simulated_opponent[-3]
+            else:
+                opponent_next_move = opponent_last_move if simulated_opponent else 1
+                
+            simulated_opponent.append(opponent_next_move)
+            
+            # Calculate score impact
+            value = opponent_next_move * 4 + 1 - decision * (opponent_next_move + 1)
+            cooperation_score += value * decision
+            defection_score += value * (1 - decision)
+        
+        simulated_self.append(opponent_next_move * (opponent_coop_ratio <= 0.25))
+    
+    return cooperation_score >= defection_score
+User ID: 1
+
+if n < 3:
+    return False
+return True
+User ID: 1
+
+if n < 3:
+    return False
+return True
+User ID: 56
+
+if n < 3:
+    return False
+return o[-1]
+User ID: 56
+
+if n < 3:
+    return False
+else:
+    return o[-1]
+User ID: 1
+
+return False
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 2
+
+return True
+User ID: 55
+
+goo goo gah gah
+User ID: 55
+
+return True
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return True
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return True
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return True
+User ID: 55
+
+return False
+User ID: 55
+
+return False
+User ID: 55
+
+return True
+User ID: 55
+

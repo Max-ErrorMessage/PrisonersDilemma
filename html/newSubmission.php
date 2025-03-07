@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['uname'])) {
    header("Location: /signin.php");
@@ -76,9 +78,8 @@ if(!isset($_SESSION['code'])){
         </div>
         <div class="box" id="php">
             <?php
-                session_start();
                 if(isset($_SESSION['Error3'])){
-                    echo "<h2>" . $_SESSION['Error3'] . "</h2>";
+                    echo "<h2>BINGLE" . $_SESSION['Error3'] . "</h2>";
                 }
             ?>
         </div>

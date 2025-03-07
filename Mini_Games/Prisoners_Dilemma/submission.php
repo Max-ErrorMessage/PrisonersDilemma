@@ -1,7 +1,9 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    session_start();
-    include '../db.php';
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    include '/var/www/db.php';
     $code = $_POST['code'];
     $_SESSION['code'] = $code;
     $uname = $_SESSION['uname'];
@@ -37,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_contents = file_get_contents('/var/www/Mini_Games/' . $game .'/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
 
-        $list = "<ol>";
+        $list = "Submission Successful! This is how you performed against the 7 dwarves:<ol>";
         foreach ($dwarf_scores as $key => $value) {
             $list .= "<li>$key: $value</li><br>";
         }
@@ -124,7 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Scores successfully updated.\nGame length:" . $game_length ."\n";
 
             }
-
         header($location);
         exit();
     } catch (Exception $e) {
@@ -132,8 +133,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header($location);
         exit();
     }
-
-
 
 } else {
     die("Access Denied");

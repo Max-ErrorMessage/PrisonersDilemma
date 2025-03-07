@@ -1768,3 +1768,820 @@ else:
     return choices[0]
 User ID: 1
 
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0]
+User ID: 56
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0]
+User ID: 56
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for i in large_straights:
+        if i in set(dice):
+            return []
+    if {1,2,3,4} in set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(i)
+                        found = False
+        return dice_to_reroll
+
+    if {2,3,4,5} in set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(i)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} in set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(i)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for i in large_straights:
+        if i == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i = [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(i)
+                        found = False
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(i)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(i)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for i in large_straights:
+        if i == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i = [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for i in large_straights:
+        if i == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+backupcounts = counts.copy()
+translator = {6:"Sixes", 5:"Fives", 4:"Fours", 3:"Threes", 2:"Twos", 1:"Ones"}
+dice_to_reroll = []
+for i in dice:
+    backupcounts[i] += 1
+    if availability[translator[i]]:
+        counts[i] += 1
+
+max_key = max(counts, key=counts.get)
+if counts[max_key] != 0:
+    for i in range(0,5):
+        if dice[i] != max_key:
+            dice_to_reroll.append(i)
+    return dice_to_reroll
+
+max_key = max(backupcounts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+backupcounts = counts.copy()
+translator = {6:"Sixes", 5:"Fives", 4:"Fours", 3:"Threes", 2:"Twos", 1:"Ones"}
+dice_to_reroll = []
+for i in dice:
+    backupcounts[i] += 1
+    if availability[translator[i]]:
+        counts[i] += 1
+
+max_key = max(counts, key=counts.get)
+if counts[max_key] != 0:
+    for i in range(0,5):
+        if dice[i] != max_key:
+            dice_to_reroll.append(i)
+    return dice_to_reroll
+
+max_key = max(backupcounts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+
+large_straights = [{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}]
+if availability["Large Straight"]:
+    for p in large_straights:
+        if p == set(dice):
+            return []
+    if {1,2,3,4} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [1,2,3,4]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {2,3,4,5} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [2,3,4,5]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+    if {3,4,5,6} <= set (dice):
+        dice_to_reroll = [0,1,2,3,4]
+        for i in [3,4,5,6]:
+            found = False
+            for j in [0,1,2,3,4]:
+                if not found:
+                    if dice[j] == i:
+                        dice_to_reroll.remove(j)
+                        found = True
+        return dice_to_reroll
+
+if availability["Full House"]:
+    if available_points["Full House"] > 0:
+        return []
+
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+backupcounts = counts.copy()
+translator = {6:"Sixes", 5:"Fives", 4:"Fours", 3:"Threes", 2:"Twos", 1:"Ones"}
+dice_to_reroll = []
+for i in dice:
+    backupcounts[i] += 1
+    if availability[translator[i]]:
+        counts[i] += 1
+
+max_key = max(counts, key=counts.get)
+if counts[max_key] != 0:
+    for i in range(0,5):
+        if dice[i] != max_key:
+            dice_to_reroll.append(i)
+    return dice_to_reroll
+
+max_key = max(backupcounts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0] 
+User ID: 1
+

@@ -171,8 +171,11 @@ for index, player1 in enumerate(players):
         scores[jindex] += player_2_score
 
 
-scores_dict = {player: score for player, score in zip(players, scores)}
+scores_dict = {player: round(score / 1400, 2) for player, score in zip(players, scores)}
 # Divided by 1400 since that creates the average score per round (7 opponents * 200 rounds per game)
+
+scores_dict = dict(sorted(scores_dict.items(), key=lambda item: item[1], reverse=True))
+scores_dict["I DON'T KNOW WHAT THE FUCK IS HAPPENING"] = "PLEASE HELP ME PLEASE HELP ME PLEASE HELP ME"
 
 with open(f"/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitted_Code/dwarf_scores_{user_id}.json", "w") as json_file:
     json.dump(scores_dict, json_file, indent=4)

@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 // Check if the session variable 'uname' is set
 //if (!isset($_SESSION['uname'])) {
@@ -163,13 +163,12 @@
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
 
-    <div id="php"><?php
+    <div class="box" id="php"><?php
         session_start();
         if(isset($_SESSION['Error3'])){
             echo "<h2>" . $_SESSION['Error3'] . "</h2>";
         } 
     ?></div>
-    <img src="https://rb.gy/nkyvkw"/>
 </body>
 <div id="info">
     <h1>Your task:</h1>
