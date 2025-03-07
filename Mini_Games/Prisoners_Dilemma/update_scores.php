@@ -17,7 +17,7 @@ $game_length = rand(200, 400);
 // betray on round X and therefore it's always correct to betray on round X-1, etc.
 // The best solution is to simply have a slightly random game length
 
-$fetch_code_path = '/var/www/Mini_Games/Prisoners_Dilemma/fetch_code.php';
+$fetch_code_path = '/var/www/Mini_Games/Prisoners_Dilemma/get_user_code.php';
 
 $_POST['game'] = 1;
 $user_codes = [];
