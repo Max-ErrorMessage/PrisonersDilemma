@@ -44,10 +44,6 @@ def user_20(self_decisions, opponent_decisions, s, o, n):
 	    return opponent_decisions[-1] and opponent_decisions[-2]
 
 
-def user_28(self_decisions, opponent_decisions, s, o, n):
-	return False
-
-
 def user_53(self_decisions, opponent_decisions, s, o, n):
 	trust = opponent_decisions.count(True)
 	betray = opponent_decisions.count(False)
@@ -97,4 +93,8 @@ def user_1(self_decisions, opponent_decisions, s, o, n):
 	return o[-1]
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "28" : user_28, "53" : user_53, "52" : user_52, "2" : user_2, "56" : user_56, "60" : user_60, "55" : user_55, "1" : user_1}
+def user_28(self_decisions, opponent_decisions, s, o, n):
+	return True if n < 1 else o[-1]
+
+
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "2" : user_2, "56" : user_56, "60" : user_60, "55" : user_55, "1" : user_1, "28" : user_28}

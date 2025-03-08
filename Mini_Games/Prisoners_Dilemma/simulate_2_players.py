@@ -79,9 +79,9 @@ if player_1 == '0':
     reward = scores[player_1] / rounds
     print(f"Applying a reward of {reward} to Merlin Bot after facing User with ID {player_2}")
     for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
-        state = merlin.extract_features(player_1_decision[:index - 1], player_2_decision[:index - 1])
+        state = merlin.extract_features(player_1_decisions[:index - 1], player_2_decisions[:index - 1])
         action = player_1_decision
-        next_state = merlin.extract_features(player_1_decision[:index], player_2_decision[:index])
+        next_state = merlin.extract_features(player_1_decisions[:index], player_2_decisions[:index])
         merlin.update_q_value(state, action, reward, next_state)
     merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 

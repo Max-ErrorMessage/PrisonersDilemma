@@ -1923,3 +1923,6 @@ if n < 9:
 return o[-1]
 User ID: 1
 
+return True if n < 1 else o[-1]
+User ID: 28
+
