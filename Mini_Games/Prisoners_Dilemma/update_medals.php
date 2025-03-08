@@ -21,11 +21,7 @@ if ($rows) {
     $i = 0;
     foreach ($rows as $row){
         $i++; //sql statement to update medals
-        $sql = "UPDATE Users
-            SET :medal = :medal + 1
-            WHERE Username = :username;";
 
-        $stmt->bindParam(':username', $row['Username']);
         if ($i == 1){ //checks what type of medal it is
             $medal = "gold";
         }
@@ -35,7 +31,12 @@ if ($rows) {
         if ($i == 3){
             $medal = "bronze";
         }
-        $stmt->bindParam(':medal', $medal);
+        $sql = "UPDATE Users
+            SET $medal = $medal + 1
+            WHERE Username = :username;";
+
+        $stmt->bindParam(':username', $row['Username']);
+
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     }
