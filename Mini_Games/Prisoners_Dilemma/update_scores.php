@@ -46,10 +46,18 @@ $output = exec("python3 /var/www/Mini_Games/Prisoners_Dilemma/define_user_codes.
 // Runs the define_user_codes.py file, which takes the user_codes.json file and creates a new python file for later
 // programs to interact with
 
+$user_codes["merlin"] = 1;
+// PHP arrays are weird and are mostly just dictionaries. merlin is only required to be a key since later programs
+// take care of the functionality
+
 $empty_scores = [];
 
 foreach ($user_codes as $item) {
-    $user_id = $item['User_ID'];
+    if ($item != "merlin) {
+        $user_id = $item['User_ID'];
+    } else {
+	$user_id = 0;
+    }
     $empty_scores[$user_id] = 0;
 }
 
