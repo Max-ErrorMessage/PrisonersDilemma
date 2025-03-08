@@ -47,29 +47,7 @@ for repeat in range(1000):
                 player_1_decisions.append(player_1_decision)
                 player_2_decisions.append(player_2_decision)
 
-                if player_1 == "merlin":
-                    state = merlin.extract_features(player_1_decisions[:-1], player_2_decisions[:-1])
-                    action = player_1_decision
-                    reward = player_1_score - scores_before[0]
-                    next_state = merlin.extract_features(player_1_decisions, player_2_decisions)
-                    merlin.update_q_value(state, action, reward, next_state)
 
-                if player_2 == "merlin":
-                    state = merlin.extract_features(player_2_decisions[:-1], player_1_decisions[:-1])
-                    action = player_2_decision
-                    reward = player_2_score - scores_before[1]
-                    next_state = merlin.extract_features(player_2_decisions, player_1_decisions)
-                    merlin.update_q_value(state, action, reward, next_state)
-
-            if player_1 == "merlin":
-                final_state = merlin.extract_features(player_1_decisions, player_2_decisions)
-                final_reward = player_1_score * game_length * 10
-                merlin.update_q_value(final_state, player_1_decisions[-1], final_reward, final_state)
-
-            if player_2 == "merlin":
-                final_state = merlin.extract_features(player_2_decisions, player_1_decisions)
-                final_reward = player_2_score * game_length * 20
-                merlin.update_q_value(final_state, player_2_decisions[-1], final_reward, final_state)
 
     if repeat % 100 == 0:
         print(f"Finished simulation {repeat}/1000")
