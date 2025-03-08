@@ -42,5 +42,4 @@ if ($rows) {
         $stmt->execute(); // Execute the query
     }
 }
-
 ?>
