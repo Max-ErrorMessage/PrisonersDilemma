@@ -46,18 +46,10 @@ $output = exec("python3 /var/www/Mini_Games/Prisoners_Dilemma/define_user_codes.
 // Runs the define_user_codes.py file, which takes the user_codes.json file and creates a new python file for later
 // programs to interact with
 
-$user_codes["merlin"] = 1;
-// PHP arrays are weird and are mostly just dictionaries. merlin is only required to be a key since later programs
-// take care of the functionality
-
 $empty_scores = [];
 
 foreach ($user_codes as $item) {
-    if ($item != "merlin") {
-        $user_id = $item['User_ID'];
-    } else {
-	    $user_id = 0;
-    }
+    $user_id = $item['User_ID'];
     $empty_scores[$user_id] = 0;
 }
 
@@ -68,17 +60,9 @@ file_put_contents('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_File
 // Resets the scores to be 0 for each player
 
 foreach ($user_codes as $user_code_1) {
-    if ($user_code_1 != "merlin") {
-        $user_1 = $user_code_1['User_ID'];
-    } else {
-	    $user_1 = 0;
-    }
+    $user_1 = $user_code_1["User_ID"];
     foreach ($user_codes as $user_code_2) {
-        if ($user_code_2 != "merlin") {
-            $user_2 = $user_code_2['User_ID'];
-        } else {
-            $user_2 = 0;
-        }
+        $user_2 = $user_code_2["User_ID"];
         if ($user_2 <= $user_1) {
             continue;
         }
