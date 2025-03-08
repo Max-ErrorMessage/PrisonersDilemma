@@ -85,8 +85,7 @@ if player_1 == '0':
         except IndexError:
             next_state = state
         merlin.update_q_value(state, action, reward, next_state)
-
-merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
+    merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'r') as file:
     existing_scores = json.load(file)
