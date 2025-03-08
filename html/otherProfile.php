@@ -16,6 +16,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
+    	<title>Twokie - <?php echo $otherUname?;>'s Profile'</title>
     </head>
     <body>
         <div id="NavBar">
