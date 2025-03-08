@@ -116,7 +116,7 @@ foreach ($scores as $user_id => $score) {
 
 unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.json');
 // unlink('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py');
-unlink($json_file); // scores.json
+// unlink($json_file); // scores.json
 // Deletes all the temporary files that were generated through the length of the program
 
 echo "Total Submissions: " . $totalRecords . "\nScores successfully updated.\nGame length:" . $game_length ."\n";

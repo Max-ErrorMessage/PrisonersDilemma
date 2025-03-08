@@ -15,7 +15,7 @@ player_2 = sys.argv[2]
 rounds = int(sys.argv[3])
 # Gets all the relevant arguments provided from update_scores.php
 
-if 'merlin' in [player_1, player_2]:
+if '0' in [player_1, player_2]:
     module_path = "/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.py"
 
     spec = importlib.util.spec_from_file_location("merlin", module_path)
@@ -39,8 +39,8 @@ user_codes = getattr(user_codes_module, "user_code", None)
 # from update_scores.php), the dictionary that stores all the user IDs and their equivalent functions has to be accessed
 # via the importlib library.
 
-if 'merlin' in [player_1, player_2]:
-    user_codes['merlin'] = merlin.action
+if '0' in [player_1, player_2]:
+    user_codes['0'] = merlin.action
 
 player_1_function, player_2_function = user_codes[player_1], user_codes[player_2]
 
