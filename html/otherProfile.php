@@ -30,7 +30,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1><?php echo $otherUname ?>'s Profile:</h1>
             <br>
             <p>Username: <?php echo $otherUname; ?></p>
-            <p>Submissions: <?php
+            <p class="submission">Submissions: <?php
                                 include '../db.php';
 
                                 $sql = "
