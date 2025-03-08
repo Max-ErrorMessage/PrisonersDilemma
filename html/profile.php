@@ -31,7 +31,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>My Profile:</h1>
             <br>
             <p>Username: <?php echo $uname; ?></p>
-            <p>Submissions: <?php
+            <p class="submission">Submissions: <?php
                                 include '../db.php';
 
                                 $sql = "

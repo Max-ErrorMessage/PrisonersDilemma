@@ -31,9 +31,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <br>
             <p>Username: <?php echo $otherUname; ?></p>
             <p>Submissions: <?php
-                                if ($otherUname == "MerlinBOT") {
-                                    echo "<pre>This user is an AI that constantly trains and therefore has no real 'code'";
-                                }
                                 include '../db.php';
 
                                 $sql = "

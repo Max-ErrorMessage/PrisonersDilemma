@@ -56,7 +56,7 @@ for repeat in range(1000):
             for index, (merlin_decision, opponent_decision) in enumerate(zip(merlin_decisions, opponent_decisions)):
                 state = merlin.extract_features(merlin_decisions[:index - 1], opponent_decisions[:index - 1])
                 action = merlin_decision
-                next_state = merlin.extract_features(merlin_decision[:index], opponent_decision[:index])
+                next_state = merlin.extract_features(merlin_decisions[:index], opponent_decisions[:index])
                 merlin.update_q_value(state, action, reward, next_state)
 
     if repeat % 100 == 0:
