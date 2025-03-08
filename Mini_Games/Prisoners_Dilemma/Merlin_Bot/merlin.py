@@ -30,11 +30,11 @@ class AI_Agent:
         """
         window_size = min(10, len(opponent_decisions))
         if window_size == 0:
-            return (0, 0, 0)
+            return (0, 0)
 
         recent_moves = opponent_decisions[-window_size:]
 
-        return sum(recent_moves), opponent_decisions[-1], len(opponent_decisions)
+        return sum(recent_moves), opponent_decisions[-1]
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
@@ -49,3 +49,8 @@ class AI_Agent:
                 self.q_table = pickle.load(f)
         except FileNotFoundError:
             print("No saved model found. Starting fresh.")
+
+    def print_q_table(self):
+        for key, value in self.q_table.items():
+            print(f"State: {key[0]}, Action: {key[1]} -> Q-Value: {value:.2f}")
+

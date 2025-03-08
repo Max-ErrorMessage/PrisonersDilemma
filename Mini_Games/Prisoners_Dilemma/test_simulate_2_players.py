@@ -75,4 +75,4 @@ for i in range(rounds):
     player_1_decisions.append(player_1_decision)
     player_2_decisions.append(player_2_decision)
 
-print(f"Player 1 score: {round(scores[player_1]/rounds, 2)}\nPlayer 2 score: {round(scores[player_2]/rounds, 2)}")
+print(f"Player 1 score: {round(scores[player_1]/rounds, 2)}\nTotal betrayals by Player 1: {len(player_1_decisions) - sum(player_1_decisions)}\nPlayer 2 score: {round(scores[player_2]/rounds, 2)}\nTotal betrayals by player 2: {len(player_2_decisions) - sum(player_2_decisions)}")

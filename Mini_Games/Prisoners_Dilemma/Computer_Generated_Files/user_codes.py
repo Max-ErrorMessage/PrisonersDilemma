@@ -27,7 +27,10 @@ def user_21(self_decisions, opponent_decisions, s, o, n):
 
 
 def user_22(self_decisions, opponent_decisions, s, o, n):
-	return True
+	if len(opponent_decisions) < 10:
+	    return True
+	else:
+	    return opponent_decisions[-1]
 
 
 def user_17(self_decisions, opponent_decisions, s, o, n):
@@ -84,22 +87,14 @@ def user_60(self_decisions, opponent_decisions, s, o, n):
 	return True
 
 
-def user_1(self_decisions, opponent_decisions, s, o, n):
-	if n == 0:
-	    return True
-	if n < 200:
-	    return o[-1]
-	if n == 200:
-	    return False
-	if n < 203:
-	    return True
-	if o[200]:
-	    return False
-	return o[-1]
-
-
 def user_55(self_decisions, opponent_decisions, s, o, n):
 	return True
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "28" : user_28, "53" : user_53, "52" : user_52, "2" : user_2, "56" : user_56, "60" : user_60, "1" : user_1, "55" : user_55}
+def user_1(self_decisions, opponent_decisions, s, o, n):
+	if n < 9:
+	    return False
+	return o[-1]
+
+
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "28" : user_28, "53" : user_53, "52" : user_52, "2" : user_2, "56" : user_56, "60" : user_60, "55" : user_55, "1" : user_1}
