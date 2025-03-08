@@ -49,3 +49,8 @@ class AI_Agent:
                 self.q_table = pickle.load(f)
         except FileNotFoundError:
             print("No saved model found. Starting fresh.")
+
+    def print_q_table(self):
+        for key, value in self.q_table.items():
+            print(f"State: {key[0]}, Action: {key[1]} -> Q-Value: {value:.2f}")
+
