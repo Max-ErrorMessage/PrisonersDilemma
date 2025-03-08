@@ -1,15 +1,14 @@
 <?php
 session_start();
 
-// Check if the session variable 'uname' is set
 if (!isset($_SESSION['uname'])) {
     // Redirect to login page if 'uname' is not set
     header("Location: /signin.php");
     exit();
 }
 
-// If 'uname' is set, display the welcome message
-$uname = htmlspecialchars($_SESSION['uname']); 
+$otherUname = $_GET["user"];
+$uname = htmlspecialchars($_SESSION['uname']);
 ?>
 <html>
     <head>
@@ -30,7 +29,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <br><br>
             <h1>My Profile:</h1>
             <br>
-            <p>Username: <?php echo $uname; ?></p>
+            <p>Username: <?php echo $otherUname; ?></p>
             <p>Submissions: <?php
                                 include '../db.php';
 
@@ -42,7 +41,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                 ";
 
                                 $stmt = $pdo->prepare($sql);
-                                $stmt->bindParam(":username", $uname);
+                                $stmt->bindParam(":username", $otherUname);
                                 $stmt->execute();
                                 $submissions = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
