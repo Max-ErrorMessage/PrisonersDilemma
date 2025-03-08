@@ -10,8 +10,6 @@ import sys
 import importlib.util
 import json
 
-from Mini_Games.Prisoners_Dilemma.Merlin_Bot.AI_bot import AI_Agent
-
 player_1 = sys.argv[1]
 player_2 = sys.argv[2]
 rounds = int(sys.argv[3])
@@ -23,9 +21,9 @@ if 'merlin' in [player_1, player_2]:
     spec = importlib.util.spec_from_file_location("merlin", module_path)
     merlin_module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(merlin_module)
-    UserClass = getattr(merlin_module, "AI_Agent", None)
+    Merlin_Agent = getattr(merlin_module, "AI_Agent", None)
 
-    merlin = AI_Agent()
+    merlin = Merlin_Agent()
     merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
     # Gets the merlin bot
 
