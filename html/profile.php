@@ -31,7 +31,31 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>My Profile:</h1>
             <br>
             <p>Username: <?php echo $uname; ?></p>
-            <p> [more profile stuff will go here]</p>
+            <p>Submissions: <?php
+                                include '../db.php';
+
+                                $sql = "
+                                    SELECT Submission.Code
+                                    FROM Submission
+                                    INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
+                                    WHERE Accounts.Username = ?;
+                                ";
+
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bind_param("s", $uname);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                $submissions = [];
+                                while ($row = $result->fetch_assoc()) {
+                                    $submissions[] = $row['Code'];
+                                }
+
+                                $stmt->close();
+                                $conn->close();
+
+                                echo json_encode($submissions);
+                                ?></p>
         </div>
 
     </body>
