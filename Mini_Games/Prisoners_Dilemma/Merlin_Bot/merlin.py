@@ -28,7 +28,7 @@ class AI_Agent:
         """
         Using the self_decisions and opponent_decisions as a state space is far too large so this simplifies it massively for the purpose of training an AI
         """
-        window_size = min(40, len(opponent_decisions))
+        window_size = min(10, len(opponent_decisions))
         if window_size == 0:
             return (0, 0, 0)
 

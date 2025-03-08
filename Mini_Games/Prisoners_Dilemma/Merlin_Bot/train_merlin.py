@@ -11,18 +11,12 @@ spec.loader.exec_module(user_codes_module)
 
 user_codes = getattr(user_codes_module, "user_code", None)
 
-def user_1(self_decisions, opponent_decisions, s, o, n): return True
-def user_2(self_decisions, opponent_decisions, s, o, n): return False
-
-
-user_codes = {1: user_1, 2: user_2}
-
 merlin = AI_Agent()
 merlin.load_model()
 
 user_codes['merlin'] = merlin.action
 
-for _ in range(10000):
+for _ in range(1000):
     game_length = random.randint(200, 400)
     for player_1 in user_codes.keys():
         for player_2 in user_codes.keys():
@@ -58,10 +52,12 @@ for _ in range(10000):
                     reward = player_1_score - scores_before[0]
                     next_state = merlin.extract_features(player_1_decisions, player_2_decisions)
                     merlin.update_q_value(state, action, reward, next_state)
+		    
                 if player_2 == "merlin":
                     state = merlin.extract_features(player_2_decisions[:-1], player_1_decisions[:-1])
                     action = player_2_decision
-                    reward = player_2_score - scores_before[0]
+                    reward = player_2_score - scores_before[1]
                     next_state = merlin.extract_features(player_2_decisions, player_1_decisions)
                     merlin.update_q_value(state, action, reward, next_state)
+		    
 merlin.save_model()
