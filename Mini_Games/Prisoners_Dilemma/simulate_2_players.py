@@ -78,10 +78,10 @@ for i in range(rounds):
 if player_1 == '0':
     reward = scores[player_1] / rounds
     for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
-        state = merlin.extract_features(player_1_decision[:index], player_2_decision[:index])
+        state = merlin.extract_features(player_1_decisions[:index], player_2_decisions[:index])
         action = player_1_decision
         try:
-            next_state = merlin.extract_features(player_1_decision[:index + 1], player_2_decision[:index + 1])
+            next_state = merlin.extract_features(player_1_decisions[:index + 1], player_2_decisions[:index + 1])
         except IndexError:
             next_state = state
         merlin.update_q_value(state, action, reward, next_state)
