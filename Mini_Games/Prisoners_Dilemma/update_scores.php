@@ -53,7 +53,7 @@ $user_codes["merlin"] = 1;
 $empty_scores = [];
 
 foreach ($user_codes as $item) {
-    if ($item != "merlin) {
+    if ($item != "merlin") {
         $user_id = $item['User_ID'];
     } else {
 	$user_id = 0;
