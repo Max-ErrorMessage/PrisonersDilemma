@@ -10,11 +10,24 @@ import sys
 import importlib.util
 import json
 
+from Mini_Games.Prisoners_Dilemma.Merlin_Bot.AI_bot import AI_Agent
+
 player_1 = sys.argv[1]
 player_2 = sys.argv[2]
 rounds = int(sys.argv[3])
 # Gets all the relevant arguments provided from update_scores.php
 
+if 'merlin' in [player_1, player_2]:
+    module_path = "/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.py"
+
+    spec = importlib.util.spec_from_file_location("merlin", module_path)
+    merlin_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(merlin_module)
+    UserClass = getattr(merlin_module, "AI_Agent", None)
+
+    merlin = AI_Agent()
+    merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
+    # Gets the merlin bot
 
 module_path = "/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py"
 
@@ -24,9 +37,12 @@ spec.loader.exec_module(user_codes_module)
 
 user_codes = getattr(user_codes_module, "user_code", None)
 
-# Since the user_codes.py file is in a different directory (and this file is being run indirectly from
-# update_scores.php, the dictionary that stores all the user IDs and their equivalent functions has to be accessed
+# Since the user_codes.py and the merlin bot file is in a different directory (and this file is being run indirectly
+# from update_scores.php), the dictionary that stores all the user IDs and their equivalent functions has to be accessed
 # via the importlib library.
+
+if 'merlin' in [player_1, player_2]:
+    user_codes['merlin'] = merlin.action
 
 player_1_function, player_2_function = user_codes[player_1], user_codes[player_2]
 
