@@ -80,10 +80,6 @@ def user_56(self_decisions, opponent_decisions, s, o, n):
 	return o[-1]
 
 
-def user_55(self_decisions, opponent_decisions, s, o, n):
-	return False
-
-
 def user_60(self_decisions, opponent_decisions, s, o, n):
 	return True
 
@@ -102,4 +98,8 @@ def user_1(self_decisions, opponent_decisions, s, o, n):
 	return o[-1]
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "28" : user_28, "53" : user_53, "52" : user_52, "2" : user_2, "56" : user_56, "55" : user_55, "60" : user_60, "1" : user_1}
+def user_55(self_decisions, opponent_decisions, s, o, n):
+	return True
+
+
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "28" : user_28, "53" : user_53, "52" : user_52, "2" : user_2, "56" : user_56, "60" : user_60, "1" : user_1, "55" : user_55}
