@@ -68,10 +68,10 @@ for repeat in range(1000):
 
             if player_2 == "merlin":
                 final_state = merlin.extract_features(player_2_decisions, player_1_decisions)
-                final_reward = player_2_score * game_length * 20
+                final_reward = player_2_score * game_length * 10
                 merlin.update_q_value(final_state, player_2_decisions[-1], final_reward, final_state)
 
     if repeat % 100 == 0:
         print(f"Finished simulation {repeat}/1000")
 
-merlin.save_model()
+merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')

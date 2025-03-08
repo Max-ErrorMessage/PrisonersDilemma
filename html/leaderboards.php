@@ -17,6 +17,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<title>Twokie - Leaderboard</title>    
+	<style>
+	    a {
+		text-decoration:none;
+		color:white;
+	    }
+	</style>
     </head>
     <body>
         <div id="NavBar">
@@ -51,7 +57,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 echo "<ol>";
                 foreach ($rows as $row){
 		    $i++;
-                    echo "<li><a href:'otherprofile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
+                    echo "<li><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
                 }
                 echo "</ol>";
             } else {
