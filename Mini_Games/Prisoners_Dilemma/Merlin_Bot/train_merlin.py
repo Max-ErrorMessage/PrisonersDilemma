@@ -47,9 +47,7 @@ for repeat in range(1000):
                 player_1_decisions.append(player_1_decision)
                 player_2_decisions.append(player_2_decision)
 
-
-
     if repeat % 100 == 0:
         print(f"Finished simulation {repeat}/1000")
 
-merlin.save_model()
+merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')

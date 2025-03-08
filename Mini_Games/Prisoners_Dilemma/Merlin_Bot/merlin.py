@@ -34,7 +34,7 @@ class AI_Agent:
 
         recent_moves = opponent_decisions[-window_size:]
 
-        return recent_moves.count(True), opponent_decisions[-1], len(opponent_decisions)
+        return sum(recent_moves), opponent_decisions[-1], len(opponent_decisions)
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))

@@ -27,7 +27,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         </div>
         <div id="Main">
             <br><br>
-            <h1>My Profile:</h1>
+            <h1><?php echo $otherUname ?>'s Profile:</h1>
             <br>
             <p>Username: <?php echo $otherUname; ?></p>
             <p>Submissions: <?php
