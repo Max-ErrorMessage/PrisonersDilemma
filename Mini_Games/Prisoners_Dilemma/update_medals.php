@@ -12,7 +12,7 @@ $sql = "SELECT a.Username, s.Points
         )
         AND s.Game_ID = 1
         ORDER BY s.Points DESC;
-        LIMIT 3;" //sql statement to find the top three players
+        LIMIT 3;"; //sql statement to find the top three players
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -23,15 +23,18 @@ if ($rows) {
         $i++; //sql statement to update medals
         $sql = "UPDATE Users
             SET :medal = :medal + 1
-            WHERE Username = :username;"
+            WHERE Username = :username;";
 
         $stmt->bindParam(':username', $row['Username']);
-        if ($i == 1): //checks what type of medal it is
+        if ($i == 1){ //checks what type of medal it is
             $stmt->bindParam(':medal', "gold");
-        if ($i == 2):
+        }
+        if ($i == 2){
             $stmt->bindParam(':medal', "silver");
-        if ($i == 3):
+        }
+        if ($i == 3){
             $stmt->bindParam(':medal', "bronze");
+        }
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     }
