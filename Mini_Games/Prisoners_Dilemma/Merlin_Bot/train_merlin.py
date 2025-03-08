@@ -61,6 +61,16 @@ for repeat in range(1000):
                     next_state = merlin.extract_features(player_2_decisions, player_1_decisions)
                     merlin.update_q_value(state, action, reward, next_state)
 
+            if player_1 == "merlin":
+                final_state = merlin.extract_features(player_1_decisions, player_2_decisions)
+                final_reward = player_1_score * game_length * 10
+                merlin.update_q_value(final_state, player_1_decisions[-1], final_reward, final_state)
+
+            if player_2 == "merlin":
+                final_state = merlin.extract_features(player_2_decisions, player_1_decisions)
+                final_reward = player_2_score * game_length * 20
+                merlin.update_q_value(final_state, player_2_decisions[-1], final_reward, final_state)
+
     if repeat % 100 == 0:
         print(f"Finished simulation {repeat}/1000")
 

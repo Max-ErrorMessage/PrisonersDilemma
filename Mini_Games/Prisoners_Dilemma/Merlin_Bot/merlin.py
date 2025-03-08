@@ -33,11 +33,8 @@ class AI_Agent:
             return (0, 0, 0)
 
         recent_moves = opponent_decisions[-window_size:]
-        coop_rate = sum(recent_moves) / window_size
-        betrayals = sum(1 for move in recent_moves if not move)
-        trend = betrayals / window_size
 
-        return (coop_rate, recent_moves.count(True), trend)
+        return recent_moves.count(True), opponent_decisions[-1], len(opponent_decisions)
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
