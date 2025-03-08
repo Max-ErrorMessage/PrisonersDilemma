@@ -15,7 +15,7 @@ merlin.load_model()
 
 user_codes['merlin'] = merlin.action
 
-for _ in range(1000):
+for repeat in range(1000):
     game_length = random.randint(200, 400)
     for player_1 in user_codes.keys():
         for player_2 in user_codes.keys():
@@ -26,7 +26,7 @@ for _ in range(1000):
             player_1_decisions, player_2_decisions = [], []
             player_1_function, player_2_function = user_codes[player_1], user_codes[player_2]
 
-            for __ in range(game_length):
+            for _ in range(game_length):
                 player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions,
                                                       player_2_decisions, len(player_1_decisions))
                 player_2_decision = player_2_function(player_1_decisions, player_2_decisions, player_1_decisions,
@@ -63,12 +63,12 @@ for _ in range(1000):
 
             if player_1 == "merlin":
                 final_state = merlin.extract_features(player_1_decisions, player_2_decisions)
-                final_reward = player_1_score
+                final_reward = player_1_score * game_length * 10
                 merlin.update_q_value(final_state, player_1_decisions[-1], final_reward, final_state)
 
             if player_2 == "merlin":
                 final_state = merlin.extract_features(player_2_decisions, player_1_decisions)
-                final_reward = player_2_score
+                final_reward = player_2_score * game_length * 10
                 merlin.update_q_value(final_state, player_2_decisions[-1], final_reward, final_state)
 
 merlin.save_model()
