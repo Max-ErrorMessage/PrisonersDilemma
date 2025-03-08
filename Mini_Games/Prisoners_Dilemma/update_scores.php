@@ -53,10 +53,10 @@ $user_codes["merlin"] = 1;
 $empty_scores = [];
 
 foreach ($user_codes as $item) {
-    if ($item != "merlin) {
+    if ($item != "merlin") {
         $user_id = $item['User_ID'];
     } else {
-	$user_id = 0;
+	    $user_id = 0;
     }
     $empty_scores[$user_id] = 0;
 }
@@ -68,9 +68,17 @@ file_put_contents('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_File
 // Resets the scores to be 0 for each player
 
 foreach ($user_codes as $user_code_1) {
-    $user_1 = $user_code_1["User_ID"];
+    if ($user_code_1 != "merlin") {
+        $user_1 = $user_code_1['User_ID'];
+    } else {
+	    $user_1 = 0;
+    }
     foreach ($user_codes as $user_code_2) {
-        $user_2 = $user_code_2["User_ID"];
+        if ($user_code_2 != "merlin") {
+            $user_2 = $user_code_2['User_ID'];
+        } else {
+            $user_2 = 0;
+        }
         if ($user_2 <= $user_1) {
             continue;
         }
