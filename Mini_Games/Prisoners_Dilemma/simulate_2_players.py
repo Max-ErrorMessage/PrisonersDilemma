@@ -75,6 +75,19 @@ for i in range(rounds):
     player_1_decisions.append(player_1_decision)
     player_2_decisions.append(player_2_decision)
 
+if player_1 == '0':
+    reward = scores[player_1] / rounds
+    for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
+        state = merlin.extract_features(player_1_decision[:index], player_2_decision[:index])
+        action = player_1_decision
+        try:
+            next_state = merlin.extract_features(player_1_decision[:index + 1], player_2_decision[:index + 1])
+        except IndexError:
+            next_state = state
+        merlin.update_q_value(state, action, reward, next_state)
+
+merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
+
 with open('/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/scores.json', 'r') as file:
     existing_scores = json.load(file)
 
