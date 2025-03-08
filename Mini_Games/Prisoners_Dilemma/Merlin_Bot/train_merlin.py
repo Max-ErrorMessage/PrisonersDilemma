@@ -16,6 +16,7 @@ merlin.load_model()
 user_codes['merlin'] = merlin.action
 
 for repeat in range(1000):
+    print(f"Simulation {repeat} underway.")
     game_length = random.randint(200, 400)
     for player_1 in user_codes.keys():
         for player_2 in user_codes.keys():
