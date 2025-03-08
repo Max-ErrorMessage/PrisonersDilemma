@@ -38,23 +38,20 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                     SELECT Submission.Code
                                     FROM Submission
                                     INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
-                                    WHERE Accounts.Username = ?;
+                                    WHERE Accounts.Username = :username;
                                 ";
 
-                                $stmt = $conn->prepare($sql);
-                                $stmt->bind_param("s", $uname);
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->bindParam(":username", $uname);
                                 $stmt->execute();
-                                $result = $stmt->get_result();
+                                $submissions = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-                                $submissions = [];
-                                while ($row = $result->fetch_assoc()) {
-                                    $submissions[] = $row['Code'];
-                                }
 
-                                $stmt->close();
-                                $conn->close();
+                                $pdo = null;
 
-                                echo json_encode($submissions);
+                                foreach ($submissions as $code){
+				    echo "<pre>" . htmlspecialchars($code) . "<pre>";
+				}
                                 ?></p>
         </div>
 

@@ -142,7 +142,7 @@ for index, player1 in enumerate(players):
         player_1_decisions, player_2_decisions = [], []
         player_1_function, player_2_function = functions[index], functions[jindex]
 
-        for _ in range(200):
+        for _ in range(400):
             try:
                 player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
                 player_2_decision = player_2_function(player_2_decisions, player_1_decisions, player_2_decisions, player_1_decisions, len(player_1_decisions))
@@ -170,7 +170,7 @@ for index, player1 in enumerate(players):
         scores[jindex] += player_2_score
 
 
-scores_dict = {player: round(score / 1400, 2) for player, score in zip(players, scores)}
+scores_dict = {player: round(score / 2800, 2) for player, score in zip(players, scores)}
 # Divided by 1400 since that creates the average score per round (7 opponents * 200 rounds per game)
 
 scores_dict = dict(sorted(scores_dict.items(), key=lambda item: item[1], reverse=True))

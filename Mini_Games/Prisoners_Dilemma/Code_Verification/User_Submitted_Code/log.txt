@@ -1876,3 +1876,42 @@ User ID: 60
 return True
 User ID: 60
 
+if n == 0:
+    return True
+if n < 200:
+    return o[-1]
+if n == 200:
+    return False
+if n < 203:
+    return True
+if n[200]:
+    return False
+return o[-1]
+User ID: 1
+
+if n == 0:
+    return True
+if n < 200:
+    return o[-1]
+if n == 200:
+    return False
+if n < 203:
+    return True
+if o[200]:
+    return False
+return o[-1]
+User ID: 1
+
+if n == 0:
+    return True
+if n < 200:
+    return o[-1]
+if n == 200:
+    return False
+if n < 203:
+    return True
+if n[200]:
+    return False
+return o[-1]
+User ID: 1
+
