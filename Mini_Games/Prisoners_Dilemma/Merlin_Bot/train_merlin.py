@@ -2,7 +2,6 @@ from merlin import AI_Agent
 import importlib.util
 import random
 
-
 module_path = "/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py"
 
 spec = importlib.util.spec_from_file_location("user_codes", module_path)
@@ -28,8 +27,10 @@ for _ in range(1000):
             player_1_function, player_2_function = user_codes[player_1], user_codes[player_2]
 
             for __ in range(game_length):
-                player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
-                player_2_decision = player_2_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
+                player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions,
+                                                      player_2_decisions, len(player_1_decisions))
+                player_2_decision = player_2_function(player_1_decisions, player_2_decisions, player_1_decisions,
+                                                      player_2_decisions, len(player_1_decisions))
 
                 scores_before = player_1_score, player_2_score
 
@@ -52,12 +53,22 @@ for _ in range(1000):
                     reward = player_1_score - scores_before[0]
                     next_state = merlin.extract_features(player_1_decisions, player_2_decisions)
                     merlin.update_q_value(state, action, reward, next_state)
-		    
+
                 if player_2 == "merlin":
                     state = merlin.extract_features(player_2_decisions[:-1], player_1_decisions[:-1])
                     action = player_2_decision
                     reward = player_2_score - scores_before[1]
                     next_state = merlin.extract_features(player_2_decisions, player_1_decisions)
                     merlin.update_q_value(state, action, reward, next_state)
-		    
+
+            if player_1 == "merlin":
+                final_state = merlin.extract_features(player_1_decisions, player_2_decisions)
+                final_reward = player_1_score
+                merlin.update_q_value(final_state, player_1_decisions[-1], final_reward, final_state)
+
+            if player_2 == "merlin":
+                final_state = merlin.extract_features(player_2_decisions, player_1_decisions)
+                final_reward = player_2_score
+                merlin.update_q_value(final_state, player_2_decisions[-1], final_reward, final_state)
+
 merlin.save_model()
