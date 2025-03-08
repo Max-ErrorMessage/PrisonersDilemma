@@ -27,14 +27,15 @@ if ($rows) {
 
         $stmt->bindParam(':username', $row['Username']);
         if ($i == 1){ //checks what type of medal it is
-            $stmt->bindParam(':medal', "gold");
+            $medal = "gold";
         }
         if ($i == 2){
-            $stmt->bindParam(':medal', "silver");
+            $medal = "silver";
         }
         if ($i == 3){
-            $stmt->bindParam(':medal', "bronze");
+            $medal = "bronze";
         }
+            $stmt->bindParam(':medal', $medal);
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     }
