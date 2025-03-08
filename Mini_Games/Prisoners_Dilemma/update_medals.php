@@ -19,26 +19,27 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($rows) {
     $i = 0;
-    foreach ($rows as $row){
-        $i++; //sql statement to update medals
+    foreach ($rows as $row) {
+        $i++; // Determine medal type
 
-        if ($i == 1){ //checks what type of medal it is
+        if ($i == 1) {
             $medal = "gold";
-        }
-        if ($i == 2){
+        } elseif ($i == 2) {
             $medal = "silver";
-        }
-        if ($i == 3){
+        } elseif ($i == 3) {
             $medal = "bronze";
+        } else {
+            break; // Only process top 3
         }
 
+        // Prepare the SQL statement
         $sql = "UPDATE Users
-            SET $medal = $medal + 1
-            WHERE Username = :username;";
+                SET $medal = $medal + 1
+                WHERE Username = :username";
 
-        $stmt->bindParam(':username', $row['Username']);
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
+        $stmt = $pdo->prepare($sql); // Prepare first
+        $stmt->bindParam(':username', $row['Username']); // Then bind parameters
+        $stmt->execute(); // Execute the query
     }
 }
 
