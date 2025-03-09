@@ -65,29 +65,30 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <br>
             <p>Username: <?php echo $otherUname; ?></p>
             <p>Submissions: <?php
-                                if ($otherUname == "MerlinBOT") {
-                                    echo "<pre>This user is an AI bot that trains based on your submissions! It has no visible 'code' to see.";
-                                } else {
 
-                                    $sql = "
-                                        SELECT Submission.Code
-                                        FROM Submission
-                                        INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
-                                        WHERE Accounts.Username = :username;
-                                    ";
+                                $sql = "
+                                    SELECT Submission.Code, Submission.Game_ID
+                                    FROM Submission
+                                    INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
+                                    WHERE Accounts.Username = :username;
+                                ";
 
-                                    $stmt = $pdo->prepare($sql);
-                                    $stmt->bindParam(":username", $otherUname);
-                                    $stmt->execute();
-                                    $submissions = $stmt->fetchAll(PDO::FETCH_COLUMN);
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->bindParam(":username", $otherUname);
+                                $stmt->execute();
 
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    $code = $row['Code'];
+                                    $gameid = $row['Game_ID'];
 
-                                    $pdo = null;
-
-                                    foreach ($submissions as $code){
-                                        echo "<pre id='submission'>" . htmlspecialchars($code) . "<pre>";
+                                    if ($gameid == 2){
+                                        $code = str_replace("$","\n-----------------------\n", $code);
                                     }
+                                    echo "<pre id="example">" . htmlspecialchars($code) . "<pre>"
                                 }
+
+                                $pdo = null;
+
                                 ?></p>
         </div>
 

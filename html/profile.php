@@ -67,7 +67,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>My Profile:</h1>
             <br>
             <p>Username: <?php echo $uname; ?></p>
-            <p class="submission">Submissions: <?php
+            <p>Submissions: <?php
 
                                 $sql = "
                                     SELECT Submission.Code, Submission.Game_ID
@@ -79,16 +79,15 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                 $stmt = $pdo->prepare($sql);
                                 $stmt->bindParam(":username", $uname);
                                 $stmt->execute();
-                                $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    $code = $row['Submission.Code'];
-                                    $gameid = $row['Submission.Game_ID'];
+                                    $code = $row['Code'];
+                                    $gameid = $row['Game_ID'];
 
                                     if ($gameid == 2){
                                         $code = str_replace("$","\n-----------------------\n", $code);
                                     }
-                                    echo "<pre>" . htmlspecialchars($code) . "<pre>"
+                                    echo "<pre id="example">" . htmlspecialchars($code) . "<pre>"
                                 }
 
                                 $pdo = null;
