@@ -16,7 +16,7 @@ merlin.load_model()
 
 user_codes[0] = merlin.action
 
-for repeat in range(1000):
+for repeat in range(100):
     scores = dict({user: 0 for user in user_codes.keys()})
     merlin_games = []
     game_length = random.randint(200, 400)
@@ -72,7 +72,7 @@ for repeat in range(1000):
             merlin.update_state(state, action, reward, next_state)
 
 
-    if repeat % 100 == 0:
-        print(f"Finished simulation {repeat}/1000")
+    if repeat % 10 == 0:
+        print(f"Finished simulation {repeat}/100")
 
 merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
