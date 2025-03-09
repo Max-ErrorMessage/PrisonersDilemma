@@ -39,6 +39,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 border-radius: 50%;
                 transition: background-color 0s;
             }
+
+            .rooks{
+                width:50px;
+                height:50px;
+            }
             
             #rook{
                 position:absolute;
@@ -132,11 +137,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <p>What we wanted to test was how good can a chess bot get when we introduce a limit on the length of the code users can write</p>
                 <p>In this challenge users are tasked to write chess bots that cannot be over [insert restriction]</p>
                 -->
-		<img id = "rook" src = "images/dice6.png"></img><br><br><br>
-        <img id = "rook2" src = "images/dice5.png"></img><br><br><br>
-		<img id = "rook3" src = "images/dice4.png"></img><br><br><br>
-        <img id = "rook4" src = "images/dice3.png"></img><br><br><br>
-		<img id = "rook5" src = "images/dice2.png"></img><br><br><br>
+		<img class = "rooks" id = "rook" src = "images/dice6.png"></img><br><br><br>
+        <img class = "rooks" id = "rook2" src = "images/dice5.png"></img><br><br><br>
+		<img class = "rooks" id = "rook3" src = "images/dice4.png"></img><br><br><br>
+        <img class = "rooks" id = "rook4" src = "images/dice3.png"></img><br><br><br>
+		<img class = "rooks" id = "rook5" src = "images/dice2.png"></img><br><br><br>
 		<!--
                 <a class="go" href="#">Coming Soon!</a>
            	-->
