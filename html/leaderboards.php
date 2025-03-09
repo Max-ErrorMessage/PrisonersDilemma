@@ -57,11 +57,13 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 echo "<ol>";
                 foreach ($rows as $row){
 		    $i++;
-		            if ($row["Username"] != "MerlinBOT"){
+		            if ($row["Username"] != "MerlinBOT" and $row["Username"] != $uname){
                         echo "<li><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
+                    } else if ($row["Username"] != $uname) {
+                        echo "<li style='background-image: linear-gradient(90deg,#334433,#557755);'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
                     } else {
-                        echo "<li style='background-color: #6c7a89;'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
-                    }
+			echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'><a href='profile.php'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:<strong> " . htmlspecialchars($row['Points']) . "</a></li>";
+		    }
                 }
                 echo "</ol>";
             } else {

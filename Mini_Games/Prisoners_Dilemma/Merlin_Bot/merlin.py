@@ -28,13 +28,13 @@ class AI_Agent:
         """
         Using the self_decisions and opponent_decisions as a state space is far too large so this simplifies it massively for the purpose of training an AI
         """
-        window_size = min(10, len(opponent_decisions))
+        window_size = min(25, len(opponent_decisions))
         if window_size == 0:
-            return (0, 0, 0)
+            return (0, 0)
 
         recent_moves = opponent_decisions[-window_size:]
 
-        return len(recent_moves) - sum(recent_moves), opponent_decisions[-1], self_decisions[-1]
+        return len(recent_moves) - sum(recent_moves), int(len(self_decisions) / 25)
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))

@@ -1978,3 +1978,9 @@ if n > 0:
 return not True
 User ID: 1
 
+return True if n < 2 else o[-1] or o[-2]
+User ID: 55
+
+return random.randint(0, 1)
+User ID: 55
+
