@@ -32,7 +32,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>My Profile:</h1>
             <br>
             <p>Username: <?php echo $uname; ?></p>
-            <p class="submission">Submissions: <?php
+            <p>Submissions: <?php
                                 include '../db.php';
 
                                 $sql = "
@@ -51,7 +51,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                 $pdo = null;
 
                                 foreach ($submissions as $code){
-                                    echo "<pre>" . htmlspecialchars($code) . "<pre>";
+                                    echo "<pre id=example>" . htmlspecialchars($code) . "</pre>";
                                 }
                                 ?></p>
         </div>

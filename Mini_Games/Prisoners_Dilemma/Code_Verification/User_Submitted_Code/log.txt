@@ -1926,3 +1926,55 @@ User ID: 1
 return True if n < 1 else o[-1]
 User ID: 28
 
+if n <= 10:
+    return True
+return sum(o[10:]) < n - 11
+User ID: 2
+
+if n <= 10:
+    return True
+return False in o[10:]
+User ID: 2
+
+if n <= 10:
+    return False
+return o[-1]
+User ID: 2
+
+if n < 10:
+    return True
+return o[-1]
+User ID: 2
+
+if n <= 11:
+    return True
+return False in o[11:]
+User ID: 2
+
+return True if n == 0 else s == o
+User ID: 2
+
+return True if n == 0 else s[:-25] == o[:-25]
+User ID: 2
+
+if n == 0:
+    if random.random() < 0.5:
+        return True
+    return False
+return s[0]
+User ID: 1
+
+return str(n)[0] % 2 == True
+User ID: 1
+
+return int(str(n)[0] % 2) == True
+User ID: 1
+
+return int(str(n)[0]) % 2 == True
+User ID: 1
+
+if n > 0:
+    return o[-1]
+return not True
+User ID: 1
+

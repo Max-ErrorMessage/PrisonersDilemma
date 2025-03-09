@@ -33,7 +33,7 @@ if ($rows) {
         }
 
         // Prepare the SQL statement
-        $sql = "UPDATE Users
+        $sql = "UPDATE Accounts
                 SET $medal = $medal + 1
                 WHERE Username = :username";
 

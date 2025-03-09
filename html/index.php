@@ -55,6 +55,9 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 border-radius:50px;
                 left:50%;
                 transform: translateX(-50%);
+		text-decoration: none;
+		color: white;
+		border-bottom: 4px #183b2a solid;
             }
             
             

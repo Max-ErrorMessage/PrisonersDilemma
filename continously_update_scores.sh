@@ -6,5 +6,5 @@ while true; do
     
     echo "Scores updated at $(date)"
     
-    sleep 10
+    sleep 60
 done
