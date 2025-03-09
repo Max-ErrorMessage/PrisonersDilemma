@@ -144,12 +144,13 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <img class = "rooks" id = "rook2" src = "images/dice5.png"></img><br><br><br>
 		<img class = "rooks" id = "rook3" src = "images/dice4.png"></img><br><br><br>
         <img class = "rooks" id = "rook4" src = "images/dice3.png"></img><br><br><br>
-		<img class = "rooks" id = "rook5" src = "images/dice2.png"></img><br><br><br>
+		<img class = "rooks" id = "rook5" src = "images/dice2.png"></img><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<!--
                 <a class="go" href="#">Coming Soon!</a>
            	-->
 	    </div>
         </div>
+
         <script>
             const circles = document.querySelectorAll('.circle');
             
@@ -180,6 +181,9 @@ $uname = htmlspecialchars($_SESSION['uname']);
     
                 document.getElementById("rook").style.transform = `translateX(${window.scrollY * 2}px)`;
                 document.getElementById("rook2").style.transform = `translateX(-${window.scrollY * 2}px)`;
+                document.getElementById("rook3").style.transform = `translateX(${window.scrollY * 2}px)`;
+                document.getElementById("rook4").style.transform = `translateX(-${window.scrollY * 2}px)`;
+                document.getElementById("rook5").style.transform = `translateX(${window.scrollY * 2}px)`;
             });
         </script>
 
