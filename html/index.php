@@ -55,15 +55,15 @@ $uname = htmlspecialchars($_SESSION['uname']);
             }
             #rook3{
                 position:absolute;
-                left:-150px;
+                left:-100px;
             }
             #rook4{
                 position:absolute;
-                right:-150px;
+                right:-100px;
             }
             #rook5{
                 position:absolute;
-                left:-200px;
+                left:-100px;
             }
             .go{
                 position:absolute;
@@ -181,9 +181,9 @@ $uname = htmlspecialchars($_SESSION['uname']);
     
                 document.getElementById("rook").style.transform = `translateX(${window.scrollY * 2}px)`;
                 document.getElementById("rook2").style.transform = `translateX(-${window.scrollY * 2}px)`;
-                document.getElementById("rook3").style.transform = `translateX(${window.scrollY * 2}px)`;
-                document.getElementById("rook4").style.transform = `translateX(-${window.scrollY * 2}px)`;
-                document.getElementById("rook5").style.transform = `translateX(${window.scrollY * 2}px)`;
+                document.getElementById("rook3").style.transform = `translateX(${window.scrollY * 1.9}px)`;
+                document.getElementById("rook4").style.transform = `translateX(-${window.scrollY * 1.9}px)`;
+                document.getElementById("rook5").style.transform = `translateX(${window.scrollY * 1.8}px)`;
             });
         </script>
 
