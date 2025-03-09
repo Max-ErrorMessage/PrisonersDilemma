@@ -14,10 +14,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
 <html>
     <head>
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="profile.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     	<title>Twokie - My profile</title>
+
     </head>
     <body>
         <div id="NavBar">
@@ -26,6 +28,20 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <a href="leaderboards.php" class="nav-link">Leaderboards</a>
             <a href="profile.php" class="nav-link">My Profile</a>
             <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
+        </div>
+        <div id="medals">
+            <div id="gold" class="medal">
+                <img src="images/gold.png"/>
+                <p>0</p>
+            </div>
+            <div id="silver" class="medal">
+                <img src="images/silver.png"/>
+                <p>0</p>
+            </div>
+            <div id="bronze" class="medal">
+                <img src="images/bronze.png"/>
+                <p>0</p>
+            </div>
         </div>
         <div id="Main">
             <br><br>
