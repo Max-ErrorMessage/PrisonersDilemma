@@ -57,7 +57,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 echo "<ol>";
                 foreach ($rows as $row){
 		    $i++;
-		            if ($Username != "MerlinBOT"){
+		            if ($row["Username"] != "MerlinBOT"){
                         echo "<li><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
                     } else {
                         echo "<li style='background-color: #6c7a89;'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
