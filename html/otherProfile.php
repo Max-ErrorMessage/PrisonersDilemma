@@ -65,37 +65,41 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <br>
             <p>Username: <?php echo $otherUname; ?></p>
             <p>Submissions: <?php
+                                if ($otherUname == "MerlinBOT") {
+                                    echo "<pre>This user is an AI bot that trains based on your submissions! It has no visible 'code' to see.";
+                                } else {
 
-                                $sql = "
-                                    SELECT Submission.Code, Submission.Game_ID
-                                    FROM Submission
-                                    INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
-                                    WHERE Accounts.Username = :username
-                                    SORT BY Submission.Game_ID;
-                                ";
+                                    $sql = "
+                                        SELECT Submission.Code, Submission.Game_ID
+                                        FROM Submission
+                                        INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
+                                        WHERE Accounts.Username = :username
+                                        SORT BY Submission.Game_ID;
+                                    ";
 
-                                $stmt = $pdo->prepare($sql);
-                                $stmt->bindParam(":username", $otherUname);
-                                $stmt->execute();
+                                    $stmt = $pdo->prepare($sql);
+                                    $stmt->bindParam(":username", $otherUname);
+                                    $stmt->execute();
 
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    $code = $row['Code'];
-                                    $gameid = $row['Game_ID'];
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        $code = $row['Code'];
+                                        $gameid = $row['Game_ID'];
 
-                                    if ($gameid == 1){
-                                        echo "<h3>Prisoner's Dilemma:</h3>";
+                                        if ($gameid == 1){
+                                            echo "<h3>Prisoner's Dilemma:</h3>";
+                                        }
+
+                                        if ($gameid == 2){
+                                            echo "<h3>Yahtzee:</h3>";
+                                            $code = str_replace("$","\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
+                                        }
+                                        echo "<pre id='example'>" . htmlspecialchars($code) . "</pre>";
                                     }
 
-                                    if ($gameid == 2){
-                                        echo "<h3>Yahtzee:</h3>";
-                                        $code = str_replace("$","\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
-                                    }
-                                    echo "<pre id='example'>" . htmlspecialchars($code) . "</pre>";
-                                }
+                                    $pdo = null;
 
-                                $pdo = null;
-
-                                ?></p>
+                                    ?>
+            </p>
         </div>
 
     </body>
