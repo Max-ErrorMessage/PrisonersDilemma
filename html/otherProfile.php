@@ -90,7 +90,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                         echo "<h3>Yahtzee:</h3>";
                                         $code = str_replace("$","\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
                                     }
-                                    echo "<pre id="example">" . htmlspecialchars($code) . "<\pre>";
+                                    echo "<pre id='example'>" . htmlspecialchars($code) . "</pre>";
                                 }
 
                                 $pdo = null;
