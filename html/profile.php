@@ -66,10 +66,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>My Profile:</h1>
             <br>
             <p>Username: <?php echo $uname; ?></p>
-            <p class="submission">Submissions: <?php
+            <p>Submissions: <?php
 
                                 $sql = "
-                                    SELECT Submission.Code
+                                    SELECT Submission.Code, Submission.Game_ID
                                     FROM Submission
                                     INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
                                     WHERE Accounts.Username = :username;
@@ -78,14 +78,19 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                 $stmt = $pdo->prepare($sql);
                                 $stmt->bindParam(":username", $uname);
                                 $stmt->execute();
-                                $submissions = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    $code = $row['Code'];
+                                    $gameid = $row['Game_ID'];
+
+                                    if ($gameid == 2){
+                                        $code = str_replace("$", "\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
+                                    }
+                                    echo "<pre id='example'>" . htmlspecialchars($code) . "</pre>";
+                                }
 
                                 $pdo = null;
 
-                                foreach ($submissions as $code){
-                                    echo "<pre id=example>" . htmlspecialchars($code) . "</pre>";
-                                }
                                 ?></p>
         </div>
 
