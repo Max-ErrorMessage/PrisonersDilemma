@@ -41,25 +41,25 @@ $uname = htmlspecialchars($_SESSION['uname']);
             }
 
             .rooks{
-                width:50px;
-                height:50px;
+                width:60px;
+                height:60px;
             }
             
             #rook{
                 position:absolute;
-                left:-100px;
+                left:-150px;
             }
             #rook2{
                 position:absolute;
-                right:-100px;
+                right:-150px;
             }
             #rook3{
                 position:absolute;
-                left:-100px;
+                left:-125px;
             }
             #rook4{
                 position:absolute;
-                right:-100px;
+                right:-125px;
             }
             #rook5{
                 position:absolute;
