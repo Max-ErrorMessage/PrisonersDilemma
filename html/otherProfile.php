@@ -16,7 +16,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    	<title>Twokie - <?php echo $otherUname?;>'s Profile'</title>
+    	<title>Twokie - <?php echo $otherUname;?>'s Profile</title>
     </head>
     <body>
         <div id="NavBar">
@@ -25,6 +25,39 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <a href="leaderboards.php" class="nav-link">Leaderboards</a>
             <a href="profile.php" class="nav-link">My Profile</a>
             <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
+        </div>
+        <?php
+            include '../db.php';
+
+            $sql = "
+                SELECT gold, silver, bronze
+                FROM Accounts
+                WHERE Accounts.Username = :username;
+            ";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":username", $otherUname);
+            $stmt->execute();
+            $medals = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+            $gold = $medals["gold"];
+            $silver = $medals["silver"];
+            $bronze = $medals["bronze"];
+        ?></p>
+        <div id="medals">
+            <div id="gold" class="medal">
+                <img src="images/gold.png"/>
+                <p><?php echo $gold;?></p>
+            </div>
+            <div id="silver" class="medal">
+                <img src="images/silver.png"/>
+                <p><?php echo $silver;?></p>
+            </div>
+            <div id="bronze" class="medal">
+                <img src="images/bronze.png"/>
+                <p><?php echo $bronze;?></p>
+            </div>
         </div>
         <div id="Main">
             <br><br>
@@ -35,7 +68,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                 if ($otherUname == "MerlinBOT") {
                                     echo "<pre>This user is an AI bot that trains based on your submissions! It has no visible 'code' to see.";
                                 } else {
-                                    include '../db.php';
 
                                     $sql = "
                                         SELECT Submission.Code

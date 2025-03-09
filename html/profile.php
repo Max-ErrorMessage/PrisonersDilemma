@@ -41,9 +41,8 @@ $uname = htmlspecialchars($_SESSION['uname']);
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":username", $uname);
             $stmt->execute();
-            $medals = $stmt->fetchAll(PDO::FETCH_COLUMN);
+            $medals = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $pdo = null;
 
             $gold = $medals["gold"];
             $silver = $medals["silver"];
