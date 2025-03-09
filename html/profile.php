@@ -29,18 +29,36 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <a href="profile.php" class="nav-link">My Profile</a>
             <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
         </div>
+        <?php
+            include '../db.php';
+
+            $sql = "
+                SELECT gold, silver, bronze
+                FROM Accounts
+                WHERE Accounts.Username = :username;
+            ";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":username", $uname);
+            $stmt->execute();
+            $medals = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $gold = $medals["gold"];
+            $silver = $medals["silver"];
+            $bronze = $medals["bronze"];
+        ?></p>
         <div id="medals">
             <div id="gold" class="medal">
                 <img src="images/gold.png"/>
-                <p>0</p>
+                <p><?php echo $gold;?></p>
             </div>
             <div id="silver" class="medal">
                 <img src="images/silver.png"/>
-                <p>0</p>
+                <p><?php echo $silver;?></p>
             </div>
             <div id="bronze" class="medal">
                 <img src="images/bronze.png"/>
-                <p>0</p>
+                <p><?php echo $bronze;?></p>
             </div>
         </div>
         <div id="Main">
@@ -48,8 +66,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <h1>My Profile:</h1>
             <br>
             <p>Username: <?php echo $uname; ?></p>
-            <p>Submissions: <?php
-                                include '../db.php';
+            <p class="submission">Submissions: <?php
 
                                 $sql = "
                                     SELECT Submission.Code

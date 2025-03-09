@@ -1,19 +1,20 @@
 #medals{
-    background-color: #002200;
-    border-radius:3px;
-    width: 110px;
-    left: 5px;
-    padding:10px;
+    background-color: #001100;
+    border-radius:10px;
+    right: 50px;
+    padding:20px;
     position:absolute;
     display:flex;
 }
 
-.medals{
-    width:30px;
+.medal{
     display:flex;
+    align-items:center;
+    margin-right:10px;
 }
 
-.medals img{
-    width: 20px;
-    margin-right:2px;
+.medal img{
+    width: 50px;
+    height: 50px;
+    margin-right:5px;
 }
