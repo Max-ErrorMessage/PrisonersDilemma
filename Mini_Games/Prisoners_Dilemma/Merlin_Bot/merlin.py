@@ -3,7 +3,7 @@ import random
 
 
 class AI_Agent:
-    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1):
+    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.3):
         self.q_table = {}
         self.alpha = alpha
         self.gamma = gamma
