@@ -48,6 +48,18 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 position:absolute;
                 right:-100px;
             }
+            #rook3{
+                position:absolute;
+                left:-150px;
+            }
+            #rook4{
+                position:absolute;
+                right:-150px;
+            }
+            #rook5{
+                position:absolute;
+                left:-200px;
+            }
             .go{
                 position:absolute;
                 background-color:3f7652;
@@ -120,8 +132,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <p>What we wanted to test was how good can a chess bot get when we introduce a limit on the length of the code users can write</p>
                 <p>In this challenge users are tasked to write chess bots that cannot be over [insert restriction]</p>
                 -->
-		<img id = "rook" src = "images/redRook.png"></img><br><br><br>
-                <img id = "rook2" src = "images/blueRook.png"></img>
+		<img id = "rook" src = "images/dice6.png"></img><br><br><br>
+        <img id = "rook2" src = "images/dice5.png"></img><br><br><br>
+		<img id = "rook3" src = "images/dice4.png"></img><br><br><br>
+        <img id = "rook4" src = "images/dice3.png"></img><br><br><br>
+		<img id = "rook5" src = "images/dice2.png"></img><br><br><br>
 		<!--
                 <a class="go" href="#">Coming Soon!</a>
            	-->
