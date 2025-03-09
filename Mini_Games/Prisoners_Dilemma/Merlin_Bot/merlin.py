@@ -3,7 +3,7 @@ import random
 
 
 class AI_Agent:
-    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.3):
+    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1):
         self.q_table = {}
         self.alpha = alpha
         self.gamma = gamma
@@ -34,7 +34,7 @@ class AI_Agent:
 
         recent_moves = opponent_decisions[-window_size:]
 
-        return len(recent_moves) - sum(recent_moves), int(len(self_decisions) / 25)
+        return len(recent_moves) - sum(recent_moves), round(sum(opponent_decisions) / len(opponent_decisions), 1)
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
@@ -51,6 +51,14 @@ class AI_Agent:
             print("No saved model found. Starting fresh.")
 
     def print_q_table(self):
-        for key, value in self.q_table.items():
-            print(f"State: {key[0]}, Action: {key[1]} -> Q-Value: {value:.2f}")
+        if not self.q_table:
+            print("Q-table is empty. Train the agent first!")
+            return
+
+        print("Q table for Merlin (Sorted by Q-value Descending):")
+
+        sorted_q_table = sorted(self.q_table.items(), key=lambda item: item[1], reverse=True)
+
+        for (state, action), value in sorted_q_table:
+            print(f"State: {state}, Action: {action} -> Q-Value: {value:.2f}")
 

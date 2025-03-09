@@ -16,7 +16,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
 	<link rel="stylesheet" href="profile.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     	<title>Twokie - <?php echo $otherUname;?>'s Profile</title>
     </head>
     <body>
@@ -94,7 +97,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                             echo "<h3>Yahtzee:</h3>";
                                             $code = str_replace("$","\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
                                         }
-                                        echo "<pre id='example'>" . htmlspecialchars($code) . "</pre>";
+                                        echo "<pre id='example'><code class='language-python'>" . htmlspecialchars($code) . "</code></pre>";
                                     }
 
 

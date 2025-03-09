@@ -139,7 +139,7 @@ canvas {
 #example {
     border: 2px #003300;
     padding: 40px;
-    background: #222;
+    background: #B0B0B0;
     color: white;
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -147,4 +147,8 @@ canvas {
     text-align: left;
     left: 15%;
     right: 5%;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+    text-shadow: none !important;
 }

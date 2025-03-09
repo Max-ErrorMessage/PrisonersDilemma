@@ -1984,3 +1984,93 @@ User ID: 55
 return random.randint(0, 1)
 User ID: 55
 
+trust = 0
+hate = 0 
+
+if (o[n]=True):
+    trust = trust+ 1
+else:
+    hate = hate + 1
+
+if (hate>2 and trust<3):
+      return False
+else:
+      return True
+User ID: 60
+
+trust = 0
+hate = 0 
+
+if (o[n]=True):
+    trust = trust + 1
+else:
+    hate = hate + 1
+
+if (hate>2 and trust<3):
+      return False
+else:
+      return True
+User ID: 60
+
+trust = 0
+hate = 0 
+
+if (o[n]==True):
+    trust = trust+ 1
+else:
+    hate = hate + 1
+
+if (hate>2 and trust<3):
+      return False
+else:
+      return True
+User ID: 60
+
+trust = 0
+hate = 0 
+
+if (o[n]==True or n == 0):
+    trust = trust+ 1
+else:
+    hate = hate + 1
+
+if (hate>2 and trust<3):
+      return False
+else:
+      return True
+User ID: 60
+
+trust = 0
+hate = 0 
+if (n>0):
+    if (o[n]==True or n == 0):
+        trust = trust+ 1
+    else:
+        hate = hate + 1
+
+if (hate>2 and trust<3):
+      return False
+else:
+      return True
+User ID: 60
+
+if False not in o:
+    return False
+if o.count(False) < 4:
+    return True
+return False
+User ID: 1
+
+if n < ((168*52)+2)/2912:
+    return True
+if not o[-1] and not o[-(2*1)] and not (not o[-(4-1)]):
+    return
+hamburgerConstant = n
+n = random.random()
+n *= 100
+if n < ((168*52)+2)/2912:
+    return
+return "let me die"
+
+User ID: 56
+

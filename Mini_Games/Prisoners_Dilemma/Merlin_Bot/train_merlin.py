@@ -14,9 +14,9 @@ user_codes = getattr(user_codes_module, "user_code", None)
 merlin = AI_Agent()
 merlin.load_model()
 
-user_codes[0] = merlin.action
+user_codes['0'] = merlin.action
 
-for repeat in range(100):
+for repeat in range(1000):
     scores = dict({user: 0 for user in user_codes.keys()})
     merlin_games = []
     game_length = random.randint(200, 400)
@@ -53,26 +53,29 @@ for repeat in range(100):
             scores[player_1] += player_1_score
             scores[player_2] += player_2_score
 
-            if player_1 == 0:
-                merlin_games.append(zip(player_1_decisions, player_2_decisions))
+            if player_2 == '0':
+                merlin_games.append((player_2_decisions, player_1_decisions))
 
     score_values = np.array(list(scores.values()))
 
     mean_score = np.mean(score_values)
     std_dev = np.std(score_values)
     z_scores = {user_id: (score - mean_score) / std_dev for user_id, score in scores.items()}
-
-    reward = z_scores[0]
+    
+    if max(scores.values()) == scores['0']:
+        reward = 10 # Massively reward first place
+    else:
+        reward = z_scores['0']
 
     for game in merlin_games:
-        for index, (player_1_decision, player_2_decision) in game:
+        for index, player_1_decision in enumerate(game[0]):
             state = merlin.extract_features(game[0][:index - 1], game[1][:index - 1])
             action = player_1_decision
             next_state = merlin.extract_features(game[0][:index], game[1][:index])
-            merlin.update_state(state, action, reward, next_state)
+            merlin.update_q_value(state, action, reward, next_state)
 
 
-    if repeat % 10 == 0:
-        print(f"Finished simulation {repeat}/100")
+    if repeat % 100 == 0:
+        print(f"Finished simulation {repeat}/1000")
 
 merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
