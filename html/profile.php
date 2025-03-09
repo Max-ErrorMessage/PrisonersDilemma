@@ -72,7 +72,8 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                     SELECT Submission.Code, Submission.Game_ID
                                     FROM Submission
                                     INNER JOIN Accounts ON Submission.User_ID = Accounts.User_ID
-                                    WHERE Accounts.Username = :username;
+                                    WHERE Accounts.Username = :username
+				    ORDER BY Submission.Game_ID;
                                 ";
 
                                 $stmt = $pdo->prepare($sql);
@@ -83,8 +84,14 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                     $code = $row['Code'];
                                     $gameid = $row['Game_ID'];
 
+
+                                    if ($gameid == 1){
+                                        echo "<h3>Prisoner's Dilemma:</h3>";
+                                    }
+
                                     if ($gameid == 2){
-                                        $code = str_replace("$", "\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
+                                        echo "<h3>Yahtzee:</h3>";
+                                        $code = str_replace("$","\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
                                     }
                                     echo "<pre id='example'>" . htmlspecialchars($code) . "</pre>";
                                 }

@@ -119,6 +119,7 @@ def calculate_straights():
                 found = True
                 available_points["Small Straight"] = 30
 
+    found = False
     if availability["Large Straight"]:
         for i in large_straights:
             if i <= dice_set and not found:
