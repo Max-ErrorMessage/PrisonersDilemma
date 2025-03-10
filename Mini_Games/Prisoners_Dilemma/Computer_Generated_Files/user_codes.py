@@ -75,10 +75,6 @@ def user_28(self_decisions, opponent_decisions, s, o, n):
 	return True if n < 1 else o[-1]
 
 
-def user_2(self_decisions, opponent_decisions, s, o, n):
-	return True if n == 0 else s[:-25] == o[:-25]
-
-
 def user_55(self_decisions, opponent_decisions, s, o, n):
 	return random.randint(0, 1)
 
@@ -91,17 +87,25 @@ def user_1(self_decisions, opponent_decisions, s, o, n):
 	return False
 
 
+def user_2(self_decisions, opponent_decisions, s, o, n):
+	return True if n == 0 else s[:-25] == o[:-25]
+	# Mostly a grudge bot, but "forgets" after 25 moves
+
+
+def user_62(self_decisions, opponent_decisions, s, o, n):
+	def strategy(self_decisions, opponent_decisions, n):
+	    if n == 0: return True
+	    if n == 1: return opponent_decisions[0]
+	    if opponent_decisions.count(False) / n > 0.5: return False
+	    return opponent_decisions[-1]
+
+
 def user_56(self_decisions, opponent_decisions, s, o, n):
-	if n < ((168*52)+2)/2912:
-	    return True
-	if not o[-1] and not o[-(2*1)] and not (not o[-(4-1)]):
-	    return
-	hamburgerConstant = n
-	n = random.random()
-	n *= 100
-	if n < ((168*52)+2)/2912:
-	    return
-	return "let me die"
+	if n == 0:
+	    return False
+	if o[-5:] == [True,True,True,True,True]:
+	    return False
+	return True
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "2" : user_2, "55" : user_55, "1" : user_1, "56" : user_56}
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "55" : user_55, "1" : user_1, "2" : user_2, "62" : user_62, "56" : user_56}
