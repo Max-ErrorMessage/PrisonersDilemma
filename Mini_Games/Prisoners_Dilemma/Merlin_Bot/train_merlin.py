@@ -1,85 +1,86 @@
-from merlin import *
+from merlin import AI_Agent
+import importlib.util
+import random
+
+def sim_2_players(player_1_function, player_2_function, game_length):
+    player_1_score, player_2_score = 0, 0
+    player_1_decisions, player_2_decisions = [], []
+
+    for _ in range(game_length):
+        player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions,
+                                              player_2_decisions, len(player_1_decisions))
+        player_2_decision = player_2_function(player_1_decisions, player_2_decisions, player_1_decisions,
+                                              player_2_decisions, len(player_1_decisions))
+
+        if player_1_decision and player_2_decision:
+            player_1_score += 5
+            player_2_score += 5
+        elif player_1_decision and not player_2_decision:
+            player_1_score -= 1
+            player_2_score += 10
+        elif not player_1_decision and player_2_decision:
+            player_1_score += 10
+            player_2_score -= 1
+
+        player_1_decisions.append(bool(player_1_decision))
+        player_2_decisions.append(bool(player_2_decision))
+
+    return player_1_score, player_2_score, player_1_decisions, player_2_decisions
+
+def true_bot(self_decisions, opponent_decisions, s, o, n): return True
+def false_bot(self_decisions, opponent_decisions, s, o, n): return False
+def random_bot(self_decisions, opponent_decisions, s, o, n): return random.choice([True, False])
+def copy_bot(self_decisions, opponent_decisions, s, o,n): return True if n == 0 else o[-1]
+def grudge_bot(self_decisions, opponent_decisions, s, o, n): return sum(opponent_decisions) == n
+
+base_strategies = [true_bot, false_bot, random_bot, copy_bot, grudge_bot]
+
+module_path = "/var/www/Mini_Games/Prisoners_Dilemma/Computer_Generated_Files/user_codes.py"
+
+spec = importlib.util.spec_from_file_location("user_codes", module_path)
+user_codes_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(user_codes_module)
+
+user_codes = getattr(user_codes_module, "user_code", None)
+
+heuristic_highest_scores = dict({})
+for user_function in user_codes.values():
+    for strategy in base_strategies:
+        user_score, strategy_score, _, _ = sim_2_players(user_function, strategy, 400)
+        if user_function not in heuristic_highest_scores:
+            heuristic_highest_scores[user_function] = strategy_score
+        elif strategy_score > heuristic_highest_scores[user_function]:
+            heuristic_highest_scores[user_function] = strategy_score
+
+merlin = AI_Agent()
+merlin.load_model()
+
+user_codes['0'] = merlin.action
+
+for repeat in range(10000):
+    scores = dict({user: 0 for user in user_codes.keys()})
+    game_length = 20
+    for player_1 in user_codes.keys():
+        for player_2 in user_codes.keys():
+            if player_1 == player_2 or '0' not in [player_1, player_2]:
+                continue
+
+            player_1_score, player_2_score, player_1_decisions, player_2_decisions = sim_2_players(user_codes[player_1],
+                                                                                                   user_codes[player_2],
+                                                                                                   game_length)
+
+            if player_2 == '0':
+                reward = heuristic_highest_scores[user_codes[player_1]] / player_2_score
+                # print(f"Merlin is being rewarded by {reward} for scoring {player_2_score} against {player_1}, whose "
+                #       f"heuristic highest score is {heuristic_highest_scores[user_codes[player_1]]}")
+                for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
+                    state = merlin.extract_features(player_1_decisions[:index - 1], player_2_decisions[:index - 1])
+                    action = player_1_decision
+                    next_state = merlin.extract_features(player_1_decisions[:index], player_2_decisions[:index])
+                    merlin.update_q_value(state, action, reward, next_state)
 
 
-def train(dqn, memory, optimizer):
-    """
-    Train the DQN using a batch from the replay buffer.
-    """
-    if len(memory) < BATCH_SIZE:
-        return  # Wait until we have enough experience
+    if repeat % 1000 == 0:
+        print(f"Finished simulation {repeat}/10000")
 
-    batch = memory.sample(BATCH_SIZE)
-    states, actions, rewards, next_states, dones = zip(*batch)
-
-    states = torch.tensor(np.array(states), dtype=torch.float32)
-    actions = torch.tensor(actions, dtype=torch.int64).unsqueeze(1)
-    rewards = torch.tensor(rewards, dtype=torch.float32)
-    next_states = torch.tensor(np.array(next_states), dtype=torch.float32)
-    dones = torch.tensor(dones, dtype=torch.float32)
-
-    # Compute current Q-values
-    current_q = dqn(states).gather(1, actions).squeeze(1)
-
-    # Compute target Q-values
-    next_q = dqn(next_states).max(1)[0].detach()
-    target_q = rewards + GAMMA * next_q * (1 - dones)
-
-    # Compute loss
-    loss = nn.MSELoss()(current_q, target_q)
-
-    # Optimize the model
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-
-def simulate_game_step(state, actionz):
-    """
-    Simulates a step in the Prisoner's Dilemma.
-    Returns (new_state, reward, done).
-    """
-    opponent_action = random.choice([0, 1])  # Random opponent for now
-    reward_matrix = {(0, 0): 3, (0, 1): 0, (1, 0): 5, (1, 1): 1}
-    reward = reward_matrix[(action, opponent_action)]
-
-    # Update opponent history and extract new features
-    new_opponent_history = list(state[:-1]) + [opponent_action]
-    new_state = extract_features(new_opponent_history)
-
-    done = False  # The game keeps running
-    return new_state, reward, done
-
-def train_merlin(opponent_functions):
-    dqn = MerlinDQN(INPUT_DIM, OUTPUT_DIM)
-    optimizer = optim.Adam(dqn.parameters(), lr=LR)
-    memory = ReplayMemory()
-
-    epsilon = EPSILON
-
-    for episode in range(EPISODES):
-        state = extract_features([])
-        total_reward = 0
-        done = False
-
-        while not done:
-            action = select_action(state, epsilon, dqn)
-            next_state, reward, done = simulate_game_step(state, action,)
-
-            memory.push(state, action, reward, next_state, done)
-            state = next_state
-            total_reward += reward
-
-            train(dqn, memory, optimizer)
-
-        # Decay epsilon
-        epsilon = max(EPSILON_MIN, epsilon * EPSILON_DECAY)
-
-        if episode % 100 == 0:
-            print(f"Episode {episode}, Total Reward: {total_reward}, Epsilon: {epsilon:.4f}")
-
-    # Save trained model
-    torch.save(dqn.state_dict(), "merlin_dqn.pth")
-    print("Training complete! Model saved.")
-
-
-if __name__ == "__main__":
-    train_merlin()
+merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')

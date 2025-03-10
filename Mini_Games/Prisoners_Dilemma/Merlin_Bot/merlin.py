@@ -1,75 +1,64 @@
-import os
+import pickle
 import random
-import numpy as np
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from collections import deque
 
-# ----------------- 1. DEFINE HYPERPARAMETERS -----------------
-GAMMA = 0.99  # Discount factor
-BATCH_SIZE = 32
-LR = 0.001  # Learning rate
-EPSILON = 1.0  # Initial exploration rate
-EPSILON_DECAY = 0.995  # How fast we decrease exploration
-EPSILON_MIN = 0.01
-MEMORY_SIZE = 10000  # Replay buffer size
-EPISODES = 10000  # Total training episodes
-INPUT_DIM = 2  # Features (opponent behavior summary)
-OUTPUT_DIM = 2  # Two actions: Cooperate (0) or Defect (1)
 
-# ----------------- 2. DEFINE DQN MODEL -----------------
-class MerlinDQN(nn.Module):
-    def __init__(self, input_dim, output_dim):
-        super(MerlinDQN, self).__init__()
-        self.fc1 = nn.Linear(input_dim, 64)
-        self.fc2 = nn.Linear(64, 64)
-        self.fc3 = nn.Linear(64, output_dim)
+class AI_Agent:
+    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1):
+        self.q_table = {}
+        self.alpha = alpha
+        self.gamma = gamma
+        self.epsilon = epsilon
 
-    def forward(self, state):
-        x = torch.relu(self.fc1(state))
-        x = torch.relu(self.fc2(x))
-        return self.fc3(x)  # Returns Q-values for each action
+    def get_q_value(self, state, action):
+        return self.q_table.get((state, action), 0.0)
 
-# ----------------- 3. EXPERIENCE REPLAY BUFFER -----------------
-class ReplayMemory:
-    def __init__(self, capacity=MEMORY_SIZE):
-        self.memory = deque(maxlen=capacity)
+    def choose_action(self, state):
+        if random.uniform(0, 1) < self.epsilon:
+            return random.choice([True, False])
+        else:
+            return max([True, False], key=lambda a: self.get_q_value(state, a))
 
-    def push(self, state, action, reward, next_state, done):
-        self.memory.append((state, action, reward, next_state, done))
+    def update_q_value(self, state, action, reward, next_state):
+        max_future_q = max([self.get_q_value(next_state, a) for a in [True, False]])
+        current_q = self.get_q_value(state, action)
+        self.q_table[(state, action)] = current_q + self.alpha * (reward + self.gamma * max_future_q - current_q)
 
-    def sample(self, batch_size):
-        return random.sample(self.memory, batch_size)
+    @staticmethod
+    def extract_features(self_decisions, opponent_decisions):
+        """
+        Using the self_decisions and opponent_decisions as a state space is far too large so this simplifies it massively for the purpose of training an AI
+        """
+        window_size = min(25, len(opponent_decisions))
+        if window_size == 0:
+            return (0, 0)
 
-    def __len__(self):
-        return len(self.memory)
+        recent_moves = opponent_decisions[-window_size:]
 
-# ----------------- 4. FEATURE EXTRACTION -----------------
-def extract_features(opponent_decisions):
-    """
-    Reduces game state to a simple feature vector.
-    Returns (sum of last 10 moves, last opponent move).
-    """
-    memory = 10
+        return len(recent_moves) - sum(recent_moves), round(sum(opponent_decisions) / len(opponent_decisions), 1)
 
-    window_size = min(memory, len(opponent_decisions))
-    if window_size == 0:
-        return np.array([0, 0], dtype=np.float32)
+    def action(self, self_decisions, opponent_decisions, s, o, n):
+        return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
 
-    recent_moves = opponent_decisions[-window_size:]
-    recent_moves.extend([0] * (memory - len(recent_moves)))
-    return np.array([recent_moves], dtype=np.float32)
+    def save_model(self, filename="merlin.pkl"):
+        with open(filename, "wb") as f:
+            pickle.dump(self.q_table, f)
 
-# ----------------- 5. SELECT ACTION -----------------
-def select_action(state, epsilon, dqn):
-    """
-    Selects action based on epsilon-greedy policy.
-    """
-    if random.random() < epsilon:
-        return random.choice([0, 1])  # Random move (exploration)
-    else:
-        state_tensor = torch.tensor(state, dtype=torch.float32).unsqueeze(0)
-        q_values = dqn(state_tensor)
-        return torch.argmax(q_values).item()  # Best action (exploitation)
+    def load_model(self, filename="merlin.pkl"):
+        try:
+            with open(filename, "rb") as f:
+                self.q_table = pickle.load(f)
+        except FileNotFoundError:
+            print("No saved model found. Starting fresh.")
+
+    def print_q_table(self):
+        if not self.q_table:
+            print("Q-table is empty. Train the agent first!")
+            return
+
+        print("Q table for Merlin (Sorted by Q-value Descending):")
+
+        sorted_q_table = sorted(self.q_table.items(), key=lambda item: item[1], reverse=True)
+
+        for (state, action), value in sorted_q_table:
+            print(f"State: {state}, Action: {action} -> Q-Value: {value:.2f}")
 
