@@ -23,7 +23,7 @@ if '0' in [player_1, player_2]:
     spec.loader.exec_module(merlin_module)
     Merlin_Agent = getattr(merlin_module, "AI_Agent", None)
 
-    merlin = Merlin_Agent()
+    merlin = Merlin_Agent(epsilon=0)
     merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
     # Gets the merlin bot
 

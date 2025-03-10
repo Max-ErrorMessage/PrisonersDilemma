@@ -50,7 +50,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             $bronze = $medals["bronze"];
             $yg = $medals["yg"];
             $ys = $medals["ys"];
-            $yb = $medlas["yb"];
+            $yb = $medals["yb"];
         ?></p>
         <div id="medals">
             <div id="medals1">

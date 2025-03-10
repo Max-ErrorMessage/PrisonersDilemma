@@ -14,6 +14,7 @@ class AI_Agent:
 
     def choose_action(self, state):
         if random.uniform(0, 1) < self.epsilon:
+            # print(f"Exploring from state {state}")
             return random.choice([True, False])
         else:
             return max([True, False], key=lambda a: self.get_q_value(state, a))
@@ -28,13 +29,29 @@ class AI_Agent:
         """
         Using the self_decisions and opponent_decisions as a state space is far too large so this simplifies it massively for the purpose of training an AI
         """
-        window_size = min(25, len(opponent_decisions))
-        if window_size == 0:
-            return (0, 0)
 
-        recent_moves = opponent_decisions[-window_size:]
+        if len(self_decisions) == 0:
+            return 0, 0, 0, 0
+        
+        o_last, s_last = opponent_decisions[-1], self_decisions[-1]
+        
+        opponent_repeats, self_repeats = 0, 0
+        stop = False
+        for x in range(1,min(4,len(opponent_decisions))):
+            if opponent_decisions[-x] == opponent_decisions[-1] and not stop:
+                opponent_repeats += 1
+            else:
+                stop = True
 
-        return len(recent_moves) - sum(recent_moves), round(sum(opponent_decisions) / len(opponent_decisions), 1)
+        stop = False
+        for x in range(1,min(4,len(self_decisions))):
+            if self_decisions[-x] == self_decisions[-1] and not stop:
+                self_repeats += 1
+            else:
+                stop = True        
+
+        # return tuple(opponent_decisions[-6:] + self_decisions[-2:])
+        return opponent_repeats, int(o_last) + 1, int(s_last) + 1, self_repeats
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))

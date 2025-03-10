@@ -75,10 +75,6 @@ def user_28(self_decisions, opponent_decisions, s, o, n):
 	return True if n < 1 else o[-1]
 
 
-def user_55(self_decisions, opponent_decisions, s, o, n):
-	return random.randint(0, 1)
-
-
 def user_1(self_decisions, opponent_decisions, s, o, n):
 	if False not in o:
 	    return False
@@ -93,19 +89,27 @@ def user_2(self_decisions, opponent_decisions, s, o, n):
 
 
 def user_62(self_decisions, opponent_decisions, s, o, n):
-	def strategy(self_decisions, opponent_decisions, n):
-	    if n == 0: return True
-	    if n == 1: return opponent_decisions[0]
-	    if opponent_decisions.count(False) / n > 0.5: return False
-	    return opponent_decisions[-1]
+	if n == 0:
+	    return True
+	if n >= 2 and len(opponent_decisions) >= 2:
+	    if not opponent_decisions[-1] and not opponent_decisions[-2]:
+	        return False
+	if len(opponent_decisions) >= 2 and opponent_decisions[-1] and opponent_decisions[-2]:
+	    return True
+	return opponent_decisions[-1] if n > 0 else True
 
 
 def user_56(self_decisions, opponent_decisions, s, o, n):
-	if n == 0:
-	    return False
-	if o[-5:] == [True,True,True,True,True]:
-	    return False
-	return True
+	if n < 5:
+	   return True
+	if o[-15:] == [True,False,True,True,False,True,True,False,True,False,True,True,False,False,True,True]:
+	   x = 1
+	else:
+	   return False
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "55" : user_55, "1" : user_1, "2" : user_2, "62" : user_62, "56" : user_56}
+def user_55(self_decisions, opponent_decisions, s, o, n):
+	return random.choice([True, False])
+
+
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "1" : user_1, "2" : user_2, "62" : user_62, "56" : user_56, "55" : user_55}
