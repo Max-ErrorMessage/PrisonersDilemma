@@ -61,7 +61,7 @@ class AI_Agent:
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
 
-    def setExplorationStates(self, percentage = 0.1):
+    def setExplorationStates(self, percentage = 0.1): # decide which states to explore on
         self.states = self.q_table.keys()
         self.explorationStates = []
         for i in self.states:
