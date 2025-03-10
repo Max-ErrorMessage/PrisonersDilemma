@@ -54,31 +54,33 @@ $uname = htmlspecialchars($_SESSION['uname']);
             $yb = $medals["yb"];
         ?></p>
         <div id="medals">
-            <div id="gold" class="medal">
-                <img src="images/gold.png"/>
-                <p><?php echo $gold;?></p>
+            <div id="medals1">
+                <div id="gold" class="medal">
+                    <img src="images/gold.png"/>
+                    <p><?php echo $gold;?></p>
+                </div>
+                <div id="silver" class="medal">
+                    <img src="images/silver.png"/>
+                    <p><?php echo $silver;?></p>
+                </div>
+                <div id="bronze" class="medal">
+                    <img src="images/bronze.png"/>
+                    <p><?php echo $bronze;?></p>
+                </div>
             </div>
-            <div id="silver" class="medal">
-                <img src="images/silver.png"/>
-                <p><?php echo $silver;?></p>
-            </div>
-            <div id="bronze" class="medal">
-                <img src="images/bronze.png"/>
-                <p><?php echo $bronze;?></p>
-            </div>
-        </div>
-        <div id="medals">
-            <div id="gold" class="medal">
-                <img src="images/gold.png"/>
-                <p><?php echo $yg;?></p>
-            </div>
-            <div id="silver" class="medal">
-                <img src="images/silver.png"/>
-                <p><?php echo $ys;?></p>
-            </div>
-            <div id="bronze" class="medal">
-                <img src="images/bronze.png"/>
-                <p><?php echo $yb;?></p>
+            <div id="medals2">
+                <div id="gold2" class="medal">
+                    <img src="images/gold.png"/>
+                    <p><?php echo $yg;?></p>
+                </div>
+                <div id="silver2" class="medal">
+                    <img src="images/silver.png"/>
+                    <p><?php echo $ys;?></p>
+                </div>
+                <div id="bronze2" class="medal">
+                    <img src="images/bronze.png"/>
+                    <p><?php echo $yb;?></p>
+                </div>
             </div>
         </div>
         <div id="Main">
