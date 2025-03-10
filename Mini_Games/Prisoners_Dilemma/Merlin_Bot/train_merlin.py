@@ -5,6 +5,7 @@ import random
 def sim_2_players(player_1_function, player_2_function, game_length):
     player_1_score, player_2_score = 0, 0
     player_1_decisions, player_2_decisions = [], []
+    scores_earned = []
 
     for _ in range(game_length):
         player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions,
@@ -12,6 +13,7 @@ def sim_2_players(player_1_function, player_2_function, game_length):
         player_2_decision = player_2_function(player_1_decisions, player_2_decisions, player_1_decisions,
                                               player_2_decisions, len(player_1_decisions))
 
+        s = player_1_score, player_2_score
         if player_1_decision and player_2_decision:
             player_1_score += 5
             player_2_score += 5
@@ -21,11 +23,12 @@ def sim_2_players(player_1_function, player_2_function, game_length):
         elif not player_1_decision and player_2_decision:
             player_1_score += 10
             player_2_score -= 1
+        scores_earned.append((player_1_score - s[0], player_2_score - s[0]))
 
         player_1_decisions.append(bool(player_1_decision))
         player_2_decisions.append(bool(player_2_decision))
 
-    return player_1_score, player_2_score, player_1_decisions, player_2_decisions
+    return player_1_score, player_2_score, player_1_decisions, player_2_decisions, scores_earned
 
 def true_bot(self_decisions, opponent_decisions, s, o, n): return True
 def false_bot(self_decisions, opponent_decisions, s, o, n): return False
@@ -46,7 +49,7 @@ user_codes = getattr(user_codes_module, "user_code", None)
 heuristic_highest_scores = dict({})
 for user_function in user_codes.values():
     for strategy in base_strategies:
-        user_score, strategy_score, _, _ = sim_2_players(user_function, strategy, 400)
+        user_score, strategy_score, _, _, _ = sim_2_players(user_function, strategy, 400)
         if user_function not in heuristic_highest_scores:
             heuristic_highest_scores[user_function] = strategy_score
         elif strategy_score > heuristic_highest_scores[user_function]:
@@ -65,19 +68,25 @@ for repeat in range(10000):
             if player_1 == player_2 or '0' not in [player_1, player_2]:
                 continue
 
-            player_1_score, player_2_score, player_1_decisions, player_2_decisions = sim_2_players(user_codes[player_1],
-                                                                                                   user_codes[player_2],
-                                                                                                   game_length)
+            (player_1_score, player_2_score,
+             player_1_decisions, player_2_decisions,
+             scores_earned) = sim_2_players(user_codes[player_1], user_codes[player_2], game_length)
 
             if player_2 == '0':
-                reward = heuristic_highest_scores[user_codes[player_1]] / player_2_score
+                try:
+                    game_reward = player_2_score / (heuristic_highest_scores[user_codes[player_1]]
+                except ZeroDivisionError:
+                    game_reward = max(player_2_score, 1)
                 # print(f"Merlin is being rewarded by {reward} for scoring {player_2_score} against {player_1}, whose "
                 #       f"heuristic highest score is {heuristic_highest_scores[user_codes[player_1]]}")
                 for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
                     state = merlin.extract_features(player_1_decisions[:index - 1], player_2_decisions[:index - 1])
                     action = player_1_decision
+                    reward = scores_earned[index - 1]
                     next_state = merlin.extract_features(player_1_decisions[:index], player_2_decisions[:index])
+                    print(f"Game reward: {game_reward}\nRound Reward: {reward}")
                     merlin.update_q_value(state, action, reward, next_state)
+                    merlin.update_q_value(state, action, game_reward, next_state)
 
 
     if repeat % 1000 == 0:
