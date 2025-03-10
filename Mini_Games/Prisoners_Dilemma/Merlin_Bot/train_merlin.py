@@ -65,6 +65,7 @@ merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 user_codes['0'] = merlin.action
 
+highest_trust_count = 0
 for repeat in range(simulations):
     scores = dict({user: 0 for user in user_codes.keys()})
     game_length = 60
@@ -96,7 +97,14 @@ for repeat in range(simulations):
                     # print(f"Q Value of state {state} after updating: {merlin.get_q_value(state, action)}")
                     # print(f"Index: {index}, State: {state}, Action: {action}, Reward: {reward}, Game Reward: {game_reward}, Next State: {next_state}")
                     # merlin.update_q_value(state, action, game_reward, next_state)
-                print(sum(player_2_decisions))
+                #print(sum(player_2_decisions))
+                if sum(player_2_decisions) > highest_trust_count:
+                    highest_trust_count = sum(player_2_decisions)
+
+    if repeat % 100 == 0:
+        print(merlin.explorationStates)
+        print(highest_trust_count)
+
 
     if repeat % 1000 == 0:
         merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
