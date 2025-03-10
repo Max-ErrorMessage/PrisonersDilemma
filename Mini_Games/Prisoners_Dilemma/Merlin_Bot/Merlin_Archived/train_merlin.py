@@ -70,7 +70,9 @@ for repeat in range(10000):
                                                                                                    game_length)
 
             if player_2 == '0':
-                reward = -heuristic_highest_scores[user_codes[player_1]] / player_2_score
+                reward = heuristic_highest_scores[user_codes[player_1]] / player_2_score
+                print(f"Merlin is being rewarded by {reward} for scoring {player_2_score} against {player_1}, whose "
+                      f"heuristic highest score is {heuristic_highest_scores[user_codes[player_1]]}")
                 for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
                     state = merlin.extract_features(player_1_decisions[:index - 1], player_2_decisions[:index - 1])
                     action = player_1_decision
