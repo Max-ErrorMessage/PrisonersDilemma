@@ -3,11 +3,13 @@ import random
 
 
 class AI_Agent:
-    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1):
+    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1, jamesExplore = False):
         self.q_table = {}
         self.alpha = alpha
         self.gamma = gamma
         self.epsilon = epsilon
+        self.jamesExplore = jamesExplore
+        self.explorationStates = []
 
     def get_q_value(self, state, action):
         return self.q_table.get((state, action), 0.0)
@@ -16,8 +18,11 @@ class AI_Agent:
         if random.uniform(0, 1) < self.epsilon:
             # print(f"Exploring from state {state}")
             return random.choice([True, False])
-        else:
+        elif not self.jamesExplore or state not in self.explorationStates:
             return max([True, False], key=lambda a: self.get_q_value(state, a))
+        else:
+            return min([True, False], key=lambda a: self.get_q_value(state, a))
+
 
     def update_q_value(self, state, action, reward, next_state):
         max_future_q = max([self.get_q_value(next_state, a) for a in [True, False]])
@@ -55,6 +60,15 @@ class AI_Agent:
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
+
+    def setExplorationStates(self, percentage = 0.1): # decide which states to explore on
+        self.states = self.q_table.keys()
+        self.explorationStates = []
+        for i in self.states:
+            if random.uniform(0, 1) < percentage:
+                self.explorationStates.append(i)
+
+
 
     def save_model(self, filename="merlin.pkl"):
         with open(filename, "wb") as f:

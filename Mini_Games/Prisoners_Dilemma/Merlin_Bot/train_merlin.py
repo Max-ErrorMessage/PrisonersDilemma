@@ -58,9 +58,9 @@ for user_function in user_codes.values():
         elif strategy_score > heuristic_highest_scores[user_function]:
             heuristic_highest_scores[user_function] = strategy_score
 
-print(heuristic_highest_scores)
+#print(heuristic_highest_scores)
 
-merlin = AI_Agent()
+merlin = AI_Agent(epsilon=0,jamesExplore=True)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 user_codes['0'] = merlin.action
@@ -72,7 +72,7 @@ for repeat in range(simulations):
         for player_2 in user_codes.keys():
             if player_1 == player_2 or '0' not in [player_1, player_2]:
                 continue
-
+            merlin.setExplorationStates() # reset when to explore
             (player_1_score, player_2_score,
              player_1_decisions, player_2_decisions,
              scores_earned) = sim_2_players(user_codes[player_1], user_codes[player_2], game_length)
