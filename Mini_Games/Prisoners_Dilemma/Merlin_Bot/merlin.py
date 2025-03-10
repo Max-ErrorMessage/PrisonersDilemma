@@ -74,7 +74,7 @@ class AI_Agent:
 
         print("Q table for Merlin (Sorted by Q-value Descending):")
 
-        sorted_q_table = sorted(self.q_table.items(), key=lambda item: item[1], reverse=True)
+        sorted_q_table = sorted(self.q_table.items(), key=lambda item: item[0], reverse=True)
 
         for (state, action), value in sorted_q_table:
             print(f"State: {state}, Action: {action} -> Q-Value: {value:.2f}")

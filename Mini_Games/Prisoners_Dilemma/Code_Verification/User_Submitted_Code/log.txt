@@ -2077,3 +2077,16 @@ User ID: 56
 return random.choice([True, False])
 User ID: 55
 
+if n < 4:
+    return True
+else:
+    return o[-1]
+User ID: 56
+
+if False not in o:
+    return False
+if o.count(False) < 4:
+    return True
+return False
+User ID: 1
+
