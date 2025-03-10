@@ -62,7 +62,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                     } else if ($row["Username"] != $uname) {
                         echo "<li style='background-image: linear-gradient(90deg,#334433,#557755);'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
                     } else {
-			echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'><a href='profile.php'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:<strong> " . htmlspecialchars($row['Points']) . "</a></li>";
+			            echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'><a href='profile.php'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Average Points per round:<strong> " . htmlspecialchars($row['Points']) . "</a></li>";
 		    }
                 }
                 echo "</ol>";
@@ -93,7 +93,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 echo "<ol>";
                 foreach ($rows as $row){
 		    $i++;
-                    echo "<li><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</li>";
+		            if ($row["Username"] != $uname){
+                        echo "<li><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</li>";
+                    } else {
+                        echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'><a href='profile.php'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:<strong> " . htmlspecialchars($row['Points']) . "</a></li>";
+		            }
                 }
                 echo "</ol>";
             } else {
