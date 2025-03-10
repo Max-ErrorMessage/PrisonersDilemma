@@ -8,10 +8,10 @@ def sim_2_players(player_1_function, player_2_function, game_length):
     scores_earned = []
 
     for _ in range(game_length):
-        player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions,
-                                              player_2_decisions, len(player_1_decisions))
-        player_2_decision = player_2_function(player_1_decisions, player_2_decisions, player_1_decisions,
-                                              player_2_decisions, len(player_1_decisions))
+        player_1_decision = bool(player_1_function(player_1_decisions, player_2_decisions, player_1_decisions,
+                                              player_2_decisions, len(player_1_decisions)))
+        player_2_decision = bool(player_2_function(player_1_decisions, player_2_decisions, player_1_decisions,
+                                              player_2_decisions, len(player_1_decisions)))
 
         s = player_1_score, player_2_score
         if player_1_decision and player_2_decision:
@@ -82,9 +82,8 @@ for repeat in range(10000):
                 for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
                     state = merlin.extract_features(player_1_decisions[:index - 1], player_2_decisions[:index - 1])
                     action = player_1_decision
-                    reward = scores_earned[index - 1]
+                    reward = 3 if scores_earned[index - 1] > 0 else -5
                     next_state = merlin.extract_features(player_1_decisions[:index], player_2_decisions[:index])
-                    print(f"Game reward: {game_reward}\nRound Reward: {reward}")
                     merlin.update_q_value(state, action, reward, next_state)
                     merlin.update_q_value(state, action, game_reward, next_state)
 
