@@ -78,7 +78,7 @@ if (isset($_POST['reset'])) {
                 <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
             <h1>Merlin's most recent decision: <?php
-                if (empty($_SESSION['merlin_decisions']) {
+                if (empty($_SESSION['merlin_decisions'])) {
                     echo "Merlin hasn't made any decisions yet...";
                 } else {
                     echo end($_SESSION['merlin_decisions']);
