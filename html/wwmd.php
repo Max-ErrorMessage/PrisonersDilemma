@@ -42,9 +42,19 @@ if (isset($_POST['reset'])) {
     $_SESSION['trusts'] = 0;
 }
 
-// function test($merlin_decisions, $user_decisions) {
-//     echo "Weendle";
-// }
+function test($merlin_decisions, $user_decisions) {
+    $u = $binaryString = implode('', array_map(function($value) {
+        return $value ? '1' : '0';
+    }, $_SESSION['user_decisions']));
+    $m = $binaryString = implode('', array_map(function($value) {
+        return $value ? '1' : '0';
+    }, $_SESSION['merlin_decisions']));
+
+    $command = 'python3 /var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.py ' . escapeshellarg($u) . ' ' . escapeshellarg($o);
+    $decision = exec($command);
+
+    $_SESSION['merlin_decisions'][] = $decision == '1';
+}
 
 ?>
 <html>
@@ -69,11 +79,9 @@ if (isset($_POST['reset'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Trusts: <?php echo $_SESSION['trusts']; ?></h1>
             <form method="post">
                 <button class="go" type="submit" name="decide_true">Trust</button>
             </form>
-            <h1>Betrayals: <?php echo $_SESSION['betrays']; ?></h1>
             <form method="post">
                 <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
