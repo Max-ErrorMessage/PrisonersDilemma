@@ -25,12 +25,17 @@ if (!isset($_SESSION['user_decisions'])) {
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
     $_SESSION['trusts']++;
-    echo "Crum";
 }
 
 if (isset($_POST['decide_false'])) {
     $_SESSION['user_decisions'][] = false;
     $_SESSION['betrays']++;
+}
+
+if (isset($_POST['reset'])) {
+    $_SESSION['user_decisions'] = [];
+    $_SESSION['betrays'] = 0;
+    $_SESSION['trusts'] = 0;
 }
 
 ?>
@@ -63,6 +68,10 @@ if (isset($_POST['decide_false'])) {
             <h1>Betrayals: <?php echo $_SESSION['betrays']; ?></h1>
             <form method="post">
                 <button class="go" type="submit" name="decide_false">Betray</button>
+            </form>
+            <h1>Merlin decisions: <?php echo "IDk"; ?></h1>
+            <form method="post">
+                <button class="go" type="submit" name="reset">Reset</button>
             </form>
         </div>
     </body>
