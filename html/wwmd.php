@@ -43,7 +43,12 @@ if (isset($_POST['decide_true'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Current Number: <?php echo count($_SESSION['user_decisions']); ?></h1>
+            <h1>Trusts: <?php
+                echo $array_count_values($_SESSION['user_decisions']);[true] ?? 0;
+            ?></h1>
+            <h1>Betrayals: <?php
+                echo count($_SESSION['user_decisions']);
+            ?></h1>
             <form method="post">
                 <button type="submit" name="decide_true">Trust</button>
             </form>
