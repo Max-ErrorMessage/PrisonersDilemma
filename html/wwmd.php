@@ -17,11 +17,6 @@ if (!isset($_SESSION['user_decisions'])) {
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
 }
-
-if (isset($_POST['decide_false'])) {
-    $_SESSION['user_decisions'][] = false;
-}
-
 ?>
 <html>
     <head>
@@ -29,6 +24,10 @@ if (isset($_POST['decide_false'])) {
         <link rel="stylesheet" href="profile.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
         <title>Twokie - WWMD?</title>
     </head>
     <body>
@@ -44,21 +43,9 @@ if (isset($_POST['decide_false'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Trusts: <?php
-                $decision_counts = array_count_values($_SESSION['user_decisions']);
-                $trusts = $decision_counts[true] ?? 0;
-                echo $trusts;
-            ?></h1>
+            <h1>Trusts: <?php echo count($_SESSION['user_decisions']); ?></h1>
             <form method="post">
                 <button type="submit" name="decide_true">Trust</button>
-            </form>
-            <h1>Betrayals: <?php
-                $decision_counts = array_count_values($_SESSION['user_decisions']);
-                $betrayals = $decision_counts[false] ?? 0;
-                echo $betrayals;
-            ?></h1>
-            <form method="post">
-                <button type="submit" name="decide_false">Betray</button>
             </form>
         </div>
     </body>
