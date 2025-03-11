@@ -65,7 +65,7 @@ class AI_Agent:
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
 
     def setExplorationStates(self): # decide which states to explore on
-        if random.random() > self.exploration_chance:
+        if random.random() < self.exploration_chance:
             states = self.q_table.keys()
             self.explorationStates = []
             for i in states:

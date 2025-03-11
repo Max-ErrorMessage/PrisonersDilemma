@@ -130,25 +130,11 @@ def user_55(self_decisions, opponent_decisions, s, o, n):
 
 
 def user_56(self_decisions, opponent_decisions, s, o, n):
-	t,f = False,True
-	Burger,cHeese,hOtdOg,krill,paSta = t,f,5,n,o
-	hungy = [Burger,cHeese]
-	happy = [cHeese, Burger]
-	burger_constant = 5.6
-	hippos = [Burger]
-	hungry = [cHeese,cHeese]
-	HungryHungyHippos = hungy + hungry + hippos
-	if krill < hOtdOg:
-	    return Burger
-	    if burger_constant * krill < 10:
-	        return cHeese if paSta[krill-hOtdOg] else Burger 
-	#if paSta[:hOtdOg] == HungryHungyHippos:
-	#    return cHeese
-	if Burger in paSta[hOtdOg:]:
-	    return Burger
-	return cHeese
-	
-	#hamburder
+	if o.count(False) == 0:
+	    return False
+	if o.count(False) < 4:
+	    return True
+	return False
 
 
 user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "62" : user_62, "1" : user_1, "2" : user_2, "7" : user_7, "55" : user_55, "56" : user_56}

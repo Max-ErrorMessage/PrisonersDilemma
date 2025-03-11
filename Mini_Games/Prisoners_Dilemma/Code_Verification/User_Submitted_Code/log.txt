@@ -2433,3 +2433,10 @@ return cHeese
 #hamburder
 User ID: 56
 
+if o.count(False) == 0:
+    return False
+if o.count(False) < 4:
+    return True
+return False
+User ID: 56
+
