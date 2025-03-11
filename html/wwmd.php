@@ -6,7 +6,7 @@ if (!isset($_SESSION['uname'])) {
     header("Location: /signin.php");
     exit();
 }
-
+$_SESSION['trusts'] = 0;
 $uname = htmlspecialchars($_SESSION['uname']);
 
 // Initialize decisions array in session if not already set
@@ -16,18 +16,8 @@ if (!isset($_SESSION['user_decisions'])) {
 
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
-    $decision_counts = array_count_values($_SESSION['user_decisions']);
-    $trusts = $decision_counts[true] ?? 0;
-    $betrayals = $decision_counts[false] ?? 0;
+    $_SESSION['trusts']++
 }
-
-if (isset($_POST['decide_false'])) {
-    $_SESSION['user_decisions'][] = false;
-    $decision_counts = array_count_values($_SESSION['user_decisions']);
-    $trusts = $decision_counts[true] ?? 0;
-    $betrayals = $decision_counts[false] ?? 0;
-}
-
 ?>
 <html>
     <head>
@@ -35,6 +25,7 @@ if (isset($_POST['decide_false'])) {
         <link rel="stylesheet" href="profile.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
         <title>Twokie - WWMD?</title>
     </head>
     <body>
@@ -50,13 +41,9 @@ if (isset($_POST['decide_false'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Trusts: <?php echo $trusts; ?></h1>
+            <h1>Trusts: <?php echo $_SESSION['user_decisions']; ?></h1>
             <form method="post">
                 <button type="submit" name="decide_true">Trust</button>
-            </form>
-            <h1>Betrayals: <?php echo $betrayals; ?></h1>
-            <form method="post">
-                <button type="submit" name="decide_false">Betray</button>
             </form>
         </div>
     </body>
