@@ -54,9 +54,22 @@ function wwmd() {
     }, $_SESSION['merlin_decisions']));
 
     $command = 'python3 /var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.py ' . escapeshellarg($m) . ' ' . escapeshellarg($u);
-    $decision = exec($command);
+    $merlin_decision = exec($command);
 
-    $_SESSION['merlin_decisions'][] = $decision;
+    $_SESSION['merlin_decisions'][] = $merlin_decision;
+
+    $user_decision = end($_SESSION['merlin_decisions']);
+
+    if ($user_decision && $merlin_decision) {
+        $_SESSION['user_score'] += 5;
+        $_SESSION['user_score'] += 5;
+    } else if ($user_decision && !$merlin_decision) {
+        $_SESSION['user_score'] -= 1;
+        $_SESSION['user_score'] += 10;
+    } else if (!$user_decision && $merlin_decision) {
+        $_SESSION['user_score'] += 10;
+        $_SESSION['user_score'] -= 1;
+    }
 }
 
 ?>
