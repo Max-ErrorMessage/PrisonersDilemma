@@ -41,7 +41,7 @@ if (isset($_POST['decide_true'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Trusts: <?php $_SESSION['trusts']; ?></h1>
+            <h1>Trusts: <?php echo $_SESSION['trusts']; ?></h1>
             <form method="post">
                 <button type="submit" name="decide_true">Trust</button>
             </form>
