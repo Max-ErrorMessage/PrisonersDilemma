@@ -60,7 +60,7 @@ for user_function in user_codes.values():
 
 #print(heuristic_highest_scores)
 
-merlin = AI_Agent(alpha=0.0002,epsilon=0,jamesExplore=True)
+merlin = AI_Agent(alpha=0.0003,epsilon=0,jamesExplore=True)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 user_codes['0'] = merlin.action
@@ -111,8 +111,8 @@ for repeat in range(simulations):
                     highest_trust_count = sum(player_2_decisions)
                 if sum(player_2_decisions) == game_length:
                     perfect_trust_rounds += 1
-                plt_trusts.append(merlin.get_q_value((1,2,1,1,2),True))
-                plt_betrays.append(merlin.get_q_value((1,2,1,1,2),False))
+                plt_trusts.append(merlin.get_q_value((1,2,1,2,3),True))
+                plt_betrays.append(merlin.get_q_value((1,2,1,2,3),False))
 #                print(player_1_decisions)
 #                print(player_2_decisions)
 #                print("-")
@@ -132,8 +132,8 @@ for repeat in range(simulations):
         print(f"Finished simulation {repeat+1}/{simulations}")
         plt.clf()
         x = range(0,len(plt_betrays))
-        plt.plot(x,plt_trusts, label="(1,2,1,1,2),True")
-        plt.plot(x,plt_betrays, label="(1,2,1,1,2),False")
+        plt.plot(x,plt_trusts, label="(1,2,1,2,3),True")
+        plt.plot(x,plt_betrays, label="(1,2,1,2,3),False")
         plt.ylabel("q-value")
         plt.xlabel("rounds")
         plt.legend()
