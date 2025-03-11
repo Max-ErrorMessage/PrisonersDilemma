@@ -27,13 +27,11 @@ if (!isset($_SESSION['merlin_decisions'])) {
 }
 
 if (isset($_POST['decide_true'])) {
-    wwmd();
-    $_SESSION['user_decisions'][] = true;
+    wwmd(true);
 }
 
 if (isset($_POST['decide_false'])) {
-    wwmd();
-    $_SESSION['user_decisions'][] = false;
+    wwmd(false);
 }
 
 if (isset($_POST['reset'])) {
@@ -45,7 +43,7 @@ if (isset($_POST['reset'])) {
     $_SESSION['merlin_score'] = 0;
 }
 
-function wwmd() {
+function wwmd($user_decision) {
     $u = $binaryString = implode('', array_map(function($value) {
         return $value ? '1' : '0';
     }, $_SESSION['user_decisions']));
@@ -63,8 +61,7 @@ function wwmd() {
     }
 
     $_SESSION['merlin_decisions'][] = $merlin_decision;
-
-    $user_decision = end($_SESSION['merlin_decisions']);
+    $_SESSION['user_decisions'][] = $user_decision;
 
     if ($user_decision && $merlin_decision) {
         $_SESSION['user_score'] += 5;
