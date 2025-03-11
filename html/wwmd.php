@@ -59,7 +59,7 @@ if (isset($_POST['decide_false'])) {
             <form method="post">
                 <button class="go" type="submit" name="decide_true">Trust</button>
             </form>
-            <h1>Trusts: <?php echo $_SESSION['betrayals']; ?></h1>
+            <h1>Betrayals: <?php echo $_SESSION['betrays']; ?></h1>
             <form method="post">
                 <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
