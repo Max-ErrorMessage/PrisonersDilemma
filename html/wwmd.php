@@ -95,7 +95,7 @@ function wwmd() {
             <h1> <?php
                 echo "Merlin Decisions: <br>";
                 var_dump($_SESSION['user_decisions']);
-                echo "Merlin Decisions: <br>"
+                echo "Merlin Decisions: <br>";
                 var_dump($_SESSION['merlin_decisions']);
             ?></h1>
         </div>
