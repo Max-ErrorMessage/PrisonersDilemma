@@ -63,15 +63,18 @@ function wwmd() {
     if ($user_decision && $merlin_decision) {
         $_SESSION['user_score'] += 5;
         $_SESSION['merlin_score'] += 5;
+        $_SESSION['debug'] = "Cooperation";
     } else if ($user_decision && !$merlin_decision) {
         $_SESSION['user_score'] -= 1;
         $_SESSION['merlin_score'] += 10;
+        $_SESSION['debug'] = "Merlin betrays";
     } else if (!$user_decision && $merlin_decision) {
         $_SESSION['user_score'] += 10;
         $_SESSION['merlin_score'] -= 1;
+        $_SESSION['debug'] = "You betray merlin";
+    } else {
+        $_SESSION['debug'] = "Both betray Merlin";
     }
-
-    $_SESSION['debug'] = $merlin_decision;
 }
 
 ?>
@@ -100,6 +103,8 @@ function wwmd() {
             <h1>Debug: <?php
                 if (!isset($_SESSION['debug'])) {
                     var_dump($_SESSION['debug']);
+                } else {
+                    echo "Nothing to debug yet";
                 }
             ?></h1>
             <h1>Your Score: <?php
