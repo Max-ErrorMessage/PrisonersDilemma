@@ -19,4 +19,4 @@ merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 choice = merlin.action(self_decisions, opponent_decisions)
 
-print(choice)
+print(1 if choice else 0)
