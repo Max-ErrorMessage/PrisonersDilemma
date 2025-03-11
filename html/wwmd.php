@@ -1,4 +1,7 @@
 <?php
+
+echo "1";
+
 session_start();
 
 // Check if the session variable 'uname' is set
@@ -46,6 +49,8 @@ function wwmd($merlin_decisions, $user_decisions) {
     echo "Weendle";
 }
 
+echo "2";
+
 ?>
 <html>
     <head>
@@ -78,6 +83,7 @@ function wwmd($merlin_decisions, $user_decisions) {
                 <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
             <h1>Merlin's most recent decision: <?php
+                echo "crimble";
                 if (empty($_SESSION['merlin_decisions']) {
                     echo "Merlin hasn't made any decisions yet...";
                 } else {
