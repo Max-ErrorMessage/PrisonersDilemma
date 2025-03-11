@@ -60,7 +60,7 @@ for user_function in user_codes.values():
 
 #print(heuristic_highest_scores)
 
-merlin = AI_Agent(alpha=0.001,epsilon=0,jamesExplore=True)
+merlin = AI_Agent(alpha=0.0001,epsilon=0,jamesExplore=True)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 user_codes['0'] = merlin.action
@@ -77,7 +77,7 @@ for repeat in range(simulations):
     game_length = 200
     for player_1 in user_codes.keys():
         for player_2 in user_codes.keys():
-            if player_1 == player_2 or '0' not in [player_1, player_2]:
+            if player_1 == player_2 or player_2 != '0':
                 continue
             merlin.setExplorationStates() # reset when to explore
             (player_1_score, player_2_score,
