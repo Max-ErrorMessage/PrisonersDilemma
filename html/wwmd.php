@@ -14,6 +14,10 @@ if (!isset($_SESSION['trusts'])) {
     $_SESSION['trusts'] = 0;
 }
 
+if (!isset($_SESSION['betrays'])) {
+    $_SESSION['betrays'] = 0;
+}
+
 if (!isset($_SESSION['user_decisions'])) {
     $_SESSION['user_decisions'] = [];
 }
@@ -22,6 +26,12 @@ if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
     $_SESSION['trusts']++;
 }
+
+if (isset($_POST['decide_false'])) {
+    $_SESSION['user_decisions'][] = false;
+    $_SESSION['betrays']++;
+}
+
 ?>
 <html>
     <head>
@@ -47,7 +57,11 @@ if (isset($_POST['decide_true'])) {
         <div id="Game">
             <h1>Trusts: <?php echo $_SESSION['trusts']; ?></h1>
             <form method="post">
-                <button type="submit" name="decide_true">Trust</button>
+                <button class="go" type="submit" name="decide_true">Trust</button>
+            </form>
+            <h1>Trusts: <?php echo $_SESSION['betrayals']; ?></h1>
+            <form method="post">
+                <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
         </div>
     </body>
