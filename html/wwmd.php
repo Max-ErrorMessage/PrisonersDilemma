@@ -45,7 +45,7 @@ if (isset($_POST['decide_true'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Current Number: <?php vardump($user_decisions); ?></h1>
+            <h1>Current Number: <?php var_dump($user_decisions); ?></h1>
                 <form method="post">
                     <button type="submit" name="decide_true">Trust</button>
                 </form>
