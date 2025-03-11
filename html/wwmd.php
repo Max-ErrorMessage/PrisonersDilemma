@@ -16,16 +16,17 @@ if (!isset($_SESSION['user_decisions'])) {
 
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
+    $decision_counts = array_count_values($_SESSION['user_decisions']);
+    $trusts = $decision_counts[true] ?? 0;
+    $betrayals = $decision_counts[false] ?? 0;
 }
 
 if (isset($_POST['decide_false'])) {
     $_SESSION['user_decisions'][] = false;
+    $decision_counts = array_count_values($_SESSION['user_decisions']);
+    $trusts = $decision_counts[true] ?? 0;
+    $betrayals = $decision_counts[false] ?? 0;
 }
-
-// Count decisions
-$decision_counts = array_count_values($_SESSION['user_decisions']);
-$trusts = $decision_counts[true] ?? 0;
-$betrayals = $decision_counts[false] ?? 0;
 
 ?>
 <html>
