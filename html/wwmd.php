@@ -9,7 +9,15 @@ if (!isset($_SESSION['uname'])) {
 }
 
 // If 'uname' is set, display the welcome message
-$uname = htmlspecialchars($_SESSION['uname']); 
+$uname = htmlspecialchars($_SESSION['uname']);
+
+$user_decisions = [];
+$merlin_decisions = [];
+
+if (isset($_POST['decide_true'])) {
+    $user_decisions[] = true;
+}
+
 ?>
 <html>
     <head>
@@ -35,11 +43,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <div id="Main">
             <br><br>
             <h1>What Would Merlin Do?</h1>
-            <br>
-            <p>Username: <?php echo $uname; ?></p>
         </div>
         <div id="Game">
-
+            <h1>Current Number: <?php echo $user_decisions ?></h1>
+                <form method="post">
+                    <button type="submit" name="decide_true">Trust</button>
+                </form>
         </div>
 
     </body>
