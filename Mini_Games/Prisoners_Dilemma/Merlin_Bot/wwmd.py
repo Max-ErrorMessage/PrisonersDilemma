@@ -4,8 +4,8 @@ import sys
 s = sys.argv[1]
 o = sys.argv[2]
 
-self_decisions = [True for bit in s if bit == '1']
-opponent_decisions = [True for bit in o if bit == '1']
+self_decisions = [bit == '1' for bit in s]
+opponent_decisions = [bit == '1' for bit in o]
 
 merlin = AI_Agent(epsilon=0)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')

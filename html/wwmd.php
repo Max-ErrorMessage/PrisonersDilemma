@@ -19,13 +19,13 @@ if (!isset($_SESSION['merlin_decisions'])) {
 }
 
 if (isset($_POST['decide_true'])) {
-    $_SESSION['user_decisions'][] = true;
     wwmd();
+    $_SESSION['user_decisions'][] = true;
 }
 
 if (isset($_POST['decide_false'])) {
-    $_SESSION['user_decisions'][] = false;
     wwmd();
+    $_SESSION['user_decisions'][] = false;
 }
 
 if (isset($_POST['reset'])) {
