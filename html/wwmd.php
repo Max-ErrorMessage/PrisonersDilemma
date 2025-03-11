@@ -22,6 +22,10 @@ if (!isset($_SESSION['user_decisions'])) {
     $_SESSION['user_decisions'] = [];
 }
 
+if (!isset($_SESSION['merlin_decisions'])) {
+    $_SESSION['merlin_decisions'] = [];
+}
+
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
     $_SESSION['trusts']++;
@@ -36,6 +40,10 @@ if (isset($_POST['reset'])) {
     $_SESSION['user_decisions'] = [];
     $_SESSION['betrays'] = 0;
     $_SESSION['trusts'] = 0;
+}
+
+function wwmd($merlin_decisions, $user_decisions) {
+    echo "Weendle";
 }
 
 ?>
@@ -69,7 +77,13 @@ if (isset($_POST['reset'])) {
             <form method="post">
                 <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
-            <h1>Merlin decisions: <?php echo "IDk"; ?></h1>
+            <h1>Merlin's most recent decision: <?php
+                if (empty($_SESSION['merlin_decisions']) {
+                    echo "Merlin hasn't made any decisions yet...";
+                } else {
+                    echo end($_SESSION['merlin_decisions']);
+                }
+             ?></h1>
             <form method="post">
                 <button class="go" type="submit" name="reset">Reset</button>
             </form>
