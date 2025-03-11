@@ -6,10 +6,14 @@ if (!isset($_SESSION['uname'])) {
     header("Location: /signin.php");
     exit();
 }
-$_SESSION['trusts'] = 0;
 $uname = htmlspecialchars($_SESSION['uname']);
 
 // Initialize decisions array in session if not already set
+
+if (!isset($_SESSION['trusts'])) {
+    $_SESSION['trusts'] = 0;
+}
+
 if (!isset($_SESSION['user_decisions'])) {
     $_SESSION['user_decisions'] = [];
 }
