@@ -25,6 +25,7 @@ if (!isset($_SESSION['user_decisions'])) {
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
     $_SESSION['trusts']++;
+    echo "Crum";
 }
 
 if (isset($_POST['decide_false'])) {
