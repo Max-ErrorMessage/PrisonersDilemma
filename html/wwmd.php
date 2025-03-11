@@ -99,7 +99,7 @@ function wwmd() {
         <div id="Game">
             <h1>Debug: <?php
                 if (!isset($_SESSION['debug'])) {
-                    echo $_SESSION['debug'];
+                    var_dump($_SESSION['debug']);
                 }
             ?></h1>
             <h1>Your Score: <?php
