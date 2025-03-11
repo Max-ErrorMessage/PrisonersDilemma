@@ -4,6 +4,9 @@ import sys
 s = sys.argv[1]
 o = sys.argv[2]
 
+with open("/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.log", "w") as file:
+    file.write(f"S: {s}\nO: {o}")
+
 self_decisions = [bit == '1' for bit in s]
 opponent_decisions = [bit == '1' for bit in o]
 
