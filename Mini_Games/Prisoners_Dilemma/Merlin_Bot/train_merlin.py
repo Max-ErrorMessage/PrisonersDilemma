@@ -72,7 +72,7 @@ for i in user_codes.keys():
     print(f"{i}: {total_heuristics[user_codes[i]]}")
 #quit()
 
-merlin = AI_Agent(alpha=0.0001,epsilon=0,jamesExplore=True)
+merlin = AI_Agent(alpha=0.0003,gamma=0.3,epsilon=0,jamesExplore=True,exploration_chance=0.9,exploration_amount=0.05)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 
@@ -100,7 +100,7 @@ for repeat in range(simulations):
              scores_earned) = sim_2_players(user_codes[player_1], user_codes[player_2], game_length)
 
             if player_2 == '0':
-                if (player_1 == '1' or player_1 == '56') and player_2_decisions[:3] == [True,False,False] and player_1_decisions[1:3] == [False,True]:
+                if (player_1 == '1' or player_1 == '76') and player_2_decisions[:3] == [True,False,False] and player_1_decisions[1:3] == [False,True]:
                     test_print = True
                 total_rounds_played += 1
                 game_reward_multiplier = 1
