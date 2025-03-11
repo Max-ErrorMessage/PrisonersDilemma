@@ -46,7 +46,7 @@ function wwmd() {
     $command = 'python3 /var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.py ' . escapeshellarg($m) . ' ' . escapeshellarg($u);
     $decision = exec($command);
 
-    $_SESSION['merlin_decisions'][] = $decision == '1';
+    $_SESSION['merlin_decisions'][] = $decision;
 }
 
 ?>
