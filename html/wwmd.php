@@ -10,14 +10,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
 
 // Initialize decisions array in session if not already set
 
-if (!isset($_SESSION['trusts'])) {
-    $_SESSION['trusts'] = 0;
-}
-
-if (!isset($_SESSION['betrays'])) {
-    $_SESSION['betrays'] = 0;
-}
-
 if (!isset($_SESSION['user_decisions'])) {
     $_SESSION['user_decisions'] = [];
 }
@@ -28,13 +20,11 @@ if (!isset($_SESSION['merlin_decisions'])) {
 
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
-    $_SESSION['trusts']++;
     wwmd();
 }
 
 if (isset($_POST['decide_false'])) {
     $_SESSION['user_decisions'][] = false;
-    $_SESSION['betrays']++;
     wwmd();
 }
 
