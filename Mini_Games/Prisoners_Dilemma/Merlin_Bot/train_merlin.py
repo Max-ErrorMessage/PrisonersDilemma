@@ -48,20 +48,33 @@ user_codes_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(user_codes_module)
 
 user_codes = getattr(user_codes_module, "user_code", None)
-
 heuristic_highest_scores = dict({})
-for user_function in user_codes.values():
-    for strategy in base_strategies:
-        user_score, strategy_score, _, _, _ = sim_2_players(user_function, strategy, 400)
-        if user_function not in heuristic_highest_scores:
-            heuristic_highest_scores[user_function] = strategy_score
-        elif strategy_score > heuristic_highest_scores[user_function]:
-            heuristic_highest_scores[user_function] = strategy_score
+total_heuristics = dict({})
+for i in range(10):
+    #heuristic_highest_scores = dict({})
+    for user_function in user_codes.values():
+        for strategy in base_strategies:
+            user_score, strategy_score, _, _, _ = sim_2_players(user_function, strategy, 400)
+            if user_function not in heuristic_highest_scores:
+                heuristic_highest_scores[user_function] = strategy_score
+            elif strategy_score > heuristic_highest_scores[user_function]:
+                heuristic_highest_scores[user_function] = strategy_score
+    for key in heuristic_highest_scores.keys():
+        if key not in total_heuristics:
+            total_heuristics[key] = heuristic_highest_scores[key]
+        else:
+            total_heuristics[key] = heuristic_highest_scores[key]
 
-#print(heuristic_highest_scores)
+
+for i in total_heuristics.keys():
+    total_heuristics[i]/=1
+for i in user_codes.keys():
+    print(f"{i}: {total_heuristics[user_codes[i]]}")
+#quit()
 
 merlin = AI_Agent(alpha=0.0001,epsilon=0,jamesExplore=True)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
+
 
 user_codes['0'] = merlin.action
 import matplotlib
@@ -72,6 +85,7 @@ perfect_trust_rounds = 0
 total_rounds_played = 0
 plt_trusts = [] # these lists are for my (james) own sake, q_value for state (3,2,2,3) fluctuates a lot
 plt_betrays = [] # i'd like to plot this on a graph, my hypothesis is like a sin/cos graph vibe
+test_print = False
 for repeat in range(simulations):
     scores = dict({user: 0 for user in user_codes.keys()})
     game_length = 200
@@ -79,16 +93,19 @@ for repeat in range(simulations):
         for player_2 in user_codes.keys():
             if player_1 == player_2 or player_2 != '0':
                 continue
+            test_print = False
             merlin.setExplorationStates() # reset when to explore
             (player_1_score, player_2_score,
              player_1_decisions, player_2_decisions,
              scores_earned) = sim_2_players(user_codes[player_1], user_codes[player_2], game_length)
 
             if player_2 == '0':
+                if (player_1 == '1' or player_1 == '56') and player_2_decisions[:3] == [True,False,False] and player_1_decisions[1:3] == [False,True]:
+                    test_print = True
                 total_rounds_played += 1
                 game_reward_multiplier = 1
                 try:
-                    game_reward = player_2_score * game_length * game_reward_multiplier / heuristic_highest_scores[user_codes[player_1]]
+                    game_reward = player_2_score * game_length * game_reward_multiplier / total_heuristics[user_codes[player_1]]
                 except ZeroDivisionError:
                     game_reward = player_2_score * game_length * game_reward_multiplier
                 # print(f"Merlin is being rewarded by {reward} for scoring {player_2_score} against {player_1}, whose "
@@ -97,7 +114,9 @@ for repeat in range(simulations):
                 for index, (player_1_decision, player_2_decision) in enumerate(zip(player_1_decisions, player_2_decisions)):
                     state = merlin.extract_features(player_2_decisions[:index], player_1_decisions[:index])
                     action = player_2_decision
-                    reward = scores_earned[index][1]
+#                    if test_print and state == (1,2,1,2,3):
+#                        print(f"{player_1}: {action}, {round(game_reward,2)}, {player_2_score}")
+                    reward = scores_earned[index][1] - scores_earned[index][1]
 #                    if player_1_decision and not player_2_decision:
 #                        reward -= 5
                     next_state = merlin.extract_features(player_2_decisions[:index + 1], player_1_decisions[:index + 1])
