@@ -61,7 +61,7 @@ class AI_Agent:
         # return tuple(opponent_decisions[-6:] + self_decisions[-2:])
         return opponent_repeats, int(o_last) + 1, int(s_last) + 1, self_repeats, n if n < 5 else 5
 
-    def action(self, self_decisions, opponent_decisions, s, o, n):
+    def action(self, self_decisions, opponent_decisions, s=None, o=None, n=None):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
 
     def setExplorationStates(self): # decide which states to explore on
