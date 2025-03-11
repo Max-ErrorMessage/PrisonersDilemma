@@ -77,7 +77,7 @@ for repeat in range(simulations):
     game_length = 200
     for player_1 in user_codes.keys():
         for player_2 in user_codes.keys():
-            if player_1 == player_2 or '0' not in [player_1, player_2]:
+            if player_1 == player_2 or player_2 != '0':
                 continue
             merlin.setExplorationStates() # reset when to explore
             (player_1_score, player_2_score,
