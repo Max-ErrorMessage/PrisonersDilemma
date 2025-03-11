@@ -1,8 +1,12 @@
 from merlin import *
 import sys
 
-s = sys.argv[1]
-o = sys.argv[2]
+try:
+    s = sys.argv[1]
+    o = sys.argv[2]
+except IndexError:
+    s = ""
+    o = ""
 
 with open("/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.log", "w") as file:
     file.write(f"S: {s}\nO: {o}")
