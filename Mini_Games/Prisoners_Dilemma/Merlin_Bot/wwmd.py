@@ -8,8 +8,6 @@ except IndexError:
     s = ""
     o = ""
 
-print("Cree")
-
 with open("/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.log", "w") as file:
     file.write(f"S: {s}\nO: {o}\n")
 
@@ -21,4 +19,5 @@ merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 choice = merlin.action(self_decisions, opponent_decisions)
 
-print(1 if choice else 0)
+print(choice)
+
