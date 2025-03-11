@@ -45,8 +45,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
                         FROM Submission
                         WHERE User_ID = s.User_ID
                         AND Game_ID = 1
+                        AND Points <> 0
                     )
                     AND s.Game_ID = 1
+                    AND Points <> 0
                     ORDER BY s.Points DESC;";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();

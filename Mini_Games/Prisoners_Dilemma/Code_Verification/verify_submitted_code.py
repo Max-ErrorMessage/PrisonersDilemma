@@ -26,11 +26,14 @@ with open("/var/www/Mini_Games/Prisoners_Dilemma/Code_Verification/User_Submitte
     # This logs every single submission (even ones rejected because they don't work) to a log file so that we can tell
     # if someone is trying to break/exploit the code, even when this file prevents them from actually succeeding.
 
+if len(code) > 100000:
+    print("Your submission is too long")
+    quit()
 
 keywords = [
     "print", "import", "exec", "eval", "open", "execfile", "compile", "input", "__import__", "os.system", "os.popen",
     "subprocess.call", "subprocess.run", "globals", "locals", "file", "pickle", "pickle.load", "shlex.split",
-    "os.remove", "os.rename", "socket", "quit"
+    "os.remove", "os.rename", "socket", "quit", "fuck", "shit", "cunt", "dick", "cock", "ivy"
 ]
 # A list of keywords that the file scans for. There are a couple of levels of redundancy (in theory, it is impossible to
 # run os-related functions without importing os, but additional security never hurt anyone)

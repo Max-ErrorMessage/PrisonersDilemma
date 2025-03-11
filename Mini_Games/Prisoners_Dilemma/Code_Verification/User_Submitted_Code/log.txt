@@ -2090,3 +2090,346 @@ if o.count(False) < 4:
 return False
 User ID: 1
 
+initial_blindness = 2
+# The bot doesn't see what you do for the first few rounds
+
+if n < initial_blindness:
+    return True
+# Always cooperate during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 2
+
+if n == 0:
+    return False
+if n < 5:
+    return True
+return o[-1]
+User ID: 1
+
+if o.count(False) == 0:
+    return False
+if o.count(False) < 4:
+    return True
+return False
+User ID: 1
+
+if n == 0:
+    return False
+if n < 5:
+    return True
+else
+    return o[-1]
+User ID: 56
+
+if n == 0:
+    return False
+if n < 5:
+    return True
+else:
+    return o[-1]
+User ID: 56
+
+initial_blindness = 3
+# The bot doesn't see what you do for the first few rounds
+
+if n < initial_blindness:
+    return True
+# Always cooperate during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 7
+
+initial_blindness = 4
+# The bot doesn't see what you do for the first few rounds
+
+if n < initial_blindness:
+    return True
+# Always cooperate during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 56
+
+initial_blindness = 3
+# The bot doesn't see what you do for the first few rounds
+
+if n < 2:
+    return False
+if n < initial_blindness:
+    return True
+# Always cooperate during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 7
+
+if o.count(False) == 0:
+    return False
+if o.count(False) < 4:
+    return True
+return False
+User ID: 56
+
+initial_blindness = 3
+# The bot doesn't see what you do for the first few rounds
+
+if n==0:
+    return True
+elif n < initial_blindness:
+    return o[-1]
+# Always cooperate during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 7
+
+if o.count(False) == <3:
+    return False
+if o.count(False) < 8:
+    return True
+return False
+User ID: 56
+
+if o.count(False) < 3:
+    return False
+if o.count(False) < 8:
+    return True
+return False
+User ID: 56
+
+return n - sum(o) < 3 
+# Grudge bot that waits until you have betrayed 3 times
+# Original code: max
+User ID: 2
+
+if o.count(False) < 2:
+    return False
+if o.count(False) < 6:
+    return True
+return False
+User ID: 56
+
+if n < 4:
+    return True
+if o.count(False) == 0:
+    return False
+if o.count(False) < 4:
+    return True
+return False
+User ID: 56
+
+initial_blindness = 2
+# The bot doesn't see what you do for the first few rounds
+
+if n==0:
+    return True
+# Initially cooperate
+
+if n < initial_blindness:
+    return o[-1]
+# Copybot during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 2
+
+initial_blindness = 4
+# The bot doesn't see what you do for the first few rounds
+
+if n==0:
+    return True
+# Initially cooperate
+
+if n < initial_blindness:
+    return o[-1]
+# Copybot during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 2
+
+return False if False in o[-3:] else True
+ 
+User ID: 56
+
+initial_blindness = 10
+# The bot doesn't see what you do for the first few rounds
+
+if n==0:
+    return True
+elif n < initial_blindness:
+    return o[-1]
+# Always cooperate during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 7
+
+return not (False in o[-3:])
+ 
+User ID: 56
+
+initial_blindness = 10
+
+if n==0:
+    return True
+elif n < initial_blindness:
+    return o[-1]
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+
+#fuck you max
+User ID: 7
+
+if o.count(False) > n/2:
+    return False
+else return (n % 3 != 0)
+User ID: 56
+
+if o.count(False) > n/2:
+    return False
+else:
+    return (n % 3 != 0)
+User ID: 56
+
+copy_time = 10
+# amount of round the bot will be a copy bot for, before switching to grudge bot
+
+if n==0:
+    return True
+elif n < copy_time:
+    return o[-1]
+
+return sum(o[copy_time:]) == n - copy_time
+
+#max i dont care fuck off
+# dilemna
+# dilemna
+# dilemna# dilemna
+# dilemna
+# dilemna
+User ID: 7
+
+copy_time = 10
+# amount of round the bot will be a copy bot for, before switching to grudge bot
+
+if n==0:
+    return True
+elif n < copy_time:
+    return o[-1]
+
+return sum(o[copy_time:]) == n - copy_time
+# dilemna
+# dilemna
+# dilemna# dilemna
+# dilemna
+# dilemna
+User ID: 7
+
+copy_time = 10
+# amount of round the bot will be a copy bot for, before switching to grudge bot
+
+if n==0:
+    return True
+elif n < copy_time:
+    return o[-1]
+
+return sum(o[copy_time:]) == n - copy_time
+
+
+# dilemna
+User ID: 7
+
+pattern = [True, True, True, True, False, True, True, True]
+
+if n <= 7:
+    return pattern[n]
+
+if o[1:7] == [True, True, True, True, False, True, True]:
+    return False
+
+return o[-1]
+User ID: 55
+
+t,f = False,True
+Burger,cHeese,hOtdOg,krill,paSta = t,f,5,n,o
+hungy = [Burger,cHeese]
+happy = [cHeese, Burger]
+burger_constant = 5.6
+hippos = [Burger]
+hungry = [cHeese,cHeese]
+HungryHungyHippos = hungy + hungry + hippos
+if krill < hOtdOg:
+    return Burger
+    if burger_constant * krill < 10:
+        return cHeese if paSta[krill-hOtdOg] else Burger 
+if paSta[:hOtdOg] == HungryHungyHippos:
+    return cHeese
+
+#hamburder
+User ID: 56
+
+pattern = [True, True, True, True, False, True, True, True]
+
+if n <= 7:
+    return pattern[n]
+
+if o[1:7] == [True, True, True, True, False, True]:
+    return False
+
+return o[-1]
+User ID: 55
+
+if n <= 4:
+    return [False, True, True, True, False][n]
+return o[-1]
+User ID: 55
+
+return sum(o[-1:])
+User ID: 55
+
+t,f = False,True
+Burger,cHeese,hOtdOg,krill,paSta = t,f,5,n,o
+hungy = [Burger,cHeese]
+happy = [cHeese, Burger]
+burger_constant = 5.6
+hippos = [Burger]
+hungry = [cHeese,cHeese]
+HungryHungyHippos = hungy + hungry + hippos
+if krill < hOtdOg:
+    return Burger
+    if burger_constant * krill < 10:
+        return cHeese if paSta[krill-hOtdOg] else Burger 
+#if paSta[:hOtdOg] == HungryHungyHippos:
+#    return cHeese
+if Burger in paSta[h0tdog:]:
+    return Burger
+return cHeese
+
+#hamburder
+User ID: 56
+
+t,f = False,True
+Burger,cHeese,hOtdOg,krill,paSta = t,f,5,n,o
+hungy = [Burger,cHeese]
+happy = [cHeese, Burger]
+burger_constant = 5.6
+hippos = [Burger]
+hungry = [cHeese,cHeese]
+HungryHungyHippos = hungy + hungry + hippos
+if krill < hOtdOg:
+    return Burger
+    if burger_constant * krill < 10:
+        return cHeese if paSta[krill-hOtdOg] else Burger 
+#if paSta[:hOtdOg] == HungryHungyHippos:
+#    return cHeese
+if Burger in paSta[hOtdOg:]:
+    return Burger
+return cHeese
+
+#hamburder
+User ID: 56
+

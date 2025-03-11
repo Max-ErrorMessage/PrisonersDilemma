@@ -54,7 +54,7 @@ $sql = "SELECT a.Username, s.Points
             WHERE User_ID = s.User_ID
             AND Game_ID = 2
         )
-        AND s.Game_ID = 1
+        AND s.Game_ID = 2
         ORDER BY s.Points DESC;
         LIMIT 3;"; //sql statement to find the top three players
 $stmt = $pdo->prepare($sql);

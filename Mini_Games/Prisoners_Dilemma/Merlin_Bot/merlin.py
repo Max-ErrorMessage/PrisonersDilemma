@@ -3,12 +3,14 @@ import random
 
 
 class AI_Agent:
-    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1, jamesExplore = False):
+    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1, jamesExplore = False, exploration_chance = 0.5, exploration_amount=0.05):
         self.q_table = {}
         self.alpha = alpha
         self.gamma = gamma
         self.epsilon = epsilon
         self.jamesExplore = jamesExplore
+        self.exploration_chance = exploration_chance
+        self.exploration_amount = exploration_amount
         self.explorationStates = []
 
     def get_q_value(self, state, action):
@@ -39,35 +41,38 @@ class AI_Agent:
             return 0, 0, 0, 0
         
         o_last, s_last = opponent_decisions[-1], self_decisions[-1]
+        n = len(opponent_decisions)
         
         opponent_repeats, self_repeats = 0, 0
         stop = False
-        for x in range(1,min(4,len(opponent_decisions))):
+        for x in range(1,min(4,len(opponent_decisions)+1)):
             if opponent_decisions[-x] == opponent_decisions[-1] and not stop:
                 opponent_repeats += 1
             else:
                 stop = True
 
         stop = False
-        for x in range(1,min(4,len(self_decisions))):
+        for x in range(1,min(4,len(self_decisions)+1)):
             if self_decisions[-x] == self_decisions[-1] and not stop:
                 self_repeats += 1
             else:
                 stop = True        
 
         # return tuple(opponent_decisions[-6:] + self_decisions[-2:])
-        return opponent_repeats, int(o_last) + 1, int(s_last) + 1, self_repeats
+        return opponent_repeats, int(o_last) + 1, int(s_last) + 1, self_repeats, n if n < 5 else 5
 
     def action(self, self_decisions, opponent_decisions, s, o, n):
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
 
-    def setExplorationStates(self, percentage = 0.1): # decide which states to explore on
-        self.states = self.q_table.keys()
-        self.explorationStates = []
-        for i in self.states:
-            if random.uniform(0, 1) < percentage:
-                self.explorationStates.append(i)
-
+    def setExplorationStates(self): # decide which states to explore on
+        if random.random() > self.exploration_chance:
+            states = self.q_table.keys()
+            self.explorationStates = []
+            for i in states:
+                if random.uniform(0, 1) < self.exploration_amount:
+                    self.explorationStates.append(i[0])
+        else:
+            self.explorationStates=[]
 
 
     def save_model(self, filename="merlin.pkl"):

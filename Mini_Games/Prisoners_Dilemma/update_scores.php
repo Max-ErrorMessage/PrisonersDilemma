@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$game_length = 60;
+$game_length = rand(200,400);
 // Randomly generate a game length between 200 and 400.
 // If users can know that a game will be X rounds long then the game starts to become solved as it's always correct to
 // betray on round X and therefore it's always correct to betray on round X-1, etc.

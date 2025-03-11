@@ -60,15 +60,21 @@ for user_function in user_codes.values():
 
 #print(heuristic_highest_scores)
 
-merlin = AI_Agent(epsilon=0,jamesExplore=True)
+merlin = AI_Agent(alpha=0.0002,epsilon=0,jamesExplore=True)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 user_codes['0'] = merlin.action
-
+import matplotlib
+import matplotlib.pyplot as plt
+matplotlib.use("Agg")
 highest_trust_count = 0
+perfect_trust_rounds = 0
+total_rounds_played = 0
+plt_trusts = [] # these lists are for my (james) own sake, q_value for state (3,2,2,3) fluctuates a lot
+plt_betrays = [] # i'd like to plot this on a graph, my hypothesis is like a sin/cos graph vibe
 for repeat in range(simulations):
     scores = dict({user: 0 for user in user_codes.keys()})
-    game_length = 60
+    game_length = 200
     for player_1 in user_codes.keys():
         for player_2 in user_codes.keys():
             if player_1 == player_2 or '0' not in [player_1, player_2]:
@@ -79,11 +85,12 @@ for repeat in range(simulations):
              scores_earned) = sim_2_players(user_codes[player_1], user_codes[player_2], game_length)
 
             if player_2 == '0':
-                game_reward_multiplier = 0.5
+                total_rounds_played += 1
+                game_reward_multiplier = 1
                 try:
                     game_reward = player_2_score * game_length * game_reward_multiplier / heuristic_highest_scores[user_codes[player_1]]
                 except ZeroDivisionError:
-                    game_reward = max(player_2_score * game_length * game_reward_multiplier, 1)
+                    game_reward = player_2_score * game_length * game_reward_multiplier
                 # print(f"Merlin is being rewarded by {reward} for scoring {player_2_score} against {player_1}, whose "
                 #       f"heuristic highest score is {heuristic_highest_scores[user_codes[player_1]]}")
                 # print(f"Player 1 deicsions: {player_1_decisions}\nPlayer 2 decisions: {player_2_decisions}")
@@ -91,6 +98,8 @@ for repeat in range(simulations):
                     state = merlin.extract_features(player_2_decisions[:index], player_1_decisions[:index])
                     action = player_2_decision
                     reward = scores_earned[index][1]
+#                    if player_1_decision and not player_2_decision:
+#                        reward -= 5
                     next_state = merlin.extract_features(player_2_decisions[:index + 1], player_1_decisions[:index + 1])
                     # print(f"Q Value of state {state} before updating: {merlin.get_q_value(state, action)}")
                     merlin.update_q_value(state, action, reward + game_reward, next_state)
@@ -100,14 +109,36 @@ for repeat in range(simulations):
                 #print(sum(player_2_decisions))
                 if sum(player_2_decisions) > highest_trust_count:
                     highest_trust_count = sum(player_2_decisions)
+                if sum(player_2_decisions) == game_length:
+                    perfect_trust_rounds += 1
+                plt_trusts.append(merlin.get_q_value((1,2,1,1,2),True))
+                plt_betrays.append(merlin.get_q_value((1,2,1,1,2),False))
+#                print(player_1_decisions)
+#                print(player_2_decisions)
+#                print("-")
+#    if (repeat+1) % 500 == 0:
+#        print(merlin.explorationStates)
+#        print(highest_trust_count)
+#        print(f"{perfect_trust_rounds}/{total_rounds_played} rounds where neither player betrayed")
+#        print(player_2_decisions)
+#        print("-=-=-=-=-=-=-")
 
-    if repeat % 100 == 0:
-        print(merlin.explorationStates)
-        print(highest_trust_count)
 
+    if repeat == 0:
+        print(f"Training started: 0/{simulations} completed")
 
-    if repeat % 1000 == 0:
+    if (repeat+1) % 1000 == 0:
         merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
-        print(f"Finished simulation {repeat}/{simulations}")
-
+        print(f"Finished simulation {repeat+1}/{simulations}")
+        plt.clf()
+        x = range(0,len(plt_betrays))
+        plt.plot(x,plt_trusts, label="(1,2,1,1,2),True")
+        plt.plot(x,plt_betrays, label="(1,2,1,1,2),False")
+        plt.ylabel("q-value")
+        plt.xlabel("rounds")
+        plt.legend()
+        plt.savefig("plot.png")
+from datetime import datetime
+now = datetime.now()
+print(now.strftime("%H:%M:%S"))
 merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
