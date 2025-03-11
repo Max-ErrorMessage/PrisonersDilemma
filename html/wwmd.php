@@ -10,6 +10,14 @@ $uname = htmlspecialchars($_SESSION['uname']);
 
 // Initialize decisions array in session if not already set
 
+if (!isset($_SESSION['user_score'])) {
+    $_SESSION['user_score'] = 0;
+}
+
+if (!isset($_SESSION['merlin_score'])) {
+    $_SESSION['merlin_score'] = 0;
+}
+
 if (!isset($_SESSION['user_decisions'])) {
     $_SESSION['user_decisions'] = [];
 }
@@ -33,6 +41,8 @@ if (isset($_POST['reset'])) {
     $_SESSION['merlin_decisions'] = [];
     $_SESSION['betrays'] = 0;
     $_SESSION['trusts'] = 0;
+    $_SESSION['user_score'] = 0;
+    $_SESSION['merlin_score'] = 0;
 }
 
 function wwmd() {
@@ -72,6 +82,12 @@ function wwmd() {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
+            <h1>Your Score: <?php
+                echo $_SESSION['user_score'];
+            ?></h1>
+            <h1>Merlin's Score: <?php
+                echo $_SESSION['merlin_score'];
+            ?></h1>
             <form method="post">
                 <button class="go" type="submit" name="decide_true">Trust</button>
             </form>
@@ -92,12 +108,6 @@ function wwmd() {
             <form method="post">
                 <button class="go" type="submit" name="reset">Reset</button>
             </form>
-            <h1> <?php
-                echo "User Decisions: <br>";
-                var_dump($_SESSION['user_decisions']);
-                echo "<br>Merlin Decisions: <br>";
-                var_dump($_SESSION['merlin_decisions']);
-            ?></h1>
         </div>
     </body>
 </html>
