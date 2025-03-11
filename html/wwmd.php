@@ -54,7 +54,13 @@ function wwmd() {
     }, $_SESSION['merlin_decisions']));
 
     $command = 'python3 /var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.py ' . escapeshellarg($m) . ' ' . escapeshellarg($u);
-    $merlin_decision = exec($command) == '1';
+    $merlin_decision_as_bit = exec($command);
+
+    if ($merlin_decision_as_bit == '1') {
+        $merlin_decision = true;
+    } else {
+        $merlin_decision = false;
+    }
 
     $_SESSION['merlin_decisions'][] = $merlin_decision;
 
