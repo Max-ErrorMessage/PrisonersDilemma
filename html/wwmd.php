@@ -35,13 +35,13 @@ if (isset($_POST['decide_true'])) {
 if (isset($_POST['decide_false'])) {
     $_SESSION['user_decisions'][] = false;
     $_SESSION['betrays']++;
+    wwmd();
 }
 
 if (isset($_POST['reset'])) {
     $_SESSION['user_decisions'] = [];
     $_SESSION['betrays'] = 0;
     $_SESSION['trusts'] = 0;
-    wwmd();
 }
 
 function wwmd() {
@@ -88,7 +88,6 @@ function wwmd() {
                 <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
             <h1>Merlin's most recent decision: <?php
-                var_dump($_SESSION['merlin_decisions']);
                 if (empty($_SESSION['merlin_decisions'])) {
                     echo "Merlin hasn't made any decisions yet...";
                 } else {
