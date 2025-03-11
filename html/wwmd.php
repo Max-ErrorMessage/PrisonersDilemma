@@ -103,13 +103,6 @@ function wwmd($user_decision) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Debug: <?php
-                if (!isset($_SESSION['debug'])) {
-                    var_dump($_SESSION['debug']);
-                } else {
-                    echo "Nothing to debug yet";
-                }
-            ?></h1>
             <h1>Your Score: <?php
                 echo $_SESSION['user_score'];
             ?></h1>
