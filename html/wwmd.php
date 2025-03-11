@@ -40,6 +40,7 @@ if (isset($_POST['decide_false'])) {
 
 if (isset($_POST['reset'])) {
     $_SESSION['user_decisions'] = [];
+    $_SESSION['merlin_decisions'] = [];
     $_SESSION['betrays'] = 0;
     $_SESSION['trusts'] = 0;
 }
