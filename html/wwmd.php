@@ -62,13 +62,13 @@ function wwmd() {
 
     if ($user_decision && $merlin_decision) {
         $_SESSION['user_score'] += 5;
-        $_SESSION['user_score'] += 5;
+        $_SESSION['merlin_score'] += 5;
     } else if ($user_decision && !$merlin_decision) {
         $_SESSION['user_score'] -= 1;
-        $_SESSION['user_score'] += 10;
+        $_SESSION['merlin_score'] += 10;
     } else if (!$user_decision && $merlin_decision) {
         $_SESSION['user_score'] += 10;
-        $_SESSION['user_score'] -= 1;
+        $_SESSION['merlin_score'] -= 1;
     }
 }
 
