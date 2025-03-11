@@ -16,16 +16,10 @@ if (!isset($_SESSION['user_decisions'])) {
 
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
-    $decision_counts = array_count_values($_SESSION['user_decisions']);
-    $trusts = $decision_counts[true] ?? 0;
-    $betrayals = $decision_counts[false] ?? 0;
 }
 
 if (isset($_POST['decide_false'])) {
     $_SESSION['user_decisions'][] = false;
-    $decision_counts = array_count_values($_SESSION['user_decisions']);
-    $trusts = $decision_counts[true] ?? 0;
-    $betrayals = $decision_counts[false] ?? 0;
 }
 
 ?>
@@ -50,11 +44,19 @@ if (isset($_POST['decide_false'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Trusts: <?php echo $trusts; ?></h1>
+            <h1>Trusts: <?php
+                $decision_counts = array_count_values($_SESSION['user_decisions']);
+                $trusts = $decision_counts[true] ?? 0;
+                echo $trusts;
+            ?></h1>
             <form method="post">
                 <button type="submit" name="decide_true">Trust</button>
             </form>
-            <h1>Betrayals: <?php echo $betrayals; ?></h1>
+            <h1>Betrayals: <?php
+                $decision_counts = array_count_values($_SESSION['user_decisions']);
+                $betrayals = $decision_counts[false] ?? 0;
+                echo $betrayals;
+            ?></h1>
             <form method="post">
                 <button type="submit" name="decide_false">Betray</button>
             </form>
