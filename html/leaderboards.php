@@ -96,7 +96,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 foreach ($rows as $row){
 		    $i++;
 		            if ($row["Username"] != $uname){
-                        echo "<li><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</li>";
+                        echo "<li><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
                     } else {
                         echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'><a href='profile.php'><strong>#" . $i . ":</strong> " . htmlspecialchars($row['Username']) . "<br><strong>Points:<strong> " . htmlspecialchars($row['Points']) . "</a></li>";
 		            }
