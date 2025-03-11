@@ -92,6 +92,12 @@ function wwmd() {
             <form method="post">
                 <button class="go" type="submit" name="reset">Reset</button>
             </form>
+            <h1> <?php
+                echo "Merlin Decisions: <br>";
+                var_dump($_SESSION['user_decisions']);
+                echo "Merlin Decisions: <br>"
+                var_dump($_SESSION['merlin_decisions']);
+            ?></h1>
         </div>
     </body>
 </html>
