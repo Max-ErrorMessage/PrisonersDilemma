@@ -29,6 +29,7 @@ if (!isset($_SESSION['merlin_decisions'])) {
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
     $_SESSION['trusts']++;
+    wwmd();
 }
 
 if (isset($_POST['decide_false'])) {
@@ -40,9 +41,10 @@ if (isset($_POST['reset'])) {
     $_SESSION['user_decisions'] = [];
     $_SESSION['betrays'] = 0;
     $_SESSION['trusts'] = 0;
+    wwmd();
 }
 
-function test($merlin_decisions, $user_decisions) {
+function wwmd() {
     $u = $binaryString = implode('', array_map(function($value) {
         return $value ? '1' : '0';
     }, $_SESSION['user_decisions']));
@@ -50,7 +52,7 @@ function test($merlin_decisions, $user_decisions) {
         return $value ? '1' : '0';
     }, $_SESSION['merlin_decisions']));
 
-    $command = 'python3 /var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.py ' . escapeshellarg($u) . ' ' . escapeshellarg($o);
+    $command = 'python3 /var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.py ' . escapeshellarg($m) . ' ' . escapeshellarg($u);
     $decision = exec($command);
 
     $_SESSION['merlin_decisions'][] = $decision == '1';
