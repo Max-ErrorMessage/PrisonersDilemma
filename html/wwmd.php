@@ -6,18 +6,33 @@ if (!isset($_SESSION['uname'])) {
     header("Location: /signin.php");
     exit();
 }
-$_SESSION['trusts'] = 0;
 $uname = htmlspecialchars($_SESSION['uname']);
 
 // Initialize decisions array in session if not already set
+
+if (!isset($_SESSION['trusts'])) {
+    $_SESSION['trusts'] = 0;
+}
+
+if (!isset($_SESSION['betrays'])) {
+    $_SESSION['betrays'] = 0;
+}
+
 if (!isset($_SESSION['user_decisions'])) {
     $_SESSION['user_decisions'] = [];
 }
 
 if (isset($_POST['decide_true'])) {
     $_SESSION['user_decisions'][] = true;
-    $_SESSION['trusts']++
+    $_SESSION['trusts']++;
+    echo "Crum";
 }
+
+if (isset($_POST['decide_false'])) {
+    $_SESSION['user_decisions'][] = false;
+    $_SESSION['betrays']++;
+}
+
 ?>
 <html>
     <head>
@@ -41,9 +56,13 @@ if (isset($_POST['decide_true'])) {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
-            <h1>Trusts: <?php echo $_SESSION['user_decisions']; ?></h1>
+            <h1>Trusts: <?php echo $_SESSION['trusts']; ?></h1>
             <form method="post">
-                <button type="submit" name="decide_true">Trust</button>
+                <button class="go" type="submit" name="decide_true">Trust</button>
+            </form>
+            <h1>Betrayals: <?php echo $_SESSION['betrays']; ?></h1>
+            <form method="post">
+                <button class="go" type="submit" name="decide_false">Betray</button>
             </form>
         </div>
     </body>
