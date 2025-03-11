@@ -70,6 +70,8 @@ function wwmd() {
         $_SESSION['user_score'] += 10;
         $_SESSION['merlin_score'] -= 1;
     }
+
+    $_SESSION['debug'] = $merlin_decision;
 }
 
 ?>
@@ -95,6 +97,11 @@ function wwmd() {
             <h1>What Would Merlin Do?</h1>
         </div>
         <div id="Game">
+            <h1>Debug: <?php
+                if (!isset($_SESSION['debug'])) {
+                    echo $_SESSION['debug'];
+                }
+            ?></h1>
             <h1>Your Score: <?php
                 echo $_SESSION['user_score'];
             ?></h1>
