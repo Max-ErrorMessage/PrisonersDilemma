@@ -8,6 +8,8 @@ except IndexError:
     s = ""
     o = ""
 
+print("Cree")
+
 with open("/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.log", "w") as file:
     file.write(f"S: {s}\nO: {o}\n")
 
