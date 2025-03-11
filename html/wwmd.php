@@ -92,7 +92,11 @@ function wwmd() {
                 if (empty($_SESSION['merlin_decisions'])) {
                     echo "Merlin hasn't made any decisions yet...";
                 } else {
-                    echo end($_SESSION['merlin_decisions']);
+                    if (end($_SESSION['merlin_decisions'])) {
+                        echo "Trust";
+                    } else {
+                        echo "Betray";
+                    }
                 }
              ?></h1>
             <form method="post">
