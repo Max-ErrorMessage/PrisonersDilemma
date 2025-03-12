@@ -70,15 +70,15 @@ $uname = htmlspecialchars($_SESSION['uname']);
             </div>
             <div id="medals2">
                 <div id="gold2" class="medal">
-                    <img src="images/gold.png"/>
+                    <img src="images/yahtzee_gold.png"/>
                     <p><?php echo $yg;?></p>
                 </div>
                 <div id="silver2" class="medal">
-                    <img src="images/silver.png"/>
+                    <img src="images/yahtzee_silver.png"/>
                     <p><?php echo $ys;?></p>
                 </div>
                 <div id="bronze2" class="medal">
-                    <img src="images/bronze.png"/>
+                    <img src="images/yahtzee_bronze.png"/>
                     <p><?php echo $yb;?></p>
                 </div>
             </div>
