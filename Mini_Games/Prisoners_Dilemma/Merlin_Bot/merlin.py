@@ -98,3 +98,12 @@ class AI_Agent:
         for (state, action), value in sorted_q_table:
             print(f"State: {state}, Action: {action} -> Q-Value: {value:.2f}")
 
+    def trustyness(self, output_path='trustyness'):
+        trust, betrayals = 0, 0
+        for state, action in self.q_table.keys():
+            if action:
+                trust += self.q_table[(state, action)]
+            else:
+                betrayals += self.q_table[(state, action)]
+        with open(output_path, "a") as f:
+            f.write(f"{trust},{betrayals}\n")

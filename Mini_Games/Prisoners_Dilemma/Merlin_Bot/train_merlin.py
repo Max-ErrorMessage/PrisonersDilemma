@@ -2,6 +2,8 @@ from merlin import AI_Agent
 import importlib.util
 import random
 import sys
+from datetime import datetime
+import matplotlib.pyplot as plt
 
 simulations = int(sys.argv[1])
 
@@ -66,20 +68,17 @@ for i in range(10):
             total_heuristics[key] = heuristic_highest_scores[key]
 
 
-for i in total_heuristics.keys():
-    total_heuristics[i]/=1
-for i in user_codes.keys():
-    print(f"{i}: {total_heuristics[user_codes[i]]}")
-#quit()
+# for i in total_heuristics.keys():
+#     total_heuristics[i]/=1
+# for i in user_codes.keys():
+#     print(f"{i}: {total_heuristics[user_codes[i]]}")
+
 
 merlin = AI_Agent(alpha=0.0003,gamma=0.3,epsilon=0,jamesExplore=True,exploration_chance=0.9,exploration_amount=0.05)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 
 user_codes['0'] = merlin.action
-import matplotlib
-import matplotlib.pyplot as plt
-matplotlib.use("Agg")
 highest_trust_count = 0
 perfect_trust_rounds = 0
 total_rounds_played = 0
@@ -142,22 +141,11 @@ for repeat in range(simulations):
 #        print(player_2_decisions)
 #        print("-=-=-=-=-=-=-")
 
-
-    if repeat == 0:
-        print(f"Training started: 0/{simulations} completed")
-
     if (repeat+1) % 1000 == 0:
         merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
         print(f"Finished simulation {repeat+1}/{simulations}")
-        plt.clf()
-        x = range(0,len(plt_betrays))
-        plt.plot(x,plt_trusts, label="(1,2,1,2,3),True")
-        plt.plot(x,plt_betrays, label="(1,2,1,2,3),False")
-        plt.ylabel("q-value")
-        plt.xlabel("rounds")
-        plt.legend()
-        plt.savefig("plot.png")
-from datetime import datetime
+        merlin.trustyness('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/trustyness')
+
 now = datetime.now()
 print(now.strftime("%H:%M:%S"))
 merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
