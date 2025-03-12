@@ -86,6 +86,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <img src="images/twokielogo.png" id="navbarLogo">
             <a href="#" class="nav-link">Home</a>
             <a href="leaderboards.php" class="nav-link">Leaderboards</a>
+            <a href="wwmd.php" class="nav-link">WWMD?</a>
             <a href="profile.php" class="nav-link">My Profile</a>
             <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
         </div>

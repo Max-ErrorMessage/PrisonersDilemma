@@ -86,14 +86,6 @@ def user_62(self_decisions, opponent_decisions, s, o, n):
 	return opponent_decisions[-1] if n > 0 else True
 
 
-def user_1(self_decisions, opponent_decisions, s, o, n):
-	if o.count(False) == 0:
-	    return False
-	if o.count(False) < 4:
-	    return True
-	return False
-
-
 def user_2(self_decisions, opponent_decisions, s, o, n):
 	initial_blindness = 4
 	# The bot doesn't see what you do for the first few rounds
@@ -125,16 +117,54 @@ def user_7(self_decisions, opponent_decisions, s, o, n):
 	# dilemna
 
 
-def user_55(self_decisions, opponent_decisions, s, o, n):
-	return sum(o[-1:])
+def user_1(self_decisions, opponent_decisions, s, o, n):
+	h,e,a,r,t = o,n,9,True,False
+	s,q,u,i,d,g,y = t,h,e,a,t,r,e
+	n,o,b,u,r,g,e,r = d,i,s,a,s,t,e,r
+	
+	if g:
+	    l = 1
+	    for p in range(i):
+	        if a == o and g == s:
+	            l += sum(h[-a:])
+	            if l > 3:
+	                if s or ((g==t) and (l == 2)):
+	                    return m
+	                if t:
+	                    return r if g != i else y
+	if y < o and b == s:
+	    return b
+	return (n not in q)
 
 
 def user_56(self_decisions, opponent_decisions, s, o, n):
-	if o.count(False) == 0:
+	dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper = n,s,o,True,False,0,1,9,8
+	pizza = [dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper]
+	
+	try:
+	    if pizza[2] == tomato_sauce and pizza[pizza[6]][-(pizza[6])]:
+	        if pizza[1] == pizza[2]:
+	            return pizza[4]
+	        if pizza [6] > pizza[0]:
+	            return pepperoni
+	        return pizza[1][-dough]
+	except IndexError:
+	    if sausages:
+	       pizza[6]=pizza[5]
+	       if mushrooms > sum(s):
+	           return pepporoni
+	       return cheese[pizza[5]]
+	if pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]] != 8:
+	    return pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]
+	if pizza[0] < pizza[7]:
+	    return pizza[4]
+	return (pizza[4] not in pizza[2])
+
+
+def user_55(self_decisions, opponent_decisions, s, o, n):
+	if len(opponent_decisions) < 9:
 	    return False
-	if o.count(False) < 4:
-	    return True
-	return False
+	return o[-1]
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "62" : user_62, "1" : user_1, "2" : user_2, "7" : user_7, "55" : user_55, "56" : user_56}
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "62" : user_62, "2" : user_2, "7" : user_7, "1" : user_1, "56" : user_56, "55" : user_55}

@@ -95,12 +95,14 @@ function wwmd($user_decision) {
             <img src="images/twokielogo.png" id="navbarLogo">
             <a href="index.php" class="nav-link">Home</a>
             <a href="leaderboards.php" class="nav-link">Leaderboards</a>
+            <a href="wwmd.php" class="nav-link">WWMD?</a>
             <a href="profile.php" class="nav-link">My Profile</a>
             <a href="signin.php" id="signinbutton" class="nav-link"><?php echo $uname; ?></a>
         </div>
         <div id="Main">
             <br><br>
             <h1>What Would Merlin Do?</h1>
+            <p>Play against our resident AI! As you make decisions Merlin will respond and you can see what it's like to play against him! Remember - Merlin can't see your moves until after you make them!</p>
         </div>
         <div id="Game">
             <h1>Your Score: <?php
@@ -109,12 +111,14 @@ function wwmd($user_decision) {
             <h1>Merlin's Score: <?php
                 echo $_SESSION['merlin_score'];
             ?></h1>
-            <form method="post">
-                <button class="go" type="submit" name="decide_true">Trust</button>
-            </form>
-            <form method="post">
-                <button class="go" type="submit" name="decide_false">Betray</button>
-            </form>
+            <div id='buttons'>
+                <form method="post">
+                    <button class="go" type="submit" name="decide_true">Trust</button>
+                </form>
+                <form method="post">
+                    <button class="go" type="submit" name="decide_false">Betray</button>
+                </form>
+            </div>
             <h1>Merlin's most recent decision: <?php
                 if (empty($_SESSION['merlin_decisions'])) {
                     echo "Merlin hasn't made any decisions yet...";

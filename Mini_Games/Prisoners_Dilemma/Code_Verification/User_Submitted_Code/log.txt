@@ -2440,3 +2440,227 @@ if o.count(False) < 4:
 return False
 User ID: 56
 
+if o.count(False) == 0:
+    return False
+if o.count(False) < 4:
+    return True
+return False
+
+## I stole this code from Blu
+User ID: 55
+
+return True if n==0 else o[-1]
+User ID: 55
+
+t,f = False,True
+Burger,cHeese,hOtdOg,krill,paSta = t,f,5,n,o
+hungy = [Burger,cHeese]
+happy = [cHeese, Burger]
+burger_constant = 5.6
+hippos = [Burger]
+hungry = [cHeese,cHeese]
+HungryHungyHippos = hungy + hungry + hippos
+if krill < hOtdOg:
+    return Burger
+    if burger_constant * krill < 10:
+        return cHeese if paSta[krill-hOtdOg] else Burger 
+#if paSta[:hOtdOg] == HungryHungyHippos:
+#    return cHeese
+if Burger in paSta[hOtdOg:]:
+    return Burger
+return cHeese
+
+#hamburder
+User ID: 56
+
+t,f = False,True
+Burger,cHeese,hOtdOg,krill,paSta = t,f,5,n,o
+hungy = [Burger,cHeese]
+happy = [cHeese, Burger]
+burger_constant = 5.6
+hippos = [Burger]
+hungry = [cHeese,cHeese]
+HungryHungyHippos = hungy + hungry + hippos
+if krill < hOtdOg:
+    return Burger
+    if burger_constant * krill < 10:
+        return cHeese if paSta[krill-hOtdOg] else Burger 
+if paSta[:hOtdOg] == HungryHungyHippos:
+    return cHeese
+#if Burger in paSta[hOtdOg:]:
+#    return Burger
+return cHeese
+
+User ID: 56
+
+if len(opponent_decisions) < 10:
+    return True
+else:
+    return opponent_decisions[-1]
+User ID: 56
+
+t,f = False,True
+Burger,cHeese,hOtdOg,krill,paSta = t,f,5,n,o
+hungy = [Burger,cHeese]
+happy = [cHeese, Burger]
+burger_constant = 5.6
+hippos = [Burger]
+hungry = [cHeese,cHeese]
+HungryHungyHippos = hungy + hungry + hippos
+if krill < hOtdOg:
+    return Burger
+    if burger_constant * krill < 10:
+        return cHeese if paSta[krill-hOtdOg] else Burger 
+if paSta[:hOtdOg] == HungryHungyHippos:
+    return cHeese
+#if Burger in paSta[hOtdOg:]:
+#    return Burger
+return cHeese
+
+User ID: 56
+
+if n < 9:
+    return False
+return (False not in o)
+User ID: 56
+
+if n < 9:
+    return False
+return (False not in o)
+User ID: 1
+
+h,e,a,r,t = o,n,9,True,False
+s,q,u,i,d,g,y = t,h,e,a,t,r,e
+n,o,b,u,r,g,e,r = d,i,s,a,s,t,e,r
+
+if g:
+    l = 1
+    for p in range(i):
+        if a == o and g == s:
+            l += sum(h[-a:])
+            if l > 3:
+                if s or ((g==t) and (l = 2)):
+                    return m
+                if t:
+                    return r if g != i else y
+if y < o and b == s:
+    return b
+return (n not in q)
+User ID: 1
+
+h,e,a,r,t = o,n,9,True,False
+s,q,u,i,d,g,y = t,h,e,a,t,r,e
+n,o,b,u,r,g,e,r = d,i,s,a,s,t,e,r
+
+if g:
+    l = 1
+    for p in range(i):
+        if a == o and g == s:
+            l += sum(h[-a:])
+            if l > 3:
+                if s or ((g==t) and (l == 2)):
+                    return m
+                if t:
+                    return r if g != i else y
+if y < o and b == s:
+    return b
+return (n not in q)
+User ID: 1
+
+dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper = n,s,o,True,False,0,1,9,8
+pizza = [dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper]
+
+if pizza[2] == tomato_sauce or pizza[pizza[6]][-pizza[6]]:
+    if pizza[1] == pizza[2]:
+        return pizza[4]
+    if pizza [6] > pizza[0]:
+        return pepperoni
+    return pizza[1][-tomato_sauce]
+if pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]] != 8:
+    return pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]
+if pizza[0] < pizza[7]:
+    return pizza[4]
+return (pizza[4] not in pizza[2])
+User ID: 56
+
+dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper = n,s,o,True,False,0,1,9,8
+pizza = [dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper]
+
+if pizza[2] == tomato_sauce or pizza[pizza[6]][-(pizza[6])]:
+    if pizza[1] == pizza[2]:
+        return pizza[4]
+    if pizza [6] > pizza[0]:
+        return pepperoni
+    return pizza[1][-tomato_sauce]
+if pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]] != 8:
+    return pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]
+if pizza[0] < pizza[7]:
+    return pizza[4]
+return (pizza[4] not in pizza[2])
+User ID: 56
+
+dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper = n,s,o,True,False,0,1,9,8
+pizza = [dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper]
+
+if pizza[2] == tomato_sauce or pizza[pizza[6]][-(pizza[6])]:
+    if pizza[1] == pizza[2]:
+        return pizza[4]
+    if pizza [6] > pizza[0]:
+        return pepperoni
+    return pizza[1][-dough]
+if pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]] != 8:
+    return pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]
+if pizza[0] < pizza[7]:
+    return pizza[4]
+return (pizza[4] not in pizza[2])
+User ID: 56
+
+dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper = n,s,o,True,False,0,1,9,8
+pizza = [dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper]
+
+if pizza[2] == tomato_sauce and pizza[pizza[6]][-(pizza[6])]:
+    if pizza[1] == pizza[2]:
+        return pizza[4]
+    if pizza [6] > pizza[0]:
+        return pepperoni
+    return pizza[1][-dough]
+if pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]] != 8:
+    return pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]
+if pizza[0] < pizza[7]:
+    return pizza[4]
+return (pizza[4] not in pizza[2])
+User ID: 56
+
+dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper = n,s,o,True,False,0,1,9,8
+pizza = [dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper]
+
+try:
+    if pizza[2] == tomato_sauce and pizza[pizza[6]][-(pizza[6])]:
+        if pizza[1] == pizza[2]:
+            return pizza[4]
+        if pizza [6] > pizza[0]:
+            return pepperoni
+        return pizza[1][-dough]
+except IndexError:
+    if sausages:
+       pizza[6]=pizza[5]
+       if mushrooms > sum(s):
+           return pepporoni
+       return cheese[pizza[5]]
+if pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]] != 8:
+    return pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]
+if pizza[0] < pizza[7]:
+    return pizza[4]
+return (pizza[4] not in pizza[2])
+User ID: 56
+
+if len(opponent_decisions) < 10:
+    return False
+return o[-1]
+User ID: 55
+
+if len(opponent_decisions) < 9:
+    return False
+return o[-1]
+User ID: 55
+
