@@ -46,15 +46,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         $sql = "SELECT a.Username, s.Points
                 FROM Submission s
                 INNER JOIN Accounts a ON s.User_ID = a.User_ID
-                WHERE s.Submission_ID = (
-                    SELECT MAX(Submission_ID)
-                    FROM Submission
-                    WHERE User_ID = s.User_ID
-                    AND Game_ID = 1
-                    AND Points <> 0
-                )
-                AND s.Game_ID = 1
-                AND Points <> 0
+                WHERE s.Game_ID = 1
                 ORDER BY s.Points DESC
                 LIMIT 10;";
         $stmt = $pdo->prepare($sql);
@@ -62,17 +54,14 @@ $uname = htmlspecialchars($_SESSION['uname']);
         $topUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Fetch the current user's rank and score (if not in top 10)
-        $sql = "SELECT a.Username, s.Points, 
-                       (SELECT COUNT(*) + 1 
-                        FROM Submission s2 
-                        INNER JOIN Accounts a2 ON s2.User_ID = a2.User_ID
-                        WHERE s2.Game_ID = 1
-                        AND s2.Points > s.Points) AS Rank
-                FROM Submission s
-                INNER JOIN Accounts a ON s.User_ID = a.User_ID
-                WHERE a.Username = ?
-                AND s.Game_ID = 1
-                ORDER BY s.Points DESC
+        $sql = "SELECT Username, Points, `Rank` FROM (
+                    SELECT a.Username, s.Points, 
+                           RANK() OVER (ORDER BY s.Points DESC) AS `Rank`
+                    FROM Submission s
+                    INNER JOIN Accounts a ON s.User_ID = a.User_ID
+                    WHERE s.Game_ID = 1
+                ) ranked_users
+                WHERE Username = ?
                 LIMIT 1;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$uname]);
@@ -95,7 +84,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 }
             }
 
-            // If the user is NOT in the top 10, show their personal rank
             if (!$userInTop10 && $userRow) {
                 echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'>
                     <a href='profile.php'>
@@ -115,7 +103,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <h1>Yahtzee Leaderboard:</h1>
         <br>
         <?php
-        // Fetch the top 10 users for Yahtzee
         $sql = "SELECT a.Username, s.Points
                 FROM Submission s
                 INNER JOIN Accounts a ON s.User_ID = a.User_ID
@@ -126,18 +113,14 @@ $uname = htmlspecialchars($_SESSION['uname']);
         $stmt->execute();
         $topUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Fetch the current user's rank and score (if not in top 10)
-        $sql = "SELECT a.Username, s.Points, 
-                       (SELECT COUNT(*) + 1 
-                        FROM Submission s2 
-                        INNER JOIN Accounts a2 ON s2.User_ID = a2.User_ID
-                        WHERE s2.Game_ID = 2
-                        AND s2.Points > s.Points) AS Rank
-                FROM Submission s
-                INNER JOIN Accounts a ON s.User_ID = a.User_ID
-                WHERE a.Username = ?
-                AND s.Game_ID = 2
-                ORDER BY s.Points DESC
+        $sql = "SELECT Username, Points, `Rank` FROM (
+                    SELECT a.Username, s.Points, 
+                           RANK() OVER (ORDER BY s.Points DESC) AS `Rank`
+                    FROM Submission s
+                    INNER JOIN Accounts a ON s.User_ID = a.User_ID
+                    WHERE s.Game_ID = 2
+                ) ranked_users
+                WHERE Username = ?
                 LIMIT 1;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$uname]);
@@ -160,7 +143,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 }
             }
 
-            // If the user is NOT in the top 10, show their personal rank
             if (!$userInTop10 && $userRow) {
                 echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'>
                     <a href='profile.php'>
