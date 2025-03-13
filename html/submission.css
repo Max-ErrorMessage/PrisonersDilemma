@@ -63,6 +63,7 @@ textarea {
     resize: none;
     overflow-y: auto;
     align-items: left !important;
+    text-align: left !important;
 }
 
 #title{
