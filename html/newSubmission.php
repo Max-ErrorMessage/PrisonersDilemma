@@ -29,9 +29,6 @@ if(!isset($_SESSION['code'])){
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="submission.css">
-    <link rel="stylesheet" href="/root/node_modules/highlight.js/styles/default.min.css">
-    <script src="/root/node_modules/highlight.js/styles/default.min.css"></script>
-    <script>hljs.highlightAll();</script>
     <script type="module">
         (async ({chrome, netscape}) => {
 
@@ -44,7 +41,7 @@ if(!isset($_SESSION['code'])){
 
             // bootstrap a theme through one of these names
             // https://github.com/highlightjs/highlight.js/tree/main/src/styles
-            HighlightedCode.useTheme('default');
+            HighlightedCode.useTheme('github-dark');
         })(self);
     </script>
 </head>
@@ -108,9 +105,9 @@ if(!isset($_SESSION['code'])){
     <h1>
         Example bot:
     </h1>
-    <pre id='example'><code>if n > 0:
+    <pre id='example' is="highlighted-code" language="python">if n > 0:
     return opponent_decisions[-1]
 else:
-    return False</code></pre>
+    return False</pre>
 </code>
 </html>

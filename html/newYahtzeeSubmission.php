@@ -19,9 +19,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="/root/node_modules/highlight.js/styles/default.min.css">
-    <script src="/root/node_modules/highlight.js/styles/default.min.css"></script>
-    <script>hljs.highlightAll();</script>
     <script type="module">
         (async ({chrome, netscape}) => {
 
@@ -34,7 +31,7 @@ session_start();
 
             // bootstrap a theme through one of these names
             // https://github.com/highlightjs/highlight.js/tree/main/src/styles
-            HighlightedCode.useTheme('default');
+            HighlightedCode.useTheme('github-dark');
         })(self);
     </script>
     <style>
@@ -110,6 +107,7 @@ session_start();
             font-size: 1rem;
             resize: none; /* Prevent manual resizing */
             overflow-y: auto; /* Add vertical scroll when needed */
+            text-align: left;
         }
         #info {
             position: absolute;
@@ -222,7 +220,7 @@ list of keys:
     <h1>
         Example bot:
     </h1>
-    <pre id="example"><code>counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+    <pre id="example" is="highlighted-code" language="python">counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
 dice_to_reroll = []
 for i in dice:
     counts[i] += 1
@@ -237,7 +235,7 @@ if max_key in choices:
     return max_key
 else:
     return choices[0]
-    </code></pre>
+    </pre>
 </div>
 </code>
 </html>

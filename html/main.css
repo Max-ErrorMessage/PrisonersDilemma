@@ -172,3 +172,7 @@ button {
   justify-content: center;
   align-items: center;
 }
+textarea{
+    align-items: left;
+    text-align: left;
+}
