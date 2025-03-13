@@ -34,7 +34,7 @@ session_start();
 
             // bootstrap a theme through one of these names
             // https://github.com/highlightjs/highlight.js/tree/main/src/styles
-            HighlightedCode.useTheme('github-dark');
+            HighlightedCode.useTheme('default');
         })(self);
     </script>
     <style>
