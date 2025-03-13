@@ -17,6 +17,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<meta name = "description" content = "Twokie Bots, Code bots to play minigames and compete on leaderboards">
+        <meta name = "keywords" content = "prisoner's dilemma, prisoners dilemma, bots, yahtzee, python, code, coding, machine learning, ai">
 	<title>Twokie - Home</Title>
         <style>
             

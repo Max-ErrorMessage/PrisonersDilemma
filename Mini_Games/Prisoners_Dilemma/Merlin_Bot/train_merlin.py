@@ -74,7 +74,7 @@ for i in range(10):
 #     print(f"{i}: {total_heuristics[user_codes[i]]}")
 
 
-merlin = AI_Agent(alpha=0.0001,gamma=0.2,epsilon=0,jamesExplore=True,exploration_chance=0.4,exploration_amount=0.005)
+merlin = AI_Agent(alpha=0.0001,gamma=0.09,epsilon=0,jamesExplore=True,exploration_chance=0.4,exploration_amount=0.005)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 
