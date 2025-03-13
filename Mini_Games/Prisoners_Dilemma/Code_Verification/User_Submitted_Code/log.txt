@@ -2664,3 +2664,351 @@ if len(opponent_decisions) < 9:
 return o[-1]
 User ID: 55
 
+return False
+User ID: 55
+
+    if n < 6:
+        p = [t, f, t, t, f, t]
+        return p[n]
+    t4t = t
+    for i in range(1, min(6, n)):
+        if opponent_decisionsi] != self_decisions[i-1]:
+            t4t = f
+            break
+    return t4t
+User ID: 17
+
+    t = True
+    f = False
+    s = self_decisions
+    o = opponent_decisions
+    if len(s) < 6:
+        p = [t, f, t, t, f, t]
+        return p[len(s)]
+    t4t = t
+    for i in range(1, min(6, len(o))):
+        if o[i] != s[i-1]:
+            t4t = f
+            break
+    return t4t
+User ID: 17
+
+return False if (o.count(False) == 0 or o.count(False) > 3 else True
+User ID: 1
+
+return False if (o.count(False) == 0 or o.count(False) > 3) else True
+User ID: 1
+
+if n == 0:
+    return false
+if False not in o:
+    return False
+if o.count(False == 1):
+    return True
+return o[-1]
+User ID: 56
+
+if n == 0:
+    return False
+if False not in o:
+    return False
+if o.count(False == 1):
+    return True
+return o[-1]
+User ID: 56
+
+return False if not n
+if n < 50:
+    return o[-1]
+if n == 50:
+    return False
+if n < 54:
+    return True
+if False not in o:
+    return False
+return o[-1]
+
+User ID: 56
+
+if n == 0:
+    return False
+if n < 50:
+    return o[-1]
+if n == 50:
+    return False
+if n < 54:
+    return True
+if False not in o:
+    return False
+return o[-1]
+
+User ID: 56
+
+if n == 0:
+    return False
+if n < 50:
+    return o[-1]
+if n == 150:
+    return False
+if n < 154:
+    return True
+if False not in o:
+    return False
+return o[-1]
+User ID: 56
+
+copy_time = 10
+# amount of round the bot will be a copy bot for, before switching to grudge bot
+
+if n==0:
+    return True
+elif n < copy_time:
+    return o[-1]
+
+return sum(o[copy_time:]) == n - copy_time
+
+
+# dilemna
+User ID: 56
+
+initial_blindness = 4
+# The bot doesn't see what you do for the first few rounds
+
+if n==0:
+    return True
+# Initially cooperate
+
+if n < initial_blindness:
+    return o[-1]
+# Copybot during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 56
+
+initial_blindness = 3
+# The bot doesn't see what you do for the first few rounds
+
+if n==0:
+    return True
+# Initially cooperate
+
+if n < initial_blindness:
+    return o[-1]
+# Copybot during the blindness period
+
+return sum(o[initial_blindness:]) == n - initial_blindness
+# Always cooperate afterwards, unless they have ever betrayed you
+User ID: 56
+
+if n < 5:
+    return True
+if n < 15:
+    return o[-1]
+
+if n < 20:
+    if False in o[-3:]:
+        return False
+    return True
+
+if False in o:
+    return False
+return True
+User ID: 1
+
+if n < 5:
+    return True
+if n < 50:
+    return o[-1]
+
+if n < 100:
+    if False in o[-3:]:
+        return False
+    return True
+
+if False in o:
+    return False
+return True
+User ID: 1
+
+return False if (o.count(False) == 0 or o.count(False) > 3) else True
+User ID: 1
+
+return 0 < o.count(False) <= 3
+User ID: 1
+
+𝕚 = 4
+
+𝕗 = (lambda 𝕟, 𝕠: (lambda 𝕩: 𝕩(𝕟, 𝕠))(lambda 𝕟, 𝕠: (𝕟 == 0) or (𝕟 < 𝕚 and o[-1]) or sum(o[𝕚:]) == 𝕟 - 𝕚))
+
+User ID: 28
+
+𝕗 = (lambda 𝕟, 𝕠: (lambda 𝕩: 𝕩(𝕟, 𝕠))(lambda 𝕟, 𝕠: (𝕟 == 0) or (𝕟 < (lambda 𝔭: (lambda 𝔯: (lambda 𝔰: (lambda 𝔱: (lambda 𝔴: eval(chr(ord(chr(ord(chr(𝔯)))+𝔰))+chr(ord(chr(ord(chr(𝔱)))+𝔱)))))("z") ) ) ) ) (lambda: 2 + 3)() and o[-1]) or sum(o[(lambda 𝔭: (lambda 𝔯: (lambda 𝔰: (lambda 𝔱: (lambda 𝔴: eval(chr(ord(chr(ord(chr(𝔯)))+𝔰))+chr(ord(chr(ord(chr(𝔱)))+𝔱)))))("z") ) ) ) ) (lambda: 2 + 3)():]) == 𝕟 - (lambda 𝔭: (lambda 𝔯: (lambda 𝔰: (lambda 𝔱: (lambda 𝔴: eval(chr(ord(chr(ord(chr(𝔯)))+𝔰))+chr(ord(chr(ord(chr(𝔱)))+𝔱)))))("z") ) ) ) ) (lambda: 2 + 3)()))
+
+return f(n,o)
+
+User ID: 28
+
+shlands=(lambda trinisphere, mishras_workshop: (lambda strip_mine: (lambda vexing_bauble: (lambda ancient_tsphere_of_resistancemb: (lambda crucible_sphere_of_resistancef_wsphere_of_resistancerlds: (lambda 𝕞: (lambda strip_mine: (lambda shlands: (lambda strip_mine: strip_mine(trinisphere,mishras_workshop))(lambda trinisphere, mishras_workshop: (trinisphere==0) sphere_of_resistancer (trinisphere<city_sphere_of_resistancef_traitsphere_of_resistancers = (lambda black_vise: (lambda urzas_saga: (lambda null_rod: (lambda mishras_factory: (lambda chalice_of_the_void: (((((chalice_of_the_void + 1) * 2) - 1) // 2) + (mishras_factory % 5) * (chalice_of_the_void % 3)))))))((lambda: (lambda wasteland: wasteland * 2)(2))()))(3) and sphere_of_resistance[-1]) sphere_of_resistancer sum(sphere_of_resistance[city_sphere_of_resistancef_traitsphere_of_resistancers = (lambda black_vise: (lambda urzas_saga: (lambda null_rod: (lambda mishras_factory: (lambda chalice_of_the_void: (((((chalice_of_the_void + 1) * 2) - 1) // 2) + (mishras_factory % 5) * (chalice_of_the_void % 3)))))))((lambda: (lambda wasteland: wasteland * 2)(2))()))(3):])==trinisphere-city_sphere_of_resistancef_traitsphere_of_resistancers = (lambda black_vise: (lambda urzas_saga: (lambda null_rod: (lambda mishras_factory: (lambda chalice_of_the_void: (((((chalice_of_the_void + 1) * 2) - 1) // 2) + (mishras_factory % 5) * (chalice_of_the_void % 3)))))))((lambda: (lambda wasteland: wasteland * 2)(2))()))(3)))))))))))))(lambda strip_mine: strip_mine))(lambda strip_mine:strip_mine))(lambda strip_mine:strip_mine))(lambda strip_mine:strip_mine))(lambda strip_mine:strip_mine))
+
+return shlands(o, n)
+User ID: 28
+
+Crucible_of_Worlds = (lambda 𝔠: (lambda 𝔯: (lambda 𝔰: (lambda 𝔱: (lambda 𝔴: (((((𝔴 + 1) * 2) - 1) // 2) + (int(bool(t)) % 5) * (𝔴 % 3)))))))((lambda: (lambda 𝔫: 𝔫 * 2)(2))())(3)
+Trinisphere = ((lambda x, Null_Rod: sum([i * j for i, j in zip(range(x, x + 5), range(Null_Rod, Null_Rod + 5))]))(4, 7) + (lambda x: sum([a ** 2 for a in range(1, x + 1) if a % 2 == 0]))(10) - (lambda s: sum([ord(c) for c in s]))("Jxjz_zqYdvcHTvysQbNxFZkSmEKmGdFkYkWoTSfVwJ_FhCd_YkFgLQWbtBbXqkrzQx_urHfNXrQxZftwRmnwztCxpQdQtbJgfzWjIFM")) ** (1 / 4) + (([(lambda x: x * 3)(i) for i in range(1, 6)])[-1] * (2 ** 3))
+Mishras_Workshop = ((lambda f, x: f(f, x))(lambda f, x: 1 if x == 0 else x * f(f, x - 1), 7) + sum([((lambda a: a ** 2 - 3 * a + 2)(i) if i % 2 == 0 else (lambda b: b ** 3 - 5 * b)(i))for i in range(10)])*(lambda s: sum([ord(c) for c in s]))("r4L9y!hQ2wXm#Cz7VtG1oFjD@k8BpUv")) ** (1 / 5) + ([((lambda x: x ** 2 + x + 1)(i)) for i in range(5)] + [((lambda Null_Rod: Null_Rod ** 3 - 2 * Null_Rod)(i)) for i in range(6, 10)])[-1] * 2
+shlands = (lambda Mishras_Workshop, Trinisphere: (lambda Strip_Mine, Null_Rod: True if Strip_Mine == 0 else Null_Rod[-1] if Strip_Mine < Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4) else sum(Null_Rod[Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4):]) == Strip_Mine - Crucible_of_Worlds)(Mishras_Workshop, Trinisphere))
+
+return shlands(n, o)
+User ID: 28
+
+Crucible_of_Worlds = (lambda 𝔠: (lambda 𝔯: (lambda 𝔰: (lambda 𝔱: (lambda 𝔴: (((((𝔴 + 1) * 2) - 1) // 2) + (int(bool(t)) % 5) * (𝔴 % 3)))))))((lambda: (lambda 𝔫: 𝔫 * 2)(2))())(3)
+Trinisphere = ((lambda x, Null_Rod: sum([i * j for i, j in zip(range(x, x + 5), range(Null_Rod, Null_Rod + 5))]))(4, 7) + (lambda x: sum([a ** 2 for a in range(1, x + 1) if a % 2 == 0]))(10) - (lambda s: sum([ord(c) for c in s]))("Jxjz_zqYdvcHTvysQbNxFZkSmEKmGdFkYkWoTSfVwJ_FhCd_YkFgLQWbtBbXqkrzQx_urHfNXrQxZftwRmnwztCxpQdQtbJgfzWjIFM")) ** (1 / 4) + (([(lambda x: x * 3)(i) for i in range(1, 6)])[-1] * (2 ** 3))
+Mishras_Workshop = ((lambda f, x: f(f, x))(lambda f, x: 1 if x == 0 else x * f(f, x - 1), 7) + sum([((lambda a: a ** 2 - 3 * a + 2)(i) if i % 2 == 0 else (lambda b: b ** 3 - 5 * b)(i))for i in range(10)])*(lambda s: sum([ord(c) for c in s]))("r4L9y!hQ2wXm#Cz7VtG1oFjD@k8BpUv")) ** (1 / 5) + ([((lambda x: x ** 2 + x + 1)(i)) for i in range(5)] + [((lambda Null_Rod: Null_Rod ** 3 - 2 * Null_Rod)(i)) for i in range(6, 10)])[-1] * 2
+shlands = (lambda Mishras_Workshop, Trinisphere: (lambda Strip_Mine, Null_Rod: True if Strip_Mine == 0 else Null_Rod[-1] if Strip_Mine < Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4) else sum(Null_Rod[Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4):]) == Strip_Mine - Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4))(Mishras_Workshop, Trinisphere))
+
+return shlands(n, o)
+User ID: 28
+
+if False not in o:
+    return True
+if o.count(False) == 1:
+    return o[-1]
+if o.count(False) < 5:
+    return True
+return False
+User ID: 1
+
+if False not in o:
+    return True
+if o.count(False) < 3:
+    return o[-1]
+if o.count(False) < 5:
+    return True
+return False
+User ID: 1
+
+if n < 5:
+    return n/2==o.count(False)
+return 0 < o.count(False) < 4
+
+User ID: 1
+
+if n < 3:
+    return n/2==o.count(False)
+return 0 < o.count(False) < 4
+
+User ID: 1
+
+if n == 1:
+    return True
+return 0 < o.count(False) < 4
+
+User ID: 1
+
+if False not in o:
+    return True      # trust if theyve never betrayed you
+
+betrayal_index = -1
+for i in range(len(s)):
+    if not s[i]:
+        if betrayal_index == -1:
+            betrayal_index = i # find the index of when they betrayed you
+
+if n - 5 < betrayal_index:
+    return False # betray 5 times in a row
+
+return o[0] # return their opening move
+User ID: 56
+
+if False not in o:
+    return True      # trust if theyve never betrayed you
+
+betrayal_index = -1
+for i in range(len(s)):
+    if not s[i]:
+        if betrayal_index == -1:
+            betrayal_index = i # find the index of when they betrayed you
+
+if n - 5 < betrayal_index:
+    return False # betray 5 times in a row
+
+return o[0]
+User ID: 56
+
+if False not in o:
+    return True      # trust if theyve never betrayed you
+
+betrayal_index = -1
+for i in range(len(s)):
+    if not s[i]:
+        if betrayal_index == -1:
+            betrayal_index = i # find the index of when they betrayed you
+
+if n - 5 < betrayal_index:
+    return False # betray 5 times in a row
+
+return True
+User ID: 56
+
+if False not in o:
+    return True      # trust if theyve never betrayed you
+
+betrayal_index = -1
+for i in range(len(s)):
+    if not s[i]:
+        if betrayal_index == -1:
+            betrayal_index = i # find the index of when they betrayed you
+
+if n - 5 < betrayal_index:
+    return False # betray 5 times in a row
+
+return o[3]
+User ID: 56
+
+if n < 6:
+    return False
+if o[0:5] == [False,True,True,True,false]:
+    return False
+return True
+User ID: 56
+
+if n < 6:
+    return False
+if o[0:5] == [False,True,True,True,False]:
+    return False
+return True
+User ID: 56
+
+if n < 6:
+    return False
+if o[0:5] == [False,True,True,True,False]:
+    return True
+return False
+User ID: 56
+
+_______,________,__________,___________,____________,_____________,______________ = 6,5,0,False,True,n,o
+if _____________ < _______:
+    return ___________
+if ______________ [__________:________] == [___________,____________,____________,____________,___________]:
+    return ____________
+return ___________
+User ID: 56
+
+_______,________,__________,___________,____________,_____________,______________ = len(" 
+     "),len("     "),0,False,True,n,o
+if _____________ < _______:
+    return ___________
+if ______________ [__________:________] == [___________,____________,____________,____________,___________]:
+    return ____________
+return ___________
+User ID: 56
+
+_______,________,__________,___________,____________,_____________,______________ = len("      "),len("     "),0,False,True,n,o
+if _____________ < _______:
+    return ___________
+if ______________ [__________:________] == [___________,____________,____________,____________,___________]:
+    return ____________
+return ___________
+User ID: 56
+

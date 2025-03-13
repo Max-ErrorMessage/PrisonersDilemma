@@ -26,8 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_py_file = fopen("/var/www/Mini_Games/" . $game . "/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
 
-    $output = exec("timeout 1 python3 /var/www/Mini_Games/" . $game . "/Code_Verification/verify_submitted_code.py $user_id 2>&1");
-
+    if ($gameid == 1){
+    	$output = exec("timeout 1 python3 /var/www/Mini_Games/" . $game . "/Code_Verification/verify_submitted_code.py $user_id 2>&1");
+    } else {
+        $output = exec("timeout 5 python3 /var/www/Mini_Games/" . $game . "/Code_Verification/verify_submitted_code.py $user_id 2>&1");
+    }
     unlink("/var/www/Mini_Games/" . $game . "/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt");
 
 

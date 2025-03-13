@@ -100,10 +100,15 @@ class AI_Agent:
 
     def trustyness(self, output_path='trustyness'):
         trust, betrayals = 0, 0
+        
         for state, action in self.q_table.keys():
-            if action:
-                trust += self.q_table[(state, action)]
-            else:
-                betrayals += self.q_table[(state, action)]
+            trust_value = self.q_table.get((state, 0), 0)  # Default to 0 if not found
+            betrayals_value = self.q_table.get((state, 1), 0)  # Default to 0 if not found
+
+            if trust_value > betrayals_value:
+                trust += 1
+            elif betrayals_value > trust_value:
+                betrayals += 1
+        
         with open(output_path, "a") as f:
             f.write(f"{trust},{betrayals}\n")

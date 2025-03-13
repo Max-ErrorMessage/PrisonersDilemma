@@ -74,7 +74,7 @@ for i in range(10):
 #     print(f"{i}: {total_heuristics[user_codes[i]]}")
 
 
-merlin = AI_Agent(alpha=0.0003,gamma=0.3,epsilon=0,jamesExplore=True,exploration_chance=0.9,exploration_amount=0.05)
+merlin = AI_Agent(alpha=0.0001,gamma=0.2,epsilon=0,jamesExplore=True,exploration_chance=0.4,exploration_amount=0.005)
 merlin.load_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
 
 
@@ -85,6 +85,7 @@ total_rounds_played = 0
 plt_trusts = [] # these lists are for my (james) own sake, q_value for state (3,2,2,3) fluctuates a lot
 plt_betrays = [] # i'd like to plot this on a graph, my hypothesis is like a sin/cos graph vibe
 test_print = False
+total_game_reward = 0
 for repeat in range(simulations):
     scores = dict({user: 0 for user in user_codes.keys()})
     game_length = 200
@@ -92,21 +93,22 @@ for repeat in range(simulations):
         for player_2 in user_codes.keys():
             if player_1 == player_2 or player_2 != '0':
                 continue
-            test_print = False
+#            test_print = False
             merlin.setExplorationStates() # reset when to explore
             (player_1_score, player_2_score,
              player_1_decisions, player_2_decisions,
              scores_earned) = sim_2_players(user_codes[player_1], user_codes[player_2], game_length)
 
             if player_2 == '0':
-                if (player_1 == '1' or player_1 == '76') and player_2_decisions[:3] == [True,False,False] and player_1_decisions[1:3] == [False,True]:
-                    test_print = True
+#                if (player_1 == '1' or player_1 == '76') and player_2_decisions[:3] == [True,False,False] and player_1_decisions[1:3] == [False,True]:
+#                    test_print = True
                 total_rounds_played += 1
-                game_reward_multiplier = 1
+                game_reward_multiplier = 1.5
                 try:
                     game_reward = player_2_score * game_length * game_reward_multiplier / total_heuristics[user_codes[player_1]]
                 except ZeroDivisionError:
-                    game_reward = player_2_score * game_length * game_reward_multiplier
+                    game_reward = player_2_score * game_length * game_reward_multiplier / 1000
+                total_game_reward += game_reward
                 # print(f"Merlin is being rewarded by {reward} for scoring {player_2_score} against {player_1}, whose "
                 #       f"heuristic highest score is {heuristic_highest_scores[user_codes[player_1]]}")
                 # print(f"Player 1 deicsions: {player_1_decisions}\nPlayer 2 decisions: {player_2_decisions}")
@@ -125,12 +127,12 @@ for repeat in range(simulations):
                     # print(f"Index: {index}, State: {state}, Action: {action}, Reward: {reward}, Game Reward: {game_reward}, Next State: {next_state}")
                     # merlin.update_q_value(state, action, game_reward, next_state)
                 #print(sum(player_2_decisions))
-                if sum(player_2_decisions) > highest_trust_count:
-                    highest_trust_count = sum(player_2_decisions)
-                if sum(player_2_decisions) == game_length:
-                    perfect_trust_rounds += 1
-                plt_trusts.append(merlin.get_q_value((1,2,1,2,3),True))
-                plt_betrays.append(merlin.get_q_value((1,2,1,2,3),False))
+#                if sum(player_2_decisions) > highest_trust_count:
+#                    highest_trust_count = sum(player_2_decisions)
+#                if sum(player_2_decisions) == game_length:
+#                    perfect_trust_rounds += 1
+#                plt_trusts.append(merlin.get_q_value((1,2,1,2,3),True))
+#                plt_betrays.append(merlin.get_q_value((1,2,1,2,3),False))
 #                print(player_1_decisions)
 #                print(player_2_decisions)
 #                print("-")
@@ -144,7 +146,11 @@ for repeat in range(simulations):
     if (repeat+1) % 1000 == 0:
         merlin.save_model('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/merlin.pkl')
         print(f"Finished simulation {repeat+1}/{simulations}")
-        merlin.trustyness('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/trustyness')
+    if (repeat+1) % 100 == 0:
+        with open('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/game_rewards', 'a') as file:
+            file.write(f"{total_game_reward/(len(user_codes.keys()) - 1) / 100}\n")
+        total_game_reward = 0
+#    merlin.trustyness('/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/trustyness')
 
 now = datetime.now()
 print(now.strftime("%H:%M:%S"))

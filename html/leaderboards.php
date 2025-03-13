@@ -74,8 +74,15 @@ $uname = htmlspecialchars($_SESSION['uname']);
 
             foreach ($topUsers as $row) {
                 $i++;
-                $highlightStyle = ($row["Username"] == $uname) ? "background-image: linear-gradient(90deg,#225522,#448844);" : "";
-                echo "<li style='$highlightStyle'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'>
+		$htmlid = "";
+		$htmlid = $row["Username"];
+		if ($row["Username"] == $uname){
+		    $htmlid = "self";
+		}
+		$highlightStyle = "background-image: linear-gradient(90deg, #225522, #003300);";
+                $highlightStyle = ($row["Username"] == $uname) ? "background-image: linear-gradient(-90deg,#225522,#668866);" : $highlightStyle;
+		$highlightStyle = ($row["Username"] == "MerlinBOT") ? "background-image: linear-gradient(90deg,rgb(189,15,249),rgb(100,50,150));"  : $highlightStyle;
+                echo "<li id = " . $htmlid . " style='$highlightStyle'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'>
                     <strong>#$i:</strong> " . htmlspecialchars($row['Username']) . "<br>
                     <strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
 
@@ -133,8 +140,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
 
             foreach ($topUsers as $row) {
                 $i++;
-                $highlightStyle = ($row["Username"] == $uname) ? "background-image: linear-gradient(90deg,#225522,#448844);" : "";
-                echo "<li style='$highlightStyle'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'>
+		$htmlid = ($row["Username"] == $uname) ? "self" : $uname;
+                $highlightStyle = "background-image: linear-gradient(90deg, #225522, #003300);";
+                $highlightStyle = ($row["Username"] == $uname) ? "background-image: linear-gradient(90deg,#225522,#448844);" : $highlightStyle;
+                echo "<li id = " . $htmlid . " style='$highlightStyle'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'>
                     <strong>#$i:</strong> " . htmlspecialchars($row['Username']) . "<br>
                     <strong>Points:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";
 
@@ -144,7 +153,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             }
 
             if (!$userInTop10 && $userRow) {
-                echo "<li style='background-image: linear-gradient(90deg,#225522,#448844);'>
+                echo "<li style='background-image: linear-gradient(-90deg,#225522,#448844);'>
                     <a href='profile.php'>
                     <strong>#" . htmlspecialchars($userRow['Rank']) . ":</strong> " . htmlspecialchars($userRow['Username']) . "<br>
                     <strong>Points:</strong> " . htmlspecialchars($userRow['Points']) . "</a></li>";

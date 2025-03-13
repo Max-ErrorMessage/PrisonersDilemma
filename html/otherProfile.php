@@ -21,6 +21,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     	<title>Twokie - <?php echo $otherUname;?>'s Profile</title>
+        <style>
+            pre{
+                user-select:none;
+                moz-user-select:none;
+            }
+        </style>
     </head>
     <body>
         <div id="NavBar">

@@ -33,10 +33,6 @@ def user_22(self_decisions, opponent_decisions, s, o, n):
 	    return opponent_decisions[-1]
 
 
-def user_17(self_decisions, opponent_decisions, s, o, n):
-	return False
-
-
 def user_20(self_decisions, opponent_decisions, s, o, n):
 	if len(self_decisions) < 2:
 	    return True
@@ -69,10 +65,6 @@ def user_52(self_decisions, opponent_decisions, s, o, n):
 
 def user_60(self_decisions, opponent_decisions, s, o, n):
 	return True
-
-
-def user_28(self_decisions, opponent_decisions, s, o, n):
-	return True if n < 1 else o[-1]
 
 
 def user_62(self_decisions, opponent_decisions, s, o, n):
@@ -117,54 +109,48 @@ def user_7(self_decisions, opponent_decisions, s, o, n):
 	# dilemna
 
 
-def user_1(self_decisions, opponent_decisions, s, o, n):
-	h,e,a,r,t = o,n,9,True,False
-	s,q,u,i,d,g,y = t,h,e,a,t,r,e
-	n,o,b,u,r,g,e,r = d,i,s,a,s,t,e,r
+def user_55(self_decisions, opponent_decisions, s, o, n):
+	return False
+
+
+def user_17(self_decisions, opponent_decisions, s, o, n):
+	    t = True
+	    f = False
+	    s = self_decisions
+	    o = opponent_decisions
+	    if len(s) < 6:
+	        p = [t, f, t, t, f, t]
+	        return p[len(s)]
+	    t4t = t
+	    for i in range(1, min(6, len(o))):
+	        if o[i] != s[i-1]:
+	            t4t = f
+	            break
+	    return t4t
+
+
+def user_28(self_decisions, opponent_decisions, s, o, n):
+	Crucible_of_Worlds = (lambda 𝔠: (lambda 𝔯: (lambda 𝔰: (lambda 𝔱: (lambda 𝔴: (((((𝔴 + 1) * 2) - 1) // 2) + (int(bool(t)) % 5) * (𝔴 % 3)))))))((lambda: (lambda 𝔫: 𝔫 * 2)(2))())(3)
+	Trinisphere = ((lambda x, Null_Rod: sum([i * j for i, j in zip(range(x, x + 5), range(Null_Rod, Null_Rod + 5))]))(4, 7) + (lambda x: sum([a ** 2 for a in range(1, x + 1) if a % 2 == 0]))(10) - (lambda s: sum([ord(c) for c in s]))("Jxjz_zqYdvcHTvysQbNxFZkSmEKmGdFkYkWoTSfVwJ_FhCd_YkFgLQWbtBbXqkrzQx_urHfNXrQxZftwRmnwztCxpQdQtbJgfzWjIFM")) ** (1 / 4) + (([(lambda x: x * 3)(i) for i in range(1, 6)])[-1] * (2 ** 3))
+	Mishras_Workshop = ((lambda f, x: f(f, x))(lambda f, x: 1 if x == 0 else x * f(f, x - 1), 7) + sum([((lambda a: a ** 2 - 3 * a + 2)(i) if i % 2 == 0 else (lambda b: b ** 3 - 5 * b)(i))for i in range(10)])*(lambda s: sum([ord(c) for c in s]))("r4L9y!hQ2wXm#Cz7VtG1oFjD@k8BpUv")) ** (1 / 5) + ([((lambda x: x ** 2 + x + 1)(i)) for i in range(5)] + [((lambda Null_Rod: Null_Rod ** 3 - 2 * Null_Rod)(i)) for i in range(6, 10)])[-1] * 2
+	shlands = (lambda Mishras_Workshop, Trinisphere: (lambda Strip_Mine, Null_Rod: True if Strip_Mine == 0 else Null_Rod[-1] if Strip_Mine < Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4) else sum(Null_Rod[Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4):]) == Strip_Mine - Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4))(Mishras_Workshop, Trinisphere))
 	
-	if g:
-	    l = 1
-	    for p in range(i):
-	        if a == o and g == s:
-	            l += sum(h[-a:])
-	            if l > 3:
-	                if s or ((g==t) and (l == 2)):
-	                    return m
-	                if t:
-	                    return r if g != i else y
-	if y < o and b == s:
-	    return b
-	return (n not in q)
+	return shlands(n, o)
+
+
+def user_1(self_decisions, opponent_decisions, s, o, n):
+	if n == 1:
+	    return True
+	return 0 < o.count(False) < 4
 
 
 def user_56(self_decisions, opponent_decisions, s, o, n):
-	dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper = n,s,o,True,False,0,1,9,8
-	pizza = [dough,tomato_sauce,cheese,pepporoni,sausages,mushrooms,chicken,ham,pepper]
-	
-	try:
-	    if pizza[2] == tomato_sauce and pizza[pizza[6]][-(pizza[6])]:
-	        if pizza[1] == pizza[2]:
-	            return pizza[4]
-	        if pizza [6] > pizza[0]:
-	            return pepperoni
-	        return pizza[1][-dough]
-	except IndexError:
-	    if sausages:
-	       pizza[6]=pizza[5]
-	       if mushrooms > sum(s):
-	           return pepporoni
-	       return cheese[pizza[5]]
-	if pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]] != 8:
-	    return pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[pizza[8]]]]]]]]]]]]]
-	if pizza[0] < pizza[7]:
-	    return pizza[4]
-	return (pizza[4] not in pizza[2])
+	_______,________,__________,___________,____________,_____________,______________ = len("      "),len("     "),0,False,True,n,o
+	if _____________ < _______:
+	    return ___________
+	if ______________ [__________:________] == [___________,____________,____________,____________,___________]:
+	    return ____________
+	return ___________
 
 
-def user_55(self_decisions, opponent_decisions, s, o, n):
-	if len(opponent_decisions) < 9:
-	    return False
-	return o[-1]
-
-
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "17" : user_17, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "28" : user_28, "62" : user_62, "2" : user_2, "7" : user_7, "1" : user_1, "56" : user_56, "55" : user_55}
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "55" : user_55, "17" : user_17, "28" : user_28, "1" : user_1, "56" : user_56}
