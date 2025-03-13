@@ -29,7 +29,7 @@ if(!isset($_SESSION['code'])){
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="submission.css">
-    <script type="module">
+    <!-- <script type="module">
         (async ({chrome, netscape}) => {
 
             // add Safari polyfill if needed
@@ -43,7 +43,7 @@ if(!isset($_SESSION['code'])){
             // https://github.com/highlightjs/highlight.js/tree/main/src/styles
             HighlightedCode.useTheme('github-dark');
         })(self);
-    </script>
+    </script> -->
 </head>
 <code>
 <div id="title">Prisoner's Dilemma:</div>
@@ -84,7 +84,7 @@ if(!isset($_SESSION['code'])){
         <div class="box2">
             <form action="submission.php" method="POST">
                 <label for="name">Enter your code!:</label>
-                <textarea id="name" name="code" required value="<?= $txt ?>" is="highlighted-code" language="python" placeholder="return True
+                <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
 
 
 # The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
@@ -105,7 +105,7 @@ if(!isset($_SESSION['code'])){
     <h1>
         Example bot:
     </h1>
-    <pre id='example' is="highlighted-code" language="python">if n > 0:
+    <pre id='example'>if n > 0:
     return opponent_decisions[-1]
 else:
     return False</pre>
