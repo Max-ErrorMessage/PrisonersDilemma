@@ -19,6 +19,24 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/root/node_modules/highlight.js/styles/default.min.css">
+    <script src="/root/node_modules/highlight.js/styles/default.min.css"></script>
+    <script>hljs.highlightAll();</script>
+    <script type="module">
+        (async ({chrome, netscape}) => {
+
+            // add Safari polyfill if needed
+            if (!chrome && !netscape)
+                await import('https://unpkg.com/@ungap/custom-elements');
+
+            const {default: HighlightedCode} =
+                await import('https://unpkg.com/highlighted-code');
+
+            // bootstrap a theme through one of these names
+            // https://github.com/highlightjs/highlight.js/tree/main/src/styles
+            HighlightedCode.useTheme('github-dark');
+        })(self);
+    </script>
     <style>
         body {
             background: black;
@@ -157,9 +175,9 @@ session_start();
 
     <form action="submission.php" method="POST">
         <label for="name">Enter your reroll function!:</label>
-        <textarea id="name" name="code" placeholder="return []   #reroll no dice" onkeydown="return stopTab(event);" required></textarea>
+        <textarea id="name" name="code" is="highlighted-code" language="python" placeholder="return []   #reroll no dice" onkeydown="return stopTab(event);" required></textarea>
         <label for="name">Enter your select function!:</label>
-        <textarea id="name2" name="code2" placeholder="return choices[0]   #returns first available move" onkeydown="return stopTab(event);" required></textarea>
+        <textarea id="name2" name="code2" is="highlighted-code" language="python" placeholder="return choices[0]   #returns first available move" onkeydown="return stopTab(event);" required></textarea>
         <input type="hidden" name="game_id" value=2>
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>
@@ -204,7 +222,7 @@ list of keys:
     <h1>
         Example bot:
     </h1>
-    <pre id="example">counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+    <pre id="example"><code>counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
 dice_to_reroll = []
 for i in dice:
     counts[i] += 1
@@ -219,7 +237,7 @@ if max_key in choices:
     return max_key
 else:
     return choices[0]
-    </pre>
+    </code></pre>
 </div>
 </code>
 </html>

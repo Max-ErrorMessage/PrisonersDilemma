@@ -29,6 +29,24 @@ if(!isset($_SESSION['code'])){
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="submission.css">
+    <link rel="stylesheet" href="/root/node_modules/highlight.js/styles/default.min.css">
+    <script src="/root/node_modules/highlight.js/styles/default.min.css"></script>
+    <script>hljs.highlightAll();</script>
+    <script type="module">
+        (async ({chrome, netscape}) => {
+
+            // add Safari polyfill if needed
+            if (!chrome && !netscape)
+                await import('https://unpkg.com/@ungap/custom-elements');
+
+            const {default: HighlightedCode} =
+                await import('https://unpkg.com/highlighted-code');
+
+            // bootstrap a theme through one of these names
+            // https://github.com/highlightjs/highlight.js/tree/main/src/styles
+            HighlightedCode.useTheme('github-dark');
+        })(self);
+    </script>
 </head>
 <code>
 <div id="title">Prisoner's Dilemma:</div>
@@ -69,7 +87,7 @@ if(!isset($_SESSION['code'])){
         <div class="box2">
             <form action="submission.php" method="POST">
                 <label for="name">Enter your code!:</label>
-                <textarea id="name" name="code" required value="<?= $txt ?>" placeholder="return True
+                <textarea id="name" name="code" required value="<?= $txt ?>" is="highlighted-code" language="python" placeholder="return True
 
 
 # The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
@@ -90,9 +108,9 @@ if(!isset($_SESSION['code'])){
     <h1>
         Example bot:
     </h1>
-    <pre id='example'>if n > 0:
+    <pre id='example'><code>if n > 0:
     return opponent_decisions[-1]
 else:
-    return False</pre>
+    return False</code></pre>
 </code>
 </html>
