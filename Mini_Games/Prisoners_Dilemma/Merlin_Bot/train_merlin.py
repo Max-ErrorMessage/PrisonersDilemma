@@ -88,7 +88,7 @@ test_print = False
 total_game_reward = 0
 for repeat in range(simulations):
     scores = dict({user: 0 for user in user_codes.keys()})
-    game_length = 200
+    game_length = 300
     for player_1 in user_codes.keys():
         for player_2 in user_codes.keys():
             if player_1 == player_2 or player_2 != '0':
@@ -103,11 +103,11 @@ for repeat in range(simulations):
 #                if (player_1 == '1' or player_1 == '76') and player_2_decisions[:3] == [True,False,False] and player_1_decisions[1:3] == [False,True]:
 #                    test_print = True
                 total_rounds_played += 1
-                game_reward_multiplier = 1.5
+                game_reward_multiplier = 200
                 try:
-                    game_reward = player_2_score * game_length * game_reward_multiplier / total_heuristics[user_codes[player_1]]
+                    game_reward = player_2_score * game_reward_multiplier / total_heuristics[user_codes[player_1]]
                 except ZeroDivisionError:
-                    game_reward = player_2_score * game_length * game_reward_multiplier / 1000
+                    game_reward = player_2_score * game_reward_multiplier / 1000
                 total_game_reward += game_reward
                 # print(f"Merlin is being rewarded by {reward} for scoring {player_2_score} against {player_1}, whose "
                 #       f"heuristic highest score is {heuristic_highest_scores[user_codes[player_1]]}")

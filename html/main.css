@@ -119,9 +119,15 @@ li {
     transition: background 0.3s ease;
 }
 
+
+
 #self:hover{
     background-image: linear-gradient(-90deg,#225522,#558855) !important;
 }
+#MerlinBOT{
+    background-image: linear-gradient(90deg,rgb(72,201,219),rgb(0,50,150))
+}
+
 #MerlinBOT:hover{
     background-image: linear-gradient(-90deg,#8855cc,#bb66ee) !important
 }
