@@ -21,12 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $location = "Location: /newYahtzeeSubmission.php";
         $code2 = $_POST['code2'];
         $code = $code . "$" . $code2;
+    } else if ($gameid == 3){
+        $game = "RPS"
+        $Location = "Location: /newRPSSubmission.php"
     }
 
     $user_py_file = fopen("/var/www/Mini_Games/" . $game . "/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");
     fwrite($user_py_file, $code);
 
-    if ($gameid == 1){
+    if ($gameid == 1 or $gameid == 3){
     	$output = exec("timeout 1 python3 /var/www/Mini_Games/" . $game . "/Code_Verification/verify_submitted_code.py $user_id 2>&1");
     } else {
         $output = exec("timeout 5 python3 /var/www/Mini_Games/" . $game . "/Code_Verification/verify_submitted_code.py $user_id 2>&1");
