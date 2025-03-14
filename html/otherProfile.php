@@ -41,7 +41,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             include '../db.php';
 
             $sql = "
-                SELECT m.Gold, M.Silver, M.Bronze, m.YaGo, m.YaSi, m.YaBr, m.RPSGo, m.RPSSi, m.RPSBr
+                SELECT m.Gold, m.Silver, m.Bronze, m.YaGo, m.YaSi, m.YaBr, m.RPSGo, m.RPSSi, m.RPSBr
                 FROM Accounts a
 		JOIN Medals m ON a.User_ID = m.User_ID
                 WHERE a.Username = :username;
@@ -60,7 +60,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             $ys = $medals["YaSi"];
             $yb = $medals["YaBr"];
 	    $rg = $medals["RPSGo"];
-	    $rs = $medals{"RPSSi"];
+	    $rs = $medals["RPSSi"];
 	    $rb = $medals["RPSBr"];
         ?></p>
         <div id="medals">
@@ -100,6 +100,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
 		<div class="medal">
 		    <img src="images/silver.png"/>
 		    <p><?php echo $rs;?></p>
+		</div>
+		<div class="medal">
+		    <img src="images/bronze.png"/>
+		    <p><?php echo $rb;?></p>
 		</div>
 	    </div>
         </div>
