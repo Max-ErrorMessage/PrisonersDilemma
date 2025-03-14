@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $code = $code . "$" . $code2;
     } else if ($gameid == 3){
         $game = "RPS";
-        $Location = "Location: /newRPSSubmission.php";
+        $location = "Location: /newRPSSubmission.php";
     }
 
     $user_py_file = fopen("/var/www/Mini_Games/" . $game . "/Code_Verification/User_Submitted_Code/user_" . $user_id . ".txt", "w");

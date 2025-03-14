@@ -70,9 +70,9 @@ user_function = namespace[f"user_{user_id}"]
 
 def happy(self_decisions, opponent_decisions, s, o, n):
     """
-    Always trusts (happily)
+    Always goes Scissors (happily)
     """
-    return True
+    return "Scissors"
 
 
 def grumpy(self_decisions, opponent_decisions, s, o, n):
@@ -86,7 +86,7 @@ def bashful(self_decisions, opponent_decisions, s, o, n):
     """
     Does the opposite of what the opponent just did (Bashful is avoiding confrontation)
     """
-    if len(self_decisions) > 0:
+    if len(self_decisions) == 0:
         return "Paper"
     else:
         if opponent_decisions[-1] == "Rock":
@@ -101,15 +101,10 @@ def doc(self_decisions, opponent_decisions, s, o, n):
     """
     Copies what the opponent just did (Doc is sensible and fair)
     """
-    if len(self_decisions) > 0:
+    if len(self_decisions) == 0:
         return "Rock"
     else:
-        if opponent_decisions[-1] == "Rock":
-            return "Paper"
-        if opponent_decisions[-1] == "Paper":
-            return "Scissors"
-        if opponent_decisions[-1] == "Scissors":
-            return "Rock"
+        return opponent_decisions[-1]
 
 
 def sneezy(self_decisions, opponent_decisions, s, o, n):
@@ -136,7 +131,7 @@ def sleepy(self_decisions, opponent_decisions, s, o, n):
     if len(self_decisions) > 1:
         return opponent_decisions[-2]
     else:
-        return True
+        return "Paper"
 
 # Defines the "Seven Dwarves" that are the other functions competing in this mini-tournament.
 

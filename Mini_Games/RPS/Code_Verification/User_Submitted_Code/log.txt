@@ -1,0 +1,33 @@
+return "Rock"
+User ID: 1
+
+return "Rock"
+User ID: 1
+
+return "Paper"
+User ID: 1
+
+return "Paper"
+User ID: 1
+
+return "Paper"
+User ID: 1
+
+return "Paper"
+User ID: 1
+
+return "Paper"
+User ID: 1
+
+return "Paper"
+User ID: 1
+
+return 'Scissors' if True else [seventeen for seventeen in [17]]
+User ID: 2
+
+return "Rock"
+User ID: 56
+
+return 'Scissors' if [seventeen for seventeen in [17]] else lambda eighteen: 18
+User ID: 2
+
