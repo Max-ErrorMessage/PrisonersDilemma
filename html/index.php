@@ -152,6 +152,15 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <a class="go" href="#">Coming Soon!</a>
            	-->
 	    </div>
+            <div id="RPS">
+                <h2>Rock Paper Scissors</h2>
+                <p>Who doesn't love Rock Paper Sciessors.</p>
+                <p>In this challenge users will a function which returns rock, paper or scissors for many rounds.</p>
+                <p>Users will not have access to "Random" so will have to come up with some strategy</p>
+                <a class="go" href="newRPSSubmission.php">Begin!</a>
+
+                <br><br><br><br>
+            </div>
         </div>
 
         <script>
