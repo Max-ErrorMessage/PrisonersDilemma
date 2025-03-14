@@ -41,9 +41,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
             include '../db.php';
 
             $sql = "
-                SELECT gold, silver, bronze, yg, ys, yb
-                FROM Accounts
-                WHERE Accounts.Username = :username;
+                SELECT m.Gold, M.Silver, M.Bronze, m.YaGo, m.YaSi, m.YaBr, m.RPSGo, m.RPSSi, m.RPSBr
+                FROM Accounts a
+		JOIN Medals m ON a.User_ID = m.User_ID
+                WHERE a.Username = :username;
             ";
 
             $stmt = $pdo->prepare($sql);
@@ -52,12 +53,15 @@ $uname = htmlspecialchars($_SESSION['uname']);
             $medals = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-            $gold = $medals["gold"];
-            $silver = $medals["silver"];
-            $bronze = $medals["bronze"];
-            $yg = $medals["yg"];
-            $ys = $medals["ys"];
-            $yb = $medals["yb"];
+            $gold = $medals["Gold"];
+            $silver = $medals["Silver"];
+            $bronze = $medals["Bronze"];
+            $yg = $medals["YaGo"];
+            $ys = $medals["YaSi"];
+            $yb = $medals["YaBr"];
+	    $rg = $medals["RPSGo"];
+	    $rs = $medals{"RPSSi"];
+	    $rb = $medals["RPSBr"];
         ?></p>
         <div id="medals">
             <div id="medals1">
@@ -88,6 +92,16 @@ $uname = htmlspecialchars($_SESSION['uname']);
                     <p><?php echo $yb;?></p>
                 </div>
             </div>
+	    <div id = "medals3">
+		<div class="medal">
+		    <img src="images/gold.png"/>
+		    <p><?php echo $rg;?></p>
+		</div>
+		<div class="medal">
+		    <img src="images/silver.png"/>
+		    <p><?php echo $rs;?></p>
+		</div>
+	    </div>
         </div>
         <div id="Main">
             <br><br>
@@ -122,6 +136,10 @@ $uname = htmlspecialchars($_SESSION['uname']);
                                         if ($gameid == 2){
                                             echo "<h3>Yahtzee:</h3>";
                                             $code = str_replace("$","\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n", $code);
+                                        }
+
+                                        if ($gameid == 3){
+                                            echo "<h3>Rock Paper Scissors:</h3>";
                                         }
                                         echo "<pre id='example'><code class='language-python'>" . htmlspecialchars($code) . "</code></pre>";
                                     }
