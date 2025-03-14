@@ -81,7 +81,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
 		}
 		$highlightStyle = "background-image: linear-gradient(90deg, #225522, #003300);";
                 $highlightStyle = ($row["Username"] == $uname) ? "background-image: linear-gradient(-90deg,#225522,#448844);" : $highlightStyle;
-		$highlightStyle = ($row["Username"] == "MerlinBOT") ? "background-image: linear-gradient(90deg,rgb(189,15,249),rgb(100,50,150));"  : $highlightStyle;
+		$highlightStyle = ($row["Username"] == "MerlinBOT") ? "background-image: linear-gradient(90deg,rgb(77,92,186),rgb(12,22,80));"  : $highlightStyle;
                 echo "<li id = " . $htmlid . " style='$highlightStyle'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'>
                     <strong>#$i:</strong> " . htmlspecialchars($row['Username']) . "<br>
                     <strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";

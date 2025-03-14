@@ -147,8 +147,8 @@ for index, player1 in enumerate(players):
 
         for _ in range(400):
             try:
-                player_1_decision = player_1_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions))
-                player_2_decision = player_2_function(player_2_decisions, player_1_decisions, player_2_decisions, player_1_decisions, len(player_1_decisions))
+                player_1_decision = bool(player_1_function(player_1_decisions, player_2_decisions, player_1_decisions, player_2_decisions, len(player_1_decisions)))
+                player_2_decision = bool(player_2_function(player_2_decisions, player_1_decisions, player_2_decisions, player_1_decisions, len(player_1_decisions)))
             except Exception as e:
                 print(f"Your code has caused an error: {e}")
                 # This is mostly name errors that are syntactically correct but use variables not in the namespace
