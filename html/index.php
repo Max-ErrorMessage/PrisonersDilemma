@@ -158,7 +158,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <p>In this challenge users will a function which returns rock, paper or scissors for many rounds.</p>
                 <p>Users will not have access to "Random" so will have to come up with some strategy</p>
                 <a class="go" href="newRPSSubmission.php">Begin!</a>
-
                 <br><br><br><br>
             </div>
         </div>
