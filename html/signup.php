@@ -55,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insert the user into the medals table
-    $stmt = $pdo->prepare("INSERT INTO Medals (username)
-    SELECT user_id FROM Accounts WHERE username = :username");
+    $stmt = $pdo->prepare("INSERT INTO Medals (User_ID)
+    SELECT User_ID FROM Accounts WHERE Username = :username");
     $stmt->bindParam(':username', $uname);
 
     try {
