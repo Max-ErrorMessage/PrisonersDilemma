@@ -73,9 +73,25 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 border-radius:50px;
                 left:50%;
                 transform: translateX(-50%);
-		text-decoration: none;
-		color: white;
-		border-bottom: 4px #183b2a solid;
+                text-decoration: none;
+                color: white;
+                border-bottom: 4px #183b2a solid;
+            }
+            .rpsCircleContainer {
+              position: relative;
+              width: 400px;
+              height: 400px;
+              margin: 0 auto;
+            }
+
+            .circleImage {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 50px;
+              height: 50px;
+              transform-origin: -50px;
+              transition: transform 0.1s linear;
             }
             
             
@@ -159,6 +175,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <a class="go" href="newRPSSubmission.php">Begin!</a>
                 <br><br><br><br>
             </div>
+            <div class="rpsCircleContainer">
+              <img class="circleImage" src="images/dice1.jpg" alt="Rock">
+              <img class="circleImage" src="images/dice2.jpg" alt="Paper">
+              <img class="circleImage" src="images/dice3.jpg" alt="Scissors">
+            </div>
         </div>
 
         <script>
@@ -194,6 +215,25 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 document.getElementById("rook3").style.transform = `translateX(${window.scrollY * 1.9}px)`;
                 document.getElementById("rook4").style.transform = `translateX(-${window.scrollY * 1.9}px)`;
                 document.getElementById("rook5").style.transform = `translateX(${window.scrollY * 1.8}px)`;
+
+
+
+                const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                const angle = scrollPercentage * 360;  // Angle ranges from 0 to 360 degrees
+
+                // Get all images
+                const images = document.querySelectorAll('.circle-image');
+                const radius = 150;  // Distance from the center of the circle
+
+                images.forEach((img, index) => {
+                    // Calculate angle for each image (offset based on index)
+                    const offsetAngle = angle + (index * 120); // Space them 120 degrees apart
+                    const x = radius * Math.cos(offsetAngle * Math.PI / 180); // Convert angle to radians
+                    const y = radius * Math.sin(offsetAngle * Math.PI / 180);
+
+                    // Apply the transform
+                    img.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+                  });
             });
         </script>
 
