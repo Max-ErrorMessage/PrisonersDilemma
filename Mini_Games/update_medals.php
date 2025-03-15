@@ -77,7 +77,7 @@ if ($rows) {
         }
 
         // Prepare the SQL statement
-        $sql = "UPDATE Accounts
+        $sql = "UPDATE Medals
                 SET $medal = $medal + 1
                 WHERE User_ID = :id";
 
@@ -95,9 +95,9 @@ $sql = "SELECT a.User_ID, s.Points
             SELECT MAX(Submission_ID)
             FROM Submission
             WHERE User_ID = s.User_ID
-            AND Game_ID = 1
+            AND Game_ID = 3
         )
-        AND s.Game_ID = 1
+        AND s.Game_ID = 3
         ORDER BY s.Points DESC;
         LIMIT 3;"; //sql statement to find the top three players
 $stmt = $pdo->prepare($sql);
