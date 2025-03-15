@@ -176,9 +176,9 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <br><br><br><br>
             </div>
             <div class="rpsCircleContainer">
-              <img class="circleImage" src="images/dice1.jpg" alt="Rock">
-              <img class="circleImage" src="images/dice2.jpg" alt="Paper">
-              <img class="circleImage" src="images/dice3.jpg" alt="Scissors">
+              <img class="circleImage" src="images/dice1.png" alt="Rock">
+              <img class="circleImage" src="images/dice2.png" alt="Paper">
+              <img class="circleImage" src="images/dice3.png" alt="Scissors">
             </div>
         </div>
 
@@ -222,7 +222,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 const angle = scrollPercentage * 360;  // Angle ranges from 0 to 360 degrees
 
                 // Get all images
-                const images = document.querySelectorAll('.circle-image');
+                const images = document.querySelectorAll('.circleImage');
                 const radius = 150;  // Distance from the center of the circle
 
                 images.forEach((img, index) => {
