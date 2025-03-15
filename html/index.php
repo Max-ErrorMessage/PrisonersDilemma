@@ -146,7 +146,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
 		<?php echo '<img class = "rooks" id = "rook3" src = "images/dice'.rand(1,6).'.png"'; ?></img><br><br><br>
 		<?php echo '<img class = "rooks" id = "rook4" src = "images/dice'.rand(1,6).'.png"'; ?></img><br><br><br>
 		<?php echo '<img class = "rooks" id = "rook5" src = "images/dice'.rand(1,6).'.png"'; ?></img><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 		<!--
                 <a class="go" href="#">Coming Soon!</a>
            	-->
@@ -160,6 +160,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <br><br><br><br>
             </div>
         </div>
+	<br><br><br>
 
         <script>
             const circles = document.querySelectorAll('.circle');
