@@ -48,9 +48,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt->execute();
         $_SESSION['Error2'] = "Signup successful!";
-        header("Location: /signin.php");
+        #header("Location: /signin.php");
     } catch (Exception $e) {
         $_SESSION['Error2'] = "Error during signup: " . $e->getMessage();
+        header("Location: /signin.php");
+    }
+
+    // Insert the user into the medals table
+    $stmt = $pdo->prepare("INSERT INTO Medals (username) VALUES (:username)");
+    $stmt->bindParam(':username', $uname);
+
+    try {
+        $stmt->execute();
+        $_SESSION['Error2'] = "Signup successful!";
+        header("Location: /signin.php");
+    } catch (Exception $e) {
+        $_SESSION['Error2'] = "Major Error during signup: " . $e->getMessage();
         header("Location: /signin.php");
     }
 }
