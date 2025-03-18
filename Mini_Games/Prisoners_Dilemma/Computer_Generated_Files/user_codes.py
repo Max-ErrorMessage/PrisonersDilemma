@@ -109,10 +109,6 @@ def user_7(self_decisions, opponent_decisions, s, o, n):
 	# dilemna
 
 
-def user_55(self_decisions, opponent_decisions, s, o, n):
-	return False
-
-
 def user_17(self_decisions, opponent_decisions, s, o, n):
 	    t = True
 	    f = False
@@ -129,28 +125,34 @@ def user_17(self_decisions, opponent_decisions, s, o, n):
 	    return t4t
 
 
-def user_28(self_decisions, opponent_decisions, s, o, n):
-	Crucible_of_Worlds = (lambda 𝔠: (lambda 𝔯: (lambda 𝔰: (lambda 𝔱: (lambda 𝔴: (((((𝔴 + 1) * 2) - 1) // 2) + (int(bool(t)) % 5) * (𝔴 % 3)))))))((lambda: (lambda 𝔫: 𝔫 * 2)(2))())(3)
-	Trinisphere = ((lambda x, Null_Rod: sum([i * j for i, j in zip(range(x, x + 5), range(Null_Rod, Null_Rod + 5))]))(4, 7) + (lambda x: sum([a ** 2 for a in range(1, x + 1) if a % 2 == 0]))(10) - (lambda s: sum([ord(c) for c in s]))("Jxjz_zqYdvcHTvysQbNxFZkSmEKmGdFkYkWoTSfVwJ_FhCd_YkFgLQWbtBbXqkrzQx_urHfNXrQxZftwRmnwztCxpQdQtbJgfzWjIFM")) ** (1 / 4) + (([(lambda x: x * 3)(i) for i in range(1, 6)])[-1] * (2 ** 3))
-	Mishras_Workshop = ((lambda f, x: f(f, x))(lambda f, x: 1 if x == 0 else x * f(f, x - 1), 7) + sum([((lambda a: a ** 2 - 3 * a + 2)(i) if i % 2 == 0 else (lambda b: b ** 3 - 5 * b)(i))for i in range(10)])*(lambda s: sum([ord(c) for c in s]))("r4L9y!hQ2wXm#Cz7VtG1oFjD@k8BpUv")) ** (1 / 5) + ([((lambda x: x ** 2 + x + 1)(i)) for i in range(5)] + [((lambda Null_Rod: Null_Rod ** 3 - 2 * Null_Rod)(i)) for i in range(6, 10)])[-1] * 2
-	shlands = (lambda Mishras_Workshop, Trinisphere: (lambda Strip_Mine, Null_Rod: True if Strip_Mine == 0 else Null_Rod[-1] if Strip_Mine < Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4) else sum(Null_Rod[Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4):]) == Strip_Mine - Crucible_of_Worlds(Mishras_Workshop)(Trinisphere)(4))(Mishras_Workshop, Trinisphere))
-	
-	return shlands(n, o)
-
-
 def user_1(self_decisions, opponent_decisions, s, o, n):
-	if n == 1:
+	if n == 0:
 	    return True
-	return 0 < o.count(False) < 4
+	
+	
+	if o.count(False) < 2:
+	    return o[-1]
+	
+	return False
+
+
+def user_70(self_decisions, opponent_decisions, s, o, n):
+	return True
+
+
+def user_55(self_decisions, opponent_decisions, s, o, n):
+	return 1 if not bool(n) else o[-1] if n == sum([[]], [[]]) else all(o[-2:])
+
+
+def user_28(self_decisions, opponent_decisions, s, o, n):
+	return True if n <= 2 else bool(sum(o[-2:]))
 
 
 def user_56(self_decisions, opponent_decisions, s, o, n):
-	_______,________,__________,___________,____________,_____________,______________ = len("      "),len("     "),0,False,True,n,o
-	if _____________ < _______:
-	    return ___________
-	if ______________ [__________:________] == [___________,____________,____________,____________,___________]:
-	    return ____________
-	return ___________
+	if n == 15:
+	    return False
+	else:
+	    return True
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "55" : user_55, "17" : user_17, "28" : user_28, "1" : user_1, "56" : user_56}
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "17" : user_17, "1" : user_1, "70" : user_70, "55" : user_55, "28" : user_28, "56" : user_56}

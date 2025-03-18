@@ -1,4 +1,4 @@
-#@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 #NavBar {
     position: fixed;
     background-color: black;
@@ -96,7 +96,7 @@ body{
     background: #4f8662;
 }
 
-#Main {
+#main {
     margin-top: 70px;
 }
 
@@ -186,7 +186,4 @@ button {
   justify-content: center;
   align-items: center;
 }
-textarea{
-    align-items: left;
-    text-align: left;
-}
+

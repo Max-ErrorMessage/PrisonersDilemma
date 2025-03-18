@@ -88,8 +88,8 @@ $uname = htmlspecialchars($_SESSION['uname']);
               position: absolute;
               top: 50%;
               left: 50%;
-              width: 50px;
-              height: 50px;
+              width: 80px;
+              height: 80px;
               transform-origin: -50px;
               transition: transform 0.1s linear;
             }
@@ -162,7 +162,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
 		<?php echo '<img class = "rooks" id = "rook3" src = "images/dice'.rand(1,6).'.png"'; ?></img><br><br><br>
 		<?php echo '<img class = "rooks" id = "rook4" src = "images/dice'.rand(1,6).'.png"'; ?></img><br><br><br>
 		<?php echo '<img class = "rooks" id = "rook5" src = "images/dice'.rand(1,6).'.png"'; ?></img><br><br><br>
-<br><br><br><br><br><br><br><br>
+<br><br>
 		<!--
                 <a class="go" href="#">Coming Soon!</a>
            	-->
@@ -176,12 +176,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
                 <br><br><br><br>
             </div>
             <div class="rpsCircleContainer">
-              <img class="circleImage" src="images/dice1.png" alt="Rock">
-              <img class="circleImage" src="images/dice2.png" alt="Paper">
-              <img class="circleImage" src="images/dice3.png" alt="Scissors">
+              <img class="circleImage" src="images/rock.png" alt="Rock">
+              <img class="circleImage" src="images/paper.png" alt="Paper">
+              <img class="circleImage" src="images/scissors.png" alt="Scissors">
             </div>
         </div>
-	<br><br><br>
+	<br><br><br><br><br><br><br><br>
 
         <script>
             const circles = document.querySelectorAll('.circle');

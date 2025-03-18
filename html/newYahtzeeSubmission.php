@@ -2,14 +2,14 @@
 session_start();
 
 // Check if the session variable 'uname' is set
-//if (!isset($_SESSION['uname'])) {
+if (!isset($_SESSION['uname'])) {
     // Redirect to login page if 'uname' is not set
-//    header("Location: /signin.php");
-//    exit();
-//}
+    header("Location: /signin.php");
+    exit();
+}
 
-// If 'uname' is set, display the welcome message
-//$uname = htmlspecialchars($_SESSION['uname']); 
+//If 'uname' is set, display the welcome message
+$uname = htmlspecialchars($_SESSION['uname']); 
 ?>
 <!DOCTYPE html>
 <html lang="en">

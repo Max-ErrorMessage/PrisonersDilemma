@@ -5821,3 +5821,9 @@ for i in bad_choices:
 return choices[0]
 User ID: 1
 
+return []$return choices[0]
+User ID: 55
+
+return []$return choices[0]
+User ID: 55
+
