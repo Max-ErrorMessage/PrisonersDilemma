@@ -70,7 +70,7 @@
     background-color: #6fa682;
 }
 
-#body{
+body{
     height:100%;
     overflow-x:hidden;
     background-color: black;
@@ -173,7 +173,7 @@ code[class*="language-"], pre[class*="language-"] {
     text-shadow: none !important;
 }
 
-button {
+#button {
   width: 200px;
   height: 50px;
   background-color: green;
