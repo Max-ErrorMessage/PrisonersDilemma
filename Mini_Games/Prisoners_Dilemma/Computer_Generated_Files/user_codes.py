@@ -140,20 +140,20 @@ def user_70(self_decisions, opponent_decisions, s, o, n):
 	return True
 
 
-def user_55(self_decisions, opponent_decisions, s, o, n):
-	return 1 if not bool(n) else o[-1] if n == sum([[]], [[]]) else all(o[-2:])
-
-
 def user_28(self_decisions, opponent_decisions, s, o, n):
 	return True if n <= 2 else bool(sum(o[-2:]))
 
 
+def user_55(self_decisions, opponent_decisions, s, o, n):
+	return False
+
+
 def user_56(self_decisions, opponent_decisions, s, o, n):
+	if n == 0:
+	    return True
 	if n == 15:
 	    return False
-	if n < 18:
-	    return True
 	return o[-1]
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "17" : user_17, "1" : user_1, "70" : user_70, "55" : user_55, "28" : user_28, "56" : user_56}
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "17" : user_17, "1" : user_1, "70" : user_70, "28" : user_28, "55" : user_55, "56" : user_56}

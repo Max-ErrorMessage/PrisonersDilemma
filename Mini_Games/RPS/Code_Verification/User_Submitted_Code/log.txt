@@ -153,3 +153,113 @@ if n < 6:
 return wins[o[-6]]
 User ID: 1
 
+r,p,c = rock,paper,scissors
+
+seq = [r,r,p,p,r,p,r,r,p,p]
+
+if c not in s:
+    if n % 2 == 0:
+       if o[:n/2] == o[n/2:]:
+           return c
+    else:
+        return seq[n%10]
+
+w = s.index(c) - 1
+beats = {p:c,c:r,r:p}
+return beats[o[n%w]]
+User ID: 56
+
+r,p,c = rock,paper,scissors
+
+seq = [r,r,p,p,r,p,r,r,p,p]
+
+if c not in s:
+    if n % 2 == 0:
+       if o[:(n/2)] == o[(n/2):]:
+           return c
+    else:
+        return seq[n%10]
+
+w = s.index(c) - 1
+beats = {p:c,c:r,r:p}
+return beats[o[n%w]]
+User ID: 56
+
+r,p,c = rock,paper,scissors
+
+seq = [r,r,p,p,r,p,r,r,p,p]
+
+if c not in s:
+    if n % 2 == 0:
+       if o[:(n//2)] == o[(n//2):]:
+           return c
+    else:
+        return seq[n%10]
+
+w = s.index(c) - 1
+beats = {p:c,c:r,r:p}
+return beats[o[n%w]]
+User ID: 56
+
+w = {rock: scissors, scissors: paper, paper: rock}
+
+if n == 0:
+    return rock
+
+if paper not in o[-5:]:
+    return rock
+if scissors not in o[-5:]:
+    return paper
+if rock not in o[-5:]:
+    return scissors
+
+return w[o[-1]]
+User ID: 55
+
+r,p,c = rock,paper,scissors
+
+seq = [r,r,p,p,r,p,r,r,p,p]
+
+if c not in s:
+    if n % 2 == 0 and n > 4:
+       if o[:(n//2)] == o[(n//2):]:
+           return c
+    else:
+        return seq[n%10]
+
+w = s.index(c) - 1
+beats = {p:c,c:r,r:p}
+return beats[o[n%w]]
+User ID: 56
+
+r,p,c = rock,paper,scissors
+
+seq = [r,r,p,p,r,p,r,r,p,p]
+
+if c not in s:
+    if n % 2 == 0 and n > 4:
+       if o[:(n//2)] == o[(n//2):]:
+           return c
+    else:
+        return seq[n%10]
+else:
+    w = s.index(c) - 1
+    beats = {p:c,c:r,r:p}
+    return beats[o[n%w]]
+
+return p
+User ID: 56
+
+wins = {rock:paper,paper:scissors,scissors:rock}
+if n < 6:
+    return paper
+if n < 12:
+    return wins[o[-6]]
+return wins[o[-12]]
+User ID: 1
+
+seq = [rock,paper,scissors]
+
+return seq[n%3]
+User ID: 56
+

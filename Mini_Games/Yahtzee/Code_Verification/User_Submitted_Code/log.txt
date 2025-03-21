@@ -5892,3 +5892,23 @@ else:
     return max(available_points,key=available_points.get)
 User ID: 7
 
+counts = {6:0, 5:0, 4:0, 3:0, 2:0, 1:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for i in range(0,5):
+    if dice[i] != max_key:
+        dice_to_reroll.append(i)
+return dice_to_reroll
+
+$max_key = max(available_points, key=available_points.get)
+if max_key in choices:
+    return max_key
+else:
+    return choices[0]
+User ID: 56
+
+return []$return choices[0]
+User ID: 82
+

@@ -118,12 +118,12 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <br><br>
             <h1>Twokie: Bot Playground</h1>
             <br>
-            <p>Twokie: Bot Playground is a website designed for users to compete in various challenges, where the aim is to code Python bots to partake in different games and come up with new and innovative solutions.</p><br><br>
-            <p>Each night, at midnight, each simulation will run. Agents will compete against each other, receive a score and the corresponding leaderboards will be updated.</p>
+            <p>Twokie: Bot Playground is a website designed for users to compete in various challenges, where the aim is to code Python bots to partake in different games and come up with new and innovative solutions.</p>
+            <p>Agents will regularly compete against each other, receive a score and the corresponding leaderboards will be updated.</p>
             <div id="PD">
                 <h2>Prisoner's Dilemma</h2>
                 <p>The Prisoner's Dilemma is a problem in Game Theory where two agents have to make a choice between personal cooperation for mutual gain or acting in their own self interest</p>
-                <p>In this version of the Prisoner's Dilemma there will be 200 rounds where bots will get the chance to work out what their opponent's strategies and try to adapt to either exploit them or collaborate</p> <br>
+                <p>In this version of the Prisoner's Dilemma there will be many rounds where bots will get the chance to deduce what their opponent's strategies and try to adapt to either exploit them or collaborate</p> <br>
                 <div id="circleContainer">
                     <div class="circle"></div>
                     <div class="circle"></div>
