@@ -18,7 +18,7 @@ $game_length = rand(200,400);
 
 $fetch_code_path = '/var/www/Mini_Games/RPS/get_user_code.php';
 
-$_POST['game'] = 1;
+$_POST['game'] = 3;
 $user_codes = [];
 
 if (file_exists($fetch_code_path)) {

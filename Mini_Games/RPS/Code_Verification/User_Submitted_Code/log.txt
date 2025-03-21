@@ -34,3 +34,122 @@ User ID: 2
 return paper
 User ID: 55
 
+x = [r, s, s, p, s, r, s, p, r, s, s, s, r, p, p, s, r, s, r, s, r, r, s, p, s, r, p, s, s, r]
+wins = {r: p, s: r, p: s}
+
+counts = {'Rock': 0, 'Paper': 0, 'Scissors': 0}
+for d in o:
+    counts[d] += 1
+
+max_count = max(counts.values())
+most_frequent = [key for key, value in counts.items() if value == max_count]
+return wins[most_frequent[0] if len(most_frequent) == 1 else most_frequent]
+User ID: 55
+
+x = [r, s, s, p, s, r, s, p, r, s, s, s, r, p, p, s, r, s, r, s, r, r, s, p, s, r, p, s, s, r]
+wins = {r: p, s: r, p: s}
+
+counts = {'Rock': 0, 'Paper': 0, 'Scissors': 0}
+for d in o:
+    counts[d] += 1
+
+max_count = max(counts.values())
+most_frequent = [key for key, value in counts.items() if value == max_count]
+return wins[most_frequent[0] if len(most_frequent) == 1 else most_frequent]
+User ID: 55
+
+x = [r, s, s, p, s, r, s, p, r, s, s, s, r, p, p, s, r, s, r, s, r, r, s, p, s, r, p, s, s, r]
+wins = {r: p, s: r, p: s}
+
+counts = {'Rock': 0, 'Paper': 0, 'Scissors': 0}
+for d in o:
+    counts[d] += 1
+
+max_count = max(counts.values())
+most_frequent = [key for key, value in counts.items() if value == max_count]
+return wins[most_frequent[0] if len(most_frequent) == 1 else most_frequent]
+User ID: 55
+
+x = [r, s, s, p, s, r, s, p, r, s, s, s, r, p, p, s, r, s, r, s, r, r, s, p, s, r, p, s, s, r]
+wins = {r: p, s: r, p: s}
+
+counts = {'Rock': 0, 'Paper': 0, 'Scissors': 0}
+for d in o:
+    counts[d] += 1
+
+max_count = max(counts.values())
+most_frequent = [key for key, value in counts.items() if value == max_count]
+return wins[most_frequent[0] if len(most_frequent) == 1 else most_frequent]
+User ID: 55
+
+rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
+x = [rock, scissors, scissors, paper, scissors, rock, scissors, paper, rock, scissors, scissors, scissors, rock,
+     paper, paper, scissors, rock, scissors, rock, scissors, rock, rock, scissors, paper, scissors, rock, paper,
+     scissors, scissors, rock]
+
+if n < len(x):
+    return x[n]
+
+wins = {rock: paper, scissors: rock, paper: scissors}
+
+counts = {'Rock': 0, 'Paper': 0, 'Scissors': 0}
+for d in o:
+    counts[d] += 1
+
+counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+return wins[counts[0][0]]
+
+User ID: 55
+
+x = "</pre> Hello! <pre>"
+return paper
+User ID: 55
+
+if n>2:
+    return o[-2]
+return "Rock"
+User ID: 7
+
+return "Rock"
+
+#James is really fucking hot and i think he might be the funniest person i know
+# love that man
+User ID: 73
+
+return scissors
+
+else return fuck james
+
+
+User ID: 73
+
+wins = {rock:paper,paper:scissors,scissors:rock}
+if n < 6:
+    return p
+return wins[o[-6]]
+User ID: 1
+
+wins = {rock:paper,paper:scissors,scissors:rock}
+if n < 6:
+    return paper
+return wins[o[-6]]
+User ID: 1
+
+wins = {rock:paper,paper:scissors,scissors:rock}
+if n < 6:
+    return paper
+return wins[o[-6]]
+User ID: 1
+
+wins = {rock:paper,paper:scissors,scissors:rock}
+if n < 6:
+    return paper
+return wins[o[-6]]
+User ID: 1
+
+wins = {rock:paper,paper:scissors,scissors:rock}
+if n < 6:
+    return paper
+return wins[o[-6]]
+User ID: 1
+

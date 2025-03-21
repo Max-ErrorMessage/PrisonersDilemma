@@ -121,7 +121,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <br>
             <p>Username: <?php echo $otherUname; ?></p>
             <p>Submissions: <?php
-                                if ($otherUname == "MerlinBOT") {
+                                if ($otherUname == "MerlinBOT🤖") {
                                     echo "<pre id='example'>This user is an AI bot that trains based on your submissions! It has no visible 'code' to see.";
                                 } else {
 

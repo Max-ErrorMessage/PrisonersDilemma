@@ -5827,3 +5827,68 @@ User ID: 55
 return []$return choices[0]
 User ID: 55
 
+return []$return choices[0]
+User ID: 55
+
+counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for d in range(0,5):
+    if d != max_key:
+        dice_to_reroll.append(d)
+return dice_to_reroll$counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+if counts[max_key] == 5 and availability["Yahtzee"]:
+    return "Yahtzee"
+elif max_key == 1 and availability["Ones"]:
+    return "Ones"
+elif max_key == 2 and availability["Twos"]:
+    return "Twos"
+elif max_key == 3 and availability["Threes"]:
+    return "Threes"
+elif max_key == 4 and availability["Fours"]:
+    return "Fours"
+elif max_key == 5 and availability["Fives"]:
+    return "Fives"
+elif max_key == 6 and availability["Sixes"]:
+    return "Sixes"
+return max(available_points,key=available_points.get)
+
+User ID: 7
+
+counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+for d in range(0,5):
+    if d != max_key:
+        dice_to_reroll.append(d)
+return dice_to_reroll$counts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+dice_to_reroll = []
+for i in dice:
+    counts[i] += 1
+max_key = max(counts, key=counts.get)
+if counts[max_key] == 5 and availability["Yahtzee"]:
+    return "Yahtzee"
+elif max_key == 1 and availability["Ones"]:
+    return "Ones"
+elif max_key == 2 and availability["Twos"]:
+    return "Twos"
+elif max_key == 3 and availability["Threes"]:
+    return "Threes"
+elif max_key == 4 and availability["Fours"]:
+    return "Fours"
+elif max_key == 5 and availability["Fives"]:
+    return "Fives"
+elif max_key == 6 and availability["Sixes"]:
+    return "Sixes"
+else:
+    return max(available_points,key=available_points.get)
+User ID: 7
+

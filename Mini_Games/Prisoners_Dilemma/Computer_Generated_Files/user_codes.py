@@ -151,8 +151,9 @@ def user_28(self_decisions, opponent_decisions, s, o, n):
 def user_56(self_decisions, opponent_decisions, s, o, n):
 	if n == 15:
 	    return False
-	else:
+	if n < 18:
 	    return True
+	return o[-1]
 
 
 user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "17" : user_17, "1" : user_1, "70" : user_70, "55" : user_55, "28" : user_28, "56" : user_56}
