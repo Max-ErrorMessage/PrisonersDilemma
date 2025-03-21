@@ -106,7 +106,6 @@ body{
 #main {
     margin-top: 70px;
 }
-*/
 h1 {
     font-size: 2rem;
 }
@@ -169,7 +168,7 @@ canvas {
     left: 15%;
     right: 5%;
 }
-
+*/
 code[class*="language-"], pre[class*="language-"] {
     text-shadow: none !important;
 }
