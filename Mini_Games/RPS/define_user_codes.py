@@ -4,6 +4,10 @@ in a dictionary that other files can access later. By importing the dictionary f
 directly call the relevant function when needed.
 
 This file is called by update_scores.php.
+
+Based on the define_user_codes file in the Prisoner's Dilemma directory.
+
+Authors: James Aris, Max Worby
 """
 
 import re

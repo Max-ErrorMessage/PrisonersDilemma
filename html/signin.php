@@ -1,3 +1,14 @@
+<?php
+
+/**
+ * Allows users to either sign up and create a new account or log in to an existing account
+ *
+ * Author: James Aris
+ */
+
+session_start();
+?>
+
 <html>
     <head>
 	<title>Twokie - Login/Signup</title>
@@ -38,7 +49,6 @@
             </div>
             <div id = "signup">
                 <?php
-                    session_start();
                     if(isset($_SESSION['Error2'])){
                         echo "<h2>" . $_SESSION['Error2'] . "</h2>";
                     } 

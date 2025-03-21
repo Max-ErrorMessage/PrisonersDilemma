@@ -3,7 +3,9 @@
 /*
 This file is called by calculate_scores.php and fetches users and their submitted code from the database.
 
-TODO: Ivy, please comment this file as I don't understand it
+Based on the get_user_code file in the Prisoner's Dilemma directory
+
+Author: James Aris
 */
 
 if (session_status() === PHP_SESSION_NONE) {

@@ -1,3 +1,11 @@
+"""
+Simulates the result of 2 players competing and updates a JSON file with the results.
+
+Based on the simulate_2_players file in the Prisoner's Dilemma directory.
+
+Author: James Aris
+"""
+
 import sys
 import importlib.util
 import json

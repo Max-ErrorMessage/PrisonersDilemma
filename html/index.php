@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+/**
+ * The home page of the website.
+ * The user can navigate to whichever page they need from this page.
+ *
+ * Author: James Aris
+ */
+
 // Check if the session variable 'uname' is set
 if (!isset($_SESSION['uname'])) {
     // Redirect to login page if 'uname' is not set

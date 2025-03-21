@@ -3,7 +3,7 @@
 /*
 This file is called by calculate_scores.php and fetches users and their submitted code from the database.
 
-TODO: Ivy, please comment this file as I don't understand it
+Authors: Ivy Bailey, Max Worby
 */
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -13,10 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include '/var/www/db.php';
 
-/*
-this class is used to format the output of the query:
-  it adds styling as a table
-*/
+//This class is used to format the output of the query
 class TableRows extends RecursiveIteratorIterator {
   function __construct($it) {
     parent::__construct($it, self::LEAVES_ONLY);
@@ -34,9 +31,7 @@ class TableRows extends RecursiveIteratorIterator {
     echo "</tr>" . "\n";
   }
 }
-/*
-Try to connect to the database and return an error if it fails
-*/
+//Try to connect to the database and return an error if it fails
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -46,9 +41,7 @@ try {
     return("Error - database connection failed");
     exit();
 }
-/*
-if the game is set, get all user id's and code from the submission table corresponding to the gameID
-*/
+// get all user ids and code from the submission table corresponding to the gameID
 if (isset($_POST['game'])) { 
     
     $array = [];
@@ -59,17 +52,10 @@ if (isset($_POST['game'])) {
     FROM Submission AS s1
     WHERE Game_ID = :game;
 ");
-/*
-use bind param to avoid sql injection attacks
-*/
 $stmt->bindParam(':game', $game, PDO::PARAM_INT);
 $stmt->execute();
 
 $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    
-    
-    
     if (empty($array)) {
         $_SESSION["Error3"] = "An error was found - the array is empty - please see fetch_code.php";
         return "Error - Username was not found";

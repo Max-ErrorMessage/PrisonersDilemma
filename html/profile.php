@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Allows users to view their own profile and all code that they have submitted.
+ *
+ * Author: James Aris
+ */
+
 session_start();
 
 // Check if the session variable 'uname' is set

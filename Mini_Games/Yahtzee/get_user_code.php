@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Fetches user codes from the database.
+ *
+ * Based on the get_user_code file in the Prisoner's Dilemma directory.
+ *
+ * Author: James Aris
+ */
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

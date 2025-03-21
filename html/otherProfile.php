@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Allows users to see other user's profiles.
+ * Codes submitted by that user in various games are shown
+ *
+ * Author: James Aris
+ */
+
 session_start();
 
 if (!isset($_SESSION['uname'])) {

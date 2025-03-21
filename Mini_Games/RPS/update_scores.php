@@ -1,11 +1,10 @@
 <?php
 
-/*This file gets run automatically from a cron job. At time of writing, it gets run every 5 minutes.
-The file first fetches user data using a secondary php file to read from the MySQL server.
-It then uploads that to a JSON file and runs define_user_codes.py to write a python file containing all the users and
-their functions.
-It resets the scores.json file and then for each pair of players runs simulate_2_players.py to update the scores for th>Finally, it takes the updated scores in the scores.json file and updates the database to refelect the new scores.
-*/
+/**
+ * Based on the file in the Prisoner's Dilemma directory of the same name.user_code
+ *
+ * Authors: James Aris, Max Worby
+ */
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
