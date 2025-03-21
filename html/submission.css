@@ -3,7 +3,7 @@
  *
  * Authors: James Aris, Ivy Bailey, Max Worby
  */
-
+/*
 body {
     display: flex;
     height: 100vh;
@@ -43,7 +43,7 @@ form {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    /*align-items: stretch;*/
+    align-items: stretch;
     margin: 30px;
 }
 
@@ -91,7 +91,7 @@ p{
     left: 5%;
     right: 5%;
 }
-/*
+*/
 #var {
     text-align:left;
 }
@@ -162,4 +162,4 @@ button {
 
 button:hover {
     background: #00cc00;
-} */
+} 
