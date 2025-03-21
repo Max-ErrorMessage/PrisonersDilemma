@@ -5,7 +5,7 @@
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-/*
+
 #NavBar {
     position: fixed;
     background-color: black;
@@ -57,7 +57,7 @@
     background: #00cc00;
     color: black;
 }
-*/
+/*
 #signinbutton:hover{
     background-color: #4f8662;
 }
@@ -80,7 +80,7 @@ body{
     text-align: center;
     margin: 0;
 }
-
+*/
 #main{
     color:white;
 }
