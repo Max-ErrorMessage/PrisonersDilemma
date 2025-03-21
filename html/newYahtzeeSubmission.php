@@ -27,7 +27,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="main.css">
-    <!-- <script type="module">
+    <script type="module">
         (async ({chrome, netscape}) => {
 
             // add Safari polyfill if needed
@@ -41,7 +41,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             // https://github.com/highlightjs/highlight.js/tree/main/src/styles
             HighlightedCode.useTheme('github-dark');
         })(self);
-    </script> -->
+    </script>
     <style>
         body {
             background: black;
@@ -181,9 +181,9 @@ $uname = htmlspecialchars($_SESSION['uname']);
 
     <form action="submission.php" method="POST">
         <label for="name">Enter your reroll function!:</label>
-        <textarea id="name" name="code" placeholder="return []   #reroll no dice" onkeydown="return stopTab(event);" required></textarea>
+        <textarea id="name" name="code" is="highlighted-code" placeholder="return []   #reroll no dice" onkeydown="return stopTab(event);" required></textarea>
         <label for="name">Enter your select function!:</label>
-        <textarea id="name2" name="code2" placeholder="return choices[0]   #returns first available move" onkeydown="return stopTab(event);" required></textarea>
+        <textarea id="name2" name="code2" is="highlighted-code" placeholder="return choices[0]   #returns first available move" onkeydown="return stopTab(event);" required></textarea>
         <input type="hidden" name="game_id" value=2>
         <button type="submit" name="submitCode" value="submit">Submit</button>
     </form>

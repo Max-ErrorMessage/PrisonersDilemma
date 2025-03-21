@@ -36,7 +36,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
         }
     </style>
 </head>
-<body>
+<body id="body">
     <div id="NavBar">
         <img src="images/twokielogo.png" id="navbarLogo">
         <a href="index.php" class="nav-link">Home</a>
