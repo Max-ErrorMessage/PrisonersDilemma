@@ -15,13 +15,13 @@ class AI_Agent:
         implemented to avoid Merlin betraying halfway through a training round against a cooperative opponent.
         """
         self.q_table = {}
-        self.alpha = alpha
-        self.gamma = gamma
-        self.epsilon = epsilon
-        self.jamesExplore = jamesExplore
-        self.exploration_chance = exploration_chance
-        self.exploration_amount = exploration_amount
-        self.explorationStates = []
+        self.alpha = alpha # how much q values change each time
+        self.gamma = gamma # effect of future states' q values on current states q values
+        self.epsilon = epsilon # chance for any given state to explore in usual exploration method
+        self.jamesExplore = jamesExplore # boolean for whether to use alternate exploration method
+        self.exploration_chance = exploration_chance # if alternative exploration is true, this is the chance of it being used in a given round
+        self.exploration_amount = exploration_amount # what percentage of states will explore if exploration is happened
+        self.explorationStates = [] # empty list of states that are going to explore
 
     def get_q_value(self, state, action):
         return self.q_table.get((state, action), 0.0)
@@ -75,21 +75,21 @@ class AI_Agent:
         return self.choose_action(self.extract_features(self_decisions, opponent_decisions))
 
     def setExplorationStates(self): # decide which states to explore on
-        if random.random() < self.exploration_chance:
+        if random.random() < self.exploration_chance: # if we are going to explore...
             states = self.q_table.keys()
             self.explorationStates = []
-            for i in states:
+            for i in states: # ... randomly pick which states tp explore
                 if random.uniform(0, 1) < self.exploration_amount:
-                    self.explorationStates.append(i[0])
+                    self.explorationStates.append(i[0]) # and add them to the list
         else:
-            self.explorationStates=[]
+            self.explorationStates=[] # clear list if not exploring
 
 
-    def save_model(self, filename="merlin.pkl"):
+    def save_model(self, filename="merlin.pkl"): # saves the q_table
         with open(filename, "wb") as f:
             pickle.dump(self.q_table, f)
 
-    def load_model(self, filename="merlin.pkl"):
+    def load_model(self, filename="merlin.pkl"): # loads the q_table
         try:
             with open(filename, "rb") as f:
                 self.q_table = pickle.load(f)
