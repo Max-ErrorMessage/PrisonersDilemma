@@ -33,7 +33,7 @@ if len(code) > 100000:
 keywords = [
     "print", "import", "exec", "eval", "open", "execfile", "compile", "input", "__import__", "os.system", "os.popen",
     "subprocess.call", "subprocess.run", "globals", "locals", "file", "pickle", "pickle.load", "shlex.split",
-    "os.remove", "os.rename", "socket", "quit", "fuck", "shit", "cunt", "dick", "cock", "ivy"
+    "os.remove", "os.rename", "socket", "quit"
 ]
 # A list of keywords that the file scans for. There are a couple of levels of redundancy (in theory, it is impossible to
 # run os-related functions without importing os, but additional security never hurt anyone)
@@ -47,17 +47,17 @@ if re.search(pattern, code):
     # Either way, the user can read the error message provided and will know what they did
     # If their code includes one of the keywords they probably know what they are doing
 
-file_code = f"import random\n\ndef user_{user_id}(self_decisions, opponent_decisions, s, o, n):\n"
+file_code = f"def user_{user_id}(self_decisions, opponent_decisions, s, o, n):\n\trock, paper, scissors = 'Rock', 'Paper', 'Scissors'\n"
 
 for line in code.splitlines():
-    file_code += f"    {line}\n"
+    file_code += f"\t{line}\n"
 
 namespace = {}
 
 try:
     exec(file_code, namespace)
 except SyntaxError as se:
-    print(f"There is a syntax error in your code in line {se.lineno - 3}")
+    print(f"There is a syntax error in your code in line {se.lineno - 2}")
     # Since "import random", an empty line, and the function definition are above the lines of code that the user
     # inputted, the error has its line position shifted upwards by three so that the user gets an accurate error
     # message for their provided code.
@@ -159,12 +159,19 @@ for index, player1 in enumerate(players):
                 # This is mostly name errors that are syntactically correct but use variables not in the namespace
                 quit()
 
-            if player_1_decision == wins[player_2_decision]:  # player 2 wins
-                player_1_score -= 1
-                player_2_score += 1
-            elif wins[player_1_decision] == player_2_decision:  # Player 1 wins
-                player_1_score += 1
-                player_2_score -= 1
+            try:
+                if player_1_decision == wins[player_2_decision]:  # player 2 wins
+                    player_1_score -= 0
+                    player_2_score += 10
+                elif wins[player_1_decision] == player_2_decision:  # Player 1 wins
+                    player_1_score += 10
+                    player_2_score -= 0
+                else: # tie
+                    player_1_score += 5
+                    player_2_score += 5
+            except KeyError:
+                print(f"Please only return 'Rock', 'Paper', or 'Scissors'. There are also accessible with the variables `rock`, `paper`, and `scissors`.")
+                quit()
 
             # Otherwise, both players tie and nothing changes.
 

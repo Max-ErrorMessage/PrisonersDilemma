@@ -20,10 +20,6 @@ functions = dict({})
 for item in data:
     functions[item["User_ID"]] = item["Code"]
 
-# file_out is building the literal string output for the file
-file_out = "import random"
-# the only acceptable library for users to use - random is manually imported at the head of the file
-
 keywords = [
     "print", "import", "exec", "eval", "open", "execfile", "compile", "input", "__import__", "os.system", "os.popen",
     "subprocess.call", "subprocess.run", "globals", "locals", "file", "pickle", "pickle.load", "shlex.split",
@@ -32,7 +28,7 @@ keywords = [
 # A list of keywords that the file scans for. There are a couple of levels of redundancy (in theory, it is impossible to
 # run os-related functions without importing os, but additional security never hurt anyone)
 pattern = r"(" + "|".join(keywords) + r")"
-
+file_out = ""
 for username, code in functions.items():
     if re.search(pattern, code):
         code = "return False"
@@ -45,7 +41,7 @@ for username, code in functions.items():
         # in string literals
 
 
-    file_out += f"\n\ndef user_{username}(self_decisions, opponent_decisions, s, o, n):\n"
+    file_out += f"def user_{username}(self_decisions, opponent_decisions, s, o, n):\n\trock, paper, scissors = 'Rock', 'Paper', 'Scissors'\n"
     # All functions look like that and the user can use all of these parameters when writing their code.
     # s = self_decisions, o = opponent_decisions, n = len(self_decisions)
 

@@ -14,21 +14,9 @@ player_1 = sys.argv[1]
 player_2 = sys.argv[2]
 rounds = int(sys.argv[3])
 # Gets all the relevant arguments provided from update_scores.php
+print(sys.argv)
 
-if '0' in [player_1, player_2]:
-    module_path = "/var/www/Mini_Games/RPS/Merlin_Bot/merlin.py"
-
-    spec = importlib.util.spec_from_file_location("merlin", module_path)
-    merlin_module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(merlin_module)
-    Merlin_Agent = getattr(merlin_module, "AI_Agent", None)
-
-    merlin = Merlin_Agent(epsilon=0)
-    merlin.load_model('/var/www/Mini_Games/RPS/Merlin_Bot/merlin.pkl')
-    # Gets the merlin bot
-
-module_path = "/var/www/Mini_Games/RPS/Computer_Generated_Files/user_codes.py"
-
+module_path = '/var/www/Mini_Games/RPS/Computer_Generated_Files/user_codes.py'
 spec = importlib.util.spec_from_file_location("user_codes", module_path)
 user_codes_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(user_codes_module)
@@ -38,9 +26,6 @@ user_codes = getattr(user_codes_module, "user_code", None)
 # Since the user_codes.py and the merlin bot file is in a different directory (and this file is being run indirectly
 # from update_scores.php), the dictionary that stores all the user IDs and their equivalent functions has to be accessed
 # via the importlib library.
-
-if '0' in [player_1, player_2]:
-    user_codes['0'] = merlin.action
 
 player_1_function, player_2_function = user_codes[player_1], user_codes[player_2]
 
@@ -56,15 +41,23 @@ for i in range(rounds):
     # function(self_decisions, opponent_decisions, s, o, n)
     # The reason that the parameters are in this format is for ease of use for the user: writing self_decisions becomes
     # lengthy even though all the information is technically provided with just self_decisions and opponent_decisions
-
-    if wins[player_1_decision] == player_2_decision:
-        # Player 1 wins
-        scores[player_1] += 1
-        scores[player_2] -= 1
-    elif player_1_decision == wins[player_2_decision]:
-        # Player 2 wins
-        scores[player_1] -= 1
-        scores[player_2] += 1
+    try:
+        if wins[player_1_decision] == player_2_decision:
+            # Player 1 wins
+            scores[player_1] += 10
+            scores[player_2] -= 0
+        elif player_1_decision == wins[player_2_decision]:
+            # Player 2 wins
+            scores[player_1] -= 0
+            scores[player_2] += 10
+        else:
+            #its a tie
+            scores[player_1] += 5
+            scores[player_2] += 5
+    except KeyError:
+        pass
+        # Sometimes people return thigns they arent supposed to and if that happens then it's a drwa
+        # Later I will implement a strategy that punishes that player but for now this is fine.
 
     # If none of these things happened then tied and scores remain the same
 

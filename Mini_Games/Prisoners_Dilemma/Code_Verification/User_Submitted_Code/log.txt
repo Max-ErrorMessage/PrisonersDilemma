@@ -3045,3 +3045,10 @@ else:
     return True
 User ID: 56
 
+if n == 15:
+    return False
+if n < 18:
+    return True
+return o[-1]
+User ID: 56
+
