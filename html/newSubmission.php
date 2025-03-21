@@ -53,7 +53,7 @@ if(!isset($_SESSION['code'])){
 </head>
 <code>
 <div id="title">Prisoner's Dilemma:</div>
-<body id="body">
+<body>
     <div id="NavBar">
         <img src="images/twokielogo.png" id="navbarLogo">
         <a href="index.php" class="nav-link">Home</a>

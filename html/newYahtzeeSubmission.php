@@ -51,7 +51,6 @@ $uname = htmlspecialchars($_SESSION['uname']);
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
             height: 100vh;
             flex-direction: column;
         }
