@@ -5,6 +5,7 @@
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+/*
 #NavBar {
     position: fixed;
     background-color: black;
@@ -105,7 +106,7 @@ body{
 #main {
     margin-top: 70px;
 }
-/*
+*/
 h1 {
     font-size: 2rem;
 }
@@ -192,4 +193,4 @@ code[class*="language-"], pre[class*="language-"] {
   justify-content: center;
   align-items: center;
 }
-*/
+
