@@ -57,7 +57,7 @@
     background: #00cc00;
     color: black;
 }
-/*
+
 #signinbutton:hover{
     background-color: #4f8662;
 }
@@ -77,10 +77,10 @@ body{
     background-color: black;
     color: white;
     font-family: 'Orbitron', sans-serif;
-    text-align: center;
+    /*text-align: center;*/
     margin: 0;
 }
-*/
+
 #main{
     color:white;
 }
