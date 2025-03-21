@@ -91,7 +91,7 @@ p{
     left: 5%;
     right: 5%;
 }
-
+/*
 #var {
     text-align:left;
 }
@@ -109,7 +109,7 @@ p{
     right: 5%;
 }
 
-.container {
+ .container {
     display: flex;
     gap: 50px;
     margin: 5%;
@@ -139,8 +139,8 @@ p{
 }
 
 #php, ol {
-    /*justify-content: center;*/
-    /*text-align: center;*/
+    justify-content: center;
+    text-align: center;
 }
 
 #php li {
@@ -157,9 +157,9 @@ button {
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s ease;
-    /* align-self: center; */
+    align-self: center;
 }
 
 button:hover {
     background: #00cc00;
-}
+} */
