@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Displays the leaderboards for each game on the website.
+ * Only the top 10 players on each game are shown.
+ * Clicking a player on the leaderboard will direct you to their profile.
+ *
+ * Authors: James Aris, Jesse Ekwebelem
+ */
+
 include '../db.php'; // database connection
 
 // Start session and check if the user is logged in

@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Manages login requests and either authorises them or denies them
+ *
+ * Author: James Aris
+ */
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
     include '../db.php';

@@ -1,3 +1,11 @@
+"""
+Verifies submitted Yahtzee code.
+
+Based on the verify_submitted_code file in the Prisoner's Dilemma directory.
+
+Author: James Aris
+"""
+
 import re
 import sys
 import random

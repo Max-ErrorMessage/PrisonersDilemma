@@ -4,6 +4,8 @@ in a dictionary that other files can access later. By importing the dictionary f
 directly call the relevant function when needed.
 
 This file is called by update_scores.php.
+
+Author: Max Worby
 """
 
 import re

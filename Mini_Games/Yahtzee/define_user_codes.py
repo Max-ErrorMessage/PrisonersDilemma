@@ -1,3 +1,11 @@
+"""
+Creates a python file defining the strategies implemented in Yahtzee submssions.
+
+Based on the define_user_codes file in the Prisoner's Dilemma directory
+
+Author: James Aris
+"""
+
 import re
 import sys
 import json

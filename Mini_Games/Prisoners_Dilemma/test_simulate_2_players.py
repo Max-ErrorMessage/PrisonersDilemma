@@ -1,9 +1,8 @@
 """
-This file access the user_codes.py file to access functions that run user code.
-It takes in 2 User IDs and a game length as arguments.
-It reads the current scores from scores.json and updates the scores to reflect the changes that the game played had on the scores of the 2 users
-THis is run from update_scores.php and is only ever run with a timeout of 1.
-If the code fails it will execute prematurely and no scores will be changed.
+A file used for testing. Works similarly to simulate_2_players but can be called from the command line directly.
+It doesn't interact with an external scores.json file and instead outputs the results directly into the terminal.
+
+Author: Max Worby
 """
 
 import sys

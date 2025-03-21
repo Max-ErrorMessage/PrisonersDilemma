@@ -1,9 +1,19 @@
+"""
+Defines the Merlin agent that learns to play the prisoner's dilemma.
+
+Authors: James Aris, Max Worby
+"""
+
 import pickle
 import random
 
 
 class AI_Agent:
-    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1, jamesExplore = False, exploration_chance = 0.5, exploration_amount=0.05):
+    def __init__(self, alpha=0.1, gamma=0.9, epsilon=0.1, jamesExplore=False, exploration_chance=0.5, exploration_amount=0.05):
+        """
+        Initialises the agent and its super parameters. Some parameters are for a custom exploration function
+        implemented to avoid Merlin betraying halfway through a training round against a cooperative opponent.
+        """
         self.q_table = {}
         self.alpha = alpha
         self.gamma = gamma

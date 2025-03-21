@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Allows users to submit code for Yahtzee submissions.
+ * Based on newSubmission.php
+ *
+ * Author: James Aris
+ */
+
 session_start();
 
 // Check if the session variable 'uname' is set

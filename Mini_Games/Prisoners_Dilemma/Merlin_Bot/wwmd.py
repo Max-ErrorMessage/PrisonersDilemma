@@ -1,3 +1,9 @@
+"""
+Simulates a decision made by merlin given the previous decisions of both players as a binary string.
+
+Author: Max Worby
+"""
+
 from merlin import *
 import sys
 
@@ -7,9 +13,6 @@ try:
 except IndexError:
     s = ""
     o = ""
-
-# with open("/var/www/Mini_Games/Prisoners_Dilemma/Merlin_Bot/wwmd.log", "w") as file:
-#     file.write(f"S: {s}\nO: {o}")
 
 self_decisions = [bit == '1' for bit in s]
 opponent_decisions = [bit == '1' for bit in o]

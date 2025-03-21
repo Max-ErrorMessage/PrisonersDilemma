@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Allows users to make submissions for the Prisoner's Dilemma.
+ *
+ * Authors: James Aris, Ivy Bailey, Max Worby
+ */
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Allows users to play against Merlin, the AI Agent, in a web page
+ *
+ * Author: Max Worby
+ */
+
 session_start();
 
 // Check if the session variable 'uname' is set
