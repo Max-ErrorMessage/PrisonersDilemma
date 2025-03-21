@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="main.css">-->
+    <link rel="stylesheet" href="main.css">
     <link rel="icon" href="/t.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Twokie - New Submission</title>
