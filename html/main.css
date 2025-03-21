@@ -1,3 +1,9 @@
+/**
+ * CSS for the twokie.com website (excluding signin.php, which hasn't got a NavBar.
+ *
+ * Authors: James Aris, Ivy Bailey, Jesse Ekwebelem, Max Worby
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 #NavBar {
     position: fixed;
@@ -96,7 +102,7 @@ body{
     background: #4f8662;
 }
 
-#Main {
+#main {
     margin-top: 70px;
 }
 
@@ -125,11 +131,11 @@ li {
     background-image: linear-gradient(-90deg,#225522,#558855) !important;
 }
 #MerlinBOT{
-    background-image: linear-gradient(90deg,rgb(72,201,219),rgb(0,50,150))
+    background-image: linear-gradient(90deg,rgb(82,171,189),rgb(20,40,110));
 }
 
 #MerlinBOT:hover{
-    background-image: linear-gradient(-90deg,#8855cc,#bb66ee) !important
+    background-image: linear-gradient(-90deg,#335533,#005500) !important;
 }
 
 
@@ -186,7 +192,4 @@ button {
   justify-content: center;
   align-items: center;
 }
-textarea{
-    align-items: left;
-    text-align: left;
-}
+

@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Displays the leaderboards for each game on the website.
+ * Only the top 10 players on each game are shown.
+ * Clicking a player on the leaderboard will direct you to their profile.
+ *
+ * Authors: James Aris, Jesse Ekwebelem
+ */
+
 include '../db.php'; // database connection
 
 // Start session and check if the user is logged in
@@ -80,8 +89,8 @@ $uname = htmlspecialchars($_SESSION['uname']);
 		    $htmlid = "self";
 		}
 		$highlightStyle = "background-image: linear-gradient(90deg, #225522, #003300);";
-        $highlightStyle = ($row["Username"] == $uname) ? "background-image: linear-gradient(-90deg,#225522,#448844);" : $highlightStyle;
-		$highlightStyle = ($row["Username"] == "MerlinBOT") ? "background-image: linear-gradient(90deg,rgb(189,15,249),rgb(100,50,150));"  : $highlightStyle;
+                $highlightStyle = ($row["Username"] == $uname) ? "background-image: linear-gradient(-90deg,#225522,#448844);" : $highlightStyle;
+		$highlightStyle = ($row["Username"] == "MerlinBOT") ? "background-image: linear-gradient(90deg, #003300, #225522);"  : $highlightStyle;
                 echo "<li id = " . $htmlid . " style='$highlightStyle'><a href='otherProfile.php?user=" . htmlspecialchars($row['Username']) . "'>
                     <strong>#$i:</strong> " . htmlspecialchars($row['Username']) . "<br>
                     <strong>Average Points per round:</strong> " . htmlspecialchars($row['Points']) . "</a></li>";

@@ -31,3 +31,6 @@ User ID: 56
 return 'Scissors' if [seventeen for seventeen in [17]] else lambda eighteen: 18
 User ID: 2
 
+return paper
+User ID: 55
+

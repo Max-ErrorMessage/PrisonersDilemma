@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Allows players to make submissions for RPS code.
+ * Based on newSubmission.php
+ *
+ * Author: James Aris
+ */
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

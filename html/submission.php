@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Takes in new submissions and verifies their safety and functionality.
+ * If the verification is successful, adds the nwe submission to the Submission table.
+ *
+ * Author: Max Worby
+ */
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
     include '../db.php';

@@ -7,6 +7,10 @@ This file confirms that a user-submitted code is:
 
 It tests the code against the 'Seven Dwarves' - 7 different functions that also make choices in the Prisoner's Dilemma
 The results are saved in the dwarf_scores.json file.
+
+Based on the verify_submitted_code file in the Prisoner's Dilemma directory.
+
+Authors: James Aris, Max Worby
 """
 
 import re

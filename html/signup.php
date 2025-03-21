@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Manages new users signing up
+ * Authorises or denies the signup based on username and password requirements.
+ * If the attempt is authorised, adds the new user to the Accounts table.
+ *
+ * Author: James Aris
+ */
+
 session_start();
 include '../db.php';
 

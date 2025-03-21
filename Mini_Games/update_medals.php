@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Updates medal counts for the top three users. Called every day at midnight.
+ *
+ * Author: James Aris
+ */
+
 include '/var/www/db.php';
 
 $sql = "SELECT a.User_ID, s.Points
