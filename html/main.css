@@ -142,7 +142,7 @@ li {
 li:hover {
     background-image: linear-gradient(-90deg,#005500,#335533) !important;
 }
-
+*/
 canvas {
     position: absolute;
     top: 0;
@@ -168,7 +168,7 @@ canvas {
     left: 15%;
     right: 5%;
 }
-*/
+
 code[class*="language-"], pre[class*="language-"] {
     text-shadow: none !important;
 }
