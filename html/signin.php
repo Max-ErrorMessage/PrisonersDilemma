@@ -26,7 +26,7 @@ session_start();
         <link rel="stylesheet" href="login.css">
 	<meta name="description" content="Create bots to compete in fun minigames! :)">
     </head>
-    <body style="overflow:hidden;background-image:linear-gradient(to bottom right, rgb(0,0,0), rgb(0,20,10))">
+    <body style="overflow:hidden;background-image:linear-gradient(to bottom right, rgb(0,0,0), rgb(0,20,10))" id="body">
 
         
         <canvas id="particleCanvas"></canvas>

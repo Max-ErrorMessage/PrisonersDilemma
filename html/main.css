@@ -80,6 +80,9 @@ body{
     /*text-align: center;*/
     margin: 0;
 }
+#body{
+    text-align: center;
+}
 
 #main{
     color:white;
