@@ -51,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_contents = file_get_contents('/var/www/Mini_Games/' . $game .'/Code_Verification/User_Submitted_Code/dwarf_scores_' . $user_id . '.json');
         $dwarf_scores = json_decode($file_contents, true);
 
-        $list = "Code submitted!"
+        $list = "Code submitted!";
         if ($game_id != 2) {
             $list = $list . "<br>This is how you did against the 7 dwarves:<ol>";
         } else {
-            $list = $list . "<br>This is a roundup of how your scores were distributed in an example round!<ol>";
+            $list = $list . "<br>This is a roundup of how your scores were distributed in an example round:<ol>";
         }
         foreach ($dwarf_scores as $key => $value) {
             $list .= "<li>$key: $value</li><br>";
