@@ -45,6 +45,7 @@ form {
     flex-direction: column;
     align-items: stretch;
     margin: 30px;
+    border: 5px solid #006600;
 }
 
 
