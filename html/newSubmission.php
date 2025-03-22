@@ -42,9 +42,8 @@ if(!isset($_SESSION['code'])){
 
             const {default: HighlightedCode} =
                 await import('https://unpkg.com/highlighted-code');
-            HighlightedCode.useTheme('github-dark', {
-                exclude: ['textarea']
-            });
+            HighlightedCode.useTheme('github-dark');
+            document.querySelector("textarea").style.backgroundColor = "white";
         })(self);
     </script>
 </head>
@@ -87,10 +86,7 @@ if(!isset($_SESSION['code'])){
         <div class="box2">
             <form action="submission.php" method="POST">
                 <label for="name">Enter your code!:</label>
-                <textarea id="name" name="code" required value="<?= $txt ?>" is="highlighted-code" placeholder="return True
-
-
-# The input field is in Python, which cares about indentation. Here, just use 4 spaces as a substitute for <TAB>" onkeydown="return stopTab(event);"></textarea>
+                <textarea id="name" name="code" required value="<?= $txt ?>" is="highlighted-code" placeholder="return True" onkeydown="return stopTab(event);"></textarea>
                 <input type="hidden" name="game_id" value="1">
                 <button type="submit" name="submitCode" value="submit">Submit</button>
             </form>
