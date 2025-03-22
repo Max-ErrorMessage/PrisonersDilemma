@@ -37,17 +37,16 @@ if(!isset($_SESSION['code'])){
     <link rel="stylesheet" href="submission.css">
     <script type="module">
         (async ({chrome, netscape}) => {
-
-            // add Safari polyfill if needed
             if (!chrome && !netscape)
                 await import('https://unpkg.com/@ungap/custom-elements');
 
             const {default: HighlightedCode} =
                 await import('https://unpkg.com/highlighted-code');
-
-            // bootstrap a theme through one of these names
-            // https://github.com/highlightjs/highlight.js/tree/main/src/styles
             HighlightedCode.useTheme('github-dark');
+            var textarea = document.querySelector("textarea");
+            if (textarea) {
+                textarea.style.backgroundColor = "black";
+            }
         })(self);
     </script>
 </head>
