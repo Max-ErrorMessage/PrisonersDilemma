@@ -86,7 +86,7 @@ if(!isset($_SESSION['code'])){
         <div class="box2">
             <form action="submission.php" method="POST">
                 <label for="name">Enter your code!:</label>
-                <textarea id="codeSubmissionArea" name="code" required value="<?= $txt ?>" is="highlighted-code" placeholder="return True" onkeydown="return stopTab(event);"></textarea>
+                <textarea id="name" name="code" required value="<?= $txt ?>" is="highlighted-code" placeholder="return True" onkeydown="return stopTab(event);" style="background-color: black !important;"></textarea>
                 <input type="hidden" name="game_id" value="1">
                 <button type="submit" name="submitCode" value="submit">Submit</button>
             </form>
