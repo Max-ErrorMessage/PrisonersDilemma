@@ -54,6 +54,7 @@ label {
     font-size: 1rem;
 }
 
+/**
 textarea {
     left: 5%;
     right: 5%;
@@ -71,6 +72,7 @@ textarea {
     align-items: left !important;
     text-align: left !important;
 }
+*/
 
 #title{
     font-size: 5rem;
