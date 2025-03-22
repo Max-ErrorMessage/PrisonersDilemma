@@ -35,15 +35,17 @@ if(!isset($_SESSION['code'])){
     <link rel="stylesheet" href="main.css">
     <title>Twokie - New Submission</title>
     <link rel="stylesheet" href="submission.css">
-    <script type="module"> /*
+    <script type="module">
         (async ({chrome, netscape}) => {
             if (!chrome && !netscape)
                 await import('https://unpkg.com/@ungap/custom-elements');
 
             const {default: HighlightedCode} =
                 await import('https://unpkg.com/highlighted-code');
-            // HighlightedCode.useTheme('github-dark');
-        })(self); */
+            HighlightedCode.useTheme('github-dark', {
+                exclude: ['textarea']
+            });
+        })(self);
     </script>
 </head>
 <code>
