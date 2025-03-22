@@ -63,17 +63,13 @@ textarea {
     margin-bottom: 10px;
     border: 2px solid white;
     border-radius: 5px;
-    background: black;
+    background: black; !important
     color: white;
     font-size: 1rem;
     resize: none;
     overflow-y: auto;
     align-items: left !important;
     text-align: left !important;
-}
-
-textarea:-moz-autofill {
-    background: black !important;
 }
 
 #title{
