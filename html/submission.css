@@ -64,7 +64,7 @@ textarea {
     border: 2px solid white;
     border-radius: 5px;
     background-color: black !important;
-    color: white;
+    color: grey !important;
     font-size: 1rem;
     resize: none;
     overflow-y: auto;
