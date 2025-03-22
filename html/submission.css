@@ -54,7 +54,7 @@ label {
     font-size: 1rem;
 }
 
-textarea {
+textarea #codeSubmissionArea {
     left: 5%;
     right: 5%;
     min-height: 500px;
