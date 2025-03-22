@@ -177,7 +177,7 @@ code[class*="language-"], pre[class*="language-"] {
     text-shadow: none !important;
 }
 
-#button {
+button {
   width: 200px;
   height: 50px;
   background-color: green;
