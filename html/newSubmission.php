@@ -42,11 +42,7 @@ if(!isset($_SESSION['code'])){
 
             const {default: HighlightedCode} =
                 await import('https://unpkg.com/highlighted-code');
-            HighlightedCode.useTheme('github-dark');
-            var textarea = document.querySelector("textarea");
-            if (textarea) {
-                textarea.style.backgroundColor = "black";
-            }
+            // HighlightedCode.useTheme('github-dark');
         })(self);
     </script>
 </head>
