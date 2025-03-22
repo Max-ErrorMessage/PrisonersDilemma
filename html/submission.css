@@ -72,6 +72,10 @@ textarea {
     text-align: left !important;
 }
 
+textarea:-moz-autofill {
+    background: black !important;
+}
+
 #title{
     font-size: 5rem;
     margin-top: 50px;
