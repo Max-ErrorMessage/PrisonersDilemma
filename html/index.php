@@ -121,7 +121,7 @@ $uname = htmlspecialchars($_SESSION['uname']);
             <br><br>
             <img src="images/TwokieLogoNew.png" style="width:350px, margin:auto"/>
             <br>
-            <p>Twokie: Bot Playground is a website designed for users to compete in various challenges, where the aim is to code Python bots to partake in different games and come up with new and innovative solutions.</p>
+            <p>Twokie is a website designed for users to compete in various challenges, where the aim is to code Python bots to partake in different games and come up with new and innovative solutions.</p>
             <p>Agents will regularly compete against each other, receive a score and the corresponding leaderboards will be updated.</p>
             <div id="PD">
                 <h2>Prisoner's Dilemma</h2>
