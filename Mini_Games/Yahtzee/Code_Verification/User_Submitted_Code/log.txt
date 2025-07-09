@@ -5912,3 +5912,16 @@ User ID: 56
 return []$return choices[0]
 User ID: 82
 
+return []$return choices[0]
+User ID: 84
+
+return []$return choices[0]
+User ID: 85
+
+dice
+$return
+User ID: 70
+
+return[3]$return choices [2]
+User ID: 70
+

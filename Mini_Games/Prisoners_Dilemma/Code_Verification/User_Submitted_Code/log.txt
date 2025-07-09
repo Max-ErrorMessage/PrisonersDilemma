@@ -3131,3 +3131,860 @@ if n == 15:
 return o[-1]
 User ID: 56
 
+code that fails
+User ID: 84
+
+return invalid
+User ID: 84
+
+while True:
+	pass
+User ID: 84
+
+return True
+User ID: 84
+
+return True if not False else True
+User ID: 55
+
+invalid code
+User ID: 85
+
+return variable
+User ID: 85
+
+while True:
+	pass
+User ID: 85
+
+import sys
+return True
+User ID: 85
+
+return True
+User ID: 85
+
+"""
+Implements a Tit-for-Tat strategy under a modified reward schema:
+
+  - Both players cooperate: +5 points each.
+  - If one player betrays while the other cooperates:
+      - Betrayer earns +10 points.
+      - The betrayed loses 1 point.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate (return True).
+  2. On subsequent moves, repeat the opponent's most recent decision.
+
+This strategy remains robust as it encourages mutual cooperation while retaliating if betrayed.
+
+Args:
+    self_decisions (list of bool): Your previous moves.
+    opponent_decisions (list of bool): Your opponent's previous moves.
+
+Returns:
+    bool: True to cooperate, False to betray.
+"""
+# On the first move, cooperate.
+if not opponent_decisions:
+    return True
+
+# For subsequent moves, mimic the opponent's last move.
+return opponent_decisions[-1]
+User ID: 87
+
+"""
+Implements a win-stay, lose-shift (Pavlov) strategy under the modified reward schema:
+
+  - Both players cooperating: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points to betrayer, -1 point to cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate (return True).
+  2. For subsequent moves, calculate the payoff of the previous round:
+     - If the payoff was 5 or 10 (a win), keep the same move.
+     - If the payoff was -1 or 0 (a loss), switch moves.
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperate, False for betray).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means betray.
+"""
+# On the first move, cooperate.
+if not self_decisions:
+    return True
+
+# Retrieve the last moves.
+last_self = self_decisions[-1]
+last_opp = opponent_decisions[-1]
+
+# Determine the payoff based on the last round.
+if last_self and last_opp:
+    payoff = 5  # Both cooperated.
+elif last_self and not last_opp:
+    payoff = -1  # You cooperated, opponent betrayed.
+elif not last_self and last_opp:
+    payoff = 10  # You betrayed, opponent cooperated.
+else:  # not last_self and not last_opp:
+    payoff = 0  # Both betrayed.
+
+# If the last round was a win (payoff of 5 or 10), repeat your move; otherwise, switch.
+if payoff in (5, 10):
+    return last_self
+else:
+    return not last_self
+User ID: 87
+
+""""""
+Implements an opportunistic tit-for-tat strategy under the modified reward schema:
+
+  - Both players cooperating: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points to betrayer, -1 point to cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate.
+  2. Calculate the opponent's overall cooperation ratio.
+  3. If the opponent has cooperated more than 90% of the time 
+     and cooperated in the previous round, defect with a probability of 50%
+     to try to secure the higher reward.
+  4. Otherwise, mirror the opponent's last move (tit-for-tat).
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperation, False for betrayal).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means betray.
+"""
+# On the first move, cooperate.
+if not opponent_decisions:
+    return True
+
+# Calculate the opponent's overall cooperation ratio.
+coop_ratio = sum(opponent_decisions) / len(opponent_decisions)
+
+# If the opponent cooperated in the last round and is very cooperative overall,
+# take a chance to defect (exploit their generosity).
+if opponent_decisions[-1] and coop_ratio >= 0.9:
+    # With 50% probability, defect to try and gain 10 instead of 5 points.
+    if random.random() < 0.5:
+        return False
+    else:
+        return True
+else:
+    # Otherwise, simply mirror the opponent's last move.
+    return opponent_decisions[-1]
+
+Implements a win-stay, lose-shift (Pavlov) strategy under the modified reward schema:
+
+  - Both players cooperating: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points to betrayer, -1 point to cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate (return True).
+  2. For subsequent moves, calculate the payoff of the previous round:
+     - If the payoff was 5 or 10 (a win), keep the same move.
+     - If the payoff was -1 or 0 (a loss), switch moves.
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperate, False for betray).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means betray.
+"""
+# On the first move, cooperate.
+if not self_decisions:
+    return True
+
+# Retrieve the last moves.
+last_self = self_decisions[-1]
+last_opp = opponent_decisions[-1]
+
+# Determine the payoff based on the last round.
+if last_self and last_opp:
+    payoff = 5  # Both cooperated.
+elif last_self and not last_opp:
+    payoff = -1  # You cooperated, opponent betrayed.
+elif not last_self and last_opp:
+    payoff = 10  # You betrayed, opponent cooperated.
+else:  # not last_self and not last_opp:
+    payoff = 0  # Both betrayed.
+
+# If the last round was a win (payoff of 5 or 10), repeat your move; otherwise, switch.
+if payoff in (5, 10):
+    return last_self
+else:
+    return not last_self
+User ID: 87
+
+"""
+Implements an opportunistic tit-for-tat strategy under the modified reward schema:
+
+  - Both players cooperating: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points to betrayer, -1 point to cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate.
+  2. Calculate the opponent's overall cooperation ratio.
+  3. If the opponent has cooperated more than 90% of the time 
+     and cooperated in the previous round, defect with a probability of 50%
+     to try to secure the higher reward.
+  4. Otherwise, mirror the opponent's last move (tit-for-tat).
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperation, False for betrayal).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means betray.
+"""
+# On the first move, cooperate.
+if not opponent_decisions:
+    return True
+
+# Calculate the opponent's overall cooperation ratio.
+coop_ratio = sum(opponent_decisions) / len(opponent_decisions)
+
+# If the opponent cooperated in the last round and is very cooperative overall,
+# take a chance to defect (exploit their generosity).
+if opponent_decisions[-1] and coop_ratio >= 0.9:
+    # With 50% probability, defect to try and gain 10 instead of 5 points.
+    if random.random() < 0.5:
+        return False
+    else:
+        return True
+else:
+    # Otherwise, simply mirror the opponent's last move.
+    return opponent_decisions[-1]
+
+Implements a win-stay, lose-shift (Pavlov) strategy under the modified reward schema:
+
+  - Both players cooperating: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points to betrayer, -1 point to cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate (return True).
+  2. For subsequent moves, calculate the payoff of the previous round:
+     - If the payoff was 5 or 10 (a win), keep the same move.
+     - If the payoff was -1 or 0 (a loss), switch moves.
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperate, False for betray).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means betray.
+"""
+# On the first move, cooperate.
+if not self_decisions:
+    return True
+
+# Retrieve the last moves.
+last_self = self_decisions[-1]
+last_opp = opponent_decisions[-1]
+
+# Determine the payoff based on the last round.
+if last_self and last_opp:
+    payoff = 5  # Both cooperated.
+elif last_self and not last_opp:
+    payoff = -1  # You cooperated, opponent betrayed.
+elif not last_self and last_opp:
+    payoff = 10  # You betrayed, opponent cooperated.
+else:  # not last_self and not last_opp:
+    payoff = 0  # Both betrayed.
+
+# If the last round was a win (payoff of 5 or 10), repeat your move; otherwise, switch.
+if payoff in (5, 10):
+    return last_self
+else:
+    return not last_self
+User ID: 87
+
+"""
+Implements an opportunistic tit-for-tat strategy under the modified reward schema:
+
+  - Both players cooperating: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points to betrayer, -1 point to cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate.
+  2. Calculate the opponent's overall cooperation ratio.
+  3. If the opponent has cooperated more than 90% of the time
+     and cooperated in the previous round, defect with a probability of 50%
+     to try to secure the higher reward.
+  4. Otherwise, mirror the opponent's last move (tit-for-tat).
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperation, False for betrayal).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means betray.
+"""
+# On the first move, cooperate.
+if not opponent_decisions:
+    return True
+
+# Calculate the opponent's overall cooperation ratio.
+coop_ratio = sum(opponent_decisions) / len(opponent_decisions)
+
+# If the opponent cooperated in the last round and is very cooperative overall,
+# take a chance to defect (exploit their generosity).
+if opponent_decisions[-1] and coop_ratio >= 0.9:
+    # With 50% probability, defect to try and gain 10 instead of 5 points.
+    if random.random() < 0.5:
+        return False
+    else:
+        return True
+else:
+    # Otherwise, simply mirror the opponent's last move.
+    return opponent_decisions[-1]
+User ID: 87
+
+"""
+Strategy under the modified reward schema:
+
+  - Both cooperate: +5 points each.
+  - If you defect while opponent cooperates: +10 points for you, -1 for opponent.
+  - Both defect: 0 points each.
+
+Strategy:
+  1. Start by cooperating.
+  2. If the opponent defected in at least 2 of the last 3 rounds, defect to punish.
+  3. Otherwise, if the opponent is very cooperative overall (>=85% cooperation) and
+     they cooperated in the previous round, defect with a 15% chance to opportunistically
+     secure 10 points.
+  4. In all other cases, mirror the opponent's last move.
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperate, False for defect).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move (True for cooperate, False for defect).
+"""
+# On the first move, cooperate.
+if not opponent_decisions:
+    return True
+
+# Check if the opponent has recently defected heavily (2 or more defects in the last 3 rounds)
+if len(opponent_decisions) >= 3:
+    recent_defects = sum(1 for move in opponent_decisions[-3:] if not move)
+    if recent_defects >= 2:
+        return False
+
+# Calculate the opponent's overall cooperation ratio.
+coop_ratio = sum(opponent_decisions) / len(opponent_decisions)
+last_opp = opponent_decisions[-1]
+
+# If the opponent is highly cooperative...
+if coop_ratio > 0.85:
+    # ...and they cooperated in the last round, take a 15% chance to defect to earn 10 points.
+    if last_opp:
+        if random.random() < 0.15:
+            return False
+        else:
+            return True
+    else:
+        # If they defected last round, retaliate.
+        return False
+else:
+    # Otherwise, simply mirror the opponent's last move (tit-for-tat).
+    return last_opp
+User ID: 87
+
+"""
+Implements an adaptive strategy under the modified reward schema:
+
+  - Both cooperate: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points for betrayer, -1 point for cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate.
+  2. If the opponent defected in the last round, defect immediately.
+  3. If we have at least 5 rounds of history and the opponent cooperated in the last 5 rounds,
+     defect with a high probability (60%) to exploit their consistent cooperation.
+  4. Otherwise, if the opponent’s overall cooperation rate is very high (>90%), defect with a moderate
+     probability (40%) to opportunistically gain extra points.
+  5. In all other cases, cooperate (mirroring the opponent’s last move).
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperate, False for defect).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means defect.
+"""
+# First move: cooperate.
+if not opponent_decisions:
+    return True
+
+# Immediate retaliation if the opponent defected in the last round.
+if not opponent_decisions[-1]:
+    return False
+
+# If we have sufficient history, check recent performance.
+if len(opponent_decisions) >= 5:
+    recent_coop = sum(opponent_decisions[-5:])  # count how many cooperations in the last 5 rounds
+    if recent_coop == 5:
+        # Opponent has been fully cooperative recently;
+        # exploit with a 60% chance to defect.
+        if random.random() < 0.6:
+            return False
+        else:
+            return True
+
+# Otherwise, evaluate overall cooperation ratio.
+coop_ratio = sum(opponent_decisions) / len(opponent_decisions)
+if coop_ratio > 0.9:
+    # If opponent is very cooperative overall, defect with a 40% chance.
+    if random.random() < 0.4:
+        return False
+    else:
+        return True
+
+# Default: mirror the opponent's last move (which is cooperation in this branch).
+return True
+
+User ID: 87
+
+"""
+Implements an adaptive strategy under the modified reward schema:
+
+  - Both cooperate: +5 points each.
+  - Betrayal when the opponent cooperates: +10 points for betrayer, -1 point for cooperator.
+  - Mutual betrayal: 0 points each.
+
+Strategy:
+  1. On the first move, cooperate.
+  2. If the opponent defected in the last round, defect immediately.
+  3. If we have at least 5 rounds of history and the opponent cooperated in the last 5 rounds,
+     defect with a high probability (60%) to exploit their consistent cooperation.
+  4. Otherwise, if the opponent’s overall cooperation rate is very high (>90%), defect with a moderate
+     probability (40%) to opportunistically gain extra points.
+  5. In all other cases, cooperate (mirroring the opponent’s last move).
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperate, False for defect).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means defect.
+"""
+# First move: cooperate.
+if not opponent_decisions:
+    return True
+
+# Immediate retaliation if the opponent defected in the last round.
+if not opponent_decisions[-1]:
+    return False
+
+# If we have sufficient history, check recent performance.
+if len(opponent_decisions) >= 5:
+    recent_coop = sum(opponent_decisions[-5:])  # count how many cooperations in the last 5 rounds
+    if recent_coop == 5:
+        # Opponent has been fully cooperative recently;
+        # exploit with a 60% chance to defect.
+        if random.random() < 0.6:
+            return False
+        else:
+            return True
+
+coop_ratio = sum(opponent_decisions) / len(opponent_decisions)
+if coop_ratio > 0.9:
+    # If opponent is very cooperative overall, defect with a 40% chance.
+    if random.random() < 0.4:
+        return False
+    else:
+        return True
+
+# Default: mirror the opponent's last move (which is cooperation in this branch).
+return True
+
+User ID: 87
+
+"""
+Implements a slightly altered tit-for-tat (generous tit-for-tat) strategy to handle opponents
+that tend to hold grudges (GrudgeBots).
+
+Strategy:
+  1. Cooperate on the first move.
+  2. If the opponent cooperated in the last round, cooperate.
+  3. If the opponent defected in the last round, forgive that defection with a 20% chance,
+     otherwise retaliate by defecting.
+
+This small forgiveness factor can help maintain mutual cooperation with GrudgeBots that might otherwise trigger a long chain of retaliation.
+
+Args:
+    self_decisions (list of bool): Your previous moves (True for cooperate, False for defect).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move; True means cooperate, False means defect.
+"""
+# On the first move, cooperate.
+if not opponent_decisions:
+    return True
+
+last_opp = opponent_decisions[-1]
+
+# If the opponent cooperated last round, cooperate.
+if last_opp:
+    return True
+else:
+    # If the opponent defected, forgive with a 20% probability.
+    if random.random() < 0.2:
+        return True
+    else:
+        return False
+User ID: 87
+
+"""
+A refined "Generous Tit-for-Tat" strategy optimized for an environment with many GrudgeBots.
+
+Strategy:
+  1. Cooperate on the first move.
+  2. If the opponent cooperated in the last round, cooperate.
+  3. If the opponent defected once but usually cooperates, assume it was an accident and continue cooperating.
+  4. If the opponent defected twice in a row, defect back.
+  5. If we defected in retaliation and the opponent cooperates after, immediately return to cooperation.
+  6. Forgive a defection **30% of the time** instead of retaliating, preventing long-term defection loops.
+
+Args:
+    self_decisions (list of bool): Our previous moves (True = cooperate, False = defect).
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move (True = cooperate, False = defect).
+"""
+# First move: Always cooperate
+if not opponent_decisions:
+    return True
+
+last_opp = opponent_decisions[-1]
+
+# If the opponent cooperated last round, we cooperate
+if last_opp:
+    return True
+
+# If the opponent defected once but otherwise cooperates, assume it was accidental
+if len(opponent_decisions) > 1 and opponent_decisions[-2]:
+    return True
+
+    # If the opponent defected twice in a row, we defect in retaliation
+if len(opponent_decisions) > 1 and not opponent_decisions[-2]:
+    return False
+
+# If we defected in retaliation but the opponent cooperated after, return to cooperation
+if self_decisions[-1] is False and last_opp:
+    return True
+
+# Random forgiveness factor (30%)
+if random.random() < 0.3:
+    return True
+
+# Default case: mirror the opponent's last move
+return last_opp
+User ID: 87
+
+"""
+A fine-tuned "Generous but Watchful Tit-for-Tat" strategy.
+
+Key Adjustments:
+- **Reduced forgiveness to 20%** (from 30%).
+- **Harsher retaliation for consecutive defections** (defect for 2 turns after being betrayed twice).
+- **Detect if opponent mirrors us**, in which case we lean towards cooperation.
+
+Args:
+    self_decisions (list of bool): Our previous moves.
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move (True = cooperate, False = defect).
+"""
+# First move: Always cooperate
+if not opponent_decisions:
+    return True
+
+last_opp = opponent_decisions[-1]
+
+# If the opponent cooperated last round, we cooperate.
+if last_opp:
+    return True
+
+# If the opponent defected once but mostly cooperates, assume it was accidental.
+if len(opponent_decisions) > 1 and opponent_decisions[-2]:
+    return True
+
+    # If the opponent defected twice in a row, punish by defecting for 2 rounds.
+if len(opponent_decisions) > 1 and not opponent_decisions[-2]:
+    if len(self_decisions) > 0 and self_decisions[-1] is False:
+        return False  # Continue punishing for 1 extra round.
+    return False  # Start punishment.
+
+# Detect if the opponent mirrors our moves.
+if len(self_decisions) > 3:
+    if self_decisions[-3:] == opponent_decisions[-3:]:
+        return True  # Likely a mirror bot, we stick to cooperation.
+
+# Reduced forgiveness factor (20% instead of 30%)
+if random.random() < 0.2:
+    return True
+
+# Default case: Mirror opponent's last move.
+return last_opp
+User ID: 87
+
+"""
+Highly optimized "Adaptive Tit-for-Tat" strategy.
+
+Key Enhancements:
+- **Lowered forgiveness to 10%** (less exploitable).
+- **Punishment Mode: If opponent defects 2+ times, we defect for 3 rounds straight.**
+- **Detects passive bots:** If an opponent has *never* defected after 10 rounds, we exploit them ~12% of the time.
+
+Args:
+    self_decisions (list of bool): Our previous moves.
+    opponent_decisions (list of bool): Opponent's previous moves.
+
+Returns:
+    bool: Next move (True = cooperate, False = defect).
+"""
+# First move: Always cooperate.
+if not opponent_decisions:
+    return True
+
+last_opp = opponent_decisions[-1]
+
+# If the opponent has *never* defected after 10+ rounds, exploit them 12% of the time.
+if len(opponent_decisions) >= 10 and all(opponent_decisions):
+    return random.random() > 0.12  # 88% chance to cooperate.
+
+# If the opponent cooperated last round, we cooperate.
+if last_opp:
+    return True
+
+# If the opponent defected once but otherwise cooperates, assume a mistake and cooperate.
+if len(opponent_decisions) > 1 and opponent_decisions[-2]:
+    return True
+
+# If the opponent defected twice in a row, enter "Punishment Mode" (defect for 3 turns).
+if len(opponent_decisions) > 1 and not opponent_decisions[-2]:
+    if len(self_decisions) >= 2 and self_decisions[-2:] == [False, False]:
+        return False  # Continue punishment.
+    return False  # Start punishment.
+
+# Only 10% forgiveness now.
+if random.random() < 0.1:
+    return True
+
+# Default: Mirror opponent's last move.
+return last_opp
+User ID: 87
+
+"""
+Optimized "Smart Tit-for-Tat" balancing cooperation, retaliation, and exploitation.
+
+Key Fixes:
+- **Forgiveness back to 20%** (not too harsh).
+- **Punish defectors for 2 rounds, not 3.**
+- **Exploit ultra-cooperative bots only if they've gone 20+ rounds without defecting.**
+- **Detect single-test betrayals and forgive once.**
+"""
+# First move: Always cooperate.
+if not opponent_decisions:
+    return True
+
+last_opp = opponent_decisions[-1]
+
+# If opponent has *never* defected after 20 rounds, exploit them 10% of the time.
+if len(opponent_decisions) >= 20 and all(opponent_decisions):
+    return random.random() > 0.10  # 90% chance to cooperate.
+
+# If the opponent cooperated last round, we cooperate.
+if last_opp:
+    return True
+
+# If the opponent defected *once* but otherwise cooperates, assume a test and forgive.
+if len(opponent_decisions) > 1 and opponent_decisions[-2]:
+    return True
+
+# If the opponent defected twice in a row, punish by defecting for **2 rounds**.
+if len(opponent_decisions) > 1 and not opponent_decisions[-2]:
+    if len(self_decisions) > 0 and self_decisions[-1] is False:
+        return False  # Continue punishment.
+    return False  # Start punishment.
+
+# Forgiveness chance (20%).
+if random.random() < 0.2:
+    return True
+
+# Default: Mirror opponent's last move.
+return last_opp
+User ID: 87
+
+"""
+Optimized "Smart Tit-for-Tat" balancing cooperation, retaliation, and exploitation.
+
+Key Fixes:
+- **Forgiveness back to 20%** (not too harsh).
+- **Punish defectors for 2 rounds, not 3.**
+- **Detect single-test betrayals and forgive once.**
+"""
+# First move: Always cooperate.
+if not opponent_decisions:
+    return True
+
+last_opp = opponent_decisions[-1]
+
+# If the opponent cooperated last round, we cooperate.
+if last_opp:
+    return True
+
+# If the opponent defected *once* but otherwise cooperates, assume a test and forgive.
+if len(opponent_decisions) > 1 and opponent_decisions[-2]:
+    return True
+
+# If the opponent defected twice in a row, punish by defecting for **2 rounds**.
+if len(opponent_decisions) > 1 and not opponent_decisions[-2]:
+    if len(self_decisions) > 0 and self_decisions[-1] is False:
+        return False  # Continue punishment.
+    return False  # Start punishment.
+
+# Forgiveness chance (20%).
+if random.random() < 0.2:
+    return True
+
+# Default: Mirror opponent's last move.
+return last_opp
+User ID: 87
+
+"""
+Optimized "Smart Tit-for-Tat" balancing cooperation, retaliation, and exploitation.
+
+Key eatures:
+- **Forgiveness rate of 20%**
+- **Punish defectors for 2 rounds**
+- **Detect single-test betrayals and forgive once**
+"""
+# First move: Always cooperate.
+if not opponent_decisions:
+    return True
+
+last_opp = opponent_decisions[-1]
+
+# If the opponent cooperated last round, we cooperate.
+if last_opp:
+    return True
+
+# If the opponent defected *once* but otherwise cooperates, assume a test and forgive.
+if len(opponent_decisions) > 1 and opponent_decisions[-2]:
+    return True
+
+# If the opponent defected twice in a row, punish by defecting for **2 rounds**.
+if len(opponent_decisions) > 1 and not opponent_decisions[-2]:
+    if len(self_decisions) > 0 and self_decisions[-1] is False:
+        return False  # Continue punishment.
+    return False  # Start punishment.
+
+# Forgiveness chance (20%).
+if random.random() < 0.2:
+    return True
+
+# Default: Mirror opponent's last move.
+return last_opp
+User ID: 87
+
+If n > 0:
+return True
+else return False
+User ID: 88
+
+if n > 0:
+return True
+else: return False
+User ID: 88
+
+if n > 0:
+return True
+else: return False
+User ID: 88
+
+if n > 0:
+  return True
+else: 
+  return False
+User ID: 88
+
+if n==0:
+	return True
+if sum(o) > 2:
+	return True
+return False
+User ID: 89
+
+if(n < 2)
+	return True
+
+if(not (o[-1] or o[-2]))
+	return False
+
+return True
+User ID: 90
+
+if(n < 2):
+	return True
+
+if(not (o[-1] or o[-2])):
+	return False
+
+return True
+User ID: 90
+
+if n == 0:
+    return True
+
+
+if 0 < o.count(False) < 2:
+    return o[-1]
+
+return False
+User ID: 1
+
+if n == 0:
+    return True
+
+
+if o.count(False) < 2:
+    return o[-1]
+
+return False
+User ID: 1
+
+if n == 0:
+	return True
+else:
+	return opponent_decisions[-1]
+User ID: 90
+
+if n == 0:
+    return True
+
+
+if o.count(False) < 3:
+    return o[-1]
+
+return False
+User ID: 1
+

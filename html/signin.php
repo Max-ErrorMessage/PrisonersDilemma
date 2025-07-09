@@ -11,6 +11,7 @@ session_start();
 
 <html>
     <head>
+	<meta name="viewport" content="width=device-width, initial-scale=0.75">
 	<title>Twokie - Login/Signup</title>
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <style>
@@ -26,7 +27,7 @@ session_start();
         <link rel="stylesheet" href="login.css">
 	<meta name="description" content="Create bots to compete in fun minigames! :)">
     </head>
-    <body style="overflow:hidden;background-image:linear-gradient(to bottom right, rgb(0,0,0), rgb(0,20,10))" id="body">
+    <body style="background-image:linear-gradient(to bottom right, rgb(0,0,0), rgb(0,20,10))" id="body">
 
         
         <canvas id="particleCanvas"></canvas>

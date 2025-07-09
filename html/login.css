@@ -8,12 +8,13 @@
 
 
 body {
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(0, 20, 10));
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     color: white;
     font-family: 'Orbitron', sans-serif;
 }

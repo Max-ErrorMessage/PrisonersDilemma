@@ -39,6 +39,14 @@
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+@media (max-width:678){
+    .nav-link {
+        font-size:0.5rem;
+        padding: 3px 6px;
+    }
+}
+
+
 #signinbutton{
     background-color: #3f7652;
 }

@@ -125,27 +125,12 @@ def user_17(self_decisions, opponent_decisions, s, o, n):
 	    return t4t
 
 
-def user_1(self_decisions, opponent_decisions, s, o, n):
-	if n == 0:
-	    return True
-	
-	
-	if o.count(False) < 2:
-	    return o[-1]
-	
-	return False
-
-
 def user_70(self_decisions, opponent_decisions, s, o, n):
 	return True
 
 
 def user_28(self_decisions, opponent_decisions, s, o, n):
 	return True if n <= 2 else bool(sum(o[-2:]))
-
-
-def user_55(self_decisions, opponent_decisions, s, o, n):
-	return False
 
 
 def user_56(self_decisions, opponent_decisions, s, o, n):
@@ -156,4 +141,82 @@ def user_56(self_decisions, opponent_decisions, s, o, n):
 	return o[-1]
 
 
-user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "17" : user_17, "1" : user_1, "70" : user_70, "28" : user_28, "55" : user_55, "56" : user_56}
+def user_55(self_decisions, opponent_decisions, s, o, n):
+	return True if not False else True
+
+
+def user_85(self_decisions, opponent_decisions, s, o, n):
+	return True
+
+
+def user_87(self_decisions, opponent_decisions, s, o, n):
+	"""
+	Optimized "Smart Tit-for-Tat" balancing cooperation, retaliation, and exploitation.
+	
+	Key eatures:
+	- **Forgiveness rate of 20%**
+	- **Punish defectors for 2 rounds**
+	- **Detect single-test betrayals and forgive once**
+	"""
+	# First move: Always cooperate.
+	if not opponent_decisions:
+	    return True
+	
+	last_opp = opponent_decisions[-1]
+	
+	# If the opponent cooperated last round, we cooperate.
+	if last_opp:
+	    return True
+	
+	# If the opponent defected *once* but otherwise cooperates, assume a test and forgive.
+	if len(opponent_decisions) > 1 and opponent_decisions[-2]:
+	    return True
+	
+	# If the opponent defected twice in a row, punish by defecting for **2 rounds**.
+	if len(opponent_decisions) > 1 and not opponent_decisions[-2]:
+	    if len(self_decisions) > 0 and self_decisions[-1] is False:
+	        return False  # Continue punishment.
+	    return False  # Start punishment.
+	
+	# Forgiveness chance (20%).
+	if random.random() < 0.2:
+	    return True
+	
+	# Default: Mirror opponent's last move.
+	return last_opp
+
+
+def user_88(self_decisions, opponent_decisions, s, o, n):
+	if n > 0:
+	  return True
+	else: 
+	  return False
+
+
+def user_89(self_decisions, opponent_decisions, s, o, n):
+	if n==0:
+		return True
+	if sum(o) > 2:
+		return True
+	return False
+
+
+def user_90(self_decisions, opponent_decisions, s, o, n):
+	if n == 0:
+		return True
+	else:
+		return opponent_decisions[-1]
+
+
+def user_1(self_decisions, opponent_decisions, s, o, n):
+	if n == 0:
+	    return True
+	
+	
+	if o.count(False) < 3:
+	    return o[-1]
+	
+	return False
+
+
+user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "17" : user_17, "70" : user_70, "28" : user_28, "56" : user_56, "55" : user_55, "85" : user_85, "87" : user_87, "88" : user_88, "89" : user_89, "90" : user_90, "1" : user_1}

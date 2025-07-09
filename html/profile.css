@@ -27,6 +27,19 @@
 }
 
 
+@media (max-width: 950px) {
+    .medal img{
+	width:30px;
+	height:30px;
+    }
+
+    #medals{
+	right:20px;
+	font-size:0.8rem;
+    }
+
+}
+
 h3{
     text-align: left;
     margin-left: 20px;

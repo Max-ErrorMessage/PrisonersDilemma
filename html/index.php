@@ -20,18 +20,21 @@ $uname = htmlspecialchars($_SESSION['uname']);
 ?>
 <html>
     <head>
+
         <link rel="stylesheet" href="main.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<meta name = "description" content = "Twokie Bots, Code bots to play minigames and compete on leaderboards">
         <meta name = "keywords" content = "prisoner's dilemma, prisoners dilemma, bots, yahtzee, python, code, coding, machine learning, ai">
+	<meta name = "viewport" content = "width=device-width, initial-scale=0.5">
 	<title>Twokie - Home</Title>
         <style>
             
             #circleContainer {
                 display: grid;
-                grid-template-columns: repeat(10, 50px);
-                grid-gap: 10px;
+                grid-template-columns: repeat(10, 9%);
+                column-gap: 1%;
+		row-gap: 5%;
                 width: 100%;
                 max-width: 600px;
                 margin: 50px auto;
@@ -41,11 +44,11 @@ $uname = htmlspecialchars($_SESSION['uname']);
             }
     
             .circle {
-                width: 40px;
-                height: 40px;
+                height: 100%;
+		aspect-ratio: 1/1;
                 background-color: gray;
                 border-radius: 50%;
-                transition: background-color 0s;
+                transition: background-color 0.2s;
             }
 
             .rooks{

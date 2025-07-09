@@ -263,3 +263,78 @@ seq = [rock,paper,scissors]
 return seq[n%3]
 User ID: 56
 
+in n>2:
+	return o[-2]
+return "Rock"
+User ID: 7
+
+if n>2:
+    return o[-2]
+return "Rock"
+
+User ID: 7
+
+eireorewr
+User ID: 7
+
+n
+User ID: 7
+
+n
+return "Rock"
+
+User ID: 7
+
+	if n
+User ID: 7
+
+if n>2:
+	return o[-2]
+return "Rock"
+
+User ID: 7
+
+return rock
+User ID: 84
+
+return rock
+User ID: 85
+
+rock
+User ID: 70
+
+Rock
+User ID: 70
+
+True
+
+User ID: 70
+
+if n > 1:
+    return opponent_decisions[-2]
+else:
+    return "scissors"
+User ID: 70
+
+if n > 1:
+    return opponent_decisions[-1]
+else:
+    return "scissors"
+User ID: 70
+
+Scissors
+
+User ID: 70
+
+return "Rock"
+User ID: 90
+
+return r
+User ID: 92
+
+return "rock"
+User ID: 92
+
+return "Rock"
+User ID: 92
+

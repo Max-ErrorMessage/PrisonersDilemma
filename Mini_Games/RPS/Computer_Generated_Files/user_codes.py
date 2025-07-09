@@ -25,11 +25,6 @@ def user_2(self_decisions, opponent_decisions, s, o, n):
 	rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
 	cycle = [rock, paper, paper, scissors, scissors, rock, scissors, rock, rock, paper, paper, scissors]
 	return cycle[n % len(cycle)] #james is hot
-def user_7(self_decisions, opponent_decisions, s, o, n):
-	rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
-	if n>2:
-	    return o[-2]
-	return "Rock"
 def user_73(self_decisions, opponent_decisions, s, o, n):
 	rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
 	return "Rock"
@@ -64,6 +59,20 @@ def user_56(self_decisions, opponent_decisions, s, o, n):
 	seq = [rock,paper,scissors]
 	
 	return seq[n%3]
+def user_7(self_decisions, opponent_decisions, s, o, n):
+	rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
+	if n>2:
+		return o[-2]
+	return "Rock"
+def user_85(self_decisions, opponent_decisions, s, o, n):
+	rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
+	return rock
+def user_90(self_decisions, opponent_decisions, s, o, n):
+	rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
+	return "Rock"
+def user_92(self_decisions, opponent_decisions, s, o, n):
+	rock, paper, scissors = 'Rock', 'Paper', 'Scissors'
+	return "Rock"
 
 
-user_code = {"10" : user_10, "21" : user_21, "28" : user_28, "2" : user_2, "7" : user_7, "73" : user_73, "55" : user_55, "1" : user_1, "56" : user_56}
+user_code = {"10" : user_10, "21" : user_21, "28" : user_28, "2" : user_2, "73" : user_73, "55" : user_55, "1" : user_1, "56" : user_56, "7" : user_7, "85" : user_85, "90" : user_90, "92" : user_92}

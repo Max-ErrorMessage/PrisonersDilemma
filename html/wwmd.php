@@ -94,7 +94,7 @@ function wwmd($user_decision) {
         <link rel="stylesheet" href="profile.css">
         <link rel="icon" href="/t.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+	<meta name="Viewport" content="width=device-width, initial-scale=0.5">
         <title>Twokie - WWMD?</title>
     </head>
     <body id="body">
