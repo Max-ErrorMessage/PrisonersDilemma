@@ -11,7 +11,7 @@ include "db.php";
 
 // Fetch all decks
 $stmt = $pdo->query("SELECT id, elo FROM ELO");
-decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <html>
