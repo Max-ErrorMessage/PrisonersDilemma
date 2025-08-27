@@ -18,9 +18,9 @@ if (session_status() === PHP_SESSION_NONE) {
 //error_reporting(E_ALL);
 
 $host = "localhost";
-$dbname = "Twokie";
-$username = "TheUnresEloBot";
-$password = "unt1m31y-MALFUNCTION";
+$dbname = "Unres";
+$username = "TwokieBotSQL";
+$password = "teferis_4G3L3SS_1N51GHT";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

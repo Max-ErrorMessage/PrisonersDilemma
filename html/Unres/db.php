@@ -17,10 +17,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
 $host = "localhost";
-$dbname = "Unres";
-$username = "TwokieBotSQL";
-$password = "teferis_4G3L3SS_1N51GHT";
+$dbname = "Twokie";
+$username = "TheUnresEloBot";
+$password = "unt1m31y-MALFUNCTION";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
