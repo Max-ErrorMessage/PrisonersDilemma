@@ -58,7 +58,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <select id="playerA" name="playerA">
                         <?php foreach ($decks as $deck): ?>
                             <option value="<?= htmlspecialchars($deck['id']) ?>">
-                                <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['rating']) ?>
+                                <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -67,7 +67,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <select id="playerB" name="playerB">
                         <?php foreach ($decks as $deck): ?>
                             <option value="<?= htmlspecialchars($deck['id']) ?>">
-                                <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['rating']) ?>
+                                <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
