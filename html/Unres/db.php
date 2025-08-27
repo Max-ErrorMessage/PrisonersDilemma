@@ -19,7 +19,7 @@ error_reporting(E_ALL);
 
 
 $host = "localhost";
-$dbname = "Twokie";
+$dbname = "Unres";
 $username = "TheUnresEloBot";
 $password = "unt1m31y-MALFUNCTION";
 
