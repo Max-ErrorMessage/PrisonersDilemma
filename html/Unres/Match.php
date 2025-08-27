@@ -37,7 +37,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         <canvas id="particleCanvas"></canvas>
         <div id="bg">
-            <div id = "login" style:"background-color:#005500">
+            <div id = "login" style="background-color:#005500">
                  <form action="submit_match.php" method="post">
                     <label for="playerA">Player A:</label>
                     <select id="playerA" name="playerA">
