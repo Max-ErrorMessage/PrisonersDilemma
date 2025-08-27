@@ -37,22 +37,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         <canvas id="particleCanvas"></canvas>
         <div id="bg">
-            <div id = "login">
-                <?php
-                    session_start();
-                    if(isset($_SESSION['Error'])){
-                        echo "<h2>" . $_SESSION['Error'] . "</h2>";
-                    } 
-                ?>
-                <h1 style = "text-align: center;"> Log in </h1>
-                <form style = "text-align: center;" action="login.php" method = "post">
-                    <label for="uname">Username:</label><br>
-                    <input type = "text" id = "uname" name="uname"><br>
-                    <label for="pword">Password:</label><br>
-                    <input type = "password" id = "pword" name="pword"><br><br>
-                    <input class = "butt" type="submit" value="Submit">
-                </form>
-
+            <div id = "login" style:"background-color:#005500">
                  <form action="submit_match.php" method="post">
                     <label for="playerA">Player A:</label>
                     <select id="playerA" name="playerA">
