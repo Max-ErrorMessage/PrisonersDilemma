@@ -49,13 +49,29 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
             select {
-              padding: 0.5rem;
+              appearance: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+
+              padding: 0.5rem 2rem 0.5rem 0.75rem;
               border-radius: 0.5rem;
-              border: 1px solid #00aa00;
-              background-color: #001500;
-              color: #eee;
+              border: 1px solid #00ff00;
+              background-color: #001000;
+              color: #aaffaa;
               font-size: 1rem;
-              transition: border-color 0.2s, box-shadow 0.2s;
+              cursor: pointer;
+              position: relative;
+            }
+
+
+            select::after {
+              content: "▼";
+              position: absolute;
+              right: 0.75rem;
+              top: 50%;
+              transform: translateY(-50%);
+              pointer-events: none;
+              color: #00ff00;
             }
 
             select:focus {
