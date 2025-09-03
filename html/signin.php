@@ -126,6 +126,8 @@ session_start();
                 this.speedY += this.yModifier + wind.y;
                 if (this.speedX > 10) this.speedX = 10
                 if (this.speedY > 10) this.speedY = 10
+                if (this.speedX < -10) this.speedX = -10
+                if (this.speedY < -10) this.speedY = -10
                 this.x += this.speedX;
                 this.y += this.speedY;
 
@@ -137,8 +139,8 @@ session_start();
                 if (this.y > canvas.height) this.y -= canvas.height;
                 if (this.y < 0) this.y+= canvas.height;
 
-                this.speedX *= 0.95
-                this.speedY *= 0.95
+                this.speedX *= 0.9
+                this.speedY *= 0.9
               }
             
               draw() {
