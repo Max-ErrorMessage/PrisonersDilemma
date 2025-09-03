@@ -29,6 +29,64 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               height: 100%;
               z-index: -1;
             }
+
+            form {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem; /* spacing between elements */
+              padding: 2rem;
+              border-radius: 1rem;
+              background: rgba(0, 40, 0, 0.85);
+              box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+              color: #eee;
+              font-family: Arial, sans-serif;
+            }
+
+            label {
+              font-weight: bold;
+              margin-bottom: 0.25rem;
+              color: #aaffaa;
+            }
+
+            select {
+              padding: 0.5rem;
+              border-radius: 0.5rem;
+              border: 1px solid #00aa00;
+              background-color: #001500;
+              color: #eee;
+              font-size: 1rem;
+              transition: border-color 0.2s, box-shadow 0.2s;
+            }
+
+            select:focus {
+              outline: none;
+              border-color: #00ff00;
+              box-shadow: 0 0 5px #00ff00;
+            }
+
+            input[type="submit"] {
+              padding: 0.75rem;
+              border-radius: 0.75rem;
+              border: none;
+              background: linear-gradient(to right, #00aa00, #007700);
+              color: white;
+              font-size: 1rem;
+              font-weight: bold;
+              cursor: pointer;
+              transition: transform 0.2s, background 0.2s;
+            }
+
+            input[type="submit"]:hover {
+              background: linear-gradient(to right, #00ff00, #009900);
+              transform: scale(1.05);
+            }
+
+            #login {
+              max-width: 400px;
+              margin: 5rem auto;
+              border-radius: 1.25rem;
+              padding: 2rem;
+            }
         </style>
         <link rel="stylesheet" href="login.css">
 	<meta name="description" content="Create bots to compete in fun minigames! :)">
