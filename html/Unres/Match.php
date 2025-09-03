@@ -101,6 +101,8 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="login-dark">
         <form action="submit_match.php" method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group">
                 <label for="playerA">Player A:</label>
                 <select class="form-control"  id="playerA" name="playerA">
