@@ -82,7 +82,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               font-size: 1rem;
               cursor: pointer;
               transition: border-color 0.2s, box-shadow 0.2s;
-              width:94%
+              width:90%
             }
 
             select:focus, .custom-select.open {
