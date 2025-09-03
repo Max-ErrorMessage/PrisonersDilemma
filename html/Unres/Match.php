@@ -28,6 +28,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           height:1000px;
           background:#475d62 url("https://cards.scryfall.io/art_crop/front/c/8/c85f9623-5900-473c-a3b1-f98473b9a545.jpg?1562935194");
           background-size:cover;
+          background-position: bottom center;
           position:relative;
         }
 
