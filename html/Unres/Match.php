@@ -30,60 +30,81 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               z-index: -1;
             }
 
-            .custom-select {
-              position: relative;
-              width: 100%;
-              background: #001000;
-              border: 2px solid #00ff00;
-              border-radius: 8px;
-              cursor: pointer;
+            body {
+              background-image: linear-gradient(to bottom right, #000000, #001500);
+              font-family: Arial, sans-serif;
               color: #aaffaa;
-              font-size: 1rem;
-              margin-bottom: 1rem;
+              margin: 0;
+              height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
 
-            .custom-select .selected {
-              padding: 0.5rem 0.75rem;
-              border-radius: 6px;
+            /* Form container "card" */
+            #login {
+              background: rgba(0, 30, 0, 0.9);
+              padding: 2rem;
+              border-radius: 1rem;
+              box-shadow: 0 0 25px rgba(0, 255, 100, 0.25);
+              max-width: 400px;
+              width: 100%;
             }
 
-            .custom-select .options {
-              display: none;
-              position: absolute;
-              top: calc(100% + 2px);
-              left: 0;
-              right: 0;
+            /* Form layout */
+            form {
+              display: flex;
+              flex-direction: column;
+              gap: 1.25rem;
+            }
+
+            /* Labels */
+            label {
+              font-weight: bold;
+              margin-bottom: 0.25rem;
+              color: #7fff7f;
+            }
+
+            /* Custom select style */
+            .custom-select, select {
+              appearance: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+
               background: #001000;
-              border: 2px solid #00ff00;
-              border-radius: 6px;
-              max-height: 0;
-              overflow: hidden;
-              transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
-              opacity: 0;
-              z-index: 100;
+              color: #aaffaa;
+              border: 2px solid #00cc66;
+              border-radius: 8px;
+              padding: 0.6rem 0.75rem;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: border-color 0.2s, box-shadow 0.2s;
             }
 
-            .custom-select.open .options {
-              display: block;
-              max-height: 200px; /* scroll if too many items */
-              opacity: 1;
-              overflow-y: auto;
+            select:focus, .custom-select.open {
+              border-color: #00ff99;
+              box-shadow: 0 0 10px #00ff99;
+              outline: none;
             }
 
-            .custom-select .options li {
-              padding: 0.5rem 0.75rem;
-              background: #001500;
-              border-bottom: 1px solid rgba(0, 255, 0, 0.2);
-              transition: background 0.2s;
+            /* Submit button */
+            input[type="submit"] {
+              padding: 0.8rem;
+              border-radius: 0.6rem;
+              border: none;
+              background: linear-gradient(90deg, #00cc66, #00994d);
+              color: #fff;
+              font-size: 1rem;
+              font-weight: bold;
+              cursor: pointer;
+              transition: transform 0.2s, background 0.2s;
             }
 
-            .custom-select .options li:last-child {
-              border-bottom: none;
+            input[type="submit"]:hover {
+              background: linear-gradient(90deg, #00ff99, #00cc66);
+              transform: scale(1.05);
             }
 
-            .custom-select .options li:hover {
-              background: rgba(0, 255, 0, 0.2);
-            }
         </style>
         <link rel="stylesheet" href="login.css">
 	<meta name="description" content="Create bots to compete in fun minigames! :)">
