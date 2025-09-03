@@ -122,8 +122,8 @@ session_start();
                 this.xModifier = modifier*xComp
                 this.yModifier = modifier*yComp
                   
-                this.x += this.speedX + this.xModifier + (5*wind.x/speed);
-                this.y += this.speedY + this.yModifier + (5*wind.y/speed);
+                this.x += this.speedX + this.xModifier + (5*wind.x/speedX);
+                this.y += this.speedY + this.yModifier + (5*wind.y/speedY);
             
                 
                 //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
