@@ -26,7 +26,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <style>
         .login-dark {
           height:1000px;
-          background:#475d62 url(../../assets/img/star-sky.jpg);
+          background:#475d62 url("https://cards.scryfall.io/art_crop/front/c/8/c85f9623-5900-473c-a3b1-f98473b9a545.jpg?1562935194");
           background-size:cover;
           position:relative;
         }
@@ -96,9 +96,6 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           transform:translateY(1px);
         }
 
-        body {
-            background-image: url("https://cards.scryfall.io/art_crop/front/c/8/c85f9623-5900-473c-a3b1-f98473b9a545.jpg?1562935194");
-        }
 
     </style>
 </head>
