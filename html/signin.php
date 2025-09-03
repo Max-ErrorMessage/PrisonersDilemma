@@ -160,7 +160,8 @@ session_start();
               }
               else
               {
-               wind = wind * 0.99
+                wind.x *= 0.9
+                wind.y *= 0.9
               }
               console.log(wind)
               console.log(wind.x)
