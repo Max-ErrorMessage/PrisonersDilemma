@@ -156,8 +156,8 @@ session_start();
               ctx.clearRect(0, 0, canvas.width, canvas.height);
 
               if (Math.random() < 0.001){
-                wind.x = (math.Random() * 5) - 2.5
-                wind.y = (math.Random() * 5) - 2.5
+                wind.x = (Math.Random() * 5) - 2.5
+                wind.y = (Math.Random() * 5) - 2.5
               }
               else
               {
