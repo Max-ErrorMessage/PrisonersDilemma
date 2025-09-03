@@ -125,83 +125,128 @@ input[type="submit"]:hover {
 </div>
 
 <script>
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const particles = [];
-const mouse = {
-    x: null,
-    y: null,
-};
-window.addEventListener('mousemove', (event) => {
-    mouse.x = event.x;
-    mouse.y = event.y;
-});
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
 
-// Particle class
-class Particle {
-    constructor() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    var wind ={
+      x: 0,
+      y: 0
+    }
+
+    const mouse = {
+      x: null,
+      y: null
+    };
+
+    window.addEventListener('mousemove', (event) => {
+      mouse.x = event.x;
+      mouse.y = event.y;
+    });
+
+    // Particle class
+    class Particle {
+      constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2 + 2;
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = Math.random() * 1 - 0.5;
         this.alpha = Math.random() * 0.25 + 0.75;
-        this.xModifier = 0;
-        this.yModifer = 0;
-    }
-    update() {
+        this.xModifier = 0
+        this.yModifier = 0
+      }
+
+      update() {
+
         var dx = this.x - mouse.x;
         var dy = this.y - mouse.y;
-        var distance = Math.sqrt(dx * dx + dy * dy);
-        var xComp = dx / distance;
-        var yComp = dy / distance;
-        var modifier = 20 / distance;
-        this.xModifier = modifier * xComp;
-        this.yModifier = modifier * yComp;
-        this.x += this.speedX + this.xModifier;
-        this.y += this.speedY + this.yModifier;
 
-        if (this.x > canvas.width && this.speedX > 0) this.speedX *= -1;
-        if (this.x < 0 && this.speedX < 0) this.speedX *= -1;
-        if (this.y > canvas.height && this.speedY > 0) this.speedY *= -1;
-        if (this.y < 0 && this.speedY < 0) this.speedY *= -1;
-    }
-    draw() {
-        ctx.fillStyle = `rgba(0, 100, 0, ${this.alpha})`;
+        var distance = Math.sqrt(dx * dx + dy * dy);
+
+        var xComp = dx/distance;
+        var yComp = dy/distance;
+
+        var modifier = 5/distance;
+
+
+
+
+        this.xModifier = modifier*xComp
+        this.yModifier = modifier*yComp
+
+        this.speedX += this.xModifier + wind.x;
+        this.speedY += this.yModifier + wind.y;
+        if (this.speedX > 10) this.speedX = 10
+        if (this.speedY > 10) this.speedY = 10
+        if (this.speedX < -10) this.speedX = -10
+        if (this.speedY < -10) this.speedY = -10
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+        //if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+
+        if (this.x > canvas.width) this.x -= canvas.width;
+        if (this.x < 0) this.x += canvas.width;
+        if (this.y > canvas.height) this.y -= canvas.height;
+        if (this.y < 0) this.y+= canvas.height;
+
+        if (this.speedX + this.speedY > 8){
+            this.speedX *= 0.9
+            this.speedY *= 0.9
+        }
+      }
+
+      draw() {
+        ctx.fillStyle = `rgba(0, 100, 0, 1)`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
         ctx.fill();
+      }
     }
-}
 
-// Create particles
-function init() {
-    for (let i = 0; i < 100; i++) {
+    // Create particles
+    function init() {
+      for (let i = 0; i < 100; i++) { // Number of particles
         particles.push(new Particle());
+      }
     }
-}
 
-// Animate particles
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((particle) => {
+    // Animate particles
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (Math.random() < 0.001){
+        wind.x += (Math.random() * 6) - 3
+        wind.y += (Math.random() * 6) - 3
+      }
+      else
+      {
+        wind.x *= 0.995
+        wind.y *= 0.995
+      }
+      particles.forEach((particle) => {
         particle.update();
         particle.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // Adjust canvas on window resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     });
-    requestAnimationFrame(animate);
-}
 
-// Adjust canvas on window resize
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
+    init();
+    animate();
 
-init();
-animate();
 </script>
 </body>
 </html>
