@@ -51,7 +51,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
             #bg{
-                width: 50%;
+                width: 40%;
             }
 
             /* Form layout */
@@ -82,6 +82,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               font-size: 1rem;
               cursor: pointer;
               transition: border-color 0.2s, box-shadow 0.2s;
+              width:94%
             }
 
             select:focus, .custom-select.open {
