@@ -32,6 +32,15 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           position:relative;
         }
 
+        .login-dark::before {
+          content: "";
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0));
+          backdrop-filter: blur(5px); /* apply blur to everything behind */
+          pointer-events: none; /* so it doesn’t block clicks */
+        }
+
         .login-dark form {
           max-width:320px;
           width:90%;
