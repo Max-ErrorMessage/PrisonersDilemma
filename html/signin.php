@@ -139,8 +139,10 @@ session_start();
                 if (this.y > canvas.height) this.y -= canvas.height;
                 if (this.y < 0) this.y+= canvas.height;
 
-                this.speedX *= 0.9
-                this.speedY *= 0.9
+                if (speedX + speedY > 8){
+                    this.speedX *= 0.9
+                    this.speedY *= 0.9
+                }
               }
             
               draw() {
