@@ -53,15 +53,15 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               -webkit-appearance: none;
               -moz-appearance: none;
 
-              padding: 0.5rem 2rem 0.5rem 0.75rem;
-              border-radius: 5px;
-              border: 1px solid #00ff00;
               background-color: #001000;
               color: #aaffaa;
+              border: 2px solid #00ff00;
+              border-radius: 8px;
+              padding: 0.5rem 2rem 0.5rem 0.75rem;
               font-size: 1rem;
               cursor: pointer;
-              position: relative;
-              outline:none;
+              outline: none;
+              box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
 
             }
 
