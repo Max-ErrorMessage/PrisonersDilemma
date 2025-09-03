@@ -128,10 +128,10 @@ session_start();
                 //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 //if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
                 
-                if (this.x > canvas.width && this.speedX > 0) this.speedX *= -1;
-                if (this.x < 0 && this.speedX < 0) this.speedX *= -1;
-                if (this.y > canvas.height && this.speedY > 0) this.speedY *= -1;
-                if (this.y < 0 && this.speedY < 0) this.speedY *= -1;
+                if (this.x > canvas.width) this.x -= canvas.width;
+                if (this.x < 0) this.x += canvas.width;
+                if (this.y > canvas.height) this.y -= canvas.height;
+                if (this.y < 0) this.y+= canvas.height;
               }
             
               draw() {
@@ -155,13 +155,13 @@ session_start();
               ctx.clearRect(0, 0, canvas.width, canvas.height);
 
               if (Math.random() < 0.001){
-                wind.x = (Math.random() * 5) - 2.5
-                wind.y = (Math.random() * 5) - 2.5
+                wind.x = (Math.random() * 10) - 5
+                wind.y = (Math.random() * 10) - 5
               }
               else
               {
-                wind.x *= 0.99
-                wind.y *= 0.99
+                wind.x *= 0.999
+                wind.y *= 0.999
               }
               particles.forEach((particle) => {
                 particle.update();
