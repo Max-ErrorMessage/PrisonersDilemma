@@ -47,7 +47,11 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               padding: 2rem;
               border-radius: 1rem;
               box-shadow: 0 0 25px rgba(0, 255, 100, 0.25);
-              width: 50%;
+              width: 100%;
+            }
+
+            #bg{
+                width: 50%;
             }
 
             /* Form layout */
