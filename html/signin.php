@@ -124,8 +124,7 @@ session_start();
                   
                 this.x += this.speedX + this.xModifier + wind.x;
                 this.y += this.speedY + this.yModifier + wind.y;
-            
-                console.log(this.x)
+
                 //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 //if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
                 
@@ -163,7 +162,9 @@ session_start();
               {
                wind = wind * 0.99
               }
-
+              console.log(wind)
+              console.log(wind.x)
+              console.log("-")
               particles.forEach((particle) => {
                 particle.update();
                 particle.draw();
