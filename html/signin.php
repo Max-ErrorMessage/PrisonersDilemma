@@ -99,7 +99,7 @@ session_start();
                 this.size = Math.random() * 2 + 2; 
                 this.speedX = Math.random() * 1 - 0.5;
                 this.speedY = Math.random() * 1 - 0.5;
-                this.alpha = Math.random() * 0.5 + 0.5;
+                this.alpha = Math.random() * 0.25 + 0.75;
                 this.xModifier = 0
                 this.yModifier = 0
               }
@@ -122,10 +122,10 @@ session_start();
                 this.xModifier = modifier*xComp
                 this.yModifier = modifier*yComp
                   
-                this.x += this.speedX + this.xModifier + (5*wind.x/this.speedX);
-                this.y += this.speedY + this.yModifier + (5*wind.y/this.speedY);
+                this.x += this.speedX + this.xModifier + wind.x;
+                this.y += this.speedY + this.yModifier + wind.y;
             
-                console.log(this.speedX)
+                console.log(this.x)
                 //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 //if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
                 
@@ -136,7 +136,7 @@ session_start();
               }
             
               draw() {
-                ctx.fillStyle = `rgba(0, 100, 0, ${this.alpha})`;
+                ctx.fillStyle = `rgba(0, 100, 0, 1)`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.closePath();
