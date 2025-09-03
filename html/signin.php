@@ -155,17 +155,14 @@ session_start();
               ctx.clearRect(0, 0, canvas.width, canvas.height);
 
               if (Math.random() < 0.001){
-                wind.x = (Math.Random() * 5) - 2.5
-                wind.y = (Math.Random() * 5) - 2.5
+                wind.x = (Math.random() * 5) - 2.5
+                wind.y = (Math.random() * 5) - 2.5
               }
               else
               {
-                wind.x *= 0.9
-                wind.y *= 0.9
+                wind.x *= 0.99
+                wind.y *= 0.99
               }
-              console.log(wind)
-              console.log(wind.x)
-              console.log("-")
               particles.forEach((particle) => {
                 particle.update();
                 particle.draw();
