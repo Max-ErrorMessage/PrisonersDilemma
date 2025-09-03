@@ -77,13 +77,13 @@ session_start();
             
             const particles = [];
             const wind ={
-              x: 0
+              x: 0,
               y: 0
             }
 
             const mouse = {
               x: null,
-              y: null,
+              y: null
             };
             
             window.addEventListener('mousemove', (event) => {
