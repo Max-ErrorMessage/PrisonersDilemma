@@ -107,7 +107,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .option{
-            background-color: #1e2833
+            background-color: #1e2833 !important;
         }
 
     </style>
