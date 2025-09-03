@@ -114,7 +114,7 @@ session_start();
                 var xComp = dx/distance;
                 var yComp = dy/distance;
                 
-                var modifier = 20/distance;
+                var modifier = 5/distance;
 
 
 
