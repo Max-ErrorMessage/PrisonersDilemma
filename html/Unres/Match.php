@@ -74,6 +74,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               transform: translateY(-50%);
               pointer-events: none;
               color: #00ff00;
+              outline: none;
             }
 
             select:focus {
