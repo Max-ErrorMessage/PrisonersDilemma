@@ -76,7 +76,7 @@ session_start();
             canvas.height = window.innerHeight;
             
             const particles = [];
-            const wind ={
+            var wind ={
               x: 0,
               y: 0
             }
