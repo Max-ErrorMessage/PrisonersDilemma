@@ -73,7 +73,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .login-dark form .btn-primary {
-          background:#214a80;
+          background:#99E6FC;
           border:none;
           border-radius:4px;
           padding:11px;
@@ -84,7 +84,8 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
-          background:#214a80;
+          background:#bff;
+          padding:15px;
           outline:none;
         }
 
