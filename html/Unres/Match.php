@@ -16,35 +16,41 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=0.75">
-<title>Unrestricted Vintage Matchups</title>
-<link rel="icon" href="/t.ico" type="image/x-icon">
-<meta name="description" content="Create bots to compete in fun minigames! :)">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <title>Unrestricted Vintage Matchups</title>
+    <link rel="icon" href="/t.ico" type="image/x-icon">
+    <meta name="description" content="Create bots to compete in fun minigames! :)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<canvas id="particleCanvas"></canvas>
 
-<div id="form-cont">
-    <form action="submit_match.php" method="post">
-        <label for="playerA">Player A:</label>
-        <select id="playerA" name="playerA">
-            <?php foreach ($decks as $deck): ?>
-                <option value="<?= htmlspecialchars($deck['id']) ?>">
-                    <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <label for="playerB">Player B:</label>
-        <select id="playerB" name="playerB">
-            <?php foreach ($decks as $deck): ?>
-                <option value="<?= htmlspecialchars($deck['id']) ?>">
-                    <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <input type="submit" value="Submit Match">
-    </form>
-</div>
+    <div class="login-dark">
+        <form action="submit_match.php" method="post">
+            <div class="form-group">
+                <label for="playerA">Player A:</label>
+                <select class="form-control"  id="playerA" name="playerA">
+                    <?php foreach ($decks as $deck): ?>
+                        <option value="<?= htmlspecialchars($deck['id']) ?>">
+                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="playerB">Player B:</label>
+                <select class="form-control"  id="playerB" name="playerB">
+                    <?php foreach ($decks as $deck): ?>
+                        <option value="<?= htmlspecialchars($deck['id']) ?>">
+                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
+        </form>
+    </div>
 
 </body>
 </html>
