@@ -1,11 +1,12 @@
 <?php
 
-/**
+/*
  * Allows users to either sign up and create a new account or log in to an existing account
  *
  * Author: James Aris
  */
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include "db.php";
 
 
