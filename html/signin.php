@@ -116,10 +116,6 @@ session_start();
                 
                 var modifier = 20/distance;
 
-                var windmod = {
-                    x: 0,
-                    y: 0
-                }
 
 
 
@@ -127,7 +123,7 @@ session_start();
                 this.yModifier = modifier*yComp
                   
                 this.x += this.speedX + this.xModifier + (5*wind.x/speed);
-                this.y += this.speedY + this.yModifier + (5*wind.x/speed);
+                this.y += this.speedY + this.yModifier + (5*wind.y/speed);
             
                 
                 //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
