@@ -154,14 +154,14 @@ session_start();
             function animate() {
               ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-              if (Math.random() < 0.005){
+              if (Math.random() < 0.001){
                 wind.x += (Math.random() * 10) - 5
                 wind.y += (Math.random() * 10) - 5
               }
               else
               {
-                wind.x *= 0.999
-                wind.y *= 0.999
+                wind.x *= 0.995
+                wind.y *= 0.995
               }
               particles.forEach((particle) => {
                 particle.update();
