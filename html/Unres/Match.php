@@ -26,7 +26,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <style>
         .login-dark {
           height:1000px;
-          background:#475d62 url("https://cards.scryfall.io/art_crop/front/c/8/c85f9623-5900-473c-a3b1-f98473b9a545.jpg?1562935194");
+          background:#475d62 url("https://cards.scryfall.io/art_crop/front/8/c/8c2996d9-3287-4480-8c04-7a378e37e3cf.jpg?1707237513");
           background-size:cover;
           background-position: bottom center;
           position:relative;
