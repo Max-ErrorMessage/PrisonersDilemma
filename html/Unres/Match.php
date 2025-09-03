@@ -50,20 +50,35 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             .custom-select .options {
               display: none;
               position: absolute;
-              top: 100%;
+              top: calc(100% + 2px);
               left: 0;
               right: 0;
-              background: #001500;
+              background: #001000;
               border: 2px solid #00ff00;
               border-radius: 6px;
-              max-height: 200px;
-              overflow-y: auto;
+              max-height: 0;
+              overflow: hidden;
+              transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+              opacity: 0;
               z-index: 100;
+            }
+
+            .custom-select.open .options {
+              display: block;
+              max-height: 200px; /* scroll if too many items */
+              opacity: 1;
+              overflow-y: auto;
             }
 
             .custom-select .options li {
               padding: 0.5rem 0.75rem;
+              background: #001500;
+              border-bottom: 1px solid rgba(0, 255, 0, 0.2);
               transition: background 0.2s;
+            }
+
+            .custom-select .options li:last-child {
+              border-bottom: none;
             }
 
             .custom-select .options li:hover {
@@ -122,20 +137,18 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
               // Open/close dropdown
               selected.addEventListener("click", () => {
-                document.querySelectorAll(".options").forEach(opt => {
-                  if (opt !== options) opt.style.display = "none";
+                  document.querySelectorAll(".custom-select").forEach(s => {
+                    if (s !== select) s.classList.remove("open");
+                  });
+                  select.classList.toggle("open");
                 });
-                options.style.display = options.style.display === "block" ? "none" : "block";
-              });
 
               // Choose option
-              options.querySelectorAll("li").forEach(option => {
-                option.addEventListener("click", () => {
+              option.addEventListener("click", () => {
                   selected.textContent = option.textContent;
                   hiddenInput.value = option.dataset.value;
-                  options.style.display = "none";
+                  select.classList.remove("open");
                 });
-              });
             });
 
             // Close dropdowns when clicking outside
