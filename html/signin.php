@@ -160,8 +160,8 @@ session_start();
               }
               else
               {
-                wind.x *= 0.995
-                wind.y *= 0.995
+                wind.x *= 0.998
+                wind.y *= 0.998
               }
               particles.forEach((particle) => {
                 particle.update();
