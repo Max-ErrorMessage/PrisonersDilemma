@@ -102,7 +102,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="login-dark">
         <form action="submit_match.php" method="post">
             <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"></i></div>
+            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
             <div class="form-group">
                 <label for="playerA">Player A:</label>
                 <select class="form-control"  id="playerA" name="playerA">
