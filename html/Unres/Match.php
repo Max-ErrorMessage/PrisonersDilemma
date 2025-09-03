@@ -105,6 +105,51 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               transform: scale(1.05);
             }
 
+            .custom-select {
+              position: relative;
+              width: 100%;
+              background: #001000;
+              border: 2px solid #00ff00;
+              border-radius: 8px;
+              cursor: pointer;
+              color: #aaffaa;
+              font-size: 1rem;
+              margin-bottom: 1rem;
+            }
+
+            .custom-select .selected {
+              padding: 0.6rem 0.75rem;
+            }
+
+            .custom-select .options {
+              display: none;
+              position: absolute;
+              top: calc(100% + 2px);
+              left: 0;
+              right: 0;
+              background: #001500;
+              border: 2px solid #00ff00;
+              border-radius: 8px;
+              overflow: hidden;
+              z-index: 100;
+            }
+
+            .custom-select.open .options {
+              display: block;
+            }
+
+            .custom-select .options li {
+              list-style: none;              /* removes bullet points */
+              padding: 0.6rem 0.75rem;
+              color: #aaffaa;
+              cursor: pointer;
+              transition: background 0.2s;
+            }
+
+            .custom-select .options li:hover {
+              background: rgba(0, 255, 0, 0.2);
+              color: #00ff99;
+            }
         </style>
         <link rel="stylesheet" href="login.css">
 	<meta name="description" content="Create bots to compete in fun minigames! :)">
