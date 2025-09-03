@@ -111,7 +111,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             .custom-select {
               position: relative;
-              width: 100%;
+              width: 95%;
               background: #001000;
               border: 2px solid #00ff00;
               border-radius: 8px;
