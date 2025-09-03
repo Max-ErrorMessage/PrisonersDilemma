@@ -144,11 +144,13 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 });
 
               // Choose option
-              option.addEventListener("click", () => {
+              options.querySelectorAll("li").forEach(option => {
+                option.addEventListener("click", () => {
                   selected.textContent = option.textContent;
                   hiddenInput.value = option.dataset.value;
                   select.classList.remove("open");
                 });
+              });
             });
 
             // Close dropdowns when clicking outside
