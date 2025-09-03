@@ -164,13 +164,13 @@ session_start();
               ctx.clearRect(0, 0, canvas.width, canvas.height);
 
               if (Math.random() < 0.001){
-                wind.x += (Math.random() * 10) - 5
-                wind.y += (Math.random() * 10) - 5
+                wind.x += (Math.random() * 6) - 3
+                wind.y += (Math.random() * 6) - 3
               }
               else
               {
-                wind.x *= 0.998
-                wind.y *= 0.998
+                wind.x *= 0.995
+                wind.y *= 0.995
               }
               particles.forEach((particle) => {
                 particle.update();
