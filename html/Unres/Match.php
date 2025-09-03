@@ -30,82 +30,44 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               z-index: -1;
             }
 
-            form {
-              display: flex;
-              flex-direction: column;
-              gap: 1rem; /* spacing between elements */
-              padding: 2rem;
-              border-radius: 1rem;
-              background: rgba(0, 40, 0, 0.85);
-              box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-              color: #eee;
-              font-family: Arial, sans-serif;
-            }
-
-            label {
-              font-weight: bold;
-              margin-bottom: 0.25rem;
-              color: #aaffaa;
-            }
-
-            select {
-              appearance: none;
-              -webkit-appearance: none;
-              -moz-appearance: none;
-
-              background-color: #001000;
-              color: #aaffaa;
+            .custom-select {
+              position: relative;
+              width: 100%;
+              background: #001000;
               border: 2px solid #00ff00;
               border-radius: 8px;
-              padding: 0.5rem 2rem 0.5rem 0.75rem;
-              font-size: 1rem;
               cursor: pointer;
-
-              outline: none !important;   /* kill grey outline */
-              box-shadow: none !important;
+              color: #aaffaa;
+              font-size: 1rem;
+              margin-bottom: 1rem;
             }
 
+            .custom-select .selected {
+              padding: 0.5rem 0.75rem;
+              border-radius: 6px;
+            }
 
-            select::after {
-              content: "▼";
+            .custom-select .options {
+              display: none;
               position: absolute;
-              right: 0.75rem;
-              top: 50%;
-              transform: translateY(-50%);
-              pointer-events: none;
-              color: #00ff00;
-              outline: none;
+              top: 100%;
+              left: 0;
+              right: 0;
+              background: #001500;
+              border: 2px solid #00ff00;
+              border-radius: 6px;
+              max-height: 200px;
+              overflow-y: auto;
+              z-index: 100;
             }
 
-            select:focus {
-              outline: none;
-              border-color: #00ff00;
-              box-shadow: 0 0 5px #00ff00;
-
+            .custom-select .options li {
+              padding: 0.5rem 0.75rem;
+              transition: background 0.2s;
             }
 
-            input[type="submit"] {
-              padding: 0.75rem;
-              border-radius: 0.75rem;
-              border: none;
-              background: linear-gradient(to right, #00aa00, #007700);
-              color: white;
-              font-size: 1rem;
-              font-weight: bold;
-              cursor: pointer;
-              transition: transform 0.2s, background 0.2s;
-            }
-
-            input[type="submit"]:hover {
-              background: linear-gradient(to right, #00ff00, #009900);
-              transform: scale(1.05);
-            }
-
-            #login {
-              max-width: 400px;
-              margin: 5rem auto;
-              border-radius: 1.25rem;
-              padding: 2rem;
+            .custom-select .options li:hover {
+              background: rgba(0, 255, 0, 0.2);
             }
         </style>
         <link rel="stylesheet" href="login.css">
@@ -118,26 +80,34 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div id="bg">
             <div id = "login" style="background-color:#005500">
                  <form action="submit_match.php" method="post">
-                    <label for="playerA">Player A:</label>
-                    <select id="playerA" name="playerA">
-                        <?php foreach ($decks as $deck): ?>
-                            <option value="<?= htmlspecialchars($deck['id']) ?>">
-                                <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                      <label for="playerA">Player A:</label>
+                      <div class="custom-select" data-name="playerA">
+                        <div class="selected">Select a deck</div>
+                        <ul class="options">
+                          <?php foreach ($decks as $deck): ?>
+                            <li data-value="<?= htmlspecialchars($deck['id']) ?>">
+                              <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                            </li>
+                          <?php endforeach; ?>
+                        </ul>
+                        <input type="hidden" name="playerA">
+                      </div>
 
-                    <label for="playerB">Player B:</label>
-                    <select id="playerB" name="playerB">
-                        <?php foreach ($decks as $deck): ?>
-                            <option value="<?= htmlspecialchars($deck['id']) ?>">
-                                <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                      <label for="playerB">Player B:</label>
+                      <div class="custom-select" data-name="playerB">
+                        <div class="selected">Select a deck</div>
+                        <ul class="options">
+                          <?php foreach ($decks as $deck): ?>
+                            <li data-value="<?= htmlspecialchars($deck['id']) ?>">
+                              <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                            </li>
+                          <?php endforeach; ?>
+                        </ul>
+                        <input type="hidden" name="playerB">
+                      </div>
 
-                    <input type="submit" value="Submit Match">
-                 </form>
+                      <input type="submit" value="Submit Match">
+                    </form>
 
 
             </div>
@@ -145,6 +115,36 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         
         <script>
+            document.querySelectorAll(".custom-select").forEach(select => {
+              const selected = select.querySelector(".selected");
+              const options = select.querySelector(".options");
+              const hiddenInput = select.querySelector("input[type=hidden]");
+
+              // Open/close dropdown
+              selected.addEventListener("click", () => {
+                document.querySelectorAll(".options").forEach(opt => {
+                  if (opt !== options) opt.style.display = "none";
+                });
+                options.style.display = options.style.display === "block" ? "none" : "block";
+              });
+
+              // Choose option
+              options.querySelectorAll("li").forEach(option => {
+                option.addEventListener("click", () => {
+                  selected.textContent = option.textContent;
+                  hiddenInput.value = option.dataset.value;
+                  options.style.display = "none";
+                });
+              });
+            });
+
+            // Close dropdowns when clicking outside
+            window.addEventListener("click", e => {
+              if (!e.target.closest(".custom-select")) {
+                document.querySelectorAll(".options").forEach(opt => opt.style.display = "none");
+              }
+            });
+
             const canvas = document.getElementById('particleCanvas');
             const ctx = canvas.getContext('2d');
             
