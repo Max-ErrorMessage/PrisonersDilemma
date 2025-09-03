@@ -125,7 +125,7 @@ session_start();
                 this.x += this.speedX + this.xModifier + (5*wind.x/this.speedX);
                 this.y += this.speedY + this.yModifier + (5*wind.y/this.speedY);
             
-                
+                console.log(this.speedX)
                 //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 //if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
                 
