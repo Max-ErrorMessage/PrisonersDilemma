@@ -47,8 +47,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               padding: 2rem;
               border-radius: 1rem;
               box-shadow: 0 0 25px rgba(0, 255, 100, 0.25);
-              max-width: 400px;
-              width: 100%;
+              width: 50%;
             }
 
             /* Form layout */
@@ -149,78 +148,6 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             .custom-select .options li:hover {
               background: rgba(0, 255, 0, 0.2);
               color: #00ff99;
-            }
-
-            body {
-              background: linear-gradient(to bottom right, #000000, #001500);
-              font-family: Arial, sans-serif;
-              color: #aaffaa;
-              margin: 0;
-              height: 100vh;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-
-            /* Card container */
-            #login {
-              background: rgba(0, 25, 0, 0.95);
-              padding: 3rem 2rem;
-              border-radius: 1rem;
-              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-              width: 90%;
-              max-width: 500px;  /* bigger than before */
-            }
-
-            /* Form layout */
-            form {
-              display: flex;
-              flex-direction: column;
-              gap: 1.5rem;
-            }
-
-            /* Labels */
-            label {
-              font-weight: bold;
-              margin-bottom: 0.4rem;
-              color: #66ff99;
-              text-align: center;  /* centered labels */
-            }
-
-            /* Inputs (select, text, etc.) */
-            select, input[type="text"] {
-              background: #001400;
-              color: #aaffaa;
-              border: 1px solid #00cc66;
-              border-radius: 6px;
-              padding: 0.75rem;
-              font-size: 1rem;
-              text-align: center;  /* centers text inside */
-              transition: border-color 0.2s, box-shadow 0.2s;
-            }
-
-            select:focus, input[type="text"]:focus {
-              border-color: #00ff99;
-              box-shadow: 0 0 6px rgba(0, 255, 100, 0.2); /* softer glow */
-              outline: none;
-            }
-
-            /* Submit button */
-            input[type="submit"] {
-              padding: 0.9rem;
-              border-radius: 6px;
-              border: none;
-              background: #00aa55;
-              color: white;
-              font-size: 1.1rem;
-              font-weight: bold;
-              cursor: pointer;
-              transition: transform 0.15s, background 0.2s;
-            }
-
-            input[type="submit"]:hover {
-              background: #00cc66;
-              transform: translateY(-2px);
             }
 
         </style>
