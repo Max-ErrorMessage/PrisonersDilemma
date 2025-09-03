@@ -76,7 +76,11 @@ session_start();
             canvas.height = window.innerHeight;
             
             const particles = [];
-            
+            const wind ={
+              x: 0
+              y: 0
+            }
+
             const mouse = {
               x: null,
               y: null,
@@ -95,9 +99,9 @@ session_start();
                 this.size = Math.random() * 2 + 2; 
                 this.speedX = Math.random() * 1 - 0.5;
                 this.speedY = Math.random() * 1 - 0.5;
-                this.alpha = Math.random() * 0.25 + 0.75;
+                this.alpha = Math.random() * 0.5 + 0.5;
                 this.xModifier = 0
-                this.yModifer = 0
+                this.yModifier = 0
               }
             
               update() {
@@ -111,12 +115,19 @@ session_start();
                 var yComp = dy/distance;
                 
                 var modifier = 20/distance;
-                
+
+                var windmod = {
+                    x: 0,
+                    y: 0
+                }
+
+
+
                 this.xModifier = modifier*xComp
                 this.yModifier = modifier*yComp
                   
-                this.x += this.speedX + this.xModifier;
-                this.y += this.speedY + this.yModifier;
+                this.x += this.speedX + this.xModifier + (5*wind.x/speed);
+                this.y += this.speedY + this.yModifier + (5*wind.x/speed);
             
                 
                 //if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
@@ -147,7 +158,16 @@ session_start();
             // Animate particles
             function animate() {
               ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
+              if (Math.random() < 0.001){
+                wind.x = (math.Random() * 5) - 2.5
+                wind.y = (math.Random() * 5) - 2.5
+              }
+              else
+              {
+               wind = wind * 0.99
+              }
+
               particles.forEach((particle) => {
                 particle.update();
                 particle.draw();
