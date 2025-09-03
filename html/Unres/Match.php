@@ -21,7 +21,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <link rel="icon" href="/t.ico" type="image/x-icon">
 <meta name="description" content="Create bots to compete in fun minigames! :)">
 </head>
-<body style="background-image:linear-gradient(to bottom right, rgb(0,0,0), rgb(0,20,10))" id="body">
+<body>
 <canvas id="particleCanvas"></canvas>
 
 <div id="form-cont">
