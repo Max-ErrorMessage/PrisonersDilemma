@@ -106,7 +106,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           transform:translateY(1px);
         }
 
-        .select::after{
+        .option{
             background-color: #1e2833
         }
 
