@@ -60,9 +60,9 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               padding: 0.5rem 2rem 0.5rem 0.75rem;
               font-size: 1rem;
               cursor: pointer;
-              outline: none;
-              box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
 
+              outline: none !important;   /* kill grey outline */
+              box-shadow: none !important;
             }
 
 
@@ -81,6 +81,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               outline: none;
               border-color: #00ff00;
               box-shadow: 0 0 5px #00ff00;
+
             }
 
             input[type="submit"] {
