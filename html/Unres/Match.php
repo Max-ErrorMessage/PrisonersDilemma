@@ -31,7 +31,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
             body {
-              background-image: linear-gradient(to bottom right, #000000, #001500);
+              background: linear-gradient(to bottom right, #000000, #001500);
               font-family: Arial, sans-serif;
               color: #aaffaa;
               margin: 0;
@@ -41,115 +41,67 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
               justify-content: center;
             }
 
-            /* Form container "card" */
+            /* Card container */
             #login {
-              background: rgba(0, 30, 0, 0.9);
-              padding: 2rem;
+              background: rgba(0, 25, 0, 0.95);
+              padding: 3rem 2rem;
               border-radius: 1rem;
-              box-shadow: 0 0 25px rgba(0, 255, 100, 0.25);
-              max-width: 400px;
-              width: 100%;
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+              width: 90%;
+              max-width: 500px;  /* bigger than before */
             }
 
             /* Form layout */
             form {
               display: flex;
               flex-direction: column;
-              gap: 1.25rem;
+              gap: 1.5rem;
             }
 
             /* Labels */
             label {
               font-weight: bold;
-              margin-bottom: 0.25rem;
-              color: #7fff7f;
+              margin-bottom: 0.4rem;
+              color: #66ff99;
+              text-align: center;  /* centered labels */
             }
 
-            /* Custom select style */
-            .custom-select, select {
-              appearance: none;
-              -webkit-appearance: none;
-              -moz-appearance: none;
-
-              background: #001000;
+            /* Inputs (select, text, etc.) */
+            select, input[type="text"] {
+              background: #001400;
               color: #aaffaa;
-              border: 2px solid #00cc66;
-              border-radius: 8px;
-              padding: 0.6rem 0.75rem;
+              border: 1px solid #00cc66;
+              border-radius: 6px;
+              padding: 0.75rem;
               font-size: 1rem;
-              cursor: pointer;
+              text-align: center;  /* centers text inside */
               transition: border-color 0.2s, box-shadow 0.2s;
             }
 
-            select:focus, .custom-select.open {
+            select:focus, input[type="text"]:focus {
               border-color: #00ff99;
-              box-shadow: 0 0 10px #00ff99;
+              box-shadow: 0 0 6px rgba(0, 255, 100, 0.2); /* softer glow */
               outline: none;
             }
 
             /* Submit button */
             input[type="submit"] {
-              padding: 0.8rem;
-              border-radius: 0.6rem;
+              padding: 0.9rem;
+              border-radius: 6px;
               border: none;
-              background: linear-gradient(90deg, #00cc66, #00994d);
-              color: #fff;
-              font-size: 1rem;
+              background: #00aa55;
+              color: white;
+              font-size: 1.1rem;
               font-weight: bold;
               cursor: pointer;
-              transition: transform 0.2s, background 0.2s;
+              transition: transform 0.15s, background 0.2s;
             }
 
             input[type="submit"]:hover {
-              background: linear-gradient(90deg, #00ff99, #00cc66);
-              transform: scale(1.05);
+              background: #00cc66;
+              transform: translateY(-2px);
             }
 
-            .custom-select {
-              position: relative;
-              width: 100%;
-              background: #001000;
-              border: 2px solid #00ff00;
-              border-radius: 8px;
-              cursor: pointer;
-              color: #aaffaa;
-              font-size: 1rem;
-              margin-bottom: 1rem;
-            }
-
-            .custom-select .selected {
-              padding: 0.6rem 0.75rem;
-            }
-
-            .custom-select .options {
-              display: none;
-              position: absolute;
-              top: calc(100% + 2px);
-              left: 0;
-              right: 0;
-              background: #001500;
-              border: 2px solid #00ff00;
-              border-radius: 8px;
-              overflow: hidden;
-              z-index: 100;
-            }
-
-            .custom-select.open .options {
-              display: block;
-            }
-
-            .custom-select .options li {
-              list-style: none;              /* removes bullet points */
-              padding: 0.6rem 0.75rem;
-              color: #aaffaa;
-              cursor: pointer;
-              transition: background 0.2s;
-            }
-
-            .custom-select .options li:hover {
-              background: rgba(0, 255, 0, 0.2);
-              color: #00ff99;
-            }
         </style>
         <link rel="stylesheet" href="login.css">
 	<meta name="description" content="Create bots to compete in fun minigames! :)">
