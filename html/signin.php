@@ -154,9 +154,9 @@ session_start();
             function animate() {
               ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-              if (Math.random() < 0.001){
-                wind.x = (Math.random() * 10) - 5
-                wind.y = (Math.random() * 10) - 5
+              if (Math.random() < 0.005){
+                wind.x += (Math.random() * 10) - 5
+                wind.y += (Math.random() * 10) - 5
               }
               else
               {
