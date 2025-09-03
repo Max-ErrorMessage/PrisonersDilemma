@@ -11,7 +11,7 @@ include "/var/www/unresdb.php";
 
 
 // Fetch all decks
-$stmt = $pdo->query("SELECT id, elo FROM ELO");
+$stmt = $pdo->query("SELECT id, elo FROM DECKS");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
