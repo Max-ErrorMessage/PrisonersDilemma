@@ -54,6 +54,8 @@ $rank = 1;
           left:50%;
           color:#fff;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+          display: flex;
+          justify-content: center;
         }
 
 
@@ -118,8 +120,8 @@ $rank = 1;
             background:#99E6FC;
             color:#1e2833;
             text-align:center;
-            padding:15px 0 20px;
-            font-size:15px;
+            padding:15px;
+            font-size:20px;
         }
 
         .item p{
