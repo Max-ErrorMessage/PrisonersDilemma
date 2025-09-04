@@ -39,6 +39,7 @@ FROM
 inner join decks d on d.id = t1.deck
 GROUP BY deck
 ORDER BY deck;
+LIMIT 10
 ');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
@@ -98,6 +99,10 @@ $rank = 1;
             text-align:center;
         }
 
+        .lbimg{
+            width:25px;
+        }
+
     </style>
 </head>
 <body>
@@ -112,7 +117,7 @@ $rank = 1;
                         <?= $rank?>.
                     </td><td>
                         <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
-                        <img src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                     </td><td>
                         <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;">#<?= $deck['id'] ?></span>
                     </td><td>
