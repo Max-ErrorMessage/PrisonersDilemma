@@ -61,6 +61,9 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           font-size:100px;
           color:#2980ef;
         }
+        .illustration img{
+        width:25px;
+        }
 
         .login-dark form .form-control {
           background:none;
