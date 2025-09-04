@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 include "/var/www/unresdb.php";
 
 // Fetch all decks
-$stmt = $pdo->query("SELECT id, elo FROM decks");
+$stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -124,7 +124,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <select class="form-control"  id="playerA" name="playerA">
                     <?php foreach ($decks as $deck): ?>
                         <option value="<?= htmlspecialchars($deck['id']) ?>">
-                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
