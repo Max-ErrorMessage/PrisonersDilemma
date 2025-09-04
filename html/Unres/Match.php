@@ -30,7 +30,6 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           background-size:cover;
           background-position: top center;
           position:relative;
-          width:40%;
         }
 
         .login-dark::before {
@@ -43,8 +42,8 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .login-dark form {
-          max-width:320px;
-          width:90%;
+          min-width:320px;
+          width:40%;
           background-color:#1e2833;
           padding:40px;
           border-radius:4px;
