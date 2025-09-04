@@ -96,7 +96,8 @@ $rank = 1;
         }
 
         table{
-            text-align:center;
+            text-align:left;
+            font-size:20px;
         }
 
         .lbimg{
