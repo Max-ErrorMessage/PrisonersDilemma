@@ -114,7 +114,7 @@ $rank = 1;
 
     <div class="login-dark">
         <div id="lb">
-            <div class="illustration"><img src="https://www.flaticon.com/free-icon/winner_5200866"/></div>
+            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
             <table>
             <?php foreach ($decks as $deck): ?>
                 <tr>
