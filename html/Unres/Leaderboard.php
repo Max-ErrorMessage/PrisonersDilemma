@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 include "/var/www/unresdb.php";
 
 // Fetch all decks
-$stmt = $pdo->query("""SELECT
+$stmt = $pdo->query("SELECT
 	t1.deck as id,
 	SUM(
 		CASE t1.colour
@@ -35,7 +35,7 @@ FROM
 ) as t1
 inner join decks d on d.id = t1.deck
 GROUP BY deck
-ORDER BY deck;""");
+ORDER BY deck;");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
