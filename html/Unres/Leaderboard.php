@@ -84,6 +84,7 @@ $rank = 1;
           left:50%;
           color:#fff;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+          height:80%;
         }
 
 
@@ -100,7 +101,7 @@ $rank = 1;
             font-size:20px;
             width:80%;
             position:absolute;
-            left:20px;
+            left:10%;
         }
 
         .lbimg{
