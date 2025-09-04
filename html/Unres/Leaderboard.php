@@ -119,7 +119,7 @@ $rank = 1;
             color:#1e2833;
             text-align:center;
             padding:15px 0 20px;
-            font-size:100px;
+            font-size:15px;
         }
 
         .item p{
