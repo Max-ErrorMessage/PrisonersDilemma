@@ -17,12 +17,12 @@ $stmt = $pdo->query('SELECT
 	t1.deck as id,
 	SUM(
 		CASE t1.colour
-		            WHEN NULL THEN 0
             		WHEN 1 THEN 1
             		WHEN 2 THEN 2
             		WHEN 3 THEN 4
             		WHEN 4 THEN 8
             		WHEN 5 THEN 16
+            		ELSE 0
         	END
 	) AS colour,
 	d.elo as elo,
