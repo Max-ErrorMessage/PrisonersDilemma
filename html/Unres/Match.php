@@ -134,7 +134,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <select class="form-control"  id="playerB" name="playerB">
                     <?php foreach ($decks as $deck): ?>
                         <option value="<?= htmlspecialchars($deck['id']) ?>">
-                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
