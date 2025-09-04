@@ -134,14 +134,22 @@ $rank = 1;
 
     <div class="login-dark">
         <div id="lb">
-            <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
+            <table>
             <?php foreach ($decks as $deck): ?>
-                <div class="item">
-                       <p> <?= $rank?>. <?= htmlspecialchars($deck['id']) ?>:<?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?></p>
-                       <?php $rank++; ?>
-                </div>
+                <tr>
+                    <td>
+                       <?= $rank?>.
+                    </td><td>
+                        <?= htmlspecialchars($deck['id']) ?>:<?= htmlspecialchars($deck['provided_archetype']) ?>
+                    </td><td>
+                        <?= htmlspecialchars($deck['elo']) ?>
+                    </td>
+                </tr>
+                <?php $rank++; ?>
             <?php endforeach; ?>
+            <table>
+
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
