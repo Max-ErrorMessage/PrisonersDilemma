@@ -44,7 +44,7 @@ $rank = 1;
 
         #lb {
           min-width:320px;
-          width:20%;
+          width:40%;
           background-color:#1e2833;
           padding:40px;
           border-radius:4px;
@@ -56,6 +56,13 @@ $rank = 1;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
         }
 
+
+        .login-dark .illustration {
+          text-align:center;
+          padding:15px 0 20px;
+          font-size:100px;
+          color:#2980ef;
+        }
 
         .login-dark form .form-control {
           background:none;
@@ -104,6 +111,12 @@ $rank = 1;
 
         option{
             background-color: #1e2833 !important;
+        }
+
+        .item{
+            width:80%;
+            background:#99E6FC;
+            color:#1e2833;
         }
 
     </style>
