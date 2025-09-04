@@ -35,7 +35,7 @@ FROM
 	LEFT JOIN colours_of_cards coc ON cid.card_id = coc.card_id
 	WHERE coc.colour_id IS NOT NULL
 	AND coc.identity = 1
-	AND coc.card_id not in (93,113,142,150,180)
+	AND coc.card_id not in (93,113,142,150,180,249)
 	GROUP BY cid.deck_id, coc.colour_id
 ) as t1
 inner join decks d on d.id = t1.deck
