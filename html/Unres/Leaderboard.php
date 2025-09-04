@@ -100,7 +100,7 @@ $rank = 1;
 
         table{
             text-align:left;
-            font-size:16px;
+            font-size:12px;
             width:80%;
             position:absolute;
             left:10%;
