@@ -84,7 +84,7 @@ $rank = 1;
           left:50%;
           color:#fff;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-          height:80%;
+          height:70%;
         }
 
 
@@ -114,7 +114,7 @@ $rank = 1;
 
     <div class="login-dark">
         <div id="lb">
-            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
+            <div class="illustration"><img src="https://www.flaticon.com/free-icon/winner_5200866"/></div>
             <table>
             <?php foreach ($decks as $deck): ?>
                 <tr>
