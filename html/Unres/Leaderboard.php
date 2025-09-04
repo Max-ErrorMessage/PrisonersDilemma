@@ -100,14 +100,14 @@ $rank = 1;
 
         table{
             text-align:left;
-            font-size:12px;
+            font-size:20px;
             width:80%;
             position:absolute;
             left:10%;
         }
 
         .lbimg{
-            width:50px;
+            width:25px;
         }
 
     </style>
