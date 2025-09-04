@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 include "/var/www/unresdb.php";
 
 // Fetch all decks
-$stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks");
+$stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks ORDER BY elo DESC");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -26,7 +26,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <style>
         .login-dark {
           height:100%;
-          background:#475d62 url("https://cards.scryfall.io/art_crop/front/8/c/8c2996d9-3287-4480-8c04-7a378e37e3cf.jpg?1707237513");
+          background:#475d62 url("https://cards.scryfall.io/art_crop/front/3/d/3de472d0-cca2-4bc3-ab0a-9f79fa6325ce.jpg?1717015384");
           background-size:cover;
           background-position: top center;
           position:relative;
@@ -41,7 +41,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           pointer-events: none; /* so it doesn’t block clicks */
         }
 
-        .login-dark form {
+        #lb {
           min-width:320px;
           width:20%;
           background-color:#1e2833;
@@ -55,12 +55,6 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
         }
 
-        .login-dark .illustration {
-          text-align:center;
-          padding:15px 0 20px;
-          font-size:100px;
-          color:#2980ef;
-        }
 
         .login-dark form .form-control {
           background:none;
@@ -116,31 +110,17 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <div class="login-dark">
-        <form action="submit_match.php" method="post">
+        <div id="lb">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
-            <div class="form-group">
-                <label for="playerA">Winner:</label>
-                <select class="form-control"  id="playerA" name="playerA">
-                    <?php foreach ($decks as $deck): ?>
-                        <option value="<?= htmlspecialchars($deck['id']) ?>">
-                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="playerB">Loser:</label>
-                <select class="form-control"  id="playerB" name="playerB">
-                    <?php foreach ($decks as $deck): ?>
-                        <option value="<?= htmlspecialchars($deck['id']) ?>">
-                            <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
-        </form>
+
+            <div class="item">
+                <?php foreach ($decks as $deck): ?>
+                       <p> <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?></p>
+                <?php endforeach; ?>
+            </select>
+
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
