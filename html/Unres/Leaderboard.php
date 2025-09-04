@@ -38,8 +38,8 @@ $rank = 1;
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
           background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
-          backdrop-filter: blur(5px); /* apply blur to everything behind */
-          pointer-events: none; /* so it doesn’t block clicks */
+          backdrop-filter: blur(5px);
+          pointer-events: none;
         }
 
         #lb {
@@ -54,78 +54,15 @@ $rank = 1;
           left:50%;
           color:#fff;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-          display: flex;
-          justify-content: center;
         }
 
 
         .login-dark .illustration {
           text-align:center;
-          padding:15px 0 20px;
-          font-size:100px;
-          color:#2980ef;
         }
 
-        .login-dark form .form-control {
-          background:none;
-          border:none;
-          border-bottom:1px solid #434a52;
-          border-radius:0;
-          box-shadow:none;
-          outline:none;
-          color:inherit;
-        }
-
-        .login-dark form .btn-primary {
-          background:#99E6FC;
-          color:#1e2833;
-          border:none;
-          border-radius:4px;
-          padding:11px;
-          box-shadow:none;
-          margin-top:26px;
-          text-shadow:none;
-          outline:none;
-        }
-
-        .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
-          background:#bff;
-          outline:none;
-        }
-
-        .login-dark form .forgot {
-          display:block;
-          text-align:center;
-          font-size:12px;
-          color:#6f7a85;
-          opacity:0.9;
-          text-decoration:none;
-        }
-
-        .login-dark form .forgot:hover, .login-dark form .forgot:active {
-          opacity:1;
-          text-decoration:none;
-        }
-
-        .login-dark form .btn-primary:active {
-          transform:translateY(1px);
-        }
-
-        option{
-            background-color: #1e2833 !important;
-        }
-
-        .item{
-            width:80%;
-            background:#99E6FC;
-            color:#1e2833;
-            text-align:center;
-            padding:15px;
-            font-size:20px;
-        }
-
-        .item p{
-            text-align: center;
+        td{
+            color:#fff;
         }
 
     </style>
