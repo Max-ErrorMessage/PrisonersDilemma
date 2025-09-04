@@ -43,7 +43,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         .login-dark form {
           min-width:320px;
-          width:40%;
+          width:20%;
           background-color:#1e2833;
           padding:40px;
           border-radius:4px;
