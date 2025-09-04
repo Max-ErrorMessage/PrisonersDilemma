@@ -98,6 +98,9 @@ $rank = 1;
         table{
             text-align:left;
             font-size:20px;
+            width:80%;
+            position:absolute;
+            left:20px;
         }
 
         .lbimg{
