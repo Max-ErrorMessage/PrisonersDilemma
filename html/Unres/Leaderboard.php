@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 include "/var/www/unresdb.php";
 
 // Fetch all decks
-$stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks ORDER BY elo DESC");
+$stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks ORDER BY elo DESC LIMIT 10");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
@@ -114,14 +114,12 @@ $rank = 1;
         <div id="lb">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
-
-            <div class="item">
-                <?php foreach ($decks as $deck): ?>
-                       <p> <?= $rank.> <?= htmlspecialchars($deck['id']) ?>:<?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?></p>
+            <?php foreach ($decks as $deck): ?>
+                <div class="item">
+                       <p> <?= $rank?>. <?= htmlspecialchars($deck['id']) ?>:<?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?></p>
                        <?php $rank++; ?>
-                <?php endforeach; ?>
-            </select>
-
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
