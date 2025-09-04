@@ -34,6 +34,7 @@ FROM
 	FROM cards_in_deck cid
 	LEFT JOIN colours_of_cards coc ON cid.card_id = coc.card_id
 	WHERE coc.colour_id IS NOT NULL
+	AND coc.identity = 1
 	GROUP BY cid.deck_id, coc.colour_id
 ) as t1
 inner join decks d on d.id = t1.deck
@@ -115,6 +116,8 @@ $rank = 1;
     <div class="login-dark">
         <div id="lb">
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+            <br>
+            <br>
             <table>
             <?php foreach ($decks as $deck): ?>
                 <tr>
