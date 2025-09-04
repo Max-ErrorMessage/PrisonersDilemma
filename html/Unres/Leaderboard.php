@@ -17,6 +17,7 @@ $stmt = $pdo->query('SELECT
 	t1.deck as id,
 	SUM(
 		CASE t1.colour
+		            WHEN NULL THEN 0
             		WHEN 1 THEN 1
             		WHEN 2 THEN 2
             		WHEN 3 THEN 4
@@ -33,7 +34,6 @@ FROM
 		coc.colour_id AS colour
 	FROM cards_in_deck cid
 	LEFT JOIN colours_of_cards coc ON cid.card_id = coc.card_id
-	WHERE coc.colour_id IS NOT NULL
 	AND coc.identity = 1
 	AND coc.card_id not in (93,113,142,150,180,249)
 	GROUP BY cid.deck_id, coc.colour_id
