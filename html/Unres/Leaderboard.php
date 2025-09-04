@@ -12,6 +12,7 @@ include "/var/www/unresdb.php";
 // Fetch all decks
 $stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks ORDER BY elo DESC");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$rank = 1;
 ?>
 
 <html>
@@ -116,7 +117,8 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="item">
                 <?php foreach ($decks as $deck): ?>
-                       <p> <?= htmlspecialchars($deck['id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?></p>
+                       <p> <?= $rank.> <?= htmlspecialchars($deck['id']) ?>:<?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?></p>
+                       <?php $rank++; ?>
                 <?php endforeach; ?>
             </select>
 
