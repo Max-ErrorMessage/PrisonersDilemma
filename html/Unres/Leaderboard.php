@@ -63,6 +63,7 @@ $rank = 1;
 
         td{
             color:#fff;
+            text-align:center;
         }
 
     </style>
@@ -76,9 +77,9 @@ $rank = 1;
             <?php foreach ($decks as $deck): ?>
                 <tr>
                     <td>
-                       <?= $rank?>.
+                        <?= $rank?>.
                     </td><td>
-                        <?= htmlspecialchars($deck['id']) ?>:<?= htmlspecialchars($deck['provided_archetype']) ?>
+                        <?= htmlspecialchars($deck['provided_archetype']) ?><br><span style="color:#aaa;">#<?= $deck['id'] ?></span
                     </td><td>
                         <?= htmlspecialchars($deck['elo']) ?>
                     </td>
