@@ -10,7 +10,32 @@ ini_set('display_errors', 1);
 include "/var/www/unresdb.php";
 
 // Fetch all decks
-$stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks ORDER BY elo DESC LIMIT 10");
+$stmt = $pdo->query("""SELECT
+	t1.deck as id,
+	SUM(
+		CASE t1.colour
+            		WHEN 1 THEN 1
+            		WHEN 2 THEN 2
+            		WHEN 3 THEN 4
+            		WHEN 4 THEN 8
+            		WHEN 5 THEN 16
+        	END
+	) AS colour,
+	d.elo as elo,
+	d.provided_archetype as arch
+FROM
+(
+	SELECT
+		cid.deck_id AS deck,
+		coc.colour_id AS colour
+	FROM cards_in_deck cid
+	LEFT JOIN colours_of_cards coc ON cid.card_id = coc.card_id
+	WHERE coc.colour_id IS NOT NULL
+	GROUP BY cid.deck_id, coc.colour_id
+) as t1
+inner join decks d on d.id = t1.deck
+GROUP BY deck
+ORDER BY deck;""");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
@@ -63,6 +88,9 @@ $rank = 1;
 
         td{
             color:#fff;
+        }
+
+        table{
             text-align:center;
         }
 
@@ -79,7 +107,10 @@ $rank = 1;
                     <td>
                         <?= $rank?>.
                     </td><td>
-                        <?= htmlspecialchars($deck['provided_archetype']) ?><br><span style="color:#aaa;">#<?= $deck['id'] ?></span
+                        <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
+                        <img src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                    </td><td>
+                        <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;">#<?= $deck['id'] ?></span>
                     </td><td>
                         <?= htmlspecialchars($deck['elo']) ?>
                     </td>
