@@ -39,7 +39,7 @@ FROM
 inner join decks d on d.id = t1.deck
 GROUP BY deck
 ORDER BY deck;
-'');
+');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
