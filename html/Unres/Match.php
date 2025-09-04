@@ -30,6 +30,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           background-size:cover;
           background-position: top center;
           position:relative;
+          width:40%;
         }
 
         .login-dark::before {
