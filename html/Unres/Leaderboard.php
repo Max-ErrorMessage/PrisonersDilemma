@@ -38,8 +38,8 @@ FROM
 ) as t1
 inner join decks d on d.id = t1.deck
 GROUP BY deck
-ORDER BY deck;
-LIMIT 10
+ORDER BY deck
+LIMIT 10;
 ');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
@@ -100,7 +100,7 @@ $rank = 1;
         }
 
         .lbimg{
-            width:25px;
+            width:50px;
         }
 
     </style>
