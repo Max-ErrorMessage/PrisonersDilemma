@@ -87,7 +87,7 @@ $rank = 1;
           left:50%;
           color:#fff;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-          height:70%;
+          height:75%;
         }
 
 
