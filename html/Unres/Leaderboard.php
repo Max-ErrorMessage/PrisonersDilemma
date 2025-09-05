@@ -108,7 +108,7 @@ $rank = 1;
         }
 
         .lbimg{
-            width:25px;
+            width:40px;
         }
 
     </style>
