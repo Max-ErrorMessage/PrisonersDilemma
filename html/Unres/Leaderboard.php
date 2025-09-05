@@ -94,7 +94,9 @@ $rank = 1;
         .login-dark .illustration {
           text-align:center;
         }
-
+        .illustration img{
+            width:50px;
+        }
         td{
             color:#fff;
         }
