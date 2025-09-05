@@ -61,7 +61,7 @@ $rank = 1;
           height:100%;
           background:#475d62 url("https://cards.scryfall.io/art_crop/front/2/e/2e1fb442-68ff-4249-8e44-87edf6fae211.jpg?1592708762");
           background-size:cover;
-          background-position: top center;
+          background-position: bottom center;
           position:relative;
         }
 
