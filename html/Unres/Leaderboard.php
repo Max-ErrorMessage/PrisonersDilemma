@@ -90,8 +90,8 @@ $rank = 1;
           overflow-y:scroll;
         }
 
-        ::-webkit-scrollbar-track{
-            background-color:rgba(0,0,0,0);
+        #id::-webkit-scrollbar-track{
+            background-color:rgba(0,0,0,1);
         }
 
         .login-dark .illustration {
