@@ -123,11 +123,11 @@ $rank = 1;
         }
 
         #r2{
-            color:#aaa;
+            color:#DEECF1;
         }
 
         #r3{
-            color:#44f;
+            color:#FE646F;
         }
 
     </style>
