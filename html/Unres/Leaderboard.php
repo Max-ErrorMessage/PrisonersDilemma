@@ -130,6 +130,13 @@ $rank = 1;
             color:#FE646F;
         }
 
+        span{
+            width:15px;
+            height:15px;
+            background-color:#113;
+            border-radius:5px;
+        }
+
     </style>
 </head>
 <body>
