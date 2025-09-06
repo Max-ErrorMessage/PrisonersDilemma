@@ -127,7 +127,7 @@ $rank = 1;
         }
 
         #r3{
-            colour:#44f;
+            color:#44f;
         }
 
     </style>
