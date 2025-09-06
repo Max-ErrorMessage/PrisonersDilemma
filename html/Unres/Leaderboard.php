@@ -139,6 +139,7 @@ $rank = 1;
 
         .n span{
             vertical-align:center;
+            margin:auto;
         }
 
     </style>
