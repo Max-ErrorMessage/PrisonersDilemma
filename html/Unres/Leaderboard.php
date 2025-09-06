@@ -135,12 +135,10 @@ $rank = 1;
             height:30px;
             background-color:#113;
             border-radius:8px;
+            align-content: center;
+            text-align: center;
         }
 
-        .n span{
-            vertical-align:center;
-            margin:auto;
-        }
 
     </style>
 </head>
