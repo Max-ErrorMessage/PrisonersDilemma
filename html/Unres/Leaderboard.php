@@ -131,10 +131,14 @@ $rank = 1;
         }
 
         .n{
-            width:20px;
-            height:20px;
+            width:30px;
+            height:30px;
             background-color:#113;
             border-radius:8px;
+        }
+
+        .n span{
+            vertical-align:center;
         }
 
     </style>
