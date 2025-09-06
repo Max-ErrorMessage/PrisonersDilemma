@@ -138,7 +138,9 @@ $rank = 1;
             align-content: center;
             text-align: center;
         }
-
+        .ra{
+            test-align:right;
+        }
 
     </style>
 </head>
@@ -158,7 +160,7 @@ $rank = 1;
                         <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                     </td><td>
                         <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;">#<?= $deck['id'] ?></span>
-                    </td><td>
+                    </td><td class="ra">
                         <?= htmlspecialchars($deck['elo']) ?>
                     </td>
                 </tr>
