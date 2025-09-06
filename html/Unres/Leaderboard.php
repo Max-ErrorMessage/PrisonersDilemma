@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 
 
 
-include "/var/www/unresdb.php";
+include "/var/www/Unres-Meta/db.php";
 
 // Fetch all decks
 $stmt = $pdo->query('SELECT
