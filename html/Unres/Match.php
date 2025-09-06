@@ -7,7 +7,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include "/var/www/unresdb.php";
+include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
 $stmt = $pdo->query("SELECT id, provided_archetype, elo FROM decks");
