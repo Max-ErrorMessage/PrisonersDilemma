@@ -160,8 +160,9 @@ $rank = 1;
                         <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                     </td><td>
                         <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;">#<?= $deck['id'] ?></span>
-                    </td><td class="ra">
-                        <?= htmlspecialchars($deck['elo']) ?>
+                    </td><td>
+
+                        <div class="ra"><?= htmlspecialchars($deck['elo']) ?></div>
                     </td>
                 </tr>
                 <?php $rank++; ?>
