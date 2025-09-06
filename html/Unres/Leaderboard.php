@@ -31,7 +31,7 @@ FROM
 (
 	SELECT
 		cid.deck_id AS deck,
-		coc.colour_id AS colour
+		coc.colour_id AS colour,
 		count(cid.card_id) as n
 	FROM cards_in_deck cid
 	LEFT JOIN colours_of_cards coc ON cid.card_id = coc.card_id
