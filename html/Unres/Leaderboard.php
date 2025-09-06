@@ -118,15 +118,15 @@ $rank = 1;
             width:30px;
         }
 
-        #1{
-            color:yellow;
+        #r1{
+            color:#FFE177;
         }
 
-        #2{
+        #r2{
             color:#aaa;
         }
 
-        #3{
+        #r3{
             colour:#44f;
         }
 
@@ -142,7 +142,7 @@ $rank = 1;
             <?php foreach ($decks as $deck): ?>
                 <tr>
                     <td>
-                        <span id="<?= $rank?>"><?= $rank?>.</span>
+                        <span id="r<?= $rank?>"><?= $rank?>.</span>
                     </td><td>
                         <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                         <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
