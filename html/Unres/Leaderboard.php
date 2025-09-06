@@ -139,7 +139,7 @@ $rank = 1;
             text-align: center;
         }
         .ra{
-            test-align:right;
+            text-align:right;
         }
 
     </style>
