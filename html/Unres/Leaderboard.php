@@ -113,7 +113,11 @@ $rank = 1;
         }
 
         .lbimg{
+<<<<<<< HEAD
+            width:40px;
+=======
             width:30px;
+>>>>>>> 2fab5e2c9a5e6092157b62bdd706c5fb39ca2266
         }
 
     </style>
