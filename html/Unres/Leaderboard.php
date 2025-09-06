@@ -32,6 +32,7 @@ FROM
 	SELECT
 		cid.deck_id AS deck,
 		coc.colour_id AS colour
+		count(cid.card_id) as n
 	FROM cards_in_deck cid
 	LEFT JOIN colours_of_cards coc ON cid.card_id = coc.card_id
 	AND coc.identity = 1
@@ -39,6 +40,7 @@ FROM
 	GROUP BY cid.deck_id, coc.colour_id
 ) as t1
 inner join decks d on d.id = t1.deck
+where t1.n > 2
 GROUP BY deck
 ORDER BY elo;
 ');
