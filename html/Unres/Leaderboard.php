@@ -42,7 +42,7 @@ FROM
 inner join decks d on d.id = t1.deck
 where t1.n > 2
 GROUP BY deck
-ORDER BY elo;
+ORDER BY elo DESC;
 ');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
