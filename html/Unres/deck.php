@@ -20,7 +20,7 @@ WHERE id = :id;
 ');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
-$deck = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 
 foreach ($decks as $d) {
