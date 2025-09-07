@@ -14,12 +14,13 @@ include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
 $id = $_GET["id"];
-$stmt = $pdo->query('SELECT id, decklist_url, ELO, provided_archetype
+$stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype
 FROM decks
-WHERE id = ?
+WHERE id = :id
 ');
-mysqli_stmt_bind_param($stmt,"s",$id);
-$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->bindParam(':id',$id, PDO::PARAM_STR);
+$stmt->execute();
+$deck = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
 
@@ -98,8 +99,8 @@ $rank = 1;
 <body>
 
     <div class="login-dark">
-        <h2><?= $id ?></h2>
         <div id="lb">
+            <h2><?= $deck['url'] ?></h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
             <br>
 
