@@ -18,7 +18,7 @@ $stmt = $pdo->query('SELECT id, decklist_url, ELO, provided_archetype
 FROM decks
 WHERE id = ?
 ');
-mysqli_stmt_bind_param($stmt,"s",$id)
+mysqli_stmt_bind_param($stmt,"s",$id);
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
