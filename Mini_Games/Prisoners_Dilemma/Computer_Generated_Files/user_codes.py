@@ -209,14 +209,11 @@ def user_90(self_decisions, opponent_decisions, s, o, n):
 
 
 def user_1(self_decisions, opponent_decisions, s, o, n):
-	if n == 0:
-	    return True
+	if o.count(False) < 1 or o.count(False) > 3:
+		return False
 	
-	
-	if o.count(False) < 3:
-	    return o[-1]
-	
-	return False
+	else:
+		return True
 
 
 user_code = {"0" : user_0, "9" : user_9, "10" : user_10, "21" : user_21, "22" : user_22, "20" : user_20, "53" : user_53, "52" : user_52, "60" : user_60, "62" : user_62, "2" : user_2, "7" : user_7, "17" : user_17, "70" : user_70, "28" : user_28, "56" : user_56, "55" : user_55, "85" : user_85, "87" : user_87, "88" : user_88, "89" : user_89, "90" : user_90, "1" : user_1}
