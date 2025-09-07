@@ -22,6 +22,10 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $deck = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
+
+foreach ($decks as $d) {
+    $deck = $d
+}
 ?>
 
 
@@ -100,6 +104,7 @@ $rank = 1;
 
     <div class="login-dark">
         <div id="lb">
+
             <h2><?= $deck['decklist_url'] ?></h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
             <br>
