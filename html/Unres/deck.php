@@ -13,6 +13,7 @@ error_reporting(E_ALL);
 include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
+$id = $_GET["id"];
 $stmt = $pdo->query('SELECT
         cod.deck_id as id,
         SUM(
@@ -111,6 +112,7 @@ $rank = 1;
 <body>
 
     <div class="login-dark">
+        <h2><?= $id ?><h2>
         <div id="lb">
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
             <br>
