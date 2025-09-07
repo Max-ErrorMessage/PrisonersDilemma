@@ -24,7 +24,7 @@ $deck = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 
 foreach ($decks as $d) {
-    $deck = $d
+    $deck = $d;
 }
 ?>
 
