@@ -16,7 +16,7 @@ include "/var/www/html/Unres/db.php";
 $id = $_GET["id"];
 $stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype
 FROM decks
-WHERE id = :id
+WHERE id = :id;
 ');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
