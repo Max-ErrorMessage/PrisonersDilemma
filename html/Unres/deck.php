@@ -100,7 +100,7 @@ $rank = 1;
 
     <div class="login-dark">
         <div id="lb">
-            <h2><?= $deck['url'] ?></h2>
+            <h2><?= $deck['decklist_url'] ?></h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
             <br>
 
