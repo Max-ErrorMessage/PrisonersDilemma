@@ -29,7 +29,7 @@ $stmt = $pdo->query('SELECT
         d.provided_archetype AS arch
 FROM colours_of_decks cod
 INNER JOIN decks d ON d.id = cod.deck_id
-GROUP BY deck
+GROUP BY id
 ORDER BY elo;
 ');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
