@@ -14,25 +14,11 @@ include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
 $id = $_GET["id"];
-$stmt = $pdo->query('SELECT
-        cod.deck_id as id,
-        SUM(
-                CASE cod.colour_id
-                        WHEN 1 THEN 1
-                        WHEN 2 THEN 2
-                        WHEN 3 THEN 4
-                        WHEN 4 THEN 8
-                        WHEN 5 THEN 16
-                        ELSE 0
-                END
-        ) AS colour,
-        d.elo AS elo,
-        d.provided_archetype AS arch
-FROM colours_of_decks cod
-INNER JOIN decks d ON d.id = cod.deck_id
-GROUP BY id
-ORDER BY elo;
+$stmt = $pdo->query('SELECT id, decklist_url, ELO, provided_archetype
+FROM decks
+WHERE id = ?
 ');
+mysqli_stmt_bind_param($stmt,"s",$id)
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
