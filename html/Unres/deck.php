@@ -112,27 +112,11 @@ $rank = 1;
 <body>
 
     <div class="login-dark">
-        <h2><?= $id ?><h2>
+        <h2><?= $id ?></h2>
         <div id="lb">
-            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
             <br>
-            <table>
-            <?php foreach ($decks as $deck): ?>
-                <tr>
-                    <td>
-                        <?= $rank?>.
-                    </td><td>
-                        <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
-                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                    </td><td>
-                        <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;">#<?= $deck['id'] ?></span>
-                    </td><td>
-                        <?= htmlspecialchars($deck['elo']) ?>
-                    </td>
-                </tr>
-                <?php $rank++; ?>
-            <?php endforeach; ?>
-            <table>
+
 
         </div>
     </div>

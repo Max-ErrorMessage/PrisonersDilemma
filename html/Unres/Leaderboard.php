@@ -167,7 +167,7 @@ $rank = 1;
                 </tr>
                 <?php $rank++; ?>
             <?php endforeach; ?>
-            <table>
+            </table>
 
         </div>
     </div>
