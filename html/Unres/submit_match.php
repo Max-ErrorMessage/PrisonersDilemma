@@ -10,9 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $output2 = shell_exec($command);
     //file_put_contents("/var/www/html/Unres/php_python_debug.log", date('c') . " - CMD: $command\nOUTPUT:\n" . $output . "\n", FILE_APPEND);
 
-    //header("Location: Leaderboard.php");
-    echo $output1;
-    echo $output2;
+    header("Location: Leaderboard.php");
     exit();
 }
 ?>
