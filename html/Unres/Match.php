@@ -160,7 +160,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           const offsetX = (x - 0.5) * 10; // -10% to +10%
           const offsetY = (y - 0.5) * 10;
 
-          div.style.backgroundPosition = `${50 + offsetX}% ${70 + offsetY}%`;
+          div.style.backgroundPosition = `${50 + offsetX}% ${30 + offsetY}%`;
         });
     </script>
 
