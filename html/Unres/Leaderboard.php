@@ -119,19 +119,19 @@ $rank = 1;
             width:30px;
         }
 
-        #r1{
+        .c1{
             background-color:#FFE177;
-            color:black;
 
         }
 
-        #r2{
+        .c2{
             background-color:#DEECF1;
-            color:black;
         }
 
-        #r3{
+        .c3{
             background-color:#FE646F;
+        }
+        #r1, #r2, #r3{
             color:black;
         }
 
@@ -159,7 +159,7 @@ $rank = 1;
             <?php foreach ($decks as $deck): ?>
                 <tr>
                     <td>
-                        <div class="n"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                        <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                     </td><td>
                         <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                         <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
