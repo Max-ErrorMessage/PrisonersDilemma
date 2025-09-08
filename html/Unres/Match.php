@@ -122,7 +122,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
             <div class="form-group">
                 <label for="playerA">Winner:</label>
-                <select class="form-control"  id="winner" name="wwinner">
+                <select class="form-control"  id="winner" name="winner">
                     <?php foreach ($decks as $deck): ?>
                         <option value="<?= htmlspecialchars($deck['id']) ?>">
                             <?= htmlspecialchars($deck['provided_archetype']) ?> (<?= htmlspecialchars($deck['decklist_url']) ?>) - <?= htmlspecialchars($deck['elo']) ?>
