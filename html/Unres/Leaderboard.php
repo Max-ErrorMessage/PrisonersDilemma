@@ -120,15 +120,19 @@ $rank = 1;
         }
 
         #r1{
-            color:#FFE177;
+            background-color:#FFE177;
+            color:black;
+
         }
 
         #r2{
-            color:#DEECF1;
+            background-color:#DEECF1;
+            color:black;
         }
 
         #r3{
-            color:#FE646F;
+            background-color:#FE646F;
+            color:black;
         }
 
         .n{
