@@ -119,18 +119,6 @@ $rank = 1;
             width:30px;
         }
 
-        .c1{
-            background-color:#FFE177;
-
-        }
-
-        .c2{
-            background-color:#DEECF1;
-        }
-
-        .c3{
-            background-color:#FE646F;
-        }
         #r1, #r2, #r3{
             color:black;
         }
@@ -145,6 +133,19 @@ $rank = 1;
         }
         .ra{
             text-align:right;
+        }
+
+        .c1{
+            background-color:#FFE177;
+
+        }
+
+        .c2{
+            background-color:#DEECF1;
+        }
+
+        .c3{
+            background-color:#FE646F;
         }
 
     </style>
