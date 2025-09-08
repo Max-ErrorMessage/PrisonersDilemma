@@ -158,7 +158,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
           // Map 0-1 to background-position offsets (-10% to +10%)
           const offsetX = (0.5 - x) * 10; // -10% to +10%
-          const offsetY = (0.5 - y) * 10;
+          const offsetY = (0.5 - y) * 5;
 
           div.style.backgroundPosition = `${50 + offsetX}% ${15 + offsetY}%`;
         });
