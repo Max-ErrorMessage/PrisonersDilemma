@@ -28,7 +28,8 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           height:100%;
           background:#475d62 url("https://cards.scryfall.io/art_crop/front/8/c/8c2996d9-3287-4480-8c04-7a378e37e3cf.jpg?1707237513");
           background-size:cover;
-          background-position: top center;
+          background-position: center;
+          transition: background-position 0.1s ease;
           position:relative;
         }
 
@@ -145,6 +146,23 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const div = document.querySelector('.login-dark');
+
+        div.addEventListener('mousemove', (e) => {
+          const { width, height } = div.getBoundingClientRect();
+
+          // Get mouse position relative to the div (0 to 1)
+          const x = e.clientX / width;
+          const y = e.clientY / height;
+
+          // Map 0-1 to background-position offsets (-10% to +10%)
+          const offsetX = (x - 0.5) * 20; // -10% to +10%
+          const offsetY = (y - 0.5) * 20;
+
+          div.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
+        });
+    <script>
 
 </body>
 </html>
