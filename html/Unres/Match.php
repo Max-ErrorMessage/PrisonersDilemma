@@ -29,7 +29,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           background:#475d62 url("https://cards.scryfall.io/art_crop/front/8/c/8c2996d9-3287-4480-8c04-7a378e37e3cf.jpg?1707237513");
           background-size:110% auto;
           background-position: 50% 15%;
-          transition: background-position 0.2s ease;
+          transition: background-position 0.1s ease;
           position:relative;
         }
 
@@ -157,8 +157,8 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           const y = e.clientY / height;
 
           // Map 0-1 to background-position offsets (-10% to +10%)
-          const offsetX = (x - 0.5) * 5; // -10% to +10%
-          const offsetY = (y - 0.5) * 5;
+          const offsetX = (x - 0.5) * 10; // -10% to +10%
+          const offsetY = (y - 0.5) * 15;
 
           div.style.backgroundPosition = `${50 + offsetX}% ${15 + offsetY}%`;
         });
