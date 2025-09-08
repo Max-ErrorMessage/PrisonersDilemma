@@ -62,7 +62,7 @@ $rank = 1;
     <style>
         .bg-img {
           height:100%;
-          background:#475d62 url("https://cards.scryfall.io/art_crop/front/2/e/2e1fb442-68ff-4249-8e44-87edf6fae211.jpg?1592708762");
+          background:#475d62 url("https://cards.scryfall.io/art_crop/front/2/9/29f11089-658f-42e6-aeb0-09b512ad2479.jpg?1734350193");
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
