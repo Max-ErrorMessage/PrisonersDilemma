@@ -121,7 +121,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
             <div class="form-group">
-                <label for="playerA">Winner:</label>
+                <label for="winner">Winner:</label>
                 <select class="form-control"  id="winner" name="winner">
                     <?php foreach ($decks as $deck): ?>
                         <option value="<?= htmlspecialchars($deck['id']) ?>">
@@ -131,7 +131,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </select>
             </div>
             <div class="form-group">
-                <label for="playerB">Loser:</label>
+                <label for="loser">Loser:</label>
                 <select class="form-control"  id="loser" name="loser">
                     <?php foreach ($decks as $deck): ?>
                         <option value="<?= htmlspecialchars($deck['id']) ?>">
