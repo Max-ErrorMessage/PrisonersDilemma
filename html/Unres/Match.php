@@ -162,7 +162,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
           div.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
-    <script>
+    </script>
 
 </body>
 </html>
