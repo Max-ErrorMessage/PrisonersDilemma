@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
-$stmt = $pdo->query("SELECT id, provided_archetype, decklist_url, time_submitted, custom_id, elo FROM decks");
+$stmt = $pdo->query("SELECT id, provided_archetype, decklist_url, time_submitted, custom_id, elo FROM decks ORDER BY custom_id");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
