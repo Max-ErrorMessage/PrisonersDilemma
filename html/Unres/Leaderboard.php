@@ -56,6 +56,9 @@ $rank = 1;
     <title>Unrestricted Vintage Matchups</title>
     <link rel="icon" href="/t.ico" type="image/x-icon">
     <meta name="description" content="Create bots to compete in fun minigames! :)">
+    <meta property="og:title" content="Unres Leaderboard">
+    <meta property="og:description" content="The best decks in unres! Take a look at the rankings and see who is on top!">
+    <meta property="og:image" content="2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
