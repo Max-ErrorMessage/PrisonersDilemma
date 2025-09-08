@@ -24,7 +24,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .login-dark {
+        .bg-img {
           height:100%;
           background:#475d62 url("https://cards.scryfall.io/art_crop/front/8/c/8c2996d9-3287-4480-8c04-7a378e37e3cf.jpg?1707237513");
           background-size:110% auto;
@@ -33,7 +33,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           position:relative;
         }
 
-        .login-dark::before {
+        .bg-img::before {
           content: "";
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -42,7 +42,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           pointer-events: none; /* so it doesn’t block clicks */
         }
 
-        .login-dark form {
+        .bg-img form {
           min-width:320px;
           width:20%;
           background-color:#1e2833;
@@ -56,7 +56,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
         }
 
-        .login-dark .illustration {
+        .bg-img .illustration {
           text-align:center;
           padding:15px 0 20px;
           font-size:100px;
@@ -64,7 +64,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
 
-        .login-dark form .form-control {
+        .bg-img form .form-control {
           background:none;
           border:none;
           border-bottom:1px solid #434a52;
@@ -74,7 +74,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           color:inherit;
         }
 
-        .login-dark form .btn-primary {
+        .bg-img form .btn-primary {
           background:#99E6FC;
           color:#1e2833;
           border:none;
@@ -86,12 +86,12 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           outline:none;
         }
 
-        .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+        .bg-img form .btn-primary:hover, .bg-img form .btn-primary:active {
           background:#bff;
           outline:none;
         }
 
-        .login-dark form .forgot {
+        .bg-img form .forgot {
           display:block;
           text-align:center;
           font-size:12px;
@@ -100,12 +100,12 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
           text-decoration:none;
         }
 
-        .login-dark form .forgot:hover, .login-dark form .forgot:active {
+        .bg-img form .forgot:hover, .bg-img form .forgot:active {
           opacity:1;
           text-decoration:none;
         }
 
-        .login-dark form .btn-primary:active {
+        .bg-img form .btn-primary:active {
           transform:translateY(1px);
         }
 
@@ -117,7 +117,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-    <div class="login-dark">
+    <div class="bg-img">
         <form action="submit_match.php" method="post">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
@@ -144,10 +144,10 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
         </form>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>`
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
-        const div = document.querySelector('.login-dark');
+        const div = document.querySelector('.bg-img');
 
         div.addEventListener('mousemove', (e) => {
           const { width, height } = div.getBoundingClientRect();

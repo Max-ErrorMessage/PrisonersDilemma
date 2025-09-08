@@ -60,15 +60,16 @@ $rank = 1;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .login-dark {
+        .bg-img {
           height:100%;
           background:#475d62 url("https://cards.scryfall.io/art_crop/front/2/e/2e1fb442-68ff-4249-8e44-87edf6fae211.jpg?1592708762");
-          background-size:cover;
-          background-position: bottom center;
+          background-size:110% auto;
+          background-position: 50% 15%;
+          transition: background-position 0.15s;
           position:relative;
         }
 
-        .login-dark::before {
+        .bg-img::before {
           content: "";
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -97,7 +98,7 @@ $rank = 1;
             display:none;
         }
 
-        .login-dark .illustration {
+        .bg-img .illustration {
           text-align:center;
         }
         .illustration img{
@@ -157,7 +158,7 @@ $rank = 1;
 </head>
 <body>
 
-    <div class="login-dark">
+    <div class="bg-img">
         <div id="lb">
             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
             <br>
@@ -184,6 +185,22 @@ $rank = 1;
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const div = document.querySelector('.bg-img');
 
+        div.addEventListener('mousemove', (e) => {
+          const { width, height } = div.getBoundingClientRect();
+
+          // Get mouse position relative to the div (0 to 1)
+          const x = e.clientX / width;
+          const y = e.clientY / height;
+
+          // Map 0-1 to background-position offsets (-10% to +10%)
+          const offsetX = (0.5 - x) * 10; // -10% to +10%
+          const offsetY = (0.5 - y) * 5;
+
+          div.style.backgroundPosition = `${50 + offsetX}% ${15 + offsetY}%`;
+        });
+    </script>
 </body>
 </html>
