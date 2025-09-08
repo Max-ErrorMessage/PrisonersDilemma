@@ -138,16 +138,19 @@ $rank = 1;
         .c1{
             background-color:#FFE177;
             border: 2px solid black;
+            font-weight:bolder;
         }
 
         .c2{
             background-color:#DEECF1;
             border: 2px solid black;
+            font-weight:bold;
         }
 
         .c3{
             background-color:#FE646F;
             border: 2px solid black;
+            font-weight:bold;
         }
 
     </style>
