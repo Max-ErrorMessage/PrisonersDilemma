@@ -160,7 +160,7 @@ $rank = 1;
                         <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                         <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                     </td><td>
-                        <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;">#<?= $deck['cust_id'] ?></span>
+                        <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cust_id'] ?></span>
                     </td><td>
 
                         <div class="ra"><?= htmlspecialchars($deck['elo']) ?></div>
