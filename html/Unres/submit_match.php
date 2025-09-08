@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    $command = "python3 /var/www/Unres-Meta/elo/update_elo.py $winner_id $loser_id 2>&1";
+    $command = "/usr/bin/python3 /var/www/Unres-Meta/elo/update_elo.py $winner_id $loser_id 2>&1";
     $output1 = shell_exec($command);
     //file_put_contents("/var/www/html/Unres/php_python_debug.log", $output . PHP_EOL, FILE_APPEND);
 
