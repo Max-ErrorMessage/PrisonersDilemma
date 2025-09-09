@@ -27,7 +27,7 @@ $stmt = $pdo->query('SELECT
 	) AS colour,
 	d.elo as elo,
 	d.provided_archetype as arch,
-	d.custom_id as cust_id
+	d.name as cust_id
 FROM
 (
 	SELECT
