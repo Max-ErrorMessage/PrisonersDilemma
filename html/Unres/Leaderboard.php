@@ -34,7 +34,7 @@ FROM
 		cid.deck_id AS deck,
 		coc.colour_id AS colour,
 		count(cid.card_id) as n
-	FROM cards_in_deck cid
+	FROM card_in_deck cid
 	LEFT JOIN colours_of_cards coc ON cid.card_id = coc.card_id
 	AND coc.identity = 1
 	AND coc.card_id not in (93,113,142,150,180,249)
