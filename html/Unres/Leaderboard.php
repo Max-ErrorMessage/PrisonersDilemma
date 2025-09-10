@@ -220,7 +220,7 @@ $rank = 1;
         div2.addEventListener('mousemove', (e) => {
           const div1 = document.querySelector('.bg-fg');
           const div3 = document.querySelector('.bg-bg');
-          const { width, height } = div.getBoundingClientRect();
+          const { width, height } = div2.getBoundingClientRect();
 
           // Get mouse position relative to the div (0 to 1)
           const x = e.clientX / width;
