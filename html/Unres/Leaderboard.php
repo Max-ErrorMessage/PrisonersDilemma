@@ -69,6 +69,8 @@ $rank = 1;
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
+          position: relative;
+          z-index: -1;
         }
 
         .bg-img {
