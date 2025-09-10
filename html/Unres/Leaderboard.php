@@ -235,17 +235,7 @@ $rank = 1;
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
-        div2.addEventListener('mousemove', (e) => {
-          const { width, height } = div2.getBoundingClientRect();
 
-          const x = e.clientX / width;
-          const y = e.clientY / height;
-
-          const offsetX = (0.5 - x) * 10;
-          const offsetY = (0.5 - y) * 5;
-
-          div2.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
-        });
     </script>
 </body>
 </html>
