@@ -78,7 +78,7 @@ $rank = 1;
           position: absolute;
           inset: 0;
           pointer-events: none;
-          z-index: 1;
+          z-index: -1;
 
 
           background-image:
