@@ -63,22 +63,24 @@ $rank = 1;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .bg-bg {
+        .bg-bg, .bg-img, .bg-fg {
           height:100%;
-          background: url("images/vb1.png");
-          background-size:110% auto;
-          background-position: 50% 5%;
-          transition: background-position 0.15s;
+          background-size:105% auto;
+          background-position: 50% 3%;
           position: relative;
         }
 
-        .bg-fg {
-          position: relative;
-          height:100%;
-          background: url("images/vb3.png");
-          background-size:110% auto;
-          background-position: 50% 5%;
+        .bg-img{
+          background: url("images/vb2.png");
           transition: background-position 0.15s;
+        }
+
+        .bg-bg{
+          background: url("images/vb1.png");
+        }
+
+        .bg-fg,{
+          background: url("images/vb3.png");
         }
 
         .bg-fg::before {
@@ -91,14 +93,7 @@ $rank = 1;
         }
 
 
-        .bg-img {
-          height:100%;
-          background: url("images/vb2.png");
-          background-size:110% auto;
-          background-position: 50% 5%;
-          transition: background-position 0.15s;
-          position: relative;
-        }
+
 
         .bg-img .content{
             position:relative;
