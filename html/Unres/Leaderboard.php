@@ -71,16 +71,16 @@ $rank = 1;
         }
 
         .bg-img{
-          background: url("images/vb2.png");
+          background-image: url("images/vb2.png");
           transition: background-position 0.15s;
         }
 
         .bg-bg{
-          background: url("images/vb1.png");
+          background-image: url("images/vb1.png");
         }
 
         .bg-fg,{
-          background: url("images/vb3.png");
+          background-image: url("images/vb3.png");
         }
 
         .bg-fg::before {
