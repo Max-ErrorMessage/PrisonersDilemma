@@ -59,6 +59,7 @@ $rank = 1;
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
+          z-index: 0;
         }
 
         .bg-img::before {
@@ -75,6 +76,7 @@ $rank = 1;
           background-position: 50% 5%, 50% 5%;
           background-repeat: no-repeat, no-repeat;
           backdrop-filter: blur(5px);
+          z-index: -2;
         }
 
         .bg-img::after {
@@ -82,6 +84,7 @@ $rank = 1;
           position: absolute;
           inset: 0;
           pointer-events: none;
+          z-index: -1;
 
           background: url("images/vb3.png"), linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)), #475d62;
           background-size: 110% auto;
@@ -89,6 +92,9 @@ $rank = 1;
           background-repeat: no-repeat;
         }
 
+        .bg-img content{
+            z-index: 1;
+        }
 
         #lb {
           min-width:320px;
