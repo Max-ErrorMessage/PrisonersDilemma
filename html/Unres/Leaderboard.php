@@ -66,6 +66,7 @@ $rank = 1;
         .bg-img {
           position:relative;
           height:100%;
+          z-index: 0;
           background:#475d62 url("images/vb2.png");
           background-size:110% auto;
           background-position: 50% 5%;
