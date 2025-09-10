@@ -216,7 +216,7 @@ $rank = 1;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
         const div = document.querySelector('.bg-img');
-        const div2 = document.querySelector('.bg-bg');
+        const div2 = document.querySelector('.bg-fg');
 
         div.addEventListener('mousemove', (e) => {
           const { width, height } = div.getBoundingClientRect();
