@@ -24,22 +24,43 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .bg-img {
+        .bg-bg, .bg-img, .bg-fg {
           height:100%;
-          background:#475d62 url("https://cards.scryfall.io/art_crop/front/8/c/8c2996d9-3287-4480-8c04-7a378e37e3cf.jpg?1707237513");
           background-size:110% auto;
-          background-position: 50% 15%;
+          background-position: 50% 50%;
+          position: relative;
           transition: background-position 0.15s;
-          position:relative;
         }
 
-        .bg-img::before {
+
+
+        .bg-fg{
+          background-image: url("images/fs3.png");
+        }
+
+        .bg-img{
+          background-image: url("images/fs2.png");
+        }
+
+        .bg-bg{
+          background-image: url("images/fs1.png");
+        }
+
+
+        .bg-fg::before {
           content: "";
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
           background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
-          backdrop-filter: blur(5px); /* apply blur to everything behind */
-          pointer-events: none; /* so it doesn’t block clicks */
+          backdrop-filter: blur(5px);
+          pointer-events: none;
+        }
+
+
+
+
+        .bg-img .content{
+            position:relative;
         }
 
         .bg-img form {
@@ -116,51 +137,58 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
-
-    <div class="bg-img">
-        <form action="submit_match.php" method="post">
-            <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
-            <div class="form-group">
-                <label for="winner">Winner:</label>
-                <select class="form-control"  id="winner" name="winner">
-                    <?php foreach ($decks as $deck): ?>
-                        <option value="<?= htmlspecialchars($deck['id']) ?>">
-                            <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+    <div class="bg-bg">
+        <div class="bg-img">
+            <div class="bg-fg">
+                <form action="submit_match.php" method="post">
+                    <h2 class="sr-only">Login Form</h2>
+                    <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
+                    <div class="form-group">
+                        <label for="winner">Winner:</label>
+                        <select class="form-control"  id="winner" name="winner">
+                            <?php foreach ($decks as $deck): ?>
+                                <option value="<?= htmlspecialchars($deck['id']) ?>">
+                                    <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="loser">Loser:</label>
+                        <select class="form-control"  id="loser" name="loser">
+                            <?php foreach ($decks as $deck): ?>
+                                <option value="<?= htmlspecialchars($deck['id']) ?>">
+                                    <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="loser">Loser:</label>
-                <select class="form-control"  id="loser" name="loser">
-                    <?php foreach ($decks as $deck): ?>
-                        <option value="<?= htmlspecialchars($deck['id']) ?>">
-                            <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
-        </form>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>`
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
-        const div = document.querySelector('.bg-img');
+        const div2 = document.querySelector('.bg-img');
 
-        div.addEventListener('mousemove', (e) => {
-          const { width, height } = div.getBoundingClientRect();
+        div2.addEventListener('mousemove', (e) => {
+          const div1 = document.querySelector('.bg-fg');
+          const div3 = document.querySelector('.bg-bg');
+          const { width, height } = div2.getBoundingClientRect();
 
           // Get mouse position relative to the div (0 to 1)
           const x = e.clientX / width;
           const y = e.clientY / height;
 
-          // Map 0-1 to background-position offsets (-10% to +10%)
-          const offsetX = (0.5 - x) * 10; // -10% to +10%
-          const offsetY = (0.5 - y) * 5;
 
-          div.style.backgroundPosition = `${50 + offsetX}% ${15 + offsetY}%`;
+          const offsetX = (0.5 - x) * 2;
+          const offsetY = (0.5 - y) * 2;
+
+          div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
+          div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
+          div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
     </script>
 
