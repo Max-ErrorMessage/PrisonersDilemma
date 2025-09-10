@@ -66,8 +66,7 @@ $rank = 1;
         .bg-img {
           position:relative;
           height:100%;
-          z-index: 0;
-          background:#475d62 url("images/vb2.png");
+          background: url("images/vb2.png");
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
@@ -78,11 +77,10 @@ $rank = 1;
           position: absolute;
           inset: 0;
           pointer-events: none;
-          z-index: -1;
 
 
           background-image:
-            linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)),
+
             url("images/vb1.png");
           background-size: 110% auto, 110% auto;
           background-position: 50% 5%, 50% 5%;
@@ -95,9 +93,8 @@ $rank = 1;
           position: absolute;
           inset: 0;
           pointer-events: none;
-          z-index: 2;
 
-          background-image: url("images/vb3.png");
+          background: url("images/vb3.png"), linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)), #475d62;
           background-size: 110% auto;
           background-position: 50% 5%;
           background-repeat: no-repeat;
