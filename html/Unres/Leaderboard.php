@@ -80,6 +80,7 @@ $rank = 1;
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
+          z-index: 0;
         }
 
         .bg-img::before {
