@@ -64,6 +64,7 @@ $rank = 1;
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .bg-img {
+          position:relative;
           height:100%;
           background:#475d62 url("images/vb2.png");
           background-size:110% auto;
