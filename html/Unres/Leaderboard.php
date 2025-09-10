@@ -68,6 +68,7 @@ $rank = 1;
           background-size:105% auto;
           background-position: 50% 50%;
           position: relative;
+          transition: background-position 0.15s;
         }
 
 
@@ -78,7 +79,6 @@ $rank = 1;
 
         .bg-img{
           background-image: url("images/vb2.png");
-          transition: background-position 0.15s;
         }
 
         .bg-bg{
