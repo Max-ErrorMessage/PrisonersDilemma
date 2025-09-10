@@ -70,7 +70,6 @@ $rank = 1;
           background-position: 50% 5%;
           transition: background-position 0.15s;
           position: relative;
-          z-index: -1;
         }
 
         .bg-img {
@@ -80,7 +79,6 @@ $rank = 1;
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
-          z-index: 0;
         }
 
         .bg-img::before {
@@ -90,12 +88,10 @@ $rank = 1;
           background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
           backdrop-filter: blur(5px);
           pointer-events: none;
-          z-index: 1;
         }
 
         .bg-img .content{
             position:relative;
-            z-index:2;
         }
 
 
