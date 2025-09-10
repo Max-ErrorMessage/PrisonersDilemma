@@ -226,9 +226,9 @@ $rank = 1;
           const x = e.clientX / width;
           const y = e.clientY / height;
 
-          // Map 0-1 to background-position offsets (-10% to +10%)
-          const offsetX = (0.5 - x) * 5; // -10% to +10%
-          const offsetY = (0.5 - y) * 5;
+
+          const offsetX = (0.5 - x) * 2;
+          const offsetY = (0.5 - y) * 2;
 
           div1.style.backgroundPosition = `${50 + offsetX*3}% ${50 + offsetY*3}%`;
           div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
