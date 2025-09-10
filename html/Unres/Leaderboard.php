@@ -65,9 +65,9 @@ $rank = 1;
         .bg-img::before {
           content: "";
           position: absolute;
-          inset: 1;
+          inset: 0;
           pointer-events: none;
-          z-index: -1;
+          z-index: 1;
 
 
           background-image:
