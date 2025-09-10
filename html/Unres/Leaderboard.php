@@ -228,7 +228,7 @@ $rank = 1;
           const offsetX = (0.5 - x) * 10; // -10% to +10%
           const offsetY = (0.5 - y) * 5;
 
-          div.style.backgroundPosition = `${50 + offsetX}% ${5 + offsetY}%`;
+          div.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
     </script>
 </body>
