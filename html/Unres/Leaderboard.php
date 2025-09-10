@@ -216,6 +216,7 @@ $rank = 1;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
         const div = document.querySelector('.bg-img');
+        const div2 = document.querySelector('.bg-bg');
 
         div.addEventListener('mousemove', (e) => {
           const { width, height } = div.getBoundingClientRect();
@@ -225,10 +226,22 @@ $rank = 1;
           const y = e.clientY / height;
 
           // Map 0-1 to background-position offsets (-10% to +10%)
-          const offsetX = (0.5 - x) * 10; // -10% to +10%
-          const offsetY = (0.5 - y) * 5;
+          const offsetX = (0.5 - x) * 5; // -10% to +10%
+          const offsetY = (0.5 - y) * 2.5;
 
           div.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
+        });
+
+        div2.addEventListener('mousemove', (e) => {
+          const { width, height } = div2.getBoundingClientRect();
+
+          const x = e.clientX / width;
+          const y = e.clientY / height;
+
+          const offsetX = (0.5 - x) * 10;
+          const offsetY = (0.5 - y) * 5;
+
+          div2.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
     </script>
 </body>
