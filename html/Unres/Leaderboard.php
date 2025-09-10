@@ -93,6 +93,10 @@ $rank = 1;
           z-index: 1;
         }
 
+        .bg-img .content{
+            position:relative;
+            z-index:2;
+        }
 
 
         #lb {
