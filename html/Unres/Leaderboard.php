@@ -71,7 +71,7 @@ $rank = 1;
           /* Don’t use shorthand "background" here — break into pieces */
           background-image:
             linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)),
-            url("images/vb3.png");
+            url("images/vb1.png");
           background-size: 110% auto, 110% auto; /* one size per layer */
           background-position: 50% 5%, 50% 5%;   /* one position per layer */
           background-repeat: no-repeat, no-repeat;
@@ -85,7 +85,7 @@ $rank = 1;
           pointer-events: none;
           z-index: 2;
 
-          background-image: url("images/vb1.png");
+          background-image: url("images/vb3.png");
           background-size: 110% auto;
           background-position: 50% 5%;
           background-repeat: no-repeat;
