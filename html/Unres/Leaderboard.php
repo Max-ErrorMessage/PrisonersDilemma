@@ -216,9 +216,10 @@ $rank = 1;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
         const div = document.querySelector('.bg-img');
-        const div2 = document.querySelector('.bg-fg');
 
         div.addEventListener('mousemove', (e) => {
+          const div2 = document.querySelector('.bg-fg');
+          const div3 = document.querySelector('.bg-bg');
           const { width, height } = div.getBoundingClientRect();
 
           // Get mouse position relative to the div (0 to 1)
@@ -230,6 +231,8 @@ $rank = 1;
           const offsetY = (0.5 - y) * 2.5;
 
           div.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
+          div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
+          div3.style.backgroundPosition = `${50 + offsetX/2}% ${50 + offsetY/2}%`;
         });
 
         div2.addEventListener('mousemove', (e) => {
