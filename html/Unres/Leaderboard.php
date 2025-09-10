@@ -72,7 +72,7 @@ $rank = 1;
           position: relative;
         }
 
-        .bg-img {
+        .bg-fg {
           position: relative;
           height:100%;
           background: url("images/vb2.png");
@@ -81,13 +81,23 @@ $rank = 1;
           transition: background-position 0.15s;
         }
 
-        .bg-img::before {
+        .bg-fg::before {
           content: "";
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
           background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
           backdrop-filter: blur(5px);
           pointer-events: none;
+        }
+
+
+        .bg-img {
+          height:100%;
+          background: url("images/vb1.png");
+          background-size:110% auto;
+          background-position: 50% 5%;
+          transition: background-position 0.15s;
+          position: relative;
         }
 
         .bg-img .content{
@@ -177,28 +187,30 @@ $rank = 1;
 
     <div class="bg-bg">
         <div class="bg-img">
-            <div id="lb">
-                <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                <br>
-                <table>
-                <?php foreach ($decks as $deck): ?>
-                    <tr>
-                        <td>
-                            <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
-                        </td><td>
-                            <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
-                            <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                        </td><td>
-                            <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cust_id'] ?></span>
-                        </td><td>
+            <div class="bg-fg">
+                <div id="lb">
+                    <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                    <br>
+                    <table>
+                    <?php foreach ($decks as $deck): ?>
+                        <tr>
+                            <td>
+                                <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                            </td><td>
+                                <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
+                                <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                            </td><td>
+                                <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cust_id'] ?></span>
+                            </td><td>
 
-                            <div class="ra"><?= htmlspecialchars($deck['elo']) ?></div>
-                        </td>
-                    </tr>
-                    <?php $rank++; ?>
-                <?php endforeach; ?>
-                </table>
+                                <div class="ra"><?= htmlspecialchars($deck['elo']) ?></div>
+                            </td>
+                        </tr>
+                        <?php $rank++; ?>
+                    <?php endforeach; ?>
+                    </table>
 
+                </div>
             </div>
         </div>
     </div>
