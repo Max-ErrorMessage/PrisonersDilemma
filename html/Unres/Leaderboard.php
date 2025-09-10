@@ -73,15 +73,22 @@ $rank = 1;
         }
 
         .bg-img::before {
-          background-size:110% auto;
           content: "";
           position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)), url("images/vb3.png");
-          backdrop-filter: blur(5px);
+          inset: 0;                           /* shorthand for top/left/right/bottom 0 */
           pointer-events: none;
-          background-position:  50% 5%;;
+          z-index: 1;
+
+          /* Don’t use shorthand "background" here — break into pieces */
+          background-image:
+            linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)),
+            url("images/vb3.png");
+          background-size: 110% auto, 110% auto; /* one size per layer */
+          background-position: 50% 5%, 50% 5%;   /* one position per layer */
+          background-repeat: no-repeat, no-repeat;
+          backdrop-filter: blur(5px);
         }
+
         .bg-img::after {
           background-size:110% auto;
           background-image: url("images/vb1.png");
