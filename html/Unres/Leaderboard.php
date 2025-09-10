@@ -65,7 +65,7 @@ $rank = 1;
     <style>
         .bg-bg, .bg-img, .bg-fg {
           height:100%;
-          background-size:105% auto;
+          background-size:110% auto;
           background-position: 50% 50%;
           position: relative;
           transition: background-position 0.15s;
