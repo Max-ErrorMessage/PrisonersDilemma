@@ -79,9 +79,16 @@ $rank = 1;
         }
 
         .bg-img::after {
-          background-size:110% auto;
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 2;
+
           background-image: url("images/vb1.png");
-          background-position:  50% 5%;;
+          background-size: 110% auto;
+          background-position: 50% 5%;
+          background-repeat: no-repeat;
         }
 
 
