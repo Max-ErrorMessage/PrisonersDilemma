@@ -63,6 +63,14 @@ $rank = 1;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        .bg-bg {
+          height:100%;
+          background: url("images/vb1.png");
+          background-size:110% auto;
+          background-position: 50% 5%;
+          transition: background-position 0.15s;
+        }
+
         .bg-img {
           height:100%;
           background:#475d62 url("images/vb2.png");
@@ -162,29 +170,31 @@ $rank = 1;
 </head>
 <body>
 
-    <div class="bg-img">
-        <div id="lb">
-            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-            <br>
-            <table>
-            <?php foreach ($decks as $deck): ?>
-                <tr>
-                    <td>
-                        <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
-                    </td><td>
-                        <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
-                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                    </td><td>
-                        <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cust_id'] ?></span>
-                    </td><td>
+    <div class="bg-bg">
+        <div class="bg-img">
+            <div id="lb">
+                <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                <br>
+                <table>
+                <?php foreach ($decks as $deck): ?>
+                    <tr>
+                        <td>
+                            <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                        </td><td>
+                            <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
+                            <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                        </td><td>
+                            <?= htmlspecialchars($deck['arch']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cust_id'] ?></span>
+                        </td><td>
 
-                        <div class="ra"><?= htmlspecialchars($deck['elo']) ?></div>
-                    </td>
-                </tr>
-                <?php $rank++; ?>
-            <?php endforeach; ?>
-            </table>
+                            <div class="ra"><?= htmlspecialchars($deck['elo']) ?></div>
+                        </td>
+                    </tr>
+                    <?php $rank++; ?>
+                <?php endforeach; ?>
+                </table>
 
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
