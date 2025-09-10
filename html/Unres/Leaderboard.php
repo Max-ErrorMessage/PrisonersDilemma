@@ -215,10 +215,10 @@ $rank = 1;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
-        const div = document.querySelector('.bg-img');
+        const div2 = document.querySelector('.bg-img');
 
-        div.addEventListener('mousemove', (e) => {
-          const div2 = document.querySelector('.bg-fg');
+        div2.addEventListener('mousemove', (e) => {
+          const div1 = document.querySelector('.bg-fg');
           const div3 = document.querySelector('.bg-bg');
           const { width, height } = div.getBoundingClientRect();
 
@@ -230,9 +230,9 @@ $rank = 1;
           const offsetX = (0.5 - x) * 5; // -10% to +10%
           const offsetY = (0.5 - y) * 5;
 
-          div.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
+          div1.style.backgroundPosition = `${50 + offsetX*3}% ${50 + offsetY*3}%`;
           div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
-          div3.style.backgroundPosition = `${50 + offsetX/2}% ${50 + offsetY/2}%`;
+          div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
         div2.addEventListener('mousemove', (e) => {
