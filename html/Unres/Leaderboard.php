@@ -72,6 +72,7 @@ $rank = 1;
         }
 
         .bg-img {
+          position: relative,
           height:100%;
           background:#475d62 url("images/vb2.png");
           background-size:110% auto;
