@@ -135,7 +135,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         body{
-            overflow-x:none;
+            overflow-y:hidden;
         }
 
     </style>
