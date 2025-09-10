@@ -65,7 +65,7 @@ $rank = 1;
     <style>
         .bg-img {
           height:100%;
-          background:#475d62 url("https://cards.scryfall.io/art_crop/front/2/9/29f11089-658f-42e6-aeb0-09b512ad2479.jpg?1734350193");
+          background:#475d62 url("images/vb2.png");
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
@@ -75,10 +75,16 @@ $rank = 1;
           content: "";
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)), url("images/vb3.png");
           backdrop-filter: blur(5px);
           pointer-events: none;
+          background-position:  50% 5%;;
         }
+        .bg-img::after {
+          background-image: url("images/vb1.png");
+          background-position:  50% 5%;;
+        }
+
 
         #lb {
           min-width:320px;
