@@ -92,8 +92,9 @@ $rank = 1;
           background-repeat: no-repeat;
         }
 
-        .bg-img content{
+        .bg-img .content{
             z-index: 1;
+            position:relative;
         }
 
         #lb {
