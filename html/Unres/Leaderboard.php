@@ -53,49 +53,23 @@ $rank = 1;
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .bg-img {
-          position:relative;
           height:100%;
-          background: url("images/vb2.png");
+          background:#475d62 url("images/vb2.png");
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
-          z-index: 0;
         }
 
         .bg-img::before {
           content: "";
           position: absolute;
-          inset: 0;
-          pointer-events: none;
-
-
-          background-image:
-
-            url("images/vb1.png");
-          background-size: 110% auto, 110% auto;
-          background-position: 50% 5%, 50% 5%;
-          background-repeat: no-repeat, no-repeat;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
           backdrop-filter: blur(5px);
-          z-index: -1;
-        }
-
-        .bg-img::after {
-          content: "";
-          position: absolute;
-          inset: 0;
           pointer-events: none;
-          z-index: 0;
-
-          background: url("images/vb3.png"), linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)), #475d62;
-          background-size: 110% auto;
-          background-position: 50% 5%;
-          background-repeat: no-repeat;
         }
 
-        .bg-img .content{
-            z-index: 1;
-            position:relative;
-        }
+
 
         #lb {
           min-width:320px;
