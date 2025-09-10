@@ -64,16 +64,16 @@ $rank = 1;
         .bg-img::before {
           content: "";
           position: absolute;
-          inset: 0;                           /* shorthand for top/left/right/bottom 0 */
+          inset: 0;
           pointer-events: none;
-          z-index: 1;
+          z-index: -1;
 
-          /* Don’t use shorthand "background" here — break into pieces */
+
           background-image:
             linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)),
             url("images/vb1.png");
-          background-size: 110% auto, 110% auto; /* one size per layer */
-          background-position: 50% 5%, 50% 5%;   /* one position per layer */
+          background-size: 110% auto, 110% auto;
+          background-position: 50% 5%, 50% 5%;
           background-repeat: no-repeat, no-repeat;
           backdrop-filter: blur(5px);
         }
