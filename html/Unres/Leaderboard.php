@@ -74,15 +74,18 @@ $rank = 1;
 
         .bg-fg,{
           background-image: url("images/vb3.png");
+          z-index(-1)
         }
 
         .bg-img{
           background-image: url("images/vb2.png");
           transition: background-position 0.15s;
+          z-index(-2)
         }
 
         .bg-bg{
           background-image: url("images/vb1.png");
+          z-index(-3)
         }
 
 
