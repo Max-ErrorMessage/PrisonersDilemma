@@ -75,7 +75,7 @@ $rank = 1;
         .bg-fg {
           position: relative;
           height:100%;
-          background: url("images/vb2.png");
+          background: url("images/vb3.png");
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
@@ -93,7 +93,7 @@ $rank = 1;
 
         .bg-img {
           height:100%;
-          background: url("images/vb1.png");
+          background: url("images/vb2.png");
           background-size:110% auto;
           background-position: 50% 5%;
           transition: background-position 0.15s;
