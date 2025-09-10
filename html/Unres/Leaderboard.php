@@ -74,7 +74,7 @@ $rank = 1;
         }
 
         .bg-img {
-          position: relative,
+          position: relative;
           height:100%;
           background:#475d62 url("images/vb2.png");
           background-size:110% auto;
@@ -90,6 +90,7 @@ $rank = 1;
           background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
           backdrop-filter: blur(5px);
           pointer-events: none;
+          z-index: 1;
         }
 
 
