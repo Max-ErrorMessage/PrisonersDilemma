@@ -134,6 +134,10 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             background-color: #1e2833 !important;
         }
 
+        body{
+            overflow-x:none;
+        }
+
     </style>
 </head>
 <body>
