@@ -63,6 +63,7 @@ $rank = 1;
         .bg-img::before {
           content: "";
           position: absolute;
+          inset:0;
           top: 0; left: 0; right: 0; bottom: 0;
           background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)), url("images/vb3.png");
           backdrop-filter: blur(5px);
@@ -70,6 +71,9 @@ $rank = 1;
           background-position:  50% 5%;;
         }
         .bg-img::after {
+          content: "";
+          position: absolute;
+          inset: 0;
           background-image: url("images/vb1.png");
           background-position:  50% 5%;;
         }
