@@ -14,7 +14,7 @@ include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
 $stmt = $pdo->query('SELECT
-        cod.deck_id as id,
+        d.id as id,
         SUM(
                 CASE cod.colour_id
                         WHEN 1 THEN 1
@@ -29,8 +29,8 @@ $stmt = $pdo->query('SELECT
         d.name as name,
         d.elo AS elo
 FROM colours_of_decks cod
-INNER JOIN decks d ON d.id = cod.deck_id
-GROUP BY d.id
+RIGHT JOIN decks d ON d.id = cod.deck_id
+GROUP BY id
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
