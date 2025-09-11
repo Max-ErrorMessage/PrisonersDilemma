@@ -35,6 +35,7 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
 $stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
@@ -43,6 +44,15 @@ and cid.mainboard = 1');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $mb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n
+FROM card_in_deck cid
+inner join cards c on cid.card_id = c.id
+where cid.deck_id = :id
+and cid.mainboard = 0');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 foreach ($decks as $d) {
@@ -152,15 +162,26 @@ foreach ($decks as $d) {
                 <div id="lb">
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
                     <a><?= $deck['decklist_url'] ?></a>
-                    <br>
                     <h3> deck </h3>
-                    <?php foreach ($mb_cards as $card): ?>
-                    <div justify-content:space-between;display:flex; width:45%;>
-                        <span><?= htmlspecialchars($card['name']) ?></span>
-                        <span><?= htmlspecialchars($card['n']) ?></span>
+                    <br>
+                    <div id="mb">
+                        <strong>minboaord</strong>
+                        <?php foreach ($mb_cards as $card): ?>
+                        <div justify-content:space-between;display:flex; width:45%;>
+                            <span><?= htmlspecialchars($card['name']) ?></span>
+                            <span><?= htmlspecialchars($card['n']) ?></span>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
-                    <?php endforeach; ?>
-
+                    <div id="sb">
+                        <h3> deck </h3>
+                        <?php foreach ($sb_cards as $card): ?>
+                        <div justify-content:space-between;display:flex; width:45%;>
+                            <span><?= htmlspecialchars($card['name']) ?></span>
+                            <span><?= htmlspecialchars($card['n']) ?></span>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
                </div>
             </div>
         </div>
