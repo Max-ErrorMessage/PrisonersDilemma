@@ -124,14 +124,15 @@ foreach ($decks as $d) {
 </head>
 <body>
 
-    <div class="login-dark">
-        <div id="lb">
-
-            <h2><?= $deck['decklist_url'] ?></h2>
-            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
-            <br>
-
-
+    <div class="bg-bg">
+        <div class="bg-img">
+            <div class="bg-fg">
+                <div id="lb">
+                    <h2><?= $deck['decklist_url'] ?></h2>
+                    <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
+                    <br>
+               </div>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
