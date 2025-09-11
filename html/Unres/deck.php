@@ -170,12 +170,21 @@ foreach ($decks as $d) {
     #sb{
         right:3%;
     }
+    #back{
+        color:white;
+        background-color:#1e2833;
+        width:30px;
+        height:30px;
+        position:absolute;
+        top:60px;
+        left:60px;
+    }
 
 
     </style>
 </head>
 <body>
-
+    <a href="Leaderboard.php" id="back"><</a>
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
@@ -202,7 +211,7 @@ foreach ($decks as $d) {
                         </div>
                         <?php endforeach; ?>
                         <br><br>
-                        <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
+                        <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
                     </div>
 
                </div>
