@@ -185,7 +185,7 @@ foreach ($decks as $d) {
     }
 
     #back img{
-        margin:10px 10px 10px 10px;
+        margin:10px 8px 10px 10px;
         width:30px;
         height:auto;
         filter: brightness(1.35) saturate(0.5);
