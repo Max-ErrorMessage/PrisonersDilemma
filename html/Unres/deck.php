@@ -155,7 +155,7 @@ foreach ($decks as $d) {
                     <br>
                     <h3> deck </h3>
                     <?php foreach ($mb_cards as $card): ?>
-                    <div justify-content:space-between;display:flex;>
+                    <div justify-content:space-between;display:flex; width:45%;>
                         <span><?= htmlspecialchars($card['name']) ?></span>
                         <span><?= htmlspecialchars($card['n']) ?></span>
                     </div>
