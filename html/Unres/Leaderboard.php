@@ -214,6 +214,9 @@ $rank = 1;
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
+                <a href="Leaderboard.php" id="back">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                </a>
                 <div id="lb">
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                     <br>
