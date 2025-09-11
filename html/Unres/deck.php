@@ -202,7 +202,7 @@ foreach ($decks as $d) {
                         </div>
                         <?php endforeach; ?>
                         <br><br>
-                        <a href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
+                        <a style="color:white;" href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
                     </div>
 
                </div>
