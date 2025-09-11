@@ -176,7 +176,7 @@ foreach ($decks as $d) {
         width:50px;
         height:50px;
         position:absolute;
-        top:50px;
+        top:25px;
         left:50px;
         padding: 0px;
         border-radius:15px;

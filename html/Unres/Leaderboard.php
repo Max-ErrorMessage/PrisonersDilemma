@@ -190,7 +190,7 @@ $rank = 1;
             width:50px;
             height:50px;
             position:absolute;
-            top:50px;
+            top:25px;
             left:50px;
             padding: 0px;
             border-radius:15px;
@@ -214,7 +214,7 @@ $rank = 1;
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
-                <a href="Leaderboard.php" id="back">
+                <a href="Match.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
                 <div id="lb">

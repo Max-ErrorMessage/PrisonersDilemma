@@ -138,12 +138,37 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             overflow-y:hidden;
         }
 
+            #back{
+            color:white;
+            background-color:#1e2833;
+            width:50px;
+            height:50px;
+            position:absolute;
+            top:25px;
+            right:50px;
+            padding: 0px;
+            border-radius:15px;
+            font-weight:bolder;
+            text-decoration:none;
+        }
+
+        #back img{
+            margin:10px 8px 10px 12px;
+            width:30px;
+            height:auto;
+            filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
+            transform: scaleX(-1);
+        }
+
     </style>
 </head>
 <body>
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
+                <a href="Leaderboard.php" id="back">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                </a>
                 <form action="submit_match.php" method="post">
                     <h2 class="sr-only">Login Form</h2>
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
