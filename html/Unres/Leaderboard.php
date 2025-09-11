@@ -25,13 +25,13 @@ $stmt = $pdo->query('SELECT
                         ELSE 0
                 END
         ) AS colour,
-        d.custom_id as cid
+        d.custom_id as cid,
         d.name as name,
         d.elo AS elo
 FROM colours_of_decks cod
 INNER JOIN decks d ON d.id = cod.deck_id
-GROUP BY deck
-ORDER BY elo;');
+GROUP BY d.id
+ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 ?>
