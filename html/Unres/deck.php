@@ -201,9 +201,10 @@ foreach ($decks as $d) {
                             <span><?= htmlspecialchars($card['n']) ?></span>
                         </div>
                         <?php endforeach; ?>
+                        <br><br>
+                        <a href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
                     </div>
 
-                    <a href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
                </div>
             </div>
         </div>
