@@ -168,7 +168,7 @@ $rank = 1;
 
         tr:hover{
             background-color:#345;
-            transition:background-color 0.1s;
+            transition:background-color 0.2s;
         }
         tr{
             border-radius:5px;
@@ -231,7 +231,7 @@ $rank = 1;
         });
 
         function goToDeck(id){
-            window.header("deck.php?id=" + id)
+            window.location = "deck.php?id=" + id
         }
     </script>
 </body>
