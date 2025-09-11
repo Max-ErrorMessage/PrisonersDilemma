@@ -26,6 +26,28 @@ $rank = 1;
 foreach ($decks as $d) {
     $deck = $d;
 }
+
+$stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype
+FROM decks
+WHERE id = :id;
+');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare('SELECT card_name [name], quantity [n]
+FROM card_in_deck cid
+inner join cards c on cid.card_id = c.id
+where cid.deckid = :id
+and cid.mainboard = 1')
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$mb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+foreach ($decks as $d) {
+    $deck = $d;
+}
 ?>
 
 
@@ -128,9 +150,23 @@ foreach ($decks as $d) {
         <div class="bg-img">
             <div class="bg-fg">
                 <div id="lb">
-                    <h2><?= $deck['decklist_url'] ?></h2>
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
+                    <a><?= $deck['decklist_url'] ?></a>
                     <br>
+                    <h3> deck </h3>
+                    <table>
+                        <?php foreach ($mb_cards as $card): ?>
+                            <tr><td>
+                                </td><td>
+                                    <p><?= htmlspecialchars($deck['name']) ?></p>
+                                </td><td>
+
+                                </td>
+                            </tr>
+                            <?php $rank++; ?>
+                        <?php endforeach; ?>
+
+                    </table>
                </div>
             </div>
         </div>
