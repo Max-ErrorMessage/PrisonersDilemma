@@ -184,7 +184,7 @@ foreach ($decks as $d) {
                     <br>
                     <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                     <div id="mb">
-                        <strong>Mainboard</strong>
+                        <strong>Mainboard:</strong>
                         <?php foreach ($mb_cards as $card): ?>
                         <div style="justify-content:space-between;display:flex; width:100%;">
                             <span><?= htmlspecialchars($card['name']) ?></span>
@@ -194,7 +194,7 @@ foreach ($decks as $d) {
                     </div>
                     <br>
                     <div id="sb">
-                        <strong>Sideboard</strong>
+                        <strong>Sideboard:</strong>
                         <?php foreach ($sb_cards as $card): ?>
                         <div style="justify-content:space-between;display:flex; width:100%">
                             <span><?= htmlspecialchars($card['name']) ?></span>
