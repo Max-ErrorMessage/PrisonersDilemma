@@ -173,21 +173,22 @@ foreach ($decks as $d) {
     #back{
         color:white;
         background-color:#1e2833;
-        width:30px;
-        height:30px;
+        width:60px;
+        height:60px;
         position:absolute;
         top:60px;
         left:60px;
         padding-left:8px;
         padding:top:4px;
-        border-radius:7px;
+        border-radius:15px;
         font-weight:bolder;
         text-decoration:none;
     }
 
     #back img{
-        width:15px;
-        height:15px;
+        margin:15px 15px 15px 15px;
+        width:30px;
+        height:auto;
     }
 
     </style>
