@@ -154,20 +154,13 @@ foreach ($decks as $d) {
                     <a><?= $deck['decklist_url'] ?></a>
                     <br>
                     <h3> deck </h3>
-                    <table>
-                        <?php foreach ($mb_cards as $card): ?>
-                            <tr><td>
-                                </td><td>
-                                    <p><?= htmlspecialchars($card['name']) ?></p>
-                                </td><td>
-                                    <p><?= htmlspecialchars($card['n']) ?></p>
+                    <?php foreach ($mb_cards as $card): ?>
+                    <div justify-content:space-between;display:flex;>
+                        <span><?= htmlspecialchars($card['name']) ?></span>
+                        <span><?= htmlspecialchars($card['n']) ?></span>
+                    </div>
+                    <?php endforeach; ?>
 
-                                </td>
-                            </tr>
-                            <?php $rank++; ?>
-                        <?php endforeach; ?>
-
-                    </table>
                </div>
             </div>
         </div>
