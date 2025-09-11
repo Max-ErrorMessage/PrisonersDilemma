@@ -39,21 +39,43 @@ foreach ($decks as $d) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .login-dark {
+        .bg-bg, .bg-img, .bg-fg {
           height:100%;
-          background:#475d62 url("https://cards.scryfall.io/art_crop/front/2/e/2e1fb442-68ff-4249-8e44-87edf6fae211.jpg?1592708762");
-          background-size:cover;
-          background-position: bottom center;
-          position:relative;
+          background-size:110% auto;
+          background-position: 50% 50%;
+          position: relative;
+          transition: background-position 0.15s;
         }
 
-        .login-dark::before {
+
+
+        .bg-fg{
+          background-image: url("images/vb3.png");
+        }
+
+        .bg-img{
+          background-image: url("images/vb2.png");
+        }
+
+        .bg-bg{
+          background-image: url("images/vb1.png");
+        }
+
+
+        .bg-fg::before {
           content: "";
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
           background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
           backdrop-filter: blur(5px);
           pointer-events: none;
+        }
+
+
+
+
+        .bg-img .content{
+            position:relative;
         }
 
         #lb {
@@ -114,6 +136,28 @@ foreach ($decks as $d) {
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const div2 = document.querySelector('.bg-img');
 
+        div2.addEventListener('mousemove', (e) => {
+          const div1 = document.querySelector('.bg-fg');
+          const div3 = document.querySelector('.bg-bg');
+          const { width, height } = div2.getBoundingClientRect();
+
+          // Get mouse position relative to the div (0 to 1)
+          const x = e.clientX / width;
+          const y = e.clientY / height;
+
+
+          const offsetX = (0.5 - x) * 2;
+          const offsetY = (0.5 - y) * 2;
+
+          div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
+          div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
+          div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
+        });
+
+
+    </script>
 </body>
 </html>
