@@ -39,7 +39,7 @@ $stmt = $pdo->prepare('SELECT card_name [name], quantity [n]
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deckid = :id
-and cid.mainboard = 1')
+and cid.mainboard = 1');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $mb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
