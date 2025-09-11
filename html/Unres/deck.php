@@ -176,17 +176,16 @@ foreach ($decks as $d) {
         width:60px;
         height:60px;
         position:absolute;
-        top:60px;
-        left:60px;
-        padding-left:8px;
-        padding:top:4px;
-        border-radius:15px;
+        top:50px;
+        left:50px;
+        padding: 0px;
+        border-radius:25px;
         font-weight:bolder;
         text-decoration:none;
     }
 
     #back img{
-        margin:15px 15px 15px 15px;
+        margin:10px 10px 10px 10px;
         width:30px;
         height:auto;
     }
