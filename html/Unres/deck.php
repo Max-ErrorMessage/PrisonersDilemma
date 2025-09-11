@@ -55,7 +55,7 @@ $stmt->execute();
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $stmt = $pdo->prepare('SELECT elo_change FROM elo_changes
-WHERE deck_id = 350');
+WHERE deck_id = :id');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $elo = $stmt->fetchAll(PDO::FETCH_ASSOC);
