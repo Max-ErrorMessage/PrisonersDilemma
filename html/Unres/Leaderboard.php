@@ -174,6 +174,27 @@ $rank = 1;
             border-radius:5px;
         }
 
+        #back{
+            color:white;
+            background-color:#1e2833;
+            width:50px;
+            height:50px;
+            position:absolute;
+            top:50px;
+            left:50px;
+            padding: 0px;
+            border-radius:15px;
+            font-weight:bolder;
+            text-decoration:none;
+        }
+
+        #back img{
+            margin:10px 12px 10px 8px;
+            width:30px;
+            height:auto;
+            filter:  brightness(1.41) saturate(0.55);
+        }
+
     </style>
 </head>
 <body>
