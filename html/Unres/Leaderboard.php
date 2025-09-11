@@ -174,6 +174,16 @@ $rank = 1;
             border-radius:5px;
         }
 
+        tr td:first-child {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        tr td:last-child {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
         #back{
             color:white;
             background-color:#1e2833;
@@ -194,6 +204,8 @@ $rank = 1;
             height:auto;
             filter:  brightness(1.41) saturate(0.55);
         }
+
+
 
     </style>
 </head>
