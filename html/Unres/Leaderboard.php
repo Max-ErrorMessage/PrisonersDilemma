@@ -202,7 +202,7 @@ $rank = 1;
             margin:10px 12px 10px 8px;
             width:30px;
             height:auto;
-            filter:  brightness(1.2) saturate(1) hue-rotate(-10deg);
+            filter:  brightness(1.2) saturate(0.7) hue-rotate(-10deg);
         }
 
 
