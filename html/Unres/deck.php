@@ -173,8 +173,8 @@ foreach ($decks as $d) {
     #back{
         color:white;
         background-color:#1e2833;
-        width:60px;
-        height:60px;
+        width:50px;
+        height:50px;
         position:absolute;
         top:50px;
         left:50px;
