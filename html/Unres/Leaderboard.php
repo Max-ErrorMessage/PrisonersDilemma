@@ -167,8 +167,8 @@ $rank = 1;
         }
 
         tr:hover{
-            background-color:#345
-            transition:background-color 0.1s
+            background-color:#345;
+            transition:background-color 0.1s;
         }
         tr{
             border-radius:5px;
