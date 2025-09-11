@@ -177,7 +177,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <select class="form-control"  id="winner" name="winner">
                             <?php foreach ($decks as $deck): ?>
                                 <option value="<?= htmlspecialchars($deck['id']) ?>">
-                                    <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['name']) ?> - <?= htmlspecialchars($deck['provided archetype']) ?>
+                                    <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['name']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -187,7 +187,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <select class="form-control"  id="loser" name="loser">
                             <?php foreach ($decks as $deck): ?>
                                 <option value="<?= htmlspecialchars($deck['id']) ?>">
-                                    <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?> - <?= htmlspecialchars($deck['elo']) ?>
+                                    <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['name']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
