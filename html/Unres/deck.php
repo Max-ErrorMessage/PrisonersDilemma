@@ -27,7 +27,7 @@ foreach ($decks as $d) {
     $deck = $d;
 }
 
-$stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype
+$stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype, name
 FROM decks
 WHERE id = :id;
 ');
@@ -181,8 +181,7 @@ foreach ($decks as $d) {
             <div class="bg-fg">
                 <div id="lb">
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
-                    <h3> deck </h3>
-                    <br>
+                    <h3> <?= $deck['name'] ?> </h3>
                     <div id="mb">
                         <strong>mainboard</strong>
                         <?php foreach ($mb_cards as $card): ?>
@@ -202,7 +201,7 @@ foreach ($decks as $d) {
                         </div>
                         <?php endforeach; ?>
                         <br><br>
-                        <a style="color:white;" href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
+                        <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
                     </div>
 
                </div>
