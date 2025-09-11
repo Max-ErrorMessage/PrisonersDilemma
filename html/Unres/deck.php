@@ -110,6 +110,11 @@ foreach ($decks as $d) {
             position:relative;
         }
 
+
+        .bg-img .illustration {
+          text-align:center;
+        }
+
         #lb {
           min-width:320px;
           width:40%;
@@ -156,7 +161,7 @@ foreach ($decks as $d) {
         width:45%;
         border: 1px solid white;
         position:absolute;
-        top:10%
+        top:25%
     }
 
     #mb{
@@ -166,6 +171,7 @@ foreach ($decks as $d) {
     #sb{
         right:3%;
     }
+
 
     </style>
 </head>
@@ -182,7 +188,7 @@ foreach ($decks as $d) {
                     <div id="mb">
                         <strong>mainboard</strong>
                         <?php foreach ($mb_cards as $card): ?>
-                        <div justify-content:space-between;display:flex; width:45%;>
+                        <div style="justify-content:space-between;display:flex; width:100%;">
                             <span><?= htmlspecialchars($card['name']) ?></span>
                             <span><?= htmlspecialchars($card['n']) ?></span>
                         </div>
@@ -192,7 +198,7 @@ foreach ($decks as $d) {
                     <div id="sb">
                         <strong>sideboard</strong>
                         <?php foreach ($sb_cards as $card): ?>
-                        <div justify-content:space-between;display:flex; width:45%;>
+                        <div style="justify-content:space-between;display:flex; width:100%">
                             <span><?= htmlspecialchars($card['name']) ?></span>
                             <span><?= htmlspecialchars($card['n']) ?></span>
                         </div>
