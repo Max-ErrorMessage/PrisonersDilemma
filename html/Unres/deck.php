@@ -158,7 +158,7 @@ foreach ($decks as $d) {
                         <?php foreach ($mb_cards as $card): ?>
                             <tr><td>
                                 </td><td>
-                                    <p><?= htmlspecialchars($caard['name']) ?></p>
+                                    <p><?= htmlspecialchars($card['name']) ?></p>
                                 </td><td>
 
                                 </td>
