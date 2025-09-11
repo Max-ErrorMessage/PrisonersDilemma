@@ -178,9 +178,11 @@ foreach ($decks as $d) {
         position:absolute;
         top:60px;
         left:60px;
-        padding-left:10px;
+        padding-left:8px;
+        padding:top:4px;
         border-radius:7px;
         font-weight:bolder;
+        text-decoration:none;
     }
 
 
