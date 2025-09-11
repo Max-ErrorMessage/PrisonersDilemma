@@ -58,9 +58,11 @@ $stmt = $pdo->prepare('SELECT elo_change FROM elo_changes
 WHERE deck_id = :id');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
-$elo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
+$elo = [];
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $elo[] = (int)$row['elo_change']; // force integer
+}
 
 
 foreach ($decks as $d) {
