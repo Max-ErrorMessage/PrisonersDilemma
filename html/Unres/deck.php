@@ -265,8 +265,8 @@ foreach ($decks as $d) {
 
         console.log(elo_changes);
         elo_arr = [1000]
-        for(elo in elo_changes){
-            elo_arr += elo_arr[-1] + elo
+        for (let i = 0; i < elo_changes.length; i++) {
+          elo_arr.push(elo_arr[elo_arr.length - 1] + elo_changes[i]);
         }
         console.log(elo_arr)
     </script>
