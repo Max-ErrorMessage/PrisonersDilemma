@@ -160,6 +160,7 @@ foreach ($decks as $d) {
                                 </td><td>
                                     <p><?= htmlspecialchars($card['name']) ?></p>
                                 </td><td>
+                                    <p><?= htmlspecialchars($card['n']) ?></p>
 
                                 </td>
                             </tr>
