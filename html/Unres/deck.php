@@ -152,6 +152,21 @@ foreach ($decks as $d) {
             width:25px;
         }
 
+    #mb ,#sb{
+        width:45%;
+        border: 1px solid white;
+        position:absolute;
+        top:10%
+    }
+
+    #mb{
+        left:3%;
+    }
+
+    #sb{
+        right:3%;
+    }
+
     </style>
 </head>
 <body>
@@ -173,6 +188,7 @@ foreach ($decks as $d) {
                         </div>
                         <?php endforeach; ?>
                     </div>
+                    <br>
                     <div id="sb">
                         <strong>sideboard</strong>
                         <?php foreach ($sb_cards as $card): ?>
