@@ -181,7 +181,6 @@ foreach ($decks as $d) {
             <div class="bg-fg">
                 <div id="lb">
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
-                    <a><?= $deck['decklist_url'] ?></a>
                     <h3> deck </h3>
                     <br>
                     <div id="mb">
@@ -203,6 +202,8 @@ foreach ($decks as $d) {
                         </div>
                         <?php endforeach; ?>
                     </div>
+
+                    <a href= <?= '"'.$deck['decklist_url'].'"' ?> >click here for the deck page</a>
                </div>
             </div>
         </div>
