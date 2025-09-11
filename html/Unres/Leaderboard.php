@@ -186,7 +186,7 @@ $rank = 1;
                     <br>
                     <table>
                     <?php foreach ($decks as $deck): ?>
-                        <tr data-href=<?= '"deck.php?id='.$deck['id'].'"'?>>
+                        <tr onclick=goToDeck(<?= $deck['id']?>)>
                             <td>
                                 <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                             </td><td>
@@ -230,7 +230,9 @@ $rank = 1;
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
-
+        function goToDeck(id){
+            window.header("deck.php?id=" + id)
+        }
     </script>
 </body>
 </html>
