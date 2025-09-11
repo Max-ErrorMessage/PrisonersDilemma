@@ -185,6 +185,10 @@ foreach ($decks as $d) {
         text-decoration:none;
     }
 
+    #back img{
+        width:15px;
+        height:15px;
+    }
 
     </style>
 </head>
@@ -192,7 +196,9 @@ foreach ($decks as $d) {
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
-                <a href="Leaderboard.php" id="back"><</a>
+                <a href="Leaderboard.php" id="back">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                </a>
                 <div id="lb">
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
                     <br>
