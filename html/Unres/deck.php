@@ -181,7 +181,8 @@ foreach ($decks as $d) {
             <div class="bg-fg">
                 <div id="lb">
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
-                    <h3> <?= $deck['name'] ?> </h3>
+                    <br>
+                    <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                     <div id="mb">
                         <strong>mainboard</strong>
                         <?php foreach ($mb_cards as $card): ?>
