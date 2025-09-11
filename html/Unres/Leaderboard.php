@@ -182,7 +182,7 @@ $rank = 1;
                     <br>
                     <table>
                     <?php foreach ($decks as $deck): ?>
-                        <tr href=<?= '"deck.php?id='.$deck['id'].'"'>
+                        <tr href=<?= '"deck.php?id='.$deck['id'].'"'?>>
                             <td>
                                 <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                             </td><td>
