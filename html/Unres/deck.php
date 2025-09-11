@@ -54,6 +54,14 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$stmt = $pdo->prepare('SELECT elo_change FROM elo_changes
+WHERE deck_id = 350');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$elo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 
 foreach ($decks as $d) {
     $deck = $d;
@@ -253,7 +261,9 @@ foreach ($decks as $d) {
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
+        const elo_changes = <?php echo json_encode($elo); ?>;
 
+        console.log(elo_changes);
     </script>
 </body>
 </html>
