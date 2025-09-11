@@ -187,8 +187,8 @@ foreach ($decks as $d) {
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
+                <a href="Leaderboard.php" id="back"><</a>
                 <div id="lb">
-                    <a href="Leaderboard.php" id="back"><</a>
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></div>
                     <br>
                     <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
