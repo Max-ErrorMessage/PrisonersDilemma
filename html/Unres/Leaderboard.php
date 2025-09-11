@@ -167,7 +167,7 @@ $rank = 1;
         }
 
         tr:hover{
-            background-color:#456
+            background-color:#345
         }
 
     </style>
@@ -182,7 +182,7 @@ $rank = 1;
                     <br>
                     <table>
                     <?php foreach ($decks as $deck): ?>
-                        <tr href=<?= '"deck.php?id='.$deck['id'].'"'?>>
+                        <tr onclick=<?= '"deck.php?id='.$deck['id'].'"'?>>
                             <td>
                                 <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                             </td><td>
