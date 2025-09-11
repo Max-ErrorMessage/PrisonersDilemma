@@ -188,7 +188,7 @@ foreach ($decks as $d) {
         margin:10px 12px 10px 8px;
         width:30px;
         height:auto;
-        filter: brightness(1.30) saturate(0.4);
+        filter: brightness(1.35) saturate(0.3);
     }
 
     </style>
