@@ -50,15 +50,15 @@ foreach ($decks as $d) {
 
 
         .bg-fg{
-          background-image: url("images/vb3.png");
+          background-image: url("images/lg3.png");
         }
 
         .bg-img{
-          background-image: url("images/vb2.png");
+          background-image: url("images/lg2.png");
         }
 
         .bg-bg{
-          background-image: url("images/vb1.png");
+          background-image: url("images/lg1.png");
         }
 
 
