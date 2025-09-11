@@ -264,6 +264,11 @@ foreach ($decks as $d) {
         const elo_changes = <?php echo json_encode($elo); ?>;
 
         console.log(elo_changes);
+        elo_arr = [1000]
+        for(elo in elo_changes){
+            elo_arr += elo_arr[-1] + elo
+        }
+        console.log(elo_arr)
     </script>
 </body>
 </html>
