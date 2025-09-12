@@ -144,7 +144,6 @@ $rank = 1;
             align-content: center;
             text-align: center;
             font-weight:bold;
-            border: 1px white solid;
         }
         .ra{
             text-align:right;
