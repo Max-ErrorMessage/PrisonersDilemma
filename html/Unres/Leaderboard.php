@@ -143,6 +143,8 @@ $rank = 1;
             border-radius:8px;
             align-content: center;
             text-align: center;
+            font-weight:bold;
+            border: 1px white solid;
         }
         .ra{
             text-align:right;
