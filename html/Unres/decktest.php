@@ -327,7 +327,8 @@ foreach ($decks as $d) {
         for (var i = 0; i < winners.length; i++){
             labels.push(winners[i] + " beat " + losers[i])
         }
-
+        console.log(winners)
+        console.log(labels)
         function switchTab(n){
             tab1 = document.getElementById("t1")
             tab2 = document.getElementById("t2")
