@@ -194,7 +194,7 @@ foreach ($decks as $d) {
     }
 
     .tab{
-        background-color: linear-gradient(to top,#122,#1e2833);
+        background-image: linear-gradient(to top, #101820, #1e2833);
         position: absolute;
         bottom: 85%;
         height: 50px;
@@ -213,13 +213,14 @@ foreach ($decks as $d) {
         transform: translate(-50%, -50%);
     }
 
-    .t1{
+    #t1{
+        background-color:#1e2833
         left: 31%;
     }
-    .t2{
+    #t2{
         left: calc(32% + 80px);
     }
-    .t3{
+    #t3{
         left: calc(33% + 160px);
     }
 
@@ -234,13 +235,13 @@ foreach ($decks as $d) {
                 <a href="Leaderboard.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
-                <a class="tab t1">
+                <a class="tab" id="t1" onclick="switch(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
-                <a class="tab t2">
+                <a class="tab" id="t2" onclick="switch(2)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
-                <a class="tab t3">
+                <a class="tab" id="t3" onclick="switch(3)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
                 <div id="lb">
@@ -303,6 +304,27 @@ foreach ($decks as $d) {
           elo_arr.push(elo_arr[elo_arr.length - 1] + elo_changes[i]);
         }
         console.log(elo_arr)
+
+
+        function switch(n){
+            tab1 = document.getElementById("t1")
+            tab2 = document.getElementById("t2")
+            tab3 = document.getElementById("t3")
+
+            if (n==1){
+                tab1.style.backgroundColor = "#1e2833"
+                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+            } else if (n==2){
+                tab2.style.backgroundColor = "#1e2833"
+                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+            }  else if (n==1){
+                tab3.style.backgroundColor = "#1e2833"
+                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+            }
+        }
     </script>
 </body>
 </html>
