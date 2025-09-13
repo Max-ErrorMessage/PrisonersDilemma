@@ -451,7 +451,7 @@ foreach ($decks as $d) {
             }
         }
 
-        window.imgBecome = function(url) (url){
+        function imgBecome(url){
             document.getElementById('crd-prvw').src = url
         }
     </script>
