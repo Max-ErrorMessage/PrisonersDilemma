@@ -288,7 +288,7 @@ foreach ($decks as $d) {
                             <strong>Mainboard:</strong>
                             <?php foreach ($mb_cards as $card): ?>
                             <div style="justify-content:space-between;display:flex; width:100%;">
-                                <span onmouseenter="imgBecome("<?= htmlspecialchars($card['url']) ?>")"><?= htmlspecialchars($card['name']) ?></span>
+                                <span onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'><?= htmlspecialchars($card['name']) ?></span>
                                 <span><?= htmlspecialchars($card['n']) ?></span>
                             </div>
                             <?php endforeach; ?>
@@ -451,7 +451,7 @@ foreach ($decks as $d) {
             }
         }
 
-        imgBecome(url){
+        window.imgBecome = function(url) (url){
             document.getElementById('crd-prvw').src = url
         }
     </script>
