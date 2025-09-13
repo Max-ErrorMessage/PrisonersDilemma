@@ -214,7 +214,7 @@ foreach ($decks as $d) {
     }
 
     #t1{
-        background-color:#1e2833
+        background-color:#1e2833;
         left: 31%;
     }
     #t2{
