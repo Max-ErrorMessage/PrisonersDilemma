@@ -258,9 +258,6 @@ if (count($sim_rows) > 0) {
         border-radius:3px;
     }
 
-    #match-table{
-        height:30%;
-    }
     #match-table tr, #sim-table tr{
         border-bottom: 1px #555 solid;
     }
@@ -273,12 +270,19 @@ if (count($sim_rows) > 0) {
         margin:auto;
     }
 
-    #match-table td, #sim-table tf{
+    #match-table td{
         padding:4px;
+    }
+    #sim-table td{
+        padding:8px;
     }
 
     #sim-table{
         height:70%;
+    }
+
+    #match-table{
+        height:30%;
     }
 
     #crd-prvw{
