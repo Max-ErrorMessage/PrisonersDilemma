@@ -158,13 +158,6 @@ foreach ($decks as $d) {
             color:#fff;
         }
 
-        table{
-            text-align:left;
-            font-size:15px;
-            width:80%;
-            position:absolute;
-            left:10%;
-        }
 
 
 
