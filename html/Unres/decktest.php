@@ -79,6 +79,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 foreach ($decks as $d) {
     $deck = $d;
 }
+
+
+$pythonScript = __DIR__ . '/../../Unres-Meta/elo/similarity-from-matrix.py '.$id;
+
+// Run Python and capture output
+$output = shell_exec("python3 " . escapeshellarg($pythonScript));
+
 ?>
 
 
@@ -483,6 +490,8 @@ foreach ($decks as $d) {
             img.src = url; // Browser will start loading the image
             preloadedImages.push(img);
         });
+
+        console.log(<?= $output ?>)
     </script>
 </body>
 </html>
