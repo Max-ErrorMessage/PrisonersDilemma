@@ -314,7 +314,7 @@ foreach ($decks as $d) {
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <iframe src=<?='"'.htmlspecialchars($decklist_url) . '/primer"'?> width="600" height="400"></iframe>
+                        <iframe src=<?='"'.htmlspecialchars($deck['decklist_url']) . '/primer"'?> width="80%" height="80%"></iframe>
                     </div>
 
                </div>
