@@ -251,8 +251,9 @@ foreach ($decks as $d) {
         padding:4px;
     }
     canvas{
-        max-width:90%;
-        max-height:50%;
+
+        max-width:90vh;
+        max-height:50vh;
     }
 
     </style>
