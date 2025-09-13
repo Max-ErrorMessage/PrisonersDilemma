@@ -260,6 +260,7 @@ foreach ($decks as $d) {
         height:auto;
         top:50%;
         transform:translate(0,-50%);
+        display:none;
     }
 
     </style>
@@ -288,7 +289,11 @@ foreach ($decks as $d) {
                             <strong>Mainboard:</strong>
                             <?php foreach ($mb_cards as $card): ?>
                             <div style="justify-content:space-between;display:flex; width:100%;">
-                                <span onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'><?= htmlspecialchars($card['name']) ?></span>
+                                <span
+                                    onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                    onmouseleave='imgLeave()'
+                                    ><?= htmlspecialchars($card['name']) ?></span>
+                                <span><?= htmlspecialchars($card['n']) ?></span>
                                 <span><?= htmlspecialchars($card['n']) ?></span>
                             </div>
                             <?php endforeach; ?>
