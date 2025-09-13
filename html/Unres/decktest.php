@@ -88,7 +88,7 @@ $stmt = $pdo->prepare('
 
 $stmt->execute([':id' => $id]);
 $colors = $stmt->fetch(PDO::FETCH_ASSOC);
-$color_url = $colors['color'] . ".png";
+$color_url = $colors['colour'] . ".png";
 
 
 
