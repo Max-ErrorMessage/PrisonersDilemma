@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $loser_id = escapeshellarg($_POST['loser']);
     $name = escapeshellarg($_POST['name']);
 
-    if (ctype_alnum($str)) {
+    if (ctype_alnum($name)) {
         $command = "cd /var/www/Unres-Meta/elo && /var/www/Unres-Meta/elo/venv/bin/python update_elo.py $winner_id $loser_id $name 2>&1";
 
         $output2 = shell_exec($command);
