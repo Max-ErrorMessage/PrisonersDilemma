@@ -491,7 +491,7 @@ $output = shell_exec("python3 " . escapeshellarg($pythonScript));
             preloadedImages.push(img);
         });
 
-        console.log(<?= $output ?>)
+        console.log("<?= $output ?> :)")
     </script>
 </body>
 </html>
