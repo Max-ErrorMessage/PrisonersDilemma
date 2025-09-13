@@ -88,7 +88,7 @@ $stmt = $pdo->prepare('
 
 $stmt->execute([':id' => $id]);
 $colors = $stmt->fetch(PDO::FETCH_ASSOC);
-$color_url = $colors['colour'] . ".png";
+$color_url = "images/" . $colors['colour'] . ".png";
 
 
 
@@ -312,6 +312,13 @@ if (count($sim_rows) > 0) {
         transform:translate(0,-50%);
         display:none;
         border-radius:10px;
+    }
+
+    #clr-img{
+        position:absolute
+        bottom:5%;
+        width:90%;
+        left:5%
     }
 
     </style>
