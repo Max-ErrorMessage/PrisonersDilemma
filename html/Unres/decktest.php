@@ -68,6 +68,30 @@ foreach ($decks as $d) {
     $deck = $d;
 }
 
+$stmt = $pdo->query('SELECT
+        SUM(
+                CASE cod.colour_id
+                        WHEN 1 THEN 1
+                        WHEN 2 THEN 2
+                        WHEN 3 THEN 4
+                        WHEN 4 THEN 8
+                        WHEN 5 THEN 16
+                        ELSE 0
+                END
+        ) AS colour
+FROM colours_of_decks cod
+RIGHT JOIN decks d ON d.id = cod.deck_id
+where d.id = :id
+GROUP BY d.id
+ORDER BY elo DESC;');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+foreach ($colors as $color) {
+    $color_url = $color['color'] . ".png"
+}
+
+
+
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'similarity_from_matrix.py';
@@ -78,6 +102,7 @@ $sim_output = shell_exec($command);
 $sim_rows = str_getcsv($sim_output, "\n"); // Split by line
 $sim_data = [];
 
+array_shift($sim_rows);
 if (count($sim_rows) > 0) {
     foreach ($sim_rows as $row) {
         $fields = str_getcsv($row);
@@ -337,6 +362,7 @@ if (count($sim_rows) > 0) {
                             <?php endforeach; ?>
                             <br><br>
                             <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
+                            <img id="clr-img" src= "<?= $color_url ?>">
                         </div>
                     </div>
                     <div id="page2" style="display:none">
@@ -349,10 +375,9 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
                                         </td><td>
-                                            <p><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
+                                            <p style="text-align:right;"><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
                                         </td>
                                     </tr>
-                                    <?php $rank++; ?>
                                 <?php endforeach; ?>
                             </table>
                         </div>
@@ -369,10 +394,9 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($deck['name'])?></p>
                                         </td><td>
-                                            <p><?=  substr(htmlspecialchars($deck['sim']),0,4) ?>%</p>
+                                            <p style="text-align:right;"><?=  round($deck['sim'] * 100) ?>%</p>
                                         </td>
                                     </tr>
-                                    <?php $rank++; ?>
                                 <?php endforeach; ?>
                             </table>
                         </div>
