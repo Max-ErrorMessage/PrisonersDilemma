@@ -84,10 +84,19 @@ foreach ($decks as $d) {
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'similarity_from_matrix.py';
 $command = 'cd /var/www/Unres-Meta/elo && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ($id) . ' 2>&1';
-$output = shell_exec($command);
+$sim_output = shell_exec($command);
 
-echo "<pre>$command</pre>";
-echo "<pre>$output</pre>";
+
+$sim_rows = str_getcsv($sim_output, "\n"); // Split by line
+$sim_data = [];
+
+if (count($rows) > 0) {
+    foreach ($rows as $row) {
+        $fields = str_getcsv($row);
+        $sim_data[] = array_combine(["name","id","sim"], $fields); // Convert to assoc array
+    }
+}
+
 
 
 ?>
@@ -495,7 +504,7 @@ echo "<pre>$output</pre>";
             preloadedImages.push(img);
         });
 
-        console.log("<?= $output ?> :)")
+        console.log("<?= $sim_data ?> :)")
     </script>
 </body>
 </html>
