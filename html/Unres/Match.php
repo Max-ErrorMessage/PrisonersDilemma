@@ -191,6 +191,16 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </option>
                             <?php endforeach; ?>
                         </select>
+
+                        <label for="Name">Match Submitter:</label>
+                        <select class="form-control"  id="loser" name="loser">
+                            <?php foreach ($decks as $deck): ?>
+                                <option value="<?= htmlspecialchars($deck['id']) ?>">
+                                    <?= htmlspecialchars($deck['custom_id']) ?> - <?= htmlspecialchars($deck['name']) ?> - <?= htmlspecialchars($deck['provided_archetype']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="text" id="name" name="name">
                     </div>
                     <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
                 </form>
