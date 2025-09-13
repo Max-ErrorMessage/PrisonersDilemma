@@ -14,7 +14,18 @@ include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
 $id = $_GET["id"];
+$stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype
+FROM decks
+WHERE id = :id;
+');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+foreach ($decks as $d) {
+    $deck = $d;
+}
 
 $embed_url = str_replace("/decks/", "/embed/", $deck['decklist_url']);
 
@@ -36,8 +47,7 @@ $stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_ur
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
-and cid.mainboard = 1)
-order by n desc;')
+and cid.mainboard = 1')
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $mb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -46,8 +56,7 @@ $stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_ur
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
-and cid.mainboard = 0
-order by n desc;');
+and cid.mainboard = 0');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute()
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
