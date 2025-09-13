@@ -249,52 +249,36 @@ if (count($sim_rows) > 0) {
         left: calc(33% + 160px);
     }
 
-    #match-table{
+    #match-table, #sim-table{
         left:15%;
         width:70%;
         position:absolute;
-        height:30%;
         overflow-y:scroll;
         border:1px white solid;
+        border-radius:3px;
     }
-    #match-table tr{
+
+    #match-table{
+        height:30%;
+    }
+    #match-table tr, #sim-table tr{
         border-bottom: 1px #555 solid;
     }
 
-    #match-table table{
+    #match-table table, #sim-table table{
         width:100%;
     }
 
-    #match-table p{
+    #match-table p, #sim-table p{
         margin:auto;
     }
 
-    #match-table td{
+    #match-table td, #sim-table tf{
         padding:4px;
     }
 
     #sim-table{
-        left:15%;
-        width:70%;
-        position:absolute;
         height:70%;
-        overflow-y:scroll;
-        border:1px white solid;
-    }
-    #sim-table tr{
-        border-bottom: 1px #555 solid;
-    }
-
-    #sim-table table{
-        width:100%;
-    }
-
-    #sim-table p{
-        margin:auto;
-    }
-
-    #sim-table td{
-        padding:8px;
     }
 
     #crd-prvw{
