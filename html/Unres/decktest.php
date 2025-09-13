@@ -314,7 +314,7 @@ foreach ($decks as $d) {
         });
 
         const elo_changes = <?php echo json_encode($elo); ?>;
-        const winner = <?php echo json_encode($winners); ?>;
+        const winners = <?php echo json_encode($winners); ?>;
         const losers = <?php echo json_encode($losers); ?>;
 
         console.log(elo_changes);
