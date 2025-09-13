@@ -350,7 +350,7 @@ foreach ($decks as $d) {
                 new Chart(document.getElementById("elograph"), {
                     type: "line",
                     data: {
-                      //labels: Array(elo_arr.length).fill(""), // hides x-axis labels
+                      labels: Array(elo_arr.length).fill(""), // hides x-axis labels
                       datasets: [{
                         label: "Elo Over Time",
                         data: elo_arr,
