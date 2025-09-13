@@ -71,7 +71,7 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
 
         .bg-img form {
           min-width:320px;
-          width:30%;
+          width:25%;
           background-color:#1e2833;
           padding:40px;
           border-radius:4px;
