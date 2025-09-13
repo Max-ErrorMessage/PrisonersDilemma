@@ -243,6 +243,9 @@ foreach ($decks as $d) {
         width:100%;
     }
 
+    #match-table p{
+        margin:auto;
+    }
 
     </style>
 </head>
