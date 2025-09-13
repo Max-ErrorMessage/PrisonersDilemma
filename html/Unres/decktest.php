@@ -65,10 +65,12 @@ $stmt->execute();
 $elo = [];
 $winners = [];
 $losers = [];
+$elo_rows = []
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $elo[] = (int)$row['elo_change'];
     $winners[] = $row['winner'];
     $losers[] = $row['loser'];
+    $elo_rows[] = $row
 }
 
 
@@ -280,6 +282,18 @@ foreach ($decks as $d) {
                     <div id="page2" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <canvas id="elograph"></canvas>
+                        <table>
+                            <?php foreach ($elo_rows as $row): ?>
+                                <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                    <td>
+                                        <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
+                                    </td><td>
+                                        <p><?= htmlspecialchars($row['winner'])?> elo gain</p>
+                                    </td>
+                                </tr>
+                                <?php $rank++; ?>
+                            <?php endforeach; ?>
+                            </table>
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
