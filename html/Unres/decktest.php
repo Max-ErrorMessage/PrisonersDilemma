@@ -272,6 +272,7 @@ foreach ($decks as $d) {
                     </div>
                     <div id="page2" style="display:none">
                         <p>page2</p>
+                        <div id="elograph"></div>
                     </div>
                     <div id="page3" style="display:none">
                         <p>page3</p>
@@ -311,7 +312,6 @@ foreach ($decks as $d) {
         for (let i = 0; i < elo_changes.length; i++) {
           elo_arr.push(elo_arr[elo_arr.length - 1] + elo_changes[i]);
         }
-        console.log(elo_arr)
 
 
         function switchTab(n){
@@ -345,6 +345,25 @@ foreach ($decks as $d) {
                 page2.style.display = "block"
                 page1.style.display = "none"
                 page3.style.display = "none"
+
+                new Chart(document.getElementById("lineChart"), {
+                    type: "line",
+                    data: {
+                      labels: Array(elo_arr.length).fill(""), // hides x-axis labels
+                      datasets: [{
+                        label: "Data",
+                        data: elo_arr,
+                        borderColor: "blue",
+                        fill: false
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        x: { display: false } // completely hides x-axis
+                      }
+                    }
+                  });
+
             }  else if (n==3){
                 tab3.style.backgroundColor = "#1e2833"
                 tab3.style.backgroundImage = "none"
