@@ -456,10 +456,10 @@ foreach ($decks as $d) {
 
         function imgBecome(url){
             document.getElementById('crd-prvw').src = url
-            document.getElementById('crd-prvw').display="block"
+            document.getElementById('crd-prvw').style.display="block"
         }
         function imgLeave(){
-            document.getElementById('crd-prvw').display="none"
+            document.getElementById('crd-prvw').style.display="none"
         }
     </script>
 </body>
