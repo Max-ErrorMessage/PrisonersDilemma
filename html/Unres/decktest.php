@@ -240,13 +240,12 @@ foreach ($decks as $d) {
         position:absolute;
         height:30%;
         overflow-y:scroll;
+        border:1px white solid;
     }
     #match-table tr{
         border-bottom: 1px #555 solid;
     }
-    #match-table table{
-        border:1px white solid
-    }
+
 
     </style>
 </head>
