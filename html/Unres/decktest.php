@@ -381,7 +381,6 @@ if (count($sim_rows) > 0) {
                         <strong>Similar Decks:</strong>
                         <br>
                         <br>
-                        <br>
                         <div id="sim-table">
                             <table id=>
                                 <?php foreach ($sim_data as $deck): ?>
@@ -389,7 +388,7 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($deck['name'])?></p>
                                         </td><td>
-                                            <p><?= htmlspecialchars($deck['sim'])?>%</p>
+                                            <p><?=  substr(htmlspecialchars($deck['sim']),0,4) ?>%</p>
                                         </td>
                                     </tr>
                                     <?php $rank++; ?>
