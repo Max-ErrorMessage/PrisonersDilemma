@@ -79,6 +79,26 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 foreach ($decks as $d) {
     $deck = $d;
 }
+
+
+$venvPython = '/var/www/Unres-Meta/venv/bin/python';
+$pythonScript = 'similarity_from_matrix.py';
+$command = 'cd /var/www/Unres-Meta/elo && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ($id) . ' 2>&1';
+$sim_output = shell_exec($command);
+
+
+$sim_rows = str_getcsv($sim_output, "\n"); // Split by line
+$sim_data = [];
+
+if (count($sim_rows) > 0) {
+    foreach ($sim_rows as $row) {
+        $fields = str_getcsv($row);
+        $sim_data[] = array_combine(["name","id","sim"], $fields); // Convert to assoc array
+    }
+}
+
+
+
 ?>
 
 
@@ -229,28 +249,45 @@ foreach ($decks as $d) {
         left: calc(33% + 160px);
     }
 
-    #match-table{
+    #match-table, #sim-table{
         left:15%;
         width:70%;
         position:absolute;
-        height:30%;
         overflow-y:scroll;
         border:1px white solid;
+        border-radius:3px;
     }
-    #match-table tr{
+
+    #match-table tr, #sim-table tr{
         border-bottom: 1px #555 solid;
     }
 
-    #match-table table{
+    #match-table table, #sim-table table{
         width:100%;
     }
 
-    #match-table p{
+    #match-table p, #sim-table p{
         margin:auto;
     }
 
     #match-table td{
         padding:4px;
+    }
+    #sim-table td{
+        padding:8px;
+    }
+
+    #sim-table{
+        height:70%;
+    }
+
+    #match-table{
+        height:30%;
+    }
+
+    #sim-table tr:hover{
+            background-color:#345;
+            transition:background-color 0.2s;
     }
 
     #crd-prvw{
@@ -280,8 +317,8 @@ foreach ($decks as $d) {
                 <a class="tab" id="t2" onclick="switchTab(2)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
-                <a class="tab" id="t3" onclick="switchTab(3)" style="display:none">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3790/3790171.png"/>
+                <a class="tab" id="t3" onclick="switchTab(3)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
                 </a>
                 <div id="lb">
                     <div id = "page1">
@@ -320,7 +357,7 @@ foreach ($decks as $d) {
                         <div id="match-table">
                             <table>
                                 <?php foreach ($elo_rows as $row): ?>
-                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                    <tr>
                                         <td>
                                             <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
                                         </td><td>
@@ -334,7 +371,23 @@ foreach ($decks as $d) {
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <iframe src=<?='"'.htmlspecialchars($embed_url) . '/primer"'?> width="80%" height="80%"></iframe>
+                        <strong>Similar Decks:</strong>
+                        <br>
+                        <br>
+                        <div id="sim-table">
+                            <table id=>
+                                <?php foreach ($sim_data as $deck): ?>
+                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                        <td>
+                                            <p><?= htmlspecialchars($deck['name'])?></p>
+                                        </td><td>
+                                            <p><?=  substr(htmlspecialchars($deck['sim']),0,4) ?>%</p>
+                                        </td>
+                                    </tr>
+                                    <?php $rank++; ?>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
                     </div>
 
                </div>
@@ -483,6 +536,10 @@ foreach ($decks as $d) {
             img.src = url; // Browser will start loading the image
             preloadedImages.push(img);
         });
+
+        function goToDeck(id){
+            window.location = "deck.php?id=" + id
+        }
     </script>
 </body>
 </html>
