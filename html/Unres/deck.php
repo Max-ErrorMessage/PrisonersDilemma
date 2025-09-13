@@ -56,9 +56,9 @@ $stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_ur
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
-and cid.mainboard = 0');
+and cid.mainboard = 0;');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$stmt->execute()
+$stmt->execute();
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $stmt = $pdo->prepare('SELECT ec.elo_change, w.name AS winner, l.name AS loser FROM elo_changes ec
