@@ -235,8 +235,8 @@ foreach ($decks as $d) {
     }
 
     #match-table{
-        left:5%;
-        width:90%;
+        left:15%;
+        width:70%;
         position:absolute;
         height:30%;
         overflow-y:scroll;
@@ -244,6 +244,10 @@ foreach ($decks as $d) {
     }
     #match-table tr{
         border-bottom: 1px #555 solid;
+    }
+
+    #match-table table{
+        width:100%;
     }
 
 
