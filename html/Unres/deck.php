@@ -21,7 +21,7 @@ WHERE id = :id;
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$rank = 1;
+
 
 foreach ($decks as $d) {
     $deck = $d;
@@ -33,9 +33,14 @@ $stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype, name
 FROM decks
 WHERE id = :id;
 ');
+
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($decks as $d) {
+    $deck = $d;
+}
 
 
 $stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_url as url
@@ -76,9 +81,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-foreach ($decks as $d) {
-    $deck = $d;
-}
+
 
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
