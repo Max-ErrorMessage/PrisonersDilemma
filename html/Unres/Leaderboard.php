@@ -233,7 +233,7 @@ $rank = 1;
                                 <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
                             </td><td>
 
-                                <div class="ra"><?= explode(htmlspecialchars($deck['elo']))[0] ?></div>
+                                <div class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></div>
                             </td>
                         </tr>
                         <?php $rank++; ?>
