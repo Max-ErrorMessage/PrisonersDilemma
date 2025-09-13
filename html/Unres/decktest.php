@@ -291,7 +291,7 @@ echo "<pre>$output</pre>";
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
                 <a class="tab" id="t3" onclick="switchTab(3)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3790/3790171.png"/>
+                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
                 </a>
                 <div id="lb">
                     <div id = "page1">
