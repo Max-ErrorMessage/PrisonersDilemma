@@ -353,9 +353,9 @@ foreach ($decks as $d) {
                 tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
                 tab2.style.backgroundColor = "#none"
 
-                page2.style.display = "block"
+                page3.style.display = "block"
                 page1.style.display = "none"
-                page3.style.display = "none"
+                page2.style.display = "none"
             }
         }
     </script>
