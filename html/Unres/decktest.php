@@ -200,6 +200,7 @@ if (count($sim_rows) > 0) {
         width:45%;
         position:absolute;
         top:15%
+
     }
 
     #mb{
@@ -317,8 +318,8 @@ if (count($sim_rows) > 0) {
     #clr-img{
         position:absolute;
         bottom:15%;
-        width:70%;
-        left:15%;
+        width:35%;
+        right:15%;
     }
 
     </style>
@@ -369,8 +370,8 @@ if (count($sim_rows) > 0) {
                             <?php endforeach; ?>
                             <br><br>
                             <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
-                            <img id="clr-img" src= "<?= $color_url ?>">
                         </div>
+                        <img id="clr-img" src= "<?= $color_url ?>">
                     </div>
                     <div id="page2" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
