@@ -90,8 +90,8 @@ $sim_output = shell_exec($command);
 $sim_rows = str_getcsv($sim_output, "\n"); // Split by line
 $sim_data = [];
 
-if (count($rows) > 0) {
-    foreach ($rows as $row) {
+if (count($sim_rows) > 0) {
+    foreach ($sim_rows as $row) {
         $fields = str_getcsv($row);
         $sim_data[] = array_combine(["name","id","sim"], $fields); // Convert to assoc array
     }
