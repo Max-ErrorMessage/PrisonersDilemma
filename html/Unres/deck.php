@@ -14,40 +14,21 @@ include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
 $id = $_GET["id"];
-$stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype
-FROM decks
-WHERE id = :id;
-');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$stmt->execute();
-$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-foreach ($decks as $d) {
-    $deck = $d;
-}
-
-$embed_url = str_replace("/decks/", "/embed/", $deck['decklist_url']);
 
 $stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype, name
 FROM decks
 WHERE id = :id;
 ');
-
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($decks as $d) {
-    $deck = $d;
-}
 
 
 $stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_url as url
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
-and cid.mainboard = 1')
+and cid.mainboard = 1');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $mb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -56,7 +37,8 @@ $stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_ur
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
-and cid.mainboard = 0;');
+and cid.mainboard = 0
+order by n desc;');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -81,7 +63,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 }
 
 
-
+foreach ($decks as $d) {
+    $deck = $d;
+}
 
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
@@ -92,7 +76,7 @@ $sim_output = shell_exec($command);
 
 $sim_rows = str_getcsv($sim_output, "\n"); // Split by line
 $sim_data = [];
-array_shift($sim_rows);
+
 if (count($sim_rows) > 0) {
     foreach ($sim_rows as $row) {
         $fields = str_getcsv($row);
@@ -364,7 +348,7 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
                                         </td><td>
-                                            <p style="text-align:right"><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
+                                            <p><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
                                         </td>
                                     </tr>
                                     <?php $rank++; ?>
@@ -384,7 +368,7 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($deck['name'])?></p>
                                         </td><td>
-                                            <p><?= round($deck['sim'] * 100) ?>%</p>
+                                            <p><?=  substr(htmlspecialchars($deck['sim']),0,4) ?>%</p>
                                         </td>
                                     </tr>
                                     <?php $rank++; ?>
