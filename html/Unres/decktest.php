@@ -285,6 +285,11 @@ if (count($sim_rows) > 0) {
         height:30%;
     }
 
+    #sim-table tr:hover{
+            background-color:#345;
+            transition:background-color 0.2s;
+    }
+
     #crd-prvw{
         position:absolute;
         left:10%;
