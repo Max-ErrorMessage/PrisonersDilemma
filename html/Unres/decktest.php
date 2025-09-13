@@ -350,19 +350,19 @@ foreach ($decks as $d) {
                 new Chart(document.getElementById("elograph"), {
                     type: "line",
                     data: {
-                      labels: Array(elo_arr.length).fill(""), // hides x-axis labels
+                      //labels: Array(elo_arr.length).fill(""), // hides x-axis labels
                       datasets: [{
-                        label: "Data",
+                        label: "Elo Over Time",
                         data: elo_arr,
-                        borderColor: "blue",
-                        fill: false
+                        borderColor: "White",
+                        fill: rgba(255,255,255,0.2)
                       }]
                     },
                     options: {
                       scales: {
                         x: {
-                          ticks: { color: "#ddd" },   // axis labels
-                          grid: { color: "#444" }     // grid lines
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" }
                         },
                         y: {
                           ticks: { color: "#ddd" },
@@ -371,7 +371,7 @@ foreach ($decks as $d) {
                       },
                       plugins: {
                         legend: {
-                          labels: { color: "#ddd" }   // legend text color
+                          labels: { color: "#ddd" }
                         }
                       }
                     }
