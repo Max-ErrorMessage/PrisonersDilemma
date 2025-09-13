@@ -361,7 +361,7 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($deck['name'])?></p>
                                         </td><td>
-                                            <p><?= htmlspecialchars($deck['sim_score'])?> elo gain</p>
+                                            <p><?= htmlspecialchars($deck['sim'])?> elo gain</p>
                                         </td>
                                     </tr>
                                     <?php $rank++; ?>
