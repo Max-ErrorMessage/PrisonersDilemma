@@ -352,7 +352,6 @@ if (count($sim_rows) > 0) {
                                             <p><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
                                         </td>
                                     </tr>
-                                    <?php $rank++; ?>
                                 <?php endforeach; ?>
                             </table>
                         </div>
