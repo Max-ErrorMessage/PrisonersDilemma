@@ -86,6 +86,7 @@ $pythonScript = 'similarity_from_matrix.py';
 $command = 'cd /var/www/Unres-Meta/elo && ' . escapeshellcmd($venvPython) . ' ' . escapeshellarg($pythonScript) . ' ' . escapeshellarg($id);
 $output = shell_exec($command);
 
+echo "<pre>$command</pre>";
 echo "<pre>$output</pre>";
 
 
