@@ -378,7 +378,7 @@ if (count($sim_rows) > 0) {
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <strong>Most Similar Decks:</strong>
+                        <strong>Similar Decks:</strong>
                         <div id="sim-table">
                             <table id=>
                                 <?php foreach ($sim_data as $deck): ?>
