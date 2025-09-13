@@ -274,7 +274,7 @@ foreach ($decks as $d) {
                         <p>page2</p>
                     </div>
                     <div id="page3" style="display:none">
-                        <p>page2</p>
+                        <p>page3</p>
                     </div>
 
                </div>
