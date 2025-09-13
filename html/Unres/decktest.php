@@ -65,12 +65,12 @@ $stmt->execute();
 $elo = [];
 $winners = [];
 $losers = [];
-$elo_rows = []
+$elo_rows = [];
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $elo[] = (int)$row['elo_change'];
     $winners[] = $row['winner'];
     $losers[] = $row['loser'];
-    $elo_rows[] = $row
+    $elo_rows[] = $row;
 }
 
 
