@@ -125,19 +125,19 @@ foreach ($decks as $d) {
         }
 
         #lb {
-          min-width:320px;
-          width:40%;
-          background-color:#1e2833;
-          padding:40px;
-          border-radius:4px;
-          transform:translate(-50%, -50%);
-          position:absolute;
-          top:50%;
-          left:50%;
-          color:#fff;
-          box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-          height:80%;
-          overflow-y:scroll;
+            min-width: 320px;
+            width: 40%;
+            background-color: #1e2833;
+            padding: 40px;
+            border-radius: 4px;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: #fff;
+            box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+            height: 70%;
+            overflow-y: scroll;
         }
 
         ::-webkit-scrollbar{
@@ -194,16 +194,33 @@ foreach ($decks as $d) {
     }
 
     .tab{
-          background-color:#1e2833;
-          position: absolute;
-          top:10%;
-          height:70px;
-          width:80px;
+        background-color: #1e2833;
+        position: absolute;
+        bottom: 85%;
+        height: 50px;
+        width: 80px;
+        border-radius: 5px 5px 0px 0px;
     }
 
     .tab img{
-        width:40px;
-        height:auto;
+        width: 40px;
+        height: auto;
+        text-align: center;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .t1{
+        left: 31%;
+    }
+    .t2{
+        left: calc(32% + 40px);
+    }
+    .t3{
+        left: calc(33% + 80px);
     }
 
 
@@ -217,7 +234,13 @@ foreach ($decks as $d) {
                 <a href="Leaderboard.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
-                <a class="tab decklist">
+                <a class="tab t1">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                </a>
+                <a class="tab t2">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                </a>
+                <a class="tab t3">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
                 <div id="lb">
