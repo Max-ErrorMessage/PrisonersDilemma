@@ -81,10 +81,10 @@ foreach ($decks as $d) {
 }
 
 
-$pythonScript = __DIR__ . '/../../Unres-Meta/elo/similarity-from-matrix.py '.$id;
+$pythonScript = __DIR__ . '/../../Unres-Meta/elo/similarity-from-matrix.py';
+$command = "python3 " . escapeshellarg($pythonScript) . " " . escapeshellarg($id);
 
-// Run Python and capture output
-$output = shell_exec("python3 " . escapeshellarg($pythonScript));
+$output = shell_exec($command);
 
 ?>
 
