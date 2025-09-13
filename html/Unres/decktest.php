@@ -235,13 +235,13 @@ foreach ($decks as $d) {
                 <a href="Leaderboard.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
-                <a class="tab" id="t1" onclick="switch(1)">
+                <a class="tab" id="t1" onclick="switchTab(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
-                <a class="tab" id="t2" onclick="switch(2)">
+                <a class="tab" id="t2" onclick="switchTab(2)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
-                <a class="tab" id="t3" onclick="switch(3)">
+                <a class="tab" id="t3" onclick="switchTab(3)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
                 <div id="lb">
@@ -306,7 +306,7 @@ foreach ($decks as $d) {
         console.log(elo_arr)
 
 
-        function switch(n){
+        function switchTab(n){
             tab1 = document.getElementById("t1")
             tab2 = document.getElementById("t2")
             tab3 = document.getElementById("t3")
