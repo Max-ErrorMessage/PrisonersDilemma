@@ -38,7 +38,7 @@ $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n
+$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_url as url
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
@@ -47,7 +47,7 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $mb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n
+$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_url as url
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
@@ -253,12 +253,24 @@ foreach ($decks as $d) {
         padding:4px;
     }
 
+    #crd-prvw{
+        position:absolute;
+        left:10%;
+        width:15%;
+        height:auto;
+        top:50%;
+        transform:translate(0,-50%);
+        display:none;
+        border-radius:10px;
+    }
+
     </style>
 </head>
 <body>
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
+                <img src="https://assets.moxfield.net/cards/card-O9Ovn-normal.webp?226499050" id="crd-prvw">
                 <a href="Leaderboard.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
@@ -278,7 +290,10 @@ foreach ($decks as $d) {
                             <strong>Mainboard:</strong>
                             <?php foreach ($mb_cards as $card): ?>
                             <div style="justify-content:space-between;display:flex; width:100%;">
-                                <span><?= htmlspecialchars($card['name']) ?></span>
+                                <span
+                                    onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                    onmouseleave='imgLeave()'
+                                    ><?= htmlspecialchars($card['name']) ?></span>
                                 <span><?= htmlspecialchars($card['n']) ?></span>
                             </div>
                             <?php endforeach; ?>
@@ -288,7 +303,10 @@ foreach ($decks as $d) {
                             <strong>Sideboard:</strong>
                             <?php foreach ($sb_cards as $card): ?>
                             <div style="justify-content:space-between;display:flex; width:100%">
-                                <span><?= htmlspecialchars($card['name']) ?></span>
+                                <span
+                                    onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                    onmouseleave='imgLeave()'
+                                    ><?= htmlspecialchars($card['name']) ?></span>
                                 <span><?= htmlspecialchars($card['n']) ?></span>
                             </div>
                             <?php endforeach; ?>
@@ -440,6 +458,31 @@ foreach ($decks as $d) {
                 page2.style.display = "none"
             }
         }
+
+        function imgBecome(url){
+            document.getElementById('crd-prvw').src = url
+            document.getElementById('crd-prvw').style.display="block"
+        }
+        function imgLeave(){
+            document.getElementById('crd-prvw').style.display="none"
+        }
+
+        const cardUrls = [
+            <?php foreach ($mb_cards as $card): ?>
+                "<?= htmlspecialchars($card['url']) ?>",
+            <?php endforeach; ?>
+            <?php foreach ($sb_cards as $card): ?>
+                "<?= htmlspecialchars($card['url']) ?>",
+            <?php endforeach; ?>
+        ];
+
+        // Preload all images
+        const preloadedImages = [];
+        cardUrls.forEach(url => {
+            const img = new Image();
+            img.src = url; // Browser will start loading the image
+            preloadedImages.push(img);
+        });
     </script>
 </body>
 </html>
