@@ -349,7 +349,7 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
                                         </td><td>
-                                            <p><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
+                                            <p style="text-align:right;"><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -368,10 +368,9 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($deck['name'])?></p>
                                         </td><td>
-                                            <p><?=  substr(htmlspecialchars($deck['sim']),0,4) ?>%</p>
+                                            <p><?=  round($deck['sim'] * 100) ?>%</p>
                                         </td>
                                     </tr>
-                                    <?php $rank++; ?>
                                 <?php endforeach; ?>
                             </table>
                         </div>
