@@ -87,7 +87,7 @@ ORDER BY elo DESC;');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($colors as $color) {
-    $color_url = $color['color'] . ".png"
+    $color_url = $color['color'] . ".png";
 }
 
 
