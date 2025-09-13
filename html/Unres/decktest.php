@@ -79,7 +79,6 @@ foreach ($decks as $d) {
     <meta name="description" content="Create bots to compete in fun minigames! :)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .bg-bg, .bg-img, .bg-fg {
           height:100%;
@@ -145,12 +144,7 @@ foreach ($decks as $d) {
             display:none;
         }
 
-        .login-dark .illustration {
-          text-align:center;
-        }
-        .illustration img{
-            width:65px;
-        }
+
         td{
             color:#fff;
         }
@@ -163,9 +157,7 @@ foreach ($decks as $d) {
             left:10%;
         }
 
-        .lbimg{
-            width:25px;
-        }
+
 
     #mb ,#sb{
         width:45%;
@@ -203,10 +195,18 @@ foreach ($decks as $d) {
 
     .tab{
           background-color:#1e2833;
+          position: absolute;
           top:10%;
-          height:60px;
+          height:70px;
           width:80px;
     }
+
+    .tab img{
+        width:40px;
+        height:auto;
+    }
+
+
 
     </style>
 </head>
@@ -217,7 +217,9 @@ foreach ($decks as $d) {
                 <a href="Leaderboard.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
-                <a class="tab decklist"><img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/></a>
+                <a class="tab decklist">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                </a>
                 <div id="lb">
                     <br>
                     <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
