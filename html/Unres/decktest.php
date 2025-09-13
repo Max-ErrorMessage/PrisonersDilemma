@@ -234,7 +234,16 @@ foreach ($decks as $d) {
         left: calc(33% + 160px);
     }
 
-
+    #match-table{
+        left:5%;
+        width:90%;
+        position:absolute;
+        height:30%;
+        overflow-y:scroll;
+    }
+    #match-table tr{
+        border-bottom: 1px white solid;
+    }
 
     </style>
 </head>
@@ -282,18 +291,20 @@ foreach ($decks as $d) {
                     <div id="page2" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <canvas id="elograph"></canvas>
-                        <table>
-                            <?php foreach ($elo_rows as $row): ?>
-                                <tr onclick=goToDeck(<?= $deck['id']?>)>
-                                    <td>
-                                        <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
-                                    </td><td>
-                                        <p><?= htmlspecialchars($row['winner'])?> elo gain</p>
-                                    </td>
-                                </tr>
-                                <?php $rank++; ?>
-                            <?php endforeach; ?>
+                        <div id="match-table">
+                            <table>
+                                <?php foreach ($elo_rows as $row): ?>
+                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                        <td>
+                                            <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
+                                        </td><td>
+                                            <p><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
+                                        </td>
+                                    </tr>
+                                    <?php $rank++; ?>
+                                <?php endforeach; ?>
                             </table>
+                        </div>
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
