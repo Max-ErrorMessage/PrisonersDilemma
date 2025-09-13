@@ -14,12 +14,11 @@ $stmt = $pdo->query("SELECT id, provided_archetype, decklist_url, custom_id, elo
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
+$err_output = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $err = ($_POST['err']);
     if($err = "alnum"){
         $err_output = "Name must be alphanumeric";
-    } else {
-        $err_output = "";
     }
 }
 ?>
@@ -182,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <form action="submit_match.php" method="post">
                     <h2 class="sr-only">Login Form</h2>
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
-                    <strong style="color:#800"><?= $err_output ?></strong>
+                    <strong style="color:#a00"><?= $err_output ?></strong>
                     <div class="form-group">
                         <label for="winner">Winner:</label>
                         <select class="form-control"  id="winner" name="winner">
