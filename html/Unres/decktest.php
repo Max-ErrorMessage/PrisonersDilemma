@@ -242,7 +242,10 @@ foreach ($decks as $d) {
         overflow-y:scroll;
     }
     #match-table tr{
-        border-bottom: 1px white solid;
+        border-bottom: 1px #555 solid;
+    }
+    #match-table table{
+        border:1px white solid
     }
 
     </style>
