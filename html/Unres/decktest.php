@@ -273,6 +273,30 @@ if (count($sim_rows) > 0) {
         padding:4px;
     }
 
+    #sim-table{
+        left:15%;
+        width:70%;
+        position:absolute;
+        height:70%;
+        overflow-y:scroll;
+        border:1px white solid;
+    }
+    #sim-table tr{
+        border-bottom: 1px #555 solid;
+    }
+
+    #sim-table table{
+        width:100%;
+    }
+
+    #sim-table p{
+        margin:auto;
+    }
+
+    #sim-table td{
+        padding:8px;
+    }
+
     #crd-prvw{
         position:absolute;
         left:10%;
@@ -354,8 +378,8 @@ if (count($sim_rows) > 0) {
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <div id="match-table">
-                            <table>
+                        <div id="sim-table">
+                            <table id=>
                                 <?php foreach ($sim_data as $deck): ?>
                                     <tr onclick=goToDeck(<?= $deck['id']?>)>
                                         <td>
