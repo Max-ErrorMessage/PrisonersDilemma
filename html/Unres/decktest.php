@@ -196,7 +196,7 @@ foreach ($decks as $d) {
     .tab{
         background-image: linear-gradient(to top, #101820, #1e2833);
         position: absolute;
-        bottom: 84.99%;
+        bottom: 84.9%;
         height: 50px;
         width: 80px;
         border-radius: 5px 5px 0px 0px;
@@ -215,6 +215,7 @@ foreach ($decks as $d) {
 
     #t1{
         background-color:#1e2833;
+        background-image:none;
         left: 31%;
     }
     #t2{
@@ -245,28 +246,35 @@ foreach ($decks as $d) {
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
                 <div id="lb">
-                    <br>
-                    <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                    <div id="mb">
-                        <strong>Mainboard:</strong>
-                        <?php foreach ($mb_cards as $card): ?>
-                        <div style="justify-content:space-between;display:flex; width:100%;">
-                            <span><?= htmlspecialchars($card['name']) ?></span>
-                            <span><?= htmlspecialchars($card['n']) ?></span>
+                    <div id = "page1">
+                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
+                        <div id="mb">
+                            <strong>Mainboard:</strong>
+                            <?php foreach ($mb_cards as $card): ?>
+                            <div style="justify-content:space-between;display:flex; width:100%;">
+                                <span><?= htmlspecialchars($card['name']) ?></span>
+                                <span><?= htmlspecialchars($card['n']) ?></span>
+                            </div>
+                            <?php endforeach; ?>
                         </div>
-                        <?php endforeach; ?>
+                        <br>
+                        <div id="sb">
+                            <strong>Sideboard:</strong>
+                            <?php foreach ($sb_cards as $card): ?>
+                            <div style="justify-content:space-between;display:flex; width:100%">
+                                <span><?= htmlspecialchars($card['name']) ?></span>
+                                <span><?= htmlspecialchars($card['n']) ?></span>
+                            </div>
+                            <?php endforeach; ?>
+                            <br><br>
+                            <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
+                        </div>
                     </div>
-                    <br>
-                    <div id="sb">
-                        <strong>Sideboard:</strong>
-                        <?php foreach ($sb_cards as $card): ?>
-                        <div style="justify-content:space-between;display:flex; width:100%">
-                            <span><?= htmlspecialchars($card['name']) ?></span>
-                            <span><?= htmlspecialchars($card['n']) ?></span>
-                        </div>
-                        <?php endforeach; ?>
-                        <br><br>
-                        <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
+                    <div id="page2" style="display:none">
+                        <p>page2</p>
+                    </div>
+                    <div id="page3" style="display:none">
+                        <p>page2</p>
                     </div>
 
                </div>
@@ -310,6 +318,9 @@ foreach ($decks as $d) {
             tab1 = document.getElementById("t1")
             tab2 = document.getElementById("t2")
             tab3 = document.getElementById("t3")
+            page1 = document.getElementById("page1")
+            page2 = document.getElementById("page2")
+            page3 = document.getElementById("page3")
 
             if (n==1){
                 tab1.style.backgroundColor = "#1e2833"
@@ -318,6 +329,11 @@ foreach ($decks as $d) {
                 tab2.style.backgroundColor = "none"
                 tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
                 tab3.style.backgroundColor = "#none"
+
+                page1.style.display = "block"
+                page2.style.display = "none"
+                page3.style.display = "none"
+
             } else if (n==2){
                 tab2.style.backgroundColor = "#1e2833"
                 tab2.style.backgroundImage = "none"
@@ -325,6 +341,10 @@ foreach ($decks as $d) {
                 tab1.style.backgroundColor = "none"
                 tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
                 tab3.style.backgroundColor = "#none"
+
+                page2.style.display = "block"
+                page1.style.display = "none"
+                page3.style.display = "none"
             }  else if (n==3){
                 tab3.style.backgroundColor = "#1e2833"
                 tab3.style.backgroundImage = "none"
@@ -332,6 +352,10 @@ foreach ($decks as $d) {
                 tab1.style.backgroundColor = "none"
                 tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
                 tab2.style.backgroundColor = "#none"
+
+                page2.style.display = "block"
+                page1.style.display = "none"
+                page3.style.display = "none"
             }
         }
     </script>
