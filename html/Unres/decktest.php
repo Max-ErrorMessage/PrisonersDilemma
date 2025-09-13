@@ -81,10 +81,13 @@ foreach ($decks as $d) {
 }
 
 
-$pythonScript = __DIR__ . '/../../Unres-Meta/elo/similarity_from_matrix.py';
-$command = "python3 " . escapeshellarg($pythonScript) . " " . escapeshellarg($id) . " 2>&1";
+$venvPython = '/var/www/Unres-Meta/venv/bin/python';
+$pythonScript = __DIR__ . '/../../Unres-Meta/elo/similarity-from-matrix.py';
+$command = escapeshellcmd($venvPython) . ' ' . escapeshellarg($pythonScript) . ' ' . escapeshellarg($id) . ' 2>&1';
 $output = shell_exec($command);
+
 echo "<pre>$output</pre>";
+
 
 ?>
 
