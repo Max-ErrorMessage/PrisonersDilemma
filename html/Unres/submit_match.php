@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: Leaderboard.php");
         exit();
     } else {
-        header("Location: Match.php?err=anum");
+        header("Location: Match.php?err=alnum");
         exit();
     }
 
