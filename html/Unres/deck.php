@@ -68,6 +68,30 @@ foreach ($decks as $d) {
     $deck = $d;
 }
 
+$stmt = $pdo->prepare('
+    SELECT
+        SUM(
+            CASE cod.colour_id
+                WHEN 1 THEN 1
+                WHEN 2 THEN 2
+                WHEN 3 THEN 4
+                WHEN 4 THEN 8
+                WHEN 5 THEN 16
+                ELSE 0
+            END
+        ) AS colour
+    FROM colours_of_decks cod
+    RIGHT JOIN decks d ON d.id = cod.deck_id
+    WHERE d.id = :id
+    GROUP BY d.id
+');
+
+$stmt->execute([':id' => $id]);
+$colors = $stmt->fetch(PDO::FETCH_ASSOC);
+$color_url = "images/" . $colors['colour'] . ".png";
+
+
+
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'similarity_from_matrix.py';
@@ -176,6 +200,7 @@ if (count($sim_rows) > 0) {
         width:45%;
         position:absolute;
         top:15%
+
     }
 
     #mb{
@@ -290,6 +315,13 @@ if (count($sim_rows) > 0) {
         border-radius:10px;
     }
 
+    #clr-img{
+        position:absolute;
+        bottom:3%;
+        width:15%;
+        right:3%;
+    }
+
     </style>
 </head>
 <body>
@@ -339,6 +371,7 @@ if (count($sim_rows) > 0) {
                             <br><br>
                             <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
                         </div>
+                        <img id="clr-img" src= "<?= $color_url ?>">
                     </div>
                     <div id="page2" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
