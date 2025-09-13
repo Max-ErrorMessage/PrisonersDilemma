@@ -68,26 +68,27 @@ foreach ($decks as $d) {
     $deck = $d;
 }
 
-$stmt = $pdo->query('SELECT
+$stmt = $pdo->prepare('
+    SELECT
         SUM(
-                CASE cod.colour_id
-                        WHEN 1 THEN 1
-                        WHEN 2 THEN 2
-                        WHEN 3 THEN 4
-                        WHEN 4 THEN 8
-                        WHEN 5 THEN 16
-                        ELSE 0
-                END
+            CASE cod.colour_id
+                WHEN 1 THEN 1
+                WHEN 2 THEN 2
+                WHEN 3 THEN 4
+                WHEN 4 THEN 8
+                WHEN 5 THEN 16
+                ELSE 0
+            END
         ) AS colour
-FROM colours_of_decks cod
-RIGHT JOIN decks d ON d.id = cod.deck_id
-where d.id = :id
-GROUP BY d.id');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
-foreach ($colors as $color) {
-    $color_url = $color['color'] . ".png";
-}
+    FROM colours_of_decks cod
+    RIGHT JOIN decks d ON d.id = cod.deck_id
+    WHERE d.id = :id
+    GROUP BY d.id
+');
+
+$stmt->execute([':id' => $id]);
+$colors = $stmt->fetch(PDO::FETCH_ASSOC);
+$color_url = $colors['color'] . ".png";
 
 
 
