@@ -54,14 +54,21 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $pdo->prepare('SELECT elo_change FROM elo_changes
-WHERE deck_id = :id');
+$stmt = $pdo->prepare('SELECT ec.elo_change, w.name AS winner, l.name AS loser FROM elo_changes ec
+INNER JOIN matches m ON ec.match_id = m.id
+LEFT JOIN decks w ON w.id = m.winner_id
+LEFT JOIN decks l ON l.id = m.loser_id
+WHERE ec.deck_id = :id;');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 
 $elo = [];
+$winners = [];
+$losers = [];
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $elo[] = (int)$row['elo_change']; // force integer
+    $elo[] = (int)$row['elo_change'];
+    $winners[] = $row['winner'];
+    $losers[] = $row['loser'];
 }
 
 
@@ -307,6 +314,8 @@ foreach ($decks as $d) {
         });
 
         const elo_changes = <?php echo json_encode($elo); ?>;
+        const winner = <?php echo json_encode($winners); ?>;
+        const losers = <?php echo json_encode($losers); ?>;
 
         console.log(elo_changes);
         elo_arr = [1000]
@@ -314,6 +323,10 @@ foreach ($decks as $d) {
           elo_arr.push(elo_arr[elo_arr.length - 1] + elo_changes[i]);
         }
 
+        labels = ["Starting Elo"]
+        for (var i = 0; i < winners.length; i++){
+            labels.push(winners[i] + " beat " + losers[i])
+        }
 
         function switchTab(n){
             tab1 = document.getElementById("t1")
@@ -350,7 +363,7 @@ foreach ($decks as $d) {
                 new Chart(document.getElementById("elograph"), {
                     type: "line",
                     data: {
-                      labels: Array(elo_arr.length).fill(""), // hides x-axis labels
+                      labels: labels,
                       datasets: [{
                         label: "Elo Over Time",
                         data: elo_arr,
