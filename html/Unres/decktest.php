@@ -83,7 +83,7 @@ foreach ($decks as $d) {
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'similarity_from_matrix.py';
-$command = 'cd /var/www/Unres-Meta/elo && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ($id);
+$command = 'cd /var/www/Unres-Meta/elo && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ($id) . '2>&1';
 $output = shell_exec($command);
 
 echo "<pre>$command</pre>";
