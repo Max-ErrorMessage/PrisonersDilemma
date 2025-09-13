@@ -319,7 +319,7 @@ if (count($sim_rows) > 0) {
         position:absolute;
         bottom:5%;
         width:35%;
-        right:15%;
+        right:7.5%;
     }
 
     </style>
