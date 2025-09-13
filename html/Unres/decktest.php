@@ -27,7 +27,7 @@ foreach ($decks as $d) {
     $deck = $d;
 }
 
-$embed_url = str_replace("/decks/", "/embed/", $decks['decklist_url']);
+$embed_url = str_replace("/decks/", "/embed/", $deck['decklist_url']);
 
 $stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype, name
 FROM decks
