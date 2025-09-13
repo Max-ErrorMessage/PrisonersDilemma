@@ -381,7 +381,7 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($deck['name'])?></p>
                                         </td><td>
-                                            <p><?=  substr(htmlspecialchars($deck['sim']),2,2) ?>%</p>
+                                            <p><?= round($deck['sim'] * 100) ?>%</p>
                                         </td>
                                     </tr>
                                     <?php $rank++; ?>
