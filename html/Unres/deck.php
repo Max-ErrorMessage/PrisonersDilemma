@@ -89,7 +89,7 @@ $sim_output = shell_exec($command);
 
 $sim_rows = str_getcsv($sim_output, "\n"); // Split by line
 $sim_data = [];
-
+array_shift($sim_rows);
 if (count($sim_rows) > 0) {
     foreach ($sim_rows as $row) {
         $fields = str_getcsv($row);
