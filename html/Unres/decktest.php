@@ -377,7 +377,8 @@ foreach ($decks as $d) {
                       scales: {
                         x: {
                           ticks: { color: "#ddd" },
-                          grid: { color: "#444" }
+                          grid: { color: "#444" },
+                          display:false
                         },
                         y: {
                           ticks: { color: "#ddd" },
