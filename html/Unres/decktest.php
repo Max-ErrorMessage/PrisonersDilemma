@@ -196,7 +196,7 @@ foreach ($decks as $d) {
     .tab{
         background-image: linear-gradient(to top, #101820, #1e2833);
         position: absolute;
-        bottom: 85%;
+        bottom: 84.99%;
         height: 50px;
         width: 80px;
         border-radius: 5px 5px 0px 0px;
@@ -325,7 +325,7 @@ foreach ($decks as $d) {
                 tab1.style.backgroundColor = "none"
                 tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
                 tab3.style.backgroundColor = "#none"
-            }  else if (n==1){
+            }  else if (n==3){
                 tab3.style.backgroundColor = "#1e2833"
                 tab3.style.backgroundImage = "none"
                 tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
