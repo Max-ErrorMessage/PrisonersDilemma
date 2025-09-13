@@ -27,6 +27,8 @@ foreach ($decks as $d) {
     $deck = $d;
 }
 
+$embed_url = str_replace("/decks/", "/embed/", $decks['decklist_url']);
+
 $stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype, name
 FROM decks
 WHERE id = :id;
@@ -314,7 +316,7 @@ foreach ($decks as $d) {
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <iframe src=<?='"'.htmlspecialchars($deck['decklist_url']) . '/primer"'?> width="80%" height="80%"></iframe>
+                        <iframe src=<?='"'.htmlspecialchars($embed_url) . '/primer"'?> width="80%" height="80%"></iframe>
                     </div>
 
                </div>
