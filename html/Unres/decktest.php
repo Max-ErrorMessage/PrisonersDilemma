@@ -250,9 +250,6 @@ foreach ($decks as $d) {
     #match-table td{
         padding:4px;
     }
-    canvas{
-        max-height:40vh;
-    }
 
     </style>
 </head>
