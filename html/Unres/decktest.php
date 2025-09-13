@@ -355,7 +355,7 @@ foreach ($decks as $d) {
                         label: "Elo Over Time",
                         data: elo_arr,
                         borderColor: "White",
-                        fill: rgba(255,255,255,0.2)
+                        fill: "rgba(255,255,255,0.2)"
                       }]
                     },
                     options: {
