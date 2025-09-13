@@ -360,7 +360,19 @@ foreach ($decks as $d) {
                     },
                     options: {
                       scales: {
-                        x: { display: false } // completely hides x-axis
+                        x: {
+                          ticks: { color: "#ddd" },   // axis labels
+                          grid: { color: "#444" }     // grid lines
+                        },
+                        y: {
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" }
+                        }
+                      },
+                      plugins: {
+                        legend: {
+                          labels: { color: "#ddd" }   // legend text color
+                        }
                       }
                     }
                   });
