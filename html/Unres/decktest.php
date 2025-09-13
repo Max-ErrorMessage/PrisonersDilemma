@@ -317,9 +317,9 @@ if (count($sim_rows) > 0) {
 
     #clr-img{
         position:absolute;
-        bottom:5%;
-        width:35%;
-        right:7.5%;
+        bottom:3%;
+        width:15%;
+        right:3%;
     }
 
     </style>
