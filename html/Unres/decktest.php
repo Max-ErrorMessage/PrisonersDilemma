@@ -315,10 +315,10 @@ if (count($sim_rows) > 0) {
     }
 
     #clr-img{
-        position:absolute
+        position:absolute;
         bottom:15%;
         width:70%;
-        left:15%
+        left:15%;
     }
 
     </style>
