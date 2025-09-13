@@ -1,6 +1,9 @@
 import sys
-sys.path.append('../../Unres-Meta/elo')  # path to the folder containing similarity_from_matrix.py
+from pathlib import Path
 
-import similarity_from_matrix.py
+# Add the module path
+sys.path.append(str(Path(__file__).parent / "../../Unres-Meta/elo"))
 
-print(deck_similarity(sys.argv[1], sys.argv[2]))
+import similarity_from_matrix
+
+print(similarity_from_matrix.deck_similarity(sys.argv[1], sys.argv[2]))
