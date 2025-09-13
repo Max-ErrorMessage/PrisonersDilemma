@@ -194,7 +194,7 @@ foreach ($decks as $d) {
     }
 
     .tab{
-        background-color: #1e2833;
+        background-color: linear-gradient(to top,#122,#1e2833);
         position: absolute;
         bottom: 85%;
         height: 50px;
@@ -217,10 +217,10 @@ foreach ($decks as $d) {
         left: 31%;
     }
     .t2{
-        left: calc(32% + 40px);
+        left: calc(32% + 80px);
     }
     .t3{
-        left: calc(33% + 80px);
+        left: calc(33% + 160px);
     }
 
 
