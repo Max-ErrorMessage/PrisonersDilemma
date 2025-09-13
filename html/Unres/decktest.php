@@ -82,8 +82,7 @@ $stmt = $pdo->query('SELECT
 FROM colours_of_decks cod
 RIGHT JOIN decks d ON d.id = cod.deck_id
 where d.id = :id
-GROUP BY d.id
-ORDER BY elo DESC;');
+GROUP BY d.id');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($colors as $color) {
