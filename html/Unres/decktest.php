@@ -313,16 +313,25 @@ foreach ($decks as $d) {
 
             if (n==1){
                 tab1.style.backgroundColor = "#1e2833"
+                tab1.style.backgroundImage = "none"
                 tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundColor = "none"
                 tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundColor = "#none"
             } else if (n==2){
                 tab2.style.backgroundColor = "#1e2833"
+                tab2.style.backgroundImage = "none"
                 tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundColor = "none"
                 tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundColor = "#none"
             }  else if (n==1){
                 tab3.style.backgroundColor = "#1e2833"
+                tab3.style.backgroundImage = "none"
                 tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundColor = "none"
                 tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundColor = "#none"
             }
         }
     </script>
