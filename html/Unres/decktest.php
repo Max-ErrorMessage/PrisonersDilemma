@@ -271,11 +271,11 @@ foreach ($decks as $d) {
                         </div>
                     </div>
                     <div id="page2" style="display:none">
-                        <p>page2</p>
+                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <canvas id="elograph"></canvas>
                     </div>
                     <div id="page3" style="display:none">
-                        <p>page3</p>
+                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                     </div>
 
                </div>
