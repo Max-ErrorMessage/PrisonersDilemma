@@ -261,6 +261,7 @@ foreach ($decks as $d) {
         top:50%;
         transform:translate(0,-50%);
         display:none;
+        border-radius:10px;
     }
 
     </style>
@@ -465,6 +466,23 @@ foreach ($decks as $d) {
         function imgLeave(){
             document.getElementById('crd-prvw').style.display="none"
         }
+
+        const cardUrls = [
+            <?php foreach ($mb_cards as $card): ?>
+                "<?= htmlspecialchars($card['url']) ?>",
+            <?php endforeach; ?>
+            <?php foreach ($sb_cards as $card): ?>
+                "<?= htmlspecialchars($card['url']) ?>",
+            <?php endforeach; ?>
+        ];
+
+        // Preload all images
+        const preloadedImages = [];
+        cardUrls.forEach(url => {
+            const img = new Image();
+            img.src = url; // Browser will start loading the image
+            preloadedImages.push(img);
+        });
     </script>
 </body>
 </html>
