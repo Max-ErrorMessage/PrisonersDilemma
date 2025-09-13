@@ -253,12 +253,21 @@ foreach ($decks as $d) {
         padding:4px;
     }
 
+    #crd-prvw{
+        position:absolute;
+        left:10%;
+        width:15%;
+        height:auto;
+        top:auto;
+    }
+
     </style>
 </head>
 <body>
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
+                <img src="https://assets.moxfield.net/cards/card-O9Ovn-normal.webp?226499050" id="crd-prvw">
                 <a href="Leaderboard.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
