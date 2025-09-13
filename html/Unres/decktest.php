@@ -340,7 +340,7 @@ if (count($rows) > 0) {
                         <div id="match-table">
                             <table>
                                 <?php foreach ($elo_rows as $row): ?>
-                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                    <tr>
                                         <td>
                                             <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
                                         </td><td>
@@ -354,7 +354,20 @@ if (count($rows) > 0) {
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <iframe src=<?='"'.htmlspecialchars($embed_url) . '/primer"'?> width="80%" height="80%"></iframe>
+                        <div id="match-table">
+                            <table>
+                                <?php foreach ($sim_data as $deck): ?>
+                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                        <td>
+                                            <p><?= htmlspecialchars($deck['name'])?></p>
+                                        </td><td>
+                                            <p><?= htmlspecialchars($deck['sim_score'])?> elo gain</p>
+                                        </td>
+                                    </tr>
+                                    <?php $rank++; ?>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
                     </div>
 
                </div>
@@ -504,7 +517,9 @@ if (count($rows) > 0) {
             preloadedImages.push(img);
         });
 
-        console.log("<?= $sim_data ?> :)")
+        function goToDeck(id){
+            window.location = "deck.php?id=" + id
+        }
     </script>
 </body>
 </html>
