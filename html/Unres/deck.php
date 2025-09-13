@@ -368,7 +368,7 @@ if (count($sim_rows) > 0) {
                                         <td>
                                             <p><?= htmlspecialchars($deck['name'])?></p>
                                         </td><td>
-                                            <p><?=  round($deck['sim'] * 100) ?>%</p>
+                                            <p style="text-align:right;"><?=  round($deck['sim'] * 100) ?>%</p>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
