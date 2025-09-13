@@ -258,7 +258,8 @@ foreach ($decks as $d) {
         left:10%;
         width:15%;
         height:auto;
-        top:auto;
+        top:50%;
+        transform:translate(0,-50%);
     }
 
     </style>
