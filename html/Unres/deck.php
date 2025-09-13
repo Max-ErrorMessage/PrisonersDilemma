@@ -294,7 +294,6 @@ foreach ($decks as $d) {
                                     onmouseleave='imgLeave()'
                                     ><?= htmlspecialchars($card['name']) ?></span>
                                 <span><?= htmlspecialchars($card['n']) ?></span>
-                                <span><?= htmlspecialchars($card['n']) ?></span>
                             </div>
                             <?php endforeach; ?>
                         </div>
