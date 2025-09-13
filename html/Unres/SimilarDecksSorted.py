@@ -5,7 +5,7 @@ sys.path.append(str(Path(__file__).parent / "../../Unres-Meta/elo"))
 
 import similarity_from_matrix
 import importlib.util
-import mysql
+import mysql.connector
 
 def deck_ids():
   spec = importlib.util.spec_from_file_location("connect_to_db", "/var/www/Unres-Meta/db/connect_to_db.py")
