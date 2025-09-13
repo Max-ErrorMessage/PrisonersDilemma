@@ -162,7 +162,7 @@ foreach ($decks as $d) {
     #mb ,#sb{
         width:45%;
         position:absolute;
-        top:25%
+        top:15%
     }
 
     #mb{
