@@ -272,7 +272,7 @@ foreach ($decks as $d) {
                     </div>
                     <div id="page2" style="display:none">
                         <p>page2</p>
-                        <div id="elograph"></div>
+                        <canvas id="elograph"></canvas>
                     </div>
                     <div id="page3" style="display:none">
                         <p>page3</p>
@@ -347,7 +347,7 @@ foreach ($decks as $d) {
                 page1.style.display = "none"
                 page3.style.display = "none"
 
-                new Chart(document.getElementById("lineChart"), {
+                new Chart(document.getElementById("elograph"), {
                     type: "line",
                     data: {
                       labels: Array(elo_arr.length).fill(""), // hides x-axis labels
