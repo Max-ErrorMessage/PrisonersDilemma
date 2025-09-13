@@ -17,9 +17,9 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $err = ($_POST['err']);
     if($err = "alnum"){
-        $err_output = "Name must be alphanumeric"
+        $err_output = "Name must be alphanumeric";
     } else {
-        $err_output = ""
+        $err_output = "";
     }
 }
 ?>
