@@ -229,6 +229,18 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
           div2.style.backgroundPosition = `${50 + offsetX*3}% ${50 + offsetY*3}%`;
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
+
+
+        window.addEventListener("DOMContentLoaded", function() {
+          const select = document.getElementById("winner");
+          const options = select.options;
+          const randomIndex = Math.floor(Math.random() * options.length);
+          select.selectedIndex = randomIndex;
+
+          const select = document.getElementById("loser");
+          const options = select.options;
+          const randomIndex = Math.floor(Math.random() * options.length);
+          select.selectedIndex = randomIndex;
     </script>
 
 </body>
