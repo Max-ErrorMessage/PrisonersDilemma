@@ -583,7 +583,7 @@ if (count($sim_rows) > 0) {
         }
 
         function copyToClipboard(){
-            var textToCopy = "<?= addslashes($decklist)?>"
+            var textToCopy = `<?= addslashes($decklist)?>ss`
             console.log(textToCopy)
             navigator.clipboard.writeText(textToCopy)
             .then(() => {
