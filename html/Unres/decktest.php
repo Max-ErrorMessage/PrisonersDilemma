@@ -363,7 +363,7 @@ if (count($sim_rows) > 0) {
                 </a>
                 <div id="lb">
                     <div id = "page1">
-                        <img id="cc" onclick="copytoclip()" src="https://cdn-icons-png.flaticon.com/128/4891/4891669.png">
+                        <img id="cc" onclick="copyToClipboard()" src="https://cdn-icons-png.flaticon.com/128/4891/4891669.png">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <div id="mb">
                             <strong>Mainboard:</strong>
