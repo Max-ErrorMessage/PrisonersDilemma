@@ -232,14 +232,14 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
 
 
         window.addEventListener("DOMContentLoaded", function() {
-          const select = document.getElementById("winner");
-          const options = select.options;
-          const randomIndex = Math.floor(Math.random() * options.length);
+          var select = document.getElementById("winner");
+          var options = select.options;
+          var randomIndex = Math.floor(Math.random() * options.length);
           select.selectedIndex = randomIndex;
 
-          const select = document.getElementById("loser");
-          const options = select.options;
-          const randomIndex = Math.floor(Math.random() * options.length);
+          select = document.getElementById("loser");
+          options = select.options;
+          randomIndex = Math.floor(Math.random() * options.length);
           select.selectedIndex = randomIndex;
     </script>
 
