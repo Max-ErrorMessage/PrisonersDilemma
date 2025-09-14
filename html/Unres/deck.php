@@ -44,6 +44,17 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$decklist = "";
+
+foreach ($mb_cards as $card) {
+    $decklist .= $card['n'] . " " . $card['name'] . "\n";
+}
+$decklist .= "\n";
+foreach ($sb_cards as $card) {
+    $decklist .= $card['n'] . " " . $card['name'] . "\n";
+}
+
+
 
 $stmt = $pdo->prepare('SELECT ec.elo_change, w.name AS winner, l.name AS loser FROM elo_changes ec
 INNER JOIN matches m ON ec.match_id = m.id
@@ -200,7 +211,7 @@ if (count($sim_rows) > 0) {
     #mb ,#sb{
         width:45%;
         position:absolute;
-        top:15%
+        top:20%
 
     }
 
@@ -323,6 +334,14 @@ if (count($sim_rows) > 0) {
         right:3%;
     }
 
+    #cc{
+        width:40px;
+        height:auto;
+        position:absolute;
+        top:20px;
+        right:20px;
+    }
+
     </style>
 </head>
 <body>
@@ -344,6 +363,7 @@ if (count($sim_rows) > 0) {
                 </a>
                 <div id="lb">
                     <div id = "page1">
+                        <img id="cc" onclick="copyToClipboard()" src="https://cdn-icons-png.flaticon.com/128/4891/4891669.png">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <div id="mb">
                             <strong>Mainboard:</strong>
@@ -415,6 +435,7 @@ if (count($sim_rows) > 0) {
             </div>
         </div>
     </div>
+    <textarea readonly style="position:absolute; left:-9999px;" id="decklist"><?= addslashes($decklist)?></textarea>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -562,7 +583,19 @@ if (count($sim_rows) > 0) {
             window.location = "deck.php?id=" + id
         }
 
+        function copyToClipboard(){
+          const textarea = document.getElementById("decklist");
 
+          textarea.select();
+          textarea.setSelectionRange(0, 99999);
+
+          try {
+            document.execCommand("copy");
+            alert("Decklist copied to clipboard!");
+          } catch (err) {
+            alert("Failed to copy");
+          }
+        }
     </script>
 </body>
 </html>
