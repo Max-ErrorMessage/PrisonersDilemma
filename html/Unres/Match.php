@@ -241,6 +241,7 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
           options = select.options;
           randomIndex = Math.floor(Math.random() * options.length);
           select.selectedIndex = randomIndex;
+        }
     </script>
 
 </body>
