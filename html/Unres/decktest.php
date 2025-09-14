@@ -583,7 +583,7 @@ if (count($sim_rows) > 0) {
         }
 
         function copyToClipboard(){
-            var textToCopy = <?= nl2br($decklist)?>
+            var textToCopy = "<?= nl2br($decklist)?>"
             navigator.clipboard.writeText(textToCopy)
             .then(() => {
               alert("Decklist copied to clipboard");
