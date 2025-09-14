@@ -47,11 +47,11 @@ $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $decklist = "";
 
 foreach ($mb_cards as $card) {
-    $decklist .= $card['name'] . " " . $card['n'] . "\n";
+    $decklist .= $card['n'] . " " . $card['name'] . "\n";
 }
 $decklist .= "\n";
 foreach ($sb_cards as $card) {
-    $decklist .= $card['name'] . " " . $card['n'] . "\n";
+    $decklist .= $card['n'] . " " . $card['name'] . "\n";
 }
 
 
