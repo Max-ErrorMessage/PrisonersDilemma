@@ -199,7 +199,7 @@ if (count($sim_rows) > 0) {
     #mb ,#sb{
         width:45%;
         position:absolute;
-        top:15%
+        top:20%
 
     }
 
