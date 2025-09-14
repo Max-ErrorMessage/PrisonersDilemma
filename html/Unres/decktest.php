@@ -44,6 +44,18 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$decklist = "";
+
+foreach ($mb_cards as $card) {
+    $decklist .= $card->name . " " . $card->n . "\n";
+}
+decklist .= "\n";
+foreach ($sb_cards as $card) {
+    $decklist .= $card->name . " " . $card->n . "\n";
+}
+
+
+
 $stmt = $pdo->prepare('SELECT ec.elo_change, w.name AS winner, l.name AS loser FROM elo_changes ec
 INNER JOIN matches m ON ec.match_id = m.id
 LEFT JOIN decks w ON w.id = m.winner_id
@@ -568,6 +580,14 @@ if (count($sim_rows) > 0) {
 
         function goToDeck(id){
             window.location = "deck.php?id=" + id
+        }
+
+        function copyToClipboard(){
+            var textToCopy = <?= nl2br($decklist)?>
+            navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+              alert("Decklist copied to clipboard");
+            })
         }
     </script>
 </body>
