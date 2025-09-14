@@ -435,6 +435,7 @@ if (count($sim_rows) > 0) {
             </div>
         </div>
     </div>
+    <p style="display:none" id="decklist"><?= addslashes($decklist)?></p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -583,12 +584,17 @@ if (count($sim_rows) > 0) {
         }
 
         function copyToClipboard(){
-            var textToCopy = `<?= addslashes($decklist)?>ss`
-            console.log(textToCopy)
-            navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-              alert("Decklist copied to clipboard");
-            })
+          const textarea = document.getElementById("decklist");
+
+          textarea.select();
+          textarea.setSelectionRange(0, 99999);
+
+          try {
+            document.execCommand("copy");
+            alert("Decklist copied to clipboard!");
+          } catch (err) {
+            alert("Failed to copy");
+          }
         }
     </script>
 </body>
