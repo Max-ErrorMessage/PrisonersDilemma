@@ -28,6 +28,22 @@ FROM dcc
 ORDER BY percentage_playrate DESC;');
 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
+
+$stmt = $pdo->query('
+WITH dcc AS (
+    SELECT c.card_name, COUNT(cid.deck_id) as decks_containing_card, image_url
+    FROM cards c
+    LEFT JOIN card_in_deck cid ON cid.card_id = c.id
+    WHERE cid.mainboard = 0
+    GROUP BY c.id
+)
+SELECT dcc.card_name, dcc.image_url, dcc.decks_containing_card * 100 / (
+    SELECT COUNT(*) from decks
+) AS percentage_playrate
+FROM dcc
+ORDER BY percentage_playrate DESC;');
+$sbcards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sbrank = 1;
 ?>
 
 
@@ -278,10 +294,10 @@ $rank = 1;
                         <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
                         <table>
-                        <?php foreach ($cards as $card): ?>
+                        <?php foreach ($sbcards as $card): ?>
                             <tr>
                                 <td>
-                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $sbrank?>.</span></div>
                                 </td><td>
                                     <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
@@ -291,7 +307,7 @@ $rank = 1;
                                     <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
                                 </td>
                             </tr>
-                            <?php $rank++; ?>
+                            <?php $sbrank++; ?>
                         <?php endforeach; ?>
                         </table>
                     </div>
