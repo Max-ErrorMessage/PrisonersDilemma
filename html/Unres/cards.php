@@ -135,7 +135,8 @@ $sbrank = 1;
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
 
-                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
+                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
                                 </td>
                             </tr>
                             <?php $rank++; ?>
@@ -181,8 +182,8 @@ $sbrank = 1;
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
 
-                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span>
+                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
                                 </td>
                             </tr>
                             <?php $rank++; ?>
