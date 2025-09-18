@@ -13,13 +13,14 @@ error_reporting(E_ALL);
 include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
-$stmt = $pdo->query('WITH dcc AS (
-    SELECT c.card_name, COUNT(cid.deck_id) as decks_containing_card
+$stmt = $pdo->query('
+WITH dcc AS (
+    SELECT c.card_name, COUNT(cid.deck_id) as decks_containing_card, image_url
     FROM cards c
     LEFT JOIN card_in_deck cid ON cid.card_id = c.id
     GROUP BY c.id
 )
-SELECT dcc.card_name, dcc.decks_containing_card * 100 / (
+SELECT dcc.card_name, dcc.image_url, dcc.decks_containing_card * 100 / (
     SELECT COUNT(*) from decks
 ) AS percentage_playrate
 FROM dcc
@@ -218,6 +219,8 @@ $rank = 1;
                         <tr>
                             <td>
                                 <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                            </td><td>
+                                <img src="<?= htmlspecialchars($card['image_url']) ?>">
                             </td><td>
                                 <?= htmlspecialchars($card['card_name']) ?>
                             </td><td>
