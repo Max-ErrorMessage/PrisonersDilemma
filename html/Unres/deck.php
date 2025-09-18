@@ -204,7 +204,6 @@ if (count($sim_rows) > 0) {
                         </div>
                     </div>
 
-                    <img id="clr-img" src= "<?= $color_url ?>">
                     <div id="page2" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <canvas id="elograph"></canvas>
@@ -243,6 +242,8 @@ if (count($sim_rows) > 0) {
                     </div>
 
                </div>
+
+               <img id="clr-img" src= "<?= $color_url ?>">
             </div>
         </div>
     </div>
