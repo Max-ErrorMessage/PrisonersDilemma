@@ -152,20 +152,6 @@ if (count($sim_rows) > 0) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -216,8 +202,9 @@ if (count($sim_rows) > 0) {
                             <br><br>
                             <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
                         </div>
-                        <img id="clr-img" src= "<?= $color_url ?>">
                     </div>
+
+                    <img id="clr-img" src= "<?= $color_url ?>">
                     <div id="page2" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <canvas id="elograph"></canvas>
@@ -317,6 +304,7 @@ if (count($sim_rows) > 0) {
                 tab3.style.backgroundColor = "#none"
 
                 page1.style.display = "block"
+                document.getElementById('clr-img').style.display = "block"
                 page2.style.display = "none"
                 page3.style.display = "none"
 
@@ -330,6 +318,7 @@ if (count($sim_rows) > 0) {
 
                 page2.style.display = "block"
                 page1.style.display = "none"
+                document.getElementById('clr-img').style.display = "none"
                 page3.style.display = "none"
 
                 new Chart(document.getElementById("elograph"), {
@@ -374,6 +363,7 @@ if (count($sim_rows) > 0) {
 
                 page3.style.display = "block"
                 page1.style.display = "none"
+                document.getElementById('clr-img').style.display = "none"
                 page2.style.display = "none"
             }
         }
