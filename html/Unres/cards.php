@@ -130,7 +130,7 @@ $sbrank = 1;
                                 <td>
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:5vw; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
@@ -153,7 +153,7 @@ $sbrank = 1;
                                 <td>
                                     <div class="n c<?= $sbrank?>"><span id="r<?= $rank?>"><?= $sbrank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:15vw; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
@@ -177,7 +177,7 @@ $sbrank = 1;
                                 <td>
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:10vw; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
