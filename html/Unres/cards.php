@@ -112,13 +112,13 @@ $sbrank = 1;
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
                 <a class="tab" id="ct1" onclick="switchTab(1)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/218/218325.png"/>
+                    <img src="https://cdn-icons-png.flaticon.com/128/4391/4391661.png"/>
                 </a>
                 <a class="tab" id="ct2" onclick="switchTab(2)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3712/3712516.png"/>
+                    <img src="https://cdn-icons-png.flaticon.com/128/2137/2137887.png"/>
                 </a>
                 <a class="tab" id="ct3" onclick="switchTab(3)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/7658/7658220.png"/>
+                    <img src="https://cdn-icons-png.flaticon.com/128/4961/4961626.png"/>
                 </a>
                 <div id="lb">
                     <div id = "page1">
