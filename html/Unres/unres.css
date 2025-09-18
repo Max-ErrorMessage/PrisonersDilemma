@@ -1,0 +1,139 @@
+/*
+My god am i doing this too late
+*/
+
+.bg-bg, .bg-img, .bg-fg {
+  height:100%;
+  background-size:110% auto;
+  background-position: 50% 50%;
+  position: relative;
+  transition: background-position 0.15s;
+}
+
+
+
+.bg-fg{
+  background-image: url("images/fs3.png");
+}
+
+.bg-img{
+  background-image: url("images/fs2.png");
+}
+
+.bg-bg{
+  background-image: url("images/fs1.png");
+}
+
+
+.bg-fg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+}
+
+
+
+
+.bg-img .content{
+    position:relative;
+}
+
+.bg-img form {
+  min-width:320px;
+  width:25%;
+  background-color:#1e2833;
+  padding:40px;
+  border-radius:4px;
+  transform:translate(-50%, -50%);
+  position:absolute;
+  top:50%;
+  left:50%;
+  color:#fff;
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.bg-img .illustration {
+  text-align:center;
+  padding:15px 0 20px;
+  font-size:100px;
+  color:#2980ef;
+}
+
+
+.bg-img form .form-control {
+  background:none;
+  border:none;
+  border-bottom:1px solid #434a52;
+  border-radius:0;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+}
+
+.bg-img form .btn-primary {
+  background:#99E6FC;
+  color:#1e2833;
+  border:none;
+  border-radius:4px;
+  padding:11px;
+  box-shadow:none;
+  margin-top:26px;
+  text-shadow:none;
+  outline:none;
+}
+
+.bg-img form .btn-primary:hover, .bg-img form .btn-primary:active {
+  background:#bff;
+  outline:none;
+}
+
+.bg-img form .forgot {
+  display:block;
+  text-align:center;
+  font-size:12px;
+  color:#6f7a85;
+  opacity:0.9;
+  text-decoration:none;
+}
+
+.bg-img form .forgot:hover, .bg-img form .forgot:active {
+  opacity:1;
+  text-decoration:none;
+}
+
+.bg-img form .btn-primary:active {
+  transform:translateY(1px);
+}
+
+option{
+    background-color: #1e2833 !important;
+}
+
+body{
+    overflow-y:hidden;
+}
+
+    #back{
+    color:white;
+    background-color:#1e2833;
+    width:50px;
+    height:50px;
+    position:absolute;
+    top:25px;
+    right:50px;
+    padding: 0px;
+    border-radius:15px;
+    font-weight:bolder;
+    text-decoration:none;
+}
+
+#back img{
+    margin:10px 8px 10px 12px;
+    width:30px;
+    height:auto;
+    filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
+    transform: scaleX(-1);
+}

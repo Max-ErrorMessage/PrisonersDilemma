@@ -297,13 +297,12 @@ $sbrank = 1;
                         <?php foreach ($sbcards as $card): ?>
                             <tr>
                                 <td>
-                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $sbrank?>.</span></div>
+                                    <div class="n c<?= $sbrank?>"><span id="r<?= $rank?>"><?= $sbrank?>.</span></div>
                                 </td><td>
                                     <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
-
                                     <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
                                 </td>
                             </tr>
