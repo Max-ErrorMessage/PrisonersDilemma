@@ -86,7 +86,7 @@ $rank = 1;
 
         #lb {
           min-width:320px;
-          width:40%;
+          width:50%;
           background-color:#1e2833;
           padding:40px;
           border-radius:4px;
@@ -96,7 +96,7 @@ $rank = 1;
           left:50%;
           color:#fff;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-          height:80%;
+          height:70%;
           overflow-y:scroll;
         }
 
@@ -200,7 +200,37 @@ $rank = 1;
             filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
         }
 
+            .tab{
+        background-image: linear-gradient(to top, #101820, #1e2833);
+        position: absolute;
+        bottom: 84.9%;
+        height: 50px;
+        width: 80px;
+        border-radius: 5px 5px 0px 0px;
+    }
 
+    .tab img{
+        width: 40px;
+        height: auto;
+        text-align: center;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #t1{
+        background-color:#1e2833;
+        background-image:none;
+        left: 31%;
+    }
+    #t2{
+        left: calc(32% + 80px);
+    }
+    #t3{
+        left: calc(33% + 160px);
+    }
 
     </style>
 </head>
@@ -209,29 +239,86 @@ $rank = 1;
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
-                <a href="Match.php" id="back">
+                <a href="Leaderboard.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
+                <a class="tab" id="t1" onclick="switchTab(1)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
+                </a>
+                <a class="tab" id="t2" onclick="switchTab(2)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                </a>
+                <a class="tab" id="t3" onclick="switchTab(3)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
+                </a>
                 <div id="lb">
-                    <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                    <br>
-                    <table>
-                    <?php foreach ($cards as $card): ?>
-                        <tr>
-                            <td>
-                                <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
-                            </td><td>
-                                <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px; border:3px #aef solid;">
-                            </td><td>
-                                <?= htmlspecialchars($card['card_name']) ?>
-                            </td><td>
+                    <div id = "page1">
+                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                        <br>
+                        <table>
+                        <?php foreach ($cards as $card): ?>
+                            <tr>
+                                <td>
+                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                </td><td>
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px; border:3px #aef solid;">
+                                </td><td>
+                                    <?= htmlspecialchars($card['card_name']) ?>
+                                </td><td>
 
-                                <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
-                            </td>
-                        </tr>
-                        <?php $rank++; ?>
-                    <?php endforeach; ?>
-                    </table>
+                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
+                                </td>
+                            </tr>
+                            <?php $rank++; ?>
+                        <?php endforeach; ?>
+                        </table>
+                    </div>
+
+                    <div id = "page2">
+                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                        <br>
+                        <table>
+                        <?php foreach ($cards as $card): ?>
+                            <tr>
+                                <td>
+                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                </td><td>
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px; border:3px #aef solid;">
+                                </td><td>
+                                    <?= htmlspecialchars($card['card_name']) ?>
+                                </td><td>
+
+                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
+                                </td>
+                            </tr>
+                            <?php $rank++; ?>
+                        <?php endforeach; ?>
+                        </table>
+                    </div>
+
+
+
+                    <div id = "page3">
+                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                        <br>
+                        <table>
+                        <?php foreach ($cards as $card): ?>
+                            <tr>
+                                <td>
+                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                </td><td>
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px; border:3px #aef solid;">
+                                </td><td>
+                                    <?= htmlspecialchars($card['card_name']) ?>
+                                </td><td>
+
+                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
+                                </td>
+                            </tr>
+                            <?php $rank++; ?>
+                        <?php endforeach; ?>
+                        </table>
+                    </div>
 
                 </div>
             </div>
@@ -262,6 +349,84 @@ $rank = 1;
 
         function goToDeck(id){
             window.location = "deck.php?id=" + id
+        }
+
+    function switchTab(n){
+            tab1 = document.getElementById("t1")
+            tab2 = document.getElementById("t2")
+            tab3 = document.getElementById("t3")
+            page1 = document.getElementById("page1")
+            page2 = document.getElementById("page2")
+            page3 = document.getElementById("page3")
+
+            if (n==1){
+                tab1.style.backgroundColor = "#1e2833"
+                tab1.style.backgroundImage = "none"
+                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundColor = "none"
+                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundColor = "#none"
+
+                page1.style.display = "block"
+                page2.style.display = "none"
+                page3.style.display = "none"
+
+            } else if (n==2){
+                tab2.style.backgroundColor = "#1e2833"
+                tab2.style.backgroundImage = "none"
+                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundColor = "none"
+                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundColor = "#none"
+
+                page2.style.display = "block"
+                page1.style.display = "none"
+                page3.style.display = "none"
+
+                new Chart(document.getElementById("elograph"), {
+                    type: "line",
+                    data: {
+                      labels: labels,
+                      datasets: [{
+                        label: "Elo Over Time",
+                        data: elo_arr,
+                        borderColor: "White",
+                        fill: true,
+                        backgroundColor: "rgba(255,255,255,0.2)"
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        x: {
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" },
+                          display:false
+                        },
+                        y: {
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" }
+                        }
+                      },
+                      plugins: {
+                        legend: {
+                          labels: { color: "#ddd" }
+                        }
+                      }
+                    }
+                  });
+
+            }  else if (n==3){
+                tab3.style.backgroundColor = "#1e2833"
+                tab3.style.backgroundImage = "none"
+                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundColor = "none"
+                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundColor = "#none"
+
+                page3.style.display = "block"
+                page1.style.display = "none"
+                page2.style.display = "none"
+            }
         }
     </script>
 </body>
