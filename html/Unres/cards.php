@@ -220,9 +220,9 @@ $sbrank = 1;
         }
 
     function switchTab(n){
-            tab1 = document.getElementById("t1")
-            tab2 = document.getElementById("t2")
-            tab3 = document.getElementById("t3")
+            tab1 = document.getElementById("ct1")
+            tab2 = document.getElementById("ct2")
+            tab3 = document.getElementById("ct3")
             page1 = document.getElementById("page1")
             page2 = document.getElementById("page2")
             page3 = document.getElementById("page3")
