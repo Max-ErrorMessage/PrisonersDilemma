@@ -220,7 +220,7 @@ $rank = 1;
                             <td>
                                 <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                             </td><td>
-                                <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%">
+                                <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px;">
                             </td><td>
                                 <?= htmlspecialchars($card['card_name']) ?>
                             </td><td>
