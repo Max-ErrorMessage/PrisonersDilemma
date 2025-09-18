@@ -122,15 +122,14 @@ $sbrank = 1;
                 </a>
                 <div id="lb">
                     <div id = "page1">
-                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                        <br>
+                        <strong>Most Played Mainboard Cards</strong
                         <table>
                         <?php foreach ($cards as $card): ?>
                             <tr>
                                 <td>
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:5vw; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:9vw; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
@@ -145,15 +144,14 @@ $sbrank = 1;
                     </div>
 
                     <div id = "page2" style="display:none">
-                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                        <br>
+                        <strong>Most Plaayed Sideboard Cards</strong
                         <table>
                         <?php foreach ($sbcards as $card): ?>
                             <tr>
                                 <td>
                                     <div class="n c<?= $sbrank?>"><span id="r<?= $rank?>"><?= $sbrank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:15vw; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:9vw; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
@@ -169,26 +167,7 @@ $sbrank = 1;
 
 
                     <div id = "page3" style="display:none">
-                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                        <br>
-                        <table>
-                        <?php foreach ($cards as $card): ?>
-                            <tr>
-                                <td>
-                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
-                                </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:10vw; border-radius:10px; border:3px #aef solid;">
-                                </td><td>
-                                    <?= htmlspecialchars($card['card_name']) ?>
-                                </td><td>
-
-                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
-                                </td>
-                            </tr>
-                            <?php $rank++; ?>
-                        <?php endforeach; ?>
-                        </table>
+                        <strong> Stats or something </strong
                     </div>
 
                 </div>
