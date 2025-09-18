@@ -122,7 +122,7 @@ $sbrank = 1;
                 </a>
                 <div id="lb">
                     <div id = "page1">
-                        <strong>Most Played Mainboard Cards</strong
+                        <strong>Most Played Mainboard Cards</strong>
                         <table>
                         <?php foreach ($cards as $card): ?>
                             <tr>
@@ -144,7 +144,7 @@ $sbrank = 1;
                     </div>
 
                     <div id = "page2" style="display:none">
-                        <strong>Most Plaayed Sideboard Cards</strong
+                        <strong>Most Plaayed Sideboard Cards</strong>
                         <table>
                         <?php foreach ($sbcards as $card): ?>
                             <tr>
@@ -167,7 +167,7 @@ $sbrank = 1;
 
 
                     <div id = "page3" style="display:none">
-                        <strong> Stats or something </strong
+                        <strong> Stats or something </strong>
                     </div>
 
                 </div>
