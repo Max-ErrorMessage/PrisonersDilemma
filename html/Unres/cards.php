@@ -222,7 +222,7 @@ $rank = 1;
                                 <?= htmlspecialchars($card['card_name']) ?>
                             </td><td>
 
-                                <div class="ra"><?= explode('.',htmlspecialchars($deck['percentage_playrate']))[0]?>%</div>
+                                <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%</div>
                             </td>
                         </tr>
                         <?php $rank++; ?>
