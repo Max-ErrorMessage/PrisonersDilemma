@@ -18,6 +18,7 @@ WITH dcc AS (
     SELECT c.card_name, COUNT(cid.deck_id) as decks_containing_card, image_url
     FROM cards c
     LEFT JOIN card_in_deck cid ON cid.card_id = c.id
+    WHERE cid.mainboard = 1
     GROUP BY c.id
 )
 SELECT dcc.card_name, dcc.image_url, dcc.decks_containing_card * 100 / (
