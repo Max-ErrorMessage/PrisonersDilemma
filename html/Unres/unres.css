@@ -258,9 +258,9 @@ td{
 
 #clr-img{
     position:absolute;
-    bottom:16%;
+    bottom:calc(15% + 10px);
     width:8%;
-    right:32%;
+    right:calc(30% + 10px);
 }
 
 #cc{
