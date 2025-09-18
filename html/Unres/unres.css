@@ -10,21 +10,6 @@ My god am i doing this too late
   transition: background-position 0.15s;
 }
 
-
-
-.bg-fg{
-  background-image: url("images/fs3.png");
-}
-
-.bg-img{
-  background-image: url("images/fs2.png");
-}
-
-.bg-bg{
-  background-image: url("images/fs1.png");
-}
-
-
 .bg-fg::before {
   content: "";
   position: absolute;
@@ -33,9 +18,6 @@ My god am i doing this too late
   backdrop-filter: blur(5px);
   pointer-events: none;
 }
-
-
-
 
 .bg-img .content{
     position:relative;
@@ -53,6 +35,22 @@ My god am i doing this too late
   left:50%;
   color:#fff;
   box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+#lb {
+    min-width: 320px;
+    width: 40%;
+    background-color: #1e2833;
+    padding: 40px;
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    height: 70%;
+    overflow-y: scroll;
 }
 
 .bg-img .illustration {

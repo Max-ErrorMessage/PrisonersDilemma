@@ -135,16 +135,8 @@ if (count($sim_rows) > 0) {
     <meta name="description" content="Create bots to compete in fun minigames! :)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="unres.css">
     <style>
-        .bg-bg, .bg-img, .bg-fg {
-          height:100%;
-          background-size:110% auto;
-          background-position: 50% 50%;
-          position: relative;
-          transition: background-position 0.15s;
-        }
-
-
 
         .bg-fg{
           background-image: url("images/lg3.png");
@@ -159,42 +151,12 @@ if (count($sim_rows) > 0) {
         }
 
 
-        .bg-fg::before {
-          content: "";
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
-          backdrop-filter: blur(5px);
-          pointer-events: none;
-        }
-
-
-
-
-        .bg-img .content{
-            position:relative;
-        }
-
 
         .bg-img .illustration {
           text-align:center;
         }
 
-        #lb {
-            min-width: 320px;
-            width: 40%;
-            background-color: #1e2833;
-            padding: 40px;
-            border-radius: 4px;
-            transform: translate(-50%, -50%);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            color: #fff;
-            box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
-            height: 70%;
-            overflow-y: scroll;
-        }
+
 
         ::-webkit-scrollbar{
             display:none;
