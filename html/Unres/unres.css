@@ -192,6 +192,18 @@ td{
     left: calc(33% + 160px);
 }
 
+#ct1{
+    background-color:#1e2833;
+    background-image:none;
+    left: 26%;
+}
+#ct2{
+    left: calc(27% + 80px);
+}
+#ct3{
+    left: calc(28% + 160px);
+}
+
 #match-table, #sim-table{
     left:15%;
     width:70%;
