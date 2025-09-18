@@ -115,7 +115,7 @@ $sbrank = 1;
                     <img src="https://cdn-icons-png.flaticon.com/128/218/218325.png"/>
                 </a>
                 <a class="tab" id="ct2" onclick="switchTab(2)">
-                    <img src="https://www.flaticon.com/free-icon/collar_3712516"/>
+                    <img src="https://cdn-icons-png.flaticon.com/128/3712/3712516.png"/>
                 </a>
                 <a class="tab" id="ct3" onclick="switchTab(3)">
                     <img src="https://cdn-icons-png.flaticon.com/128/7658/7658220.png"/>
