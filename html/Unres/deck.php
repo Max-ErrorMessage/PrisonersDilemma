@@ -152,157 +152,19 @@ if (count($sim_rows) > 0) {
 
 
 
-        .bg-img .illustration {
-          text-align:center;
-        }
-
-
-
-        ::-webkit-scrollbar{
-            display:none;
-        }
-
-
-        td{
-            color:#fff;
-        }
 
 
 
 
-    #mb ,#sb{
-        width:45%;
-        position:absolute;
-        top:20%
 
-    }
 
-    #mb{
-        left:3%;
-    }
 
-    #sb{
-        right:3%;
-    }
-    #back{
-        color:white;
-        background-color:#1e2833;
-        width:50px;
-        height:50px;
-        position:absolute;
-        top:25px;
-        left:50px;
-        padding: 0px;
-        border-radius:15px;
-        font-weight:bolder;
-        text-decoration:none;
-    }
 
-    #back img{
-        margin:10px 12px 10px 8px;
-        width:30px;
-        height:auto;
-        filter:  brightness(1.41) saturate(0.55);
-    }
 
-    .tab{
-        background-image: linear-gradient(to top, #101820, #1e2833);
-        position: absolute;
-        bottom: 84.9%;
-        height: 50px;
-        width: 80px;
-        border-radius: 5px 5px 0px 0px;
-    }
 
-    .tab img{
-        width: 40px;
-        height: auto;
-        text-align: center;
-        margin: auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
 
-    #t1{
-        background-color:#1e2833;
-        background-image:none;
-        left: 31%;
-    }
-    #t2{
-        left: calc(32% + 80px);
-    }
-    #t3{
-        left: calc(33% + 160px);
-    }
 
-    #match-table, #sim-table{
-        left:15%;
-        width:70%;
-        position:absolute;
-        overflow-y:scroll;
-        border:1px white solid;
-        border-radius:3px;
-    }
 
-    #match-table tr, #sim-table tr{
-        border-bottom: 1px #555 solid;
-    }
-
-    #match-table table, #sim-table table{
-        width:100%;
-    }
-
-    #match-table p, #sim-table p{
-        margin:auto;
-    }
-
-    #match-table td{
-        padding:4px;
-    }
-    #sim-table td{
-        padding:8px;
-    }
-
-    #sim-table{
-        height:70%;
-    }
-
-    #match-table{
-        height:30%;
-    }
-
-    #sim-table tr:hover{
-            background-color:#345;
-            transition:background-color 0.2s;
-    }
-
-    #crd-prvw{
-        position:absolute;
-        left:10%;
-        width:15%;
-        height:auto;
-        top:50%;
-        transform:translate(0,-50%);
-        display:none;
-        border-radius:10px;
-    }
-
-    #clr-img{
-        position:absolute;
-        bottom:3%;
-        width:15%;
-        right:3%;
-    }
-
-    #cc{
-        width:40px;
-        height:auto;
-        position:absolute;
-        top:20px;
-        right:20px;
-    }
 
     </style>
 </head>

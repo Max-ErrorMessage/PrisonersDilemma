@@ -43,6 +43,15 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
           background-image: url("images/fs1.png");
         }
 
+        #back img {
+            transform: scaleX(-1);
+            margin:10px 8px 10px 12px;
+        }
+
+        #back {
+            right:50px;
+        }
+
     </style>
 </head>
 <body>

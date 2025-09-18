@@ -60,13 +60,6 @@ $sbrank = 1;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .bg-bg, .bg-img, .bg-fg {
-          height:100%;
-          background-size:110% auto;
-          background-position: 50% 50%;
-          position: relative;
-          transition: background-position 0.15s;
-        }
 
 
 
@@ -83,170 +76,30 @@ $sbrank = 1;
         }
 
 
-        .bg-fg::before {
-          content: "";
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
-          backdrop-filter: blur(5px);
-          pointer-events: none;
-        }
 
 
 
-
-        .bg-img .content{
-            position:relative;
-        }
 
 
         #lb {
-          min-width:320px;
           width:50%;
-          background-color:#1e2833;
-          padding:40px;
-          border-radius:4px;
-          transform:translate(-50%, -50%);
-          position:absolute;
-          top:50%;
-          left:50%;
-          color:#fff;
-          box-shadow:3px 3px 4px rgba(0,0,0,0.2);
           height:70%;
-          overflow-y:scroll;
         }
 
-        ::-webkit-scrollbar{
-            display:none;
-        }
 
-        .bg-img .illustration {
-          text-align:center;
-        }
         .illustration img{
             width:65px;
         }
-        td{
-            color:#fff;
-        }
 
-        table{
-            text-align:left;
-            font-size:15px;
-            width:80%;
-            position:absolute;
-            left:10%;
-        }
 
-        .lbimg{
-            width:30px;
-        }
 
-        #r1, #r2, #r3{
-            color:black;
-        }
 
-        .n{
-            width:30px;
-            height:30px;
-            background-color:#113;
-            border-radius:8px;
-            align-content: center;
-            text-align: center;
-            font-weight:bold;
-        }
-        .ra{
-            text-align:right;
-        }
 
-        .c1{
-            background-color:#FFE177;
-            border: 2px solid black;
-            font-weight:bolder;
-        }
 
-        .c2{
-            background-color:#DEECF1;
-            border: 2px solid black;
-            font-weight:bold;
-        }
 
-        .c3{
-            background-color:#FE646F;
-            border: 2px solid black;
-            font-weight:bold;
-        }
 
-        tr:hover{
-            background-color:#345;
-            transition:background-color 0.2s;
-        }
-        tr{
-            border-radius:5px;
-        }
 
-        tr td:first-child {
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
-        }
 
-        tr td:last-child {
-          border-top-right-radius: 5px;
-          border-bottom-right-radius: 5px;
-        }
-
-        #back{
-            color:white;
-            background-color:#1e2833;
-            width:50px;
-            height:50px;
-            position:absolute;
-            top:25px;
-            left:50px;
-            padding: 0px;
-            border-radius:15px;
-            font-weight:bolder;
-            text-decoration:none;
-        }
-
-        #back img{
-            margin:10px 12px 10px 8px;
-            width:30px;
-            height:auto;
-            filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
-        }
-
-            .tab{
-        background-image: linear-gradient(to top, #101820, #1e2833);
-        position: absolute;
-        bottom: 84.9%;
-        height: 50px;
-        width: 80px;
-        border-radius: 5px 5px 0px 0px;
-    }
-
-    .tab img{
-        width: 40px;
-        height: auto;
-        text-align: center;
-        margin: auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    #t1{
-        background-color:#1e2833;
-        background-image:none;
-        left: 31%;
-    }
-    #t2{
-        left: calc(32% + 80px);
-    }
-    #t3{
-        left: calc(33% + 160px);
-    }
 
     </style>
 </head>
