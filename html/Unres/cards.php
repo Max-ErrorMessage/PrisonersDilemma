@@ -261,7 +261,7 @@ $rank = 1;
                                 <td>
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
@@ -274,7 +274,7 @@ $rank = 1;
                         </table>
                     </div>
 
-                    <div id = "page2">
+                    <div id = "page2" style="display:none">
                         <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
                         <table>
@@ -283,7 +283,7 @@ $rank = 1;
                                 <td>
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
@@ -298,7 +298,7 @@ $rank = 1;
 
 
 
-                    <div id = "page3">
+                    <div id = "page3" style="display:none">
                         <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
                         <table>
@@ -307,7 +307,7 @@ $rank = 1;
                                 <td>
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                                 </td><td>
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:80%; border-radius:10px; border:3px #aef solid;">
+                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:40%; border-radius:10px; border:3px #aef solid;">
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
