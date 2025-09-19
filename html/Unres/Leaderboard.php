@@ -89,22 +89,7 @@ $rank = 1;
             position:relative;
         }
 
-/*
-        #lb {
-          min-width:320px;
-          width:40%;
-          background-color:#1e2833;
-          padding:40px;
-          border-radius:4px;
-          transform:translate(-50%, -50%);
-          position:absolute;
-          top:50%;
-          left:50%;
-          color:#fff;
-          box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-          height:80%;
-          overflow-y:scroll;
-        }*/
+
 
         ::-webkit-scrollbar{
             display:none;
