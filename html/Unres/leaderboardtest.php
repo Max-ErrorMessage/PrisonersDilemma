@@ -292,7 +292,7 @@ $arch_output = shell_exec($command);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
 
-        const archetypes = JSON.parse('<?php echo json_encode(trim($arch_output)); ?>');
+        const archetypes = '<?php echo json_encode(trim($arch_output)); ?>'
         console.log(archetypes);
 
 
