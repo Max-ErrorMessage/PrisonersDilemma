@@ -13,141 +13,197 @@ error_reporting(E_ALL);
 include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
-$id = $_GET["id"];
-
-$stmt = $pdo->prepare('SELECT id, decklist_url, ELO, provided_archetype, name
-FROM decks
-WHERE id = :id;
-');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$stmt->execute();
-$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_url as url
-FROM card_in_deck cid
-inner join cards c on cid.card_id = c.id
-where cid.deck_id = :id
-and cid.mainboard = 1
-order by n desc;');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$stmt->execute();
-$mb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_url as url
-FROM card_in_deck cid
-inner join cards c on cid.card_id = c.id
-where cid.deck_id = :id
-and cid.mainboard = 0
-order by n desc;');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$stmt->execute();
-$sb_cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$decklist = "";
-
-foreach ($mb_cards as $card) {
-    $decklist .= $card['n'] . " " . $card['name'] . "\n";
-}
-$decklist .= "\n";
-foreach ($sb_cards as $card) {
-    $decklist .= $card['n'] . " " . $card['name'] . "\n";
-}
-
-
-
-$stmt = $pdo->prepare('SELECT ec.elo_change, w.name AS winner, l.name AS loser FROM elo_changes ec
-INNER JOIN matches m ON ec.match_id = m.id
-LEFT JOIN decks w ON w.id = m.winner_id
-LEFT JOIN decks l ON l.id = m.loser_id
-WHERE ec.deck_id = :id;');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$stmt->execute();
-
-$elo = [];
-$winners = [];
-$losers = [];
-$elo_rows = [];
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $elo[] = (int)$row['elo_change'];
-    $winners[] = $row['winner'];
-    $losers[] = $row['loser'];
-    $elo_rows[] = $row;
-}
-
-
-foreach ($decks as $d) {
-    $deck = $d;
-}
-
-$stmt = $pdo->prepare('
-    SELECT
+$stmt = $pdo->query('SELECT
+        d.id as id,
         SUM(
-            CASE cod.colour_id
-                WHEN 1 THEN 1
-                WHEN 2 THEN 2
-                WHEN 3 THEN 4
-                WHEN 4 THEN 8
-                WHEN 5 THEN 16
-                ELSE 0
-            END
-        ) AS colour
-    FROM colours_of_decks cod
-    RIGHT JOIN decks d ON d.id = cod.deck_id
-    WHERE d.id = :id
-    GROUP BY d.id
-');
-
-$stmt->execute([':id' => $id]);
-$colors = $stmt->fetch(PDO::FETCH_ASSOC);
-$color_url = "images/" . $colors['colour'] . ".png";
-
-
-
-
-$venvPython = '/var/www/Unres-Meta/venv/bin/python';
-$pythonScript = 'similarity_from_matrix.py';
-$command = 'cd /var/www/Unres-Meta/elo && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ($id) . ' 2>&1';
-$sim_output = shell_exec($command);
-
-
-$sim_rows = str_getcsv($sim_output, "\n"); // Split by line
-$sim_data = [];
-
-array_shift($sim_rows);
-if (count($sim_rows) > 0) {
-    foreach ($sim_rows as $row) {
-        $fields = str_getcsv($row);
-        $sim_data[] = array_combine(["name","id","sim"], $fields); // Convert to assoc array
-    }
-}
-
-
-
+                CASE cod.colour_id
+                        WHEN 1 THEN 1
+                        WHEN 2 THEN 2
+                        WHEN 3 THEN 4
+                        WHEN 4 THEN 8
+                        WHEN 5 THEN 16
+                        ELSE 0
+                END
+        ) AS colour,
+        d.custom_id as cid,
+        d.name as name,
+        d.elo AS elo
+FROM colours_of_decks cod
+RIGHT JOIN decks d ON d.id = cod.deck_id
+GROUP BY id
+ORDER BY elo DESC;');
+$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$rank = 1;
 ?>
 
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
-    <title>Unrestricted Vintage Matchups</title>
+    <title>Unrestricted Vintage Leaderboard</title>
     <link rel="icon" href="/t.ico" type="image/x-icon">
     <meta name="description" content="Create bots to compete in fun minigames! :)">
+    <meta property="og:title" content="Unres Leaderboard">
+    <meta property="og:description" content="The best decks in unres! Take a look at the rankings and see who is on top!">
+    <meta property="og:image" content="6.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="unres.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        .bg-bg, .bg-img, .bg-fg {
+          height:100%;
+          background-size:110% auto;
+          background-position: 50% 50%;
+          position: relative;
+          transition: background-position 0.15s;
+        }
+
+
 
         .bg-fg{
-          background-image: url("images/lg3.png");
+          background-image: url("images/vb3.png");
         }
 
         .bg-img{
-          background-image: url("images/lg2.png");
+          background-image: url("images/vb2.png");
         }
 
         .bg-bg{
-          background-image: url("images/lg1.png");
+          background-image: url("images/vb1.png");
+        }
+
+
+        .bg-fg::before {
+          content: "";
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+          backdrop-filter: blur(5px);
+          pointer-events: none;
+        }
+
+
+
+
+        .bg-img .content{
+            position:relative;
+        }
+
+
+        #lb {
+          min-width:320px;
+          width:40%;
+          background-color:#1e2833;
+          padding:40px;
+          border-radius:4px;
+          transform:translate(-50%, -50%);
+          position:absolute;
+          top:50%;
+          left:50%;
+          color:#fff;
+          box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+          height:80%;
+          overflow-y:scroll;
+        }
+
+        ::-webkit-scrollbar{
+            display:none;
+        }
+
+        .bg-img .illustration {
+          text-align:center;
+        }
+        .illustration img{
+            width:65px;
+        }
+        td{
+            color:#fff;
+        }
+
+        table{
+            text-align:left;
+            font-size:15px;
+            width:80%;
+            position:absolute;
+            left:10%;
+        }
+
+        .lbimg{
+            width:30px;
+        }
+
+        #r1, #r2, #r3{
+            color:black;
+        }
+
+        .n{
+            width:30px;
+            height:30px;
+            background-color:#113;
+            border-radius:8px;
+            align-content: center;
+            text-align: center;
+            font-weight:bold;
+        }
+        .ra{
+            text-align:right;
+        }
+
+        .c1{
+            background-color:#FFE177;
+            border: 2px solid black;
+            font-weight:bolder;
+        }
+
+        .c2{
+            background-color:#DEECF1;
+            border: 2px solid black;
+            font-weight:bold;
+        }
+
+        .c3{
+            background-color:#FE646F;
+            border: 2px solid black;
+            font-weight:bold;
+        }
+
+        tr:hover{
+            background-color:#345;
+            transition:background-color 0.2s;
+        }
+        tr{
+            border-radius:5px;
+        }
+
+        tr td:first-child {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        tr td:last-child {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
+        #back{
+            color:white;
+            background-color:#1e2833;
+            width:50px;
+            height:50px;
+            position:absolute;
+            top:25px;
+            left:50px;
+            padding: 0px;
+            border-radius:15px;
+            font-weight:bolder;
+            text-decoration:none;
+        }
+
+        #back img{
+            margin:10px 12px 10px 8px;
+            width:30px;
+            height:auto;
+            filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
         }
 
 
@@ -155,53 +211,35 @@ if (count($sim_rows) > 0) {
     </style>
 </head>
 <body>
+
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
-                <img src="https://assets.moxfield.net/cards/card-O9Ovn-normal.webp?226499050" id="crd-prvw">
-                <a href="Leaderboard.php" id="back">
+                <a href="Match.php" id="back">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
-                </a>
-                <a class="tab" id="t1" onclick="switchTab(1)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
-                </a>
-                <a class="tab" id="t2" onclick="switchTab(2)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
-                </a>
-                <a class="tab" id="t3" onclick="switchTab(3)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
                 </a>
                 <div id="lb">
                     <div id = "page1">
-                        <img id="cc" onclick="copyToClipboard()" src="https://cdn-icons-png.flaticon.com/128/4891/4891669.png">
-                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <div id="mb">
-                            <strong>Mainboard:</strong>
-                            <?php foreach ($mb_cards as $card): ?>
-                            <div style="justify-content:space-between;display:flex; width:100%;">
-                                <span
-                                    onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
-                                    onmouseleave='imgLeave()'
-                                    ><?= htmlspecialchars($card['name']) ?></span>
-                                <span><?= htmlspecialchars($card['n']) ?></span>
-                            </div>
-                            <?php endforeach; ?>
-                        </div>
+                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
-                        <div id="sb">
-                            <strong>Sideboard:</strong>
-                            <?php foreach ($sb_cards as $card): ?>
-                            <div style="justify-content:space-between;display:flex; width:100%">
-                                <span
-                                    onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
-                                    onmouseleave='imgLeave()'
-                                    ><?= htmlspecialchars($card['name']) ?></span>
-                                <span><?= htmlspecialchars($card['n']) ?></span>
-                            </div>
-                            <?php endforeach; ?>
-                            <br><br>
-                            <a style="color:#ccc;" href= <?= '"'.$deck['decklist_url'].'"' ?> >Click here for the deck page</a>
-                        </div>
+                        <table>
+                        <?php foreach ($decks as $deck): ?>
+                            <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                <td>
+                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                </td><td>
+                                    <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
+                                    <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                                </td><td>
+                                    <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+                                </td><td>
+
+                                    <div class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></div>
+                                </td>
+                            </tr>
+                            <?php $rank++; ?>
+                        <?php endforeach; ?>
+                        </table>
                     </div>
 
                     <div id="page2" style="display:none">
@@ -241,16 +279,13 @@ if (count($sim_rows) > 0) {
                         </div>
                     </div>
 
-               </div>
 
-               <img id="clr-img" src= "<?= $color_url ?>">
+                </div>
             </div>
         </div>
     </div>
-    <textarea readonly style="position:absolute; left:-9999px;" id="decklist"><?= addslashes($decklist)?></textarea>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const div2 = document.querySelector('.bg-img');
 
@@ -264,7 +299,7 @@ if (count($sim_rows) > 0) {
           const y = e.clientY / height;
 
 
-          const offsetX = (0.5 - x) * 4;
+          const offsetX = (0.5 - x) * 2;
           const offsetY = (0.5 - y) * 2;
 
           div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
@@ -272,54 +307,32 @@ if (count($sim_rows) > 0) {
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
-        const elo_changes = <?php echo json_encode($elo); ?>;
-        const winners = <?php echo json_encode($winners); ?>;
-        const losers = <?php echo json_encode($losers); ?>;
-
-        console.log(elo_changes);
-        elo_arr = [1000]
-        for (let i = 0; i < elo_changes.length; i++) {
-          elo_arr.push(elo_arr[elo_arr.length - 1] + elo_changes[i]);
+        function goToDeck(id){
+            window.location = "deck.php?id=" + id
         }
 
-        labels = ["Starting Elo"]
-        for (var i = 0; i < winners.length; i++){
-            labels.push(winners[i] + " beat " + losers[i])
-        }
-        console.log(winners)
-        console.log(labels)
-        function switchTab(n){
-            tab1 = document.getElementById("t1")
-            tab2 = document.getElementById("t2")
-            tab3 = document.getElementById("t3")
-            page1 = document.getElementById("page1")
-            page2 = document.getElementById("page2")
-            page3 = document.getElementById("page3")
-
-            if (n==1){
+        if (n==1){
                 tab1.style.backgroundColor = "#1e2833"
                 tab1.style.backgroundImage = "none"
-                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "none"
-                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab3.style.backgroundColor = "#none"
 
                 page1.style.display = "block"
-                document.getElementById('clr-img').style.display = "block"
                 page2.style.display = "none"
                 page3.style.display = "none"
 
             } else if (n==2){
                 tab2.style.backgroundColor = "#1e2833"
                 tab2.style.backgroundImage = "none"
-                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
-                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab3.style.backgroundColor = "#none"
 
                 page2.style.display = "block"
-                page1.style.display = "none"
-                document.getElementById('clr-img').style.display = "none"
+                page1.style.display = "none
                 page3.style.display = "none"
 
                 new Chart(document.getElementById("elograph"), {
@@ -357,59 +370,15 @@ if (count($sim_rows) > 0) {
             }  else if (n==3){
                 tab3.style.backgroundColor = "#1e2833"
                 tab3.style.backgroundImage = "none"
-                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
-                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "#none"
 
                 page3.style.display = "block"
                 page1.style.display = "none"
-                document.getElementById('clr-img').style.display = "none"
                 page2.style.display = "none"
             }
-        }
-
-        function imgBecome(url){
-            document.getElementById('crd-prvw').src = url
-            document.getElementById('crd-prvw').style.display="block"
-        }
-        function imgLeave(){
-            document.getElementById('crd-prvw').style.display="none"
-        }
-
-        const cardUrls = [
-            <?php foreach ($mb_cards as $card): ?>
-                "<?= htmlspecialchars($card['url']) ?>",
-            <?php endforeach; ?>
-            <?php foreach ($sb_cards as $card): ?>
-                "<?= htmlspecialchars($card['url']) ?>",
-            <?php endforeach; ?>
-        ];
-
-        // Preload all images
-        const preloadedImages = [];
-        cardUrls.forEach(url => {
-            const img = new Image();
-            img.src = url; // Browser will start loading the image
-            preloadedImages.push(img);
-        });
-
-        function goToDeck(id){
-            window.location = "deck.php?id=" + id
-        }
-
-        function copyToClipboard(){
-          const textarea = document.getElementById("decklist");
-
-          textarea.select();
-          textarea.setSelectionRange(0, 99999);
-
-          try {
-            document.execCommand("copy");
-            alert("Decklist copied to clipboard!");
-          } catch (err) {
-            alert("Failed to copy");
-          }
         }
     </script>
 </body>
