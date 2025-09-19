@@ -138,6 +138,10 @@ body{
     filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
 }
 
+.white{
+    filter: br
+}
+
 td{
     color:#fff;
 }

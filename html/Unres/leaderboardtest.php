@@ -220,7 +220,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 <a class="tab" id="t2" onclick="switchTab(2)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
-                <a class="tab" id="t3" onclick="switchTab(3)">
+                <a class="tab white" id="t3" onclick="switchTab(3)">
                     <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
                 </a>
                 <div id="lb">
@@ -248,7 +248,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     </div>
 
                     <div id="page2" style="display:none">
-                        <canvas id="elograph" style="height:80%"></canvas>
+                        <canvas id="elograph" style="height:60vh"></canvas>
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
