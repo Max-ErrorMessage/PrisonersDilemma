@@ -376,8 +376,8 @@ $arch_output = str_replace("'", "\'", $arch_output);
                           labels: { color: "#ddd" }
                         }
 
-                      }
-                      maintainAspectRatio: false,
+                      },
+                      maintainAspectRatio: false
                     }
                   });
 
