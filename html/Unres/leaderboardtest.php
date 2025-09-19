@@ -42,7 +42,6 @@ $pythonScript = 'elo_changes_by_archetype.py';
 $command = 'cd /var/www/Unres-Meta/db && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ' 2>&1';
 $arch_output = shell_exec($command);
 
-echo($sim_output);
 
 ?>
 
