@@ -40,7 +40,7 @@ $rank = 1;
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'elo_changes_by_archetype.py';
 $command = 'cd /var/www/Unres-Meta/db && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ' 2>&1';
-$sim_output = shell_exec($command);
+$arch_output = shell_exec($command);
 
 echo($sim_output);
 
@@ -292,6 +292,12 @@ echo($sim_output);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
+
+        const archetypes = JSON.parse('<?php echo $arch_output; ?>');
+        console.log(archetypes);
+
+
+
         const div2 = document.querySelector('.bg-img');
 
         div2.addEventListener('mousemove', (e) => {
