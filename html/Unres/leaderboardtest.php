@@ -48,7 +48,7 @@ $rank = 1;
     <meta property="og:image" content="6.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="unres.css">
     <style>
         .bg-bg, .bg-img, .bg-fg {
           height:100%;
