@@ -307,6 +307,12 @@ $rank = 1;
         }
 
         function switchTab(n){
+            tab1 = document.getElementById("t1")
+            tab2 = document.getElementById("t2")
+            tab3 = document.getElementById("t3")
+            page1 = document.getElementById("page1")
+            page2 = document.getElementById("page2")
+            page3 = document.getElementById("page3")
             if (n==1){
                 tab1.style.backgroundColor = "#1e2833"
                 tab1.style.backgroundImage = "none"
