@@ -353,17 +353,24 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 page1.style.display = "none"
                 page3.style.display = "none"
 
+                let chartData = archetypes
+
+                // X-axis labels (assuming all series have same length)
+                let labels = chartData[Object.keys(chartData)[0]].map((_, i) => `Point ${i+1}`);
+
+                // Convert dictionary to Chart.js datasets
+                let datasets = Object.entries(chartData).map(([key, values], i) => ({
+                    label: key,
+                    data: values,
+                    borderColor: `hsl(${i * 60}, 70%, 50%)`, // auto-color each line
+                    fill: false
+                }));
+
                 new Chart(document.getElementById("elograph"), {
                     type: "line",
                     data: {
                       labels: labels,
-                      datasets: [{
-                        label: "Elo Over Time",
-                        data: elo_arr,
-                        borderColor: "White",
-                        fill: true,
-                        backgroundColor: "rgba(255,255,255,0.2)"
-                      }]
+                      datasets: datasets
                     },
                     options: {
                       scales: {
