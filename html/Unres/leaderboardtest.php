@@ -248,7 +248,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     </div>
 
                     <div id="page2" style="display:none">
-                        <canvas id="elograph" style="height:60vh"></canvas>
+                        <canvas id="elograph" style="height:80vh"></canvas>
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
