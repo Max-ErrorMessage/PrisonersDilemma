@@ -248,21 +248,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     </div>
 
                     <div id="page2" style="display:none">
-                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <canvas id="elograph"></canvas>
-                        <div id="match-table">
-                            <table>
-                                <?php foreach ($elo_rows as $row): ?>
-                                    <tr>
-                                        <td>
-                                            <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
-                                        </td><td>
-                                            <p style="text-align:right;"><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
@@ -363,7 +349,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 let datasets = Object.entries(chartData).map(([key, values], i) => ({
                     label: key,
                     data: values,
-                    borderColor: `hsl(${i * 60}, 70%, 50%)`, // auto-color each line
+                    borderColor: `hsl(${i * (260/19)}, 70%, 50%)`, // auto-color each line
                     fill: false
                 }));
 
