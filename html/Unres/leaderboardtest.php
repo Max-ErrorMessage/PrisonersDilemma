@@ -306,7 +306,8 @@ $rank = 1;
             window.location = "deck.php?id=" + id
         }
 
-        if (n==1){
+        function switchTab(n){
+            if (n==1){
                 tab1.style.backgroundColor = "#1e2833"
                 tab1.style.backgroundImage = "none"
                 tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
@@ -375,6 +376,7 @@ $rank = 1;
                 page2.style.display = "none"
             }
         }
+
     </script>
 </body>
 </html>
