@@ -341,7 +341,7 @@ $rank = 1;
                 tab3.style.backgroundColor = "#none"
 
                 page2.style.display = "block"
-                page1.style.display = "none
+                page1.style.display = "none"
                 page3.style.display = "none"
 
                 new Chart(document.getElementById("elograph"), {
