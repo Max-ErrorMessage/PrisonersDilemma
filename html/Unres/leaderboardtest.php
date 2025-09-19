@@ -291,6 +291,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
         const archetypes = JSON.parse('<?php echo (trim($arch_output)); ?>')
