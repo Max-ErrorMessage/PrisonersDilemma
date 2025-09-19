@@ -212,9 +212,9 @@ $sbrank = 1;
             if (n==1){
                 tab1.style.backgroundColor = "#1e2833"
                 tab1.style.backgroundImage = "none"
-                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "none"
-                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab3.style.backgroundColor = "#none"
 
                 page1.style.display = "block"
@@ -224,9 +224,9 @@ $sbrank = 1;
             } else if (n==2){
                 tab2.style.backgroundColor = "#1e2833"
                 tab2.style.backgroundImage = "none"
-                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
-                tab3.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab3.style.backgroundColor = "#none"
 
                 page2.style.display = "block"
@@ -268,9 +268,9 @@ $sbrank = 1;
             }  else if (n==3){
                 tab3.style.backgroundColor = "#1e2833"
                 tab3.style.backgroundImage = "none"
-                tab1.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
-                tab2.style.backgroundImage = "linear-gradient(to top, #101820, #1e2833)"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "#none"
 
                 page3.style.display = "block"
