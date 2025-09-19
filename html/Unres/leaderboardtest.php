@@ -375,7 +375,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
                         legend: {
                           labels: { color: "#ddd" }
                         }
+
                       }
+                      maintainAspectRatio: false,
                     }
                   });
 
