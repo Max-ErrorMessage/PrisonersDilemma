@@ -89,7 +89,7 @@ $rank = 1;
             position:relative;
         }
 
-
+/*
         #lb {
           min-width:320px;
           width:40%;
@@ -104,7 +104,7 @@ $rank = 1;
           box-shadow:3px 3px 4px rgba(0,0,0,0.2);
           height:80%;
           overflow-y:scroll;
-        }
+        }*/
 
         ::-webkit-scrollbar{
             display:none;
