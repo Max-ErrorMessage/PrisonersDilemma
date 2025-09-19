@@ -34,6 +34,16 @@ GROUP BY id
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
+
+
+
+$venvPython = '/var/www/Unres-Meta/venv/bin/python';
+$pythonScript = 'elo_changes_by_archetype.py';
+$command = 'cd /var/www/Unres-Meta/db && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ' 2>&1';
+$sim_output = shell_exec($command);
+
+echo($sim_output);
+
 ?>
 
 
