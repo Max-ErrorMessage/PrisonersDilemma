@@ -14,18 +14,74 @@ include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
 $stmt = $pdo->query('
-WITH dcc AS (
-    SELECT c.card_name, COUNT(cid.deck_id) as decks_containing_card, image_url
+WITH avg_elo AS (
+    SELECT
+        c.id AS card_id,
+        c.card_name,
+        ROUND(AVG(d.elo), 2) AS average_elo
+    FROM card_in_deck cid
+    INNER JOIN cards c   ON cid.card_id = c.id
+    INNER JOIN decks d   ON cid.deck_id = d.id
+    where cid.mainboard = 1
+    GROUP BY c.id, c.card_name
+),
+card_winloss AS (
+    SELECT
+        c.id AS card_id,
+        c.card_name,
+        COUNT(CASE WHEN m.winner_id = cid.deck_id THEN 1 END) AS wins,
+        COUNT(CASE WHEN m.loser_id  = cid.deck_id THEN 1 END) AS losses,
+        COUNT(
+            CASE
+                WHEN m.winner_id = cid.deck_id
+                 AND EXISTS (
+                       SELECT 1
+                       FROM card_in_deck cid2
+                       WHERE cid2.deck_id = m.loser_id
+                         AND cid2.card_id = cid.card_id
+                 )
+                THEN 1
+            END
+        ) AS both_sides
+    FROM matches m
+    JOIN card_in_deck cid
+        ON cid.deck_id IN (m.winner_id, m.loser_id)
+    JOIN cards c
+        ON c.id = cid.card_id
+    where cid.mainboard = 1
+    GROUP BY c.id, c.card_name
+),
+dcc AS (
+    SELECT
+        c.id AS card_id,
+        c.card_name,
+        c.image_url,
+        COUNT(cid.deck_id) AS decks_containing_card
     FROM cards c
-    LEFT JOIN card_in_deck cid ON cid.card_id = c.id
-    WHERE cid.mainboard = 1
-    GROUP BY c.id
+    LEFT JOIN card_in_deck cid
+        ON cid.card_id = c.id
+       AND cid.mainboard = 1
+    GROUP BY c.id, c.card_name, c.image_url
 )
-SELECT dcc.card_name, dcc.image_url, dcc.decks_containing_card * 100 / (
-    SELECT COUNT(*) from decks
-) AS percentage_playrate
-FROM dcc
-ORDER BY percentage_playrate DESC;');
+SELECT
+    a.card_name,
+    d.image_url,
+    a.average_elo,
+    ROUND(
+        100.0 * w.wins / NULLIF(w.wins + w.losses - w.both_sides, 0),
+        2
+    ) AS winrate_percentage,
+    ROUND(
+        d.decks_containing_card * 100.0 / (SELECT COUNT(*) FROM decks),
+        2
+    ) AS percentage_playrate
+FROM avg_elo a
+JOIN card_winloss w
+    ON a.card_id = w.card_id
+JOIN dcc d
+    ON a.card_id = d.card_id
+ORDER BY percentage_playrate DESC;
+');
 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
 
@@ -133,8 +189,13 @@ $sbrank = 1;
                                 </td><td>
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td>
-
-                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
+                                    <div><?= explode('.',htmlspecialchars($card['average_elo']))[0]?>
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo of decks with card</span></div>
+                                </td><td>
+                                    <div><?= explode('.',htmlspecialchars($card['winrate_percentage']))[0]?>%
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate of decks with card</span></div>
+                                </td><td>
+                                    <div><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
                                     <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
                                 </td>
                             </tr>
