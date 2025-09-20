@@ -343,7 +343,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 let chartData = archetypes
 
                 // X-axis labels (assuming all series have same length)
-                let labels = chartData[Object.keys(chartData)[0]].map((_, i) => `Point ${i+1}`);
+                let labels = chartData[Object.keys(chartData)[0]].map((_, i) => `Match ${i+1}`);
 
                 // Convert dictionary to Chart.js datasets
                 let datasets = Object.entries(chartData).map(([key, values], i) => ({
@@ -358,6 +358,8 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     data: {
                       labels: labels,
                       datasets: datasets
+                      pointRadius: 0,        // Hide the points
+                      pointHoverRadius: 6,   // Show larger point on hover
                     },
                     options: {
                       scales: {
