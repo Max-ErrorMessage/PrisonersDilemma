@@ -186,17 +186,15 @@ $sbrank = 1;
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
                                 </td><td style="width:25%;">
                                     <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:9vw; border-radius:10px; border:3px #aef solid;">
-                                </td><td style="width:15%;">
+                                </td><td style="width:10%;">
                                     <?= htmlspecialchars($card['card_name']) ?>
-                                </td><td  style="width:20%;">
+                                </td><td  style="width:22%;">
                                     <div><?= explode('.',htmlspecialchars($card['average_elo']))[0]?>
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo of</span>
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">decks containing card</span></div>
-                                </td><td  style="width:20%;">
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo of decks containing card</span></div>
+                                </td><td  style="width:22%;">
                                     <div><?= explode('.',htmlspecialchars($card['winrate_percentage']))[0]?>%
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate of decks</span>
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">containing card</span></div>
-                                </td><td  style="width:15%;">
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate of decks containing card</span></div>
+                                </td><td  style="width:16%;">
                                     <div><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
                                     <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
                                 </td>
