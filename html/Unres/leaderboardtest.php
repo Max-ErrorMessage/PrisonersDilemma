@@ -350,16 +350,16 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     label: key,
                     data: values,
                     borderColor: `hsl(${i * (260/19)}, 70%, 50%)`, // auto-color each line
-                    fill: false
+                    fill: false,
+                    pointRadius: 0,        // Hide the points
+                    pointHoverRadius: 6
                 }));
 
                 new Chart(document.getElementById("elograph"), {
                     type: "line",
                     data: {
                       labels: labels,
-                      datasets: datasets,
-                      pointRadius: 200,        // Hide the points
-                      pointHoverRadius: 6   // Show larger point on hover
+                      datasets: datasets
                     },
                     options: {
                       scales: {
