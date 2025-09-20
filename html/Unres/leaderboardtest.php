@@ -352,7 +352,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     borderColor: `hsl(${i * (260/19)}, 70%, 50%)`, // auto-color each line
                     fill: false,
                     pointRadius: 0,        // Hide the points
-                    pointHoverRadius: 6
+                    pointHoverRadius: 20
                 }));
 
                 new Chart(document.getElementById("elograph"), {
