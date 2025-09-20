@@ -350,8 +350,8 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     label: key,
                     data: values,
                     borderColor: `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`, // auto-color each line
-                    fill: false,
-                    pointRadius: 0,        // Hide the points
+                    fill: `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`,
+                    pointRadius: 0,
                     pointHoverRadius: 2
                 }));
 
