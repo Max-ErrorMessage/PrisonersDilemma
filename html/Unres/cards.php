@@ -190,10 +190,10 @@ $sbrank = 1;
                                     <?= htmlspecialchars($card['card_name']) ?>
                                 </td><td  style="width:20%;">
                                     <div class="ca"><?= explode('.',htmlspecialchars($card['average_elo']))[0]?>
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo of decks containing card</span></div>
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo</span></div>
                                 </td><td  style="width:20%;">
                                     <div class="ca"><?= explode('.',htmlspecialchars($card['winrate_percentage']))[0]?>%
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate of decks containing card</span></div>
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate</span></div>
                                 </td><td  style="width:15%;">
                                     <div class="ca"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
                                     <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
