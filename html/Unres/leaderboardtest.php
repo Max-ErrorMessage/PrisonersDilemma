@@ -379,6 +379,10 @@ $arch_output = str_replace("'", "\'", $arch_output);
                         }
 
                       },
+                       interaction: {
+                          mode: 'nearest',
+                          intersect: false
+                        },
                       maintainAspectRatio: false
                     }
                   });
