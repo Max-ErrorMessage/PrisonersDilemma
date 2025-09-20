@@ -179,7 +179,7 @@ $sbrank = 1;
                 <div id="lb">
                     <div id = "page1">
                         <strong>Most Played Mainboard Cards:</strong><br>
-                        <table>
+                        <table style="table-layout:fixed">
                         <?php foreach ($cards as $card): ?>
                             <tr>
                                 <td style="width:5%;">
