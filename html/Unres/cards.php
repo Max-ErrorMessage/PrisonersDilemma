@@ -268,7 +268,7 @@ $sbrank = 1;
                         <?php foreach ($sbcards as $card): ?>
                             <tr>
                                 <td style="width:5%;">
-                                    <div class="n c<?= $sbrank?>"><span id="r<?= $sbrank?>"><?= $rank?>.</span></div>
+                                    <div class="n c<?= $sbrank?>"><span id="r<?= $sbrank?>"><?= $sbrank?>.</span></div>
                                 </td><td style="width:25%;">
                                     <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:9vw; border-radius:10px; border:3px #aef solid;">
                                 </td><td style="width:15%;">
