@@ -301,6 +301,10 @@ table{
     text-align:right;
 }
 
+.ca{
+    text-align:center;
+}
+
 .c1{
     background-color:#FFE177;
     border: 2px solid black;
