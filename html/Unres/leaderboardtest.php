@@ -349,7 +349,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 let datasets = Object.entries(chartData).map(([key, values], i) => ({
                     label: key,
                     data: values,
-                    borderColor: `hsl(${i * (260/19)}, 70%, 50%)`, // auto-color each line
+                    borderColor: `hsl(${i * (360/19)}, 70%, 50%)`, // auto-color each line
                     fill: false,
                     pointRadius: 0,        // Hide the points
                     pointHoverRadius: 2
