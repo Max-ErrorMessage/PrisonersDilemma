@@ -264,17 +264,23 @@ $sbrank = 1;
 
                     <div id = "page2" style="display:none">
                         <strong>Most Played Sideboard Cards:</strong><br>
-                        <table>
+                        <table style="table-layout:fixed;">
                         <?php foreach ($sbcards as $card): ?>
                             <tr>
-                                <td>
-                                    <div class="n c<?= $sbrank?>"><span id="sbr<?= $sbrank?>"><?= $sbrank?>.</span></div>
-                                </td><td>
+                                <td style="width:5%;">
+                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                </td><td style="width:25%;">
                                     <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:9vw; border-radius:10px; border:3px #aef solid;">
-                                </td><td>
+                                </td><td style="width:15%;">
                                     <?= htmlspecialchars($card['card_name']) ?>
-                                </td><td>
-                                    <div class="ra"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
+                                </td><td  style="width:20%;">
+                                    <div class="ca"><?= explode('.',htmlspecialchars($card['average_elo']))[0]?>
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo</span></div>
+                                </td><td  style="width:20%;">
+                                    <div class="ca"><?= explode('.',htmlspecialchars($card['winrate_percentage']))[0]?>%
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate</span></div>
+                                </td><td  style="width:15%;">
+                                    <div class="ca"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
                                     <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
                                 </td>
                             </tr>
