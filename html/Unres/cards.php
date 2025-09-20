@@ -39,6 +39,7 @@ card_winloss AS (
                        FROM card_in_deck cid2
                        WHERE cid2.deck_id = m.loser_id
                          AND cid2.card_id = cid.card_id
+                         and cid2.mainboard = 1
                  )
                 THEN 1
             END
