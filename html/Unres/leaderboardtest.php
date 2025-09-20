@@ -357,9 +357,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
                     type: "line",
                     data: {
                       labels: labels,
-                      datasets: datasets
+                      datasets: datasets,
                       pointRadius: 0,        // Hide the points
-                      pointHoverRadius: 6,   // Show larger point on hover
+                      pointHoverRadius: 6   // Show larger point on hover
                     },
                     options: {
                       scales: {
