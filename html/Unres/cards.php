@@ -264,7 +264,7 @@ $sbrank = 1;
 
                     <div id = "page2" style="display:none">
                         <strong>Most Played Sideboard Cards:</strong><br>
-                        <table style="table-layout:fixed;">
+                        <table style="table-layout:fixed; width:90%;">
                         <?php foreach ($sbcards as $card): ?>
                             <tr>
                                 <td style="width:5%;">
