@@ -55,7 +55,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
     <meta name="description" content="Create bots to compete in fun minigames! :)">
     <meta property="og:title" content="Unres Leaderboard">
     <meta property="og:description" content="The best decks in unres! Take a look at the rankings and see who is on top!">
-    <meta property="og:image" content="6.png">
+    <meta property="og:image" content="Images/6.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="unres.css">
