@@ -169,7 +169,7 @@ if (count($sim_rows) > 0) {
                     <img src="https://cdn-user-icons.flaticon.com/215471/215471966/1758460871538.svg?token=exp=1758461771~hmac=223e101f979037be8c956cd51a79d2a5"/>
                 </a>
                 <a class="tab" id="t3" onclick="switchTab(3)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
+                    <img src="https://cdn-user-icons.flaticon.com/215471/215471966/1758463882684.svg?token=exp=1758464782~hmac=f88b9d06266681fd377597fb2d19f8fe"/>
                 </a>
                 <div id="lb">
                     <div id = "page1">
