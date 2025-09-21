@@ -166,7 +166,7 @@ if (count($sim_rows) > 0) {
                     <img src="https://cdn-user-icons.flaticon.com/215471/215471966/1758459615117.svg?token=exp=1758460520~hmac=a79ecb436b2a43afb8f9c403d422df1c"/>
                 </a>
                 <a class="tab" id="t2" onclick="switchTab(2)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                    <img src="https://cdn-user-icons.flaticon.com/215471/215471966/1758460385964.svg?token=exp=1758461285~hmac=c91ce5f352f533340881bec4c030e553"/>
                 </a>
                 <a class="tab" id="t3" onclick="switchTab(3)">
                     <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
