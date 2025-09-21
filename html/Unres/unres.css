@@ -138,6 +138,10 @@ body{
     filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
 }
 
+.white{
+    filter: br
+}
+
 td{
     color:#fff;
 }
@@ -161,7 +165,7 @@ td{
 
 
 .tab{
-    background-image: linear-gradient(to top, #101820, #1e2833);
+    background-image: linear-gradient(to top, #081010, #1e2833);
     position: absolute;
     bottom: 84.9%;
     height: 50px;
@@ -275,7 +279,6 @@ table{
     font-size:15px;
     width:80%;
     position:absolute;
-    left:10%;
 }
 
 .lbimg{
@@ -296,6 +299,10 @@ table{
 }
 .ra{
     text-align:right;
+}
+
+.ca{
+    text-align:center;
 }
 
 .c1{

@@ -89,7 +89,6 @@ $rank = 1;
             position:relative;
         }
 
-
         #lb {
           min-width:320px;
           width:40%;
