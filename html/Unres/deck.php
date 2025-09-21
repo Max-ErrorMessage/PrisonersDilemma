@@ -163,13 +163,13 @@ if (count($sim_rows) > 0) {
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
                 <a class="tab" id="t1" onclick="switchTab(1)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
+                    <img src="images/dt1.png"/>
                 </a>
                 <a class="tab" id="t2" onclick="switchTab(2)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                    <img src="images/dt2.png"/>
                 </a>
                 <a class="tab" id="t3" onclick="switchTab(3)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
+                    <img src="images/dt3.png"/>
                 </a>
                 <div id="lb">
                     <div id = "page1">
