@@ -57,7 +57,7 @@
         font-family: 'VT323', monospace;
         letter-spacing: 2px;
 
-        color: #fffb00;
+        color: #ffbb00;
         text-shadow: 0 0 1px #fff, 0 0 2px #fff;
     }
 
@@ -68,7 +68,7 @@
         <img src="bg.jpg" alt="Background">
         <div class="overlay">
                 <div class="row">
-                    <span>Hi</span>
+                    <span>14:29 London St Pancras</span>
                 </div>
         </div>
     </div>
