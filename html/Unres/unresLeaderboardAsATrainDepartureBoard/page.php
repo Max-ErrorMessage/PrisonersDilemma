@@ -109,7 +109,9 @@
                 </div>
 
                 <div class="row big">
+                    <span></span>
                     <span>22:21</span>
+                    <span></span>
                 </div>
         </div>
     </div>
