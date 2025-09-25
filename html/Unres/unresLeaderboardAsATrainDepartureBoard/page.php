@@ -48,7 +48,7 @@
         height: 100%;
         background-image:
         linear-gradient(to bottom, rgba(0,0,0,0.2), transparent),
-        linear-gradient(to left, rgba(0,0,0,0.2), transparent),
+        linear-gradient(to left, rgba(0,0,0,0.2), transparent);
     }
 
   </style>
