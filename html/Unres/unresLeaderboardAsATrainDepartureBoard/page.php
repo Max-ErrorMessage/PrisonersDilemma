@@ -54,11 +54,11 @@
     }
 
     .row{
-        font-family: 'VT323', monospace;
+        font-family: 'Press Start 2P', monospace;
         letter-spacing: 2px;
 
-        color: #ffbb00;
-        text-shadow: 0 0 1px #fff, 0 0 2px #fff;
+        color: #e70;
+        text-shadow: 0 0 1px #f81, 0 0 2px #f81;
     }
 
   </style>
