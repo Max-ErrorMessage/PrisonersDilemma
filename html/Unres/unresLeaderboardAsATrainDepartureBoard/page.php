@@ -26,7 +26,8 @@
         position:absolute;
         width:385px;
         height:136px;
-        left:100px;
+        left:140px;
+        top:145px;
         background-color:rgba(255,0,0,0.6)
     }
 
