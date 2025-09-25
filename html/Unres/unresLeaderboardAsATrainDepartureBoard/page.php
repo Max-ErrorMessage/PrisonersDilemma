@@ -64,7 +64,7 @@
 
     .row{
         margin-top:12px;
-        margin-top:12px;
+        margin-left:12px;
         font-family: 'Ucka';
         letter-spacing: 2px;
         font-size:10px;
