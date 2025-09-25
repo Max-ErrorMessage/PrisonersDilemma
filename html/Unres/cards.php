@@ -332,8 +332,8 @@ $sbrank = 1;
     const data = <?php echo $jsoncards; ?>
 
     const graphData = data.map(point => ({
-        x: point.percentage_playrate,
-        y: point.winrate_percentage,
+        y: point.percentage_playrate,
+        x: point.winrate_percentage,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
         label: `${point.card_name}: PR: ${point.percentage_playrate}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
     }))
@@ -403,8 +403,8 @@ $sbrank = 1;
                         x: {
                             min: 0,
                             max: 100,
-                            suggestedMin: -3,
-                            suggestedMax: 103,
+                            suggestedMin: -10,
+                            suggestedMax: 110,
                             title: {
                               display: true,
                               text: 'Playrate (%)',
