@@ -56,15 +56,15 @@
         linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 5%);
     }
     @font-face {
-    font-family: 'Skinny';
-    src: url('Skinny.ttf') format('opentype');
+    font-family: 'Ucka';
+    src: url('ucka.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     }
 
     .row{
         margin-top:10px;
-        font-family: 'Skinny';
+        font-family: 'Ucka';
         letter-spacing: 2px;
         font-size:20px;
 
