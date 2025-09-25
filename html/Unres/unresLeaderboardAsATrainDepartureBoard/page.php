@@ -60,6 +60,8 @@
         font-family: 'Press Start 2P', cursive;
         letter-spacing: 2px;
         font-size:15px;
+        transform: scaleX(0.8); /* make 80% as wide */
+        display: inline-block;
 
         color: #e80;
         text-shadow: 0 0 1px #fc1, 0 0 3px #fc1;
