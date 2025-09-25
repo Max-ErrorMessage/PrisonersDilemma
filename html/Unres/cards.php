@@ -406,7 +406,12 @@ $sbrank = 1;
                             title: {
                               display: true,
                               text: 'Playrate (%)',
-                              color: "#ddd",
+                              color: "#ddd"
+
+                            },
+                          ticks: {
+                            color: "#ddd",
+                            stepSize: 1,
 
                               callback: function(value) {
                                 if (value % 10 === 0 && value >= 0 && value <= 100) {
@@ -414,10 +419,6 @@ $sbrank = 1;
                                 }
                                 return null;
                               }
-                            },
-                          ticks: {
-                            color: "#ddd",
-                            stepSize: 10
                             },
                           grid: { color: "#444" }
                         },
@@ -433,7 +434,7 @@ $sbrank = 1;
                             },
                           ticks: {
                             color: "#ddd",
-                            stepSize: 10,
+                            stepSize: 1,
                               callback: function(value) {
                                 if (value % 10 === 0 && value >= 0 && value <= 100) {
                                   return value;
