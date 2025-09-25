@@ -294,7 +294,7 @@ $sbrank = 1;
 
                     <div id = "page3" style="display:none">
                         <strong> Winrate vs Playrate </strong>
-                        <canvas id="cardgraph" style="height:90%"></canvas>
+                        <canvas id="cardgraph" style="height:70vh"></canvas>
                     </div>
 
                 </div>
