@@ -97,7 +97,7 @@
         radial-gradient(rgba(200,255,155,0.1) 2px, transparent 2px);
         background-size: 6px 4px;
         padding:3px;
-        height:20px;
+        height:25px;
     }
 
   </style>
