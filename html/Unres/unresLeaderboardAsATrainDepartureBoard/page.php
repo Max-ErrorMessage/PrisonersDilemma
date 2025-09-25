@@ -64,16 +64,17 @@
 
     .row{
         margin-left:12px;
+        margin-top:2px;
         font-family: 'Ucka';
         letter-spacing: 2px;
-        font-size:10px;
+        font-size:16px;
 
         color: #e80;
         text-shadow: 0 0 1px #fc1, 0 0 3px #fc1;
     }
 
     .mt-12{
-        margin-top:12px;
+        margin-top:10px;
     }
 
   </style>
