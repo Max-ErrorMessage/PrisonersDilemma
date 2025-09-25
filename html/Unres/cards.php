@@ -436,7 +436,7 @@ $sbrank = 1;
                         }
                       },
                       layout: {
-                        padding:5
+                        padding:50
                       },
                       maintainAspectRatio: false
                     }
