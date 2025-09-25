@@ -39,8 +39,8 @@
 </head>
 <body>
     <div class="image-container">
-        <img src="your-image.jpg" alt="Background">
-        <div class="overlay">Skewed Text</div>
+        <img src="bg.jpg" alt="Background">
+        <div class="overlay">Hi</div>
     </div>
 
     <script>
