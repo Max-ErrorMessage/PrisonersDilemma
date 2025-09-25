@@ -72,7 +72,7 @@
         align-items: center;
         padding-left:12px;
         padding-right:12px;
-        margin-top:2px;
+        padding-top:2px;
         font-family: 'Ucka';
         letter-spacing: 2px;
         font-size:16px;
