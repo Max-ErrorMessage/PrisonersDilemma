@@ -110,7 +110,7 @@
 
                 <div class="row big mt-12">
                     <span></span>
-                    <span>22:21</span>
+                    <span>22:22:56</span>
                     <span></span>
                 </div>
         </div>
