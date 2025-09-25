@@ -330,8 +330,11 @@ $sbrank = 1;
 
     const data = <?php echo $jsoncards; ?>
 
-
-    console.log(data)
+    const graphData = data.map(point => ({
+        x: point.percentage_playrate,
+        y: point.winrate_percentage
+        backgroundColor: `rgba(200,200,255 ${(point.average_elo - 700)/500})`
+    })
 
     function switchTab(n){
             tab1 = document.getElementById("ct1")
@@ -366,15 +369,13 @@ $sbrank = 1;
                 page3.style.display = "none"
 
                 new Chart(document.getElementById("elograph"), {
-                    type: "line",
+                    type: "scatter",
                     data: {
-                      labels: labels,
                       datasets: [{
-                        label: "Elo Over Time",
-                        data: elo_arr,
-                        borderColor: "White",
-                        fill: true,
-                        backgroundColor: "rgba(255,255,255,0.2)"
+                        label: 'Playrate vs Winrate',
+                        data: chartData,
+                        pointBackgroundColor: chartData.map(p => p.backgroundColor),
+                        pointRadius: 3
                       }]
                     },
                     options: {
