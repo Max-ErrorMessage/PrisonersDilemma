@@ -5,7 +5,7 @@
             #bg{
                 width: 100%;
                 height: 100%;
-                background_image: bg.jpg;
+                background_image: url('bg.jpg');
             }
         </style>
     </head>
