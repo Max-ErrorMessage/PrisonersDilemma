@@ -420,7 +420,8 @@ $sbrank = 1;
                             }
                           }
                         }
-                      }
+                      },
+                      maintainAspectRatio: false
                     }
                   });
 
