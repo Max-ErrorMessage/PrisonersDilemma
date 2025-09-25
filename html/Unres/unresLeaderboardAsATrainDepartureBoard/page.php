@@ -63,6 +63,10 @@
     }
 
     .row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
         margin-left:12px;
         margin-top:2px;
         font-family: 'Ucka';
@@ -85,16 +89,19 @@
         <div class="overlay">
                 <div class="row mt-12">
                     <span>1st 11:83 Black Stompy</span>
+                    <span>On time</span>
                 </div>
 
 
                 <div class="row">
                     <span>2nd 11:45 Lurrus Vault</span>
+                    <span>On time</span>
                 </div>
 
 
                 <div class="row">
                     <span>3rd 11:34 Aggro Shops</span>
+                    <span>On time</span>
                 </div>
         </div>
     </div>
