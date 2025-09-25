@@ -55,7 +55,7 @@
     }
 
     .row{
-        font-family: 'VT323', monospace;
+        font-family: 'Press Start 2P', monospace;
         letter-spacing: 2px;
         font-size:30px;
 
