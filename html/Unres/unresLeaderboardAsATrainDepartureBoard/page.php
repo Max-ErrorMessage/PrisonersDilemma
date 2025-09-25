@@ -77,7 +77,7 @@
             return H;
         }
 
-        function matrix3dFromHomography(H, w, h) {
+        function matrix3dFromHomography(H) {
             return `matrix3d(${H[0][0]}, ${H[1][0]}, 0, ${H[2][0]},
                            ${H[0][1]}, ${H[1][1]}, 0, ${H[2][1]},
                            0, 0, 1, 0,
@@ -87,7 +87,7 @@
         // Source rectangle (overlay div in its natural state)
         const from = [[0,0], [w,0], [w,h], [0,h]];
         const H = getTransform(from, corners);
-        overlay.style.transform = matrix3dFromHomography(H, w, h);
+        overlay.style.transform = matrix3dFromHomography(H);
     </script>
 
     <!-- numeric.js is needed for solving linear systems -->
