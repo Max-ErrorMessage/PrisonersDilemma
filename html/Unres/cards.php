@@ -400,8 +400,7 @@ $sbrank = 1;
                       scales: {
                         x: {
                           ticks: { color: "#ddd" },
-                          grid: { color: "#444" },
-                          display:false
+                          grid: { color: "#444" }
                         },
                         y: {
                           ticks: { color: "#ddd" },
