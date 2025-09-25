@@ -87,7 +87,12 @@
     }
 
     .big{
+        background-color: #221;
         font-size:22px;
+    }
+
+    .big span{
+        background-color: #331;
     }
 
   </style>
