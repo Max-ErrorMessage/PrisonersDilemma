@@ -24,12 +24,12 @@
 
     .overlay{
         position:absolute;
-        width:485px;
+        width:483px;
         height:136px;
-        left:140px;
-        top:145px;
+        left:142px;
+        top:135px;
         background-color:rgba(255,0,0,0.6);
-        transform: rotate(-1.5deg);
+        transform: rotate(-1.6deg);
     }
 
   </style>
