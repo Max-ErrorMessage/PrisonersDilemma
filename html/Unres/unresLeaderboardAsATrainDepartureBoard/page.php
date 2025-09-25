@@ -81,6 +81,10 @@
         margin-top:10px;
     }
 
+    .big{
+        font-size:22px;
+    }
+
   </style>
 </head>
 <body>
@@ -102,6 +106,10 @@
                 <div class="row">
                     <span>3rd 11:34 Aggro Shops</span>
                     <span>On time</span>
+                </div>
+
+                <div class="row big">
+                    <span>22:21</span>
                 </div>
         </div>
     </div>
