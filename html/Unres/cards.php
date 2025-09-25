@@ -403,6 +403,8 @@ $sbrank = 1;
                         x: {
                             min: 0,
                             max: 100,
+                            suggestedMin: -3,
+                            suggestedMax: 103,
                             title: {
                               display: true,
                               text: 'Playrate (%)',
@@ -412,8 +414,10 @@ $sbrank = 1;
                           grid: { color: "#444" }
                         },
                         y: {
-                            min: 0,
-                            max: 100,
+                              min: 0,
+                              max: 100,
+                              suggestedMin: -3,
+                              suggestedMax: 103,
                             title: {
                               display: true,
                               text: 'Winrate (%)',
