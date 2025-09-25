@@ -401,10 +401,24 @@ $sbrank = 1;
                     options: {
                       scales: {
                         x: {
+                            min: 0,
+                            max: 100,
+                            title: {
+                              display: true,
+                              text: 'Playrate (%)',
+                              color: "#ddd"
+                            },
                           ticks: { color: "#ddd" },
                           grid: { color: "#444" }
                         },
                         y: {
+                            min: 0,
+                            max: 100,
+                            title: {
+                              display: true,
+                              text: 'Winrate (%)',
+                              color: "#ddd"
+                            },
                           ticks: { color: "#ddd" },
                           grid: { color: "#444" }
                         }
