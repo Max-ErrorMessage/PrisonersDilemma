@@ -23,8 +23,9 @@
     }
 
     .overlay{
-        width:400px;
-        height:200px;
+        position:absolute;
+        width:385px;
+        height:136px;
         left:100px;
         background-color:rgba(255,0,0,0.6)
     }
