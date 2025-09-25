@@ -2,35 +2,45 @@
     <head>
         <title>Unres Leaderboard as a Train Departure Board</title>
         <style>
-            html, body {
-                height: 100%;
-                margin: 0;
-            }
 
             body {
-                background-image: url("bg.jpg"); /* replace with your image path */
-                background-size: cover;   /* scale to always cover full page */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed; /* optional: keeps background fixed while scrolling */
-
-                display: flex;             /* center content example */
-                align-items: center;
+                margin: 0;
+                display: flex;
                 justify-content: center;
-                color: white;
-                font-family: Arial, sans-serif;
+                align-items: center;
+                height: 100vh;
+                background: #000;
             }
 
-            #box{
-                background-color:black;
-                color:#fa0;
+            .image-container {
+                position: relative;
+                width: 100%;
+                max-width: 1200px; /* optional: limit max width */
+            }
+
+            .image-container img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 40%;   /* % of image height */
+                left: 30%;  /* % of image width */
+                width: 100px;
+                height: 100px;
+                background: rgba(255, 0, 0, 0.5);
+                pointer-events: none; /* so clicks pass through */
             }
 
         </style>
     </head>
     <body>
-        <div id="box">
-            <span> HI </span>
+
+        <div class="image-container">
+            <img src="your-image.jpg" alt="Background">
+            <div class="overlay">
         </div>
 
     </body>
