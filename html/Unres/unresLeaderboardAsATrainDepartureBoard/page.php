@@ -53,13 +53,23 @@
         linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 5%);
     }
 
+    .row{
+        font-family: 'VT323', monospace;
+        letter-spacing: 2px;
+
+        color: #fffb00;
+        text-shadow: 0 0 1px #fff, 0 0 2px #fff;
+    }
+
   </style>
 </head>
 <body>
     <div class="image-container">
         <img src="bg.jpg" alt="Background">
         <div class="overlay">
-                Hi
+                <div class="row">
+                    <span>Hi</span>
+                </div>
         </div>
     </div>
 </body>
