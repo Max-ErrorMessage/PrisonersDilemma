@@ -56,16 +56,15 @@
         linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 5%);
     }
     @font-face {
-    font-family: 'SuperSkinnyPixelBricks';
-    src: url('/fonts/SuperSkinnyPixelBricks.otf') format('opentype'),
-        url('/fonts/SuperSkinnyPixelBricks.ttf') format('truetype');
+    font-family: 'Skinny';
+    src: url('Skinny.ttf') format('opentype');
     font-weight: normal;
     font-style: normal;
     }
 
     .row{
         margin-top:10px;
-        font-family: 'SuperSkinnyPixelBricks', monospace;
+        font-family: 'Skinny';
         letter-spacing: 2px;
         font-size:15px;
 
