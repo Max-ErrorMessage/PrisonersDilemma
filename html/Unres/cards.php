@@ -334,7 +334,8 @@ $sbrank = 1;
         x: point.percentage_playrate,
         y: point.winrate_percentage,
         backgroundColor: `rgba(200,200,255 ${(point.average_elo - 700)/500})`
-    })
+    }))
+
 
     function switchTab(n){
             tab1 = document.getElementById("ct1")
