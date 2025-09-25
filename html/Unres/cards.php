@@ -85,7 +85,7 @@ ORDER BY percentage_playrate DESC;
 ');
 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
-$jsoncards = json_encode($cards)
+$jsoncards = json_encode($cards);
 
 $stmt = $pdo->query('
 WITH avg_elo AS (
