@@ -55,14 +55,19 @@
         linear-gradient(to left, rgba(0,0,0,0.2), transparent),
         linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 5%);
     }
+    @font-face {
+    font-family: 'SuperSkinnyPixelBricks';
+    src: url('/fonts/SuperSkinnyPixelBricks.otf') format('opentype'),
+        url('/fonts/SuperSkinnyPixelBricks.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    }
 
     .row{
         margin-top:10px;
-        font-family: 'Press Start 2P', cursive;
+        font-family: 'SuperSkinnyPixelBricks', monospace;
         letter-spacing: 2px;
         font-size:15px;
-        transform: scaleX(0.8); /* make 80% as wide */
-        display: inline-block;
 
         color: #e80;
         text-shadow: 0 0 1px #fc1, 0 0 3px #fc1;
