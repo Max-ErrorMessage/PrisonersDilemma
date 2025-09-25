@@ -333,8 +333,8 @@ $sbrank = 1;
 
     const graphData = data.map(point => ({
         x: point.percentage_playrate,
-        y: point.winrate_percentage,
-        backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
+        y: point.average_elo,
+        backgroundColor: `rgba(${(point.winrate_percentage)*2},${(point.winrate_percentage)*2},${(point.winrate_percentage)*2.5}, 1)`,
         label: `${point.card_name}: PR: ${point.percentage_playrate}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
     }))
 
@@ -423,10 +423,8 @@ $sbrank = 1;
                           grid: { color: "#444" }
                         },
                         y: {
-                              min: -1,
-                              max: 101,
-                              suggestedMin: -3,
-                              suggestedMax: 103,
+                              min: 700,
+                              max: 1200,
                             title: {
                               display: true,
                               text: 'Winrate (%)',
@@ -436,7 +434,7 @@ $sbrank = 1;
                             color: "#ddd",
                             stepSize: 1,
                               callback: function(value) {
-                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                if (value % 50 === 0) {
                                   return value;
                                 }
                                 return null;
