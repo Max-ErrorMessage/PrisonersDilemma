@@ -22,19 +22,28 @@
       display: block;
     }
     .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transform-origin: top left;
-      background: rgba(255, 0, 0, 0.8);
-      color: white;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 800px;  /* match image width */
+    height: 425px; /* match image height */
+    transform-origin: top left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     }
+
+      .quad-content {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+      }
+
   </style>
 </head>
 <body>
