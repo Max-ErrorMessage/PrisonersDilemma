@@ -59,10 +59,10 @@
     .row{
         font-family: 'Press Start 2P', monospace;
         letter-spacing: 2px;
-        font-size:30px;
+        font-size:20px;
 
         color: #e80;
-        text-shadow: 0 0 1px #f91, 0 0 2px #f91;
+        text-shadow: 0 0 1px #fc1, 0 0 2px #fc1;
     }
 
   </style>
