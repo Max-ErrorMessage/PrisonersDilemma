@@ -8,7 +8,7 @@
             }
 
             body {
-                background-image: url("your-image.jpg"); /* replace with your image path */
+                background-image: url("bg.jpg"); /* replace with your image path */
                 background-size: cover;   /* scale to always cover full page */
                 background-position: center;
                 background-repeat: no-repeat;
