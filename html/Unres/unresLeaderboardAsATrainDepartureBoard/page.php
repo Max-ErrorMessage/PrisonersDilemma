@@ -57,6 +57,7 @@
     .row{
         font-family: 'VT323', monospace;
         letter-spacing: 2px;
+        font-size:30px;
 
         color: #e80;
         text-shadow: 0 0 1px #f91, 0 0 2px #f91;
