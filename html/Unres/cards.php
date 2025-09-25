@@ -428,6 +428,7 @@ $sbrank = 1;
                         }
                       },
                       plugins: {
+
                         legend: {
                           labels: { color: "#ddd" }
                         },
