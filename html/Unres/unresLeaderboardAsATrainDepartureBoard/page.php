@@ -40,7 +40,10 @@
 <body>
     <div class="image-container">
         <img src="bg.jpg" alt="Background">
-        <div class="overlay">Hi</div>
+        <div class="overlay">
+            <div class="quad">Hi
+        </div>
+    </div>
     </div>
 
     <script>
@@ -55,7 +58,7 @@
             [147, 275]  // bottom-left
         ];
 
-        const overlay = document.querySelector(".overlay");
+        const overlay = document.querySelector(".quad");
 
         // Compute homography transform
         function getTransform(from, to) {
