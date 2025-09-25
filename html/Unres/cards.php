@@ -391,8 +391,8 @@ $sbrank = 1;
                     data: {
                       datasets: [{
                         label: 'Playrate vs Winrate',
-                        data: chartData,
-                        pointBackgroundColor: chartData.map(p => p.backgroundColor),
+                        data: graphData,
+                        pointBackgroundColor: graphData.map(p => p.backgroundColor),
                         pointRadius: 3
                       }]
                     },
