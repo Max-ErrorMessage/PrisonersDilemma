@@ -66,7 +66,7 @@
         margin-top:10px;
         font-family: 'Skinny';
         letter-spacing: 2px;
-        font-size:15px;
+        font-size:20px;
 
         color: #e80;
         text-shadow: 0 0 1px #fc1, 0 0 3px #fc1;
