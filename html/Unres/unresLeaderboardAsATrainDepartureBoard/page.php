@@ -15,7 +15,7 @@
     }
     .image-container {
       position: relative;
-      width: 800px; /* match image size */
+      width: 800px;
     }
     .image-container img {
       width: 100%;
@@ -28,7 +28,7 @@
       width: 100%;
       height: 100%;
       transform-origin: top left;
-      background: rgba(255, 0, 0, 0.2);
+      background: rgba(255, 0, 0, 0.8);
       color: white;
       font-size: 24px;
       display: flex;
