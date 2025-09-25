@@ -29,7 +29,7 @@
         left:140px;
         top:145px;
         background-color:rgba(255,0,0,0.6);
-        transform: rotate(-10deg);
+        transform: rotate(-3deg);
     }
 
   </style>
