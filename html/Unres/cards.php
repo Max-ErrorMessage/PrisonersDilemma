@@ -401,10 +401,8 @@ $sbrank = 1;
                     options: {
                       scales: {
                         x: {
-                            min: 0,
-                            max: 100,
-                            suggestedMin: -10,
-                            suggestedMax: 110,
+                            min: -3,
+                            max: 103,
                             title: {
                               display: true,
                               text: 'Playrate (%)',
@@ -414,8 +412,8 @@ $sbrank = 1;
                           grid: { color: "#444" }
                         },
                         y: {
-                              min: 0,
-                              max: 100,
+                              min: -3,
+                              max: 103,
                               suggestedMin: -3,
                               suggestedMax: 103,
                             title: {
