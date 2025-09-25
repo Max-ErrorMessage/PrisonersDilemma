@@ -24,7 +24,7 @@
 
     .overlay{
         position:absolute;
-        width:385px;
+        width:485px;
         height:136px;
         left:140px;
         top:145px;
