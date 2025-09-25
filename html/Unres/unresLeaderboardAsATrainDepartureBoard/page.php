@@ -24,9 +24,9 @@
 
     .overlay{
         position:absolute;
-        width:483px;
+        width:482px;
         height:136px;
-        left:142px;
+        left:145px;
         top:135px;
         background-color:rgba(255,0,0,0.6);
         transform: rotate(-1.6deg);
