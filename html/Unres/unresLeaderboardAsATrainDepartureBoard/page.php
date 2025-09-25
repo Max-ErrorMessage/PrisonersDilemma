@@ -91,7 +91,7 @@
         font-size:22px;
     }
 
-    .big span{
+    #time{
         background-color: #331;
         background-image:
         radial-gradient(rgba(200,255,155,0.1) 2px, transparent 2px);
@@ -125,7 +125,7 @@
 
                 <div class="row big mt-12">
                     <span></span>
-                    <span>22:22:56</span>
+                    <span id="time">22:22:56</span>
                     <span></span>
                 </div>
         </div>
