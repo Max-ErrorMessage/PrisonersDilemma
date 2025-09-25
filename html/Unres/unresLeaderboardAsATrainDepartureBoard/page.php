@@ -38,7 +38,7 @@
         background-size: 10px 6px;
     }
 
-    .overlay ::after{
+    .overlay::after{
         background-image:
         linear-gradient(to bottom, rgba(0,0,0,0.2), transparent)
     }
