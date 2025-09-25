@@ -67,8 +67,8 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        margin-left:12px;
-        margin-right:12px;
+        padding-left:12px;
+        padding-right:12px;
         margin-top:2px;
         font-family: 'Ucka';
         letter-spacing: 2px;
