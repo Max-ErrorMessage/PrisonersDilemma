@@ -89,7 +89,7 @@
     .big{
         background-color: #221;
         background-image:
-        radial-gradient(rgba(100,155,055,0.1) 2px, transparent 2px);
+        radial-gradient(rgba(100,155,055,0.1) 1px, transparent 2px);
         background-size: 6px 4px;
         font-size:22px;
     }
