@@ -401,8 +401,8 @@ $sbrank = 1;
                     options: {
                       scales: {
                         x: {
-                            min: -2,
-                            max: 102,
+                            min: 0,
+                            max: 100,
                             title: {
                               display: true,
                               text: 'Playrate (%)',
@@ -412,8 +412,8 @@ $sbrank = 1;
                           grid: { color: "#444" }
                         },
                         y: {
-                            min: -2,
-                            max: 102,
+                            min: 0,
+                            max: 100,
                             title: {
                               display: true,
                               text: 'Winrate (%)',
@@ -434,6 +434,9 @@ $sbrank = 1;
                             }
                           }
                         }
+                      },
+                      layout: {
+                        padding:5px;
                       },
                       maintainAspectRatio: false
                     }
