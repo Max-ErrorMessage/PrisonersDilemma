@@ -439,9 +439,6 @@ $sbrank = 1;
                           }
                         }
                       },
-                      layout: {
-                        padding:50
-                      },
                       maintainAspectRatio: false
                     }
                   });
