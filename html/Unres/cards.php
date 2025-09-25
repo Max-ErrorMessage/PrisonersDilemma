@@ -408,7 +408,10 @@ $sbrank = 1;
                               text: 'Playrate (%)',
                               color: "#ddd"
                             },
-                          ticks: { color: "#ddd" },
+                          ticks: {
+                            color: "#ddd",
+                            stepSize: 10
+                            },
                           grid: { color: "#444" }
                         },
                         y: {
@@ -421,7 +424,10 @@ $sbrank = 1;
                               text: 'Winrate (%)',
                               color: "#ddd"
                             },
-                          ticks: { color: "#ddd" },
+                          ticks: {
+                            color: "#ddd",
+                            stepSize: 10
+                            },
                           grid: { color: "#444" }
                         }
                       },
