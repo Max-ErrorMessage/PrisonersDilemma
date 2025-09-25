@@ -370,35 +370,7 @@ $sbrank = 1;
                 page1.style.display = "none"
                 page3.style.display = "none"
 
-                new Chart(document.getElementById("elograph"), {
-                    type: "scatter",
-                    data: {
-                      datasets: [{
-                        label: 'Playrate vs Winrate',
-                        data: chartData,
-                        pointBackgroundColor: chartData.map(p => p.backgroundColor),
-                        pointRadius: 3
-                      }]
-                    },
-                    options: {
-                      scales: {
-                        x: {
-                          ticks: { color: "#ddd" },
-                          grid: { color: "#444" },
-                          display:false
-                        },
-                        y: {
-                          ticks: { color: "#ddd" },
-                          grid: { color: "#444" }
-                        }
-                      },
-                      plugins: {
-                        legend: {
-                          labels: { color: "#ddd" }
-                        }
-                      }
-                    }
-                  });
+
 
             }  else if (n==3){
                 tab3.style.backgroundColor = "#1e2833"
@@ -415,15 +387,13 @@ $sbrank = 1;
 
 
                 new Chart(document.getElementById("cardgraph"), {
-                    type: "line",
+                    type: "scatter",
                     data: {
-                      labels: labels,
                       datasets: [{
-                        label: "Elo Over Time",
-                        data: elo_arr,
-                        borderColor: "White",
-                        fill: true,
-                        backgroundColor: "rgba(255,255,255,0.2)"
+                        label: 'Playrate vs Winrate',
+                        data: chartData,
+                        pointBackgroundColor: chartData.map(p => p.backgroundColor),
+                        pointRadius: 3
                       }]
                     },
                     options: {
