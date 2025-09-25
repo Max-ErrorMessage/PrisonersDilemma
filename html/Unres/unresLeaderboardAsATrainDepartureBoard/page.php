@@ -28,8 +28,14 @@
         height:136px;
         left:145px;
         top:135px;
-        background-color:rgba(255,0,0,0.6);
         transform: rotate(-1.6deg);
+    }
+
+    .overlay{
+        background-color: #000;
+        background-image:
+        radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 4px 4px;
     }
 
   </style>
