@@ -28,7 +28,8 @@
         height:136px;
         left:140px;
         top:145px;
-        background-color:rgba(255,0,0,0.6)
+        background-color:rgba(255,0,0,0.6);
+        transform: rotate(-10deg);
     }
 
   </style>
