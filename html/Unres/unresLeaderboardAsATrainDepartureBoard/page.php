@@ -63,7 +63,6 @@
     }
 
     .row{
-        margin-top:12px;
         margin-left:12px;
         font-family: 'Ucka';
         letter-spacing: 2px;
@@ -73,13 +72,17 @@
         text-shadow: 0 0 1px #fc1, 0 0 3px #fc1;
     }
 
+    .mt-12{
+        margin-top:12px;
+    }
+
   </style>
 </head>
 <body>
     <div class="image-container">
         <img src="bg.jpg" alt="Background">
         <div class="overlay">
-                <div class="row">
+                <div class="row mt-12">
                     <span>1st 11:83 Black Stompy</span>
                 </div>
 
