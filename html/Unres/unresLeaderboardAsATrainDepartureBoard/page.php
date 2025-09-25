@@ -73,6 +73,7 @@
         padding-left:12px;
         padding-right:12px;
         padding-top:2px;
+        margin-top:3px;
         font-family: 'Ucka';
         letter-spacing: 2px;
         font-size:13px;
