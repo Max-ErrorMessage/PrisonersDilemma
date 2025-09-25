@@ -108,7 +108,7 @@
                     <span>On time</span>
                 </div>
 
-                <div class="row big">
+                <div class="row big mt-12">
                     <span></span>
                     <span>22:21</span>
                     <span></span>
