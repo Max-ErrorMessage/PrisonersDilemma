@@ -329,6 +329,8 @@ $sbrank = 1;
         }
 
     const data = <?php echo $jsoncards; ?>
+
+
     console.log(data)
 
     function switchTab(n){
