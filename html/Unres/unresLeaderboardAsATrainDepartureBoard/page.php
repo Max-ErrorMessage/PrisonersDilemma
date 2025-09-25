@@ -39,7 +39,7 @@
     }
 
     .overlay ::after{
-        background-imaeg:
+        background-image:
         linear-gradient(to bottom, rgba(0,0,0,0.2), transparent)
     }
 
