@@ -93,6 +93,8 @@
 
     .big span{
         background-color: #331;
+        background-image:
+        radial-gradient(rgba(200,255,155,0.1) 2px, transparent 2px);
     }
 
   </style>
