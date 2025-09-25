@@ -63,10 +63,11 @@
     }
 
     .row{
-        margin-top:10px;
+        margin-top:12px;
+        margin-top:12px;
         font-family: 'Ucka';
         letter-spacing: 2px;
-        font-size:15px;
+        font-size:10px;
 
         color: #e80;
         text-shadow: 0 0 1px #fc1, 0 0 3px #fc1;
