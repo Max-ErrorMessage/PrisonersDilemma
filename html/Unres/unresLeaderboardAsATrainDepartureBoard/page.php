@@ -34,8 +34,13 @@
     .overlay{
         background-color: #221;
         background-image:
-        radial-gradient(rgba(200,255,155,0.1) 1px, transparent 1px);
+        radial-gradient(rgba(200,255,155,0.1) 2px, transparent 2px);
         background-size: 10px 6px;
+    }
+
+    .overlay ::after{
+        background-imaeg:
+        linear-gradient(to bottom, rgba(0,0,0,0.2), transparent)
     }
 
   </style>
