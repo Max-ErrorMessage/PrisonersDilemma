@@ -332,7 +332,7 @@ $sbrank = 1;
 
     const graphData = data.map(point => ({
         x: point.percentage_playrate,
-        y: point.winrate_percentage
+        y: point.winrate_percentage,
         backgroundColor: `rgba(200,200,255 ${(point.average_elo - 700)/500})`
     })
 
