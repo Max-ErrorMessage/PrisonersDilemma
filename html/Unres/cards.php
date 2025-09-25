@@ -85,6 +85,7 @@ ORDER BY percentage_playrate DESC;
 ');
 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
+$jsoncards = json_encode($cards)
 
 $stmt = $pdo->query('
 WITH avg_elo AS (
@@ -293,6 +294,7 @@ $sbrank = 1;
 
                     <div id = "page3" style="display:none">
                         <strong> Stats or something </strong>
+                        <canvas id="cardgraph"></canvas>
                     </div>
 
                 </div>
@@ -325,6 +327,9 @@ $sbrank = 1;
         function goToDeck(id){
             window.location = "deck.php?id=" + id
         }
+
+    const data = <?php echo $jsoncards; ?>
+    console.log(data)
 
     function switchTab(n){
             tab1 = document.getElementById("ct1")
@@ -401,6 +406,41 @@ $sbrank = 1;
                 page3.style.display = "block"
                 page1.style.display = "none"
                 page2.style.display = "none"
+
+
+
+                new Chart(document.getElementById("cardgraph"), {
+                    type: "line",
+                    data: {
+                      labels: labels,
+                      datasets: [{
+                        label: "Elo Over Time",
+                        data: elo_arr,
+                        borderColor: "White",
+                        fill: true,
+                        backgroundColor: "rgba(255,255,255,0.2)"
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        x: {
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" },
+                          display:false
+                        },
+                        y: {
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" }
+                        }
+                      },
+                      plugins: {
+                        legend: {
+                          labels: { color: "#ddd" }
+                        }
+                      }
+                    }
+                  });
+
             }
         }
     </script>
