@@ -39,7 +39,7 @@
     <body>
 
         <div class="image-container">
-            <img src="your-image.jpg" alt="Background">
+            <img src="bg.jpg" alt="Background">
             <div class="overlay">
         </div>
 
