@@ -335,6 +335,7 @@ $sbrank = 1;
         x: point.percentage_playrate,
         y: point.winrate_percentage,
         backgroundColor: `rgba(200,200,255 ${(point.average_elo - 700)/500})`
+        label: `{point.name}: PR: {point.percentage_playrate}, WR: {point.winrate_percentage}, AE: {point.average_elo}`
     }))
 
 
@@ -393,7 +394,9 @@ $sbrank = 1;
                         label: 'Playrate vs Winrate',
                         data: graphData,
                         pointBackgroundColor: graphData.map(p => p.backgroundColor),
-                        pointRadius: 3
+                        pointRadius: 3,
+                        labels: graphData.map(p => p.label),
+                        pointBorderWidth: 0
                       }]
                     },
                     options: {
