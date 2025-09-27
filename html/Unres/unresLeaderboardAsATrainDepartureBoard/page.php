@@ -252,7 +252,7 @@ $three = $decks[2];
         div2 = document.getElementById('r3-d3')
         scrolling = document.getElementById('r2-ca').classlist.contains('init-hid')
 
-        if (scrolling){
+        if (!scrolling){
             if (div1.classList.contains("init-hid")) {
                 div1.classList.remove("init-hid")
                 div2.classList.add("init-hid")
