@@ -138,6 +138,7 @@ $three = $decks[2];
         background-image:
         radial-gradient(rgba(200,255,155,0.1) 1px, transparent 1px);
         background-size: 4px 4px;
+        z-index: -1;
     }
 
     .big{
