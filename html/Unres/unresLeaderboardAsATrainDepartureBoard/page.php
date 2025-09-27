@@ -1,3 +1,45 @@
+<?php
+/*
+ * Allows users to enter decks and adjust elo calculations
+ *
+ * Author: James Aris
+ */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+
+include "/var/www/html/Unres/db.php";
+
+// Fetch all decks
+$stmt = $pdo->query('SELECT
+        d.id as id,
+        SUM(
+                CASE cod.colour_id
+                        WHEN 1 THEN 1
+                        WHEN 2 THEN 2
+                        WHEN 3 THEN 4
+                        WHEN 4 THEN 8
+                        WHEN 5 THEN 16
+                        ELSE 0
+                END
+        ) AS colour,
+        d.custom_id as cid,
+        d.name as name,
+        d.elo AS elo
+FROM colours_of_decks cod
+RIGHT JOIN decks d ON d.id = cod.deck_id
+GROUP BY id
+ORDER BY elo DESC;');
+$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$rank = 1;
+
+$one = $decks[0];
+$two = $decks[1];
+$three = $decks[2];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,20 +151,22 @@
     <div class="image-container">
         <img src="bg.jpg" alt="Background">
         <div class="overlay">
+
+
                 <div class="row mt-12">
-                    <span>1st 11:83 Black Stompy</span>
+                    <span>1st <?= substr($one['elo'], 0, 2)?>:<?= substr($one['elo'], 2, 2)?> <?= $one['name']?></span>
                     <span>On time</span>
                 </div>
 
 
                 <div class="row">
-                    <span>2nd 11:45 Lurrus Vault</span>
+                    <span>2nd <?= substr($two['elo'], 0, 2)?>:<?= substr($two['elo'], 2, 2)?> <?= $two['name']?></span>
                     <span>On time</span>
                 </div>
 
 
                 <div class="row">
-                    <span>3rd 11:34 Aggro Shops</span>
+                    <span>3rd <?= substr($three['elo'], 0, 2)?>:<?= substr($three['elo'], 2, 2)?> <?= $three['name']?></span>
                     <span>On time</span>
                 </div>
 
