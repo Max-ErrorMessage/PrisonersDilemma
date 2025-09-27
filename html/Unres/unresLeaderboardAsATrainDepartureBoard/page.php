@@ -54,7 +54,7 @@ inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
 and cid.mainboard = 1
 order by n desc;');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->bindParam(':id',$one['id'], PDO::PARAM_INT);
 $stmt->execute();
 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
