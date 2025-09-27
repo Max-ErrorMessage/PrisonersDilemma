@@ -220,7 +220,7 @@ $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
                 <div class="row" id="r2-ca">
-                    <span>Calling at: </span><div class="fl-1"><span class="scroll-text"><?= implode(", ", array_column(cards, "name"))?></span></div>
+                    <span>Calling at: </span><div class="fl-1"><span class="scroll-text"><?= implode(", ", array_column($cards, "name"))?></span></div>
                 </div>
 
                 <div class="row" id="r2-d2">
