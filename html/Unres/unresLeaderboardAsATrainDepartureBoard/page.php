@@ -199,17 +199,18 @@ $three = $decks[2];
                 </div>
 
 
+                <div class="row" id="r2-ca">
+                    <span>Calling at: </span><div class="fl-1"><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span></div>
+                </div>
+
                 <div class="row init-hid" id="r2-d2">
                     <span>2nd <?= substr($two['elo'], 0, 2)?>:<?= substr($two['elo'], 2, 2)?> <?= $two['name']?></span>
                     <span>On time</span>
                 </div>
 
-                <div class="row" id="r2-ca">
-                    <span>Calling at: </span><div class="fl-1"><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span></div>
-                </div>
 
 
-                <div class="row">
+                <div class="row" id="r3d3">
                     <span>3rd <?= substr($three['elo'], 0, 2)?>:<?= substr($three['elo'], 2, 2)?> <?= $three['name']?></span>
                     <span>On time</span>
                 </div>
@@ -246,9 +247,31 @@ $three = $decks[2];
         }
     }
 
+    function switchRow3(){
+        div1 = document.getElementById('r2-d2')
+        div2 = document.getElementById('r3-d3')
+        scrolling = document.getElementById('r2-ca').classlist.contains('init-hid')
+
+        if (scrolling){
+            if (div1.classList.contains("init-hid")) {
+                div1.classList.remove("init-hid")
+                div2.classList.add("init-hid")
+            } else {
+                div2.classList.remove("init-hid")
+                div1.classList.add("init-hid")
+            }
+        } else {
+            if (div1.classList.contains("init-hid")) {
+                div1.classList.remove("init-hid")
+                div2.classList.add("init-hid")
+            }
+        }
+    }
+
     updateClock();
     setInterval(updateClock, 1000);
 
     setInterval(switchRow2, 40000);
+    setInterval(switchRow3, 10000);
    </script>
 </html>
