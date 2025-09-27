@@ -199,12 +199,12 @@ $three = $decks[2];
                 </div>
 
 
-                <div class="row init-hid">
+                <div class="row init-hid" id="r2-d2">
                     <span>2nd <?= substr($two['elo'], 0, 2)?>:<?= substr($two['elo'], 2, 2)?> <?= $two['name']?></span>
                     <span>On time</span>
                 </div>
 
-                <div class="row">
+                <div class="row" id="r2-ca">
                     <span>Calling at: </span><div class="fl-1"><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span></div>
                 </div>
 
@@ -226,17 +226,29 @@ $three = $decks[2];
     function updateClock() {
         const now = new Date();
 
-        // Format with leading zeros
         const hours   = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
 
-        // Put the formatted time into the element
         document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
     }
 
-    // Update immediately, then every second
+    function switchRow2(){
+        div1 = document.getElementById('r2-d2')
+        div2 = document.getElementById('r2-ca')
+
+        if (div1.classList.contains("init-hid")) {
+            div1.classList.remove("init-hid")
+            div2.classList.add("init-hid")
+        } else {
+            div2.classList.remove("init-hid")
+            div1.classList.add("init-hid")
+        }
+    }
+
     updateClock();
     setInterval(updateClock, 1000);
+
+    setInterval(switchRow2, 40000);
    </script>
 </html>
