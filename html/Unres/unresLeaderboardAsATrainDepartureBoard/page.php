@@ -163,10 +163,8 @@ $three = $decks[2];
     }
 
     .scroll-text {
-        position:absolute;
         padding-left: 100%;
         animation: scroll-left 40s linear infinite;
-        left:30%;
     }
 
     @keyframes scroll-left {
