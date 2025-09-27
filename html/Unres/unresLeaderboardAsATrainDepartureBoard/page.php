@@ -150,7 +150,7 @@ $three = $decks[2];
         height:25px;
     }
 
-    #init-hid{
+    .init-hid{
         display:none
     }
 
