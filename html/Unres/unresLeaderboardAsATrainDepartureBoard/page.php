@@ -61,6 +61,7 @@ $three = $decks[2];
     .image-container {
       position: relative;
       width: 800px;
+        overflow: hidden;
     }
     .image-container img {
       width: 100%;
@@ -82,6 +83,8 @@ $three = $decks[2];
         /*linear-gradient(to bottom, rgba(0,0,0,0.2), transparent),*/
         radial-gradient(rgba(100,155,055,0.1) 2px, transparent 2px);
         background-size: 6px 4px;
+
+          overflow: hidden;
     }
 
     .overlay::after{
@@ -96,6 +99,7 @@ $three = $decks[2];
         linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 10%),
         linear-gradient(to left, rgba(0,0,0,0.2), transparent),
         linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 5%);
+        overflow: hidden;
     }
     @font-face {
     font-family: 'Ucka';
