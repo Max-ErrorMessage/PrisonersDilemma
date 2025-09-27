@@ -38,6 +38,26 @@ $rank = 1;
 $one = $decks[0];
 $two = $decks[1];
 $three = $decks[2];
+
+$stmt = $pdo->query('
+SELECT c.card_name as name
+FROM card_in_deck cid
+LEFT JOIN cards c on cid.card_id = c.id
+WHERE cid.deck_id = 500;
+');
+$cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare('
+SELECT c.card_name as name, cid.quantity as n
+FROM card_in_deck cid
+inner join cards c on cid.card_id = c.id
+where cid.deck_id = :id
+and cid.mainboard = 1
+order by n desc;');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -200,7 +220,7 @@ $three = $decks[2];
 
 
                 <div class="row" id="r2-ca">
-                    <span>Calling at: </span><div class="fl-1"><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span></div>
+                    <span>Calling at: </span><div class="fl-1"><span class="scroll-text"><?= implode(", ", array_column(cards, "name"))?></span></div>
                 </div>
 
                 <div class="row" id="r2-d2">
