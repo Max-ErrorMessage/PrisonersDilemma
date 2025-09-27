@@ -250,7 +250,7 @@ $three = $decks[2];
     function switchRow3(){
         div1 = document.getElementById('r2-d2')
         div2 = document.getElementById('r3-d3')
-        not_scrolling = document.getElementById('r2-ca').classlist.contains('init-hid')
+        not_scrolling = document.getElementById('r2-ca').classList.contains('init-hid')
 
         if (!not_scrolling){
             if (div1.classList.contains("init-hid")) {
