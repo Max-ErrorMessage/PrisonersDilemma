@@ -210,7 +210,7 @@ $three = $decks[2];
 
 
 
-                <div class="row init-hid" id="r3d3">
+                <div class="row init-hid" id="r3-d3">
                     <span>3rd <?= substr($three['elo'], 0, 2)?>:<?= substr($three['elo'], 2, 2)?> <?= $three['name']?></span>
                     <span>On time</span>
                 </div>
