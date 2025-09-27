@@ -156,7 +156,7 @@ $three = $decks[2];
 
     .scroll-text {
       padding-left: 100%;
-      animation: scroll-left 15s linear infinite;
+      animation: scroll-left 40s linear infinite;
     }
 
     @keyframes scroll-left {
