@@ -133,6 +133,13 @@ $three = $decks[2];
         margin-top:10px;
     }
 
+    .beegee{
+        background-color: #331;
+        background-image:
+        radial-gradient(rgba(200,255,155,0.1) 1px, transparent 1px);
+        background-size: 4px 4px;
+    }
+
     .big{
         background-color: #221;
         background-image:
@@ -157,7 +164,6 @@ $three = $decks[2];
     .scroll-text {
       padding-left: 100%;
       animation: scroll-left 40s linear infinite;
-      width:70%;
     }
 
     @keyframes scroll-left {
@@ -185,7 +191,7 @@ $three = $decks[2];
                 </div>
 
                 <div class="row">
-                    <span>Calling at: </span><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span>
+                    <span class="beegee">Calling at: </span><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span>
                 </div>
 
 
