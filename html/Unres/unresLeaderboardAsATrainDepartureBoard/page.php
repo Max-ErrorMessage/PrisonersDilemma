@@ -125,6 +125,10 @@ $three = $decks[2];
         overflow-x:hidden;
     }
 
+    .row span{
+        white-space: nowrap;
+    }
+
     .mt-12{
         margin-top:10px;
     }
