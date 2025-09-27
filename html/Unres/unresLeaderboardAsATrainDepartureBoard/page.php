@@ -163,13 +163,13 @@ $three = $decks[2];
     }
 
     .scroll-text {
-        padding-left: 100%;
-        animation: scroll-left 40s linear infinite;
+      padding-left: 100%;
+      animation: scroll-left 40s linear infinite;
     }
 
     @keyframes scroll-left {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
     }
 
   </style>
@@ -186,12 +186,12 @@ $three = $decks[2];
                 </div>
 
 
-                <div class="row init-hid">
+                <div class="row">
                     <span>2nd <?= substr($two['elo'], 0, 2)?>:<?= substr($two['elo'], 2, 2)?> <?= $two['name']?></span>
                     <span>On time</span>
                 </div>
 
-                <div class="row">
+                <div class="row init-hid">
                     <span>Calling at: </span><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span>
                 </div>
 
