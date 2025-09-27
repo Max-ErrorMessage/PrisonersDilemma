@@ -170,13 +170,16 @@ $three = $decks[2];
     .scroll-text {
       padding-left: 100%;
       animation: scroll-left 40s linear infinite;
-      flex: 1;
-      overflow:hidden;
     }
 
     @keyframes scroll-left {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-100%); }
+    }
+
+    .fl-1{
+      flex: 1;
+      overflow:hidden;
     }
 
   </style>
@@ -199,7 +202,7 @@ $three = $decks[2];
                 </div>
 
                 <div class="row init-hid">
-                    <span>Calling at: </span><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span>
+                    <span>Calling at: </span><div class="fl-1"><span class="scroll-text">Dark Ritual, Mindbreak Trap, Mental Misstep, Barrowgoyf, Vexing Bauble, Orcish Bowmasters, Urza's Saga, Snow-Covered Swamp, Polluted Delta, Thoughtseize, Mox Jet, Black Lotus, Hymn to Tourach, Dauthi Voidwalker, Null Rod, Underground Sea, Urborg, Tomb of Yawgmoth, Sudden Edict, Feed the Swarm</span></div>
                 </div>
 
 
