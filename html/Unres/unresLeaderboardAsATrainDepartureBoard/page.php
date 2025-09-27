@@ -37,7 +37,7 @@ $rank = 1;
 
 $one = $decks[0];
 $two = $decks[1];
-$three = $decks[2];
+$three = $decks[3];
 ?>
 
 <!DOCTYPE html>
