@@ -179,7 +179,6 @@ $three = $decks[2];
 
     .fl-1{
       flex: 1;
-      overflow:hidden;
     }
 
   </style>
