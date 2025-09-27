@@ -171,6 +171,7 @@ $three = $decks[2];
       padding-left: 100%;
       animation: scroll-left 40s linear infinite;
       flex: 1;
+      overflow:hidden;
     }
 
     @keyframes scroll-left {
