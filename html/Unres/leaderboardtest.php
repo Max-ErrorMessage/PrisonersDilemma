@@ -27,8 +27,8 @@ $stmt = $pdo->query('SELECT
         ) AS colour,
         d.custom_id as cid,
         d.name as name,
-        d.elo AS elo
-        t2.elo_change AS change
+        d.elo AS elo,
+        t2.elo_change
 FROM colours_of_decks cod
 RIGHT JOIN decks d ON d.id = cod.deck_id
 LEFT join
