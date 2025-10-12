@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (ctype_alnum($name)) {
         $name = escapeshellarg($name);
-        $command = "cd /var/www/Unres-Meta && /var/www/Unres-Meta/elo/venv/bin/python3 update_elo.py $winner_id $loser_id $name 2>&1";
+        $command = "cd /var/www/Unres-Meta && /var/www/Unres-Meta/elo/venv/bin/python3 elo/update_elo.py $winner_id $loser_id $name 2>&1";
         echo $command;
         $output2 = shell_exec($command);
 
