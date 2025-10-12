@@ -241,21 +241,16 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                 </td><td>
                                     <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
                                 </td><td>
+                                    <?php
+                                        if ($deck['elo_change'] > 0){
+                                            echo '<img class="lbimg" src="images/up.png">';
+                                        } elseif ($deck['elo_change'] < 0){
+                                            echo '<img class="lbimg" src="images/down.png">';
+                                        }
+                                    ?>
+                                </td><td>
                                     <div class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></div>
                                 </td>
-                                <td>
-                                    <img class="lbimg" src="
-                                        <?php
-                                            if ($deck['elo_change'] > 0){
-                                                echo 'images/up.png';
-                                            } elseif ($deck['elo_change'] < 0){
-                                                echo 'images/down.png';
-                                            } else {
-                                                echo 'images/vb1.png';
-                                            }
-                                        ?>"
-                                    />
-                                <td>
                             </tr>
                             <?php $rank++; ?>
                         <?php endforeach; ?>
