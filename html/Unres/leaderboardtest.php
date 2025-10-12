@@ -240,7 +240,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td><td>
                                     <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
-                                </td><td>
+                                </td><td class="ra">
                                     <?php
                                         if ($deck['elo_change'] > 0){
                                             echo '<img class="lbimg" src="images/up.png">';
