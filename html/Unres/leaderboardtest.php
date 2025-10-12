@@ -33,7 +33,7 @@ FROM colours_of_decks cod
 RIGHT JOIN decks d ON d.id = cod.deck_id
 LEFT join
 (SELECT elo_change, deck_id FROM elo_changes WHERE match_id = (SELECT MAX(match_id) FROM elo_changes)) t2 on d.id = t2.deck_id
-GROUP BY id
+GROUP BY id, elo_change
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
