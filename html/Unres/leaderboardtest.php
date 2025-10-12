@@ -248,7 +248,6 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                             echo '<img class="lbimg" src="images/down.png">';
                                         }
                                     ?>
-                                </td><td>
                                     <div class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></div>
                                 </td>
                             </tr>
