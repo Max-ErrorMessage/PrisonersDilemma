@@ -149,6 +149,7 @@ $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
         text-shadow: 0px 0px 5px #ea0 0px 0px 5px #ea0 0px 0px 5px #ea0 0px 0px 5px #ea0;
         letter-spacing: -1px;
         overflow-x:hidden;
+        font-weight:bold;
     }
 
     .row span{
