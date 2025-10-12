@@ -28,8 +28,11 @@ $stmt = $pdo->query('SELECT
         d.custom_id as cid,
         d.name as name,
         d.elo AS elo
+        t2.elo_change AS change
 FROM colours_of_decks cod
 RIGHT JOIN decks d ON d.id = cod.deck_id
+LEFT join
+(SELECT elo_change FROM elo_changes WHERE match_id = (SELECT MAX(match_id) FROM elo_changes)) t2 on d.id = t2.deck_id
 GROUP BY id
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -238,9 +241,21 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                 </td><td>
                                     <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
                                 </td><td>
-
                                     <div class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></div>
                                 </td>
+                                <td>
+                                    <img class="lbimg" src="
+                                        <?php
+                                            if ($deck['elo_change'] > 0){
+                                                echo 'images/up.png';
+                                            } elseif ($deck['elo_change'] < 0){
+                                                echo 'images/down.png';
+                                            } else {
+                                                echo 'images/vb1.png';
+                                            }
+                                        ?>"
+                                    />
+                                <td>
                             </tr>
                             <?php $rank++; ?>
                         <?php endforeach; ?>
