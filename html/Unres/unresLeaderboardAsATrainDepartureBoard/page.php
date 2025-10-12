@@ -145,8 +145,8 @@ $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
         letter-spacing: 2px;
         font-size:13px;
 
-        color: #fd3;
-        text-shadow: 0px 0px 5px #e80 0px 0px 5px #e80 0px 0px 5px #e80 0px 0px 5px #e80;
+        color: #f80;
+        text-shadow: 0px 0px 5px #ea0 0px 0px 5px #ea0 0px 0px 5px #ea0 0px 0px 5px #ea0;
         letter-spacing: -1px;
         overflow-x:hidden;
     }
