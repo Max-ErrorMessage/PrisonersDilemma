@@ -248,7 +248,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                             echo '<img class="lbimg" src="images/down.png">';
                                         }
                                     ?>
-                                    <div class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></div>
+                                    <span class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
                                 </td>
                             </tr>
                             <?php $rank++; ?>
