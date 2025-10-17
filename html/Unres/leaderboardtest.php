@@ -216,7 +216,6 @@ $arch_output = str_replace("'", "\'", $arch_output);
             opacity: 0;
             color:white;
             visibility:none;
-            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
