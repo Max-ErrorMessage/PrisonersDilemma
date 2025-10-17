@@ -192,10 +192,6 @@ $sbrank = 1;
 
 
 
-
-
-
-
         #lb {
           width:50%;
           height:70%;
@@ -230,8 +226,9 @@ $sbrank = 1;
 
         .pButton span {
             opacity: 0;
-            color:white;
-            text-decoration: none;
+            text-decoration: none !important;
+            color: white !important;
+}
         }
 
         @keyframes appear{
@@ -261,7 +258,6 @@ $sbrank = 1;
 
         #p2{
             top:100px;
-            background-color: #444
         }
 
         #p2:hover{
@@ -270,6 +266,7 @@ $sbrank = 1;
 
         #p3{
             top:175px;
+            background-color: #444
         }
 
         #p3:hover{
