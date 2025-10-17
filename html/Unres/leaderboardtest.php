@@ -184,13 +184,11 @@ $arch_output = str_replace("'", "\'", $arch_output);
           border-bottom-right-radius: 5px;
         }
 
-        #back{
-            color:white;
+        .pButton{
             background-color:#1e2833;
             width:50px;
             height:50px;
             position:absolute;
-            top:25px;
             left:50px;
             padding: 0px;
             border-radius:15px;
@@ -198,11 +196,23 @@ $arch_output = str_replace("'", "\'", $arch_output);
             text-decoration:none;
         }
 
-        #back img{
+        .pButton img{
             margin:10px 12px 10px 8px;
             width:30px;
             height:auto;
             filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
+        }
+
+        #p1{
+            top:25px;
+        }
+
+        #p2{
+            top:100px;
+        }
+
+        #p3{
+            top:175px;
         }
 
 
@@ -214,9 +224,22 @@ $arch_output = str_replace("'", "\'", $arch_output);
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
-                <a href="Match.php" id="back">
+
+                <!-- Page Buttons -->
+
+                <a href="Match.php" id="p1" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
+                <a href="Match.php" id="p2" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                </a>
+                <a href="Match.php" id="p3" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                </a>
+
+
+                <!-- Tab Buttons -->
+
                 <a class="tab" id="t1" onclick="switchTab(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
                 </a>
