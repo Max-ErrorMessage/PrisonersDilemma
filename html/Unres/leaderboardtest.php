@@ -251,7 +251,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
         }
 
         #p3:hover{
-            width:150px;
+            width:175px;
         }
 
 
