@@ -196,6 +196,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
             text-decoration:none;
             border: 1px solid white;
             transition: width 0.5s;
+            text-decoration: none;
         }
 
         .pButton img{
@@ -209,7 +210,6 @@ $arch_output = str_replace("'", "\'", $arch_output);
         .pButton span {
             opacity: 0;
             color:white;
-            text-decoration: none;
         }
 
         @keyframes appear{
@@ -222,7 +222,6 @@ $arch_output = str_replace("'", "\'", $arch_output);
         .pButton:hover span {
             opacity: 1;
             animation: appear 0.4s forwards;
-            text-decoration: none;
         }
 
         #p1{
