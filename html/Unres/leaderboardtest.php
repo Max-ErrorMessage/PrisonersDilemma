@@ -214,11 +214,18 @@ $arch_output = str_replace("'", "\'", $arch_output);
         .pButton span {
             opacity: 0;
             color:white;
+            display:none;
         }
 
         @keyframes appear{
-            0% {opacity:0}
-           50% {opacity:0}
+            0% {
+                opacity:0;
+                display:none;
+            }
+            50% {
+                opacity:0
+                display:block;
+            }
             100% {opacity:1}
         }
 
