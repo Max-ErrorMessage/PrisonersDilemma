@@ -216,6 +216,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
             color:white;
             visibility:none;
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         @keyframes appear{
