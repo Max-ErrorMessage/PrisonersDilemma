@@ -57,8 +57,8 @@ LEFT join
         d.id As deck,
         CASE
             WHEN RANK() OVER (ORDER BY d.elo DESC) = p.position THEN 0
-            WHEN RANK() OVER (ORDER BY d.elo DESC) > p.position THEN 1
-            ELSE -1
+            WHEN RANK() OVER (ORDER BY d.elo DESC) > p.position THEN -1
+            ELSE 1
         END AS position_change
     FROM decks d
     JOIN past_elo p ON p.deck_id = d.id

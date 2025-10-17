@@ -57,8 +57,8 @@ LEFT join
         d.id As deck,
         CASE
             WHEN RANK() OVER (ORDER BY d.elo DESC) = p.position THEN 0
-            WHEN RANK() OVER (ORDER BY d.elo DESC) > p.position THEN 1
-            ELSE -1
+            WHEN RANK() OVER (ORDER BY d.elo DESC) > p.position THEN -1
+            ELSE 1
         END AS position_change
     FROM decks d
     JOIN past_elo p ON p.deck_id = d.id
@@ -215,94 +215,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
           border-bottom-right-radius: 5px;
         }
 
-        .pButton{
-            background-color:#1e2833;
-            width:50px;
-            height:50px;
-            position:absolute;
-            left:50px;
-            padding: 0px;
-            border-radius:15px;
-            font-weight:bolder;
-            text-decoration:none;
-            border: 1px solid white;
-            transition: width 0.5s;
-            text-decoration: none;
-        }
-
-        .pButton:hover{
-            text-decoration: none;
-        }
-
-        .pButton img{
-            margin:10px;
-            width:30px;
-            height:auto;
-        }
-
-
-
-        .pButton span {
-            opacity: 0;
-            color:white;
-            visibility:none;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        @keyframes appear{
-            0% {
-                opacity:0;
-                visibility:hidden;
-            }
-            69%{
-                opacity:0;
-                visibility:hidden;
-            }
-            70% {
-                opacity:0;
-                visibility:visible;
-            }
-            100% {
-                opacity:1;
-                visibility:visible;
-            }
-        }
-
-
-        .pButton:hover span {
-            animation: appear 0.4s forwards;
-        }
-
-        #p1{
-            top:25px;
-        }
-
-        #p1 img{
-            margin:10px 12px 10px 8px;
-            filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
-        }
-
-        #p1:hover{
-            width:250px;
-        }
-
         #p2{
             top:100px;
             background-color: #444
-        }
-
-        #p2:hover{
-            width:200px;
-        }
-
-        #p3{
-            top:175px;
-        }
-
-        #p3:hover{
-            width:175px;
         }
 
 

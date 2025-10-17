@@ -226,7 +226,7 @@ $sbrank = 1;
                     <img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png">
                     <span>Leaderboard</span>
                 </a>
-                <a href="cards.php" id="p3" class="pButton">
+                <a id="p3" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png">
                     <span>Top Cards</span>
                 </a>
