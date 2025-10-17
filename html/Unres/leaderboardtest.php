@@ -194,13 +194,18 @@ $arch_output = str_replace("'", "\'", $arch_output);
             border-radius:15px;
             font-weight:bolder;
             text-decoration:none;
-            border: 1px solid white
+            border: 1px solid white;
+            transition: width 0.5s;
         }
 
         .pButton img{
             margin:10px;
             width:30px;
             height:auto;
+        }
+
+        .pButton:hover{
+            width:200px;
         }
 
         #p1{
