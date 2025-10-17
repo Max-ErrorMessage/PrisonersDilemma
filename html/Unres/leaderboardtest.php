@@ -223,7 +223,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 display:none;
             }
             50% {
-                opacity:0
+                opacity:0;
                 display:block;
             }
             100% {opacity:1}
