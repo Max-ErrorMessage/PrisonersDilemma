@@ -209,7 +209,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         #p2{
             top:100px;
-            background-color: #aaa
+            background-color: #444
         }
 
         #p3{
