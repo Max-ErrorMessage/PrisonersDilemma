@@ -209,6 +209,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         #p2{
             top:100px;
+            background-color: #aaa
         }
 
         #p3{
@@ -230,11 +231,11 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 <a href="Match.php" id="p1" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                 </a>
-                <a href="Match.php" id="p2" class="pButton">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                <a id="p2" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png">
                 </a>
-                <a href="Match.php" id="p3" class="pButton">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                <a href="cards.php" id="p3" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png">
                 </a>
 
 
