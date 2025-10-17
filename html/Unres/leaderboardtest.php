@@ -197,7 +197,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
         }
 
         .pButton img{
-            margin:10px 12px 10px 8px;
+            margin:10px;
             width:30px;
             height:auto;
             filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
@@ -205,6 +205,10 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         #p1{
             top:25px;
+        }
+
+        #p1 img{
+            margin:10px 12px 10px 8px;
         }
 
         #p2{
