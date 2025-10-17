@@ -250,12 +250,15 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
                 <a href="Match.php" id="p1" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                    <span>Match Submission</span>
                 </a>
                 <a id="p2" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png">
+                    <span>Leaderboard</span>
                 </a>
                 <a href="cards.php" id="p3" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png">
+                    <span>Top Cards</span>
                 </a>
 
 
@@ -263,15 +266,12 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
                 <a class="tab" id="t1" onclick="switchTab(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
-                    <span>Match Submission</span>
                 </a>
                 <a class="tab" id="t2" onclick="switchTab(2)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
-                    <span>Leaderboard</span>
                 </a>
                 <a class="tab white" id="t3" onclick="switchTab(3)" style="display:none;">
                     <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
-                    <span>Top Cards</span>
                 </a>
                 <div id="lb">
                     <div id = "page1">
