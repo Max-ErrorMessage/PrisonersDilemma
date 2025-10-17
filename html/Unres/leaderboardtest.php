@@ -208,6 +208,16 @@ $arch_output = str_replace("'", "\'", $arch_output);
             width:200px;
         }
 
+        .pButton span {
+            opacity: 0;
+            transition: opacity 0.5s;
+            color:white,
+        }
+
+        .pButton:hover span {
+            opacity: 1;
+        }
+
         #p1{
             top:25px;
         }
@@ -253,12 +263,15 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
                 <a class="tab" id="t1" onclick="switchTab(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
+                    <span>Match Submission</span>
                 </a>
                 <a class="tab" id="t2" onclick="switchTab(2)">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                    <span>Leaderboard</span>
                 </a>
                 <a class="tab white" id="t3" onclick="switchTab(3)" style="display:none;">
                     <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
+                    <span>Top Cards</span>
                 </a>
                 <div id="lb">
                     <div id = "page1">
