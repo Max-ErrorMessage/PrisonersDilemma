@@ -62,7 +62,7 @@ LEFT join
         END AS position_change
     FROM decks d
     JOIN past_elo p ON p.deck_id = d.id
-    order by p.position desc;
+    order by p.position desc
 ) t2 on d.id = t2.deck
 GROUP BY id, elo_change
 ORDER BY elo DESC;');
