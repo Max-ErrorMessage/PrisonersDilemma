@@ -228,7 +228,6 @@ $sbrank = 1;
             opacity: 0;
             text-decoration: none !important;
             color: white !important;
-}
         }
 
         @keyframes appear{
