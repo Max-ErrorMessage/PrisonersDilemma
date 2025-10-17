@@ -194,6 +194,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
             border-radius:15px;
             font-weight:bolder;
             text-decoration:none;
+            border: 1px solid white
         }
 
         .pButton img{
