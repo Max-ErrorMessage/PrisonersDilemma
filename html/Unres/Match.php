@@ -44,74 +44,10 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
         }
 
 
-        .pButton{
-            background-color:#1e2833;
-            width:50px;
-            height:50px;
-            position:absolute;
-            left:50px;
-            padding: 0px;
-            border-radius:15px;
-            font-weight:bolder;
-            text-decoration:none;
-            border: 1px solid white;
-            transition: width 0.5s;
-        }
-
-        .pButton img{
-            margin:10px;
-            width:30px;
-            height:auto;
-        }
-
-
-
-        .pButton span {
-            opacity: 0;
-            text-decoration: none !important;
-            color: white !important;
-        }
-
-        @keyframes appear{
-            0% {opacity:0}
-           50% {opacity:0}
-            100% {opacity:1}
-        }
-
-
-        .pButton:hover span {
-            opacity: 1;
-            animation: appear 0.4s forwards;
-        }
 
         #p1{
             top:25px;
             background-color: #444
-        }
-
-        #p1 img{
-            margin:10px 12px 10px 8px;
-            filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
-        }
-
-        #p1:hover{
-            width:250px;
-        }
-
-        #p2{
-            top:100px;
-        }
-
-        #p2:hover{
-            width:200px;
-        }
-
-        #p3{
-            top:175px;
-        }
-
-        #p3:hover{
-            width:175px;
         }
 
 

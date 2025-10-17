@@ -28,12 +28,43 @@ $stmt = $pdo->query('SELECT
         d.custom_id as cid,
         d.name as name,
         d.elo AS elo,
-        t2.elo_change
+        t2.position_change
 FROM colours_of_decks cod
 RIGHT JOIN decks d ON d.id = cod.deck_id
 LEFT join
-(SELECT elo_change, deck_id FROM elo_changes WHERE match_id = (SELECT MAX(match_id) FROM elo_changes)) t2 on d.id = t2.deck_id
-GROUP BY id, elo_change
+(
+    WITH matches_in_order AS (
+        SELECT
+            ec.*,
+            ROW_NUMBER() OVER (PARTITION BY deck_id ORDER BY id DESC) AS rn
+        FROM elo_changes ec
+    ),
+    elo_1_game_ago AS (
+        SELECT
+            deck_id,
+            SUM(elo_change) AS elo_1_game_ago
+        FROM matches_in_order
+        WHERE rn > 1
+        GROUP BY deck_id
+    ),
+    past_elo AS (
+        SELECT
+            deck_id,
+            RANK() OVER (ORDER BY elo_1_game_ago DESC) AS position
+        FROM elo_1_game_ago
+    )
+    SELECT
+        d.id As deck,
+        CASE
+            WHEN RANK() OVER (ORDER BY d.elo DESC) = p.position THEN 0
+            WHEN RANK() OVER (ORDER BY d.elo DESC) > p.position THEN 1
+            ELSE -1
+        END AS position_change
+    FROM decks d
+    JOIN past_elo p ON p.deck_id = d.id
+    order by p.position desc
+) t2 on d.id = t2.deck
+GROUP BY id, position_change
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
@@ -184,74 +215,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
           border-bottom-right-radius: 5px;
         }
 
-        .pButton{
-            background-color:#1e2833;
-            width:50px;
-            height:50px;
-            position:absolute;
-            left:50px;
-            padding: 0px;
-            border-radius:15px;
-            font-weight:bolder;
-            text-decoration:none;
-            border: 1px solid white;
-            transition: width 0.5s;
-        }
-
-        .pButton img{
-            margin:10px;
-            width:30px;
-            height:auto;
-        }
-
-
-
-        .pButton span {
-            opacity: 0;
-            color:white;
-            text-decoration: none;
-        }
-
-        @keyframes appear{
-            0% {opacity:0}
-           50% {opacity:0}
-            100% {opacity:1}
-        }
-
-
-        .pButton:hover span {
-            opacity: 1;
-            animation: appear 0.4s forwards;
-        }
-
-        #p1{
-            top:25px;
-        }
-
-        #p1 img{
-            margin:10px 12px 10px 8px;
-            filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
-        }
-
-        #p1:hover{
-            width:250px;
-        }
-
         #p2{
             top:100px;
             background-color: #444
-        }
-
-        #p2:hover{
-            width:200px;
-        }
-
-        #p3{
-            top:175px;
-        }
-
-        #p3:hover{
-            width:175px;
         }
 
 
@@ -307,9 +273,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                     <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
                                 </td><td class="ra">
                                     <?php
-                                        if ($deck['elo_change'] > 0){
+                                        if ($deck['position_change'] > 0){
                                             echo '<img class="lbimg" src="images/up.png">';
-                                        } elseif ($deck['elo_change'] < 0){
+                                        } elseif ($deck['position_change'] < 0){
                                             echo '<img class="lbimg" src="images/down.png">';
                                         }
                                     ?>
