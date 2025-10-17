@@ -210,9 +210,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         .pButton span {
             opacity: 0;
-            transition: opacity 0.2s;
             color:white;
             text-decoration: none;
+            animation: appear 0.4s,
         }
 
         @keyframe appear{
