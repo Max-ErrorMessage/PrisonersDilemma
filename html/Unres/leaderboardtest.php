@@ -220,15 +220,15 @@ $arch_output = str_replace("'", "\'", $arch_output);
         @keyframes appear{
             0% {
                 opacity:0;
-                display:none;
+                visibility:hidden;
             }
             50% {
                 opacity:0;
-                display:block;
+                visibility:visible;
             }
             100% {
                 opacity:1;
-                display:block;
+                visibility:visible;
             }
         }
 
