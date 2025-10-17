@@ -222,7 +222,11 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 opacity:0;
                 visibility:hidden;
             }
-            50% {
+            69%{
+                opacity:0;
+                visibility:hidden;
+            }
+            70% {
                 opacity:0;
                 visibility:visible;
             }
