@@ -199,6 +199,10 @@ $arch_output = str_replace("'", "\'", $arch_output);
             text-decoration: none;
         }
 
+        .pButton:hover{
+            text-decoration: none;
+        }
+
         .pButton img{
             margin:10px;
             width:30px;
