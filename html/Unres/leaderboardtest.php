@@ -64,7 +64,7 @@ LEFT join
     JOIN past_elo p ON p.deck_id = d.id
     order by p.position desc
 ) t2 on d.id = t2.deck
-GROUP BY id, elo_change
+GROUP BY id, position_change
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
