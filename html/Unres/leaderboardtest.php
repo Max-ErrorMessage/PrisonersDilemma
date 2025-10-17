@@ -226,13 +226,16 @@ $arch_output = str_replace("'", "\'", $arch_output);
                 opacity:0;
                 display:block;
             }
-            100% {opacity:1}
+            100% {
+                opacity:1;
+                display:block;
+            }
         }
 
 
         .pButton:hover span {
-            opacity: 1;
             animation: appear 0.4s forwards;
+            display:block;
         }
 
         #p1{
