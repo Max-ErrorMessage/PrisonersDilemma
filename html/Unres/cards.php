@@ -206,13 +206,75 @@ $sbrank = 1;
             width:65px;
         }
 
+        .pButton{
+            background-color:#1e2833;
+            width:50px;
+            height:50px;
+            position:absolute;
+            left:50px;
+            padding: 0px;
+            border-radius:15px;
+            font-weight:bolder;
+            text-decoration:none;
+            border: 1px solid white;
+            transition: width 0.5s;
+        }
+
+        .pButton img{
+            margin:10px;
+            width:30px;
+            height:auto;
+        }
 
 
 
+        .pButton span {
+            opacity: 0;
+            color:white;
+            text-decoration: none;
+        }
+
+        @keyframes appear{
+            0% {opacity:0}
+           50% {opacity:0}
+            100% {opacity:1}
+        }
 
 
+        .pButton:hover span {
+            opacity: 1;
+            animation: appear 0.4s forwards;
+        }
 
+        #p1{
+            top:25px;
+        }
 
+        #p1 img{
+            margin:10px 12px 10px 8px;
+            filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
+        }
+
+        #p1:hover{
+            width:250px;
+        }
+
+        #p2{
+            top:100px;
+            background-color: #444
+        }
+
+        #p2:hover{
+            width:200px;
+        }
+
+        #p3{
+            top:175px;
+        }
+
+        #p3:hover{
+            width:175px;
+        }
 
 
 
@@ -223,9 +285,24 @@ $sbrank = 1;
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
-                <a href="Leaderboard.php" id="back">
+
+                <!-- Page Buttons -->
+
+                <a href="Match.php" id="p1" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                    <span>Match Submission</span>
                 </a>
+                <a href="Leaderboard.php" id="p2" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png">
+                    <span>Leaderboard</span>
+                </a>
+                <a href="cards.php" id="p3" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png">
+                    <span>Top Cards</span>
+                </a>
+
+                <!-- Tab Buttons -->
+
                 <a class="tab" id="ct1" onclick="switchTab(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/4391/4391661.png"/>
                 </a>
