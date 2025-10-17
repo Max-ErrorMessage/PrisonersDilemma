@@ -212,7 +212,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
             opacity: 0;
             transition: opacity 0.2s;
             color:white;
-            text-decoration: 0;
+            text-decoration: none;
         }
 
         @keyframe appear{
