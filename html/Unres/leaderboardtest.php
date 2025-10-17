@@ -204,9 +204,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
             height:auto;
         }
 
-        .pButton:hover{
-            width:200px;
-        }
+
 
         .pButton span {
             opacity: 0;
@@ -235,13 +233,25 @@ $arch_output = str_replace("'", "\'", $arch_output);
             filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
         }
 
+        #p1:hover{
+            width:250px;
+        }
+
         #p2{
             top:100px;
             background-color: #444
         }
 
+        #p2:hover{
+            width:200px;
+        }
+
         #p3{
             top:175px;
+        }
+
+        #p3:hover{
+            width:150px;
         }
 
 
