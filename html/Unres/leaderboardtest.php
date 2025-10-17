@@ -206,7 +206,6 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         .pButton:hover{
             width:200px;
-            animation: appear 0.4s forwards;
         }
 
         .pButton span {
@@ -224,6 +223,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         .pButton:hover span {
             opacity: 1;
+            animation: appear 0.4s forwards;
         }
 
         #p1{
