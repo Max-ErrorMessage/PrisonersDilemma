@@ -215,9 +215,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
             animation: appear 0.4s,
         }
 
-        @keyframe appear{
-            0% {opacity:0},
-           50% {opacity:0},
+        @keyframes appear{
+            0% {opacity:0}
+           50% {opacity:0}
             100% {opacity:1}
         }
 
