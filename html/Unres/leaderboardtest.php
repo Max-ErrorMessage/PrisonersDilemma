@@ -28,11 +28,42 @@ $stmt = $pdo->query('SELECT
         d.custom_id as cid,
         d.name as name,
         d.elo AS elo,
-        t2.elo_change
+        t2.position_change
 FROM colours_of_decks cod
 RIGHT JOIN decks d ON d.id = cod.deck_id
 LEFT join
-(SELECT elo_change, deck_id FROM elo_changes WHERE match_id = (SELECT MAX(match_id) FROM elo_changes)) t2 on d.id = t2.deck_id
+(
+    WITH matches_in_order AS (
+        SELECT
+            ec.*,
+            ROW_NUMBER() OVER (PARTITION BY deck_id ORDER BY id DESC) AS rn
+        FROM elo_changes ec
+    ),
+    elo_1_game_ago AS (
+        SELECT
+            deck_id,
+            SUM(elo_change) AS elo_1_game_ago
+        FROM matches_in_order
+        WHERE rn > 1
+        GROUP BY deck_id
+    ),
+    past_elo AS (
+        SELECT
+            deck_id,
+            RANK() OVER (ORDER BY elo_1_game_ago DESC) AS position
+        FROM elo_1_game_ago
+    )
+    SELECT
+        d.id As deck,
+        CASE
+            WHEN RANK() OVER (ORDER BY d.elo DESC) = p.position THEN 0
+            WHEN RANK() OVER (ORDER BY d.elo DESC) > p.position THEN 1
+            ELSE -1
+        END AS position_change
+    FROM decks d
+    JOIN past_elo p ON p.deck_id = d.id
+    order by p.position desc;
+) t2 on d.id = t2.deck
 GROUP BY id, elo_change
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -327,9 +358,9 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                     <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
                                 </td><td class="ra">
                                     <?php
-                                        if ($deck['elo_change'] > 0){
+                                        if ($deck['position_change'] > 0){
                                             echo '<img class="lbimg" src="images/up.png">';
-                                        } elseif ($deck['elo_change'] < 0){
+                                        } elseif ($deck['position_change'] < 0){
                                             echo '<img class="lbimg" src="images/down.png">';
                                         }
                                     ?>
