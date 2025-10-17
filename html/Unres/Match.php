@@ -86,12 +86,12 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
 
         #p1{
             top:25px;
+            background-color: #444
         }
 
         #p1 img{
             margin:10px 12px 10px 8px;
             filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
-            background-color: #444
         }
 
         #p1:hover{
