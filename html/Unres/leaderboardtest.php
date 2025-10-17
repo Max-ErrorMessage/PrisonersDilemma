@@ -206,13 +206,13 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         .pButton:hover{
             width:200px;
+            animation: appear 0.4s forwards;
         }
 
         .pButton span {
             opacity: 0;
             color:white;
             text-decoration: none;
-            animation: appear 0.4s,
         }
 
         @keyframes appear{
