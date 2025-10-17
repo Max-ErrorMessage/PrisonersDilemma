@@ -27,13 +27,26 @@ $stmt = $pdo->query('SELECT
         ) AS colour,
         d.custom_id as cid,
         d.name as name,
-        d.elo AS elo
+        d.elo AS elo,
+        t2.elo_change
 FROM colours_of_decks cod
 RIGHT JOIN decks d ON d.id = cod.deck_id
-GROUP BY id
+LEFT join
+(SELECT elo_change, deck_id FROM elo_changes WHERE match_id = (SELECT MAX(match_id) FROM elo_changes)) t2 on d.id = t2.deck_id
+GROUP BY id, elo_change
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
+
+
+
+$venvPython = '/var/www/Unres-Meta/venv/bin/python';
+$pythonScript = 'elo_changes_by_archetype.py';
+$command = 'cd /var/www/Unres-Meta/db && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ' 2>&1';
+$arch_output = shell_exec($command);
+
+$arch_output = str_replace("'", "\'", $arch_output);
+
 ?>
 
 
@@ -45,10 +58,10 @@ $rank = 1;
     <meta name="description" content="Create bots to compete in fun minigames! :)">
     <meta property="og:title" content="Unres Leaderboard">
     <meta property="og:description" content="The best decks in unres! Take a look at the rankings and see who is on top!">
-    <meta property="og:image" content="6.png">
+    <meta property="og:image" content="Images/6.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="unres.css">
     <style>
         .bg-bg, .bg-img, .bg-fg {
           height:100%;
@@ -89,21 +102,8 @@ $rank = 1;
             position:relative;
         }
 
-        #lb {
-          min-width:320px;
-          width:40%;
-          background-color:#1e2833;
-          padding:40px;
-          border-radius:4px;
-          transform:translate(-50%, -50%);
-          position:absolute;
-          top:50%;
-          left:50%;
-          color:#fff;
-          box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-          height:80%;
-          overflow-y:scroll;
-        }
+
+
 
         ::-webkit-scrollbar{
             display:none;
@@ -184,25 +184,74 @@ $rank = 1;
           border-bottom-right-radius: 5px;
         }
 
-        #back{
-            color:white;
+        .pButton{
             background-color:#1e2833;
             width:50px;
             height:50px;
             position:absolute;
-            top:25px;
             left:50px;
             padding: 0px;
             border-radius:15px;
             font-weight:bolder;
             text-decoration:none;
+            border: 1px solid white;
+            transition: width 0.5s;
         }
 
-        #back img{
-            margin:10px 12px 10px 8px;
+        .pButton img{
+            margin:10px;
             width:30px;
             height:auto;
+        }
+
+
+
+        .pButton span {
+            opacity: 0;
+            color:white;
+            text-decoration: none;
+        }
+
+        @keyframes appear{
+            0% {opacity:0}
+           50% {opacity:0}
+            100% {opacity:1}
+        }
+
+
+        .pButton:hover span {
+            opacity: 1;
+            animation: appear 0.4s forwards;
+        }
+
+        #p1{
+            top:25px;
+        }
+
+        #p1 img{
+            margin:10px 12px 10px 8px;
             filter:  brightness(1.4) saturate(0.7) hue-rotate(-10deg);
+        }
+
+        #p1:hover{
+            width:250px;
+        }
+
+        #p2{
+            top:100px;
+            background-color: #444
+        }
+
+        #p2:hover{
+            width:200px;
+        }
+
+        #p3{
+            top:175px;
+        }
+
+        #p3:hover{
+            width:175px;
         }
 
 
@@ -214,30 +263,87 @@ $rank = 1;
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
-                <a href="Match.php" id="back">
+
+                <!-- Page Buttons -->
+
+                <a href="Match.php" id="p1" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
+                    <span>Match Submission</span>
+                </a>
+                <a id="p2" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png">
+                    <span>Leaderboard</span>
+                </a>
+                <a href="cards.php" id="p3" class="pButton">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png">
+                    <span>Top Cards</span>
+                </a>
+
+
+                <!-- Tab Buttons -->
+
+                <a class="tab" id="t1" onclick="switchTab(1)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
+                </a>
+                <a class="tab" id="t2" onclick="switchTab(2)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                </a>
+                <a class="tab white" id="t3" onclick="switchTab(3)" style="display:none;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
                 </a>
                 <div id="lb">
-                    <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                    <br>
-                    <table>
-                    <?php foreach ($decks as $deck): ?>
-                        <tr onclick=goToDeck(<?= $deck['id']?>)>
-                            <td>
-                                <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
-                            </td><td>
-                                <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
-                                <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                            </td><td>
-                                <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
-                            </td><td>
+                    <div id = "page1">
+                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                        <br>
+                        <table>
+                        <?php foreach ($decks as $deck): ?>
+                            <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                <td>
+                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                </td><td>
+                                    <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
+                                    <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                                </td><td>
+                                    <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+                                </td><td class="ra">
+                                    <?php
+                                        if ($deck['elo_change'] > 0){
+                                            echo '<img class="lbimg" src="images/up.png">';
+                                        } elseif ($deck['elo_change'] < 0){
+                                            echo '<img class="lbimg" src="images/down.png">';
+                                        }
+                                    ?>
+                                    <span class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
+                                </td>
+                            </tr>
+                            <?php $rank++; ?>
+                        <?php endforeach; ?>
+                        </table>
+                    </div>
 
-                                <div class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></div>
-                            </td>
-                        </tr>
-                        <?php $rank++; ?>
-                    <?php endforeach; ?>
-                    </table>
+                    <div id="page2" style="display:none;height:60vh">
+                        <canvas id="elograph"></canvas>
+                    </div>
+                    <div id="page3" style="display:none">
+                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
+                        <strong>Similar Decks:</strong>
+                        <br>
+                        <br>
+                        <div id="sim-table">
+                            <table id=>
+                                <?php foreach ($sim_data as $deck): ?>
+                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
+                                        <td>
+                                            <p><?= htmlspecialchars($deck['name'])?></p>
+                                        </td><td>
+                                            <p style="text-align:right;"><?=  round($deck['sim'] * 100) ?>%</p>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
@@ -245,7 +351,14 @@ $rank = 1;
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+
+        const archetypes = JSON.parse('<?php echo (trim($arch_output)); ?>')
+        console.log(archetypes);
+
+
+
         const div2 = document.querySelector('.bg-img');
 
         div2.addEventListener('mousemove', (e) => {
@@ -269,6 +382,100 @@ $rank = 1;
         function goToDeck(id){
             window.location = "deck.php?id=" + id
         }
+
+        function switchTab(n){
+            tab1 = document.getElementById("t1")
+            tab2 = document.getElementById("t2")
+            tab3 = document.getElementById("t3")
+            page1 = document.getElementById("page1")
+            page2 = document.getElementById("page2")
+            page3 = document.getElementById("page3")
+            if (n==1){
+                tab1.style.backgroundColor = "#1e2833"
+                tab1.style.backgroundImage = "none"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab2.style.backgroundColor = "none"
+                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab3.style.backgroundColor = "#none"
+
+                page1.style.display = "block"
+                page2.style.display = "none"
+                page3.style.display = "none"
+
+            } else if (n==2){
+                tab2.style.backgroundColor = "#1e2833"
+                tab2.style.backgroundImage = "none"
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab1.style.backgroundColor = "none"
+                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab3.style.backgroundColor = "#none"
+
+                page2.style.display = "block"
+                page1.style.display = "none"
+                page3.style.display = "none"
+
+                let chartData = archetypes
+
+                // X-axis labels (assuming all series have same length)
+                let labels = chartData[Object.keys(chartData)[0]].map((_, i) => `Match ${i+1}`);
+
+                // Convert dictionary to Chart.js datasets
+                let datasets = Object.entries(chartData).map(([key, values], i) => ({
+                    label: key,
+                    data: values,
+                    borderColor: `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`, // auto-color each line
+                    fill: false,
+                    backgroundColor: `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`,
+                    pointRadius: 0,
+                    pointHoverRadius: 2
+                }));
+
+                new Chart(document.getElementById("elograph"), {
+                    type: "line",
+                    data: {
+                      labels: labels,
+                      datasets: datasets
+                    },
+                    options: {
+                      scales: {
+                        x: {
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" },
+                          display:false
+                        },
+                        y: {
+                          ticks: { color: "#ddd" },
+                          grid: { color: "#444" }
+                        }
+                      },
+                      plugins: {
+                        legend: {
+                          labels: { color: "#ddd" }
+                        }
+
+                      },
+                       interaction: {
+                          mode: 'nearest',
+                          intersect: false
+                        },
+                      maintainAspectRatio: false
+                    }
+                  });
+
+            }  else if (n==3){
+                tab3.style.backgroundColor = "#1e2833"
+                tab3.style.backgroundImage = "none"
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab1.style.backgroundColor = "none"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab2.style.backgroundColor = "#none"
+
+                page3.style.display = "block"
+                page1.style.display = "none"
+                page2.style.display = "none"
+            }
+        }
+
     </script>
 </body>
 </html>
