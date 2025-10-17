@@ -201,7 +201,6 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
         .pButton:hover{
             text-decoration: none;
-            width:unset;
         }
 
         .pButton img{
@@ -216,6 +215,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
             opacity: 0;
             color:white;
             visibility:none;
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -255,6 +255,7 @@ $arch_output = str_replace("'", "\'", $arch_output);
         }
 
         #p1:hover{
+            width:250px;
         }
 
         #p2{
