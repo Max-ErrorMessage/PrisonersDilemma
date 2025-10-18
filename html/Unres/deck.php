@@ -163,13 +163,13 @@ $removals_id = array_column($removals, "id");
 
 // ---- FIND CARD INFO FOR CARDS THAT HAVE BEEN COMPLETELY REMOVED
 
-$card_ids = array_column($cards, "id");
+$card_ids = array_column($mb_cards . $sb_cards, "id");
 $ids_to_check = [];
 
 $full_removals_mb = [];
 $full_removals_sb = [];
 foreach ($removals_id as $rid){
-    if (!in_array($card_ids, $rid)){
+    if (!in_array($rid, $card_ids)){
         $stmt = $pdo->prepare('
             SELECT card_name as name, id
             FROM cards
