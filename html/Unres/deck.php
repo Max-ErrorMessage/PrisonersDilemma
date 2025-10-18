@@ -227,12 +227,27 @@ print_r($removals);
                                 </div>
                                 <span><?php
 
+                                $amount = 0;
+
                                 if (in_array($card['id'], $additions_id)) {
-                                    echo $additions["amount"];
+                                    // Find the matching addition entry
+                                    foreach ($additions as $a) {
+                                        if ($a["id"] == $card["id"]) {
+                                            $amount += $a["amount"];
+                                        }
+                                    }
                                 }
+
                                 if (in_array($card['id'], $removals_id)) {
-                                    echo $removals["amount"];
+                                    // Find the matching removal entry
+                                    foreach ($removals as $r) {
+                                        if ($r["id"] == $card["id"]) {
+                                            $amount += $r["amount"]; // likely negative already
+                                        }
+                                    }
                                 }
+
+                                echo $amount;
 
                                 ?></span>
                             </div>
