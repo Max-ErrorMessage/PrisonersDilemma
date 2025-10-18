@@ -24,7 +24,7 @@ $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$stmt = $pdo->prepare('SELECT c.card_name as name, cid.quantity as n, c.image_url as url
+$stmt = $pdo->prepare('SELECT c.id as id c.card_name as name, cid.quantity as n, c.image_url as url
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
@@ -145,6 +145,7 @@ foreach ($changes_data as $change_batch) {
                  $new_change = [
                     "id" => $change["card_id"],
                     "amount" => $change["quantity_after"] - $change["quantity_before"]
+                    "mb" => $change["mainboard"]
                 ];
                 if ($new_change["amount"] > 0){
                     $additions[] = $new_change;
@@ -155,6 +156,11 @@ foreach ($changes_data as $change_batch) {
         }
     }
 }
+
+
+$additions_id = array_column($additions, "id");
+$removals_id = array_column($removals, "id");
+
 print_r($additions);
 print_r($removals);
 ?>
@@ -212,11 +218,23 @@ print_r($removals);
                             <strong>Mainboard:</strong>
                             <?php foreach ($mb_cards as $card): ?>
                             <div style="justify-content:space-between;display:flex; width:100%;">
-                                <span
-                                    onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
-                                    onmouseleave='imgLeave()'
-                                    ><?= htmlspecialchars($card['name']) ?></span>
-                                <span><?= htmlspecialchars($card['n']) ?></span>
+                                <div style="justify-content:space-between;display:flex; width:100%;">
+                                    <span
+                                        onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                        onmouseleave='imgLeave()'
+                                        ><?= htmlspecialchars($card['name']) ?></span>
+                                    <span><?= htmlspecialchars($card['n']) ?></span>
+                                </div>
+                                <span><?php
+
+                                if (in_array($card['id'], $additions_id)) {
+                                    echo $additions["amount"];
+                                }
+                                if (in_array($card['id'], $removals_id)) {
+                                    echo $removals["amount"];
+                                }
+
+                                ?></span>
                             </div>
                             <?php endforeach; ?>
                         </div>
