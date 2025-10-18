@@ -329,9 +329,9 @@ foreach ($removals_id as $rid){
                                         onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
                                         onmouseleave='imgLeave()'
                                         ><?= htmlspecialchars($card['name']) ?></span>
-                                    <span style="color:#a00"><?= htmlspecialchars($card['n']) ?></span>
+                                    <span style="color:#a00">0</span>
                                 </div>
-                                <span style="color:#0f0; width:30px; text-align:right"></span>
+                                <span style="color:#a00; width:30px; text-align:right"><?= htmlspecialchars($card['n']) ?></span>
                             </div>
                             <?php endforeach; ?>
                             <br><br>
