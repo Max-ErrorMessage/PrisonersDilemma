@@ -296,6 +296,7 @@ foreach ($changes_data as $change_batch) {
                                     if(in_array($deck['name']),$changed_deck_ids){
                                         echo '<img src="https://pics.freeicons.io/uploads/icons/png/7766604441644374638-64.png" tooltip="This deck has new changes!">';
                                     }
+                                    ?>
 
                                 </td><td class="ra">
                                     <?php
