@@ -169,7 +169,7 @@ $ids_to_check = [];
 $full_removals_mb = [];
 $full_removals_sb = [];
 foreach ($removals_id as $rid){
-    if (!in_array($rid, $card_ids)){
+    if (!in_array($card_ids, $rid)){
         $stmt = $pdo->prepare('
             SELECT card_name as name, id
             FROM cards
