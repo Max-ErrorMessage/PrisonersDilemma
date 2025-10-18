@@ -163,7 +163,7 @@ $removals_id = array_column($removals, "id");
 
 // ---- FIND CARD INFO FOR CARDS THAT HAVE BEEN COMPLETELY REMOVED
 
-$card_ids = array_column($mb_cards . $sb_cards, "id");
+$card_ids = array_column(array_merge($mb_cards,$sb_cards), "id");
 $ids_to_check = [];
 
 $full_removals_mb = [];
