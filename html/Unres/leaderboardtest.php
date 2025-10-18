@@ -78,6 +78,26 @@ $arch_output = shell_exec($command);
 
 $arch_output = str_replace("'", "\'", $arch_output);
 
+// --- CHECK FOR NEW CHANGES
+
+$changes_json = file_get_contents('/var/www/Unres-Meta/db/db_changes.json');
+$changes_data = json_decode($changes_json, true);
+
+$changed_deck_ids = [];
+$now = new DateTime('now', new DateTimeZone('UTC'));
+$oneWeekAgo = (clone $now)->modify('-7 days');
+
+foreach ($changes_data as $change_batch) {
+    //convert timestamp to DateTime object for comparison
+    $timestamp = new DateTime($change_batch["timestamp"], new DateTimeZone('UTC'));
+
+    if ($timestamp > $oneWeekAgo){
+        foreach ($change_batch["logs"] as $change){
+            changed_deck_ids[] = $change["deck_id"];
+        }
+    }
+}
+
 ?>
 
 
@@ -271,6 +291,12 @@ $arch_output = str_replace("'", "\'", $arch_output);
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td><td>
                                     <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+
+                                    <?php
+                                    If(in_array($deck['name']),$changed_deck_ids){
+                                        echo '<img src="https://pics.freeicons.io/uploads/icons/png/7766604441644374638-64.png" tooltip="This deck has new changes!">';
+                                    }
+
                                 </td><td class="ra">
                                     <?php
                                         if ($deck['position_change'] > 0){
