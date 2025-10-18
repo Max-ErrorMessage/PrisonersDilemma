@@ -124,6 +124,30 @@ if (count($sim_rows) > 0) {
 
 
 
+// --- DECK CHANGES JSON READING
+
+$changes_json = file_get_contents('/var/www/Unres-Meta/db/db_changes.json');
+$changes_data = json_decode($changes_json, true);
+
+$deck_changes = [];
+
+$now = new DateTime('now', new DateTimeZone('UTC'));
+$oneWeekAgo = (clone $now)->modify('-7 days');
+
+foreach ($changes_data as $change_batch) {
+    //convert timestamp to DateTime object for comparison
+    $timestamp = new DateTime($change_batch["timestamp"], new DateTimeZone('UTC'));
+
+    if ($timestamp > $oneWeekAgo){
+        foreach ($change_batch["logs"] as $change){
+            if ($change["deck_id"] == $id){
+                $deck_changes[] = $change
+            }
+        }
+    }
+}
+
+echo $deck_changes;
 ?>
 
 
