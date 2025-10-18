@@ -129,7 +129,8 @@ if (count($sim_rows) > 0) {
 $changes_json = file_get_contents('/var/www/Unres-Meta/db/db_changes.json');
 $changes_data = json_decode($changes_json, true);
 
-$deck_changes = [];
+$additions = [];
+$removals = [];
 
 $now = new DateTime('now', new DateTimeZone('UTC'));
 $oneWeekAgo = (clone $now)->modify('-7 days');
@@ -141,13 +142,19 @@ foreach ($changes_data as $change_batch) {
     if ($timestamp > $oneWeekAgo){
         foreach ($change_batch["logs"] as $change){
             if ($change["deck_id"] == $id){
-                $deck_changes[] = $change;
+                $new_change["id"] = $change["card_id"];
+                $new_change["amount"] = $change["quantity_after"] - $change["quantity_before"];
+                if ($new_change["amount"] > 0){
+                    $additions[] = $new_change;
+                } else {
+                    $removals[] = $new_change;
+                }
             }
         }
     }
 }
-
-print_r($deck_changes);
+print_r($additions)
+print_r($removals)
 ?>
 
 
