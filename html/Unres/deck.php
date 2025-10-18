@@ -155,8 +155,8 @@ foreach ($changes_data as $change_batch) {
         }
     }
 }
-print_r($additions)
-print_r($removals)
+print_r($additions);
+print_r($removals);
 ?>
 
 
