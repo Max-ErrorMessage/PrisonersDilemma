@@ -325,11 +325,11 @@ foreach ($removals_id as $rid){
                             <?php foreach ($full_removals_sb as $card): ?>
                             <div style="justify-content:space-between;display:flex; width:100%">
                                 <div style="justify-content:space-between;display:flex; width:100%">
-                                    <span
+                                    <span style="color:#a00"
                                         onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
                                         onmouseleave='imgLeave()'
                                         ><?= htmlspecialchars($card['name']) ?></span>
-                                    <span><?= htmlspecialchars($card['n']) ?></span>
+                                    <span style="color:#a00"><?= htmlspecialchars($card['n']) ?></span>
                                 </div>
                                 <span style="color:#0f0; width:30px; text-align:right"></span>
                             </div>
