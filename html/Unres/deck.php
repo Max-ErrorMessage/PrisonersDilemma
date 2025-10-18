@@ -147,7 +147,7 @@ foreach ($changes_data as $change_batch) {
     }
 }
 
-echo $deck_changes;
+print_r($deck_changes);
 ?>
 
 
