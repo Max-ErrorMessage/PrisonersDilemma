@@ -258,11 +258,38 @@ print_r($removals);
                             <strong>Sideboard:</strong>
                             <?php foreach ($sb_cards as $card): ?>
                             <div style="justify-content:space-between;display:flex; width:100%">
-                                <span
-                                    onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
-                                    onmouseleave='imgLeave()'
-                                    ><?= htmlspecialchars($card['name']) ?></span>
-                                <span><?= htmlspecialchars($card['n']) ?></span>
+                                <div style="justify-content:space-between;display:flex; width:100%">
+                                    <span
+                                        onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                        onmouseleave='imgLeave()'
+                                        ><?= htmlspecialchars($card['name']) ?></span>
+                                    <span><?= htmlspecialchars($card['n']) ?></span>
+                                </div>
+                                <span><?php
+
+                                $amount = 0;
+
+                                if (in_array($card['id'], $additions_id)) {
+                                    // Find the matching addition entry
+                                    foreach ($additions as $a) {
+                                        if ($a["id"] == $card["id"]) {
+                                            $amount += $a["amount"];
+                                        }
+                                    }
+                                }
+
+                                if (in_array($card['id'], $removals_id)) {
+                                    // Find the matching removal entry
+                                    foreach ($removals as $r) {
+                                        if ($r["id"] == $card["id"]) {
+                                            $amount += $r["amount"]; // likely negative already
+                                        }
+                                    }
+                                }
+
+                                echo $amount;
+
+                                ?></span>
                             </div>
                             <?php endforeach; ?>
                             <br><br>
