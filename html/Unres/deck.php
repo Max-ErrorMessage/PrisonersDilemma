@@ -144,7 +144,7 @@ foreach ($changes_data as $change_batch) {
             if ($change["deck_id"] == $id){
                  $new_change = [
                     "id" => $change["card_id"],
-                    "amount" => $change["quantity_after"] - $change["quantity_before"]
+                    "amount" => $change["quantity_after"] - $change["quantity_before"],
                     "mb" => $change["mainboard"]
                 ];
                 if ($new_change["amount"] > 0){
