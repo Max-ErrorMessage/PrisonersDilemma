@@ -208,7 +208,7 @@ $removals_id = array_column($removals, "id");
                 <a class="tab" id="t3" onclick="switchTab(3)">
                     <img src="images/dt3.png"/>
                 </a>
-                <div id="lb">
+                <div id="lb" class="wide">
                     <div id = "page1">
                         <img id="cc" onclick="copyToClipboard()" src="https://cdn-icons-png.flaticon.com/128/4891/4891669.png">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
