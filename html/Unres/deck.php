@@ -176,7 +176,7 @@ foreach ($removals_id as $rid){
             WHERE id = :id;
         ');
 
-        $stmt->execute([':id' => $id]);
+        $stmt->execute([':id' => $rid]);
         $full_removal_to_add = $stmt->fetch(PDO::FETCH_ASSOC);
         foreach($removals as $rem){
             if($rem["id"] == $rid){
