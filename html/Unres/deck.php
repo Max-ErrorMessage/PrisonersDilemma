@@ -265,13 +265,13 @@ $removals_id = array_column($removals, "id");
                                 </div>
                                 <span><?php
 
-                                $amount = 0;
+                                $amount = "";
 
                                 if (in_array($card['id'], $additions_id)) {
                                     // Find the matching addition entry
                                     foreach ($additions as $a) {
                                         if ($a["id"] == $card["id"]) {
-                                            $amount += $a["amount"];
+                                            $amount = "+" . $a["amount"];
                                         }
                                     }
                                 }
@@ -280,7 +280,7 @@ $removals_id = array_column($removals, "id");
                                     // Find the matching removal entry
                                     foreach ($removals as $r) {
                                         if ($r["id"] == $card["id"]) {
-                                            $amount += $r["amount"]; // likely negative already
+                                            $amount = $r["amount"];
                                         }
                                     }
                                 }
