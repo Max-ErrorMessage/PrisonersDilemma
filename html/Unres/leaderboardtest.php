@@ -93,7 +93,7 @@ foreach ($changes_data as $change_batch) {
 
     if ($timestamp > $oneWeekAgo){
         foreach ($change_batch["logs"] as $change){
-            changed_deck_ids[] = $change["deck_id"];
+            $changed_deck_ids[] = $change["deck_id"];
         }
     }
 }
