@@ -290,13 +290,16 @@ foreach ($changes_data as $change_batch) {
                                     <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td><td>
-                                    <?= htmlspecialchars($deck['name']) ?><br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+                                    <?= htmlspecialchars($deck['name']) ?>
 
                                     <?php
                                     if(in_array($deck['id'],$changed_deck_ids)){
-                                        echo '<img src="https://pics.freeicons.io/uploads/icons/png/7766604441644374638-64.png" tooltip="This deck has new changes!">';
+                                        echo '<img src="https://pics.freeicons.io/uploads/icons/png/7766604441644374638-64.png" title="This deck has new changes!">';
                                     }
                                     ?>
+
+                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+
 
                                 </td><td class="ra">
                                     <?php
