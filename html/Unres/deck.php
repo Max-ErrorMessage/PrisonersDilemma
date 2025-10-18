@@ -180,7 +180,6 @@ foreach ($removals_id as $rid){
         $full_removal_to_add = $stmt->fetch(PDO::FETCH_ASSOC);
         foreach($removals as $rem){
             if($rem["id"] == $rid){
-                echo $rem["mb"];
                 $full_removal_to_add["mb"] = $rem["mb"];
                 $full_removal_to_add["n"] = $rem["amount"];
                 break;
@@ -329,7 +328,7 @@ foreach ($removals_id as $rid){
                                     <span
                                         onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
                                         onmouseleave='imgLeave()'
-                                        ><?= htmlspecialchars($card['card_name']) ?></span>
+                                        ><?= htmlspecialchars($card['name']) ?></span>
                                     <span><?= htmlspecialchars($card['n']) ?></span>
                                 </div>
                                 <span style="color:#0f0; width:30px; text-align:right"></span>
