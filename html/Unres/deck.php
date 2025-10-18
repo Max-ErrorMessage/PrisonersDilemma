@@ -24,7 +24,7 @@ $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$stmt = $pdo->prepare('SELECT c.id as id c.card_name as name, cid.quantity as n, c.image_url as url
+$stmt = $pdo->prepare('SELECT c.id as id, c.card_name as name, cid.quantity as n, c.image_url as url
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 where cid.deck_id = :id
