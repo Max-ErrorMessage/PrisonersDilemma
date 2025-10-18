@@ -294,7 +294,7 @@ foreach ($changes_data as $change_batch) {
 
                                     <?php
                                     if(in_array($deck['id'],$changed_deck_ids)){
-                                        echo '<img src="https://cdn-icons-png.flaticon.com/128/616/616656.png" tooltip="This deck has new changes!">';
+                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" tooltip="This deck has new changes!">';
                                     }
                                     ?>
 
