@@ -263,7 +263,7 @@ $removals_id = array_column($removals, "id");
                                         ><?= htmlspecialchars($card['name']) ?></span>
                                     <span><?= htmlspecialchars($card['n']) ?></span>
                                 </div>
-                                <span><?php
+                                <span style="color:green; width:30px;"><?php
 
                                 $amount = "";
 
