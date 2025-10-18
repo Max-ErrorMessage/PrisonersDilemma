@@ -171,7 +171,7 @@ $full_removals_sb = [];
 foreach ($removals_id as $rid){
     if (!in_array($rid, $card_ids)){
         $stmt = $pdo->prepare('
-            SELECT card_name as name, id
+            SELECT card_name as name, id, c.image_url as url
             FROM cards
             WHERE id = :id;
         ');
