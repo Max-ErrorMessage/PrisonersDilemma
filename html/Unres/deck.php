@@ -161,6 +161,38 @@ foreach ($changes_data as $change_batch) {
 $additions_id = array_column($additions, "id");
 $removals_id = array_column($removals, "id");
 
+// ---- FIND CARD INFO FOR CARDS THAT HAVE BEEN COMPLETELY REMOVED
+
+$card_ids = array_column($cards, "id");
+$ids_to_check = [];
+
+$full_removals_mb = [];
+$full_removals_sb = [];
+foreach ($removals_id as $rid){
+    if (!in_array($rid, $card_ids)){
+        $stmt = $pdo->prepare('
+            SELECT card_name as name, id
+            FROM cards
+            WHERE id = :id;
+        ');
+
+        $stmt->execute([':id' => $id]);
+        $full_removal_to_add = $stmt->fetch(PDO::FETCH_ASSOC);
+        foreach($removals as $rem){
+            if($rem["id"] == $rid){
+                $full_removal_to_add["mb"] = $rem["mb"];
+                $full_removal_to_add["n"] = $rem["amount"];
+                break;
+            }
+        }
+        if ($full_removal_to_add["mb"] == 1){
+            $full_removals_mb[] = $full_removal_to_add;
+        } else {
+            $full_removals_sb[] = $full_removal_to_add;
+        }
+    }
+}
+
 ?>
 
 
@@ -223,14 +255,14 @@ $removals_id = array_column($removals, "id");
                                         ><?= htmlspecialchars($card['name']) ?></span>
                                     <span><?= htmlspecialchars($card['n']) ?></span>
                                 </div>
-                                <span style="color:green; width:30px;"><?php
+                                <span style="color:#0f0; width:30px; text-align:right"><?php
 
                                 $amount = "";
 
                                 if (in_array($card['id'], $additions_id)) {
                                     // Find the matching addition entry
                                     foreach ($additions as $a) {
-                                        if ($a["id"] == $card["id"]) {
+                                        if ($a["id"] == $card["id"] && $a["mb"] == 1) {
                                             $amount = "+" . $a["amount"];
                                         }
                                     }
@@ -239,7 +271,7 @@ $removals_id = array_column($removals, "id");
                                 if (in_array($card['id'], $removals_id)) {
                                     // Find the matching removal entry
                                     foreach ($removals as $r) {
-                                        if ($r["id"] == $card["id"]) {
+                                        if ($r["id"] == $card["id"] && $r["mb"] == 1) {
                                             $amount = $r["amount"]; // likely negative already
                                         }
                                     }
@@ -270,7 +302,7 @@ $removals_id = array_column($removals, "id");
                                 if (in_array($card['id'], $additions_id)) {
                                     // Find the matching addition entry
                                     foreach ($additions as $a) {
-                                        if ($a["id"] == $card["id"]) {
+                                        if ($a["id"] == $card["id"] && $a["mb"] == 0) {
                                             $amount = "+" . $a["amount"];
                                         }
                                     }
@@ -279,7 +311,7 @@ $removals_id = array_column($removals, "id");
                                 if (in_array($card['id'], $removals_id)) {
                                     // Find the matching removal entry
                                     foreach ($removals as $r) {
-                                        if ($r["id"] == $card["id"]) {
+                                        if ($r["id"] == $card["id"] && $r["mb"] == 0) {
                                             $amount = $r["amount"];
                                         }
                                     }
@@ -288,6 +320,18 @@ $removals_id = array_column($removals, "id");
                                 echo $amount;
 
                                 ?></span>
+                            </div>
+                            <?php endforeach; ?>
+                            <?php foreach ($full_removals_sb as $card): ?>
+                            <div style="justify-content:space-between;display:flex; width:100%">
+                                <div style="justify-content:space-between;display:flex; width:100%">
+                                    <span
+                                        onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                        onmouseleave='imgLeave()'
+                                        ><?= htmlspecialchars($card['card_name']) ?></span>
+                                    <span><?= htmlspecialchars($card['n']) ?></span>
+                                </div>
+                                <span style="color:#0f0; width:30px; text-align:right"></span>
                             </div>
                             <?php endforeach; ?>
                             <br><br>
