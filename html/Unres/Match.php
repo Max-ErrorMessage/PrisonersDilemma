@@ -32,15 +32,15 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
     <style>
 
         .bg-fg{
-          background-image: url("images/fs3.png");
+          background-image: url("images/fn3.png");
         }
 
         .bg-img{
-          background-image: url("images/fs2.png");
+          background-image: url("images/fn2.png");
         }
 
         .bg-bg{
-          background-image: url("images/fs1.png");
+          background-image: url("images/fn1.png");
         }
 
 
