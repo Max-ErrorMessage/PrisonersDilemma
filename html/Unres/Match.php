@@ -79,7 +79,10 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
 
                 <form action="submit_match.php" method="post">
                     <h2 class="sr-only">Login Form</h2>
+                    <!--
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
+                    -->
+                    <div class="illustration"><img src="images/pumpkin.png"/></div>
                     <strong style="color:#a00"><?= $err_output ?></strong>
                     <div class="form-group">
                         <label for="winner">Winner:</label>
