@@ -105,15 +105,15 @@ $arch_output = str_replace("'", "\'", $arch_output);
 
 
         .bg-fg{
-          background-image: url("images/vb3.png");
+          background-image: url("images/ahe3.png");
         }
 
         .bg-img{
-          background-image: url("images/vb2.png");
+          background-image: url("images/ahe2.png");
         }
 
         .bg-bg{
-          background-image: url("images/vb1.png");
+          background-image: url("images/ahe1.png");
         }
 
 
