@@ -53,6 +53,10 @@ My god am i doing this too late
     overflow-y: scroll;
 }
 
+.wide{
+    width:50%;
+}
+
 .bg-img .illustration {
   text-align:center;
   padding:15px 0 20px;
@@ -248,7 +252,7 @@ td{
 
 #crd-prvw{
     position:absolute;
-    left:10%;
+    left:5%;
     width:15%;
     height:auto;
     top:50%;
