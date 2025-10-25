@@ -300,7 +300,7 @@ foreach ($changes_data as $change_batch) {
 
                                     <?php
                                     if(in_array($deck['id'],$added_deck_ids)){
-                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="This deck has new changes!">';
+                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
                                     }
                                     if(in_array($deck['id'],$changed_deck_ids)){
                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
