@@ -84,6 +84,7 @@ $changes_json = file_get_contents('/var/www/Unres-Meta/db/db_changes.json');
 $changes_data = json_decode($changes_json, true);
 
 $changed_deck_ids = [];
+$added_deck_ids = [];
 $now = new DateTime('now', new DateTimeZone('UTC'));
 $oneWeekAgo = (clone $now)->modify('-7 days');
 
@@ -93,7 +94,12 @@ foreach ($changes_data as $change_batch) {
 
     if ($timestamp > $oneWeekAgo){
         foreach ($change_batch["logs"] as $change){
-            $changed_deck_ids[] = $change["deck_id"];
+            if ($change["change_type"] == "added_deck"){
+                $added_deck_ids[] = $change["deck_id"];
+            }
+            else{
+                $changed_deck_ids[] = $change["deck_id"];
+            }
         }
     }
 }
@@ -293,8 +299,11 @@ foreach ($changes_data as $change_batch) {
                                     <?= htmlspecialchars($deck['name']) ?>
 
                                     <?php
+                                    if(in_array($deck['id'],$added_deck_ids)){
+                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="This deck has new changes!">';
+                                    }
                                     if(in_array($deck['id'],$changed_deck_ids)){
-                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
+                                       echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
                                     }
                                     ?>
 
