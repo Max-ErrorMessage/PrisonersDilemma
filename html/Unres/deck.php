@@ -141,7 +141,7 @@ foreach ($changes_data as $change_batch) {
 
     if ($timestamp > $oneWeekAgo){
         foreach ($change_batch["logs"] as $change){
-            if ($change["deck_id"] == $id){
+            if ($change["deck_id"] == $id && $change["change_type"] != "added_deck"){
                  $new_change = [
                     "id" => $change["card_id"],
                     "amount" => $change["quantity_after"] - $change["quantity_before"],
