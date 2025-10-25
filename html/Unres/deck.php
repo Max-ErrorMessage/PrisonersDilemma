@@ -254,8 +254,8 @@ foreach ($removals_id as $rid){
                                         onmouseleave='imgLeave()'
                                         ><?= htmlspecialchars($card['name']) ?></span>
                                     <span><?= htmlspecialchars($card['n']) ?></span>
-                                </div>
-                                <span style="color:#0f0; width:30px; text-align:right"><?php
+                                </div><?php
+                                $span = '<span style="color:#0e0; width:30px; text-align:right">';
 
                                 $amount = "";
 
@@ -272,11 +272,12 @@ foreach ($removals_id as $rid){
                                     // Find the matching removal entry
                                     foreach ($removals as $r) {
                                         if ($r["id"] == $card["id"] && $r["mb"] == 1) {
-                                            $amount = $r["amount"]; // likely negative already
+                                            $amount = $r["amount"];
+                                            $span = '<span style="color:#e00; width:30px; text-align:right">';
                                         }
                                     }
                                 }
-
+                                echo $span;
                                 echo $amount;
 
                                 ?></span>
@@ -295,8 +296,9 @@ foreach ($removals_id as $rid){
                                         ><?= htmlspecialchars($card['name']) ?></span>
                                     <span><?= htmlspecialchars($card['n']) ?></span>
                                 </div>
-                                <span style="color:#0c0; width:30px; text-align:right"><?php
+                                <?php
 
+                                $span = '<span style="color:#0e0; width:30px; text-align:right">';
                                 $amount = "";
 
                                 if (in_array($card['id'], $additions_id)) {
@@ -312,11 +314,12 @@ foreach ($removals_id as $rid){
                                     // Find the matching removal entry
                                     foreach ($removals as $r) {
                                         if ($r["id"] == $card["id"] && $r["mb"] == 0) {
+                                            $span = '<span style="color:#e00; width:30px; text-align:right">';
                                             $amount = $r["amount"];
                                         }
                                     }
                                 }
-
+                                echo $span;
                                 echo $amount;
 
                                 ?></span>
