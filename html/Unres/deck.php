@@ -283,6 +283,18 @@ foreach ($removals_id as $rid){
                                 ?></span>
                             </div>
                             <?php endforeach; ?>
+                            <?php foreach ($full_removals_mb as $card): ?>
+                            <div style="justify-content:space-between;display:flex; width:100%">
+                                <div style="justify-content:space-between;display:flex; width:100%">
+                                    <span style="color:#c00"
+                                        onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                        onmouseleave='imgLeave()'
+                                        ><?= htmlspecialchars($card['name']) ?></span>
+                                    <span style="color:#e00">0</span>
+                                </div>
+                                <span style="color:#c00; width:30px; text-align:right"><?= htmlspecialchars($card['n']) ?></span>
+                            </div>
+                            <?php endforeach; ?>
                         </div>
                         <br>
                         <div id="sb">
