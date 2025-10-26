@@ -56,11 +56,20 @@ foreach ($sb_cards as $card) {
 
 
 
-$stmt = $pdo->prepare('SELECT ec.elo_change, w.name AS winner, l.name AS loser FROM elo_changes ec
+$stmt = $pdo->prepare('SELECT
+    ec.elo_change,
+    AVG(ec.elo_change) OVER (
+        ORDER BY ec.id
+        ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING
+    ) AS smoothed_elo_change,
+    w.name AS winner,
+    l.name AS loser
+FROM elo_changes ec
 INNER JOIN matches m ON ec.match_id = m.id
 LEFT JOIN decks w ON w.id = m.winner_id
 LEFT JOIN decks l ON l.id = m.loser_id
-WHERE ec.deck_id = :id;');
+WHERE ec.deck_id = :id;
+');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 
@@ -69,7 +78,7 @@ $winners = [];
 $losers = [];
 $elo_rows = [];
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $elo[] = (int)$row['elo_change'];
+    $elo[] = (int)$row['smoothed_elo_change'];
     $winners[] = $row['winner'];
     $losers[] = $row['loser'];
     $elo_rows[] = $row;
