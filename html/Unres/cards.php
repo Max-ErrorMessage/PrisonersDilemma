@@ -179,15 +179,15 @@ $sbrank = 1;
 
 
         .bg-fg{
-          background-image: url("images/ahe3.png");
+          background-image: url("images/vb3.png");
         }
 
         .bg-img{
-          background-image: url("images/ahe2.png");
+          background-image: url("images/vb2.png");
         }
 
         .bg-bg{
-          background-image: url("images/ahe1.png");
+          background-image: url("images/vb1.png");
         }
 
 

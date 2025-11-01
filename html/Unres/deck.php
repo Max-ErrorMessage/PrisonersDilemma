@@ -217,15 +217,15 @@ foreach ($removals_id as $rid){
     <style>
 
         .bg-fg{
-          background-image: url("images/dto3.png");
+          background-image: url("images/lg3.png");
         }
 
         .bg-img{
-          background-image: url("images/dto2.png");
+          background-image: url("images/lg2.png");
         }
 
         .bg-bg{
-          background-image: url("images/dto1.png");
+          background-image: url("images/lg1.png");
         }
 
 
