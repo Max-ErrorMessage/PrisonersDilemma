@@ -130,9 +130,9 @@ if (isset($_GET['err']) && $_GET['err'] === "alnum") {
           const offsetX = (0.5 - x) * 2;
           const offsetY = (0.5 - y) * 2;
 
-          div1.style.backgroundPosition = `${50 + offsetX*6}% ${75 + offsetY*6}%`;
-          div2.style.backgroundPosition = `${50 + offsetX*3}% ${75 + offsetY*3}%`;
-          div3.style.backgroundPosition = `${50 + offsetX}% ${75 + offsetY}%`;
+          div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
+          div2.style.backgroundPosition = `${50 + offsetX*3}% ${50 + offsetY*3}%`;
+          div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
 

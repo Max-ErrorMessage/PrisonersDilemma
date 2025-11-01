@@ -379,9 +379,9 @@ foreach ($changes_data as $change_batch) {
           const offsetX = (0.5 - x) * 2;
           const offsetY = (0.5 - y) * 2;
 
-          div1.style.backgroundPosition = `${50 + offsetX*6}% ${35 + offsetY*6}%`;
-          div2.style.backgroundPosition = `${50 + offsetX*2}% ${35 + offsetY*2}%`;
-          div3.style.backgroundPosition = `${50 + offsetX}% ${35 + offsetY}%`;
+          div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
+          div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
+          div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
         function goToDeck(id){
