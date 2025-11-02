@@ -154,7 +154,8 @@ foreach ($changes_data as $change_batch) {
                  $new_change = [
                     "id" => $change["card_id"],
                     "amount" => $change["quantity_after"] - $change["quantity_before"],
-                    "mb" => $change["mainboard"]
+                    "mb" => $change["mainboard"],
+                    "qa" => $change["quantity_after"]
                 ];
                 if ($new_change["amount"] > 0){
                     $additions[] = $new_change;
@@ -181,7 +182,7 @@ $full_removals_sb = [];
 
 foreach ($removals as $rem){
     $rid = $rem["id"];
-    if ((!in_array($rid, $mb_cards) && $rem["mb"] == 1) || (!in_array($rid, $sb_cards) && $rem["mb"] == 0)){
+    if ($rem["qa"] == 0 && ((!in_array($rid, $mb_cards) && $rem["mb"] == 1) || (!in_array($rid, $sb_cards) && $rem["mb"] == 0))){
         $stmt = $pdo->prepare('
             SELECT card_name as name, id, image_url as url
             FROM cards
