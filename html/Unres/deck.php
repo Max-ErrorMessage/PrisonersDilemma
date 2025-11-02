@@ -177,8 +177,11 @@ $ids_to_check = [];
 
 $full_removals_mb = [];
 $full_removals_sb = [];
-foreach ($removals_id as $rid){
-    if (!in_array($rid, $card_ids)){
+
+
+foreach ($removals as $rem){
+    $rid = $rem["id"];
+    if ((!in_array($rid, $mb_cards) && $rem["mb"] == 1) || (!in_array($rid, $sb_cards) && $rem["mb"] == 0)){
         $stmt = $pdo->prepare('
             SELECT card_name as name, id, image_url as url
             FROM cards
@@ -187,13 +190,8 @@ foreach ($removals_id as $rid){
 
         $stmt->execute([':id' => $rid]);
         $full_removal_to_add = $stmt->fetch(PDO::FETCH_ASSOC);
-        foreach($removals as $rem){
-            if($rem["id"] == $rid){
-                $full_removal_to_add["mb"] = $rem["mb"];
-                $full_removal_to_add["n"] = $rem["amount"];
-                break;
-            }
-        }
+        $full_removal_to_add["mb"] = $rem["mb"];
+        $full_removal_to_add["n"] = $rem["amount"];
         if ($full_removal_to_add["mb"] == 1){
             $full_removals_mb[] = $full_removal_to_add;
         } else {
