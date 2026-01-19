@@ -24,6 +24,7 @@ $stmt->execute();
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
+// fetch all cards in mainboard and sideboard
 $stmt = $pdo->prepare('SELECT c.id as id, c.card_name as name, cid.quantity as n, c.image_url as url
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
@@ -78,7 +79,7 @@ $winners = [];
 $losers = [];
 $elo_rows = [];
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $elo[] = (int)$row['smoothed_elo_change'];
+    $elo[] = (int)$row['elo_change'];
     $winners[] = $row['winner'];
     $losers[] = $row['loser'];
     $elo_rows[] = $row;
