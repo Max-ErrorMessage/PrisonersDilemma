@@ -306,7 +306,7 @@ foreach ($changes_data as $change_batch) {
                         for ($i = 0; $i < $length; $i++): 
                             $deck = $decks[$i];
                             $deck2 = $decks[127-$i]?>
-                            <tr onclick=goToDeck(<?= $deck['id']?>) style='padding:20px; border:2px white solid; border-radius:5px;'>
+                            <tr onclick=goToDeck(<?= $deck['id']?>) style='padding:20px; border:2px white solid; border-radius:20px; margin-top:10px;'>
                                 <td>
                                     <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
@@ -337,11 +337,11 @@ foreach ($changes_data as $change_batch) {
                                 </td>
 
 
-                                <td class="la">
+                                <td>
                                     <span class="la"><?= explode('.',htmlspecialchars($deck2['elo']))[0] ?></span>
                                 </td>
 
-                                <td>
+                                <td class="ra">
                                     <?= htmlspecialchars($deck2['name']) ?>
 
                                     <?php
@@ -364,7 +364,6 @@ foreach ($changes_data as $change_batch) {
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td>
                             </tr>
-                            <br>
                             <?php $rank++; ?>
                         <?php endfor; ?>
                         </table>
