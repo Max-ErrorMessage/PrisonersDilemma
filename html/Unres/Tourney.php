@@ -306,7 +306,7 @@ foreach ($changes_data as $change_batch) {
                         for ($i = 0; $i < $length; $i++): 
                             $deck = $decks[$i];
                             $deck2 = $decks[127-$i]?>
-                            <tr onclick=goToDeck(<?= $deck['id']?>)>
+                            <tr onclick=goToDeck(<?= $deck['id']?>) style='padding:20px; border:2px white solid; border-radius:5px;'>
                                 <td>
                                     <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
