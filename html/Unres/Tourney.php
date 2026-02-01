@@ -305,7 +305,7 @@ foreach ($changes_data as $change_batch) {
                         <?php $length = count($decks)/2;
                         for ($i = 0; $i < $length; $i++): 
                             $deck = $decks[$i];
-                            $deck2 = $decks[128-$i]?>
+                            $deck2 = $decks[127-$i]?>
                             <tr onclick=goToDeck(<?= $deck['id']?>)>
                                 <td>
                                     <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
