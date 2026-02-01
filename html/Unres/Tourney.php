@@ -334,7 +334,7 @@ foreach ($changes_data as $change_batch) {
 
 
                                 <td>
-                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
+                                    <div class="n c<?= 129-$rank?>"><span id="r<?= 129-$rank?>"><?= 129-$rank?>.</span></div>
                                 </td><td>
                                     <?php $imageUrl = "images/".$deck2['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
