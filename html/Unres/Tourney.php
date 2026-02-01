@@ -331,6 +331,11 @@ foreach ($changes_data as $change_batch) {
                                 </td>
 
 
+                                
+                                <td>
+                                    <div class="n c1"><span id="r1">VS</span></div>
+                                </td>
+
 
 
                                 <td>
