@@ -308,8 +308,6 @@ foreach ($changes_data as $change_batch) {
                             $deck2 = $decks[127-$i]?>
                             <tr onclick=goToDeck(<?= $deck['id']?>)>
                                 <td>
-                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
-                                </td><td>
                                     <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td><td>
@@ -324,7 +322,9 @@ foreach ($changes_data as $change_batch) {
                                     }
                                     ?>
 
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+                                    <br>
+                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $rank ?></span>
 
                                 </td><td class="ra">
                                     <span class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
@@ -334,8 +334,6 @@ foreach ($changes_data as $change_batch) {
 
 
                                 <td>
-                                    <div class="n c<?= 129-$rank?>"><span id="r<?= 129-$rank?>"><?= 129-$rank?>.</span></div>
-                                </td><td>
                                     <?php $imageUrl = "images/".$deck2['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td><td>
@@ -350,8 +348,9 @@ foreach ($changes_data as $change_batch) {
                                     }
                                     ?>
 
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
-
+                                    <br>
+                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
+                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= 129-$rank ?></span>
 
                                 </td><td class="ra">
                                     <span class="ra"><?= explode('.',htmlspecialchars($deck2['elo']))[0] ?></span>
