@@ -337,11 +337,11 @@ foreach ($changes_data as $change_batch) {
                                 </td>
 
 
+                                <td class="la">
+                                    <span class="la"><?= explode('.',htmlspecialchars($deck2['elo']))[0] ?></span>
+                                </td>
 
                                 <td>
-                                    <?php $imageUrl = "images/".$deck2['colour'].".png"; ?>
-                                    <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                </td><td>
                                     <?= htmlspecialchars($deck2['name']) ?>
 
                                     <?php
@@ -357,10 +357,14 @@ foreach ($changes_data as $change_batch) {
                                     <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
                                     <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= 129-$rank ?></span>
 
-                                </td><td class="ra">
-                                    <span class="ra"><?= explode('.',htmlspecialchars($deck2['elo']))[0] ?></span>
+                                </td>
+
+                                <td>
+                                    <?php $imageUrl = "images/".$deck2['colour'].".png"; ?>
+                                    <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td>
                             </tr>
+                            <br>
                             <?php $rank++; ?>
                         <?php endfor; ?>
                         </table>
