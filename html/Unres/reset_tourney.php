@@ -220,8 +220,8 @@ for ($i = 220; $i < 224; $i++) { // matches 220-223 (4) (1 loss)
 for ($i = 224; $i < 228; $i++) { // matches 224-227 (4) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 4, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-24), PDO::PARAM_INT); // winners of matches 200-203
-    $stmt->bindValue(':rightid', "W" . ($i-20), PDO::PARAM_INT); // winners of matches 204-207
+    $stmt->bindValue(':leftid', "W" . ($i-24), PDO::PARAM_STR); // winners of matches 200-203
+    $stmt->bindValue(':rightid', "W" . ($i-20), PDO::PARAM_STR); // winners of matches 204-207
     $stmt->execute();
 }
 
