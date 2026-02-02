@@ -284,28 +284,12 @@ foreach ($changes_data as $change_batch) {
 
                 <!-- Tab Buttons -->
 
-                <a class="tab" id="t1" onclick="switchTab(1)">
-                    <div class="roundtab">1.</div>
+                <a class="tab" id="t1" onclick="incrementTab(1)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
                 </a>
-                <a class="tab" id="t2" onclick="switchTab(2)">
-                    <div class="roundtab">2.</div>
+                <a class="tab" id="t2" onclick="incrementTab(2)">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
-                <a class="tab" id="t3" onclick="switchTab(3)">
-                    <div class="roundtab">3.</div>
-                </a>
-                <a class="tab" id="t4" onclick="switchTab(4)">
-                    <div class="roundtab">4.</div>
-                </a>
-                <a class="tab" id="t5" onclick="switchTab(5)">
-                    <div class="roundtab">5.</div>
-                </a>
-                <a class="tab" id="t6" onclick="switchTab(6)">
-                    <div class="roundtab">6.</div>
-                </a>
-                <a class="tab" id="t7" onclick="switchTab(7)">
-                    <div class="roundtab">7.</div>
-                </a>
-
 
                 <div id="lb">
                     <div id = "page1">
@@ -385,23 +369,19 @@ foreach ($changes_data as $change_batch) {
                         <canvas id="elograph"></canvas>
                     </div>
                     <div id="page3" style="display:none">
-                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <strong>Similar Decks:</strong>
-                        <br>
-                        <br>
-                        <div id="sim-table">
-                            <table id=>
-                                <?php foreach ($sim_data as $deck): ?>
-                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
-                                        <td>
-                                            <p><?= htmlspecialchars($deck['name'])?></p>
-                                        </td><td>
-                                            <p style="text-align:right;"><?=  round($deck['sim'] * 100) ?>%</p>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
+                        <h3 style="text-align:center;"> Page 3 </h3>
+                    </div>
+                    <div id="page4" style="display:none">
+                        <h3 style="text-align:center;"> Page 4 </h3>
+                    </div>
+                    <div id="page5" style="display:none">
+                        <h3 style="text-align:center;"> Page 5 </h3>
+                    </div>
+                    <div id="page6" style="display:none">
+                        <h3 style="text-align:center;"> Page 6 </h3>
+                    </div>
+                    <div id="page7" style="display:none">
+                        <h3 style="text-align:center;"> Page 7 </h3>
                     </div>
 
 
@@ -413,7 +393,7 @@ foreach ($changes_data as $change_batch) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-
+        var currentTab = 1;
         const archetypes = JSON.parse('<?php echo (trim($arch_output)); ?>')
         console.log(archetypes);
 
@@ -533,6 +513,73 @@ foreach ($changes_data as $change_batch) {
                 page3.style.display = "block"
                 page1.style.display = "none"
                 page2.style.display = "none"
+            }
+        }
+
+        function incrementTab(dir){
+            if (dir == 1){
+                n -= 1
+                if (n==0){
+                    n = 1
+                }
+            }
+            if (dir == 2){
+                n += 1
+                if (n==8){
+                    n = 7
+                }
+            }
+            tab1 = document.getElementById("t1")
+            tab2 = document.getElementById("t2")
+            page1 = document.getElementById("page1")
+            page2 = document.getElementById("page2")
+            page3 = document.getElementById("page3")
+            page4 = document.getElementById("page4")
+            page5 = document.getElementById("page5")
+            page6 = document.getElementById("page6")
+            page7 = document.getElementById("page7")
+            if (n==1){
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab1.style.backgroundColor = "none"
+                tab2.style.backgroundColor = "#1e2833"
+                tab2.style.backgroundImage = "none"
+
+                page1.style.display = "block"
+                page2.style.display = "none"
+                page3.style.display = "none"
+                page4.style.display = "none"
+                page5.style.display = "none"
+                page6.style.display = "none"
+                page7.style.display = "none"
+
+            } else if (n==7){
+                tab1.style.backgroundColor = "#1e2833"
+                tab1.style.backgroundImage = "none"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab2.style.backgroundColor = "none"
+
+                page7.style.display = "block"
+                page1.style.display = "none"
+                page2.style.display = "none"
+                page3.style.display = "none"
+                page4.style.display = "none"
+                page5.style.display = "none"
+                page6.style.display = "none"
+
+            }else{
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab1.style.backgroundColor = "none"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab2.style.backgroundColor = "#none"
+
+                page1.style.display = "none"
+                page2.style.display = "none"
+                page3.style.display = "none"
+                page4.style.display = "none"
+                page5.style.display = "none"
+                page6.style.display = "none"
+                page7.style.display = "none"
+                document.getElementById("page"+n).style.display = "block"
             }
         }
 
