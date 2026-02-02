@@ -342,16 +342,5 @@ for ($i = 246; $i < 247; $i++) { // match 246 (1) (1 loss)
 
 // losers of matches 230-239 are eliminated
 
-
-
-
-
-
-
-
-
-
-$stmt->execute();
-
 $pdo->commit();
 ?>
