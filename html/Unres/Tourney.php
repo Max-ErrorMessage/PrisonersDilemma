@@ -299,6 +299,8 @@ foreach ($changes_data as $change_batch) {
                 </a>
                 <div id="lb">
                     <div id = "page1">
+                        <a onclick="reset()">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/></a>
                         <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
                         <table>
@@ -522,6 +524,14 @@ foreach ($changes_data as $change_batch) {
                 page1.style.display = "none"
                 page2.style.display = "none"
             }
+        }
+
+        function reset(){
+            fetch("reset_tourney.php", {
+                method: 'POST'
+            }).then(() => {
+                location.reload();
+            });
         }
 
     </script>
