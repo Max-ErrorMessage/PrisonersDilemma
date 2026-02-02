@@ -88,8 +88,9 @@ for ($i = $currentSize; $i < $targetSize; $i++) {
 $decksbyid = [];
 $rank = 1;
 foreach ($decks as $deck) {
-    $decks['rank'] = $rank;
+    $deck['rank'] = $rank;
     $decksbyid[$deck['id']] = $deck;
+    $rank += 1;
 }
 
 
