@@ -196,6 +196,22 @@ td{
 #t3{
     left: calc(33% + 160px);
 }
+#t4{
+    left: calc(33% + 200px);
+}
+#t5{
+    left: calc(33% + 240px);
+}
+#t6{
+    left: calc(33% + 280px);
+}
+#t7{
+    left: calc(33% + 320px);
+}
+
+.roundtab{
+    background-color:#78c;
+}
 
 #ct1{
     background-color:#1e2833;

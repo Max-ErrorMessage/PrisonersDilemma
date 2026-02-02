@@ -259,13 +259,9 @@ foreach ($changes_data as $change_batch) {
             top:100px;
             background-color: #444
         }
-
-
-
     </style>
 </head>
 <body>
-
     <div class="bg-bg">
         <div class="bg-img">
             <div class="bg-fg">
@@ -289,14 +285,28 @@ foreach ($changes_data as $change_batch) {
                 <!-- Tab Buttons -->
 
                 <a class="tab" id="t1" onclick="switchTab(1)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
+                    <div class="roundtab">1.</div>
                 </a>
                 <a class="tab" id="t2" onclick="switchTab(2)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                    <div class="roundtab">2.</div>
                 </a>
-                <a class="tab white" id="t3" onclick="switchTab(3)" style="display:none;">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/>
+                <a class="tab" id="t3" onclick="switchTab(3)">
+                    <div class="roundtab">3.</div>
                 </a>
+                <a class="tab" id="t4" onclick="switchTab(4)">
+                    <div class="roundtab">4.</div>
+                </a>
+                <a class="tab" id="t5" onclick="switchTab(5)">
+                    <div class="roundtab">5.</div>
+                </a>
+                <a class="tab" id="t6" onclick="switchTab(6)">
+                    <div class="roundtab">6.</div>
+                </a>
+                <a class="tab" id="t7" onclick="switchTab(7)">
+                    <div class="roundtab">7.</div>
+                </a>
+
+
                 <div id="lb">
                     <div id = "page1">
                         <a onclick="reset()">
