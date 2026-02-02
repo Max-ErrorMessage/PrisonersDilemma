@@ -312,7 +312,7 @@ foreach ($changes_data as $change_batch) {
                         <br>
                         <table>
                         <?php foreach ($matches as $match): ?>
-                            <?php if (!$match['round'] == 0) continue; ?>
+                            <?php if ($match['round'] !== 0) continue; ?>
                             <tr style='padding:20px; border:2px white solid; border-radius:20px; margin-top:10px;'>
                                 <?php if (ctype_digit($match["leftid"])): ?>
                                     <td>
@@ -365,12 +365,12 @@ foreach ($changes_data as $change_batch) {
                                         <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['rank'] ?></span>
 
                                     </td><td class="ra">
-                                        <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
+                                        <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
                                     </td>
 
                                 <?php endif; ?>
                             </tr>
-                        <?php endfor; ?>
+                        <?php endforeach; ?>
                         </table>
                     </div>
 
