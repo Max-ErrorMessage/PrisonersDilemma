@@ -75,7 +75,7 @@ $currentSize = count($decks);
 
 for ($i = $currentSize; $i < $targetSize; $i++) {
     $decks[] = [
-        'id' => null,
+        'id' => 0,
         'colour' => 0,
         'cid' => 'Ukn01',
         'name' => 'Unknown deck',
