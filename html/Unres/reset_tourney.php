@@ -354,3 +354,4 @@ for ($i = 246; $i < 247; $i++) { // match 246 (1) (1 loss)
 $stmt->execute();
 
 $pdo->commit();
+?>
