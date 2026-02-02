@@ -67,7 +67,8 @@ LEFT join
 GROUP BY id, position_change
 ORDER BY elo DESC;');
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$rank = 1;
+
+
 
 $targetSize = 128;
 $currentSize = count($decks);
@@ -82,6 +83,19 @@ for ($i = $currentSize; $i < $targetSize; $i++) {
         'position_change' => 0
     ];
 }
+
+
+$decksbyid = [];
+$rank = 1;
+foreach ($decks as $deck) {
+    $decks['rank'] = $rank;
+    $decksbyid[$deck['id']] = $deck;
+}
+
+
+// Fetch all decks
+$stmt = $pdo->query('Select * from tournament');
+$matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
@@ -293,74 +307,69 @@ foreach ($changes_data as $change_batch) {
 
                 <div id="lb">
                     <div id = "page1">
-                        <a onclick="reset()">
-                            <img src="https://cdn-icons-png.flaticon.com/128/3867/3867474.png"/></a>
+                        <a onclick="reset()">reset</a>
                         <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
                         <table>
-                        <?php $length = count($decks)/2;
-                        for ($i = 0; $i < $length; $i++): 
-                            $deck = $decks[$i];
-                            $deck2 = $decks[127-$i]?>
-                            <tr onclick=goToDeck(<?= $deck['id']?>) style='padding:20px; border:2px white solid; border-radius:20px; margin-top:10px;'>
-                                <td>
-                                    <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
-                                    <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                </td><td>
-                                    <?= htmlspecialchars($deck['name']) ?>
+                        <?php foreach ($matches as $match): ?>
+                            <?php if (!$match['round'] == 0) continue; ?>
+                            <tr style='padding:20px; border:2px white solid; border-radius:20px; margin-top:10px;'>
+                                <?php if (ctype_digit($match["leftid"])): ?>
+                                    <td>
+                                        <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
+                                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                                    </td><td>
+                                        <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
 
-                                    <?php
-                                    if(in_array($deck['id'],$added_deck_ids)){
-                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
-                                    }
-                                    if(in_array($deck['id'],$changed_deck_ids)){
-                                       echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
-                                    }
-                                    ?>
+                                        <?php
+                                        if(in_array($decksbyid[$match["leftid"]]['id'],$added_deck_ids)){
+                                            echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
+                                        }
+                                        if(in_array($decksbyid[$match["leftid"]]['id'],$changed_deck_ids)){
+                                           echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
+                                        }
+                                        ?>
 
-                                    <br>
-                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
-                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $rank ?></span>
+                                        <br>
+                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['cid'] ?></span>
+                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['rank'] ?></span>
 
-                                </td><td class="ra">
-                                    <span class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
-                                </td>
+                                    </td><td class="ra">
+                                        <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
+                                    </td>
 
-
+                                <?php endif; ?>
                                 
                                 <td>
                                     <div class="n c1"><span id="r1">VS</span></div>
                                 </td>
 
+                                <?php if (ctype_digit($match["rightid"])): ?>
+                                    <td>
+                                        <?php $imageUrl = "images/".$decksbyid[$match["rightid"]]['colour'].".png"; ?>
+                                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                                    </td><td>
+                                        <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
 
-                                <td>
-                                    <span class="la"><?= explode('.',htmlspecialchars($deck2['elo']))[0] ?></span>
-                                </td>
+                                        <?php
+                                        if(in_array($decksbyid[$match["rightid"]]['id'],$added_deck_ids)){
+                                            echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
+                                        }
+                                        if(in_array($decksbyid[$match["rightid"]]['id'],$changed_deck_ids)){
+                                           echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
+                                        }
+                                        ?>
 
-                                <td class="ra">
-                                    <?= htmlspecialchars($deck2['name']) ?>
+                                        <br>
+                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['cid'] ?></span>
+                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['rank'] ?></span>
 
-                                    <?php
-                                    if(in_array($deck2['id'],$added_deck_ids)){
-                                        echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
-                                    }
-                                    if(in_array($deck2['id'],$changed_deck_ids)){
-                                       echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
-                                    }
-                                    ?>
+                                    </td><td class="ra">
+                                        <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
+                                    </td>
 
-                                    <br>
-                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck2['cid'] ?></span>
-                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= 129-$rank ?></span>
-
-                                </td>
-
-                                <td>
-                                    <?php $imageUrl = "images/".$deck2['colour'].".png"; ?>
-                                    <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                </td>
+                                <?php endif; ?>
                             </tr>
-                            <?php $rank++; ?>
                         <?php endfor; ?>
                         </table>
                     </div>
