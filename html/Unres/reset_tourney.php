@@ -72,7 +72,7 @@ $rank = 1;
 $targetSize = 128;
 $currentSize = count($decks);
 
-$n = 0
+$n = 0;
 for ($i = $currentSize; $i < $targetSize; $i++) {
     $n++;
     $decks[] = [
@@ -92,13 +92,13 @@ $pdo->exec("TRUNCATE TABLE tournament");
 
 $stmt = $pdo->prepare("
     INSERT INTO tournament (id, round, leftid, rightid)
-    VALUES (:id, round, leftid, rightid)
+    VALUES (:id, :round, :leftid, :rightid)
 ");
 for ($i = 0; $i < 64; $i++) { // matches 0-63 (64) (0 losses)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 0, PDO::PARAM_INT);
     $stmt->bindValue(':leftid', $decks[$i]['id'], PDO::PARAM_INT); // top 64 decks
-    $stmt->bindValue(':rightid', $decks[128-$i]['id'], PDO::PARAM_INT); // bottom 64 decks
+    $stmt->bindValue(':rightid', $decks[127-$i]['id'], PDO::PARAM_INT); // bottom 64 decks
     $stmt->execute();
 }
 
