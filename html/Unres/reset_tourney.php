@@ -97,8 +97,8 @@ $stmt = $pdo->prepare("
 for ($i = 0; $i < 64; $i++) { // matches 0-63 (64) (0 losses)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 0, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', $decks[$i]['id'], PDO::PARAM_INT); // top 64 decks
-    $stmt->bindValue(':rightid', $decks[127-$i]['id'], PDO::PARAM_INT); // bottom 64 decks
+    $stmt->bindValue(':leftid', $decks[$i]['id'], PDO::PARAM_STR); // top 64 decks
+    $stmt->bindValue(':rightid', $decks[127-$i]['id'], PDO::PARAM_STR); // bottom 64 decks
     $stmt->execute();
 }
 
@@ -107,16 +107,16 @@ for ($i = 0; $i < 64; $i++) { // matches 0-63 (64) (0 losses)
 for ($i = 64; $i < 96; $i++) { // matches 64-95 (32) (0 losses)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 1, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i - 64), PDO::PARAM_INT); // winners of matches 0-31
-    $stmt->bindValue(':rightid', "W" . ($i - 32), PDO::PARAM_INT); // winners of matches 32-63
+    $stmt->bindValue(':leftid', "W" . ($i - 64), PDO::PARAM_STR); // winners of matches 0-31
+    $stmt->bindValue(':rightid', "W" . ($i - 32), PDO::PARAM_STR); // winners of matches 32-63
     $stmt->execute();
 }
 
 for ($i = 96; $i < 128; $i++) { // matches 96-127 (32) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 1, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "L" . ($i - 96), PDO::PARAM_INT); // losers of matches 0-31
-    $stmt->bindValue(':rightid', "L" . ($i - 64), PDO::PARAM_INT); // losers of matches 32-63
+    $stmt->bindValue(':leftid', "L" . ($i - 96), PDO::PARAM_STR); // losers of matches 0-31
+    $stmt->bindValue(':rightid', "L" . ($i - 64), PDO::PARAM_STR); // losers of matches 32-63
     $stmt->execute();
 }
 
@@ -125,24 +125,24 @@ for ($i = 96; $i < 128; $i++) { // matches 96-127 (32) (1 loss)
 for ($i = 128; $i < 144; $i++) { // matches 128-143 (16) (0 losses)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 2, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-64), PDO::PARAM_INT); // winners of matches 64-79
-    $stmt->bindValue(':rightid', "W" . ($i-48), PDO::PARAM_INT); // winners of mtches 80-95
+    $stmt->bindValue(':leftid', "W" . ($i-64), PDO::PARAM_STR); // winners of matches 64-79
+    $stmt->bindValue(':rightid', "W" . ($i-48), PDO::PARAM_STR); // winners of mtches 80-95
     $stmt->execute();
 }
 
 for ($i = 144; $i < 160; $i++) { // matches 144-159 (16) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 2, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "L" . ($i-80), PDO::PARAM_INT); // losers of matches 64-79
-    $stmt->bindValue(':rightid', "L" . ($i-64), PDO::PARAM_INT); // losers of matches 80-95
+    $stmt->bindValue(':leftid', "L" . ($i-80), PDO::PARAM_STR); // losers of matches 64-79
+    $stmt->bindValue(':rightid', "L" . ($i-64), PDO::PARAM_STR); // losers of matches 80-95
     $stmt->execute();
 }
 
 for ($i = 160; $i < 176; $i++) { // matches 160-175 (16) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 2, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-64), PDO::PARAM_INT); // winners of matches 96-111
-    $stmt->bindValue(':rightid', "W" . ($i-48), PDO::PARAM_INT); // winners of matches 112-127
+    $stmt->bindValue(':leftid', "W" . ($i-64), PDO::PARAM_STR); // winners of matches 96-111
+    $stmt->bindValue(':rightid', "W" . ($i-48), PDO::PARAM_STR); // winners of matches 112-127
     $stmt->execute();
 }
 //losers of matches 96-127 are eliminated
@@ -152,32 +152,32 @@ for ($i = 160; $i < 176; $i++) { // matches 160-175 (16) (1 loss)
 for ($i = 176; $i < 184; $i++) { // matches 176-183 (8) (0 losses)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 3, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-48), PDO::PARAM_INT); // winners of matches 128-135
-    $stmt->bindValue(':rightid', "W" . ($i-40), PDO::PARAM_INT); // winners of matches 136-143
+    $stmt->bindValue(':leftid', "W" . ($i-48), PDO::PARAM_STR); // winners of matches 128-135
+    $stmt->bindValue(':rightid', "W" . ($i-40), PDO::PARAM_STR); // winners of matches 136-143
     $stmt->execute();
 }
 
 for ($i = 184; $i < 192; $i++) { // matches 184-191 (8) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 3, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "L" . ($i-56), PDO::PARAM_INT); // losers of matches 128-135
-    $stmt->bindValue(':rightid', "L" . ($i-48), PDO::PARAM_INT); // losers of matches 136-143
+    $stmt->bindValue(':leftid', "L" . ($i-56), PDO::PARAM_STR); // losers of matches 128-135
+    $stmt->bindValue(':rightid', "L" . ($i-48), PDO::PARAM_STR); // losers of matches 136-143
     $stmt->execute();
 }
 
 for ($i = 192; $i < 200; $i++) { // matches 192-199 (8) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 3, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-48), PDO::PARAM_INT); // winners of matches 144-151
-    $stmt->bindValue(':rightid', "W" . ($i-40), PDO::PARAM_INT); // winners of matches 152-159
+    $stmt->bindValue(':leftid', "W" . ($i-48), PDO::PARAM_STR); // winners of matches 144-151
+    $stmt->bindValue(':rightid', "W" . ($i-40), PDO::PARAM_STR); // winners of matches 152-159
     $stmt->execute();
 }
 
 for ($i = 200; $i < 208; $i++) { // matches 200-207 (8) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 3, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-40), PDO::PARAM_INT); // winners of matches 160-167
-    $stmt->bindValue(':rightid', "W" . ($i-32), PDO::PARAM_INT); // winners of matches 168-175
+    $stmt->bindValue(':leftid', "W" . ($i-40), PDO::PARAM_STR); // winners of matches 160-167
+    $stmt->bindValue(':rightid', "W" . ($i-32), PDO::PARAM_STR); // winners of matches 168-175
     $stmt->execute();
 }
 
@@ -188,32 +188,32 @@ for ($i = 200; $i < 208; $i++) { // matches 200-207 (8) (1 loss)
 for ($i = 208; $i < 212; $i++) { // matches 208-211 (4) (0 losses)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 4, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-32), PDO::PARAM_INT); // winners of matches 176-179
-    $stmt->bindValue(':rightid', "W" . ($i-28), PDO::PARAM_INT); // winners of matches 180-183
+    $stmt->bindValue(':leftid', "W" . ($i-32), PDO::PARAM_STR); // winners of matches 176-179
+    $stmt->bindValue(':rightid', "W" . ($i-28), PDO::PARAM_STR); // winners of matches 180-183
     $stmt->execute();
 }
 
 for ($i = 212; $i < 216; $i++) { // matches 212-215 (4) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 4, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "L" . ($i-36), PDO::PARAM_INT); // losers of matches 176-179
-    $stmt->bindValue(':rightid', "L" . ($i-32), PDO::PARAM_INT); // losers of matches 180-183
+    $stmt->bindValue(':leftid', "L" . ($i-36), PDO::PARAM_STR); // losers of matches 176-179
+    $stmt->bindValue(':rightid', "L" . ($i-32), PDO::PARAM_STR); // losers of matches 180-183
     $stmt->execute();
 }
 
 for ($i = 216; $i < 220; $i++) { // matches 216-219 (4) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 4, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-32), PDO::PARAM_INT); // winners of matches 184-187
-    $stmt->bindValue(':rightid', "W" . ($i-28), PDO::PARAM_INT); // winners of matches 188-191
+    $stmt->bindValue(':leftid', "W" . ($i-32), PDO::PARAM_STR); // winners of matches 184-187
+    $stmt->bindValue(':rightid', "W" . ($i-28), PDO::PARAM_STR); // winners of matches 188-191
     $stmt->execute();
 }
 
 for ($i = 220; $i < 224; $i++) { // matches 220-223 (4) (1 loss)
     $stmt->bindValue(':id', $i, PDO::PARAM_INT);
     $stmt->bindValue(':round', 4, PDO::PARAM_INT);
-    $stmt->bindValue(':leftid', "W" . ($i-28), PDO::PARAM_INT); // winners of matches 192-195
-    $stmt->bindValue(':rightid', "W" . ($i-24), PDO::PARAM_INT); // winners of matches 196-199
+    $stmt->bindValue(':leftid', "W" . ($i-28), PDO::PARAM_STR); // winners of matches 192-195
+    $stmt->bindValue(':rightid', "W" . ($i-24), PDO::PARAM_STR); // winners of matches 196-199
     $stmt->execute();
 }
 
