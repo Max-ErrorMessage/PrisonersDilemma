@@ -518,15 +518,15 @@ foreach ($changes_data as $change_batch) {
 
         function incrementTab(dir){
             if (dir == 1){
-                n -= 1
-                if (n==0){
-                    n = 1
+                currentTab -= 1
+                if (currentTab==0){
+                    currentTab = 1
                 }
             }
             if (dir == 2){
-                n += 1
-                if (n==8){
-                    n = 7
+                currentTab += 1
+                if (currentTab==8){
+                    currentTab = 7
                 }
             }
             tab1 = document.getElementById("t1")
@@ -538,7 +538,7 @@ foreach ($changes_data as $change_batch) {
             page5 = document.getElementById("page5")
             page6 = document.getElementById("page6")
             page7 = document.getElementById("page7")
-            if (n==1){
+            if (currentTab==1){
                 tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
                 tab2.style.backgroundColor = "#1e2833"
@@ -552,7 +552,7 @@ foreach ($changes_data as $change_batch) {
                 page6.style.display = "none"
                 page7.style.display = "none"
 
-            } else if (n==7){
+            } else if (currentTab==7){
                 tab1.style.backgroundColor = "#1e2833"
                 tab1.style.backgroundImage = "none"
                 tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
@@ -579,7 +579,7 @@ foreach ($changes_data as $change_batch) {
                 page5.style.display = "none"
                 page6.style.display = "none"
                 page7.style.display = "none"
-                document.getElementById("page"+n).style.display = "block"
+                document.getElementById("page"+currentTab).style.display = "block"
             }
         }
 
