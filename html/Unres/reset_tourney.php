@@ -91,7 +91,7 @@ $pdo->beginTransaction();
 $pdo->exec("TRUNCATE TABLE tournament");
 
 $stmt = $pdo->prepare("
-    INSERT INTO tournament (id, round, leftid, rightid, winnerid)
+    INSERT INTO tournament (id, round, leftid, rightid)
     VALUES (:id, round, leftid, rightid)
 ");
 for ($i = 0; $i < 64; $i++) { // matches 0-63 (64) (0 losses)
