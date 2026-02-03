@@ -445,3 +445,20 @@ tr td:last-child {
 #p3:hover{
     width:175px;
 }
+
+.trl{
+    border-radius:5px 3px 1px 7px;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
+}
+.trm{
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+}
+.trr{
+    border-radius:3px 5px 7px 1px;
+    border-top: 3px solid white;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+}
