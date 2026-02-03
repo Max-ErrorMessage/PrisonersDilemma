@@ -376,6 +376,9 @@ foreach ($changes_data as $change_batch) {
                                                 <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
                                             </td>
                                         <?php else: ?>
+                                            <td>
+                                                <img src="0.png" class="ra lbimg"/>
+                                            </td>
                                             <?php if ($match["leftid"][0] === 'W'): ?>
                                                 <td class = 'trl'>Winner of match:</td>
                                             <?php else: ?>
@@ -412,6 +415,9 @@ foreach ($changes_data as $change_batch) {
                                                 <img class="ra lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                             </td>
                                         <?php else: ?>
+                                            <td>
+                                                <img src="0.png" class="ra lbimg"/>
+                                            </td>
                                             <?php if ($match["rightid"][0] === 'W'): ?>
                                                 <td class = 'trl'>Winner of match:</td>
                                             <?php else: ?>
