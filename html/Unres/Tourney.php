@@ -387,7 +387,6 @@ foreach ($changes_data as $change_batch) {
                                             <td class = 'trr ra'>
                                                 <?php echo (int)substr($match["leftid"], 1) + 1; ?>
                                             </td>
-                                            <td></td>
                                         <?php endif; ?>
 
                                         <td class="ca">
