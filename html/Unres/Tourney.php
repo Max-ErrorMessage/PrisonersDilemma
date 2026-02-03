@@ -330,8 +330,7 @@ foreach ($changes_data as $change_batch) {
                     <img src="https://cdn-icons-png.flaticon.com/512/17222/17222669.png"/>
                 </a>
 
-                <div id="lb">
-
+                <div class="wide" id="lb">
                     <?php for($i=1;$i<8;$i++):?>
                         <?php 
                             if ($i==1){
