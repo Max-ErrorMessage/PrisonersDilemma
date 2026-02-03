@@ -374,7 +374,7 @@ foreach ($changes_data as $change_batch) {
                                             <td></td>
                                         <?php endif; ?>
 
-                                        <td>
+                                        <td class="ca">
                                             <div class="n c1 ca"><span id="r1">VS</span></div>
                                         </td>
 
