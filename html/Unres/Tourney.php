@@ -375,7 +375,7 @@ foreach ($changes_data as $change_batch) {
                                         <?php endif; ?>
 
                                         <td>
-                                            <div class="n c1"><span id="r1">VS</span></div>
+                                            <div class="n c1 ca"><span id="r1">VS</span></div>
                                         </td>
 
                                         <?php if (ctype_digit($match["rightid"])): ?>
