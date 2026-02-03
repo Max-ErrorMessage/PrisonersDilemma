@@ -401,7 +401,6 @@ foreach ($changes_data as $change_batch) {
                                             </td>
                                         <?php else: ?>
                                             <?php if ($match["rightid"][0] === 'W'): ?>
-                                            <td></td>
                                                 <td>Winner of match:</td>
                                             <?php else: ?>
                                                 <td>Loser of match:</td>
