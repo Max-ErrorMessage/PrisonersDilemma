@@ -324,9 +324,14 @@ foreach ($changes_data as $change_batch) {
                 <div id="lb">
 
                     <?php for($i=1;$i<8;$i++):?>
-
-                        <div id="page<?= $i ?>" style="display:none">
-                            <a onclick="reset()">reset</a>
+                        <?php 
+                            if ($i==1){
+                                $style = "block"
+                            } else {
+                                $style = "none"
+                            }
+                        ?>
+                        <div id="page<?= $i ?>" style="display:<?= $style?>">
                             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                             <br>
                             <table>
@@ -396,9 +401,10 @@ foreach ($changes_data as $change_batch) {
                                             </td>
                                         <?php else: ?>
                                             <?php if ($match["rightid"][0] === 'W'): ?>
-                                                <td class="ra">Winner of match:</td>
+                                            <td></td>
+                                                <td>Winner of match:</td>
                                             <?php else: ?>
-                                                <td class="ra">Loser of match:</td>
+                                                <td>Loser of match:</td>
                                             <?php endif; ?>
                                             <td>
                                                 <?php echo (int)substr($match["rightid"], 1); ?>
