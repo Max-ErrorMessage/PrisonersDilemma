@@ -100,7 +100,7 @@ $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $matchesbyid = [];
 foreach ($matches as $match) {
-    if (!ctype_digit($match["leftid"])) { // checks if in the form [W/L][num], if this is true, the rightid equivalent will also be true
+    if (!is_numeric($match['leftid'])) {// checks if in the form [W/L][num], if this is true, the rightid equivalent will also be true
         if ($matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"] !== null){ //same logic here with left/rightid and winner/loserid
             if ($match["leftid"][0] === 'W') { //same again with left/rightid 
                 $match["leftid"] = $matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"];
