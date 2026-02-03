@@ -346,7 +346,7 @@ foreach ($changes_data as $change_batch) {
                                             <td class = 'trl'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
                                                 <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                            </td><td class = 'trm' onclick="submitMatch(<?= $match["id"];?>, 0)">
+                                            </td><td class = 'trm' onclick="submitMatch(<?= $match["id"];?>, <?= $match["leftid"];?>, <?= $match["rightid"];?>)">
                                                 <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
 
                                                 <?php
@@ -384,7 +384,7 @@ foreach ($changes_data as $change_batch) {
                                         <?php if (ctype_digit($match["rightid"])): ?>
                                             <td class = 'trl'>
                                                 <span><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
-                                            </td><td class="trm ra" onclick="submitMatch(<?= $match["id"];?>, 1)">
+                                            </td><td class="trm ra" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>)">
                                                 <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
                                                 <?php
                                                 if(in_array($decksbyid[$match["rightid"]]['id'],$added_deck_ids)){
@@ -623,9 +623,20 @@ foreach ($changes_data as $change_batch) {
             });
         }
 
-        function submitMatch(matchid,deck){
+        function submitMatch(matchid,winnerid,loserid){
             console.log(matchid)
             console.log(deck)
+            fetch('submit_tourney_match.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    matchId: match.id,
+                    winnerId: winnerid,
+                    loserId: loserid
+                })
+            }).then(() => {
+                location.reload();
+            });
         }
 
     </script>
