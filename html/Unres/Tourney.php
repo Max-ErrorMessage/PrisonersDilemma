@@ -628,7 +628,7 @@ foreach ($changes_data as $change_batch) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams({
-                    matchId: match.id,
+                    matchId: matchid,
                     winnerId: winnerid,
                     loserId: loserid
                 })
