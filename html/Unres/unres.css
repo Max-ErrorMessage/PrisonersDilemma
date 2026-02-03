@@ -447,7 +447,7 @@ tr td:last-child {
 }
 
 .trl{
-    border-radius:5px 3px 1px 7px;
+    border-radius:5px 0 0 5px;
     border-top: 3px solid white;
     border-left: 3px solid white;
     border-bottom: 3px solid white;
@@ -457,7 +457,7 @@ tr td:last-child {
     border-bottom: 3px solid white;
 }
 .trr{
-    border-radius:3px 5px 7px 1px;
+    border-radius:0 5px 5px 0;
     border-top: 3px solid white;
     border-right: 3px solid white;
     border-bottom: 3px solid white;
