@@ -99,7 +99,7 @@ $stmt = $pdo->query('Select * from tournament');
 $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $matchesbyid = [];
-foreach ($matches as $match) {
+foreach ($matches as &$match) {
     if (!is_numeric($match['leftid'])) {// checks if in the form [W/L][num], if this is true, the rightid equivalent will also be true
         if ($match["leftid"][0] === 'W') { 
             if ($matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"] !== null){
