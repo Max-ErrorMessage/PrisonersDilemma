@@ -315,84 +315,21 @@ foreach ($changes_data as $change_batch) {
                 <!-- Tab Buttons -->
 
                 <a class="tab" id="t1" onclick="incrementTab(1)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
+                    <img src="https://cdn-icons-png.flaticon.com/128/17222/17222665.png"/>
                 </a>
                 <a class="tab" id="t2" onclick="incrementTab(2)">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/17222/17222669.png"/>
                 </a>
 
                 <div id="lb">
-                    <div id = "page1">
-                        <a onclick="reset()">reset</a>
-                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                        <br>
-                        <table>
-                        <?php foreach ($matches as $match): ?>
-                            <?php if ($match['round'] !== 0) continue; ?>
-                            <tr style='padding:20px; border:2px white solid; border-radius:20px; margin-top:10px;'>
-                                <?php if (ctype_digit($match["leftid"])): ?>
-                                    <td>
-                                        <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
-                                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                    </td><td>
-                                        <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
 
-                                        <?php
-                                        if(in_array($decksbyid[$match["leftid"]]['id'],$added_deck_ids)){
-                                            echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
-                                        }
-                                        if(in_array($decksbyid[$match["leftid"]]['id'],$changed_deck_ids)){
-                                           echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
-                                        }
-                                        ?>
-
-                                        <br>
-                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['cid'] ?></span>
-                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['rank'] ?></span>
-
-                                    </td><td class="ra">
-                                        <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
-                                    </td>
-
-                                <?php endif; ?>
-                                
-                                <td>
-                                    <div class="n c1"><span id="r1">VS</span></div>
-                                </td>
-
-                                <?php if (ctype_digit($match["rightid"])): ?>
-                                    <td class="ra">
-                                        <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
-                                    </td><td>
-                                        <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
-
-                                        <?php
-                                        if(in_array($decksbyid[$match["rightid"]]['id'],$added_deck_ids)){
-                                            echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
-                                        }
-                                        if(in_array($decksbyid[$match["rightid"]]['id'],$changed_deck_ids)){
-                                           echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
-                                        }
-                                        ?>
-
-                                        <br>
-                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['cid'] ?></span>
-                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['rank'] ?></span>
-
-                                    </td><td>
-                                        <?php $imageUrl = "images/".$decksbyid[$match["rightid"]]['colour'].".png"; ?>
-                                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                    </td>
-
-                                <?php endif; ?>
-                            </tr>
-                        <?php endforeach; ?>
-                        </table>
-                    </div>
-
-                    <?php for($i=2;$i<8;$i++):?>
+                    <?php for($i=1;$i<8;$i++):?>
 
                         <div id="page<?= $i ?>" style="display:none">
+                            <a onclick="reset()">reset</a>
+                            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                            <br>
+                            <table>
                             <h3 style="text-align:center;"> Round <?= $i ?> </h3>
                             <table>
                                 <?php foreach ($matches as $match): ?>
