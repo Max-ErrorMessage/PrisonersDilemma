@@ -340,7 +340,7 @@ foreach ($changes_data as $change_batch) {
                                     <?php if ($match['round'] !== $i-1) continue; ?>
                                     <tr>
                                         <td>
-                                            <div class="n c2 ca" style="margin:auto"><span id="r2"><?= $match['id']?></span></div>
+                                            <div class="n c2 ca" style="margin:auto"><span id="r2"><?= $match['id'] + 1?></span></div>
                                         </td>
                                         <?php if (ctype_digit($match["leftid"])): ?>
                                             <td class = 'trl'>
@@ -372,7 +372,7 @@ foreach ($changes_data as $change_batch) {
                                                 <td class = 'trl'>Loser of match:</td>
                                             <?php endif; ?>
                                             <td class = 'trr ra'>
-                                                <?php echo (int)substr($match["leftid"], 1); ?>
+                                                <?php echo (int)substr($match["leftid"], 1) + 1; ?>
                                             </td>
                                             <td></td>
                                         <?php endif; ?>
@@ -408,7 +408,7 @@ foreach ($changes_data as $change_batch) {
                                                 <td class = 'trl'>Loser of match:</td>
                                             <?php endif; ?>
                                             <td class = 'trr ra'>
-                                                <?php echo (int)substr($match["rightid"], 1); ?>
+                                                <?php echo (int)substr($match["rightid"], 1) + 1; ?>
                                             </td>
                                             <td></td>
                                         <?php endif; ?>
