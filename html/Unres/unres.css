@@ -196,17 +196,17 @@ td{
 #t3{
     left: calc(33% + 160px);
 }
-#t4{
-    left: calc(33% + 200px);
+
+#wt1{
+    background-color:#1e2833;
+    background-image:none;
+    left: 26%;
 }
-#t5{
-    left: calc(33% + 240px);
+#wt2{
+    left: calc(27% + 80px);
 }
-#t6{
-    left: calc(33% + 280px);
-}
-#t7{
-    left: calc(33% + 320px);
+#wt3{
+    left: calc(28% + 160px);
 }
 
 .roundtab{

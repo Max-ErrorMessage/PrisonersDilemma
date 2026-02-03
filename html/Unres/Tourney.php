@@ -323,14 +323,14 @@ foreach ($changes_data as $change_batch) {
 
                 <!-- Tab Buttons -->
 
-                <a class="tab" id="t1" onclick="incrementTab(1)">
+                <a class="tab" id="wt1" onclick="incrementTab(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/17222/17222665.png"/>
                 </a>
-                <a class="tab" id="t2" onclick="incrementTab(2)">
+                <a class="tab" id="wt2" onclick="incrementTab(2)">
                     <img src="https://cdn-icons-png.flaticon.com/512/17222/17222669.png"/>
                 </a>
 
-                <div class="wide" id="lb">
+                <div style="width:50%" id="lb">
                     <?php for($i=1;$i<8;$i++):?>
                         <?php 
                             if ($i==1){
