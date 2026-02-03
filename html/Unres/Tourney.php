@@ -335,6 +335,11 @@ foreach ($changes_data as $change_batch) {
                             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                             <br>
                             <h3 style="text-align:center;"> Round <?= $i ?> </h3>
+                            <?php
+                                echo '<pre>';
+                                print_r($matchesbyid);
+                                echo '</pre>';
+                            ?>
                             <table style="border-collapse: separate;border-spacing: 0 12px; ">
                                 <?php foreach ($matches as $match): ?>
                                     <?php if ($match['round'] !== $i-1) continue; ?>
