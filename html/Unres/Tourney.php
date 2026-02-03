@@ -376,8 +376,8 @@ foreach ($changes_data as $change_batch) {
                                                 <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
                                             </td>
                                         <?php else: ?>
-                                            <td>
-                                                <img src="images/0.png" class="trl ra lbimg"/>
+                                            <td class = "trl ra">
+                                                <img src="images/0.png" class="lbimg"/>
                                             </td>
                                             <?php if ($match["leftid"][0] === 'W'): ?>
                                                 <td class = 'trm'>Winner of match:</td>
@@ -415,13 +415,13 @@ foreach ($changes_data as $change_batch) {
                                                 <img class="ra lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                             </td>
                                         <?php else: ?>
-                                            <td>
-                                                <img src="0.png" class="ra lbimg"/>
+                                            <td class = "trl ra">
+                                                <img src="images/0.png" class="lbimg"/>
                                             </td>
                                             <?php if ($match["rightid"][0] === 'W'): ?>
-                                                <td class = 'trl'>Winner of match:</td>
+                                                <td class = 'trm'>Winner of match:</td>
                                             <?php else: ?>
-                                                <td class = 'trl'>Loser of match:</td>
+                                                <td class = 'trm'>Loser of match:</td>
                                             <?php endif; ?>
                                             <td class = 'trr ra'>
                                                 <?php echo (int)substr($match["rightid"], 1) + 1; ?>
