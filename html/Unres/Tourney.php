@@ -352,7 +352,7 @@ foreach ($changes_data as $change_batch) {
                                         <td>
                                             <div class="n c2 ca" style="margin:auto"><span id="r2"><?= $match['id'] + 1?></span></div>
                                         </td>
-                                        <?php if (ctype_digit($match["leftid"])): ?>
+                                        <?php if (is_numeric($match["leftid"])): ?>
                                             <td class = 'trl'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
                                                 <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
@@ -391,7 +391,7 @@ foreach ($changes_data as $change_batch) {
                                             <div class="n c1 ca" style="margin:auto"><span id="r1">VS</span></div>
                                         </td>
 
-                                        <?php if (ctype_digit($match["rightid"])): ?>
+                                        <?php if (is_numeric($match["rightid"])): ?>
                                             <td class = 'trl'>
                                                 <span><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
                                             </td><td class="trm ra" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>)">
