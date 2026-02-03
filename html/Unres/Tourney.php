@@ -339,6 +339,9 @@ foreach ($changes_data as $change_batch) {
                                 <?php foreach ($matches as $match): ?>
                                     <?php if ($match['round'] !== $i-1) continue; ?>
                                     <tr>
+                                        <td>
+                                            <div class="n c1 ca" style="margin:auto"><span id="r2"><?= $match['id']?></span></div>
+                                        </td>
                                         <?php if (ctype_digit($match["leftid"])): ?>
                                             <td class = 'trl'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
@@ -568,10 +571,10 @@ foreach ($changes_data as $change_batch) {
             page6 = document.getElementById("page6")
             page7 = document.getElementById("page7")
             if (currentTab==1){
-                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
-                tab1.style.backgroundColor = "none"
-                tab2.style.backgroundColor = "#1e2833"
-                tab2.style.backgroundImage = "none"
+                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab2.style.backgroundColor = "none"
+                tab1.style.backgroundColor = "#1e2833"
+                tab1.style.backgroundImage = "none"
 
                 page1.style.display = "block"
                 page2.style.display = "none"
@@ -582,10 +585,10 @@ foreach ($changes_data as $change_batch) {
                 page7.style.display = "none"
 
             } else if (currentTab==7){
-                tab1.style.backgroundColor = "#1e2833"
-                tab1.style.backgroundImage = "none"
-                tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
-                tab2.style.backgroundColor = "none"
+                tab2.style.backgroundColor = "#1e2833"
+                tab2.style.backgroundImage = "none"
+                tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
+                tab1.style.backgroundColor = "none"
 
                 page7.style.display = "block"
                 page1.style.display = "none"
