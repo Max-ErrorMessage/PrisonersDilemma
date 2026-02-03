@@ -380,12 +380,12 @@ foreach ($changes_data as $change_batch) {
                                                 <img src="images/0.png" class="lbimg"/>
                                             </td>
                                             <?php if ($match["leftid"][0] === 'W'): ?>
-                                                <td class = 'trm'>Winner of match:</td>
+                                                <td class = 'trm'>Winner of match <?php echo (int)substr($match["leftid"], 1) + 1; ?></td>
                                             <?php else: ?>
-                                                <td class = 'trm'>Loser of match:</td>
+                                                <td class = 'trm'>Loser of match <?php echo (int)substr($match["leftid"], 1) + 1; ?></td>
                                             <?php endif; ?>
                                             <td class = 'trr ra'>
-                                                <?php echo (int)substr($match["leftid"], 1) + 1; ?>
+                                                
                                             </td>
                                         <?php endif; ?>
 
@@ -414,18 +414,17 @@ foreach ($changes_data as $change_batch) {
                                                 <img class="ra lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                             </td>
                                         <?php else: ?>
-                                            <td class = "trl ra">
-                                                <img src="images/0.png" class="lbimg"/>
+                                            <td class = 'trl ra'>
+                                                
                                             </td>
                                             <?php if ($match["rightid"][0] === 'W'): ?>
-                                                <td class = 'trm'>Winner of match:</td>
+                                                <td class = 'trm'>Winner of match <?php echo (int)substr($match["rightid"], 1) + 1; ?></td>
                                             <?php else: ?>
-                                                <td class = 'trm'>Loser of match:</td>
+                                                <td class = 'trm'>Loser of match <?php echo (int)substr($match["rightid"], 1) + 1; ?></td>
                                             <?php endif; ?>
-                                            <td class = 'trr ra'>
-                                                <?php echo (int)substr($match["rightid"], 1) + 1; ?>
+                                            <td class = "trr ra">
+                                                <img src="images/0.png" class="lbimg"/>
                                             </td>
-                                            <td></td>
                                         <?php endif; ?>
                                     </tr>
                                 <?php endforeach; ?>
