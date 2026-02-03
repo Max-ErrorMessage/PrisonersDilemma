@@ -104,9 +104,15 @@ foreach ($matches as $match) {
         if ($matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"] !== null){ //same logic here with left/rightid and winner/loserid
             if ($match["leftid"][0] === 'W') { //same again with left/rightid 
                 $match["leftid"] = $matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"];
-                $match["rightid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"];
             } else {
                 $match["leftid"] = $matchesbyid[(int)substr($match["leftid"], 1)]["loserid"];
+            }
+        }
+
+        if ($matchesbyid[(int)substr($match["rightid"], 1)]["rightid"] !== null){ //same logic here with left/rightid and winner/loserid
+            if ($match["rightid"][0] === 'W') { //same again with left/rightid 
+                $match["rightid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"];
+            } else {
                 $match["rightid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["loserid"];
             }
         }
