@@ -101,18 +101,21 @@ $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $matchesbyid = [];
 foreach ($matches as $match) {
     if (!is_numeric($match['leftid'])) {// checks if in the form [W/L][num], if this is true, the rightid equivalent will also be true
-        if ($matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"] !== null){ //same logic here with left/rightid and winner/loserid
-            if ($match["leftid"][0] === 'W') { //same again with left/rightid 
+        if ($match["leftid"][0] === 'W') { 
+            if ($matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"] !== null){
                 $match["leftid"] = $matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"];
-            } else {
+            }
+        } else {
+            if ($matchesbyid[(int)substr($match["leftid"], 1)]["winnerid"] !== null){
                 $match["leftid"] = $matchesbyid[(int)substr($match["leftid"], 1)]["loserid"];
             }
         }
-
-        if ($matchesbyid[(int)substr($match["rightid"], 1)]["rightid"] !== null){ //same logic here with left/rightid and winner/loserid
-            if ($match["rightid"][0] === 'W') { //same again with left/rightid 
-                $match["rightid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"];
-            } else {
+        if ($match["rightid"][0] === 'W') { 
+            if ($matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"] !== null){
+                $match["leftid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"];
+            }
+        } else {
+            if ($matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"] !== null){
                 $match["rightid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["loserid"];
             }
         }
