@@ -624,6 +624,9 @@ foreach ($changes_data as $change_batch) {
         }
 
         function submitMatch(matchid,winnerid,loserid){
+            console.log(matchid)
+            console.log(winnerid)
+            console.log(loserid)
             fetch('submit_tourney_match.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
