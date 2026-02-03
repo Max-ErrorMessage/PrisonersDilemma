@@ -112,7 +112,7 @@ foreach ($matches as &$match) {
         }
         if ($match["rightid"][0] === 'W') { 
             if ($matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"] !== null){
-                $match["leftid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"];
+                $match["rightid"] = $matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"];
             }
         } else {
             if ($matchesbyid[(int)substr($match["rightid"], 1)]["winnerid"] !== null){
