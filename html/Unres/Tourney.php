@@ -377,12 +377,12 @@ foreach ($changes_data as $change_batch) {
                                             </td>
                                         <?php else: ?>
                                             <td>
-                                                <img src="0.png" class="ra lbimg"/>
+                                                <img src="images/0.png" class="trl ra lbimg"/>
                                             </td>
                                             <?php if ($match["leftid"][0] === 'W'): ?>
-                                                <td class = 'trl'>Winner of match:</td>
+                                                <td class = 'trm'>Winner of match:</td>
                                             <?php else: ?>
-                                                <td class = 'trl'>Loser of match:</td>
+                                                <td class = 'trm'>Loser of match:</td>
                                             <?php endif; ?>
                                             <td class = 'trr ra'>
                                                 <?php echo (int)substr($match["leftid"], 1) + 1; ?>
