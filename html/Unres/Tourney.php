@@ -326,9 +326,9 @@ foreach ($changes_data as $change_batch) {
                     <?php for($i=1;$i<8;$i++):?>
                         <?php 
                             if ($i==1){
-                                $style = "block"
+                                $style = "block";
                             } else {
-                                $style = "none"
+                                $style = "none";
                             }
                         ?>
                         <div id="page<?= $i ?>" style="display:<?= $style?>">
