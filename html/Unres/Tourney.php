@@ -390,24 +390,13 @@ foreach ($changes_data as $change_batch) {
                         </table>
                     </div>
 
-                    <div id="page2" style="display:none;height:60vh">
-                        <canvas id="elograph"></canvas>
-                    </div>
-                    <div id="page3" style="display:none">
-                        <h3 style="text-align:center;"> Page 3 </h3>
-                    </div>
-                    <div id="page4" style="display:none">
-                        <h3 style="text-align:center;"> Page 4 </h3>
-                    </div>
-                    <div id="page5" style="display:none">
-                        <h3 style="text-align:center;"> Page 5 </h3>
-                    </div>
-                    <div id="page6" style="display:none">
-                        <h3 style="text-align:center;"> Page 6 </h3>
-                    </div>
-                    <div id="page7" style="display:none">
-                        <h3 style="text-align:center;"> Page 7 </h3>
-                    </div>
+                    <?php for ($i=2; i<8;i++):?>
+
+                        <div id="page<?= $i ?>" style="display:none">
+                            <h3 style="text-align:center;"> Page <?= $i ?> </h3>
+                        </div>
+
+                    <?php endfor; ?>
 
 
                 </div>
