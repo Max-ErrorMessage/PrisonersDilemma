@@ -13,7 +13,18 @@
 	$loserId = (int)$_POST['loserId'];
 
 	// Update the match result in the database
-	$stmt = $conn->prepare("UPDATE tournament SET winnerid = ?, loserid = ? WHERE id = ?");
-	$stmt->bind_param("iii", $winnerId, $loserId, $matchId);
-	$stmt->execute();
+	$sql = "
+		UPDATE tournament
+		SET winnerid = :winnerid,
+			loserid  = :loserid
+		WHERE id = :id
+	";
+
+	$stmt = $pdo->prepare($sql);
+
+	$stmt->execute([
+		':winnerid' => $winnerId,
+		':loserid'  => $loserId,
+		':id'       => $matchId
+	]);
 ?>
