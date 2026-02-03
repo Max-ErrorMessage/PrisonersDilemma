@@ -390,7 +390,7 @@ foreach ($changes_data as $change_batch) {
                         </table>
                     </div>
 
-                    <?php for ($i=2; i<8;i++):?>
+                    <?php for($i=2;$i<8;$i++):?>
 
                         <div id="page<?= $i ?>" style="display:none">
                             <h3 style="text-align:center;"> Page <?= $i ?> </h3>
