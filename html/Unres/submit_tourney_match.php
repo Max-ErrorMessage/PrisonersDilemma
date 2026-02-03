@@ -13,7 +13,7 @@
 	$loserId = (int)$_POST['loserId'];
 
 	// Update the match result in the database
-	$stmt = $conn->prepare("UPDATE tournament_matches SET winner_id = ?, loser_id = ? WHERE id = ?");
+	$stmt = $conn->prepare("UPDATE tournament SET winnerid = ?, loserid = ? WHERE id = ?");
 	$stmt->bind_param("iii", $winnerId, $loserId, $matchId);
 	$stmt->execute();
 ?>
