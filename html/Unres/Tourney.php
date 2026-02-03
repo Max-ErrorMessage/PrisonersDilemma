@@ -346,7 +346,7 @@ foreach ($changes_data as $change_batch) {
                                             <td class = 'trl'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
                                                 <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                            </td><td class = 'trm'>
+                                            </td><td class = 'trm' onclick="submitMatch(<?= $match["id"];?>, 0)">
                                                 <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
 
                                                 <?php
@@ -384,7 +384,7 @@ foreach ($changes_data as $change_batch) {
                                         <?php if (ctype_digit($match["rightid"])): ?>
                                             <td class = 'trl'>
                                                 <span><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
-                                            </td><td class="trm ra">
+                                            </td><td class="trm ra" onclick="submitMatch(<?= $match["id"];?>, 1)">
                                                 <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
                                                 <?php
                                                 if(in_array($decksbyid[$match["rightid"]]['id'],$added_deck_ids)){
@@ -621,6 +621,11 @@ foreach ($changes_data as $change_batch) {
             }).then(() => {
                 location.reload();
             });
+        }
+
+        function submitMatch(matchid,deck){
+            console.log(matchid)
+            console.log(deck)
         }
 
     </script>
