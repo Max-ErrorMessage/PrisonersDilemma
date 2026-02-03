@@ -368,7 +368,7 @@ foreach ($changes_data as $change_batch) {
                                             <?php else: ?>
                                                 <td class = 'trl'>Loser of match:</td>
                                             <?php endif; ?>
-                                            <td class = 'trr'>
+                                            <td class = 'trr ra'>
                                                 <?php echo (int)substr($match["leftid"], 1); ?>
                                             </td>
                                             <td></td>
@@ -404,7 +404,7 @@ foreach ($changes_data as $change_batch) {
                                             <?php else: ?>
                                                 <td class = 'trl'>Loser of match:</td>
                                             <?php endif; ?>
-                                            <td class = 'trr'>
+                                            <td class = 'trr ra'>
                                                 <?php echo (int)substr($match["rightid"], 1); ?>
                                             </td>
                                             <td></td>
