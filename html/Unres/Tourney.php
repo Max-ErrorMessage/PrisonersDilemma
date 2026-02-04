@@ -579,8 +579,8 @@ foreach ($changes_data as $change_batch) {
                     currentTab = 7
                 }
             }
-            tab1 = document.getElementById("t1")
-            tab2 = document.getElementById("t2")
+            tab1 = document.getElementById("wt1")
+            tab2 = document.getElementById("wt2")
             page1 = document.getElementById("page1")
             page2 = document.getElementById("page2")
             page3 = document.getElementById("page3")
