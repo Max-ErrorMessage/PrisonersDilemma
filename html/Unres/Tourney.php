@@ -383,7 +383,7 @@ foreach ($changes_data as $change_batch) {
                                                 <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['cid'] ?></span>
                                                 <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['rank'] ?></span>
 
-                                            </td><td class="trr ra<?= $class?>;">
+                                            </td><td class="trr ra<?= $class;?>">
                                                 <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
                                             </td>
                                         <?php else: ?>
