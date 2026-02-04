@@ -173,7 +173,7 @@ foreach ($changes_data as $change_batch) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="unres.css">
     <style>
-        .bg-bg, .bg-img, .bg-fg {
+        .bg-bg, .bg-img, .bg-img2, .bg-fg {
           height:100%;
           background-size:110% auto;
           background-position: 50% 50%;
@@ -184,9 +184,13 @@ foreach ($changes_data as $change_batch) {
 
 
         .bg-fg{
+          background-image: url("images/fon4.png");
+        }
+        
+        .bg-img2{
           background-image: url("images/fon3.png");
         }
-
+        
         .bg-img{
           background-image: url("images/fon2.png");
         }
@@ -208,9 +212,10 @@ foreach ($changes_data as $change_batch) {
 
 
 
-        .bg-img .content{
+        .bg-img,.bg-img2 .content{
             position:relative;
         }
+
 
 
 
@@ -219,7 +224,7 @@ foreach ($changes_data as $change_batch) {
             display:none;
         }
 
-        .bg-img .illustration {
+        .bg-img,.bg-img2 .illustration {
           text-align:center;
         }
         .illustration img{
@@ -303,6 +308,7 @@ foreach ($changes_data as $change_batch) {
 <body>
     <div class="bg-bg">
         <div class="bg-img">
+        <div class="bg-img2">
             <div class="bg-fg">
 
                 <!-- Page Buttons -->
@@ -466,6 +472,7 @@ foreach ($changes_data as $change_batch) {
                     <?php endfor; ?>
                 </div>
             </div>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -477,8 +484,9 @@ foreach ($changes_data as $change_batch) {
         console.log(archetypes);
 
 
-
+        
         const div2 = document.querySelector('.bg-img');
+        const div2_2 = document.querySelector('.bg-img2');
 
         div2.addEventListener('mousemove', (e) => {
           const div1 = document.querySelector('.bg-fg');
@@ -495,6 +503,7 @@ foreach ($changes_data as $change_batch) {
 
           div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
           div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
+          div2_2.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
