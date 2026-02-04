@@ -224,7 +224,7 @@ foreach ($changes_data as $change_batch) {
             display:none;
         }
 
-        .bg-img,.bg-img2 .illustration {
+        .bg-img .illustration {
           text-align:center;
         }
         .illustration img{
@@ -299,10 +299,6 @@ foreach ($changes_data as $change_batch) {
           border-bottom-right-radius: 5px;
         }
 
-        #p2{
-            top:100px;
-            background-color: #444
-        }
     </style>
 </head>
 <body>
