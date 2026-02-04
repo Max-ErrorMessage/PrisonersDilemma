@@ -454,11 +454,6 @@ foreach ($changes_data as $change_batch) {
                             </table>
                         </div>
                     <?php endfor; ?>
-                    <?php
-                        echo '<pre>';
-                        print_r($matchesbyid);
-                        echo '</pre>';
-                    ?>
                 </div>
             </div>
         </div>
