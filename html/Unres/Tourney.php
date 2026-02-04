@@ -212,7 +212,7 @@ foreach ($changes_data as $change_batch) {
 
 
 
-        .bg-img,.bg-img2 .content{
+        .bg-img .content{
             position:relative;
         }
 
@@ -299,6 +299,10 @@ foreach ($changes_data as $change_batch) {
           border-bottom-right-radius: 5px;
         }
 
+        #p2{
+            top:100px;
+            background-color: #444
+        }
     </style>
 </head>
 <body>
