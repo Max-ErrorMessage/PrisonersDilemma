@@ -184,15 +184,15 @@ foreach ($changes_data as $change_batch) {
 
 
         .bg-fg{
-          background-image: url("images/vb3.png");
+          background-image: url("images/fon3.png");
         }
 
         .bg-img{
-          background-image: url("images/vb2.png");
+          background-image: url("images/fon2.png");
         }
 
         .bg-bg{
-          background-image: url("images/vb1.png");
+          background-image: url("images/fon1.png");
         }
 
 
