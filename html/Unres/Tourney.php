@@ -344,7 +344,7 @@ foreach ($changes_data as $change_batch) {
                             <br>
                             <h3 style="text-align:center;"> Round <?= $i ?> </h3>
 
-                            <table style="border-collapse: separate;border-spacing: 0 12px; left:calc(15%-30px)">
+                            <table style="border-collapse: separate;border-spacing: 0 12px; ">
                                 <?php foreach ($matches as $match): ?>
                                     <?php if ($match['round'] !== $i-1) continue; ?>
                                     <tr>
