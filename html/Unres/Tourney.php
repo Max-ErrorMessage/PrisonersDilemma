@@ -299,10 +299,6 @@ foreach ($changes_data as $change_batch) {
           border-bottom-right-radius: 5px;
         }
 
-        #p2{
-            top:100px;
-            background-color: #444
-        }
     </style>
 </head>
 <body>
@@ -317,7 +313,7 @@ foreach ($changes_data as $change_batch) {
                     <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
                     <span>Match Submission</span>
                 </a>
-                <a id="p2" class="pButton">
+                <a href="Leaderboard.php" id="p2" class="pButton">
                     <img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png">
                     <span>Leaderboard</span>
                 </a>
