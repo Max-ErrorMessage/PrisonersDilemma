@@ -352,10 +352,19 @@ foreach ($changes_data as $change_batch) {
                                             <div class="n c2 ca" style="margin:auto"><span id="r2"><?= $match['id'] + 1?></span></div>
                                         </td>
                                         <?php if (is_numeric($match["leftid"])): ?>
-                                            <td class = 'trl'>
+                                            <?php
+                                                $class = " "
+                                                if ($match["leftid"] == $match["winnerid"]){
+                                                    $class = " winner"
+                                                }
+                                                if ($match["leftid"] == $match["loserid"]){
+                                                    $class = " loser"
+                                                }
+                                            ?>
+                                            <td class = 'trl<?= $class?>'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
                                                 <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                            </td><td class = 'trm' onclick="submitMatch(<?= $match["id"];?>, <?= $match["leftid"];?>, <?= $match["rightid"];?>)">
+                                            </td><td class = 'trm<?= $class?>' onclick="submitMatch(<?= $match["id"];?>, <?= $match["leftid"];?>, <?= $match["rightid"];?>)">
                                                 <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
                                                 <a style="width:20px;" href=deck.php?id=<?= $match["leftid"]?> onclick="event.stopPropagation();">
                                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
@@ -374,7 +383,7 @@ foreach ($changes_data as $change_batch) {
                                                 <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['cid'] ?></span>
                                                 <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['rank'] ?></span>
 
-                                            </td><td class="trr ra">
+                                            </td><td class="trr ra<?= $class?>">
                                                 <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
                                             </td>
                                         <?php else: ?>
@@ -396,9 +405,18 @@ foreach ($changes_data as $change_batch) {
                                         </td>
 
                                         <?php if (is_numeric($match["rightid"])): ?>
-                                            <td class = 'trl'>
+                                            <?php
+                                                $class = " "
+                                                if ($match["rightid"] == $match["winnerid"]){
+                                                    $class = " winner"
+                                                }
+                                                if ($match["rightid"] == $match["loserid"]){
+                                                    $class = " loser"
+                                                }
+                                            ?>
+                                            <td class = 'trl<?= $class?>'>
                                                 <span><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
-                                            </td><td class="trm ra" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>)">
+                                            </td><td class="trm ra<?= $class?>" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>)">
                                                 <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
                                                 <a style="width:20px;" href=deck.php?id=<?= $match["rightid"]?> onclick="event.stopPropagation();">
                                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
@@ -414,7 +432,7 @@ foreach ($changes_data as $change_batch) {
                                                 <br>
                                                 <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['cid'] ?></span>
                                                 <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['rank'] ?></span>
-                                            </td><td class = 'trr'>
+                                            </td><td class = 'trr<?= $class?>'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["rightid"]]['colour'].".png"; ?>
                                                 <img class="ra lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                             </td>

@@ -462,3 +462,11 @@ tr td:last-child {
     border-right: 3px solid white;
     border-bottom: 3px solid white;
 }
+
+.winner{
+    background-color:#363
+}
+
+.loser{
+    background-color:#633
+}
