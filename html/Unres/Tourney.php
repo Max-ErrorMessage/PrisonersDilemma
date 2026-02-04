@@ -345,6 +345,15 @@ foreach ($changes_data as $change_batch) {
                             <h3 style="text-align:center;"> Round <?= $i ?> </h3>
 
                             <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed;">
+                                <colgroup>
+                                    <col style="width:40px">   <!-- left icon -->
+                                    <col style="width:200px">  <!-- left name -->
+                                    <col style="width:60px">   <!-- left score -->
+                                    <col style="width:40px">   <!-- VS -->
+                                    <col style="width:60px">   <!-- right score -->
+                                    <col style="width:200px">  <!-- right name -->
+                                    <col style="width:40px">   <!-- right icon -->
+                                </colgroup>
                                 <?php foreach ($matches as $match): ?>
                                     <?php if ($match['round'] !== $i-1) continue; ?>
                                     <tr>
