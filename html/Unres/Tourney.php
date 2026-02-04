@@ -357,7 +357,9 @@ foreach ($changes_data as $change_batch) {
                                                 <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                             </td><td class = 'trm' onclick="submitMatch(<?= $match["id"];?>, <?= $match["leftid"];?>, <?= $match["rightid"];?>)">
                                                 <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
-                                                <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist" href=deck.php?id=<?= $match["leftid"]?>>
+                                                <a style="width:20px;" href=deck.php?id=<?= $match["leftid"]?> onclick="event.stopPropagation();">
+                                                <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
+                                                </a>
                                                 <?php
                                                 if(in_array($decksbyid[$match["leftid"]]['id'],$added_deck_ids)){
                                                     echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
@@ -398,7 +400,9 @@ foreach ($changes_data as $change_batch) {
                                                 <span><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
                                             </td><td class="trm ra" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>)">
                                                 <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
-                                                <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist" href=deck.php?id=<?= $match["rightid"]?>>                                                
+                                                <a style="width:20px;" href=deck.php?id=<?= $match["rightid"]?> onclick="event.stopPropagation();">
+                                                <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
+                                                </a>
                                                 <?php
                                                 if(in_array($decksbyid[$match["rightid"]]['id'],$added_deck_ids)){
                                                     echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
