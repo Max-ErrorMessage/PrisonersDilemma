@@ -344,7 +344,7 @@ foreach ($changes_data as $change_batch) {
                             <br>
                             <h3 style="text-align:center;"> Round <?= $i ?> </h3>
 
-                            <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed; left:calc(15% - 30px)">
+                            <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed; left:calc(15% - 30px); width:calc(80% + 30px)">
                                 <colgroup>
                                     <col style="width:30px">   <!-- match number-->
                                     <col style="width:30px">   <!-- left icon -->
