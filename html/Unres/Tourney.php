@@ -346,6 +346,7 @@ foreach ($changes_data as $change_batch) {
 
                             <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed; left:calc(15% - 30px)">
                                 <colgroup>
+                                    <col style="width:30px">   <!-- match number-->
                                     <col style="width:30px">   <!-- left icon -->
                                     <col style="width:calc(50% - 95px)">  <!-- left name -->
                                     <col style="width:50px">   <!-- left score -->
