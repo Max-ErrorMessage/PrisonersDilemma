@@ -346,13 +346,13 @@ foreach ($changes_data as $change_batch) {
 
                             <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed;">
                                 <colgroup>
-                                    <col style="width:40px">   <!-- left icon -->
-                                    <col style="width:200px">  <!-- left name -->
-                                    <col style="width:60px">   <!-- left score -->
-                                    <col style="width:40px">   <!-- VS -->
-                                    <col style="width:60px">   <!-- right score -->
-                                    <col style="width:200px">  <!-- right name -->
-                                    <col style="width:40px">   <!-- right icon -->
+                                    <col style="width:30px">   <!-- left icon -->
+                                    <col style="width:calc(50%-95px)">  <!-- left name -->
+                                    <col style="width:50px">   <!-- left score -->
+                                    <col style="width:30px">   <!-- VS -->
+                                    <col style="width:50px">   <!-- right score -->
+                                    <col style="width:calc(50%-95px)">  <!-- right name -->
+                                    <col style="width:30px">   <!-- right icon -->
                                 </colgroup>
                                 <?php foreach ($matches as $match): ?>
                                     <?php if ($match['round'] !== $i-1) continue; ?>
