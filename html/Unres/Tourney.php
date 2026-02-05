@@ -495,7 +495,7 @@ foreach ($changes_data as $change_batch) {
 
 
           const offsetX = (0.5 - x) * 2;
-          const offsetY = (0.5 - y) * 2;
+          const offsetY = (0.5 - y);
 
           div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
           div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
