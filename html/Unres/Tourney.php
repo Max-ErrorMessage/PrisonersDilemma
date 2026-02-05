@@ -499,7 +499,7 @@ foreach ($changes_data as $change_batch) {
 
           div1.style.backgroundPosition = `${50 + offsetX*6}% ${50 + offsetY*6}%`;
           div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
-          div2_2.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
+          //div2_2.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
