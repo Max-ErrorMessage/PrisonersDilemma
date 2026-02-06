@@ -166,7 +166,7 @@ foreach ($changes_data as $change_batch) {
     <title>Unrestricted Vintage Leaderboard</title>
     <link rel="icon" href="/t.ico" type="image/x-icon">
     <meta name="description" content="Create bots to compete in fun minigames! :)">
-    <meta property="og:title" content="Unrestricted Vintage tournament">
+    <meta property="og:title" content="Unrestricted Vintage Tournament">
     <meta property="og:description" content="The best decks in unres compete for the ultimate prize, bragging rights!">
     <meta property="og:image" content="Images/6.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
