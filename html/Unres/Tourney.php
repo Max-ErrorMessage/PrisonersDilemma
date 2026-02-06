@@ -163,7 +163,7 @@ foreach ($changes_data as $change_batch) {
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
-    <title>Unrestricted Vintage Leaderboard</title>
+    <title>Unrestricted Vintage Tournament</title>
     <link rel="icon" href="/t.ico" type="image/x-icon">
     <meta name="description" content="Create bots to compete in fun minigames! :)">
     <meta property="og:title" content="Unrestricted Vintage Tournament">
