@@ -376,7 +376,7 @@ foreach ($changes_data as $change_batch) {
                                             <td class = 'trl<?= $class;?>'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
                                                 <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                            </td><td class = 'trm limit<?= $class;?>' onclick="submitMatch(<?= $match["id"];?>, <?= $match["leftid"];?>, <?= $match["rightid"];?>)">
+                                            </td><td class = 'trm limit<?= $class;?>' onclick="submitMatch(<?= $match["id"];?>, <?= $match["leftid"];?>, <?= $match["rightid"];?>, '<?= addslashes($decksbyid[$match["leftid"]]['name']); ?>')">
                                                 <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
                                                 <a style="width:20px;" href=deck.php?id=<?= $match["leftid"]?> onclick="event.stopPropagation();">
                                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
@@ -428,7 +428,7 @@ foreach ($changes_data as $change_batch) {
                                             ?>
                                             <td class = 'trl<?= $class;?>'>
                                                 <span><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
-                                            </td><td class="trm ra limit<?= $class;?>" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>)">
+                                            </td><td class="trm ra limit<?= $class;?>" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>, '<?= addslashes($decksbyid[$match["leftid"]]['name']); ?>')">
                                                 <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
                                                 <a style="width:20px;" href=deck.php?id=<?= $match["rightid"]?> onclick="event.stopPropagation();">
                                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
@@ -675,10 +675,9 @@ foreach ($changes_data as $change_batch) {
             });
         }
 
-        function submitMatch(matchid,winnerid,loserid){
-            console.log(matchid)
-            console.log(winnerid)
-            console.log(loserid)
+        function submitMatch(matchid,winnerid,loserid,name){
+            const ok = confirm(`Confirm ${name} as the winner of the match?`);
+            if (!ok) return;
             fetch('submit_tourney_match.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
