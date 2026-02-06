@@ -346,13 +346,13 @@ foreach ($changes_data as $change_batch) {
                             <br>
                             <h3 style="text-align:center;"> Round <?= $i ?> </h3>
 
-                            <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed; left:calc(10% - 30px); width:calc(80% + 30px)">
+                            <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed; left:calc(10% - 33px); width:calc(80% + 36px)">
                                 <colgroup>
-                                    <col style="width:30px">   <!-- match number-->
+                                    <col style="width:33px">   <!-- match number-->
                                     <col style="width:30px">   <!-- left icon -->
                                     <col style="width:calc(50% - 95px)">  <!-- left name -->
                                     <col style="width:50px">   <!-- left score -->
-                                    <col style="width:30px">   <!-- VS -->
+                                    <col style="width:33px">   <!-- VS -->
                                     <col style="width:50px">   <!-- right score -->
                                     <col style="width:calc(50% - 95px)">  <!-- right name -->
                                     <col style="width:30px">   <!-- right icon -->
