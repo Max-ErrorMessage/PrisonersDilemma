@@ -358,7 +358,7 @@ foreach ($changes_data as $change_batch) {
                                     <col style="width:30px">   <!-- right icon -->
                                 </colgroup>
                                 <?php foreach ($matches as $match): ?>
-                                    <?php if ($match['round'] !== $i-1) continue; ?>
+                                    <?php if ($match['round'] !== $i) continue; ?>
                                     <tr>
                                         <td>
                                             <div class="n c2 ca" style="margin:auto"><span id="r2"><?= $match['id'] + 1?></span></div>
