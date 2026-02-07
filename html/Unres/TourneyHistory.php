@@ -95,7 +95,7 @@ foreach ($decks as $deck) {
 
 
 // Fetch all decks
-$stmt = $pdo->query('Select * from matches_in_tourney where tournamentid = 0');
+$stmt = $pdo->query('Select * from matches_in_tourney');
 $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $matchesbyid = [];
