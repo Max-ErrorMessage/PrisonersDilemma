@@ -12,6 +12,10 @@
 
 include "/var/www/html/Unres/db.php";
 
+
+$id = $_GET["id"];
+
+
 // Fetch all decks
 $stmt = $pdo->query('SELECT
         d.id as id,
@@ -95,7 +99,8 @@ foreach ($decks as $deck) {
 
 
 // Fetch all decks
-$stmt = $pdo->query('Select * from matches_in_tourney');
+$stmt = $pdo->query('Select * from matches_in_tourney WHERE tournament_id = :id');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $matchesbyid = [];
