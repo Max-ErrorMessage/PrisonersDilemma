@@ -97,10 +97,13 @@ foreach ($decks as $deck) {
     $rank += 1;
 }
 
+$stmt = $pdo->prepare(
+    'SELECT * FROM matches_in_tourney WHERE tournament_id = :id'
+);
 
-// Fetch all decks
-$stmt = $pdo->query('Select * from matches_in_tourney WHERE tournament_id = :id');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+
 $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $matchesbyid = [];
