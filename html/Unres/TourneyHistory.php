@@ -131,6 +131,12 @@ foreach ($matches as &$match) {
     $matchesbyid[$match['id']] = $match;
 }
 
+$stmt = $pdo->prepare(
+    'SELECT MAX(round) FROM matches_in_tourney WHERE tournament_id = :id'
+);
+$stmt->execute(['id' => $id]);
+
+$maxRound = $stmt->fetchColumn();
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'elo_changes_by_archetype.py';
@@ -341,7 +347,7 @@ foreach ($changes_data as $change_batch) {
                 </a>
 
                 <div style="width:50%" id="lb">
-                    <?php for($i=1;$i<8;$i++):?>
+                    <?php for($i=1;$i<$maxRound + 1;$i++):?>
                         <?php 
                             if ($i==1){
                                 $style = "block";
@@ -617,8 +623,8 @@ foreach ($changes_data as $change_batch) {
             }
             if (dir == 2){
                 currentTab += 1
-                if (currentTab==8){
-                    currentTab = 7
+                if (currentTab==$maxRound + 1){
+                    currentTab = $maxRound
                 }
             }
             tab1 = document.getElementById("wt1")
@@ -644,7 +650,7 @@ foreach ($changes_data as $change_batch) {
                 page6.style.display = "none"
                 page7.style.display = "none"
 
-            } else if (currentTab==7){
+            } else if (currentTab==$maxRound){
                 tab2.style.backgroundColor = "#1e2833"
                 tab2.style.backgroundImage = "none"
                 tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
