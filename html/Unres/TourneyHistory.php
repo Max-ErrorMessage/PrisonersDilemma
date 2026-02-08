@@ -77,9 +77,9 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $targetSize = 128;
 $currentSize = count($decks);
 
-for ($i = $currentSize; $i < $targetSize; $i++) {
+for ($i = 0; $i < 3; $i++) {
     $decks[] = [
-        'id' => 0,
+        'id' => $i,
         'colour' => 0,
         'cid' => 'Ukn01',
         'name' => 'Unknown deck',
