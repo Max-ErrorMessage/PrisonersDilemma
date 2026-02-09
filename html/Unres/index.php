@@ -76,8 +76,8 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="bg-fg">
 
                 <!-- Page Buttons -->
-
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/partials/PageButtons.php'; ?>
+                
+                <?php include __DIR__ . 'Unres/partials/PageButtons.php'; ?>
 
 
                 <div id="lb">
