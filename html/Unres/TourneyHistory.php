@@ -615,6 +615,7 @@ foreach ($changes_data as $change_batch) {
         }
 
         function incrementTab(dir, maxround){
+            console.log(maxround)
             if (dir == 1){
                 currentTab -= 1
                 if (currentTab==0){
