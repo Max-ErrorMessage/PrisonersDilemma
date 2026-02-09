@@ -69,27 +69,28 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png">
                     <span>Top Cards</span>
                 </a>
-
-                <h2>Unrestricted Vintage Homepage</h2>   
-                <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
-                <p>Unrestricted Vintage is a custom Magic: The Gathering format where every card ever printed is legal — with no bans and no restrictions.</p>
-                <p>Power Nine, fast mana, and game-ending combos aren’t just allowed — they’re expected.</p>
-                </br>
-                <p>Decks compete in tracked matches, Elo ratings rise and fall, and the metagame evolves in public.</p>
-                <p>Nothing is theoretical here. If it works, the data will show it.</p>
-                </br>
-                <p>The format is shaped by its players, and the conversation happens in the Discord.</p>
-                <p>If you love broken Magic, experimental formats, and watching history unfold in real time —</p>
-                <p>come help define what Unrestricted Vintage becomes.</p>   
-                <a
-                  href="https://discord.gg/ndvgeRCpJW"
-                  target="_blank"
-                  rel="noopener"
-                  class="discord-btn"
-                >
-                  <i class="fa-brands fa-discord"></i>
-                  Join the Discord
-                </a>
+                <div id="lb">
+                    <h2>Unrestricted Vintage Homepage</h2>   
+                    <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
+                    <p>Unrestricted Vintage is a custom Magic: The Gathering format where every card ever printed is legal — with no bans and no restrictions.</p>
+                    <p>Power Nine, fast mana, and game-ending combos aren’t just allowed — they’re expected.</p>
+                    </br>
+                    <p>Decks compete in tracked matches, Elo ratings rise and fall, and the metagame evolves in public.</p>
+                    <p>Nothing is theoretical here. If it works, the data will show it.</p>
+                    </br>
+                    <p>The format is shaped by its players, and the conversation happens in the Discord.</p>
+                    <p>If you love broken Magic, experimental formats, and watching history unfold in real time —</p>
+                    <p>come help define what Unrestricted Vintage becomes.</p>   
+                    <a
+                      href="https://discord.gg/ndvgeRCpJW"
+                      target="_blank"
+                      rel="noopener"
+                      class="discord-btn"
+                    >
+                      <i class="fa-brands fa-discord"></i>
+                      Join the Discord
+                    </a>
+                </div>
             </div>
         </div>
     </div>
