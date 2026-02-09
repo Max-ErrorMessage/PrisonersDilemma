@@ -130,6 +130,7 @@ foreach ($matches as &$match) {
     }
     $matchesbyid[$match['id']] = $match;
 }
+unset($match);
 
 $stmt = $pdo->prepare(
     'SELECT MAX(round) FROM matches_in_tourney WHERE tournament_id = :id'
