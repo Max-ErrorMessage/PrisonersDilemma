@@ -44,12 +44,14 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         #discord-btn{
-            font-color: white;
             background-color: #7289da;
-            width: 100px;
+            width: 200px;
             height: 30px;
-            margin-left: auto;
+            margin-left: calc(50% - 100px);
             border-radius: 5px;
+            display: block;
+            color: white;
+            text-align: center;
         }
 
         #discord-btn:hover{
@@ -59,8 +61,6 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         #discord-btn svg{
             width: 20px;
             height: 20px;
-            margin-right: 8px;
-            margin-top: 5px;
             fill: white;
         }
 
