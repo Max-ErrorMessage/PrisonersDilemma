@@ -1,7 +1,7 @@
 <div class="page-buttons">
-    <a href="Match.php" id="p1" class="pButton">
+    <a href="index.php" id="p1" class="pButton">
         <img src="https://cdn-icons-png.flaticon.com/128/9795/9795832.png">
-        <span>Match Submission</span>
+        <span>Home Page</span>
     </a>
     <a href="Leaderboard.php" id="p2" class="pButton">
         <img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png">
