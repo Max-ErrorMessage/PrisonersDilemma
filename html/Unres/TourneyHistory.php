@@ -339,10 +339,10 @@ foreach ($changes_data as $change_batch) {
 
                 <!-- Tab Buttons -->
 
-                <a class="tab" id="wt1" onclick="incrementTab(1)">
+                <a class="tab" id="wt1" onclick="incrementTab(1, <?=$maxRound?>)">
                     <img src="https://cdn-icons-png.flaticon.com/128/17222/17222665.png"/>
                 </a>
-                <a class="tab" id="wt2" onclick="incrementTab(2)">
+                <a class="tab" id="wt2" onclick="incrementTab(2,<?= $maxRound?>)">
                     <img src="https://cdn-icons-png.flaticon.com/512/17222/17222669.png"/>
                 </a>
 
@@ -614,7 +614,7 @@ foreach ($changes_data as $change_batch) {
             }
         }
 
-        function incrementTab(dir){
+        function incrementTab(dir, maxround){
             if (dir == 1){
                 currentTab -= 1
                 if (currentTab==0){
@@ -623,8 +623,8 @@ foreach ($changes_data as $change_batch) {
             }
             if (dir == 2){
                 currentTab += 1
-                if (currentTab==$maxRound + 1){
-                    currentTab = $maxRound
+                if (currentTab==maxround + 1){
+                    currentTab = maxround
                 }
             }
             tab1 = document.getElementById("wt1")
@@ -650,12 +650,14 @@ foreach ($changes_data as $change_batch) {
                 page6.style.display = "none"
                 page7.style.display = "none"
 
-            } else if (currentTab==$maxRound){
+            } else if (currentTab==maxround){
                 tab2.style.backgroundColor = "#1e2833"
                 tab2.style.backgroundImage = "none"
                 tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
 
+                
+                document.getElementById("page" + maxround).style.display = "block"
                 page7.style.display = "block"
                 page1.style.display = "none"
                 page2.style.display = "none"
