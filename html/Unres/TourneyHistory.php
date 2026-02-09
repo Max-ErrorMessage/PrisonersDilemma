@@ -656,8 +656,8 @@ foreach ($changes_data as $change_batch) {
 
             }
             
-            newtab.style.display = "block"
             oldtab.style.display = "none"
+            newtab.style.display = "block"
         }
 
 
