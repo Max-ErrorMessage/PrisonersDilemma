@@ -615,7 +615,8 @@ foreach ($changes_data as $change_batch) {
         }
 
         function incrementTab(dir, maxround){
-            console.log(maxround)
+            console.log("round" + maxround)
+            prev = currentTab
             if (dir == 1){
                 currentTab -= 1
                 if (currentTab==0){
@@ -630,26 +631,14 @@ foreach ($changes_data as $change_batch) {
             }
             tab1 = document.getElementById("wt1")
             tab2 = document.getElementById("wt2")
-            page1 = document.getElementById("page1")
-            page2 = document.getElementById("page2")
-            page3 = document.getElementById("page3")
-            page4 = document.getElementById("page4")
-            page5 = document.getElementById("page5")
-            page6 = document.getElementById("page6")
-            page7 = document.getElementById("page7")
+            oldtab = document.getElementById("page" + prev)
+            newtab = document.getElementById("page" + currentTab)
             if (currentTab==1){
                 tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "none"
                 tab1.style.backgroundColor = "#1e2833"
                 tab1.style.backgroundImage = "none"
 
-                page1.style.display = "block"
-                page2.style.display = "none"
-                page3.style.display = "none"
-                page4.style.display = "none"
-                page5.style.display = "none"
-                page6.style.display = "none"
-                page7.style.display = "none"
 
             } else if (currentTab==maxround){
                 tab2.style.backgroundColor = "#1e2833"
@@ -658,14 +647,6 @@ foreach ($changes_data as $change_batch) {
                 tab1.style.backgroundColor = "none"
 
                 
-                document.getElementById("page" + maxround).style.display = "block"
-                page7.style.display = "block"
-                page1.style.display = "none"
-                page2.style.display = "none"
-                page3.style.display = "none"
-                page4.style.display = "none"
-                page5.style.display = "none"
-                page6.style.display = "none"
 
             }else{
                 tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
@@ -673,15 +654,10 @@ foreach ($changes_data as $change_batch) {
                 tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "#none"
 
-                page1.style.display = "none"
-                page2.style.display = "none"
-                page3.style.display = "none"
-                page4.style.display = "none"
-                page5.style.display = "none"
-                page6.style.display = "none"
-                page7.style.display = "none"
-                document.getElementById("page"+currentTab).style.display = "block"
             }
+            
+            newtab.style.display = "block"
+            oldtab.style.display = "none"
         }
 
 
