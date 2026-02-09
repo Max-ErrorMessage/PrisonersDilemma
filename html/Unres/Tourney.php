@@ -310,7 +310,7 @@ foreach ($changes_data as $change_batch) {
                 
                 <!-- Page Buttons -->
 
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/partials/PageButtons.php'; ?>
+                <?php include __DIR__ . '/partials/PageButtons.php'; ?>
 
 
                 <!-- Tab Buttons -->
