@@ -93,14 +93,14 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h2>Unrestricted Vintage Homepage</h2>   
                     <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/6967/6967688.png"/></div>
                     <p>Unrestricted Vintage is a custom Magic: The Gathering format where every card ever printed is legal with no bans and no restrictions.
-                    \nPower Nine, fast mana, and game-ending combos aren't just allowed; they're expected.</p>
+                    Power Nine, fast mana, and game-ending combos aren't just allowed; they're expected.</p>
                     
                     <p>Decks compete in tracked matches, Elo ratings rise and fall, and the metagame evolves in public.
-                    \nNothing is theoretical here. If it works, the data will show it.</p>
+                    Nothing is theoretical here. If it works, the data will show it.</p>
                    
                     <p>The format is shaped by its players, and the conversation happens in the Discord.
-                    \nIf you love broken Magic, experimental formats, and watching history unfold in real time;
-                    \ncome help define what Unrestricted Vintage becomes.</p>   
+                    If you love broken Magic, experimental formats, and watching history unfold in real time;
+                    come help define what Unrestricted Vintage becomes.</p>   
                     <a
                       href="https://discord.gg/ndvgeRCpJW"
                       target="_blank"
