@@ -90,7 +90,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span>Top Cards</span>
                 </a>
                 <div id="lb">
-                    <h2>Unrestricted Vintage: An Introduction</h2>   
+                    <h3>Unrestricted Vintage: An Introduction</h3>   
                     <p>Unrestricted Vintage is a custom Magic: The Gathering format where every card is legal. No bans. No restrictions.
                     Power Nine, fast mana, and game-ending combos aren't just allowed; they're expected.</p>
                     
