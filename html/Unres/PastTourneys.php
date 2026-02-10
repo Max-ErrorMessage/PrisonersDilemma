@@ -285,7 +285,7 @@ foreach ($changes_data as $change_batch) {
                         <table>
                         <?php foreach ($tourneys as $tourney): ?>
                             <?php $deck = $decksbyid[$tourney['winner_id']]; ?>
-                            <tr onclick=goToTourney(<?= $tourney['id']?>)>
+                            <tr style="border-bottom:2px solid white" onclick=goToTourney(<?= $tourney['id']?>)>
                                 <td>
                                     <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
