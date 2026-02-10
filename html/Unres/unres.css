@@ -427,7 +427,7 @@ tr td:last-child {
 }
 
 #p1:hover{
-    width:250px;
+    width:200px;
 }
 
 #p2{
@@ -443,7 +443,16 @@ tr td:last-child {
 }
 
 #p3:hover{
-    width:175px;
+    width:200px;
+}
+
+
+#p4{
+    top:250px;
+}
+
+#p4:hover{
+    width:200px;
 }
 
 .trl{
