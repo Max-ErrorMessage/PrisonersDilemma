@@ -290,7 +290,7 @@ foreach ($changes_data as $change_batch) {
                                     <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td><td>
-                                    Winner:<?= htmlspecialchars($deck['name']) ?>
+                                    Winner:  <?= htmlspecialchars($deck['name']) ?>
 
                                     <?php
                                     if(in_array($deck['id'],$added_deck_ids)){
@@ -302,7 +302,7 @@ foreach ($changes_data as $change_batch) {
                                     ?>
 
                                     <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
-                                    <span class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
+                                    <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
                                     
 
                                 </td><td class="ra">
