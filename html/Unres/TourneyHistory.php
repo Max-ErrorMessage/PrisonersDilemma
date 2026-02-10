@@ -366,14 +366,14 @@ $offset_check = 0;
                                 </colgroup>
                                 <?php foreach ($matches as $match): ?>
                                     <?php if ($match['round'] !== $i) continue; ?>
-                                    <?php if ($matchoffset == 0){
-                                        $matchoffset = 0;
+                                    <?php if ($offset_check == 0){
+                                        $offset_check = 0;
                                         $matchid_offset = $match["id"] - 1;
                                     }
                                     ?>
                                     <tr>
                                         <td>
-                                            <div class="n c2 ca" style="margin:auto"><span id="r2"><?= $match['id'] + $matchid_offset?></span></div>
+                                            <div class="n c2 ca" style="margin:auto"><span id="r2"><?= $match['id'] - $matchid_offset?></span></div>
                                         </td>
                                         <?php if (is_numeric($match["leftid"])): ?>
                                             <?php
