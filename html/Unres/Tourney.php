@@ -685,8 +685,9 @@ foreach ($changes_data as $change_batch) {
                         loser: loserid,
                         name: "TourneyPage"
                     })
+                }).then(() => {
+                    location.reload();
                 });
-                location.reload();
             });
 
         }
