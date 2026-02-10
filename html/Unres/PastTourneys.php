@@ -137,8 +137,6 @@ foreach ($changes_data as $change_batch) {
           transition: background-position 0.15s;
         }
 
-
-
         .bg-fg{
           background-image: url("images/fs3.png");
         }
@@ -151,7 +149,6 @@ foreach ($changes_data as $change_batch) {
           background-image: url("images/fs1.png");
         }
 
-
         .bg-fg::before {
           content: "";
           position: absolute;
@@ -161,15 +158,9 @@ foreach ($changes_data as $change_batch) {
           pointer-events: none;
         }
 
-
-
-
         .bg-img .content{
             position:relative;
         }
-
-
-
 
         ::-webkit-scrollbar{
             display:none;
@@ -250,7 +241,7 @@ foreach ($changes_data as $change_batch) {
           border-bottom-right-radius: 5px;
         }
 
-        #p2{
+        #p4{
             top:100px;
             background-color: #444
         }
