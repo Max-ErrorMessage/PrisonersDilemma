@@ -302,10 +302,11 @@ foreach ($changes_data as $change_batch) {
                                     ?>
 
                                     <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $deck['cid'] ?></span>
-                                    <br><span><?= date("M jS, Y", strtotime($tourney['tourney_date'])) ?></span>
+                                    <span class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
+                                    
 
                                 </td><td class="ra">
-                                    <span class="ra"><?= explode('.',htmlspecialchars($deck['elo']))[0] ?></span>
+                                    <br><span><?= date("M jS, Y", strtotime($tourney['tourney_date'])) ?></span>
                                 </td>
                             </tr>
                             <?php $rank++; ?>
@@ -371,8 +372,8 @@ foreach ($changes_data as $change_batch) {
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
 
-        function goToDeck(id){
-            window.location = "deck.php?id=" + id
+        function goToTourney(id){
+            window.location = "TourneyHistory.php?id=" + id
         }
 
         function switchTab(n){
