@@ -208,9 +208,12 @@ foreach ($removals as $rem){
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
-    <title>Unrestricted Vintage Matchups</title>
-    <link rel="icon" href="/t.ico" type="image/x-icon">
-    <meta name="description" content="Create bots to compete in fun minigames! :)">
+    <title><?= $deck['name']?></title>
+    <link rel="icon" href="<?= $color_url ?>">
+    <meta name="description" content="Deck for Unrestricted Vintage! :)">
+    <meta property="og:title" content="<?= $deck['name']?>">
+    <meta property="og:description" content="Deck for Unrestricted Vintage!">
+    <meta property="og:image" content="<?= $color_url ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="unres.css">

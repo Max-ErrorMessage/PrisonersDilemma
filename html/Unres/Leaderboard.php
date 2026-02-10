@@ -112,7 +112,6 @@ foreach ($changes_data as $change_batch) {
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
     <title>Unrestricted Vintage Leaderboard</title>
     <link rel="icon" href="/t.ico" type="image/x-icon">
-    <meta name="description" content="Create bots to compete in fun minigames! :)">
     <meta property="og:title" content="Unres Leaderboard">
     <meta property="og:description" content="The best decks in unres! Take a look at the rankings and see who is on top!">
     <meta property="og:image" content="Images/6.png">
