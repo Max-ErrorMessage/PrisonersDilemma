@@ -11,8 +11,8 @@
         <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png">
         <span>Top Cards</span>
     </a>
-    <a href="Past Tourneys.php" id="p4" class="pButton">
+    <a href="PastTourneys.php" id="p4" class="pButton">
         <img src="https://cdn-icons-png.flaticon.com/128/3511/3511080.png">
-        <span>PastTourneys</span>
+        <span>Past Tourneys</span>
     </a>
 </div>
