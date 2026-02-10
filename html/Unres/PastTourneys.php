@@ -242,7 +242,6 @@ foreach ($changes_data as $change_batch) {
         }
 
         #p4{
-            top:100px;
             background-color: #444
         }
     </style>
