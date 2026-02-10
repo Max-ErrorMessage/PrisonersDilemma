@@ -677,7 +677,7 @@ foreach ($changes_data as $change_batch) {
                     loserId: loserid
                 })
             }).then(() => {
-                fetch('/submit_match.php', {
+                fetch('submit_match.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams({
