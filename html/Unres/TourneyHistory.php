@@ -367,7 +367,7 @@ $offset_check = 0;
                                 <?php foreach ($matches as $match): ?>
                                     <?php if ($match['round'] !== $i) continue; ?>
                                     <?php if ($offset_check == 0){
-                                        $offset_check = 0;
+                                        $offset_check = 1;
                                         $matchid_offset = $match["id"] - 1;
                                     }
                                     ?>
