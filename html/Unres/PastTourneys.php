@@ -121,10 +121,9 @@ foreach ($changes_data as $change_batch) {
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
     <title>Unrestricted Vintage Leaderboard</title>
     <link rel="icon" href="/t.ico" type="image/x-icon">
-    <meta name="description" content="Create bots to compete in fun minigames! :)">
-    <meta property="og:title" content="Unres Leaderboard">
-    <meta property="og:description" content="The best decks in unres! Take a look at the rankings and see who is on top!">
-    <meta property="og:image" content="Images/6.png">
+    <meta property="og:title" content="Past Tourney Results">
+    <meta property="og:description" content="Check the results of previous tournaments!">
+    <meta property="og:image" content="Images/14.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="unres.css">
