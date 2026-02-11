@@ -76,7 +76,7 @@ foreach ($decks as $deck) {
 }
 
 
-$stmt = $pdo->query('SELECT * FROM past_tournaments');
+$stmt = $pdo->query('SELECT * FROM past_tournaments order by id desc');
 $tourneys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
