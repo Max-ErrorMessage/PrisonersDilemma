@@ -249,7 +249,7 @@ order by winrate_percentage desc
 limit 100;
 ');
 
-$card_pairs = $stmt->fetch(PDO::FETCH_ASSOC);
+$card_pairs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $jsoncards2 = json_encode($card_pairs);
 ?>
 
