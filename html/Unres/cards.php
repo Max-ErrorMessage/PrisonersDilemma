@@ -380,7 +380,7 @@ $jsoncards2 = json_encode($card_pairs);
 
                     <div id = "page3" style="display:none; height:100%">
                         <strong> Winrate vs Playrate </strong>
-                        <a class = "ra", onclick="switchGraph()"> switch </a>
+                        <a style="position:absolute; right:10%", onclick="switchGraph()"> switch </a>
                         <canvas id="cardgraph" style="height:70vh"></canvas>
                     </div>
 
