@@ -146,7 +146,7 @@ SELECT
     d.image_url,
     a.average_elo,
     ROUND(
-        100.0 * w.wins / NULLIF(w.wins + w.losses - w.both_sides, 0),
+        100.0 * w.wins - w.both_sides / NULLIF(w.wins + w.losses - w.both_sides, 0),
         2
     ) AS winrate_percentage,
     ROUND(
@@ -208,8 +208,28 @@ select
         END
    ) AS both_sides,
     ROUND(
-        100.0 * sum(case when m.winner_id = dc.deck_id then 1 else 0 end) / 
-NULLIF(
+        100.0 * sum(case when m.winner_id = dc.deck_id then 1 else 0 end)
+       -  
+	    sum(
+   		    case
+        		    WHEN m.winner_id = dc.deck_id
+         		    AND EXISTS (
+              			    SELECT 1
+               			    FROM card_in_deck cid3
+               			    WHERE cid3.deck_id = m.loser_id
+                 		    AND cid3.card_id = dc.id1
+         		    )
+			    AND EXISTS (
+	               		    SELECT 1
+               			    FROM card_in_deck cid4
+               			    WHERE cid4.deck_id = m.loser_id
+                 		    AND cid4.card_id = dc.id2
+         		    )
+        		    THEN 1
+        	    ELSE 0 END
+   	    )
+    , 0)/ 
+    NULLIF(
 	sum(case when m.winner_id = dc.deck_id then 1 else 0 end) + 
 	sum(case when m.loser_id = dc.deck_id then 1 else 0 end) - 
 	sum(
