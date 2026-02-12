@@ -581,7 +581,7 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 50,
+                            max: 131,
                             title: {
                               display: true,
                               text: 'Decks',
