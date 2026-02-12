@@ -435,7 +435,7 @@ $jsoncards2 = json_encode($card_pairs);
     }))
 
     var graph = 1
-
+    var graphinstance = null;
     function switchTab(n){
             tab1 = document.getElementById("ct1")
             tab2 = document.getElementById("ct2")
@@ -484,7 +484,7 @@ $jsoncards2 = json_encode($card_pairs);
 
 
 
-                new Chart(document.getElementById("cardgraph"), {
+                graphinstance = new Chart(document.getElementById("cardgraph"), {
                     type: "scatter",
                     data: {
                       datasets: [{
@@ -563,15 +563,16 @@ $jsoncards2 = json_encode($card_pairs);
         }
 
         switchGraph(){
-            if graph == 1{
+        graphinstance.destroy();
+            if (graph == 1){
                 graph = 2
-                new Chart(document.getElementById("cardgraph"), {
+                graphinstance = new Chart(document.getElementById("cardgraph"), {
                     type: "scatter",
                     data: {
                       datasets: [{
                         label: 'Playrate vs Winrate',
                         data: graphData2,
-                        pointBackgroundColor: graphData.map(p => p.backgroundColor),
+                        pointBackgroundColor: '#88b',
                         pointRadius: 3,
                         pointBorderWidth: 0
                       }]
@@ -641,7 +642,7 @@ $jsoncards2 = json_encode($card_pairs);
                   });
             } else {
                 graph = 1
-                new Chart(document.getElementById("cardgraph"), {
+                graphinstance = new Chart(document.getElementById("cardgraph"), {
                     type: "scatter",
                     data: {
                       datasets: [{
@@ -714,7 +715,7 @@ $jsoncards2 = json_encode($card_pairs);
                       },
                       maintainAspectRatio: false
                     }
-                  });
+                 });
 
             }
             
