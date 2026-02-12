@@ -24,8 +24,7 @@ WITH avg_elo AS (
     INNER JOIN decks d   ON cid.deck_id = d.id
     where cid.mainboard = 1
     GROUP BY c.id, c.card_name
-),
-card_winloss AS (
+),card_winloss AS (
     SELECT
         c.id AS card_id,
         c.card_name,
@@ -72,6 +71,10 @@ SELECT
         100.0 * w.wins / NULLIF(w.wins + w.losses - w.both_sides, 0),
         2
     ) AS winrate_percentage,
+    ROUND(
+        100.0 * w.wins / NULLIF(w.wins + w.losses, 0),
+        2
+    ) AS winrate_percentage_2,
     ROUND(
         d.decks_containing_card * 100.0 / (SELECT COUNT(*) FROM decks),
         2
@@ -329,7 +332,7 @@ $sbrank = 1;
 
     const graphData = data.map(point => ({
         x: point.percentage_playrate,
-        y: point.winrate_percentage,
+        y: point.winrate_percentage_2,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
         label: `${point.card_name}: PR: ${point.percentage_playrate}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
     }))
