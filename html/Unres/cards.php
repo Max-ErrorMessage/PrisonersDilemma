@@ -593,7 +593,7 @@ $jsoncards2 = json_encode($card_pairs);
                             stepSize: 1,
 
                               callback: function(value) {
-                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                if (value % 10 === 0 && value >= 0 && value <= 130) {
                                   return value;
                                 }
                                 return null;
@@ -615,7 +615,7 @@ $jsoncards2 = json_encode($card_pairs);
                             color: "#ddd",
                             stepSize: 1,
                               callback: function(value) {
-                                if (value % 10 === 0 && value >= 0 && value <= 130) {
+                                if (value % 10 === 0 && value >= 0 && value <= 100) {
                                   return value;
                                 }
                                 return null;
