@@ -418,6 +418,7 @@ $jsoncards2 = json_encode($card_pairs);
         }
         
     const data = <?php echo $jsoncards; ?>
+
     const data2 = <?php echo $jsoncards2; ?>
     
     const graphData = data.map(point => ({
@@ -428,7 +429,7 @@ $jsoncards2 = json_encode($card_pairs);
     }))
 
     
-    const graphData2 = data.map(point => ({
+    const graphData2 = data2.map(point => ({
         x: point.decks,
         y: point.winrate_percentage,
         label: `${point.name1}, ${point.name2}: decks: ${point.decks}, WR: ${point.winrate_percentage}`
