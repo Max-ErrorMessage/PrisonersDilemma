@@ -380,6 +380,7 @@ $jsoncards2 = json_encode($card_pairs);
 
                     <div id = "page3" style="display:none; height:100%">
                         <strong> Winrate vs Playrate </strong>
+                        <a onclick="switchGraph()"> switch </a>
                         <canvas id="cardgraph" style="height:70vh"></canvas>
                     </div>
 
@@ -433,7 +434,7 @@ $jsoncards2 = json_encode($card_pairs);
         label: `${point.name1}, ${point.name2}: decks: ${point.decks}, WR: ${point.winrate_percentage}`
     }))
 
-
+    var graph = 1
 
     function switchTab(n){
             tab1 = document.getElementById("ct1")
@@ -483,6 +484,87 @@ $jsoncards2 = json_encode($card_pairs);
 
 
 
+                new Chart(document.getElementById("cardgraph"), {
+                    type: "scatter",
+                    data: {
+                      datasets: [{
+                        label: 'Playrate vs Winrate',
+                        data: graphData,
+                        pointBackgroundColor: graphData.map(p => p.backgroundColor),
+                        pointRadius: 5,
+                        pointBorderWidth: 0
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        x: {
+                            min: -1,
+                            max: 101,
+                            title: {
+                              display: true,
+                              text: 'Decks',
+                              color: "#ddd"
+
+                            },
+                          ticks: {
+                            color: "#ddd",
+                            stepSize: 1,
+
+                              callback: function(value) {
+                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                  return value;
+                                }
+                                return null;
+                              }
+                            },
+                          grid: { color: "#444" }
+                        },
+                        y: {
+                              min: -1,
+                              max: 101,
+                              suggestedMin: -3,
+                              suggestedMax: 103,
+                            title: {
+                              display: true,
+                              text: 'Winrate (%)',
+                              color: "#ddd"
+                            },
+                          ticks: {
+                            color: "#ddd",
+                            stepSize: 1,
+                              callback: function(value) {
+                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                  return value;
+                                }
+                                return null;
+                              }
+                            },
+                          grid: { color: "#444" }
+                        }
+                      },
+                      plugins: {
+
+                        legend: {
+                          labels: { color: "#ddd" }
+                        },
+                        tooltip: {
+                          callbacks: {
+                            label: function(context) {
+                              return context.raw.label; // use the label we built into graphData
+                            }
+                          }
+                        }
+                      },
+                      maintainAspectRatio: false
+                    }
+                  });
+
+            }
+        }
+
+        switchGraph(){
+            if graph == 1{
+                graph = 2
                 new Chart(document.getElementById("cardgraph"), {
                     type: "scatter",
                     data: {
@@ -549,7 +631,83 @@ $jsoncards2 = json_encode($card_pairs);
                         tooltip: {
                           callbacks: {
                             label: function(context) {
-                              return context.raw.label; // use the label we built into graphData
+                              return context.raw.label;
+                            }
+                          }
+                        }
+                      },
+                      maintainAspectRatio: false
+                    }
+                  });
+            } else {
+                graph = 1
+                new Chart(document.getElementById("cardgraph"), {
+                    type: "scatter",
+                    data: {
+                      datasets: [{
+                        label: 'Playrate vs Winrate',
+                        data: graphData,
+                        pointBackgroundColor: graphData.map(p => p.backgroundColor),
+                        pointRadius: 3,
+                        pointBorderWidth: 0
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        x: {
+                            min: -1,
+                            max: 101,
+                            title: {
+                              display: true,
+                              text: 'Decks',
+                              color: "#ddd"
+
+                            },
+                          ticks: {
+                            color: "#ddd",
+                            stepSize: 1,
+
+                              callback: function(value) {
+                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                  return value;
+                                }
+                                return null;
+                              }
+                            },
+                          grid: { color: "#444" }
+                        },
+                        y: {
+                              min: -1,
+                              max: 101,
+                              suggestedMin: -3,
+                              suggestedMax: 103,
+                            title: {
+                              display: true,
+                              text: 'Winrate (%)',
+                              color: "#ddd"
+                            },
+                          ticks: {
+                            color: "#ddd",
+                            stepSize: 1,
+                              callback: function(value) {
+                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                  return value;
+                                }
+                                return null;
+                              }
+                            },
+                          grid: { color: "#444" }
+                        }
+                      },
+                      plugins: {
+
+                        legend: {
+                          labels: { color: "#ddd" }
+                        },
+                        tooltip: {
+                          callbacks: {
+                            label: function(context) {
+                              return context.raw.label;
                             }
                           }
                         }
@@ -559,6 +717,7 @@ $jsoncards2 = json_encode($card_pairs);
                   });
 
             }
+            
         }
     </script>
 </body>
