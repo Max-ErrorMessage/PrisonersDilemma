@@ -562,8 +562,8 @@ $jsoncards2 = json_encode($card_pairs);
             }
         }
 
-        switchGraph(){
-        graphinstance.destroy();
+        function switchGraph(){
+            graphinstance.destroy();
             if (graph == 1){
                 graph = 2
                 graphinstance = new Chart(document.getElementById("cardgraph"), {
