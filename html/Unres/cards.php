@@ -244,9 +244,7 @@ left join cards c1
 left join cards c2
     on c2.id = dc.id2
 group by dc.id1, dc.id2, c1.card_name, c2.card_name
-having (matches > 3)
 order by winrate_percentage desc
-limit 100;
 ');
 
 $card_pairs = $stmt->fetchAll(PDO::FETCH_ASSOC);
