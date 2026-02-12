@@ -498,10 +498,10 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 101,
+                            max: 50,
                             title: {
                               display: true,
-                              text: 'Playrate (%)',
+                              text: 'Decks',
                               color: "#ddd"
 
                             },
