@@ -162,6 +162,95 @@ ORDER BY percentage_playrate DESC;
 ');
 $sbcards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sbrank = 1;
+
+$stmt= $pdo->query('
+
+with card_combos as (
+select distinct
+    c1.card_id id1,
+    c2.card_id id2
+from card_in_deck c1
+inner join card_in_deck c2 
+    on c1.deck_id = c2.deck_id
+    and c1.card_id > c2.card_id
+),
+decks_combos as (select distinct
+    cc.*,
+    cid1.deck_id
+from card_combos cc
+left join card_in_deck cid1
+    on cid1.card_id = cc.id1
+left join card_in_deck cid2
+    on cid2.card_id = cc.id2
+where cid1.deck_id = cid2.deck_id
+)
+select 
+    c1.card_name as name1,
+    c2.card_name as name2,
+    sum(case when m.winner_id = dc.deck_id then 1 else 0 end) matches_won,
+    sum(case when m.loser_id = dc.deck_id then 1 else 0 end) matches_lost,
+    sum(
+   	case
+        WHEN m.winner_id = dc.deck_id
+         AND EXISTS (
+               SELECT 1
+               FROM card_in_deck cid3
+               WHERE cid3.deck_id = m.loser_id
+                 AND cid3.card_id = dc.id1
+         )
+	AND EXISTS (
+               SELECT 1
+               FROM card_in_deck cid4
+               WHERE cid4.deck_id = m.loser_id
+                 AND cid4.card_id = dc.id2
+         )
+        THEN 1
+        END
+   ) AS both_sides,
+    ROUND(
+        100.0 * sum(case when m.winner_id = dc.deck_id then 1 else 0 end) / 
+NULLIF(
+	sum(case when m.winner_id = dc.deck_id then 1 else 0 end) + 
+	sum(case when m.loser_id = dc.deck_id then 1 else 0 end) - 
+	sum(
+   		case
+        		WHEN m.winner_id = dc.deck_id
+         		AND EXISTS (
+              			SELECT 1
+               			FROM card_in_deck cid3
+               			WHERE cid3.deck_id = m.loser_id
+                 		AND cid3.card_id = dc.id1
+         		)
+			AND EXISTS (
+	               		SELECT 1
+               			FROM card_in_deck cid4
+               			WHERE cid4.deck_id = m.loser_id
+                 		AND cid4.card_id = dc.id2
+         		)
+        		THEN 1
+        	ELSE 0 END
+   	)
+, 0),
+        2
+    ) AS winrate_percentage,
+   
+   count(distinct dc.deck_id) decks,
+   count(distinct m.id) matches
+from decks_combos dc
+inner join matches m
+    on dc.deck_id in (m.winner_id, m.loser_id)
+left join cards c1
+    on c1.id = dc.id1
+left join cards c2
+    on c2.id = dc.id2
+group by dc.id1, dc.id2, c1.card_name, c2.card_name
+having (matches > 3)
+order by winrate_percentage desc
+limit 100;
+');
+
+$card_pairs = $stmt->fetch(PDO::FETCH_ASSOC);
+$jsoncards2 = json_encode($card_pairs);
 ?>
 
 
@@ -327,15 +416,24 @@ $sbrank = 1;
         function goToDeck(id){
             window.location = "deck.php?id=" + id
         }
-
+        
     const data = <?php echo $jsoncards; ?>
-
+    const data2 = <?php echo $jsoncards2; ?>
+    
     const graphData = data.map(point => ({
         x: point.percentage_playrate,
         y: point.winrate_percentage,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
         label: `${point.card_name}: PR: ${point.percentage_playrate}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
     }))
+
+    
+    const graphData2 = data.map(point => ({
+        x: point.decks,
+        y: point.winrate_percentage,
+        label: `${point.name1}, ${point.name2}: decks: ${point.decks}, WR: ${point.winrate_percentage}`
+    }))
+
 
 
     function switchTab(n){
@@ -391,9 +489,9 @@ $sbrank = 1;
                     data: {
                       datasets: [{
                         label: 'Playrate vs Winrate',
-                        data: graphData,
+                        data: graphData2,
                         pointBackgroundColor: graphData.map(p => p.backgroundColor),
-                        pointRadius: 5,
+                        pointRadius: 3,
                         pointBorderWidth: 0
                       }]
                     },
