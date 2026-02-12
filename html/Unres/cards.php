@@ -146,7 +146,7 @@ SELECT
     d.image_url,
     a.average_elo,
     ROUND(
-        100.0 * w.wins - w.both_sides / NULLIF(w.wins + w.losses - w.both_sides, 0),
+        100.0 * (w.wins - w.both_sides) / NULLIF(w.wins + w.losses - w.both_sides, 0),
         2
     ) AS winrate_percentage,
     ROUND(
@@ -234,7 +234,7 @@ NULLIF(
         2
     ) AS winrate_percentage,
    
-   count(distinct dc.deck_id) decks,
+   count(dc.deck_id) decks,
    count(distinct m.id) matches
 from decks_combos dc
 inner join matches m
