@@ -649,7 +649,7 @@ $jsoncards2 = json_encode($card_pairs);
                         label: 'Playrate vs Winrate',
                         data: graphData,
                         pointBackgroundColor: graphData.map(p => p.backgroundColor),
-                        pointRadius: 3,
+                        pointRadius: 5,
                         pointBorderWidth: 0
                       }]
                     },
