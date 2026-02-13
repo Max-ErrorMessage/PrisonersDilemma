@@ -443,8 +443,9 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
 
 
                <div id="deck_tourney_results" style="display:<?= $tourney_block_display ?>">
+                    </br>
                     <h3 style="text-align:center;">Tournament Results</h3>
-                    <table>
+                    <table style="left:20%, width:60%">
                         <?php foreach ($tourney_results as $result): ?>
                             <tr onclick=goToTourney('<?= htmlspecialchars($result['tournament_id']) ?>')>
                                 <td>
