@@ -479,3 +479,13 @@ tr td:last-child {
 .loser{
     background-color:#633
 }
+
+#deck_tourney_results{
+    position:absolute;
+    left:75%;
+    width:20%;
+    height:50%;
+    top:15%;
+    border-radius:3px;
+    overflow-y:scroll;
+}

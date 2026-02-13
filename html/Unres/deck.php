@@ -439,8 +439,9 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                             </table>
                         </div>
                     </div>
-
                </div>
+
+
                <div id="deck_tourney_results" style="display:<?= $tourney_block_display ?>">
                     <h3 style="text-align:center;">Tournament Results</h3>
                     <table>
@@ -455,6 +456,8 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <?php endforeach; ?>
                     </table>
                 </div>
+
+
                <img id="clr-img" src= "<?= $color_url ?>">
             </div>
         </div>
