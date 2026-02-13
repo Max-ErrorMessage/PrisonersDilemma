@@ -234,7 +234,7 @@ NULLIF(
         2
     ) AS winrate_percentage,
    
-   count(dc.deck_id) decks,
+   count(distinct dc.deck_id) decks,
    count(distinct m.id) matches
 from decks_combos dc
 left join matches m
