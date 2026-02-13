@@ -445,9 +445,9 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                     <h3 style="text-align:center;">Tournament Results</h3>
                     <table>
                         <?php foreach ($tourney_results as $result): ?>
-                            <tr>
+                            <tr onclick=goToTourney('<?= htmlspecialchars($result['tournament_id']) ?>')>
                                 <td>
-                                    <p><?= htmlspecialchars($result['date'])?></p>
+                                    <p><?= htmlspecialchars($result['tourney_date'])?></p>
                                 </td><td>
                                     <p style="text-align:right;"><?= htmlspecialchars($result['matches_won'])?> - <?= htmlspecialchars($result['matches_lost'])?></p>
                                 </td>
@@ -587,6 +587,10 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
         }
         function imgLeave(){
             document.getElementById('crd-prvw').style.display="none"
+        }
+        
+        function goToTourney(id){
+            window.location = "TourneyHistory.php?id=" + id
         }
 
         const cardUrls = [
