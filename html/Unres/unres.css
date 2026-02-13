@@ -484,10 +484,8 @@ tr td:last-child {
     position:absolute;
     left:75%;
     width:20%;
-    height:50%;
     top:15%;
     border-radius:3px;
-    overflow-y:scroll;
     background-color:#1e2833;
     color:white;
 }
