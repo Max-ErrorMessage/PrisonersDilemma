@@ -237,7 +237,7 @@ NULLIF(
    count(dc.deck_id) decks,
    count(distinct m.id) matches
 from decks_combos dc
-inner join matches m
+left join matches m
     on dc.deck_id in (m.winner_id, m.loser_id)
 left join cards c1
     on c1.id = dc.id1
