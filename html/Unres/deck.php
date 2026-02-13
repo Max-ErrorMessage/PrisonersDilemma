@@ -202,6 +202,43 @@ foreach ($removals as $rem){
     }
 }
 
+// ---- Fetch Tourney Results for Deck
+
+$stmt = $pdo->prepare('
+SELECT
+    t.tournament_id,
+    t.deck_id,
+    SUM(t.wins)   AS matches_won,
+    SUM(t.losses) AS matches_lost,
+    pt.*
+FROM (
+    -- wins
+    SELECT
+        tournament_id,
+        winnerid AS deck_id,
+        1 AS wins,
+        0 AS losses
+    FROM matches_in_tourney
+
+    UNION ALL
+
+    -- losses
+    SELECT
+        tournament_id,
+        loserid AS deck_id,
+        0 AS wins,
+        1 AS losses
+    FROM matches_in_tourney
+) t
+left join past_tournaments pt on t.tournament_id = pt.id
+where deck_id = :id
+GROUP BY tournament_id, deck_id
+ORDER BY tournament_id, deck_id;
+');
+$stmt->execute([':id' => $id]);
+$tourney_results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
+
 ?>
 
 
@@ -404,7 +441,20 @@ foreach ($removals as $rem){
                     </div>
 
                </div>
-
+               <div id="deck_tourney_results" style="display:<?= $tourney_block_display ?>">
+                    <h3 style="text-align:center;">Tournament Results</h3>
+                    <table>
+                        <?php foreach ($tourney_results as $result): ?>
+                            <tr>
+                                <td>
+                                    <p><?= htmlspecialchars($result['date'])?></p>
+                                </td><td>
+                                    <p style="text-align:right;"><?= htmlspecialchars($result['matches_won'])?> - <?= htmlspecialchars($result['matches_lost'])?></p>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
                <img id="clr-img" src= "<?= $color_url ?>">
             </div>
         </div>
