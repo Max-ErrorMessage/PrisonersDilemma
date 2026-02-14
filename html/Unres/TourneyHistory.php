@@ -205,7 +205,7 @@ FROM (
 ) t
 where tournament_id = :id
 GROUP BY tournament_id, deck_id
-ORDER BY tournament_id, deck_id;
+ORDER BY matches_won desc;
 ');
 $stmt->execute([':id' => $id]);
 $tourney_results = $stmt->fetchAll(PDO::FETCH_ASSOC);
