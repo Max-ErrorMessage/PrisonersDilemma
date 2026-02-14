@@ -230,7 +230,7 @@ foreach ($removals as $rem){
             FROM cards c
             INNER JOIN types_of_card tc on c.id = tc.card_id
             INNER JOIN types t on tc.type_id = t.id
-            WHERE id = :id;
+            WHERE c.id = :id;
         ');
         $stmt->execute([':id' => $rid]);
         $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
