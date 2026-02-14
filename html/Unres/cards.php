@@ -326,27 +326,7 @@ $jsoncards2 = json_encode($card_pairs);
                     <div id = "page1">
                         <strong>Most Played Mainboard Cards:</strong><br>
                         <table style="table-layout:fixed; width:90%">
-                        <?php foreach ($cards as $card): ?>
-                            <tr>
-                                <td style="width:5%;">
-                                    <div class="n c<?= $rank?>"><span id="r<?= $rank?>"><?= $rank?>.</span></div>
-                                </td><td style="width:25%;">
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:9vw; border-radius:10px; border:3px #aef solid;">
-                                </td><td style="width:15%;">
-                                    <?= htmlspecialchars($card['card_name']) ?>
-                                </td><td  style="width:20%;">
-                                    <div class="ca"><?= explode('.',htmlspecialchars($card['average_elo']))[0]?>
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo</span></div>
-                                </td><td  style="width:20%;">
-                                    <div class="ca"><?= explode('.',htmlspecialchars($card['winrate_percentage']))[0]?>%
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate</span></div>
-                                </td><td  style="width:15%;">
-                                    <div class="ca"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
-                                </td>
-                            </tr>
-                            <?php $rank++; ?>
-                        <?php endforeach; ?>
+                            <tbody id="sideboardBody"></tbody>
                         </table>
                     </div>
 
@@ -761,7 +741,7 @@ $jsoncards2 = json_encode($card_pairs);
             data.sort((a, b) => b.average_elo - a.average_elo);
         }
 
-        renderSideboard(data);
+        renderMainboard(data);
     }
     
     renderSideboard(sbdata);
