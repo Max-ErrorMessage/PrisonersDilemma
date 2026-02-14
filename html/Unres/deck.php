@@ -233,9 +233,9 @@ foreach ($removals as $rem){
             WHERE c.id = :id;
         ');
         $stmt->execute([':id' => $rid]);
-        $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $new_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $mb_card_types_by_id[$rid] = [];
-        foreach ($types as $type) {
+        foreach ($new_types as $type) {
             $mb_card_types_by_id[$rid][] = $type['type_name'];
         }
     }
