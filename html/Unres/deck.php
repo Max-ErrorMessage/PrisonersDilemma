@@ -333,7 +333,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                     } else if (in_array($card['id'], $cardsDisplayed)) {
                                         continue;
                                     } else if (!$isset) {
-                                        echo "<br><strong>" . $type . ":</strong><br>";
+                                        echo "<strong>" . $type . ":</strong><br>";
                                         $isset = true;
                                     }
                                     $cardsDisplayed[] = $card['id'];
@@ -386,6 +386,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                     <span style="color:#c00; width:30px; text-align:right"><?= htmlspecialchars($card['n']) ?></span>
                                 </div>
                                 <?php endforeach; ?>
+                                <br>
                             <?php endforeach; ?>
                         </div>
                         <br>
