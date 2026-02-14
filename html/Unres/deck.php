@@ -224,6 +224,20 @@ foreach ($removals as $rem){
         } else {
             $full_removals_sb[] = $full_removal_to_add;
         }
+
+        $stmt = $pdo->prepare('
+            SELECT c.id, t.type_text as type_name
+            FROM cards c
+            INNER JOIN types_of_card tc on c.id = tc.card_id
+            INNER JOIN Types t on tc.type_id = t.id
+            WHERE id = :id;
+        ');
+        $stmt->execute([':id' => $rid]);
+        $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $mb_card_types_by_id[$rid] = [];
+        foreach ($types as $type) {
+            $mb_card_types_by_id[$rid][] = $type['type_name'];
+        }
     }
 }
 
