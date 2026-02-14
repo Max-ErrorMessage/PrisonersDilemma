@@ -82,15 +82,11 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <div id="lb">
                     <h3>Unrestricted Vintage: An Introduction</h3>   
-                    <p>Unrestricted Vintage is a custom Magic: The Gathering format where every card is legal. No bans. No restrictions.
-                    Power Nine, fast mana, and game-ending combos aren't just allowed; they're expected.</p>
+                    <p>Unrestricted Vintage is a Magic: The Gathering format where the most powerful aspects of the game come to light. Every restricted card in Vintage has been unrestricted and every banned card in Legacy has been unbanned, embracing the most powerful spells and combos the game has to offer.</p>
                     
-                    <p>Decks compete in tracked matches, Elo ratings rise and fall, and the metagame evolves in public.
-                    Nothing is theoretical here. If it works, the data will show it.</p>
+                    <p>Matches are tracked, Elo ratings are maintained, and the evolving metagame is visible to everyone. Ideas are tested in real play and monthly tournaments, and the data is available to view for anyone who is interested!</p>
                    
-                    <p>The format is shaped by its players in the Discord. With deck discussions, new release debates and monthly tournaments all in one place.
-                    If you enjoy high power Magic, experimental formats, and competitive fun.
-                    come help define what Unrestricted Vintage becomes.</p>   
+                    <p>The format lives in its Discord community where players share deck ideas, debate on cards, and compete in monthly tournaments. If you enjoy exploring extreme power levels and helping shape a living format, Unrestricted Vintage invites you to be part of it.</p>   
                     <a
                       href="https://discord.gg/ndvgeRCpJW"
                       target="_blank"
