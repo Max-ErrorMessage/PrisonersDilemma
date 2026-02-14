@@ -386,7 +386,6 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                     <span style="color:#c00; width:30px; text-align:right"><?= htmlspecialchars($card['n']) ?></span>
                                 </div>
                                 <?php endforeach; ?>
-                                <br>
                             <?php endforeach; ?>
                         </div>
                         <br>
