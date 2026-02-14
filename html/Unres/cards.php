@@ -162,6 +162,7 @@ ORDER BY percentage_playrate DESC;
 ');
 $sbcards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sbrank = 1;
+$jsonsbcards = json_encode($sbcards);
 
 $stmt= $pdo->query('
 
@@ -351,28 +352,8 @@ $jsoncards2 = json_encode($card_pairs);
 
                     <div id = "page2" style="display:none">
                         <strong>Most Played Sideboard Cards:</strong><br>
-                        <table style="table-layout:fixed; width:90%;">
-                        <?php foreach ($sbcards as $card): ?>
-                            <tr>
-                                <td style="width:5%;">
-                                    <div class="n c<?= $sbrank?>"><span id="r<?= $sbrank?>"><?= $sbrank?>.</span></div>
-                                </td><td style="width:25%;">
-                                    <img src="<?= htmlspecialchars($card['image_url']) ?>" style = "width:9vw; border-radius:10px; border:3px #aef solid;">
-                                </td><td style="width:15%;">
-                                    <?= htmlspecialchars($card['card_name']) ?>
-                                </td><td  style="width:20%;">
-                                    <div class="ca"><?= explode('.',htmlspecialchars($card['average_elo']))[0]?>
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Average Elo</span></div>
-                                </td><td  style="width:20%;">
-                                    <div class="ca"><?= explode('.',htmlspecialchars($card['winrate_percentage']))[0]?>%
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Winrate</span></div>
-                                </td><td  style="width:15%;">
-                                    <div class="ca"><?= explode('.',htmlspecialchars($card['percentage_playrate']))[0]?>%
-                                    <br><span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Playrate</span></div>
-                                </td>
-                            </tr>
-                            <?php $sbrank++; ?>
-                        <?php endforeach; ?>
+                        <table>
+                            <tbody id="sideboardBody"></tbody>
                         </table>
                     </div>
 
@@ -417,6 +398,7 @@ $jsoncards2 = json_encode($card_pairs);
         }
         
     const data = <?php echo $jsoncards; ?>
+    const sbdata = <?php echo $jsonsbcards; ?>
 
     const data2 = <?php echo $jsoncards2; ?>
     
@@ -720,6 +702,37 @@ $jsoncards2 = json_encode($card_pairs);
             }
             
         }
+
+    function renderSideboard(data) {
+        const body = document.getElementById("sideboardBody");
+        body.innerHTML = "";
+
+        data.forEach((sbdata, index) => {
+            body.innerHTML += `
+            <tr>
+                <td>${index + 1}.</td>
+                <td><img src="${card.image_url}" style="width:9vw; border-radius:10px; border:3px #aef solid;"></td>
+                <td>${card.card_name}</td>
+                <td onclick="sortSideboard('elo')">${Math.floor(card.average_elo)}<br><span style="color:#aaa;font-family:monospace;">Average Elo</span></td>
+                <td onclick="sortSideboard('winrate')">${Math.floor(card.winrate_percentage)}%<br><span style="color:#aaa;font-family:monospace;">Winrate</span></td>
+                <td onclick="sortSideboard('playrate')">${Math.floor(card.percentage_playrate)}%<br><span style="color:#aaa;font-family:monospace;">Playrate</span></td>
+            </tr>`;
+        });
+    }
+
+    function sortSideboard(type) {
+        if (type === "playrate") {
+            data.sort((a, b) => b.percentage_playrate - a.percentage_playrate);
+        } else if (type === "winrate") {
+            data.sort((a, b) => b.winrate_percentage - a.winrate_percentage);
+        } else if (type === "elo") {
+            data.sort((a, b) => b.average_elo - a.average_elo);
+        }
+
+        renderSideboard(data);
+    }
+
+
     </script>
 </body>
 </html>
