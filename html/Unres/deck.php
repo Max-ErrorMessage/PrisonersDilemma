@@ -329,7 +329,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                     } else if (in_array($card['id'], $cardsDisplayed)) {
                                         continue;
                                     } else if (!$isset) {
-                                        echo "<br><em>" . $type . "s</em><br>";
+                                        echo "<br><strong>" . $type . ":</strong><br>";
                                         $isset = true;
                                     }
                                     $cardsDisplayed[] = $card['id'];
