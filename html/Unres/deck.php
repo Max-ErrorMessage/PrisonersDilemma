@@ -57,7 +57,7 @@ foreach ($sb_cards as $card) {
 
 
 // fetch all Types of cards in mainboard and sideboard
-$stmt = $pdo->prepare('SELECT c.id as id, t.type_name
+$stmt = $pdo->prepare('SELECT c.id as id, t.type_text as type_name
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 inner join types_of_card tc on c.id = tc.card_id 
