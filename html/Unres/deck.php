@@ -375,6 +375,22 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                 </div>
                                 <?php endforeach; ?>
                                 <?php foreach ($full_removals_mb as $card): ?>
+                                <?php
+                                    if 
+                                    (
+                                        (!in_array($type, $mb_card_types_by_id[$card['id']])) ||
+                                        (in_array("Land", $mb_card_types_by_id[$card['id']]) && $type != "Land")
+                                    ) 
+                                    {
+                                        continue;
+                                    } else if (in_array($card['id'], $cardsDisplayed)) {
+                                        continue;
+                                    } else if (!$isset) {
+                                        echo "<strong>" . $type . ":</strong><br>";
+                                        $isset = true;
+                                    }
+                                    $cardsDisplayed[] = $card['id'];
+                                ?>
                                 <div style="justify-content:space-between;display:flex; width:100%">
                                     <div style="justify-content:space-between;display:flex; width:100%">
                                         <span style="color:#c00"
