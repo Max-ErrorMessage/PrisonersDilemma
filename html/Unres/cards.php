@@ -324,14 +324,14 @@ $jsoncards2 = json_encode($card_pairs);
                 </a>
                 <div id="lb">
                     <div id = "page1">
-                        <strong>Most Played Mainboard Cards:</strong><br>
+                        <strong>Mainboard Cards:</strong><br>
                         <table style="table-layout:fixed; width:90%">
                             <tbody id="mainboardBody"></tbody>
                         </table>
                     </div>
 
                     <div id = "page2" style="display:none">
-                        <strong>Most Played Sideboard Cards:</strong><br>
+                        <strong>Sideboard Cards:</strong><br>
                         <table style="table-layout:fixed; width:90%">
                             <tbody id="sideboardBody"></tbody>
                         </table>
