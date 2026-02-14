@@ -716,7 +716,7 @@ $jsoncards2 = json_encode($card_pairs);
     }
 
     function renderMainboard(data) {
-        const body = document.getElementById("sideboardBody");
+        const body = document.getElementById("mainboardBody");
         body.innerHTML = "";
 
         data.forEach((card, index) => {
