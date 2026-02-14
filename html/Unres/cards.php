@@ -352,7 +352,7 @@ $jsoncards2 = json_encode($card_pairs);
 
                     <div id = "page2" style="display:none">
                         <strong>Most Played Sideboard Cards:</strong><br>
-                        <table>
+                        <table style="table-layout:fixed; width:90%">
                             <tbody id="sideboardBody"></tbody>
                         </table>
                     </div>
@@ -713,12 +713,12 @@ $jsoncards2 = json_encode($card_pairs);
         data.forEach((card, index) => {
             body.innerHTML += `
             <tr>
-                <td>${index + 1}.</td>
-                <td><img src="${card.image_url}" style="width:9vw; border-radius:10px; border:3px #aef solid;"></td>
-                <td>${card.card_name}</td>
-                <td onclick="sortSideboard('elo')">${Math.floor(card.average_elo)}<br><span style="color:#aaa;font-family:monospace;">Average Elo</span></td>
-                <td onclick="sortSideboard('winrate')">${Math.floor(card.winrate_percentage)}%<br><span style="color:#aaa;font-family:monospace;">Winrate</span></td>
-                <td onclick="sortSideboard('playrate')">${Math.floor(card.percentage_playrate)}%<br><span style="color:#aaa;font-family:monospace;">Playrate</span></td>
+                <td style="width:5"><div class="n c${index + 1}"><span id="r${index + 1}"> ${index + 1}.</span></td>
+                <td style="width:25%"><img src="${card.image_url}" style="width:9vw; border-radius:10px; border:3px #aef solid;"></td>
+                <td style="width:15%">${card.card_name}</td>
+                <td style="width:20%" onclick="sortSideboard('elo')">${Math.floor(card.average_elo)}<br><span style="color:#aaa;font-family:monospace;">Average Elo</span></td>
+                <td style="width:20%" onclick="sortSideboard('winrate')">${Math.floor(card.winrate_percentage)}%<br><span style="color:#aaa;font-family:monospace;">Winrate</span></td>
+                <td style="width:15%" onclick="sortSideboard('playrate')">${Math.floor(card.percentage_playrate)}%<br><span style="color:#aaa;font-family:monospace;">Playrate</span></td>
             </tr>`;
         });
     }
