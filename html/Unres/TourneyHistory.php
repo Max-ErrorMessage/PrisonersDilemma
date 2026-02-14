@@ -515,49 +515,51 @@ $tourney_results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     <?php endfor; ?>
                     <div id="page<?= $maxRound  + 1?>" style="display: none">
-                            <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
-                            <br>
-                            <h3 style="text-align:center;"> Round <?= $i ?> </h3>
+                        <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
+                        <br>
+                        <h3 style="text-align:center;"> Tourney Results </h3>
 
-                            <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed; left:calc(10% - 33px); width:calc(80% + 36px)">
-                                <colgroup>
-                                    <col style="width:33px">   <!-- Rank-->
-                                    <col style="width:30px">   <!-- left icon -->
-                                    <col style="width:calc(100% - 113px)">  <!-- name -->
-                                    <col style="width:50px">   <!-- left score -->
-                                </colgroup>
-                                <?php $n = 0; ?>
-                                <?php foreach ($tourney_results as $result): ?>
-                                <?php $n++; ?>
-                                    <tr>
-                                        <td>
-                                            <div class="n c<?= $n?>"><span id="r<?= $n?>"><?= $n?>.</span></div>
-                                        </td><td>
-                                        <td>
-                                            <?php $imageUrl = "images/".$decksbyid[$result["deck_id"]]['colour'].".png"; ?>
-                                            <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
-                                        </td><td class="trm limit" onclick="goToDeck(<?= $result["deck_id"]?>)">
-                                            <?= htmlspecialchars($decksbyid[$result["deck_id"]]['name']) ?>
-                                            <a style="width:20px;" href=deck.php?id=<?= $result["deck_id"]?> onclick="event.stopPropagation();">
-                                            <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
-                                            </a>
-                                            <?php
-                                                if(in_array($decksbyid[$result["deck_id"]]['id'],$added_deck_ids)){
-                                                    echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
-                                                }
-                                                if(in_array($decksbyid[$result["deck_id"]]['id'],$changed_deck_ids)){
-                                                    echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
-                                                }
-                                            ?>
-                                            <br>
-                                            <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$result["deck_id"]]['cid'] ?></span>
-                                            <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$result["deck_id"]]['rank'] ?></span>
-                                        </td><td class="trr ra">
-                                            <span class="ra"><?= $result["matches_won"] ?> - <?= $result["matches_lost"] ?></span>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
+                        <table style="border-collapse: separate;border-spacing: 0 12px; table-layout:fixed; left:calc(10% - 33px); width:calc(80% + 36px)">
+                            <colgroup>
+                                <col style="width:33px">   <!-- Rank-->
+                                <col style="width:30px">   <!-- left icon -->
+                                <col style="width:calc(100% - 113px)">  <!-- name -->
+                                <col style="width:50px">   <!-- left score -->
+                            </colgroup>
+                            <?php $n = 0; ?>
+                            <?php foreach ($tourney_results as $result): ?>
+                            <?php $n++; ?>
+                                <tr>
+                                    <td>
+                                        <div class="n c<?= $n?>"><span id="r<?= $n?>"><?= $n?>.</span></div>
+                                    </td>
+                                    <td class="trl">
+                                        <?php $imageUrl = "images/".$decksbyid[$result["deck_id"]]['colour'].".png"; ?>
+                                        <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
+                                    </td>
+                                    <td class="trm" onclick="goToDeck(<?= $result["deck_id"]?>)">
+                                        <?= htmlspecialchars($decksbyid[$result["deck_id"]]['name']) ?>
+                                        <a style="width:20px;" href=deck.php?id=<?= $result["deck_id"]?> onclick="event.stopPropagation();">
+                                        <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
+                                        </a>
+                                        <?php
+                                            if(in_array($decksbyid[$result["deck_id"]]['id'],$added_deck_ids)){
+                                                echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/3161/3161551.png" title="New Deck!">';
+                                            }
+                                            if(in_array($decksbyid[$result["deck_id"]]['id'],$changed_deck_ids)){
+                                                echo '<img style="width:20px;" src="https://cdn-icons-png.flaticon.com/128/616/616656.png" title="This deck has new changes!">';
+                                            }
+                                        ?>
+                                        <br>
+                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$result["deck_id"]]['cid'] ?></span>
+                                        <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$result["deck_id"]]['rank'] ?></span>
+                                    </td>
+                                    <td class="trr ra">
+                                        <span class="ra"><?= $result["matches_won"] ?> - <?= $result["matches_lost"] ?></span>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
                     </div>
                 </div>
             </div>
