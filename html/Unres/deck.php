@@ -319,7 +319,6 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <img id="cc" onclick="copyToClipboard()" src="https://cdn-icons-png.flaticon.com/128/4891/4891669.png">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <div id="mb">
-                            <strong>Mainboard:</strong>
                             <?php foreach ($types as $type): ?>
                                 <?php $isset = false; ?>
                                 <?php foreach ($mb_cards as $card): ?>
