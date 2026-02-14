@@ -725,9 +725,9 @@ $jsoncards2 = json_encode($card_pairs);
                 <td style="width:5"><div class="n c${index + 1}"><span id="r${index + 1}"> ${index + 1}.</span></td>
                 <td style="width:25%"><img src="${card.image_url}" style="width:9vw; border-radius:10px; border:3px #aef solid;"></td>
                 <td style="width:15%">${card.card_name}</td>
-                <td style="width:20%" onclick="sortSideboard('elo')"><div class="ca">${Math.floor(card.average_elo)}<br><span style="color:#aaa;font-family:monospace;">Average Elo</span></div></td>
-                <td style="width:20%" onclick="sortSideboard('winrate')"><div class="ca">${Math.floor(card.winrate_percentage)}%<br><span style="color:#aaa;font-family:monospace;">Winrate</span></div></td>
-                <td style="width:15%" onclick="sortSideboard('playrate')"><div class="ca">${Math.floor(card.percentage_playrate)}%<br><span style="color:#aaa;font-family:monospace;">Playrate</span></div></td>
+                <td style="width:20%" onclick="sortMainboard('elo')"><div class="ca">${Math.floor(card.average_elo)}<br><span style="color:#aaa;font-family:monospace;">Average Elo</span></div></td>
+                <td style="width:20%" onclick="sortMainboard('winrate')"><div class="ca">${Math.floor(card.winrate_percentage)}%<br><span style="color:#aaa;font-family:monospace;">Winrate</span></div></td>
+                <td style="width:15%" onclick="sortMainboard('playrate')"><div class="ca">${Math.floor(card.percentage_playrate)}%<br><span style="color:#aaa;font-family:monospace;">Playrate</span></div></td>
             </tr>`;
         });
     }
