@@ -320,7 +320,8 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <div id="mb">
                             <strong>Mainboard:</strong>
                             <?php foreach ($types as $type): ?>
-                                <span><?= $type ?></span>
+                                </br>
+                                <strong><?= $type ?>:</strong>
                                 <?php foreach ($mb_cards as $card): ?>
                                 <?php
                                     if (!in_array($type, $mb_card_types_by_id[$card['id']])) {
