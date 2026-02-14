@@ -63,8 +63,7 @@ inner join cards c on cid.card_id = c.id
 inner join types_of_card tc on c.id = tc.card_id 
 inner join types t on t.id = tc.type_id
 where cid.deck_id = :id
-and cid.mainboard = 1
-order by n desc;');
+and cid.mainboard = 1;');
 $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $mb_card_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
