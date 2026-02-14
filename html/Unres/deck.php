@@ -229,7 +229,7 @@ foreach ($removals as $rem){
             SELECT c.id, t.type_text as type_name
             FROM cards c
             INNER JOIN types_of_card tc on c.id = tc.card_id
-            INNER JOIN Types t on tc.type_id = t.id
+            INNER JOIN types t on tc.type_id = t.id
             WHERE id = :id;
         ');
         $stmt->execute([':id' => $rid]);
