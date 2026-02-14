@@ -707,7 +707,7 @@ $jsoncards2 = json_encode($card_pairs);
         const body = document.getElementById("sideboardBody");
         body.innerHTML = "";
 
-        data.forEach((sbdata, index) => {
+        data.forEach((card, index) => {
             body.innerHTML += `
             <tr>
                 <td>${index + 1}.</td>
@@ -732,7 +732,7 @@ $jsoncards2 = json_encode($card_pairs);
         renderSideboard(data);
     }
 
-
+    renderSideboard(sbdata);
     </script>
 </body>
 </html>
