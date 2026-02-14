@@ -324,7 +324,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                 <?php $isset = false; ?>
                                 <?php foreach ($mb_cards as $card): ?>
                                 <?php
-                                    if (!in_array($type, $mb_card_types_by_id[$card['id']])) {
+                                    if (!in_array($type, $mb_card_types_by_id[$card['id']]) || in_array("land", $mb_card_types_by_id[$card['id']])) {
                                         continue;
                                     } else if (in_array($card['id'], $cardsDisplayed)) {
                                         continue;
