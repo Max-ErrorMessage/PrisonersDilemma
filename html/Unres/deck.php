@@ -57,7 +57,7 @@ foreach ($sb_cards as $card) {
 
 
 // fetch all Types of cards in mainboard and sideboard
-$stmt = $pdo->prepare('SELECT c.id as id, c.card_name as name, cid.quantity as n, c.image_url as url
+$stmt = $pdo->prepare('SELECT c.id as id, t.type_name
 FROM card_in_deck cid
 inner join cards c on cid.card_id = c.id
 inner join types_of_card tc on c.id = tc.card_id 
@@ -69,18 +69,6 @@ $stmt->bindParam(':id',$id, PDO::PARAM_INT);
 $stmt->execute();
 $mb_card_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $pdo->prepare('SELECT c.id as id, c.card_name as name, cid.quantity as n, c.image_url as url
-FROM card_in_deck cid
-inner join cards c on cid.card_id = c.id
-inner join types_of_card tc on c.id = tc.card_id 
-inner join types t on t.id = tc.type_id
-where cid.deck_id = :id
-and cid.mainboard = 0
-order by n desc;');
-$stmt->bindParam(':id',$id, PDO::PARAM_INT);
-$stmt->execute();
-$sb_card_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 $mb_card_types_by_id = [];
 foreach ($mb_card_types as $ct) {
     if (!isset($mb_card_types_by_id[$ct['id']])) {
@@ -90,12 +78,6 @@ foreach ($mb_card_types as $ct) {
 }
 
 $sb_card_types_by_id = [];
-foreach ($sb_card_types as $ct) {
-    if (!isset($sb_card_types_by_id[$ct['id']])) {
-        $sb_card_types_by_id[$ct['id']] = [];
-    }
-    $sb_card_types_by_id[$ct['id']][] = $ct['type_name'];
-}
 
 $types = ["Creature", "Planeswalker", "Artifact", "Enchantment", "Instant", "Sorcery", "Battle", "Land"];
 
