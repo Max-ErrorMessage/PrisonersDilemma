@@ -326,7 +326,7 @@ $jsoncards2 = json_encode($card_pairs);
                     <div id = "page1">
                         <strong>Most Played Mainboard Cards:</strong><br>
                         <table style="table-layout:fixed; width:90%">
-                            <tbody id="sideboardBody"></tbody>
+                            <tbody id="mainboardBody"></tbody>
                         </table>
                     </div>
 
