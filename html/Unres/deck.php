@@ -56,7 +56,50 @@ foreach ($sb_cards as $card) {
 }
 
 
+// fetch all Types of cards in mainboard and sideboard
+$stmt = $pdo->prepare('SELECT c.id as id, c.card_name as name, cid.quantity as n, c.image_url as url
+FROM card_in_deck cid
+inner join cards c on cid.card_id = c.id
+inner join types_of_card tc on c.id = tc.card_id 
+inner join types t on t.id = tc.type_id
+where cid.deck_id = :id
+and cid.mainboard = 1
+order by n desc;');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$mb_card_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$stmt = $pdo->prepare('SELECT c.id as id, c.card_name as name, cid.quantity as n, c.image_url as url
+FROM card_in_deck cid
+inner join cards c on cid.card_id = c.id
+inner join types_of_card tc on c.id = tc.card_id 
+inner join types t on t.id = tc.type_id
+where cid.deck_id = :id
+and cid.mainboard = 0
+order by n desc;');
+$stmt->bindParam(':id',$id, PDO::PARAM_INT);
+$stmt->execute();
+$sb_card_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$mb_card_types_by_id = [];
+foreach ($mb_card_types as $ct) {
+    if (!isset($mb_card_types_by_id[$ct['id']])) {
+        $mb_card_types_by_id[$ct['id']] = [];
+    }
+    $mb_card_types_by_id[$ct['id']][] = $ct['type_name'];
+}
+
+$sb_card_types_by_id = [];
+foreach ($sb_card_types as $ct) {
+    if (!isset($sb_card_types_by_id[$ct['id']])) {
+        $sb_card_types_by_id[$ct['id']] = [];
+    }
+    $sb_card_types_by_id[$ct['id']][] = $ct['type_name'];
+}
+
+$types = ["Creature", "Planeswalker", "Artifact", "Enchantment", "Instant", "Sorcery", "Battle", "Land"];
+
+// --- Elo changes
 $stmt = $pdo->prepare('SELECT
     ec.elo_change,
     AVG(ec.elo_change) OVER (
@@ -295,54 +338,62 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <div id="mb">
                             <strong>Mainboard:</strong>
-                            <?php foreach ($mb_cards as $card): ?>
-                            <div style="justify-content:space-between;display:flex; width:100%;">
+                            <?php foreach ($types as $type): ?>
+                                <span><?= $type ?></span>
+                                <?php foreach ($mb_cards as $card): ?>
+                                <?php
+                                    if (!in_array($type, $mb_card_types_by_id[$card['id']])) {
+                                        continue;
+                                    }
+                                ?>
                                 <div style="justify-content:space-between;display:flex; width:100%;">
-                                    <span
-                                        onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
-                                        onmouseleave='imgLeave()'
-                                        ><?= htmlspecialchars($card['name']) ?></span>
-                                    <span><?= htmlspecialchars($card['n']) ?></span>
-                                </div><?php
-                                $span = '<span style="color:#0e0; width:30px; text-align:right">';
+                                    <div style="justify-content:space-between;display:flex; width:100%;">
+                                        <span
+                                            onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                            onmouseleave='imgLeave()'
+                                            ><?= htmlspecialchars($card['name']) ?></span>
+                                        <span><?= htmlspecialchars($card['n']) ?></span>
+                                    </div><?php
+                                    $span = '<span style="color:#0e0; width:30px; text-align:right">';
 
-                                $amount = "";
+                                    $amount = "";
 
-                                if (in_array($card['id'], $additions_id)) {
-                                    // Find the matching addition entry
-                                    foreach ($additions as $a) {
-                                        if ($a["id"] == $card["id"] && $a["mb"] == 1) {
-                                            $amount = "+" . $a["amount"];
+                                    if (in_array($card['id'], $additions_id)) {
+                                        // Find the matching addition entry
+                                        foreach ($additions as $a) {
+                                            if ($a["id"] == $card["id"] && $a["mb"] == 1) {
+                                                $amount = "+" . $a["amount"];
+                                            }
                                         }
                                     }
-                                }
 
-                                if (in_array($card['id'], $removals_id)) {
-                                    // Find the matching removal entry
-                                    foreach ($removals as $r) {
-                                        if ($r["id"] == $card["id"] && $r["mb"] == 1) {
-                                            $amount = $r["amount"];
-                                            $span = '<span style="color:#e00; width:30px; text-align:right">';
+                                    if (in_array($card['id'], $removals_id)) {
+                                        // Find the matching removal entry
+                                        foreach ($removals as $r) {
+                                            if ($r["id"] == $card["id"] && $r["mb"] == 1) {
+                                                $amount = $r["amount"];
+                                                $span = '<span style="color:#e00; width:30px; text-align:right">';
+                                            }
                                         }
                                     }
-                                }
-                                echo $span;
-                                echo $amount;
+                                    echo $span;
+                                    echo $amount;
 
-                                ?></span>
-                            </div>
-                            <?php endforeach; ?>
-                            <?php foreach ($full_removals_mb as $card): ?>
-                            <div style="justify-content:space-between;display:flex; width:100%">
-                                <div style="justify-content:space-between;display:flex; width:100%">
-                                    <span style="color:#c00"
-                                        onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
-                                        onmouseleave='imgLeave()'
-                                        ><?= htmlspecialchars($card['name']) ?></span>
-                                    <span style="color:#e00">0</span>
+                                    ?></span>
                                 </div>
-                                <span style="color:#c00; width:30px; text-align:right"><?= htmlspecialchars($card['n']) ?></span>
-                            </div>
+                                <?php endforeach; ?>
+                                <?php foreach ($full_removals_mb as $card): ?>
+                                <div style="justify-content:space-between;display:flex; width:100%">
+                                    <div style="justify-content:space-between;display:flex; width:100%">
+                                        <span style="color:#c00"
+                                            onmouseenter='imgBecome("<?= htmlspecialchars($card['url']) ?>")'
+                                            onmouseleave='imgLeave()'
+                                            ><?= htmlspecialchars($card['name']) ?></span>
+                                        <span style="color:#e00">0</span>
+                                    </div>
+                                    <span style="color:#c00; width:30px; text-align:right"><?= htmlspecialchars($card['n']) ?></span>
+                                </div>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </div>
                         <br>
