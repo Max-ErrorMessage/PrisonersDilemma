@@ -398,7 +398,10 @@ $jsoncards2 = json_encode($card_pairs);
         }
         
     const data = <?php echo $jsoncards; ?>
+
+
     const sbdata = <?php echo $jsonsbcards; ?>
+
 
     const data2 = <?php echo $jsoncards2; ?>
     
