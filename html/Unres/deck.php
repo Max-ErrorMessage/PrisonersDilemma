@@ -79,6 +79,7 @@ foreach ($mb_card_types as $ct) {
 $sb_card_types_by_id = [];
 
 $types = ["Creature", "Planeswalker", "Artifact", "Enchantment", "Instant", "Sorcery", "Battle", "Land"];
+$cardsDisplayed = []; //array to keep track of which cards have been displayed, to avoid duplicates in case of multiple types;
 
 // --- Elo changes
 $stmt = $pdo->prepare('SELECT
@@ -320,13 +321,18 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <div id="mb">
                             <strong>Mainboard:</strong>
                             <?php foreach ($types as $type): ?>
-                                </br>
-                                <strong><?= $type ?>:</strong>
+                                $isset = false;
                                 <?php foreach ($mb_cards as $card): ?>
                                 <?php
                                     if (!in_array($type, $mb_card_types_by_id[$card['id']])) {
                                         continue;
+                                    } else if (in_array($card['id'], $cardsDisplayed)) {
+                                        continue;
+                                    } else if (!$isset) {
+                                        echo "<br><em>" . $type . "s</em><br>";
+                                        $isset = true;
                                     }
+                                    $cardsDisplayed[] = $card['id'];
                                 ?>
                                 <div style="justify-content:space-between;display:flex; width:100%;">
                                     <div style="justify-content:space-between;display:flex; width:100%;">
