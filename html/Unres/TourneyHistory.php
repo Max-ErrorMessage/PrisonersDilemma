@@ -514,7 +514,7 @@ $tourney_results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </table>
                         </div>
                     <?php endfor; ?>
-                    <div id="page<?= $maxRound ?>" style="display: none">
+                    <div id="page<?= $maxRound  + 1?>" style="display: none">
                             <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                             <br>
                             <h3 style="text-align:center;"> Round <?= $i ?> </h3>
