@@ -65,6 +65,7 @@ match_card_stats AS (
 )
 
 SELECT
+    c.id as card_id,
     c.card_name,
     c.image_url,
 
