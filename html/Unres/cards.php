@@ -147,6 +147,7 @@ dcc AS (
     GROUP BY c.id, c.card_name, c.image_url
 )
 SELECT
+    a.card_id
     a.card_name,
     d.image_url,
     a.average_elo,
@@ -178,7 +179,7 @@ foreach ($othercards as &$card) {
     $othercardsbyid[$card['card_name']] = $card;
 }
 foreach ($cards as $card) {
-    $card['winrate_percentage'] = $othercardsbyid[$card['id']]['winrate_percentage'];
+    $card['winrate_percentage'] = $othercardsbyid[$card['card_id']]['winrate_percentage'];
 }
 $jsoncards = json_encode($cards);
 
