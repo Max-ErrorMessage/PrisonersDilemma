@@ -13,8 +13,127 @@ error_reporting(E_ALL);
 include "/var/www/html/Unres/db.php";
 
 // Fetch all decks
-$stmt = $pdo->query('
-WITH avg_elo AS (
+$stmt = $pdo->query('WITH deck_totals AS (
+    SELECT COUNT(*) AS total_decks
+    FROM decks
+),
+
+match_totals AS (
+    SELECT COUNT(*) AS total_matches
+    FROM matches
+),
+
+-- Deck-level stats
+deck_card_stats AS (
+    SELECT
+        cid.card_id,
+        COUNT(DISTINCT cid.deck_id) AS decks_containing_card,
+        SUM(cid.quantity) AS total_quantity_decks,
+        ROUND(AVG(d.elo), 2) AS average_elo
+    FROM card_in_deck cid
+    JOIN decks d
+        ON d.id = cid.deck_id
+    WHERE cid.mainboard = 0
+    GROUP BY cid.card_id
+),
+
+-- Winrate vs decks NOT containing the card
+card_winloss AS (
+    SELECT
+        cid.card_id,
+
+        COUNT(CASE WHEN m.winner_id = cid.deck_id THEN 1 END) AS wins,
+        COUNT(CASE WHEN m.loser_id  = cid.deck_id THEN 1 END) AS losses,
+
+        COUNT(
+            CASE
+                WHEN m.winner_id = cid.deck_id
+                 AND EXISTS (
+                     SELECT 1
+                     FROM card_in_deck cid2
+                     WHERE cid2.deck_id = m.loser_id
+                       AND cid2.card_id = cid.card_id
+                       AND cid2.mainboard = 0
+                 )
+                THEN 1
+            END
+        ) AS both_sides
+
+    FROM card_in_deck cid
+    JOIN matches m
+        ON cid.deck_id IN (m.winner_id, m.loser_id)
+    WHERE cid.mainboard = 0
+    GROUP BY cid.card_id
+),
+
+-- Match-level presence + total quantity (corrected, no duplication)
+match_card_stats AS (
+    SELECT
+        x.card_id,
+        COUNT(*) AS matches_with_card,
+        SUM(x.total_quantity_in_match) AS total_quantity_matches
+    FROM (
+        SELECT
+            m.id AS match_id,
+            COALESCE(w.card_id, l.card_id) AS card_id,
+            COALESCE(w.quantity, 0) + COALESCE(l.quantity, 0) AS total_quantity_in_match
+        FROM matches m
+
+        LEFT JOIN card_in_deck w
+            ON w.deck_id = m.winner_id
+           AND w.mainboard = 0
+
+        LEFT JOIN card_in_deck l
+            ON l.deck_id = m.loser_id
+           AND l.card_id = w.card_id
+           AND l.mainboard = 0
+
+        WHERE w.card_id IS NOT NULL
+    ) x
+    GROUP BY x.card_id
+)
+
+SELECT
+    c.card_name,
+    c.image_url,
+
+    dcs.average_elo,
+
+    ROUND(
+        100.0 * (w.wins - w.both_sides)
+        / NULLIF(w.wins + w.losses - w.both_sides, 0),
+        2
+    ) AS winrate_percentage,
+
+    ROUND(
+        100.0 * dcs.decks_containing_card
+        / dt.total_decks,
+        2
+    ) AS percentage_playrate,
+
+    dcs.total_quantity_decks,
+
+    ROUND(
+        100.0 * mcs.matches_with_card
+        / mt.total_matches,
+        2
+    ) AS percentage_matches_with_card,
+
+    mcs.total_quantity_matches
+
+FROM cards c
+LEFT JOIN deck_card_stats dcs
+    ON dcs.card_id = c.id
+LEFT JOIN card_winloss w
+    ON w.card_id = c.id
+LEFT JOIN match_card_stats mcs
+    ON mcs.card_id = c.id
+CROSS JOIN deck_totals dt
+CROSS JOIN match_totals mt
+
+ORDER BY percentage_playrate DESC;
+');
+$oldstmt = $pdo->query('WITH avg_elo AS (
     SELECT
         c.id AS card_id,
         c.card_name,
