@@ -488,10 +488,10 @@ $jsoncards2 = json_encode($card_pairs);
     const data2 = <?php echo $jsoncards2; ?>
     
     const graphData = data.map(point => ({
-        x: point.total_quantity_decks,
+        x: point.percentage_matches_with_card,
         y: point.winrate_percentage,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
-        label: `${point.card_name}: PR: ${point.total_quantity_decks}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
+        label: `${point.card_name}: PR: ${point.percentage_matches_with_card}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
     }))
 
     
