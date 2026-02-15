@@ -487,6 +487,7 @@ $jsoncards2 = json_encode($card_pairs);
 
     const data2 = <?php echo $jsoncards2; ?>
     
+    console.log(data)
     const graphData = data.map(point => ({
         x: point.total_quantity_in_match,
         y: point.winrate_percentage,
