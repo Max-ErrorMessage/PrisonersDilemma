@@ -567,7 +567,7 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 500,
+                            max: 51,
                             title: {
                               display: true,
                               text: 'Total Quantity Accross all Decks',
@@ -579,7 +579,7 @@ $jsoncards2 = json_encode($card_pairs);
                             stepSize: 1,
 
                               callback: function(value) {
-                                if (value % 50 === 0 && value >= 0 && value <= 600) {
+                                if (value % 5 === 0 && value >= 0 && value <= 600) {
                                   return value;
                                 }
                                 return null;
@@ -589,7 +589,7 @@ $jsoncards2 = json_encode($card_pairs);
                         },
                         y: {
                               min: -1,
-                              max: 101,
+                              max: 30,
                               suggestedMin: -3,
                               suggestedMax: 103,
                             title: {
@@ -601,7 +601,7 @@ $jsoncards2 = json_encode($card_pairs);
                             color: "#ddd",
                             stepSize: 1,
                               callback: function(value) {
-                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                if (value % 5 === 0 && value >= 0 && value <= 100) {
                                   return value;
                                 }
                                 return null;
