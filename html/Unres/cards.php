@@ -177,7 +177,7 @@ $rank = 1;
 $othercards = $oldstmt->fetchAll(PDO::FETCH_ASSOC);
 $othercardsbyid = [];
 foreach ($othercards as &$card) {
-    $othercardsbyid[$card['card_name']] = $card;
+    $othercardsbyid[$card['card_id']] = $card;
 }
 foreach ($cards as &$card) {
     $id = $card['card_id'];
