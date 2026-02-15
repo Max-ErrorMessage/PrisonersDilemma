@@ -37,35 +37,6 @@ deck_card_stats AS (
     GROUP BY cid.card_id
 ),
 
--- Winrate vs decks NOT containing the card
-card_winloss AS (
-    SELECT
-        c.id AS card_id,
-        c.card_name,
-        COUNT(CASE WHEN m.winner_id = cid.deck_id THEN 1 END) AS wins,
-        COUNT(CASE WHEN m.loser_id  = cid.deck_id THEN 1 END) AS losses,
-        COUNT(
-            CASE
-                WHEN m.winner_id = cid.deck_id
-                 AND EXISTS (
-                       SELECT 1
-                       FROM card_in_deck cid2
-                       WHERE cid2.deck_id = m.loser_id
-                         AND cid2.card_id = cid.card_id
-                         and cid2.mainboard = 1
-                 )
-                THEN 1
-            END
-        ) AS both_sides
-    FROM matches m
-    JOIN card_in_deck cid
-        ON cid.deck_id IN (m.winner_id, m.loser_id)
-    JOIN cards c
-        ON c.id = cid.card_id
-    where cid.mainboard = 1
-    GROUP BY c.id, c.card_name
-),
-
 -- Match-level presence + total quantity (corrected, no duplication)
 match_card_stats AS (
     SELECT
@@ -207,6 +178,15 @@ ORDER BY percentage_playrate DESC;
 ');
 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rank = 1;
+
+$othercards = $oldstmt->fetchAll(PDO::FETCH_ASSOC);
+%othercardsbyid = [];
+foreach ($othercards as $card) {
+    $othercardsbyid[$card['card_name']] = $card;
+}
+foreach ($cards as $card) {
+    $card['winrate_percentage'] = $othercardsbyid[$card['id']]['winrate_percentage'];
+
 $jsoncards = json_encode($cards);
 
 $stmt = $pdo->query('
