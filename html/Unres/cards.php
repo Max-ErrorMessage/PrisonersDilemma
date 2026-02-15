@@ -566,10 +566,10 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 501,
+                            max: 101,
                             title: {
                               display: true,
-                              text: 'total quantity accross all decks',
+                              text: '% of Matches with Card',
                               color: "#ddd"
 
                             },
