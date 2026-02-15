@@ -179,11 +179,17 @@ $othercardsbyid = [];
 foreach ($othercards as &$card) {
     $othercardsbyid[$card['card_name']] = $card;
 }
-foreach ($cards as $card) {
-    if(isset($othercardsbyid[$card['card_id']])) {
-        $card['winrate_percentage'] = $othercardsbyid[$card['card_id']]['winrate_percentage'];
+foreach ($cards as &$card) {
+    $id = $card['card_id'];
+
+    if (isset($othercardsbyid[$id]['winrate_percentage'])) {
+        $card['winrate_percentage'] =
+            $othercardsbyid[$id]['winrate_percentage'];
+    } else {
+        $card['winrate_percentage'] = 0;
     }
 }
+unset($card);
 $jsoncards = json_encode($cards);
 
 $stmt = $pdo->query('
