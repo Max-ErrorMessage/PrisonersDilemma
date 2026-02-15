@@ -53,7 +53,7 @@ card_winloss AS (
                      FROM card_in_deck cid2
                      WHERE cid2.deck_id = m.loser_id
                        AND cid2.card_id = cid.card_id
-                       AND cid2.mainboard = 0
+                       AND cid2.mainboard = 1
                  )
                 THEN 1
             END
@@ -62,7 +62,7 @@ card_winloss AS (
     FROM card_in_deck cid
     JOIN matches m
         ON cid.deck_id IN (m.winner_id, m.loser_id)
-    WHERE cid.mainboard = 0
+    WHERE cid.mainboard = 1
     GROUP BY cid.card_id
 ),
 
@@ -81,12 +81,12 @@ match_card_stats AS (
 
         LEFT JOIN card_in_deck w
             ON w.deck_id = m.winner_id
-           AND w.mainboard = 0
+           AND w.mainboard = 1
 
         LEFT JOIN card_in_deck l
             ON l.deck_id = m.loser_id
            AND l.card_id = w.card_id
-           AND l.mainboard = 0
+           AND l.mainboard = 1
 
         WHERE w.card_id IS NOT NULL
     ) x
