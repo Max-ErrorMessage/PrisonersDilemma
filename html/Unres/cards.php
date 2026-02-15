@@ -33,7 +33,7 @@ deck_card_stats AS (
     FROM card_in_deck cid
     JOIN decks d
         ON d.id = cid.deck_id
-    WHERE cid.mainboard = 0
+    WHERE cid.mainboard = 1
     GROUP BY cid.card_id
 ),
 
