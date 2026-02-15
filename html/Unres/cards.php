@@ -70,11 +70,6 @@ SELECT
 
     dcs.average_elo,
 
-    ROUND(
-        100.0 * (w.wins - w.both_sides)
-        / NULLIF(w.wins + w.losses - w.both_sides, 0),
-        2
-    ) AS winrate_percentage,
 
     ROUND(
         100.0 * dcs.decks_containing_card
@@ -95,8 +90,6 @@ SELECT
 FROM cards c
 LEFT JOIN deck_card_stats dcs
     ON dcs.card_id = c.id
-LEFT JOIN card_winloss w
-    ON w.card_id = c.id
 LEFT JOIN match_card_stats mcs
     ON mcs.card_id = c.id
 CROSS JOIN deck_totals dt
