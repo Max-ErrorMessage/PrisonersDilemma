@@ -186,7 +186,7 @@ foreach ($othercards as $card) {
 }
 foreach ($cards as $card) {
     $card['winrate_percentage'] = $othercardsbyid[$card['id']]['winrate_percentage'];
-
+}
 $jsoncards = json_encode($cards);
 
 $stmt = $pdo->query('
