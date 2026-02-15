@@ -492,7 +492,7 @@ $jsoncards2 = json_encode($card_pairs);
         x: point.total_quantity_decks,
         y: point.percentage_playrate,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
-        label: `${point.card_name}: ${point.percentage_playrate}& - ${point.total_quantity_decks}`
+        label: `${point.card_name}: ${point.percentage_playrate}% - ${point.total_quantity_decks} decks`
     }))
 
     
