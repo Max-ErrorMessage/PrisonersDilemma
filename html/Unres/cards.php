@@ -40,42 +40,30 @@ deck_card_stats AS (
 -- Winrate vs decks NOT containing the card
 card_winloss AS (
     SELECT
-        cid.card_id,
-
-        SUM(
-            CASE 
+        c.id AS card_id,
+        c.card_name,
+        COUNT(CASE WHEN m.winner_id = cid.deck_id THEN 1 END) AS wins,
+        COUNT(CASE WHEN m.loser_id  = cid.deck_id THEN 1 END) AS losses,
+        COUNT(
+            CASE
                 WHEN m.winner_id = cid.deck_id
-                 AND NOT EXISTS (
-                        SELECT 1
-                        FROM card_in_deck opp
-                        WHERE opp.deck_id = m.loser_id
-                          AND opp.card_id = cid.card_id
-                          AND opp.mainboard = 1
+                 AND EXISTS (
+                       SELECT 1
+                       FROM card_in_deck cid2
+                       WHERE cid2.deck_id = m.loser_id
+                         AND cid2.card_id = cid.card_id
+                         and cid2.mainboard = 1
                  )
-                THEN 1 ELSE 0
+                THEN 1
             END
-        ) AS wins,
-
-        SUM(
-            CASE 
-                WHEN m.loser_id = cid.deck_id
-                 AND NOT EXISTS (
-                        SELECT 1
-                        FROM card_in_deck opp
-                        WHERE opp.deck_id = m.winner_id
-                          AND opp.card_id = cid.card_id
-                          AND opp.mainboard = 1
-                 )
-                THEN 1 ELSE 0
-            END
-        ) AS losses
-
-    FROM card_in_deck cid
-    JOIN matches m
-        ON m.winner_id = cid.deck_id
-        OR m.loser_id  = cid.deck_id
-    WHERE cid.mainboard = 1
-    GROUP BY cid.card_id
+        ) AS both_sides
+    FROM matches m
+    JOIN card_in_deck cid
+        ON cid.deck_id IN (m.winner_id, m.loser_id)
+    JOIN cards c
+        ON c.id = cid.card_id
+    where cid.mainboard = 1
+    GROUP BY c.id, c.card_name
 ),
 
 -- Match-level presence + total quantity (corrected, no duplication)
