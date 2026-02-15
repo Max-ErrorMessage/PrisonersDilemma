@@ -489,7 +489,7 @@ $jsoncards2 = json_encode($card_pairs);
     
     console.log(data)
     const graphData = data.map(point => ({
-        x: point.total_quantity_in_match,
+        x: point.total_quantity_matches,
         y: point.winrate_percentage,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
         label: `${point.card_name}: PR: ${point.percentage_matches_with_card}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
@@ -579,7 +579,7 @@ $jsoncards2 = json_encode($card_pairs);
                             stepSize: 1,
 
                               callback: function(value) {
-                                if (value % 10 === 0 && value >= 0 && value <= 500) {
+                                if (value % 50 === 0 && value >= 0 && value <= 600) {
                                   return value;
                                 }
                                 return null;
