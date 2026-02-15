@@ -42,27 +42,33 @@ card_winloss AS (
     SELECT
         cid.card_id,
 
-        COUNT(CASE WHEN m.winner_id = cid.deck_id THEN 1 END) AS wins,
-        COUNT(CASE WHEN m.loser_id  = cid.deck_id THEN 1 END) AS losses,
+        COUNT(*) FILTER (
+            WHERE m.winner_id = cid.deck_id
+              AND NOT EXISTS (
+                    SELECT 1
+                    FROM card_in_deck opp
+                    WHERE opp.deck_id = m.loser_id
+                      AND opp.card_id = cid.card_id
+                      AND opp.mainboard = 0
+              )
+        ) AS wins,
 
-        COUNT(
-            CASE
-                WHEN m.winner_id = cid.deck_id
-                 AND EXISTS (
-                     SELECT 1
-                     FROM card_in_deck cid2
-                     WHERE cid2.deck_id = m.loser_id
-                       AND cid2.card_id = cid.card_id
-                       AND cid2.mainboard = 1
-                 )
-                THEN 1
-            END
-        ) AS both_sides
+        COUNT(*) FILTER (
+            WHERE m.loser_id = cid.deck_id
+              AND NOT EXISTS (
+                    SELECT 1
+                    FROM card_in_deck opp
+                    WHERE opp.deck_id = m.winner_id
+                      AND opp.card_id = cid.card_id
+                      AND opp.mainboard = 0
+              )
+        ) AS losses
 
     FROM card_in_deck cid
     JOIN matches m
-        ON cid.deck_id IN (m.winner_id, m.loser_id)
-    WHERE cid.mainboard = 1
+        ON m.winner_id = cid.deck_id
+        OR m.loser_id  = cid.deck_id
+    WHERE cid.mainboard = 0
     GROUP BY cid.card_id
 ),
 
