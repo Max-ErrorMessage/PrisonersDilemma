@@ -489,8 +489,8 @@ $jsoncards2 = json_encode($card_pairs);
     
     console.log(data)
     const graphData = data.map(point => ({
-        x: point.total_quantity_matches,
-        y: point.winrate_percentage,
+        x: point.total_quantity_decks,
+        y: point.percentage_playrate,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
         label: `${point.card_name}: PR: ${point.percentage_matches_with_card}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
     }))
@@ -567,10 +567,10 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 600,
+                            max: 500,
                             title: {
                               display: true,
-                              text: 'Total Quantity Accross all Matches',
+                              text: 'Total Quantity Accross all Decks',
                               color: "#ddd"
 
                             },
@@ -594,7 +594,7 @@ $jsoncards2 = json_encode($card_pairs);
                               suggestedMax: 103,
                             title: {
                               display: true,
-                              text: 'Winrate (%)',
+                              text: '% of Decks with Card',
                               color: "#ddd"
                             },
                           ticks: {
