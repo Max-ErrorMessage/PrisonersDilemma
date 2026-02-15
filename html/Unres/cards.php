@@ -467,7 +467,7 @@ $jsoncards2 = json_encode($card_pairs);
                             max: 101,
                             title: {
                               display: true,
-                              text: 'Decks',
+                              text: '% of Decks with Card',
                               color: "#ddd"
 
                             },
