@@ -147,7 +147,7 @@ dcc AS (
     GROUP BY c.id, c.card_name, c.image_url
 )
 SELECT
-    a.card_id
+    a.card_id,
     a.card_name,
     d.image_url,
     a.average_elo,
