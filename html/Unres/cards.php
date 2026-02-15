@@ -474,7 +474,7 @@ $jsoncards2 = json_encode($card_pairs);
           div2.style.backgroundPosition = `${50 + offsetX*2}% ${50 + offsetY*2}%`;
           div3.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
         });
-
+        
         function goToDeck(id){
             window.location = "deck.php?id=" + id
         }
@@ -492,7 +492,7 @@ $jsoncards2 = json_encode($card_pairs);
         x: point.total_quantity_decks,
         y: point.percentage_playrate,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
-        label: `${point.card_name}: PR: ${point.percentage_matches_with_card}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
+        label: `${point.card_name}: ${point.percentage_playrate}& - ${point.total_quantity_decks}`
     }))
 
     
