@@ -505,10 +505,10 @@ $jsoncards2 = json_encode($card_pairs);
     const data2 = <?php echo $jsoncards2; ?>
     
     const graphData = data.map(point => ({
-        x: point.percentage_playrate,
+        x: point.total_quantity_decks,
         y: point.winrate_percentage,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
-        label: `${point.card_name}: PR: ${point.percentage_playrate}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
+        label: `${point.card_name}: PR: ${point.total_quantity_decks}, WR: ${point.winrate_percentage}, AE: ${point.average_elo}`
     }))
 
     
@@ -583,10 +583,10 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 101,
+                            max: 501,
                             title: {
                               display: true,
-                              text: '% of Decks with Card',
+                              text: 'total quantity accross all decks',
                               color: "#ddd"
 
                             },
@@ -595,7 +595,7 @@ $jsoncards2 = json_encode($card_pairs);
                             stepSize: 1,
 
                               callback: function(value) {
-                                if (value % 10 === 0 && value >= 0 && value <= 100) {
+                                if (value % 10 === 0 && value >= 0 && value <= 500) {
                                   return value;
                                 }
                                 return null;
