@@ -180,7 +180,9 @@ foreach ($othercards as &$card) {
     $othercardsbyid[$card['card_name']] = $card;
 }
 foreach ($cards as $card) {
-    $card['winrate_percentage'] = $othercardsbyid[$card['card_id']]['winrate_percentage'];
+    if(isset($othercardsbyid[$card['card_id']])) {
+        $card['winrate_percentage'] = $othercardsbyid[$card['card_id']]['winrate_percentage'];
+    }
 }
 $jsoncards = json_encode($cards);
 
