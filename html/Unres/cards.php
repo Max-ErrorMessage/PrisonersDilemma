@@ -567,7 +567,7 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 261,
+                            max: 600,
                             title: {
                               display: true,
                               text: 'Total Quantity Accross all Matches',
