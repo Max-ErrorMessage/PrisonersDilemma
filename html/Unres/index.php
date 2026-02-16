@@ -83,9 +83,9 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div id="lb">
                     <h3>Unrestricted Vintage: An Introduction</h3>  
                     <div id="indeximages">
-                        <img src="images/olmm">
-                        <img src="images/olbl">
-                        <img src="images/olvb">
+                        <img src="images/olmm.png">
+                        <img src="images/olbl.png">
+                        <img src="images/olvb.png">
                     </div>
                     <p>Unrestricted Vintage is a Magic: The Gathering format where the most powerful aspects of the game come to light. Every restricted card in Vintage has been unrestricted and every banned card in Legacy has been unbanned, embracing the most powerful spells and combos the game has to offer.</p>
                     
