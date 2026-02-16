@@ -497,8 +497,13 @@ tr td:last-child {
 }
 
 #indeximages img{
-    width:75px;
+    width:120px;
     border: 2px white solid;
     border-radius: 5px;
     text-align:center;
+}
+
+#indeximages{
+    display:flex;
+    justify-content: space-between;
 }
