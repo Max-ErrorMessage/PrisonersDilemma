@@ -16,7 +16,7 @@
         <span>Past Tourneys</span>
     </a>
     <a href="Tourney.php" id="p5" class="pButton">
-        <img src="../images/olvb.png">
+        <img src="/var/www/html/Unres/images/olvb.png">
         <span>Current Tourney</span>
     </a>
 </div>
