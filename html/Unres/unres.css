@@ -495,3 +495,9 @@ tr td:last-child {
     margin: 0 auto;
     position: unset;
 }
+
+#indeximages img{
+    width:150px;
+    border: 2px white solid;
+    border-radius: 5px;
+}
