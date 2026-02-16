@@ -497,7 +497,8 @@ tr td:last-child {
 }
 
 #indeximages img{
-    width:150px;
+    width:75px;
     border: 2px white solid;
     border-radius: 5px;
+    text-align:center;
 }
