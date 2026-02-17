@@ -123,6 +123,27 @@ foreach ($matches as &$match) {
     $matchesbyid[$match['id']] = $match;
 }
 
+$records = [];
+
+foreach ($matches as $match) {
+    if (!is_numeric($match['winnerid']) || !is_numeric($match['loserid'])) {
+        continue; // skip unplayed matches without a winner/loser
+    }
+
+    $winner = $match['winnerid'];
+    $loser = $match['loserid'];
+
+    if (!isset($records[$winner])) {
+        $records[$winner] = ['wins' => 0, 'losses' => 0];
+    }
+    if (!isset($records[$loser])) {
+        $records[$loser] = ['wins' => 0, 'losses' => 0];
+    }
+
+    $records[$winner]['wins']++;
+    $records[$loser]['losses']++;
+}
+
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'elo_changes_by_archetype.py';
@@ -384,9 +405,10 @@ foreach ($changes_data as $change_batch) {
                                                 <br>
                                                 <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['cid'] ?></span>
                                                 <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["leftid"]]['rank'] ?></span>
+                                                <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Elo: <?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
 
                                             </td><td class="trr ra<?= $class;?>">
-                                                <span class="ra"><?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
+                                                <span class="ra"><?= $records["leftid"]["wins"] ?> - <?= $records["leftid"]["losses"] ?></span>
                                             </td>
                                         <?php else: ?>
                                             <td class = "trl ra">
@@ -417,8 +439,10 @@ foreach ($changes_data as $change_batch) {
                                                 }
                                             ?>
                                             <td class = 'trl<?= $class;?>'>
-                                                <span><?= explode('.',htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
-                                            </td><td class="trm ra limit<?= $class;?>" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>, '<?= addslashes($decksbyid[$match["leftid"]]['name']); ?>')">
+                                                <span><?= explode('.', ?></span>
+                                            </td>
+                                            
+                                            <td class="trm ra limit<?= $class;?>" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>, '<?= addslashes($decksbyid[$match["rightid"]]['name']); ?>')">
                                                 <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
                                                 <a style="width:20px;" href=deck.php?id=<?= $match["rightid"]?> onclick="event.stopPropagation();">
                                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
@@ -434,6 +458,7 @@ foreach ($changes_data as $change_batch) {
                                                 <br>
                                                 <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['cid'] ?></span>
                                                 <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['rank'] ?></span>
+                                                <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Elo: <?= htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
                                             </td><td class = 'trr<?= $class;?>'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["rightid"]]['colour'].".png"; ?>
                                                 <img class="ra lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
