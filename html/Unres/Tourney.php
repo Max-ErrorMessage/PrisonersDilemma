@@ -408,7 +408,7 @@ foreach ($changes_data as $change_batch) {
                                                 <span style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Elo: <?= explode('.',htmlspecialchars($decksbyid[$match["leftid"]]['elo']))[0] ?></span>
 
                                             </td><td class="trr ra<?= $class;?>">
-                                                <span class="ra"><?= $records[$match["leftid"]]["wins"] ?> - <?= $records[$match["leftid"]]]["losses"] ?></span>
+                                                <span class="ra"><?= $records[$match["leftid"]]["wins"] ?> - <?= $records[$match["leftid"]]["losses"] ?></span>
                                             </td>
                                         <?php else: ?>
                                             <td class = "trl ra">
@@ -439,7 +439,7 @@ foreach ($changes_data as $change_batch) {
                                                 }
                                             ?>
                                             <td class = 'trl<?= $class;?>'>
-                                                <span class="ra"><?= $records[$match["rightid"]]["wins"] ?> - <?= $records[$match["rightid"]]]["losses"] ?></span>
+                                                <span class="ra"><?= $records[$match["rightid"]]["wins"] ?> - <?= $records[$match["rightid"]]["losses"] ?></span>
                                             </td>
                                             
                                             <td class="trm ra limit<?= $class;?>" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>, '<?= addslashes($decksbyid[$match["rightid"]]['name']); ?>')">
@@ -458,7 +458,7 @@ foreach ($changes_data as $change_batch) {
                                                 <br>
                                                 <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['cid'] ?></span>
                                                 <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">#<?= $decksbyid[$match["rightid"]]['rank'] ?></span>
-                                                <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Elo: <?= htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
+                                                <span class="ra" style="color:#aaa;font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Source Code Pro', monospace;">Elo: <?= explode('.', htmlspecialchars($decksbyid[$match["rightid"]]['elo']))[0] ?></span>
                                             </td><td class = 'trr<?= $class;?>'>
                                                 <?php $imageUrl = "images/".$decksbyid[$match["rightid"]]['colour'].".png"; ?>
                                                 <img class="ra lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
