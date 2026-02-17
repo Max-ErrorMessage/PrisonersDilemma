@@ -350,8 +350,8 @@ group by dc.id1, dc.id2, c1.card_name, c2.card_name
 order by winrate_percentage desc
 ');
 
-$card_pairs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$jsoncards2 = json_encode($card_pairs);
+//$card_pairs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//$jsoncards2 = json_encode($card_pairs);
 ?>
 
 
@@ -489,17 +489,18 @@ $jsoncards2 = json_encode($card_pairs);
     
     console.log(data)
     const graphData = data.map(point => ({
-        x: point.total_quantity_decks,
+        x: point.winrate_percentage,
         y: point.percentage_playrate,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
-        label: `${point.card_name}: ${point.percentage_playrate}% - ${point.total_quantity_decks} decks`
+        label: `${point.card_name}: PR: ${point.percentage_playrate}% - ${WR: point.winrate_percentage} - AE: ${point.average_elo}`
     }))
 
     
     const graphData2 = data2.map(point => ({
-        x: point.decks,
-        y: point.winrate_percentage,
-        label: `${point.name1}, ${point.name2}: decks: ${point.decks}, WR: ${point.winrate_percentage}`
+        x: point.total_quantity_decks,
+        y: point.percentage_playrate,
+        backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
+        label: `${point.card_name}: ${point.percentage_playrate}% play rate - ${point.total_quantity_decks} copies accross all decks decks`
     }))
 
     var graph = 1
@@ -567,10 +568,10 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 51,
+                            max: 101,
                             title: {
                               display: true,
-                              text: 'Total Quantity Accross all Decks',
+                              text: '% of Decks Containing Card',
                               color: "#ddd"
 
                             },
@@ -579,7 +580,7 @@ $jsoncards2 = json_encode($card_pairs);
                             stepSize: 1,
 
                               callback: function(value) {
-                                if (value % 5 === 0 && value >= 0 && value <= 600) {
+                                if (value % 10 === 0 && value >= 0 && value <= 100) {
                                   return value;
                                 }
                                 return null;
@@ -589,19 +590,19 @@ $jsoncards2 = json_encode($card_pairs);
                         },
                         y: {
                               min: -1,
-                              max: 30,
+                              max: 101,
                               suggestedMin: -3,
                               suggestedMax: 103,
                             title: {
                               display: true,
-                              text: '% of Decks with Card',
+                              text: '% of Matches Won Against Decks Without Card',
                               color: "#ddd"
                             },
                           ticks: {
                             color: "#ddd",
                             stepSize: 1,
                               callback: function(value) {
-                                if (value % 5 === 0 && value >= 0 && value <= 100) {
+                                if (value % 10 === 0 && value >= 0 && value <= 100) {
                                   return value;
                                 }
                                 return null;
@@ -649,10 +650,10 @@ $jsoncards2 = json_encode($card_pairs);
                       scales: {
                         x: {
                             min: -1,
-                            max: 131,
+                            max: 501,
                             title: {
                               display: true,
-                              text: 'Decks',
+                              text: 'Total Quantity accross all decks',
                               color: "#ddd"
 
                             },
@@ -661,7 +662,7 @@ $jsoncards2 = json_encode($card_pairs);
                             stepSize: 1,
 
                               callback: function(value) {
-                                if (value % 10 === 0 && value >= 0 && value <= 130) {
+                                if (value % 10 === 0 && value >= 0 && value <= 500) {
                                   return value;
                                 }
                                 return null;
@@ -676,7 +677,7 @@ $jsoncards2 = json_encode($card_pairs);
                               suggestedMax: 103,
                             title: {
                               display: true,
-                              text: 'Winrate (%)',
+                              text: 'Playrate (%)',
                               color: "#ddd"
                             },
                           ticks: {
