@@ -485,7 +485,6 @@ order by winrate_percentage desc
     const sbdata = <?php echo $jsonsbcards; ?>
 
 
-    const data2 = <?php echo $jsoncards2; ?>
     
     console.log(data)
     const graphData = data.map(point => ({
@@ -496,7 +495,7 @@ order by winrate_percentage desc
     }))
 
     
-    const graphData2 = data2.map(point => ({
+    const graphData2 = data.map(point => ({
         x: point.total_quantity_decks,
         y: point.percentage_playrate,
         backgroundColor: `rgba(${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2.5},${(point.average_elo - 700)/2}, 1)`,
