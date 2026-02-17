@@ -144,6 +144,12 @@ foreach ($matches as $match) {
     $records[$loser]['losses']++;
 }
 
+foreach($decks as $deck){
+    if (!isset($records[$deck["id"]])) {
+        $records[$deck["id"]] = ['wins' => 0, 'losses' => 0];
+    }
+}
+
 
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'elo_changes_by_archetype.py';
