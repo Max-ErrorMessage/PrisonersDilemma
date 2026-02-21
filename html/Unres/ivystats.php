@@ -76,7 +76,7 @@ foreach ($decks as $deck) {
 }
 
 
-$stmt -> $pdo -> query('SELECT 
+$stmt -> $pdo->query('SELECT 
     archetype,
     SUM(wins) AS wins,
     SUM(losses) AS losses,
