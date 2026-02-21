@@ -421,7 +421,7 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }]
             };
             const data2 = {
-                labels: labels,
+                labels: labels2,
                 datasets: [{
                     data: values2,
                     backgroundColor: archetypes.map((_, i) => `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`),
