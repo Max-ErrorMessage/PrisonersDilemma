@@ -265,9 +265,9 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
                         <h2> Tourney Start </h2>
-                        <canvas id="piegraph" style="width:80%; height:200px; left:10%; position:absolute;"></canvas>
+                        <canvas id="piegraph" style="width:80%; height:600px; left:10%; position:absolute;"></canvas>
                         <h2> After Round 1 </h2>
-                        <canvas id="piegraph2" style="width:80%; height:200px; left:10%; position:absolute;"></canvas>
+                        <canvas id="piegraph2" style="width:80%; height:600px; left:10%; position:absolute;"></canvas>
                     </div>
                 </div>
             </div>
