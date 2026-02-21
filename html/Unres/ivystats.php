@@ -112,11 +112,11 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
-    <title>Unrestricted Vintage Leaderboard</title>
-    <link rel="icon" href="/t.ico" type="image/x-icon">
-    <meta property="og:title" content="Past Tourney Results">
-    <meta property="og:description" content="Check the results of previous tournaments!">
-    <meta property="og:image" content="Images/14.png">
+    <title>Ivy stats</title>
+    <link rel="icon" href="images/ivy.png">
+    <meta property="og:title" content="Ivy Stats">
+    <meta property="og:description" content="Stats for ivy!">
+    <meta property="og:image" content="Images/ivy.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="unres.css">
@@ -254,7 +254,7 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a class="tab" id="t1" onclick="switchTab(1)">
                     <img src="https://cdn-icons-png.flaticon.com/128/6831/6831865.png"/>
                 </a>
-                <a class="tab" id="t2" onclick="switchTab(2)">
+                <a class="tab" id="t2" onclick="switchTab(2)" style:"display:none;">
                     <img src="https://cdn-icons-png.flaticon.com/128/9874/9874735.png"/>
                 </a>
                 <a class="tab white" id="t3" onclick="switchTab(3)" style="display:none;">
