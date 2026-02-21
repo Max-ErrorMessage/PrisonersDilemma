@@ -396,13 +396,17 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         function buildGraph(){
             var labels = [];
             var values = [];
+            var labels2 = [];
             var values2 = [];
 
             archetypes.forEach((a) => {
                 labels.push(a.archetype);
                 values.push(a.total_matches);
-                values2.push(a.wins);
 
+                if (a.wins > 0) {
+                    labels2.push(a.archetype);
+                    values2.push(a.wins);
+                }
             });
             
             const ctx = document.getElementById('piegraph').getContext('2d');
