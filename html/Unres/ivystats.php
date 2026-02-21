@@ -101,7 +101,7 @@ FROM (
     GROUP BY l.provided_archetype
 ) AS combined
 GROUP BY archetype
-ORDER BY wins;')
+ORDER BY wins;');
 $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
