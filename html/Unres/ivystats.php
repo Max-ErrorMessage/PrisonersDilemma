@@ -116,7 +116,7 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="icon" href="images/ivy.png">
     <meta property="og:title" content="Ivy Stats">
     <meta property="og:description" content="Stats for ivy!">
-    <meta property="og:image" content="https://www.twokie.com/Unres/images/bigivy.png">
+    <meta property="og:image" content="https://www.twokie.com/Unres/images/bigivy.png?v=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="unres.css">
