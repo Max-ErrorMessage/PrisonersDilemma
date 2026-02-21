@@ -391,12 +391,20 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function buildGraph(){
+            var labels = [];
+            var values = [];
+
+            archetypes.forEach((a) => {
+                labels.push(a.archetype);
+                values.push(a.total_matches);
+            });
+
             const ctx = document.getElementById('piegraph').getContext('2d');
             const data = {
-                labels: Object.keys(archetypes),
+                labels: labels,
                 datasets: [{
-                    data: Object.values(archetypes).map(a => a.wins),
-                    backgroundColor: Object.keys(archetypes).map((_, i) => `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`),
+                    data: values,
+                    backgroundColor: archetypes.map((_, i) => `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`),
                     borderColor: '#fff',
                     borderWidth: 1
                 }]
