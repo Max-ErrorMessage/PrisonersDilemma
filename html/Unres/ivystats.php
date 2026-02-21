@@ -396,16 +396,21 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         function buildGraph(){
             var labels = [];
             var values = [];
+            var colours = [];
             var labels2 = [];
             var values2 = [];
+            var colours2 = [];
 
             archetypes.forEach((a) => {
                 labels.push(a.archetype);
                 values.push(a.total_matches);
+                color = (`hsl(${labels.length * (360/Object.keys(archetypes).length)}, 70%, 50%)`);
+                colours.push(color);
 
                 if (a.wins > 0) {
                     labels2.push(a.archetype);
                     values2.push(a.wins);
+                    colours2.push(color);
                 }
             });
             
@@ -415,7 +420,7 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 labels: labels,
                 datasets: [{
                     data: values,
-                    backgroundColor: archetypes.map((_, i) => `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`),
+                    backgroundColor: colours,
                     borderColor: '#fff',
                     borderWidth: 1
                 }]
@@ -424,7 +429,7 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 labels: labels2,
                 datasets: [{
                     data: values2,
-                    backgroundColor: archetypes.map((_, i) => `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`),
+                    backgroundColor: colours2,
                     borderColor: '#fff',
                     borderWidth: 1
                 }]
