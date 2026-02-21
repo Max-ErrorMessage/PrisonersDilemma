@@ -264,7 +264,10 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div id = "page1">
                         <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/128/5200/5200866.png"/></div>
                         <br>
-                        <canvas id="piegraph" style="width:100%; height:300px;"></canvas>
+                        <h2> Tourney Start </h2>
+                        <canvas id="piegraph" style="width:100%; height:200px;"></canvas>
+                        <h2> After Round 1 </h2>
+                        <canvas id="piegraph2" style="width:100%; height:200px;"></canvas>
                     </div>
                 </div>
             </div>
@@ -393,14 +396,27 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         function buildGraph(){
             var labels = [];
             var values = [];
+            var values2 = [];
 
             archetypes.forEach((a) => {
                 labels.push(a.archetype);
                 values.push(a.total_matches);
-            });
+                values2.push(a.wins);
 
+            });
+            
             const ctx = document.getElementById('piegraph').getContext('2d');
+            const ctx2 = document.getElementById('piegraph2').getContext('2d');
             const data = {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: archetypes.map((_, i) => `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`),
+                    borderColor: '#fff',
+                    borderWidth: 1
+                }]
+            };
+            const data2 = {
                 labels: labels,
                 datasets: [{
                     data: values,
@@ -412,6 +428,17 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             new Chart(ctx, {
                 type: 'pie',
                 data: data,
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: { color: "#ddd" }
+                        }
+                    }
+                }
+            });
+            new Chart(ctx2, {
+                type: 'pie',
+                data: data2,
                 options: {
                     plugins: {
                         legend: {
