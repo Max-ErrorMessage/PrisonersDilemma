@@ -275,7 +275,7 @@ $pie_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
-        const archetypes = JSON.parse('<?php echo (trim($pie_data)); ?>')
+        const archetypes = <?php echo json_encode($pie_data); ?>;
         const div2 = document.querySelector('.bg-img');
 
         div2.addEventListener('mousemove', (e) => {
