@@ -523,3 +523,7 @@ tr td:last-child {
     display:flex;
     justify-content: space-between;
 }
+
+html{
+    font-size:10px;
+}
