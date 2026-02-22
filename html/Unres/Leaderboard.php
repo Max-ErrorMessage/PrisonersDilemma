@@ -420,7 +420,8 @@ foreach ($changes_data as $change_batch) {
                     fill: false,
                     backgroundColor: `hsl(${i * (360/Object.keys(archetypes).length)}, 70%, 50%)`,
                     pointRadius: 0,
-                    pointHoverRadius: 2
+                    pointHoverRadius: 2,
+                    borderRadius: 1
                 }));
 
                 new Chart(document.getElementById("elograph"), {
