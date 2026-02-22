@@ -443,7 +443,15 @@ foreach ($changes_data as $change_batch) {
                       },
                       plugins: {
                         legend: {
-                          labels: { color: "#ddd" }
+                          labels: { 
+                              color: "#ddd",
+                              font: {
+                                size: 10,   
+                                family: 'Arial',
+                                style: 'normal',
+                                weight: 'bold'
+                              }
+                          }
                         }
 
                       },
