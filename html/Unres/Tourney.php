@@ -12,6 +12,11 @@
 
 include "/var/www/html/Unres/db.php";
 
+$round = $_GET["r"];
+if (!isset($round)){
+    $round = 1;
+}
+
 // Fetch all decks
 $stmt = $pdo->query('SELECT
         d.id as id,
@@ -352,7 +357,7 @@ foreach ($changes_data as $change_batch) {
                 <div style="width:50%" id="lb">
                     <?php for($i=1;$i<8;$i++):?>
                         <?php 
-                            if ($i==1){
+                            if ($i==$round){
                                 $style = "block";
                             } else {
                                 $style = "none";
@@ -496,7 +501,7 @@ foreach ($changes_data as $change_batch) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        var currentTab = 1;
+        var currentTab = <?= $round ?>;
         const archetypes = JSON.parse('<?php echo (trim($arch_output)); ?>')
         console.log(archetypes);
 

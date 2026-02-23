@@ -18,7 +18,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
     <title>Unrestricted Vintage Matchups</title>
     <link rel="icon" href="/t.ico" type="image/x-icon">
-    <meta name="description" content="Create bots to compete in fun minigames! :)">
+    <meta name="description" content="Unrestricted Vintage for Magic: the Gathering. We host tournaments, collect data and calculate elo scores">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="unres.css">
