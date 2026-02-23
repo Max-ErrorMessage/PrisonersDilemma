@@ -12,8 +12,9 @@
 
 include "/var/www/html/Unres/db.php";
 
-$round = $_GET["r"];
-if (!isset($round)){
+if (isset($_GET["r"])){
+    $round = $_GET["r"]
+}else{
     $round = 1;
 }
 
