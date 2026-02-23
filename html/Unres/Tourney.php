@@ -694,13 +694,14 @@ foreach ($changes_data as $change_batch) {
             }
         }
 
+        /*
         function reset(){
             fetch("reset_tourney.php", {
                 method: 'POST'
             }).then(() => {
                 location.reload();
             });
-        }
+        }*/
 
         function submitMatch(matchid,winnerid,loserid,name){
             const ok = confirm(`Confirm ${name} as the winner of the match?`);
@@ -723,7 +724,7 @@ foreach ($changes_data as $change_batch) {
                         name: "TourneyPage"
                     })
                 }).then(() => {
-                    location.reload();
+                    window.location.href = window.location.pathname + "?r=" + currentTab;
                 });
             });
 
