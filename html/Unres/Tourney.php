@@ -728,7 +728,7 @@ foreach ($changes_data as $change_batch) {
                 });
             });
 
-            function test(){
+            function testFunc(){
                 window.location.href = window.location.pathname + "?r=" + currentTab;
             }
         }
