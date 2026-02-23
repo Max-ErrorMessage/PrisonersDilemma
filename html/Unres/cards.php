@@ -400,7 +400,6 @@ $jsonsbcards = json_encode($sbcards);
 
 
     
-    console.log(data)
     const graphData = data.map(point => ({
         x: point.percentage_playrate,
         y: point.winrate_percentage,
@@ -761,8 +760,8 @@ $jsonsbcards = json_encode($sbcards);
         renderMainboard(data);
     }
     
-    renderSideboard(sbdata);
     renderMainboard(data);
+    renderSideboard(sbdata);
     </script>
 </body>
 </html>
