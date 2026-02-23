@@ -731,9 +731,6 @@ foreach ($changes_data as $change_batch) {
         }
 
         
-        function testFunc(){
-            window.location.href = window.location.pathname + "?r=" + currentTab;
-        }
 
     </script>
 </body>
