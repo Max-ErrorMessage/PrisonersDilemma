@@ -13,7 +13,7 @@
 include "/var/www/html/Unres/db.php";
 
 if (isset($_GET["r"])){
-    $round = $_GET["r"]
+    $round = $_GET["r"];
 }else{
     $round = 1;
 }
