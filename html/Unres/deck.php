@@ -109,6 +109,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $losers[] = $row['loser'];
     $elo_rows[] = $row;
 }
+$elo_rev = array_reverse($elo_rows);
 
 
 foreach ($decks as $d) {
@@ -484,7 +485,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <canvas id="elograph"></canvas>
                         <div id="match-table">
                             <table>
-                                <?php foreach ($elo_rows as $row): ?>
+                                <?php foreach ($elo_rev as $row): ?>
                                     <tr>
                                         <td>
                                             <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
