@@ -158,15 +158,11 @@ if (count($sim_rows) > 0) {
     }
 }
 
-$sim_data_by_id = [];
-foreach ($sim_data as $d) {
-    $sim_data_by_id[$d['id']] = $d;
-}
-
 $sim_Data_by_name = [];
 foreach ($sim_data as $d) {
     $sim_Data_by_name[$d['name']] = $d;
 }
+$sim_Data_by_name[$deck['name']] = ["sim" => 1];
 
 
 
