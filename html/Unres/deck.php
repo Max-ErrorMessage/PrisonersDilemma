@@ -498,7 +498,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                 <?php foreach ($elo_rev as $row): ?>
                                     <tr>
                                         <td>
-                                            <p><?= htmlspecialchars($row['winner'])?> (<?= htmlspecialchars(round($sim_Data_by_name[$row['winner']]['sim'] * 100))?>) beat <?= htmlspecialchars($row['loser'])?> (<?= htmlspecialchars(round($sim_Data_by_name[$row['loser']]['sim'] * 100))?>)</p>
+                                            <p><?= htmlspecialchars($row['winner'])?> (<?= htmlspecialchars(round($sim_Data_by_name[$row['winner']]['sim'] * 100))?>%) beat <?= htmlspecialchars($row['loser'])?> (<?= htmlspecialchars(round($sim_Data_by_name[$row['loser']]['sim'] * 100))?>%)</p>
                                         </td><td>
                                             <p style="text-align:right;"><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
                                         </td>
