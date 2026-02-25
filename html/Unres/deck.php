@@ -158,6 +158,16 @@ if (count($sim_rows) > 0) {
     }
 }
 
+$sim_data_by_id = [];
+foreach ($sim_data as $d) {
+    $sim_data_by_id[$d['id']] = $d;
+}
+
+$sim_Data_by_name = [];
+foreach ($sim_data as $d) {
+    $sim_Data_by_name[$d['name']] = $d;
+}
+
 
 
 // --- DECK CHANGES JSON READING
@@ -488,7 +498,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                 <?php foreach ($elo_rev as $row): ?>
                                     <tr>
                                         <td>
-                                            <p><?= htmlspecialchars($row['winner'])?> beat <?= htmlspecialchars($row['loser'])?></p>
+                                            <p><?= htmlspecialchars($row['winner'])?> (<? htmlspecialchars($sim_Data_by_name[$row['winner']]['sim'])?>) beat <?= htmlspecialchars($row['loser'])?> (<? htmlspecialchars($sim_Data_by_name[$row['loser']]['sim'])?>)</p>
                                         </td><td>
                                             <p style="text-align:right;"><?= htmlspecialchars($row['elo_change'])?> elo gain</p>
                                         </td>
