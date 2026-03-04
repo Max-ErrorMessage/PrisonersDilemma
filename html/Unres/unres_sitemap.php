@@ -8,15 +8,19 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <url>
   <loc>https://www.twokie.com/Unres/index.php</loc>
+  <lastmod><?= filemtime("index.php") ?></lastmod>
 </url>
 <url>
   <loc>https://www.twokie.com/Unres/Leaderboard.php</loc>
+  <lastmod><?= filemtime("Leaderboard.php") ?></lastmod>
 </url>
 <url>
   <loc>https://www.twokie.com/Unres/cards.php</loc>
+  <lastmod><?= filemtime("cards.php") ?></lastmod>
 </url>
 <url>
   <loc>https://www.twokie.com/Unres/PastTourneys.php</loc>
+  <lastmod><?= filemtime("PastTourneys.php") ?></lastmod>
 </url>
 
 <?php
@@ -27,6 +31,7 @@ $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach($decks as $row){
     echo "<url>";
     echo "<loc>https://www.twokie.com/Unres/deck.php?id=" . $row['id'] . "</loc>";
+    echo "<lastmod>" . filemtime("deck.php") . "</lastmod>";
     echo "</url>";
 }
 
@@ -36,6 +41,7 @@ $trnys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach($trnys as $row){
     echo "<url>";
     echo "<loc>https://www.twokie.com/Unres/TourneyHistory.php?id=" . $row['id'] . "</loc>";
+    echo "<lastmod>" . $row['tourney_date'] . "</lastmod>";
     echo "</url>";
 }
 ?>
