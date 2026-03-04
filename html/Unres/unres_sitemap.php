@@ -20,21 +20,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 </url>
 
 <?php
-$result = mysqli_query($conn, "SELECT id FROM decks");
 
-while ($row = mysqli_fetch_assoc($result)) {
+$stmt = $pdo->query("SELECT id FROM decks");
+$decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach($decks as $deck){
     echo "<url>";
     echo "<loc>https://www.twokie.com/Unres/deck.php?id=" . $row['id'] . "</loc>";
-    echo "</url>";
-}
-?>
-
-<?php
-$result = mysqli_query($conn, "SELECT id FROM past_tournaments");
-
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<url>";
-    echo "<loc>https://www.twokie.com/Unres/TourneyHistory.php?id=" . $row['id'] . "</loc>";
     echo "</url>";
 }
 ?>
