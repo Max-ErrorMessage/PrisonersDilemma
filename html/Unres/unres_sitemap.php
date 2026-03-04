@@ -35,7 +35,7 @@ foreach($decks as $row){
     echo "</url>";
 }
 
-$stmt = $pdo->query("SELECT id FROM past_tournaments");
+$stmt = $pdo->query("SELECT * FROM past_tournaments");
 $trnys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($trnys as $row){
