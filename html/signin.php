@@ -29,7 +29,15 @@ session_start();
                 top: 3%;
                 right: 3%;
                 width: 10%;
-                height: 5%;
+                background: #003300;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                color: white;
             }
 
         </style>
@@ -40,10 +48,10 @@ session_start();
 
         
         <canvas id="particleCanvas"></canvas>
-        <div id="bg">
             <div id = "unres">
                 <a href = "Unres\index.php">If you're here for Unrestricted Vintage</a>
             </div>
+        <div id="bg">
             <div id = "login">
                 <?php
                     session_start();
