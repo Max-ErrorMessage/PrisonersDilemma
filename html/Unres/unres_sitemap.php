@@ -24,9 +24,18 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 $stmt = $pdo->query("SELECT id FROM decks");
 $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach($decks as $deck){
+foreach($decks as $row){
     echo "<url>";
     echo "<loc>https://www.twokie.com/Unres/deck.php?id=" . $row['id'] . "</loc>";
+    echo "</url>";
+}
+
+$stmt = $pdo->query("SELECT id FROM past_tournaments");
+$trnys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach($trnys as $row){
+    echo "<url>";
+    echo "<loc>https://www.twokie.com/Unres/TourneyHistory.php?id=" . $row['id'] . "</loc>";
     echo "</url>";
 }
 ?>
