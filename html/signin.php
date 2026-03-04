@@ -23,6 +23,15 @@ session_start();
               height: 100%;
               z-index: -1;
             }
+
+            #unres{
+                position: absolute;
+                top: 3%;
+                right: 3%;
+                width: 10%;
+                height: 5%;
+            }
+
         </style>
         <link rel="stylesheet" href="login.css">
 	<meta name="description" content="Create bots to compete in fun minigames! :)">
@@ -32,6 +41,9 @@ session_start();
         
         <canvas id="particleCanvas"></canvas>
         <div id="bg">
+            <div id = "unres">
+                <a href = "Unres\index.php">If you're here for Unrestricted Vintage</a>
+            </div>
             <div id = "login">
                 <?php
                     session_start();
