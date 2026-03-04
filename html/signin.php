@@ -49,7 +49,7 @@ session_start();
         
         <canvas id="particleCanvas"></canvas>
             <div id = "unres">
-                <a href = "Unres\index.php">If you're here for Unrestricted Vintage</a>
+                <a href = "Unres\index.php" style="color:white">If you're here for Unrestricted Vintage</a>
             </div>
         <div id="bg">
             <div id = "login">
