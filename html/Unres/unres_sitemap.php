@@ -1,5 +1,7 @@
 <?php
 header("Content-Type: application/xml; charset=utf-8");
+require_once 'db.php';
+
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -8,7 +10,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
   <loc>https://www.twokie.com/Unres/index.php</loc>
 </url>
 <url>
-  <loc>https://www.twokie.com/Unres/Leaderbaord.php</loc>
+  <loc>https://www.twokie.com/Unres/Leaderboard.php</loc>
 </url>
 <url>
   <loc>https://www.twokie.com/Unres/cards.php</loc>
