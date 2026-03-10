@@ -513,7 +513,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                 <?php foreach ($sim_data as $deck): ?>
                                     <tr onclick=goToDeck(<?= $deck['id']?>)>
                                         <td>
-                                            <a href="deck.php?id=<?= $deck['id']?>"><?= htmlspecialchars($deck['name'])?></a>
+                                            <a class="invis-link" href="deck.php?id=<?= $deck['id']?>"><?= htmlspecialchars($deck['name'])?></a>
                                         </td><td>
                                             <p style="text-align:right;"><?=  round($deck['sim'] * 100) ?>%</p>
                                         </td>
@@ -533,7 +533,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <?php foreach ($tourney_results as $result): ?>
                             <tr onclick=goToTourney('<?= htmlspecialchars($result['tournament_id']) ?>')>
                                 <td>
-                                    <a href="TourneyHistory.php?id=<?= htmlspecialchars($result['tournament_id'])?>"><?= htmlspecialchars($result['tourney_date'])?></a>
+                                    <a class="invis-link" href="TourneyHistory.php?id=<?= htmlspecialchars($result['tournament_id'])?>"><?= htmlspecialchars($result['tourney_date'])?></a>
                                 </td><td>
                                     <p style="text-align:right;"><?= htmlspecialchars($result['matches_won'])?> - <?= htmlspecialchars($result['matches_lost'])?></p>
                                 </td>

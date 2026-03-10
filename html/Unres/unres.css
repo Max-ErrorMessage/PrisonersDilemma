@@ -524,3 +524,7 @@ tr td:last-child {
     justify-content: space-between;
 }
 
+.invislink{
+    color:white;
+    text-decoration:none;
+}
