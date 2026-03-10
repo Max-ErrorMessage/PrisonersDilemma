@@ -244,9 +244,6 @@ foreach ($changes_data as $change_batch) {
             top:100px;
             background-color: #444
         }
-
-
-
     </style>
 </head>
 <body>

@@ -293,9 +293,9 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
     <title><?= $deck['name']?></title>
     <link rel="icon" href="<?= $color_url ?>">
-    <meta name="description" content="Deck for Unrestricted Vintage! :)">
+    <meta name="description" content="Deck for Unrestricted Vintage, Magic: the gathering">
     <meta property="og:title" content="<?= $deck['name']?>">
-    <meta property="og:description" content="Deck for Unrestricted Vintage!">
+    <meta property="og:description" content="Deck for Unrestricted Vintage, Magic: the Gathering">
     <meta property="og:image" content="<?= "https://www.twokie.com/Unres/" . $color_url ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -513,7 +513,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                                 <?php foreach ($sim_data as $deck): ?>
                                     <tr onclick=goToDeck(<?= $deck['id']?>)>
                                         <td>
-                                            <p><?= htmlspecialchars($deck['name'])?></p>
+                                            <a href="deck.php?id=<?= $deck['id']?>"><?= htmlspecialchars($deck['name'])?></a>
                                         </td><td>
                                             <p style="text-align:right;"><?=  round($deck['sim'] * 100) ?>%</p>
                                         </td>
@@ -533,7 +533,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                         <?php foreach ($tourney_results as $result): ?>
                             <tr onclick=goToTourney('<?= htmlspecialchars($result['tournament_id']) ?>')>
                                 <td>
-                                    <p><?= htmlspecialchars($result['tourney_date'])?></p>
+                                    <a href="TourneyHistory.php?id=<?= htmlspecialchars($result['tournament_id'])?>"><?= htmlspecialchars($result['tourney_date'])?></a>
                                 </td><td>
                                     <p style="text-align:right;"><?= htmlspecialchars($result['matches_won'])?> - <?= htmlspecialchars($result['matches_lost'])?></p>
                                 </td>
