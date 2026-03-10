@@ -528,3 +528,7 @@ tr td:last-child {
     color:white;
     text-decoration:none;
 }
+.invis-link:hover{
+    color:white;
+    text-decoration:none;
+}
