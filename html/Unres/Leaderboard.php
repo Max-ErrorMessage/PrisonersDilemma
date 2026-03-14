@@ -314,8 +314,6 @@ foreach ($changes_data as $change_batch) {
                     <div id="page2" style="display:none;height:60vh">
                         <canvas id="elograph"></canvas>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -357,33 +355,25 @@ foreach ($changes_data as $change_batch) {
         function switchTab(n){
             tab1 = document.getElementById("t1")
             tab2 = document.getElementById("t2")
-            tab3 = document.getElementById("t3")
             page1 = document.getElementById("page1")
             page2 = document.getElementById("page2")
-            page3 = document.getElementById("page3")
             if (n==1){
                 tab1.style.backgroundColor = "#1e2833"
                 tab1.style.backgroundImage = "none"
                 tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "none"
-                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
-                tab3.style.backgroundColor = "#none"
 
                 page1.style.display = "block"
                 page2.style.display = "none"
-                page3.style.display = "none"
 
             } else if (n==2){
                 tab2.style.backgroundColor = "#1e2833"
                 tab2.style.backgroundImage = "none"
                 tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
-                tab3.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
-                tab3.style.backgroundColor = "#none"
 
                 page2.style.display = "block"
                 page1.style.display = "none"
-                page3.style.display = "none"
 
                 let chartData = archetypes
 
@@ -443,14 +433,11 @@ foreach ($changes_data as $change_batch) {
                   });
 
             }  else if (n==3){
-                tab3.style.backgroundColor = "#1e2833"
-                tab3.style.backgroundImage = "none"
                 tab1.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab1.style.backgroundColor = "none"
                 tab2.style.backgroundImage = "linear-gradient(to top, black, #1e2833)"
                 tab2.style.backgroundColor = "#none"
 
-                page3.style.display = "block"
                 page1.style.display = "none"
                 page2.style.display = "none"
             }
