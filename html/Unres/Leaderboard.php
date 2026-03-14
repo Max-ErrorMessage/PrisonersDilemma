@@ -314,25 +314,6 @@ foreach ($changes_data as $change_batch) {
                     <div id="page2" style="display:none;height:60vh">
                         <canvas id="elograph"></canvas>
                     </div>
-                    <div id="page3" style="display:none">
-                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
-                        <strong>Similar Decks:</strong>
-                        <br>
-                        <br>
-                        <div id="sim-table">
-                            <table id=>
-                                <?php foreach ($sim_data as $deck): ?>
-                                    <tr onclick=goToDeck(<?= $deck['id']?>)>
-                                        <td>
-                                            <p><?= htmlspecialchars($deck['name'])?></p>
-                                        </td><td>
-                                            <p style="text-align:right;"><?=  round($deck['sim'] * 100) ?>%</p>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
-                    </div>
 
 
                 </div>
