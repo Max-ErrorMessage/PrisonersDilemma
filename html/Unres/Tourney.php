@@ -400,7 +400,7 @@ foreach ($changes_data as $change_batch) {
                                                 <?php $imageUrl = "images/".$decksbyid[$match["leftid"]]['colour'].".png"; ?>
                                                 <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                             </td><td class = 'trm limit<?= $class;?>' onclick="submitMatch(<?= $match["id"];?>, <?= $match["leftid"];?>, <?= $match["rightid"];?>, '<?= addslashes($decksbyid[$match["leftid"]]['name']); ?>')">
-                                                <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
+                                                Zirdaless <?= htmlspecialchars($decksbyid[$match["leftid"]]['name']) ?>
                                                 <a style="width:20px;" href=deck.php?id=<?= $match["leftid"]?> target="_blank" onclick="event.stopPropagation();">
                                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
                                                 </a>
@@ -455,7 +455,7 @@ foreach ($changes_data as $change_batch) {
                                             </td>
                                             
                                             <td class="trm ra limit<?= $class;?>" onclick="submitMatch(<?= $match["id"];?>, <?= $match["rightid"];?>, <?= $match["leftid"];?>, '<?= addslashes($decksbyid[$match["rightid"]]['name']); ?>')">
-                                                <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
+                                                Zirdaless <?= htmlspecialchars($decksbyid[$match["rightid"]]['name']) ?>
                                                 <a style="width:20px;" href=deck.php?id=<?= $match["rightid"]?> target="_blank" onclick="event.stopPropagation();">
                                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/6938/6938456.png" title="View decklist">
                                                 </a>
