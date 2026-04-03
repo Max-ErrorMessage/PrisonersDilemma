@@ -288,7 +288,7 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
 $venvPython = '/var/www/Unres-Meta/venv/bin/python';
 $pythonScript = 'force_calculator.py ' . $id . ' -1 1000';
 $command = 'cd /var/www/Unres-Meta/analysis && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ' 2>&1';
-$actual = 'python3 /var/www/Unres-Meta/analysis/force_calculator.py [DECK ID] -1 1000'
+$actual = 'python3 /var/www/Unres-Meta/analysis/force_calculator.py [DECK ID] -1 1000';
 $stat_text = shell_exec($command);
 
 ?>
