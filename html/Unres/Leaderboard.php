@@ -281,7 +281,7 @@ foreach ($changes_data as $change_batch) {
                                     <?php $imageUrl = "images/".$deck['colour'].".png"; ?>
                                     <img class="lbimg" src="<?= htmlspecialchars($imageUrl) ?>" alt="color">
                                 </td><td>
-                                    <a href="deck.php?id=<?= $deck['id']?>" style="text-decoration:none; color:white;">Zirdaless <?= htmlspecialchars($deck['name']) ?></a>
+                                    <a href="deck.php?id=<?= $deck['id']?>" style="text-decoration:none; color:white;"><?= htmlspecialchars($deck['name']) ?></a>
 
                                     <?php
                                     if(in_array($deck['id'],$added_deck_ids)){

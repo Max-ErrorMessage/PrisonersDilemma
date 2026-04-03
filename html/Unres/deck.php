@@ -340,7 +340,7 @@ $stat_text = "text will go here"
                 <div id="lb" class="wide">
                     <div id = "page1">
                         <img id="cc" onclick="copyToClipboard()" src="https://cdn-icons-png.flaticon.com/128/4891/4891669.png">
-                        <h3 style="text-align:center;"> Zirdaless <?= $deck['name'] ?> </h3>
+                        <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <div id="mb">
                             <?php foreach ($types as $type): ?>
                                 <?php $isset = false; ?>
