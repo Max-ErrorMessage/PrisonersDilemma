@@ -513,7 +513,7 @@ $stat_text = shell_exec($command);
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
                         <strong>Stats:</strong>
                         <br><br>
-                        <?= $stat_text ?>
+                        <span><?= $stat_text ?></span>
                         <br><br><br>
                         
                         <strong>Similar Decks:</strong>
