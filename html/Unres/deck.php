@@ -285,7 +285,11 @@ $stmt->execute([':id' => $id]);
 $tourney_results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
 
-$stat_text = "text will go here"
+$venvPython = '/var/www/Unres-Meta/venv/bin/python';
+$pythonScript = 'force_calculator.py ' . $id . ' -1 1000';
+$command = 'cd /var/www/Unres-Meta/analysis && ' . escapeshellcmd($venvPython) . ' ' . ($pythonScript) . ' ' . ' 2>&1';
+$actual = 'python3 /var/www/Unres-Meta/analysis/force_calculator.py [DECK ID] -1 1000'
+$stat_text = shell_exec($command);
 
 ?>
 
