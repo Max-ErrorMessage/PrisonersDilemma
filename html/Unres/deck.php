@@ -285,6 +285,8 @@ $stmt->execute([':id' => $id]);
 $tourney_results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
 
+$stat_text = "text will go here"
+
 ?>
 
 
@@ -505,6 +507,11 @@ $tourney_block_display = (!empty($tourney_results)) ? "block" : "none";
                     </div>
                     <div id="page3" style="display:none">
                         <h3 style="text-align:center;"> <?= $deck['name'] ?> </h3>
+                        <strong>Stats:</strong>
+                        <br><br>
+                        <?= $stat_text ?>
+                        <br><br><br>
+                        
                         <strong>Similar Decks:</strong>
                         <br>
                         <br>
