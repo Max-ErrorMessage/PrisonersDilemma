@@ -184,11 +184,10 @@
 
             <?php
             if(isset($_POST['add_char'])) {
-                $name = $conn->real_escape_string($_POST['char_name']);
-                $dmg = $conn->real_escape_string($_POST['char_dmg']);
-                $inc = $conn->real_escape_string($_POST['char_inc']);
-                $hp = $conn->real_escape_string($_POST['char_hp']);
-                $conn->query("INSERT INTO characters (name, attack, income, hp) VALUES ('$name', '$dmg', '$inc', '$hp')");
+                $stmt = $conn->prepare("INSERT INTO characters (name, attack, income, hp) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("siii", $_POST['char_name'], $_POST['char_dmg'], $_POST['char_inc'], $_POST['char_hp']);
+                $stmt->execute();
+
                 echo "<p>Character added!</p>";
             }
             ?>
