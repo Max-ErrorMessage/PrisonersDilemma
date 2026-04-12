@@ -178,7 +178,7 @@
 
             <?php
             if(isset($_POST['add_char'])) {
-                $name = $_POST['char_name'];
+                $name = $conn->real_escape_string($_POST['char_name']);
                 $conn->query("INSERT INTO characters (name) VALUES ('$name')");
                 echo "<p>Character added!</p>";
             }
@@ -261,6 +261,28 @@ on con.con_id = cona.con_id;
 
         </div>
 
+        <?php
+        // Fetch lookup lists for the Add Card form
+        $abilitiesList = [];
+        $res = $conn->query("SELECT ab_id, name FROM Abilities ORDER BY name");
+        while ($r = $res->fetch_assoc()) {
+            $abilitiesList[] = $r;
+        }
+
+        $statusList = [];
+        $res = $conn->query("SELECT s_id, name FROM Status ORDER BY name");
+        while ($r = $res->fetch_assoc()) {
+            $statusList[] = $r;
+        }
+
+        $conditionsList = [];
+        $res = $conn->query("SELECT con_id, subject, `type`, `operator`, `value` FROM Conditions ORDER BY con_id");
+        while ($r = $res->fetch_assoc()) {
+            $label = trim($r['subject'] . ' ' . $r['type'] . ' ' . $r['operator'] . ' ' . $r['value']);
+            $conditionsList[] = ['con_id' => $r['con_id'], 'label' => $label];
+        }
+        ?>
+
         <!-- INSERT FORM Card-->
         <div class="card">
             <h2>Add Card</h2>
@@ -334,45 +356,89 @@ on con.con_id = cona.con_id;
 
 </body>
 <script>
+/* Data from server-side lookups */
+const ABILITIES = <?php echo json_encode($abilitiesList); ?>;
+const STATUSES = <?php echo json_encode($statusList); ?>;
+const CONDITIONS = <?php echo json_encode($conditionsList); ?>;
+
 let abilityCount = 0;
+
+function buildOptions(list, valueKey = Object.keys(list[0] || {})[0], labelKey = Object.keys(list[0] || {})[1]) {
+  if (!list || list.length === 0) return '';
+  return list.map(item => `<option value="${item[valueKey]}">${item[labelKey]}</option>`).join('');
+}
 
 function addAbility() {
   const container = document.getElementById("abilities");
 
+  const id = abilityCount;
   const div = document.createElement("div");
   div.className = "card";
+
+  // Build ability select options (value = ab_id, text = name)
+  const abilityOptions = ABILITIES.map(a => `<option value="${a.ab_id}">${a.name}</option>`).join('');
+  const statusOptions = STATUSES.map(s => `<option value="${s.s_id}">${s.name}</option>`).join('');
+  const conditionOptions = CONDITIONS.map(c => `<option value="${c.con_id}">${c.label}</option>`).join('');
 
   div.innerHTML = `
     <h3>Ability</h3>
 
-    <label>Type</label>
-    <select name="abilities[${abilityCount}][type]" onchange="toggleConditional(this, ${abilityCount})">
-      <option value="Damage">Damage</option>
-      <option value="Heal">Heal</option>
-      <option value="Status">Status</option>
-      <option value="Conditional">Conditional</option>
+    <label>Type (Ability)</label>
+    <select name="abilities[${id}][ab_id]" onchange="onMainAbilityChange(this, ${id})">
+      <option value="">-- Select Ability --</option>
+      ${abilityOptions}
     </select>
 
     <label>Value</label>
-    <input name="abilities[${abilityCount}][value]">
+    <input name="abilities[${id}][value]">
 
-    <label>Status</label>
-    <input name="abilities[${abilityCount}][status]">
+    <div id="status_wrapper_${id}" style="display:none;">
+      <label>Status</label>
+      <select name="abilities[${id}][status_id]" id="status_${id}">
+        <option value="">-- Select Status --</option>
+        ${statusOptions}
+      </select>
+    </div>
 
-    <div id="conditional_${abilityCount}" style="display:none;">
+    <div id="conditional_${id}" style="display:none;">
       <h4>Condition</h4>
-      <input placeholder="Subject" name="abilities[${abilityCount}][condition][subject]">
-      <input placeholder="Type" name="abilities[${abilityCount}][condition][type]">
-      <input placeholder="Operator" name="abilities[${abilityCount}][condition][operator]">
-      <input placeholder="Value" name="abilities[${abilityCount}][condition][value]">
+      <label>Condition</label>
+      <select name="abilities[${id}][condition_id]">
+        <option value="">-- Select Condition --</option>
+        ${conditionOptions}
+      </select>
 
       <h4>True</h4>
-      <input placeholder="Ability" name="abilities[${abilityCount}][true][ability]">
-      <input placeholder="Value" name="abilities[${abilityCount}][true][value]">
+      <label>Ability</label>
+      <select name="abilities[${id}][true][ab_id]" onchange="onConditionalAbilityChange(this, ${id}, 'true')">
+        <option value="">-- Select Ability --</option>
+        ${abilityOptions}
+      </select>
+      <label>Value</label>
+      <input name="abilities[${id}][true][value]">
+      <div id="status_wrapper_${id}_true" style="display:none;">
+        <label>Status</label>
+        <select name="abilities[${id}][true][status_id]">
+          <option value="">-- Select Status --</option>
+          ${statusOptions}
+        </select>
+      </div>
 
       <h4>False</h4>
-      <input placeholder="Ability" name="abilities[${abilityCount}][false][ability]">
-      <input placeholder="Value" name="abilities[${abilityCount}][false][value]">
+      <label>Ability</label>
+      <select name="abilities[${id}][false][ab_id]" onchange="onConditionalAbilityChange(this, ${id}, 'false')">
+        <option value="">-- Select Ability --</option>
+        ${abilityOptions}
+      </select>
+      <label>Value</label>
+      <input name="abilities[${id}][false][value]">
+      <div id="status_wrapper_${id}_false" style="display:none;">
+        <label>Status</label>
+        <select name="abilities[${id}][false][status_id]">
+          <option value="">-- Select Status --</option>
+          ${statusOptions}
+        </select>
+      </div>
     </div>
   `;
 
@@ -380,9 +446,21 @@ function addAbility() {
   abilityCount++;
 }
 
-function toggleConditional(select, id) {
-  const section = document.getElementById("conditional_" + id);
-  section.style.display = (select.value === "Conditional") ? "block" : "none";
+function onMainAbilityChange(select, id) {
+  const selectedText = select.options[select.selectedIndex]?.text || '';
+  // Show conditional area only if ability name is "Conditional"
+  const conditionalSection = document.getElementById("conditional_" + id);
+  conditionalSection.style.display = (selectedText === "Conditional") ? "block" : "none";
+
+  // Show status selector only if ability name is "Status"
+  const statusWrapper = document.getElementById("status_wrapper_" + id);
+  statusWrapper.style.display = (selectedText === "Status") ? "block" : "none";
+}
+
+function onConditionalAbilityChange(select, id, which) {
+  const selectedText = select.options[select.selectedIndex]?.text || '';
+  const wrapper = document.getElementById(`status_wrapper_${id}_${which}`);
+  wrapper.style.display = (selectedText === "Status") ? "block" : "none";
 }
 </script>
 </html>
