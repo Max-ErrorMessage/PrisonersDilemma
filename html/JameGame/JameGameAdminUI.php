@@ -189,6 +189,9 @@
                 $stmt->execute();
 
                 echo "<p>Character added!</p>";
+                if (!$stmt->execute()) {
+                    echo "<p>Error: " . $stmt->error . "</p>";
+                }
             }
             ?>
         </div>
