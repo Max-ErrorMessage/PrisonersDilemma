@@ -120,6 +120,15 @@
 </head>
 <body>
 
+<?php
+// Connection (with error handling)
+$conn = new mysqli("localhost", "JameGame", "SuPeRsTr0nGpAs5w0rD|", "JameGame");
+if ($conn->connect_error) {
+    die("<div class='main'><div class='card'><p>Database connection failed: " . htmlspecialchars($conn->connect_error) . "</p></div></div></body></html>");
+}
+$conn->set_charset('utf8mb4');
+?>
+
 <div class="layout">
 
     <div class="sidebar">
@@ -148,17 +157,20 @@
                 </tr>
 
                 <?php
-                $conn = new mysqli("localhost", "JameGame", "SuPeRsTr0nGpAs5w0rD|", "JameGame");
                 $result = $conn->query("SELECT * FROM Characters");
-
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>\n";
-                    echo "<td>" . $row['chr_id'] . "</td>\n";
-                    echo "<td>" . $row['name'] . "</td>\n";
-                    echo "<td>" . $row['attack'] . "</td>\n";
-                    echo "<td>" . $row['income'] . "</td>\n";
-                    echo "<td>" . $row['hp'] . "</td>\n";
-                    echo "</tr>\n";
+                if ($result) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>\n";
+                        echo "<td>" . htmlspecialchars($row['chr_id']) . "</td>\n";
+                        echo "<td>" . htmlspecialchars($row['name']) . "</td>\n";
+                        echo "<td>" . htmlspecialchars($row['attack']) . "</td>\n";
+                        echo "<td>" . htmlspecialchars($row['income']) . "</td>\n";
+                        echo "<td>" . htmlspecialchars($row['hp']) . "</td>\n";
+                        echo "</tr>\n";
+                    }
+                    $result->free();
+                } else {
+                    echo "<tr><td colspan='5'>Error fetching characters: " . htmlspecialchars($conn->error) . "</td></tr>";
                 }
                 ?>
 
@@ -184,29 +196,40 @@
 
             <?php
             if(isset($_POST['add_char'])) {
-                $stmt = $conn->prepare("INSERT INTO characters (name, attack, income, hp) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("siii", $_POST['char_name'], $_POST['char_dmg'], $_POST['char_inc'], $_POST['char_hp']);
-                $stmt->execute();
+                // sanitize / validate
+                $name = trim($_POST['char_name']);
+                $attack = intval($_POST['char_dmg']);
+                $income = intval($_POST['char_inc']);
+                $hp = intval($_POST['char_hp']);
 
-                echo "<p>Character added!</p>";
-                if (!$stmt->execute()) {
-                    echo "<p>Error: " . $stmt->error . "</p>";
+                $stmt = $conn->prepare("INSERT INTO Characters (name, attack, income, hp) VALUES (?, ?, ?, ?)");
+                if ($stmt) {
+                    $stmt->bind_param("siii", $name, $attack, $income, $hp);
+                    if ($stmt->execute()) {
+                        echo "<p>Character added!</p>";
+                    } else {
+                        echo "<p>Error adding character: " . htmlspecialchars($stmt->error) . "</p>";
+                    }
+                    $stmt->close();
+                } else {
+                    echo "<p>Prepare failed: " . htmlspecialchars($conn->error) . "</p>";
                 }
             } else {
                 echo "<p>Fill out the form to add a new character.</p>";
             }
             ?>
         </div>
-
+                                                            
         <!-- DATABASE VIEW -->
         <div class="card">
             <h2>Cards</h2>
 
 
             <?php
-            $result = $conn->query("
+            $cards = [];
+            $sql = "
 Select
-c.c_id, c.name as c_name, c.cost, a1.name as name, ca.value as v, s1.name as status_1, a2.name as name_1, cona.true_value, s2.name as status_2, a3.name as name_2, cona.false_value, s3.name as status_3, con.subject, con.type, con.operator, con.value
+c.c_id, c.name as c_name, c.cost, a1.name as ability_name, ca.value as v, s1.name as status_1, a2.name as name_1, cona.true_value, s2.name as status_2, a3.name as name_2, cona.false_value, s3.name as status_3, con.subject, con.type, con.operator, con.value as con_value
 from Cards c
 inner join CardAbilities ca
 on c.c_id = ca.c_id
@@ -226,40 +249,46 @@ left join Status s3
 on s3.s_id = cona.false_status_id
 left join Conditions con
 on con.con_id = cona.con_id;
-            ");
-            $cards = [];
+            ";
+            $result = $conn->query($sql);
+            if ($result) {
+                while($row = $result->fetch_assoc()) {
+                    $id = $row['c_id'];
 
-            while($row = $result->fetch_assoc()) {
-                $id = $row['c_id'];
-
-                if (!isset($cards[$id])) {
-                    $cards[$id] = [
-                        "name" => $row['c_name'],
-                        "cost" => $row['cost'],
-                        "abilities" => []
-                    ];
-                }
-
-                // Build ability description
-                if ($row['name'] == "Conditional") {
-                    $ability = "If {$row['subject']} {$row['type']} {$row['operator']} {$row['value']} → "
-                                . "{$row['name_1']} {$row['true_value']} else {$row['name_2']} {$row['false_value']}";
-                } else {
-                    $ability = $row['name'] . ": " . $row['v'];
-
-                    if ($row['status_1']) {
-                        $ability .= " (" . $row['status_1'] . ")";
+                    if (!isset($cards[$id])) {
+                        $cards[$id] = [
+                            "name" => $row['c_name'],
+                            "cost" => $row['cost'],
+                            "abilities" => []
+                        ];
                     }
-                }
 
-                $cards[$id]['abilities'][] = $ability;
+                    // Build ability description
+                    if ($row['ability_name'] === "Conditional") {
+                        $ability = "If " . htmlspecialchars($row['subject']) . " " . htmlspecialchars($row['type']) . " " . htmlspecialchars($row['operator']) . " " . htmlspecialchars($row['con_value'])
+                                    . " → " . htmlspecialchars($row['name_1']) . " " . htmlspecialchars($row['true_value'])
+                                    . " else " . htmlspecialchars($row['name_2']) . " " . htmlspecialchars($row['false_value']);
+                    } else {
+                        $ability = htmlspecialchars($row['ability_name']) . ": " . htmlspecialchars($row['v']);
+
+                        if (!empty($row['status_1'])) {
+                            $ability .= " (" . htmlspecialchars($row['status_1']) . ")";
+                        }
+                    }
+
+                    $cards[$id]['abilities'][] = $ability;
+                }
+                $result->free();
+            } else {
+                echo "<p>Error fetching cards: " . htmlspecialchars($conn->error) . "</p>";
             }
+
             echo "<div class='cards'>";
             foreach ($cards as $card) {
                 echo "<div class='card'>";
-    
-                echo "<h2>{$card['name']}</h2>";
-                echo "<p><strong>Cost:</strong> {$card['cost']}</p>";
+
+                echo "<h2>" . htmlspecialchars($card['name']) . "</h2>";
+                echo "<p><strong>Cost:</strong> " . htmlspecialchars($card['cost']) . "</p>";
 
                 echo "<ul>";
                 foreach ($card['abilities'] as $ability) {
@@ -278,29 +307,41 @@ on con.con_id = cona.con_id;
         // Fetch lookup lists for the Add Card form
         $abilitiesList = [];
         $res = $conn->query("SELECT ab_id, name FROM Abilities ORDER BY name");
-        while ($r = $res->fetch_assoc()) {
-            $abilitiesList[] = $r;
+        if ($res) {
+            while ($r = $res->fetch_assoc()) {
+                $abilitiesList[] = $r;
+            }
+            $res->free();
         }
 
         $statusList = [];
         $res = $conn->query("SELECT s_id, name FROM Status ORDER BY name");
-        while ($r = $res->fetch_assoc()) {
-            $statusList[] = $r;
+        if ($res) {
+            while ($r = $res->fetch_assoc()) {
+                $statusList[] = $r;
+            }
+            $res->free();
         }
 
         // Fetch distinct condition types only (used for the "Type" dropdown in the conditional builder)
         $conditionTypes = [];
         $res = $conn->query("SELECT DISTINCT `type` FROM Conditions ORDER BY `type`");
-        while ($r = $res->fetch_assoc()) {
-            $conditionTypes[] = $r['type'];
+        if ($res) {
+            while ($r = $res->fetch_assoc()) {
+                $conditionTypes[] = $r['type'];
+            }
+            $res->free();
         }
 
         // Keep the raw conditions list variable (not used for inputs anymore) in case other logic expects it
         $conditionsList = [];
         $res = $conn->query("SELECT con_id, subject, `type`, `operator`, `value` FROM Conditions ORDER BY con_id");
-        while ($r = $res->fetch_assoc()) {
-            $label = trim($r['subject'] . ' ' . $r['type'] . ' ' . $r['operator'] . ' ' . $r['value']);
-            $conditionsList[] = ['con_id' => $r['con_id'], 'label' => $label];
+        if ($res) {
+            while ($r = $res->fetch_assoc()) {
+                $label = trim($r['subject'] . ' ' . $r['type'] . ' ' . $r['operator'] . ' ' . $r['value']);
+                $conditionsList[] = ['con_id' => $r['con_id'], 'label' => $label];
+            }
+            $res->free();
         }
         ?>
 
@@ -314,24 +355,40 @@ on con.con_id = cona.con_id;
                 <h2>Create Card</h2>
 
                 <label>Name</label>
-                <input name="name">
+                <input name="card_name" required>
 
                 <label>Cost</label>
-                <input name="cost" type="number">
+                <input name="card_cost" type="number" required>
               </div>
 
               <div id="abilities"></div>
 
               <button type="button" onclick="addAbility()">+ Add Ability</button>
-              <button type="submit">Save Card</button>
+              <button type="submit" name="save_card">Save Card</button>
 
             </form>
 
             <?php
-            if(isset($_POST['add_char'])) {
-                $name = $_POST['card_name'];
-                $conn->query("INSERT INTO Cards (name) VALUES ('$name')");
-                echo "<p>Character added!</p>";
+            if(isset($_POST['save_card'])) {
+                $name = trim($_POST['card_name'] ?? '');
+                $cost = intval($_POST['card_cost'] ?? 0);
+
+                if ($name === '') {
+                    echo "<p>Please provide a card name.</p>";
+                } else {
+                    $stmt = $conn->prepare("INSERT INTO Cards (name, cost) VALUES (?, ?)");
+                    if ($stmt) {
+                        $stmt->bind_param("si", $name, $cost);
+                        if ($stmt->execute()) {
+                            echo "<p>Card added!</p>";
+                        } else {
+                            echo "<p>Error adding card: " . htmlspecialchars($stmt->error) . "</p>";
+                        }
+                        $stmt->close();
+                    } else {
+                        echo "<p>Prepare failed: " . htmlspecialchars($conn->error) . "</p>";
+                    }
+                }
             }
             ?>
         </div>
@@ -354,18 +411,27 @@ on con.con_id = cona.con_id;
 
                 if($result === TRUE) {
                     echo "<p>Query executed successfully.</p>";
-                } else if($result) {
+                } else if($result instanceof mysqli_result) {
                     echo "<table>";
+                    // header row
+                    $fields = $result->fetch_fields();
+                    echo "<tr>";
+                    foreach ($fields as $f) {
+                        echo "<th>" . htmlspecialchars($f->name) . "</th>";
+                    }
+                    echo "</tr>";
+
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         foreach($row as $val) {
-                            echo "<td>$val</td>";
+                            echo "<td>" . htmlspecialchars((string)$val) . "</td>";
                         }
                         echo "</tr>";
                     }
                     echo "</table>";
+                    $result->free();
                 } else {
-                    echo "<p>Error: " . $conn->error . "</p>";
+                    echo "<p>Error: " . htmlspecialchars($conn->error) . "</p>";
                 }
             }
             ?>
@@ -375,14 +441,18 @@ on con.con_id = cona.con_id;
 
 </div>
 
+<?php
+$conn->close();
+?>
+
 </body>
 <script>
 /* Data from server-side lookups */
-const ABILITIES = <?php echo json_encode($abilitiesList); ?>;
-const STATUSES = <?php echo json_encode($statusList); ?>;
-const CONDITION_TYPES = <?php echo json_encode($conditionTypes); ?>;
+const ABILITIES = <?php echo json_encode($abilitiesList ?? []); ?>;
+const STATUSES = <?php echo json_encode($statusList ?? []); ?>;
+const CONDITION_TYPES = <?php echo json_encode($conditionTypes ?? []); ?>;
 /* legacy/raw conditions list (not used for auto-selecting conditions anymore) */
-const CONDITIONS = <?php echo json_encode($conditionsList); ?>;
+const CONDITIONS = <?php echo json_encode($conditionsList ?? []); ?>;
 
 let abilityCount = 0;
 
@@ -492,21 +562,21 @@ function onMainAbilityChange(select, id) {
   const selectedText = select.options[select.selectedIndex]?.text || '';
   // Show conditional area only if ability name is "Conditional"
   const conditionalSection = document.getElementById("conditional_" + id);
-  conditionalSection.style.display = (selectedText === "Conditional") ? "block" : "none";
+  if (conditionalSection) conditionalSection.style.display = (selectedText === "Conditional") ? "block" : "none";
 
   // Show status selector only if ability name is "Status"
   const statusWrapper = document.getElementById("status_wrapper_" + id);
-  statusWrapper.style.display = (selectedText === "Status") ? "block" : "none";
+  if (statusWrapper) statusWrapper.style.display = (selectedText === "Status") ? "block" : "none";
 
   // Hide top-level value input when conditional is selected; show otherwise
   const valueWrapper = document.getElementById("value_wrapper_" + id);
-  valueWrapper.style.display = (selectedText === "Conditional") ? "none" : "block";
+  if (valueWrapper) valueWrapper.style.display = (selectedText === "Conditional") ? "none" : "block";
 }
 
 function onConditionalAbilityChange(select, id, which) {
   const selectedText = select.options[select.selectedIndex]?.text || '';
   const wrapper = document.getElementById(`status_wrapper_${id}_${which}`);
-  wrapper.style.display = (selectedText === "Status") ? "block" : "none";
+  if (wrapper) wrapper.style.display = (selectedText === "Status") ? "block" : "none";
 }
 </script>
 </html>
