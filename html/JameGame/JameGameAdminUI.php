@@ -125,12 +125,15 @@
 
                 <?php
                 $conn = new mysqli("localhost", "JaemGame", "SuPeRsTr0nGpAs5w0rD|", "JameGame");
-                $result = $conn->query("SELECT * FROM characters");
+                $result = $conn->query("SELECT * FROM Characters");
 
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>\n";
                     echo "<td>" . $row['id'] . "</td>\n";
                     echo "<td>" . $row['name'] . "</td>\n";
+                    echo "<td>" . $row['attack'] . "</td>\n";
+                    echo "<td>" . $row['income'] . "</td>\n";
+                    echo "<td>" . $row['hp'] . "</td>\n";
                     echo "</tr>\n";
                 }
                 ?>
