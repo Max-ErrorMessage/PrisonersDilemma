@@ -189,7 +189,7 @@
                 <?php
                 $result = $conn->query("
 Select
-	c.c_id, c.name as c_name, c.cost, a1.name as name, ca.value, s1.name as status_1, a2.name as name_1, cona.true_value, s2.name as status_2, a3.name as name_2, cona.false_value, s3.name as status_3, con.subject, con.type, con.operator, con.value
+	c.c_id, c.name as c_name, c.cost, a1.name as name, ca.value as v, s1.name as status_1, a2.name as name_1, cona.true_value, s2.name as status_2, a3.name as name_2, cona.false_value, s3.name as status_3, con.subject, con.type, con.operator, con.value
 from Cards c
 inner join CardAbilities ca
 	on c.c_id = ca.c_id
@@ -228,7 +228,7 @@ left join Conditions con
                         $ability = "If {$row['subject']} {$row['operator']} {$row['value']} → "
                                   . "{$row['name_1']} {$row['true_value']} else {$row['name_2']} {$row['false_value']}";
                     } else {
-                        $ability = $row['name'] . " " . $row['value'];
+                        $ability = $row['name'] . ": " . $row['v'];
 
                         if ($row['status_1']) {
                             $ability .= " (" . $row['status_1'] . ")";
