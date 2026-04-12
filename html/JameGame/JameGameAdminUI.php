@@ -225,7 +225,7 @@ left join Conditions con
 
                     // Build ability description
                     if ($row['name'] == "Conditional") {
-                        $ability = "If {$row['subject']} {$row['operator']} {$row['value']} → "
+                        $ability = "If {$row['subject']} {$row['type']} {$row['operator']} {$row['value']} → "
                                   . "{$row['name_1']} {$row['true_value']} else {$row['name_2']} {$row['false_value']}";
                     } else {
                         $ability = $row['name'] . ": " . $row['v'];
