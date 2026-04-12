@@ -275,6 +275,14 @@ on con.con_id = cona.con_id;
             $statusList[] = $r;
         }
 
+        // Fetch distinct condition types only (used for the "Type" dropdown in the conditional builder)
+        $conditionTypes = [];
+        $res = $conn->query("SELECT DISTINCT `type` FROM Conditions ORDER BY `type`");
+        while ($r = $res->fetch_assoc()) {
+            $conditionTypes[] = $r['type'];
+        }
+
+        // Keep the raw conditions list variable (not used for inputs anymore) in case other logic expects it
         $conditionsList = [];
         $res = $conn->query("SELECT con_id, subject, `type`, `operator`, `value` FROM Conditions ORDER BY con_id");
         while ($r = $res->fetch_assoc()) {
@@ -359,6 +367,8 @@ on con.con_id = cona.con_id;
 /* Data from server-side lookups */
 const ABILITIES = <?php echo json_encode($abilitiesList); ?>;
 const STATUSES = <?php echo json_encode($statusList); ?>;
+const CONDITION_TYPES = <?php echo json_encode($conditionTypes); ?>;
+/* legacy/raw conditions list (not used for auto-selecting conditions anymore) */
 const CONDITIONS = <?php echo json_encode($conditionsList); ?>;
 
 let abilityCount = 0;
@@ -378,7 +388,7 @@ function addAbility() {
   // Build ability select options (value = ab_id, text = name)
   const abilityOptions = ABILITIES.map(a => `<option value="${a.ab_id}">${a.name}</option>`).join('');
   const statusOptions = STATUSES.map(s => `<option value="${s.s_id}">${s.name}</option>`).join('');
-  const conditionOptions = CONDITIONS.map(c => `<option value="${c.con_id}">${c.label}</option>`).join('');
+  const conditionTypeOptions = CONDITION_TYPES.map(t => `<option value="${t}">${t}</option>`).join('');
 
   div.innerHTML = `
     <h3>Ability</h3>
@@ -389,8 +399,10 @@ function addAbility() {
       ${abilityOptions}
     </select>
 
-    <label>Value</label>
-    <input name="abilities[${id}][value]">
+    <div id="value_wrapper_${id}">
+      <label>Value</label>
+      <input name="abilities[${id}][value]">
+    </div>
 
     <div id="status_wrapper_${id}" style="display:none;">
       <label>Status</label>
@@ -402,11 +414,28 @@ function addAbility() {
 
     <div id="conditional_${id}" style="display:none;">
       <h4>Condition</h4>
-      <label>Condition</label>
-      <select name="abilities[${id}][condition_id]">
-        <option value="">-- Select Condition --</option>
-        ${conditionOptions}
+
+      <label>Subject</label>
+      <select name="abilities[${id}][condition][subject]">
+        <option value="self">self</option>
+        <option value="opponent">opponent</option>
       </select>
+
+      <label>Type</label>
+      <select name="abilities[${id}][condition][type]">
+        <option value="">-- Select Type --</option>
+        ${conditionTypeOptions}
+      </select>
+
+      <label>Operator</label>
+      <select name="abilities[${id}][condition][operator]">
+        <option value="<">&lt;</option>
+        <option value="=">=</option>
+        <option value=">">&gt;</option>
+      </select>
+
+      <label>Value</label>
+      <input name="abilities[${id}][condition][value]" placeholder="Enter comparison value">
 
       <h4>True</h4>
       <label>Ability</label>
@@ -455,6 +484,10 @@ function onMainAbilityChange(select, id) {
   // Show status selector only if ability name is "Status"
   const statusWrapper = document.getElementById("status_wrapper_" + id);
   statusWrapper.style.display = (selectedText === "Status") ? "block" : "none";
+
+  // Hide top-level value input when conditional is selected; show otherwise
+  const valueWrapper = document.getElementById("value_wrapper_" + id);
+  valueWrapper.style.display = (selectedText === "Conditional") ? "none" : "block";
 }
 
 function onConditionalAbilityChange(select, id, which) {
