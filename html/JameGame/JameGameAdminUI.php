@@ -121,10 +121,13 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Attack</th>
+                    <th>Icnome</th>
+                    <th>HP</th>
                 </tr>
 
                 <?php
-                $conn = new mysqli("localhost", "JaemGame", "SuPeRsTr0nGpAs5w0rD|", "JameGame");
+                $conn = new mysqli("localhost", "JameGame", "SuPeRsTr0nGpAs5w0rD|", "JameGame");
                 $result = $conn->query("SELECT * FROM Characters");
 
                 while($row = $result->fetch_assoc()) {
