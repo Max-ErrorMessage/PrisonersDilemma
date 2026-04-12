@@ -132,7 +132,7 @@
 
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>\n";
-                    echo "<td>" . $row['id'] . "</td>\n";
+                    echo "<td>" . $row['chr_id'] . "</td>\n";
                     echo "<td>" . $row['name'] . "</td>\n";
                     echo "<td>" . $row['attack'] . "</td>\n";
                     echo "<td>" . $row['income'] . "</td>\n";
