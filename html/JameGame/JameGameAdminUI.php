@@ -173,11 +173,11 @@
                 <label>Name</label>
                 <input type="text" name="char_name" required>
                 <label>Attack</label>
-                <input type="text" name="char_dmg" required>
+                <input type="number" name="char_dmg" required>
                 <label>Income</label>
-                <input type="text" name="char_inc" required>
+                <input type="number" name="char_inc" required>
                 <label>HP</label>
-                <input type="text" name="char_hp" required>
+                <input type="number" name="char_hp" required>
 
                 <button type="submit" name="add_char">Add Character</button>
             </form>
