@@ -188,7 +188,7 @@
                 $dmg = $conn->real_escape_string($_POST['char_dmg']);
                 $inc = $conn->real_escape_string($_POST['char_income']);
                 $hp = $conn->real_escape_string($_POST['char_hp']);
-                $conn->query("INSERT INTO characters (name) VALUES ('$name', '$dmg', '$inc', '$hp')");
+                $conn->query("INSERT INTO characters (name, attack, income, hp) VALUES ('$name', '$dmg', '$inc', '$hp')");
                 echo "<p>Character added!</p>";
             }
             ?>
