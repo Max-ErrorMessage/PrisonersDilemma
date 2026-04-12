@@ -266,10 +266,22 @@ on con.con_id = cona.con_id;
             <h2>Add Card</h2>
 
             <form method="POST">
-                <label>Name</label>
-                <input type="text" name="card_name" required>
 
-                <button type="submit" name="add_char">Add Character</button>
+              <div class="card">
+                <h2>Create Card</h2>
+
+                <label>Name</label>
+                <input name="name">
+
+                <label>Cost</label>
+                <input name="cost" type="number">
+              </div>
+
+              <div id="abilities"></div>
+
+              <button type="button" onclick="addAbility()">+ Add Ability</button>
+              <button type="submit">Save Card</button>
+
             </form>
 
             <?php
@@ -321,4 +333,56 @@ on con.con_id = cona.con_id;
 </div>
 
 </body>
+<script>
+let abilityCount = 0;
+
+function addAbility() {
+  const container = document.getElementById("abilities");
+
+  const div = document.createElement("div");
+  div.className = "card";
+
+  div.innerHTML = `
+    <h3>Ability</h3>
+
+    <label>Type</label>
+    <select name="abilities[${abilityCount}][type]" onchange="toggleConditional(this, ${abilityCount})">
+      <option value="Damage">Damage</option>
+      <option value="Heal">Heal</option>
+      <option value="Status">Status</option>
+      <option value="Conditional">Conditional</option>
+    </select>
+
+    <label>Value</label>
+    <input name="abilities[${abilityCount}][value]">
+
+    <label>Status</label>
+    <input name="abilities[${abilityCount}][status]">
+
+    <div id="conditional_${abilityCount}" style="display:none;">
+      <h4>Condition</h4>
+      <input placeholder="Subject" name="abilities[${abilityCount}][condition][subject]">
+      <input placeholder="Type" name="abilities[${abilityCount}][condition][type]">
+      <input placeholder="Operator" name="abilities[${abilityCount}][condition][operator]">
+      <input placeholder="Value" name="abilities[${abilityCount}][condition][value]">
+
+      <h4>True</h4>
+      <input placeholder="Ability" name="abilities[${abilityCount}][true][ability]">
+      <input placeholder="Value" name="abilities[${abilityCount}][true][value]">
+
+      <h4>False</h4>
+      <input placeholder="Ability" name="abilities[${abilityCount}][false][ability]">
+      <input placeholder="Value" name="abilities[${abilityCount}][false][value]">
+    </div>
+  `;
+
+  container.appendChild(div);
+  abilityCount++;
+}
+
+function toggleConditional(select, id) {
+  const section = document.getElementById("conditional_" + id);
+  section.style.display = (select.value === "Conditional") ? "block" : "none";
+}
+</script>
 </html>
