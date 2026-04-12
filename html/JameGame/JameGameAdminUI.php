@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -95,6 +95,15 @@
         button:hover {
             opacity: 0.9;
         }
+
+        .card ul {
+          padding-left: 20px;
+          margin: 10px 0 0 0;
+        }
+
+        .card li {
+          margin-bottom: 6px;
+        }
     </style>
 </head>
 <body>
@@ -122,7 +131,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Attack</th>
-                    <th>Icnome</th>
+                    <th>Income</th>
                     <th>HP</th>
                 </tr>
 
@@ -144,7 +153,7 @@
             </table>
         </div>
 
-        <!-- INSERT FORM -->
+        <!-- INSERT FORM Char-->
         <div class="card">
             <h2>Add Character</h2>
 
@@ -159,6 +168,109 @@
             if(isset($_POST['add_char'])) {
                 $name = $_POST['char_name'];
                 $conn->query("INSERT INTO characters (name) VALUES ('$name')");
+                echo "<p>Character added!</p>";
+            }
+            ?>
+        </div>
+
+        <!-- DATABASE VIEW -->
+        <div class="card">
+            <h2>Cards</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Attack</th>
+                    <th>Income</th>
+                    <th>HP</th>
+                </tr>
+
+                <?php
+                $result = $conn->query("
+Select
+	c.c_id, c.name, c.cost, a1.name, ca.value, s1.name, a2.name, cona.true_value, s2.name, a3.name, cona.false_value, s3.name, con.subject, con.type, con.operator, con.value
+from Cards c
+inner join CardAbilities ca
+	on c.c_id = ca.c_id
+left join ConditionalAbilities cona
+	on cona.cab_id = ca.c_ab_id
+left join Abilities a1
+	on a1.ab_id = ca.ab_id
+left join Abilities a2
+	on a2.ab_id = cona.true_ab_id
+left join Abilities a3
+	on a3.ab_id = cona.false_ab_id
+left join Status s1
+	on s1.s_id = ca.status
+left join Status s2
+	on s2.s_id = cona.true_status_id
+left join Status s3
+	on s3.s_id = cona.false_status_id
+left join Conditions con
+	on con.con_id = cona.con_id;
+                ");
+                $cards = [];
+
+                while($row = $result->fetch_assoc()) {
+                    $id = $row['c_id'];
+
+                    if (!isset($cards[$id])) {
+                        $cards[$id] = [
+                            "name" => $row['name'],
+                            "cost" => $row['cost'],
+                            "abilities" => []
+                        ];
+                    }
+
+                    // Build ability description
+                    if ($row['name'] == "Conditional") {
+                        $ability = "If {$row['subject']} {$row['operator']} {$row['value']} → "
+                                  . "{$row['name_1']} {$row['true_value']} else {$row['name_2']} {$row['false_value']}";
+                    } else {
+                        $ability = $row['name'] . " " . $row['value'];
+
+                        if ($row['name_2']) {
+                            $ability .= " (" . $row['name_2'] . ")";
+                        }
+                    }
+
+                    $cards[$id]['abilities'][] = $ability;
+                }
+                foreach ($cards as $card) {
+                    echo "<div class='card'>";
+    
+                    echo "<h2>{$card['name']}</h2>";
+                    echo "<p><strong>Cost:</strong> {$card['cost']}</p>";
+
+                    echo "<ul>";
+                    foreach ($card['abilities'] as $ability) {
+                        echo "<li>$ability</li>";
+                    }
+                    echo "</ul>";
+
+                    echo "</div>";
+                }
+                ?>
+
+            </table>
+        </div>
+
+        <!-- INSERT FORM Card-->
+        <div class="card">
+            <h2>Add Card</h2>
+
+            <form method="POST">
+                <label>Name</label>
+                <input type="text" name="card_name" required>
+
+                <button type="submit" name="add_char">Add Character</button>
+            </form>
+
+            <?php
+            if(isset($_POST['add_char'])) {
+                $name = $_POST['card_name'];
+                $conn->query("INSERT INTO Cards (name) VALUES ('$name')");
                 echo "<p>Character added!</p>";
             }
             ?>
