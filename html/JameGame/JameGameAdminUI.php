@@ -189,7 +189,7 @@
                 <?php
                 $result = $conn->query("
 Select
-	c.c_id, c.name, c.cost, a1.name, ca.value, s1.name, a2.name, cona.true_value, s2.name, a3.name, cona.false_value, s3.name, con.subject, con.type, con.operator, con.value
+	c.c_id, c.name as name, c.cost, a1.name as name_1, ca.value, s1.name, a2.name as name_1, cona.true_value, s2.name, a3.name, cona.false_value, s3.name, con.subject, con.type, con.operator, con.value
 from Cards c
 inner join CardAbilities ca
 	on c.c_id = ca.c_id
