@@ -124,7 +124,7 @@
                 </tr>
 
                 <?php
-                $conn = new mysqli("localhost", "root", "", "your_db");
+                $conn = new mysqli("localhost", "JaemGame", "SuPeRsTr0nGpAs5w0rD|", "JameGame");
                 $result = $conn->query("SELECT * FROM characters");
 
                 while($row = $result->fetch_assoc()) {
