@@ -172,6 +172,12 @@
             <form method="POST">
                 <label>Name</label>
                 <input type="text" name="char_name" required>
+                <label>Attack</label>
+                <input type="text" name="char_dmg" required>
+                <label>Income</label>
+                <input type="text" name="char_inc" required>
+                <label>HP</label>
+                <input type="text" name="char_hp" required>
 
                 <button type="submit" name="add_char">Add Character</button>
             </form>
@@ -179,7 +185,10 @@
             <?php
             if(isset($_POST['add_char'])) {
                 $name = $conn->real_escape_string($_POST['char_name']);
-                $conn->query("INSERT INTO characters (name) VALUES ('$name')");
+                $dmg = $conn->real_escape_string($_POST['char_dmg']);
+                $inc = $conn->real_escape_string($_POST['char_income']);
+                $hp = $conn->real_escape_string($_POST['char_hp']);
+                $conn->query("INSERT INTO characters (name) VALUES ('$name', '$dmg', '$inc', '$hp')");
                 echo "<p>Character added!</p>";
             }
             ?>
