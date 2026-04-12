@@ -194,7 +194,7 @@
                 }
             } else {
                 echo "<p>Fill out the form to add a new character.</p>";
-            
+            }
             ?>
         </div>
 
