@@ -104,6 +104,18 @@
         .card li {
           margin-bottom: 6px;
         }
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 16px;
+        }
+
+        .card {
+          background: white;
+          padding: 16px;
+          border-radius: 12px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
     </style>
 </head>
 <body>
@@ -177,83 +189,76 @@
         <div class="card">
             <h2>Cards</h2>
 
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Attack</th>
-                    <th>Income</th>
-                    <th>HP</th>
-                </tr>
 
-                <?php
-                $result = $conn->query("
+            <?php
+            $result = $conn->query("
 Select
-	c.c_id, c.name as c_name, c.cost, a1.name as name, ca.value as v, s1.name as status_1, a2.name as name_1, cona.true_value, s2.name as status_2, a3.name as name_2, cona.false_value, s3.name as status_3, con.subject, con.type, con.operator, con.value
+c.c_id, c.name as c_name, c.cost, a1.name as name, ca.value as v, s1.name as status_1, a2.name as name_1, cona.true_value, s2.name as status_2, a3.name as name_2, cona.false_value, s3.name as status_3, con.subject, con.type, con.operator, con.value
 from Cards c
 inner join CardAbilities ca
-	on c.c_id = ca.c_id
+on c.c_id = ca.c_id
 left join ConditionalAbilities cona
-	on cona.cab_id = ca.c_ab_id
+on cona.cab_id = ca.c_ab_id
 left join Abilities a1
-	on a1.ab_id = ca.ab_id
+on a1.ab_id = ca.ab_id
 left join Abilities a2
-	on a2.ab_id = cona.true_ab_id
+on a2.ab_id = cona.true_ab_id
 left join Abilities a3
-	on a3.ab_id = cona.false_ab_id
+on a3.ab_id = cona.false_ab_id
 left join Status s1
-	on s1.s_id = ca.status
+on s1.s_id = ca.status
 left join Status s2
-	on s2.s_id = cona.true_status_id
+on s2.s_id = cona.true_status_id
 left join Status s3
-	on s3.s_id = cona.false_status_id
+on s3.s_id = cona.false_status_id
 left join Conditions con
-	on con.con_id = cona.con_id;
-                ");
-                $cards = [];
+on con.con_id = cona.con_id;
+            ");
+            $cards = [];
 
-                while($row = $result->fetch_assoc()) {
-                    $id = $row['c_id'];
+            while($row = $result->fetch_assoc()) {
+                $id = $row['c_id'];
 
-                    if (!isset($cards[$id])) {
-                        $cards[$id] = [
-                            "name" => $row['c_name'],
-                            "cost" => $row['cost'],
-                            "abilities" => []
-                        ];
-                    }
-
-                    // Build ability description
-                    if ($row['name'] == "Conditional") {
-                        $ability = "If {$row['subject']} {$row['type']} {$row['operator']} {$row['value']} → "
-                                  . "{$row['name_1']} {$row['true_value']} else {$row['name_2']} {$row['false_value']}";
-                    } else {
-                        $ability = $row['name'] . ": " . $row['v'];
-
-                        if ($row['status_1']) {
-                            $ability .= " (" . $row['status_1'] . ")";
-                        }
-                    }
-
-                    $cards[$id]['abilities'][] = $ability;
+                if (!isset($cards[$id])) {
+                    $cards[$id] = [
+                        "name" => $row['c_name'],
+                        "cost" => $row['cost'],
+                        "abilities" => []
+                    ];
                 }
-                foreach ($cards as $card) {
-                    echo "<div class='card'>";
+
+                // Build ability description
+                if ($row['name'] == "Conditional") {
+                    $ability = "If {$row['subject']} {$row['type']} {$row['operator']} {$row['value']} → "
+                                . "{$row['name_1']} {$row['true_value']} else {$row['name_2']} {$row['false_value']}";
+                } else {
+                    $ability = $row['name'] . ": " . $row['v'];
+
+                    if ($row['status_1']) {
+                        $ability .= " (" . $row['status_1'] . ")";
+                    }
+                }
+
+                $cards[$id]['abilities'][] = $ability;
+            }
+            echo "<div class='cards'>";
+            foreach ($cards as $card) {
+                echo "<div class='card'>";
     
-                    echo "<h2>{$card['name']}</h2>";
-                    echo "<p><strong>Cost:</strong> {$card['cost']}</p>";
+                echo "<h2>{$card['name']}</h2>";
+                echo "<p><strong>Cost:</strong> {$card['cost']}</p>";
 
-                    echo "<ul>";
-                    foreach ($card['abilities'] as $ability) {
-                        echo "<li>$ability</li>";
-                    }
-                    echo "</ul>";
-
-                    echo "</div>";
+                echo "<ul>";
+                foreach ($card['abilities'] as $ability) {
+                    echo "<li>$ability</li>";
                 }
-                ?>
+                echo "</ul>";
 
-            </table>
+                echo "</div>";
+            }
+            echo "</div>";
+            ?>
+
         </div>
 
         <!-- INSERT FORM Card-->
